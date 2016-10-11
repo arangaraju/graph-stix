@@ -2,18 +2,10 @@
 graph-stix
 ==========
 
-
-Add a short description here!
-
+Graph Representation of data from STIX documents
 
 Description
 ===========
 
-A LONGER DESCRIPTION OF YOUR PROJECT GOES HERE...
+Structured Threat Information eXpression (STIX), a relatively new and still evolving language to represent and share structured cyber threat information, is being actively adopted by of industry and government. STIX uses Observable Patterns as Indicators which can trigger an alert for suspicious activities, which are handled by analysts to resolve the threat. Translating the STIX information , which is essentially xml files into a property graph, storing it and querying it proves to be a useful tool for analysts to view and handle threats more efficiently. 
 
-
-Note
-====
-
-This project has been set up using PyScaffold 2.5.6. For details and usage
-information on PyScaffold see http://pyscaffold.readthedocs.org/.
