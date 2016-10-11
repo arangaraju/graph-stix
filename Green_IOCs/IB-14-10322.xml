@@ -1,0 +1,1475 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://us-cert.gov/ciscp" id="CISCP:IB-14-10322" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd   http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd   http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd   http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd   http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd   http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd   http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd   http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd   http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd   http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd   http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd   http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd   http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd   http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd   http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd   http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd   http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd   http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd   http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd   http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd   http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd   http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd   http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>H-Worm RAT Associated Command and Control Servers</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Network Activity</stix:Package_Intent>
+    <stix:Description>The following information provides command and control servers/hosts used by the H-Worm remote administration tool (RAT) variant as of 09 June 2014. H-Worm RAT is a Visual Basic script (VBS) file, often wrapped, in a PE dropper. The payload is obfuscated with custom and standard Base64 encoding. The network callback includes sensitive system information including, but not limited to: disk volume serial, host name, Operating System, AV product, and current system date information concatenated in a delimited (&lt;|&gt;) sequence in the User-Agent string.
+
+Some of the campaigns described in the referenced blog entry are reported in addition to unique campaigns independently observed by a trusted third party. The majority of the infections were from the "plus" campaign, which includes "&lt;|&gt;plus&lt;|&gt;" in the User-Agent string in a HTTP POST request back to the command and control (C2) system. There was also a campaign that contained "&lt;|&gt;underworld final&lt;|&gt;" in place of plus. Other campaigns had "I_AM_READY" and "ready" as the keyword on the HTTP POST request. 
+
+In addition, the "ready" campaign delimited the User-Agent information with "\" instead of "&lt;|&gt;". As reported in the blog post, the User-Agent of the initial HTTP POST request contained the following information:
+
+{DiskVolumeSerial}&lt;|&gt;{Hostname}&lt;|&gt;{Username}&lt;|&gt;{OS}&lt;|&gt;plus&lt;|&gt;{AVProductInstalled or nan-av}&lt;|&gt;{USBSpread: true or false} - {CurrentSystemDate}
+
+Please see FireEye posting on the H-Worm RAT for additional background information.
+
+http://www.fireeye.com/blog/technical/threat-intelligence/2013/09/now-you-see-me-h-worm-by-houdini.html</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-06-27T12:37:42Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-c1814271-562e-4060-9719-b61698b07678" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-f751398e-ab4a-4b90-b218-32441d36b085"/>
+        <indicator:Indicator idref="CISCP:indicator-86c194db-3c8a-4a6d-a07d-39f3ce83613f"/>
+        <indicator:Indicator idref="CISCP:indicator-eb65bca9-21b2-4c6a-ac75-4010efb8c5fb"/>
+        <indicator:Indicator idref="CISCP:indicator-ab69e22c-b0a1-47ef-a2a7-58646cab98d1"/>
+        <indicator:Indicator idref="CISCP:indicator-62868fbd-c30a-4e48-81b6-b77c589922d0"/>
+        <indicator:Indicator idref="CISCP:indicator-5fc939a3-2d2e-472c-82f4-fb4152000d5c"/>
+        <indicator:Indicator idref="CISCP:indicator-b3b5c756-33a8-4a2d-abb7-c5ee1056409b"/>
+        <indicator:Indicator idref="CISCP:indicator-d1b03438-993e-43a0-a2e5-3f7414e2c653"/>
+        <indicator:Indicator idref="CISCP:indicator-a087b743-34df-4d17-99ae-88e562766224"/>
+        <indicator:Indicator idref="CISCP:indicator-fea5a78a-e70b-4d51-a564-e56b7e665f54"/>
+        <indicator:Indicator idref="CISCP:indicator-606f9299-530c-42d0-8e49-6ee3a1fec017"/>
+        <indicator:Indicator idref="CISCP:indicator-f809f1fd-da80-486f-9121-4bb18a299a52"/>
+        <indicator:Indicator idref="CISCP:indicator-a225c885-e389-4c58-9066-1c7da3a1b7bb"/>
+        <indicator:Indicator idref="CISCP:indicator-1afb0873-c791-4633-8986-92d1ceb5d3e5"/>
+        <indicator:Indicator idref="CISCP:indicator-4670613a-99b2-4276-b69d-fa81dc983b22"/>
+        <indicator:Indicator idref="CISCP:indicator-7948adba-aabe-4379-b963-0b0f5a064a48"/>
+        <indicator:Indicator idref="CISCP:indicator-d67b5dcb-f95a-4cba-a349-2985bcdfd5e6"/>
+        <indicator:Indicator idref="CISCP:indicator-c6387fdc-4a76-4704-bae6-81fee53c224e"/>
+        <indicator:Indicator idref="CISCP:indicator-d355f2c5-6d63-45dc-a638-5213b6726340"/>
+        <indicator:Indicator idref="CISCP:indicator-0161c884-ce49-46f0-9d51-af880b2924ff"/>
+        <indicator:Indicator idref="CISCP:indicator-e8587ffb-b471-4c1a-bcc4-12936c94b622"/>
+        <indicator:Indicator idref="CISCP:indicator-eb4b519a-2ca6-4f4a-8b15-7e653cf3d8eb"/>
+        <indicator:Indicator idref="CISCP:indicator-821580a2-c6ff-48ab-98fc-45083b5ef3cd"/>
+        <indicator:Indicator idref="CISCP:indicator-05058f2b-5b73-45e0-a728-d0a1c80e7fcc"/>
+        <indicator:Indicator idref="CISCP:indicator-523e4345-fba5-4839-916a-5ee0cfea9786"/>
+        <indicator:Indicator idref="CISCP:indicator-29a19607-379c-48ba-b824-8e5f32b0f7fb"/>
+        <indicator:Indicator idref="CISCP:indicator-5e0be68a-448f-4586-ab63-35dfbd068ecf"/>
+        <indicator:Indicator idref="CISCP:indicator-ff8a0b2c-36d8-4c17-a4e0-ff064c159b57"/>
+        <indicator:Indicator idref="CISCP:indicator-cce26908-a4a5-4a1f-a791-4c501881d0ef"/>
+        <indicator:Indicator idref="CISCP:indicator-3760b0e1-8451-4c43-9575-3a73842b5f6e"/>
+        <indicator:Indicator idref="CISCP:indicator-d6144ae6-7f67-4313-901c-aeb892426991"/>
+        <indicator:Indicator idref="CISCP:indicator-ec1d458d-16fc-4fdd-8762-e9bfb15b01fe"/>
+        <indicator:Indicator idref="CISCP:indicator-9a442227-a57d-4289-8417-33767b1f9019"/>
+        <indicator:Indicator idref="CISCP:indicator-d2955ea0-c890-4b3b-962d-6fee38e3ae2f"/>
+        <indicator:Indicator idref="CISCP:indicator-cd039d00-a292-45b0-bbd2-1e52a03cb4e2"/>
+        <indicator:Indicator idref="CISCP:indicator-8e1260ed-6694-4531-ae1a-e7753dd2a764"/>
+        <indicator:Indicator idref="CISCP:indicator-58973090-d420-4c2f-80e1-b404dca41620"/>
+        <indicator:Indicator idref="CISCP:indicator-15bf32db-556a-458b-8b89-1fe5a4b57562"/>
+        <indicator:Indicator idref="CISCP:indicator-9fbfd32e-05f2-4d4f-ab1d-c5e6362dd026"/>
+        <indicator:Indicator idref="CISCP:indicator-a9f03e63-7789-4283-a8f1-6f250f96e2e4"/>
+        <indicator:Indicator idref="CISCP:indicator-a88197d4-1c6b-4bcf-a229-0e3034aacea5"/>
+        <indicator:Indicator idref="CISCP:indicator-106553c6-87ec-4df5-bee6-419f3be1782d"/>
+        <indicator:Indicator idref="CISCP:indicator-5f471e8e-fa3d-4f8d-b247-657a45c45c17"/>
+        <indicator:Indicator idref="CISCP:indicator-4ded317c-f361-43fa-988b-e481a9e4aa93"/>
+        <indicator:Indicator idref="CISCP:indicator-b5cbda89-f77c-4d0a-a05d-e4caf905141e"/>
+        <indicator:Indicator idref="CISCP:indicator-c72a4350-b209-4e8d-902f-671d5c317e01"/>
+        <indicator:Indicator idref="CISCP:indicator-f493ec27-7f68-4ed7-ad5f-c81599c6b3c6"/>
+        <indicator:Indicator idref="CISCP:indicator-f9742f3a-df7f-496c-a510-271ec407d4b7"/>
+        <indicator:Indicator idref="CISCP:indicator-4aa258de-0d8b-40bf-86ec-9fe7971cb675"/>
+        <indicator:Indicator idref="CISCP:indicator-416c5a56-e2ec-4433-8afd-7e726c861383"/>
+        <indicator:Indicator idref="CISCP:indicator-129f4019-d1ed-41d0-9c53-a35cedd16a65"/>
+        <indicator:Indicator idref="CISCP:indicator-166d0026-de13-43c8-8b8d-881656452708"/>
+        <indicator:Indicator idref="CISCP:indicator-01947355-2f41-409a-8de5-75a1070ab5b0"/>
+        <indicator:Indicator idref="CISCP:indicator-74bb4e39-e85c-4963-b02b-bc0e25f5cac7"/>
+        <indicator:Indicator idref="CISCP:indicator-3a2c14b4-b68a-4323-8f41-13a1ceaa8815"/>
+        <indicator:Indicator idref="CISCP:indicator-f067b2cc-ed73-4427-8641-6f3fd3a9b3ed"/>
+        <indicator:Indicator idref="CISCP:indicator-7eee04e6-ae67-4d4a-8fd6-d2140b5b2fa8"/>
+        <indicator:Indicator idref="CISCP:indicator-3ebe9f71-aa5e-45f1-a498-9d905943708b"/>
+        <indicator:Indicator idref="CISCP:indicator-84affde0-6fd1-4549-8a51-33bc0ef1b2af"/>
+        <indicator:Indicator idref="CISCP:indicator-4d9fb375-1e85-49ea-835f-82f12651ff17"/>
+        <indicator:Indicator idref="CISCP:indicator-5b76c6ea-8543-471d-9aa4-bbd2ec8eae52"/>
+        <indicator:Indicator idref="CISCP:indicator-f74d4c73-011c-4c84-8a9b-89f582720053"/>
+        <indicator:Indicator idref="CISCP:indicator-06abf2d8-658a-467d-a78c-3cf28dff214f"/>
+        <indicator:Indicator idref="CISCP:indicator-0314e3ca-a2c4-4934-b9a8-80335b64dff2"/>
+        <indicator:Indicator idref="CISCP:indicator-ca891039-4df9-4c65-bd81-67fca8469345"/>
+        <indicator:Indicator idref="CISCP:indicator-7cbd4295-63ce-40e3-9fcb-7d23444caabf"/>
+        <indicator:Indicator idref="CISCP:indicator-2c7c7188-e09c-456a-b317-a91787d0f930"/>
+        <indicator:Indicator idref="CISCP:indicator-a3612944-8aef-4f94-b956-a9f7ccef60da"/>
+        <indicator:Indicator idref="CISCP:indicator-1afa6185-f36e-4bff-bf20-8063fc70bc77"/>
+        <indicator:Indicator idref="CISCP:indicator-f667a2dc-877f-4e3d-8f99-e32591d7c34a"/>
+        <indicator:Indicator idref="CISCP:indicator-43d6914d-8b23-464a-b715-ad70bc985a25"/>
+        <indicator:Indicator idref="CISCP:indicator-e1a0b8f3-19cb-46c2-bc6f-73ae0676807c"/>
+        <indicator:Indicator idref="CISCP:indicator-75c9e798-8dce-4797-b160-2b5c82c42350"/>
+        <indicator:Indicator idref="CISCP:indicator-170ba214-91f3-42f9-a447-2547c629afd9"/>
+        <indicator:Indicator idref="CISCP:indicator-e8017828-3bc4-485c-ac14-a096f4facd2c"/>
+        <indicator:Indicator idref="CISCP:indicator-08ac05c9-684c-4d9c-af0c-38fd13199c1f"/>
+        <indicator:Indicator idref="CISCP:indicator-c665d2d8-dc99-4bf5-aa57-350d9786dd19"/>
+        <indicator:Indicator idref="CISCP:indicator-3d962923-529d-46dd-9edf-29f301d95f7b"/>
+        <indicator:Indicator idref="CISCP:indicator-502f0077-ae1e-4f96-94cd-aaa45d8bedae"/>
+        <indicator:Indicator idref="CISCP:indicator-07c976ca-9a7e-444c-9b32-fbe728cf98ee"/>
+        <indicator:Indicator idref="CISCP:indicator-385e2d47-1d47-4a0f-8544-d196578fbc1e"/>
+        <indicator:Indicator idref="CISCP:indicator-fae865c2-02cc-4f1a-abf2-aee8eea903b6"/>
+        <indicator:Indicator idref="CISCP:indicator-7627a0f7-79ba-4ef9-9e67-59bfdfabb991"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f751398e-ab4a-4b90-b218-32441d36b085" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-8e0084fb-c557-4adb-ae2b-5ff3ca051e93">
+        <cybox:Object id="CISCP:Object-81c68fbb-e73a-4b78-b03b-18b388b44287">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://0000.no-ip.biz:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-86c194db-3c8a-4a6d-a07d-39f3ce83613f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-60c5157a-18ed-469b-a716-42817b98a7ab">
+        <cybox:Object id="CISCP:Object-be717e1d-5fcb-4e29-b1d5-312205f8ce3a">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://82.102.229.126:888/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-eb65bca9-21b2-4c6a-ac75-4010efb8c5fb" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-6967d843-04f7-4a65-9717-20e4de87c10c">
+        <cybox:Object id="CISCP:Object-e5689b9c-ccf8-4938-80e4-f2767bcf25a7">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://allp706.zapto.org:676/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ab69e22c-b0a1-47ef-a2a7-58646cab98d1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-b038d7af-46fb-468d-935f-a85198789580">
+        <cybox:Object id="CISCP:Object-140bad8e-1d96-4036-b9c4-f309722b60a9">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://alsha2e.zapto.org:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-62868fbd-c30a-4e48-81b6-b77c589922d0" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-08f6bb38-1931-4421-8648-b2c198204441">
+        <cybox:Object id="CISCP:Object-07ab7ee8-81ef-4c5e-aba4-7432072187c8">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://anarqe77.no-ip.biz:1604/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5fc939a3-2d2e-472c-82f4-fb4152000d5c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-4d73f382-365d-4bf0-b911-841892aeb066">
+        <cybox:Object id="CISCP:Object-cfe33017-1c9a-4d1e-81ce-9a1fa6a076ae">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://apiero.no-ip.biz:83/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b3b5c756-33a8-4a2d-abb7-c5ee1056409b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-aed4768a-4b49-4ef3-8c9d-12512fe67f79">
+        <cybox:Object id="CISCP:Object-da1341b4-afaf-4251-94de-f898cb14f04d">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://b7bkom.no-ip.biz:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d1b03438-993e-43a0-a2e5-3f7414e2c653" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-3fb16825-24b9-42a6-a69f-6b057f6057ab">
+        <cybox:Object id="CISCP:Object-c1866fbb-fda6-4296-8fb9-ed4ceb8d32c0">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://basss.no-ip.info:2023/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a087b743-34df-4d17-99ae-88e562766224" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-e186fe64-bd0c-40d5-8327-99eb27b571fb">
+        <cybox:Object id="CISCP:Object-63337217-7877-47e9-9042-9350c755473a">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://bog5151.zapto.org:889/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-fea5a78a-e70b-4d51-a564-e56b7e665f54" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-79f4bfae-ccd1-44b0-bc23-a9553e8dee52">
+        <cybox:Object id="CISCP:Object-8efa7e79-7b3f-406e-8b09-795c0785cd40">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://bog5151.zapto.org:991/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-606f9299-530c-42d0-8e49-6ee3a1fec017" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-f554ad2b-0a9f-4da1-867b-379b753ea72c">
+        <cybox:Object id="CISCP:Object-2df3d8d3-c55c-48af-9e45-855c78dcd79c">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://bogus911.no-ip.biz:998/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f809f1fd-da80-486f-9121-4bb18a299a52" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-1b38b04f-e38c-461a-93d6-34bde03c4b22">
+        <cybox:Object id="CISCP:Object-ba5cc58d-52d0-4383-a14e-5f08afc2f754">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://bou3zizi.zapto.org:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a225c885-e389-4c58-9066-1c7da3a1b7bb" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-24112e06-b06f-4047-b6c0-bf0394727f96">
+        <cybox:Object id="CISCP:Object-ee792cdd-5f37-492f-9c9b-4309622cb32d">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://bpal.no-ip.biz:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1afb0873-c791-4633-8986-92d1ceb5d3e5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-09544a19-3f9f-4221-ba66-5e82486458dc">
+        <cybox:Object id="CISCP:Object-76b78b97-da5b-4de4-bbc5-7d2961160a9d">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://diiimaria.zapto.org:1644/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4670613a-99b2-4276-b69d-fa81dc983b22" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-09cd1ca4-612f-4383-b6d4-5dd85cb80fe5">
+        <cybox:Object id="CISCP:Object-a06ecb34-4071-4666-a42d-287d2385f7c6">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://dmar123.no-ip.biz:418/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7948adba-aabe-4379-b963-0b0f5a064a48" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-b53ebaa7-f8aa-449d-b85e-e5dfc5f2a8b8">
+        <cybox:Object id="CISCP:Object-167d178e-a785-4439-af18-64ac6c314749">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://drateket.zapto.org:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d67b5dcb-f95a-4cba-a349-2985bcdfd5e6" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-3dcea593-5aae-4206-872e-4460cb1ba813">
+        <cybox:Object id="CISCP:Object-718dbb6c-17fa-4803-881e-754d704ab6ea">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://dz42.no-ip.biz:9999/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c6387fdc-4a76-4704-bae6-81fee53c224e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-bf89bcc3-56b4-498d-857c-a8cd79b0be15">
+        <cybox:Object id="CISCP:Object-6c33f816-1895-456c-8ecc-50c6833ce1f8">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://dznapster.no-ip.biz:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d355f2c5-6d63-45dc-a638-5213b6726340" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-de7e9e76-94f0-433d-bc2c-9e9bcc9f3ecb">
+        <cybox:Object id="CISCP:Object-b16adf6a-79ad-4b31-9b99-2b3fc03dc3f0">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://echtar7.zapto.org:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0161c884-ce49-46f0-9d51-af880b2924ff" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-05ca3ae2-5b79-42de-a1f5-a021130b17b2">
+        <cybox:Object id="CISCP:Object-22401955-9a5a-42b2-a76a-b6abcd6a70e5">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://hackediraq.no-ip.biz:5528/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e8587ffb-b471-4c1a-bcc4-12936c94b622" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-d90c2d9e-7495-4b3b-9c8e-e4ee9517776e">
+        <cybox:Object id="CISCP:Object-b70c74f0-bbe1-4a41-b6f2-0cd377ab40da">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://havkerxxx12345.no-ip.org:1177/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-eb4b519a-2ca6-4f4a-8b15-7e653cf3d8eb" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-c5d532a3-0b0f-40ff-9232-41a58e4d5775">
+        <cybox:Object id="CISCP:Object-915f02cd-b3d5-4944-9d51-237c0658ab45">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://herohero.no-ip.org:96/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-821580a2-c6ff-48ab-98fc-45083b5ef3cd" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-1b18baa1-3c8b-4b87-8e57-174d3309ca21">
+        <cybox:Object id="CISCP:Object-613e8436-57e5-4ba9-96df-4aad7bb901de">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://hexabyte.zapto.org:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-05058f2b-5b73-45e0-a728-d0a1c80e7fcc" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-988966dd-db4e-4750-8372-0288d0ac163e">
+        <cybox:Object id="CISCP:Object-a92a41d6-7dc4-491d-bec8-ae7405dae3f0">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://hexx.no-ip.biz:99/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-523e4345-fba5-4839-916a-5ee0cfea9786" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-5a52f4ef-650a-448b-b08b-7bc7421f97e0">
+        <cybox:Object id="CISCP:Object-e52840d4-2d7f-40bc-a5ae-4d98eec0e40f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://hiphop.zapto.org:5568/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-29a19607-379c-48ba-b824-8e5f32b0f7fb" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-c5ed21d4-6456-4824-990c-337cbfbf5448">
+        <cybox:Object id="CISCP:Object-2f1c9a1f-ce90-47fb-8922-02f541582bf5">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://hslh.sytes.net:9090/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5e0be68a-448f-4586-ab63-35dfbd068ecf" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-b25573d2-dd29-4c82-b1ac-ff73e396af70">
+        <cybox:Object id="CISCP:Object-50ac5f74-2503-4abe-bc27-34e8630d01f2">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://http-server.sytes.net:741/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ff8a0b2c-36d8-4c17-a4e0-ff064c159b57" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-683d31eb-8a44-4a7a-989c-8d16f2418c6f">
+        <cybox:Object id="CISCP:Object-b61d2cb9-e447-4020-a495-76aa199f5a7f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://iamback.serveftp.com:82/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-cce26908-a4a5-4a1f-a791-4c501881d0ef" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-fdae32df-4a55-428a-9765-5893a883bef3">
+        <cybox:Object id="CISCP:Object-1d94801f-7ea0-450b-97b4-b7696678ca9f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://introworld.no-ip.org:1085/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3760b0e1-8451-4c43-9575-3a73842b5f6e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-0fd8544f-b564-474f-8f27-0bc828abaccb">
+        <cybox:Object id="CISCP:Object-be903c67-cb74-4d10-8185-85082b369ab7">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://introworld.zapto.org:1085/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d6144ae6-7f67-4313-901c-aeb892426991" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-6c740bad-1997-49d1-9efb-52dc2bf3e8b7">
+        <cybox:Object id="CISCP:Object-e798d72a-d3a5-4fda-93f3-5c46d6b63219">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://j2w2d.no-ip.biz:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ec1d458d-16fc-4fdd-8762-e9bfb15b01fe" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-e6fce824-1cf1-4e36-b614-b6f791d1bdf9">
+        <cybox:Object id="CISCP:Object-2536b2bb-8800-4674-8261-f54ab2e0e3f9">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://kein77.no-ip.org:3000/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9a442227-a57d-4289-8417-33767b1f9019" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-f87cf130-cf25-4b74-8a1f-15959fbfd001">
+        <cybox:Object id="CISCP:Object-ef772dcb-0bb8-4213-ac20-45019fa6f9ee">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://kfr.sytes.net:8821/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d2955ea0-c890-4b3b-962d-6fee38e3ae2f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-8a60cb18-8a03-4132-b14d-c74f9b6b1834">
+        <cybox:Object id="CISCP:Object-28cfee3c-43e5-4c1d-ac7e-a7c84bdb41ca">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://king.servemp3.com:789/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-cd039d00-a292-45b0-bbd2-1e52a03cb4e2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-bfa7df00-fc63-467f-9692-632598c9377c">
+        <cybox:Object id="CISCP:Object-de22df49-2dce-401e-8d23-981335fe5590">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://kiyoma200.no-ip.biz:1117/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8e1260ed-6694-4531-ae1a-e7753dd2a764" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-d5191884-0a1a-486b-809a-37cfa23f2bfd">
+        <cybox:Object id="CISCP:Object-b4b51e97-dc0a-4687-afdc-75c533a3cdbf">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://koko.myftp.org:9090/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-58973090-d420-4c2f-80e1-b404dca41620" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-769e001f-6fc1-40fe-900c-e1c8bab425de">
+        <cybox:Object id="CISCP:Object-91106e7c-9664-4fe4-b439-0d66be609a46">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://locall.no-ip.biz:2000/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-15bf32db-556a-458b-8b89-1fe5a4b57562" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-68146ea5-3b1e-4b5f-b69a-7840adf8d5cb">
+        <cybox:Object id="CISCP:Object-9d1c12b9-d53d-4a55-8a1a-aa3bdd06f47f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://man2010.no-ip.org:5510/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9fbfd32e-05f2-4d4f-ab1d-c5e6362dd026" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-c9d4933d-4836-427b-b2c6-e9829485fa51">
+        <cybox:Object id="CISCP:Object-fa6fe6aa-475e-43f2-a7dd-27fcd9201012">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://man222.no-ip.biz:846/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a9f03e63-7789-4283-a8f1-6f250f96e2e4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-045f9c87-e4e7-4d8a-a42f-e52f6d07631a">
+        <cybox:Object id="CISCP:Object-4fa38d29-ebfb-4637-a5fe-bd5dc80f685c">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://maxy.no-ip.info:1604/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a88197d4-1c6b-4bcf-a229-0e3034aacea5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-27fe850b-55c6-4dc5-882e-4a8ccf6261da">
+        <cybox:Object id="CISCP:Object-2835105e-3ac7-4ebf-8de5-6f1ed5d21113">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://mda.no-ip.org:88/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-106553c6-87ec-4df5-bee6-419f3be1782d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-8d65ac76-0aeb-48be-95f8-28a72abf26e9">
+        <cybox:Object id="CISCP:Object-a86e8996-ff3a-4d2b-b334-06219b8c1b5f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://microsoft32.no-ip.biz:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5f471e8e-fa3d-4f8d-b247-657a45c45c17" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-4a64b790-e74e-40a1-abf7-99ff1a85f8d4">
+        <cybox:Object id="CISCP:Object-46174d50-561e-425e-bca8-92f8a9af055c">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://mlcrosoft.serveftp.com:3311/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4ded317c-f361-43fa-988b-e481a9e4aa93" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-13eeb99a-3a83-4e9f-8eee-4e10dab1ae94">
+        <cybox:Object id="CISCP:Object-e65716f5-19d2-4863-8bb5-e1bc05873999">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://mohamedmmk.zapto.org:333/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b5cbda89-f77c-4d0a-a05d-e4caf905141e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-30ef5f91-d556-402a-8b8a-9a38b0e3ed6c">
+        <cybox:Object id="CISCP:Object-cc4f8fd8-3c11-41ec-b868-4d215ab12a5f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://mootje01.no-ip.org:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c72a4350-b209-4e8d-902f-671d5c317e01" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-e5c25045-f309-4746-ab98-895f0ba18336">
+        <cybox:Object id="CISCP:Object-1871f107-007b-4f9f-968e-9d53406038d9">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://msgbox.zapto.org:5246/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f493ec27-7f68-4ed7-ad5f-c81599c6b3c6" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-3fd9ea1e-66ca-4b8b-ba4b-370a150d4ac5">
+        <cybox:Object id="CISCP:Object-0c7298d3-2076-4273-9d8b-2200947fb92b">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://ouhiba.zapto.org:288/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f9742f3a-df7f-496c-a510-271ec407d4b7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-e4b07664-d994-4390-be2e-45bb0809c870">
+        <cybox:Object id="CISCP:Object-4f7e681a-2854-4c2e-83ef-b69cacc0de29">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://pal.no-ip.biz:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4aa258de-0d8b-40bf-86ec-9fe7971cb675" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-19e6ec42-79dd-4fb3-8387-45144fa0d4a7">
+        <cybox:Object id="CISCP:Object-4016164c-34b6-47ba-9cff-d4473817c067">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://playgame.servecounterstrike.com:1/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-416c5a56-e2ec-4433-8afd-7e726c861383" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-bedb39c8-68c7-47eb-80ce-06dc59cd5a3b">
+        <cybox:Object id="CISCP:Object-af8e50ad-f13f-45c4-87c8-80fef0475b6f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://playgame.servecounterstrike.com:3/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-129f4019-d1ed-41d0-9c53-a35cedd16a65" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-eedb4722-6c77-4cdf-9867-c7a7b7269251">
+        <cybox:Object id="CISCP:Object-29fa42a2-de99-4cb3-a6b6-bdaeef3678c8">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://playgame.servecounterstrike.com:4/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-166d0026-de13-43c8-8b8d-881656452708" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-b1d55760-a282-4116-8afb-57fbfd732cad">
+        <cybox:Object id="CISCP:Object-6600ca88-3754-424f-9944-f522651dbc4d">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://rayen2007.no-ip.biz:8998/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-01947355-2f41-409a-8de5-75a1070ab5b0" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-5133d2b0-7ec8-478f-beed-1f4272c888fa">
+        <cybox:Object id="CISCP:Object-46d3b25e-cbb3-4528-a229-6f5835f2d9f5">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://redirectme.zapto.org:1001/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-74bb4e39-e85c-4963-b02b-bc0e25f5cac7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-1ce0e9dc-062d-45a6-b04d-4c6700fdebc3">
+        <cybox:Object id="CISCP:Object-4c830b84-7d15-4262-851d-7dea9d14d2b9">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://redirectme.zapto.org:1003/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3a2c14b4-b68a-4323-8f41-13a1ceaa8815" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-1dd31a5f-57ea-4caa-a1a4-08ff04ba9383">
+        <cybox:Object id="CISCP:Object-6aa8ece6-da6d-4b4b-8ee8-ff4c8563164b">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://redjohn.zapto.org:3031/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f067b2cc-ed73-4427-8641-6f3fd3a9b3ed" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-fcd74715-778b-451b-a4b0-a75c1a99a313">
+        <cybox:Object id="CISCP:Object-b66229a6-25b7-48fb-8d5d-639692057050">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://ronaldo-123.no-ip.biz:2011/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7eee04e6-ae67-4d4a-8fd6-d2140b5b2fa8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-e01bc133-4972-4d64-bebb-e2e87c17b8ab">
+        <cybox:Object id="CISCP:Object-9b033942-1502-4995-9a36-ead0e7777921">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://sawdz.no-ip.biz:333/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3ebe9f71-aa5e-45f1-a498-9d905943708b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-e879aec2-94da-4b54-b476-c4f818cb518f">
+        <cybox:Object id="CISCP:Object-1393f6ec-248a-4a33-b6eb-354ffbe46e60">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://servecounterstrike.servecounterstrike.com:75/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-84affde0-6fd1-4549-8a51-33bc0ef1b2af" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-06ad7794-30fe-4025-a242-a621e5251192">
+        <cybox:Object id="CISCP:Object-2731e48b-de6f-4037-8484-0aadb530c553">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://sidisalim.myvnc.com:1888/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4d9fb375-1e85-49ea-835f-82f12651ff17" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-33323508-3f46-4339-83cb-c7154a8fbc23">
+        <cybox:Object id="CISCP:Object-69de16c5-8d18-434d-8346-95a9c928d9eb">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://silensieux.no-ip.biz:87/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5b76c6ea-8543-471d-9aa4-bbd2ec8eae52" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-63c7d591-6366-4f01-bd87-03ed1aee91d6">
+        <cybox:Object id="CISCP:Object-2b81370b-d237-4e61-bb1c-f579d6826966">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://terminator9.zapto.org:1992/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f74d4c73-011c-4c84-8a9b-89f582720053" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-52cc217c-e9e6-45be-bd8f-9f3beaed5ccb">
+        <cybox:Object id="CISCP:Object-f59218e1-9b06-4113-bee8-6dd9561a45d9">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://vx.no-ip.info:81/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-06abf2d8-658a-467d-a78c-3cf28dff214f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-2e78b29c-38f5-4cee-9530-18b4e60c272c">
+        <cybox:Object id="CISCP:Object-9045d8fd-974a-4e88-a9c4-81a706e5a77e">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://wach.no-ip.biz:82/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0314e3ca-a2c4-4934-b9a8-80335b64dff2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-6bfbc2d8-4abd-42f8-a3c6-f3be190204fe">
+        <cybox:Object id="CISCP:Object-c0d67776-1053-4383-8fc0-f7405ccad160">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://wegoooo.zapto.org:7777/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ca891039-4df9-4c65-bd81-67fca8469345" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-bf4ccd3e-a902-4953-9248-b61e724b6e97">
+        <cybox:Object id="CISCP:Object-8fcbedcd-0157-4c23-b113-356b979f3434">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://wvvw.sytes.net:1620/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7cbd4295-63ce-40e3-9fcb-7d23444caabf" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-09525b1a-81a2-4a78-8950-e34ea27345e7">
+        <cybox:Object id="CISCP:Object-9dc1f4a0-1d03-48b8-87f9-79851b675087">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://xbox720.zapto.org:1991/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2c7c7188-e09c-456a-b317-a91787d0f930" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-016d9a57-53e7-4e38-8c7c-3e2b52547f7a">
+        <cybox:Object id="CISCP:Object-2471292c-5565-4004-9d75-650fbd1eca9a">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://avast.publicvm.com:12053/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a3612944-8aef-4f94-b956-a9f7ccef60da" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3ad4c463-ba09-44b7-b9ba-86042fb57264">
+        <cybox:Object id="CISCP:Object-0b4c70b1-ebeb-4b44-ba0c-9812d8946d12">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://avast.publicvm.com:8181/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1afa6185-f36e-4bff-bf20-8063fc70bc77" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ae446019-8bec-4900-a975-7cf1ef180c22">
+        <cybox:Object id="CISCP:Object-8389e8e2-0a24-44a0-b143-aa04a7b2b375">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://esam3at.no-ip.biz:2233/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f667a2dc-877f-4e3d-8f99-e32591d7c34a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3b5b93b3-02d6-4e86-ace4-1bd59c0c0de6">
+        <cybox:Object id="CISCP:Object-06e0f036-3673-40e6-9ed7-f1602898ceab">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://games.servecounterstrike.com:1515/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-43d6914d-8b23-464a-b715-ad70bc985a25" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8a26c69e-3c7c-4d2b-97d5-6a597399ba4e">
+        <cybox:Object id="CISCP:Object-45956b51-9083-43bd-9328-adbf036e3470">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://hattouma12.no-ip.biz:82/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e1a0b8f3-19cb-46c2-bc6f-73ae0676807c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f899d701-0288-408c-8d67-64b28280d65e">
+        <cybox:Object id="CISCP:Object-71081b89-ece3-4d96-b4c8-ea9d9faab618">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://ipaltalk.servequake.com:180/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-75c9e798-8dce-4797-b160-2b5c82c42350" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-72e65675-3a40-44b0-9f9b-472534ec0e09">
+        <cybox:Object id="CISCP:Object-3bfefb93-3585-4b9c-bd1e-e53bd4208874">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://pthacker.no-ip.org:8080/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-170ba214-91f3-42f9-a447-2547c629afd9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-93305e23-f541-4ffb-aecd-4331bd2fc694">
+        <cybox:Object id="CISCP:Object-7f75e03b-8086-4801-9935-3da805a0367a">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://pthacker.no-ip.org:8181/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e8017828-3bc4-485c-ac14-a096f4facd2c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-760b4b20-f8aa-470c-bee6-ca0b124f6f8f">
+        <cybox:Object id="CISCP:Object-00c31abd-e888-4f41-8501-d1e577651305">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://qwqhack.no-ip.biz:9292/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-08ac05c9-684c-4d9c-af0c-38fd13199c1f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "underworld final" campaign that has &lt;|&gt;underworld final&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-020acdb6-8ce3-480b-951d-b56b7117ac61">
+        <cybox:Object id="CISCP:Object-29f7b0c5-abcf-4d2d-b8f6-ceba177a295d">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://sidisalim.myvnc.com:1177/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c665d2d8-dc99-4bf5-aa57-350d9786dd19" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the "hello" campaign that has &lt;|&gt;hello&lt;|&gt; in the User-Agent string instead of &lt;|&gt;plus&lt;|&gt;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a82206b1-511e-4fa8-8c63-abd1c7f68784">
+        <cybox:Object id="CISCP:Object-4bb27067-ce13-420a-a991-342008cff880">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://onlinegame.servecounterstrike.com:201/is-ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3d962923-529d-46dd-9edf-29f301d95f7b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is part of the I_AM_READY campaign.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ca55caa6-3ad3-4cbd-ab8f-6739e8aebc02">
+        <cybox:Object id="CISCP:Object-776a20b9-730c-4ace-81f0-8941419cea5c">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://basss.no-ip.info:2020/I_AM_READY</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-502f0077-ae1e-4f96-94cd-aaa45d8bedae" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The variant of this entry uses \ as opposed to &lt;|&gt; for delimiting the fields in the User-Agent string.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7e217ac1-b1a9-49a5-8b1b-8224c6714de3">
+        <cybox:Object id="CISCP:Object-5bb813a3-8094-4363-a426-ba88b1f69ecc">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://a.servecounterstrike.com:7777/ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-07c976ca-9a7e-444c-9b32-fbe728cf98ee" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The variant of this entry uses \ as opposed to &lt;|&gt; for delimiting the fields in the User-Agent string.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b7441a65-7f18-4ba9-90fb-4b5a20f37bb2">
+        <cybox:Object id="CISCP:Object-f92c4848-2935-4657-834b-09baba1eebcd">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://veros.adultdns.net:99/ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-385e2d47-1d47-4a0f-8544-d196578fbc1e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The variant of this entry uses \ as opposed to &lt;|&gt; for delimiting the fields in the User-Agent string.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-90e58715-3761-4a89-a796-312205dc3447">
+        <cybox:Object id="CISCP:Object-a754ec1f-e9eb-4f25-bd28-0438a861fc2c">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://jn.redirectme.net:7777/ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-fae865c2-02cc-4f1a-abf2-aee8eea903b6" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The variant of this entry uses \ as opposed to &lt;|&gt; for delimiting the fields in the User-Agent string.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0ba0f7c9-8757-43d4-bcb6-0351eff8e757">
+        <cybox:Object id="CISCP:Object-22a14ce7-a276-4a73-bad3-ed3d57005acb">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://google-plus.redirectme.net:90/ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7627a0f7-79ba-4ef9-9e67-59bfdfabb991" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The variant of this entry uses \ as opposed to &lt;|&gt; for delimiting the fields in the User-Agent string.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4d6f14bd-d9a2-4c91-97d9-d691b650a9c2">
+        <cybox:Object id="CISCP:Object-42d94ab7-7d34-4489-9fbc-670b2428b0e5">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://pib.uob.com.sg:7777/ready</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-06-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

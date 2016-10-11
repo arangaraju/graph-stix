@@ -1,0 +1,186 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-14-10008" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of Fake Anti-Virus Malware</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 09 August 2012 a system was discovered to have downloaded a Fake Anti-Virus (AV) malware. The files discovered through remediation efforts were submitted for analysis. The Fake AV malware was found to call out to one domain.
+
+This document incorporated information originally released as US-CERT MIFR-230016.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-01-07T13:18:52Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-b498df94-885a-4062-a968-86292efd3a3e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-83a15e31-a703-4c00-9ace-1311cb7e8f33"/>
+        <indicator:Indicator idref="CISCP:indicator-db80c676-d7e0-4622-ab68-ffdd59632a97"/>
+        <indicator:Indicator idref="CISCP:indicator-76451d76-933b-4234-93fc-56aa68bfe4b2"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-83a15e31-a703-4c00-9ace-1311cb7e8f33" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Anti-Virus Software detection:
+
+Kaspersky HEUR:Trojan.Win32.Generic
+McAfee FakeAlert-PJ.gen.bz
+Microsoft Rogue:Win32/FakePAV
+
+Packer used: ASProtect v1.2
+Compile Date: 2012-08-09 07:48:27 UTC
+
+The following registry changes were observed being made by the malware:
+
+HKLM\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE
+ERROR = PAGE
+[BYPASS]
+Zone = CHECK
+[FOR]
+HTTPS = KB954312
+HKU\S&#8208;1&#8208;5&#8208;[varies]\Software\Microsoft\Windows\CurrentVersion\Internet
+Settings\WarnOnHTTPSToHTTPRedirect: [0x00000000]
+HKU\S&#8208;1&#8208;5&#8208;21&#8208;[varies]\Software\Microsoft\Windows\CurrentVersion\Internet
+Settings\CertificateRevocation: [0x00000000]
+HKU\S&#8208;1&#8208;5&#8208;21&#8208;[varies]\Software\Microsoft\Windows\CurrentVersion\Settings\ID:
+[0x00000001]
+HKU\S&#8208;1&#8208;5&#8208;21&#8208;[varies]\Software\Microsoft\Windows\CurrentVersion\Settings\UID:
+[values]
+HKU\S&#8208;1&#8208;5&#8208;21&#8208;[varies]\Software\Microsoft\Windows\CurrentVersion\Settings\GConfig:
+[values]
+HKU\S&#8208;1&#8208;5&#8208;[varies]\Software\Microsoft\Windows\CurrentVersion\Settings\net:
+["2013&#8208;10&#8208;18_7"]
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\EnableLUA:
+[0x00000000]
+HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution
+Options\[*.exe]\Debugger: [values]
+
+Upon execution, this file performed several registry and file manipulation to include modification of Internet Settings, Windows Explorer, and application security settings. It creates a copy of itself with a randomly generated filename, and then deletes itself.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7bdd99e5-9326-4297-ac67-f8d449408a04">
+        <cybox:Object id="CISCP:Object-875a2cd9-4876-475a-b08b-9549a0608cba">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Protector&#8208;gvmk.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">2003456</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3d48f620f72544af552718b43e51359c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0c43ee5d1e34904af29845908be5c701c70c5ce3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">49152:s6AoGltlNmFgAZRRiA2XFe9uqYEbdSpvzpIynGTQ:NU0FvRRiBFUYEbdSZzpKc</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-db80c676-d7e0-4622-ab68-ffdd59632a97" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is the dropped file created by Protector-gvmk.exe (MD5: 3d48f620f72544af552718b43e51359c).
+
+Anti-Virus Software detection:
+
+Kaspersky HEUR:Trojan.Win32.Generic
+McAfee FakeAlert-PJ.gen.bz
+Microsoft Rogue:Win32/FakePAV
+
+Packer used: ASProtect v1.2
+Compile Date: 2012-08-09 07:48:27 UTC
+
+The filename will be of the pattern "Protector-[random].exe", and used the filename Protector-hluf.exe during analysis.
+
+This file uses the legitimate Microsoft files sc.exe and mshta.exe to create Windows services and execute HTML files. An autorun registry entry is also created to provide persistence during reboot. In addition, it reads and writes to a default flash cookie, "settings.sol", located in two storage areas:
+
+%USERPROFILE%\Application Data\Macromedia\Flash
+Player\macromedia.com\support\flashplayer\sys\#local
+
+%USERPROFILE%\Application Data\Macromedia\Flash
+Player\macromedia.com\support\flashplayer\sys
+
+This file attempts to contact the domain galaint.releasenewinfostat.pl using HTTP GET requests.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-cdd046db-dbb9-4591-9e58-8b090abc1084">
+        <cybox:Object id="CISCP:Object-518814d1-21cb-410f-baae-efe8df9b6562">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">2003456</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3d48f620f72544af552718b43e51359c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0c43ee5d1e34904af29845908be5c701c70c5ce3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">49152:s6AoGltlNmFgAZRRiA2XFe9uqYEbdSpvzpIynGTQ:NU0FvRRiBFUYEbdSZzpKc</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-76451d76-933b-4234-93fc-56aa68bfe4b2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>Network activity observed during analysis is as follows:
+
+GET
+/?0=138&amp;1=1&amp;2=1&amp;3=124&amp;4=i&amp;5=2600&amp;6=5&amp;7=1&amp;8=62900.5512&amp;9=1033&amp;10=300&amp;11=1111&amp;12=mtljt
+bafdn&amp;14=0 HTTP/1.1
+Accept: */*
+Accept&#8208;Language: en&#8208;us
+Accept&#8208;Encoding: gzip, deflate
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)
+Host: galaint.releasenewinfostat.pl</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-853fe8d1-ba22-4ca9-8adf-4fbdb992a63c">
+        <cybox:Object id="CISCP:Object-5fc16357-8d51-4085-adda-339f3ed18925">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://galaint.releasenewinfostat.pl/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

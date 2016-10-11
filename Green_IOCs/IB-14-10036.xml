@@ -1,0 +1,351 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10036" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Phishing Email with Pleasantly Surprised Theme Includes Gh0st RAT Attachment</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Phishing</stix:Package_Intent>
+    <stix:Description>On 20 January and 21 January 2014, two similar phishing emails were observed from different email addresses with the subjects of "girl's video" and "pleasantly surprised". The emails contained a compressed (rar and zip) malicious attachment which both contained the same malicious executable. If successfully installed, the Gh0st remote administration tool (RAT) calls back to the domain mtjyzx.com.
+
+The data source tracks this activity under the name of Lonely Warrior.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-01-23T14:18:38Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-5f83d39e-a493-42fa-aaa1-34ba3b918c17" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-22b10c47-ca0c-426e-a1d1-35e67ecd95e9"/>
+        <indicator:Indicator idref="CISCP:indicator-88a49150-a91f-4214-9861-a8d556ce2dd6"/>
+        <indicator:Indicator idref="CISCP:indicator-163497ae-602c-4e60-9b99-c73e2b7d4939"/>
+        <indicator:Indicator idref="CISCP:indicator-5de04f04-d743-4f88-bb68-c7d951f4faff"/>
+        <indicator:Indicator idref="CISCP:indicator-90674dc0-e5ff-4a14-b6d2-78a138153582"/>
+        <indicator:Indicator idref="CISCP:indicator-6e4897b2-c770-459e-8ffb-98b920585305"/>
+        <indicator:Indicator idref="CISCP:indicator-a6aac523-6721-4b31-a20d-437b271ca81d"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-22b10c47-ca0c-426e-a1d1-35e67ecd95e9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This phishing email contains an archive file called "girl's video.rar".
+
+---BEGIN HEADER---
+Return-Path: &lt;doc-gibson@earthlink.net&gt;
+Subject: girl's video
+X-SENDER-IP: 209.86.89.61
+X-SENDER-REPUTATION: 3.5
+Received: from elasmtp-galgo.atl.sa.earthlink.net ([209.86.89.61])
+   ; 20 Jan 2014 13:37:37 +0000
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws; s=dk20050327; d=earthlink.net;
+    b=BdFPFzeUB7DOpCRjOOH6PEibxS546mymg9lPiCO/bo6bDsQAr74dvrj2/4cHVq11;
+    h=Message-ID:Date:From:Reply-To:To:Subject:Mime-Version:Content-Type:X-Mailer:X-ELNK-Trace:X-Originating-IP;
+Received: from [209.86.224.38] (helo=elwamui-lapwing.atl.sa.earthlink.net)
+    by elasmtp-galgo.atl.sa.earthlink.net with esmtpa (Exim 4.67)
+    (envelope-from &lt;doc-gibson@earthlink.net&gt;)
+    id 1W5F1O-0002TT-RU; Mon, 20 Jan 2014 08:36:10 -0500
+Received: from 36.40.190.135 by webmail.earthlink.net with HTTP;
+    Mon, 20 Jan 2014 08:36:10 -0500
+Message-ID: &lt;4442350.1390224970187.JavaMail.root@elwamui-lapwing.atl.sa.earthlink.net&gt;
+Date: Mon, 20 Jan 2014 21:36:10 +0800 (GMT+08:00)
+From: Doc &lt;doc-gibson@earthlink.net&gt;
+Reply-To: Doc &lt;doc-gibson@earthlink.net&gt;
+
+Mime-Version: 1.0
+Content-Type: multipart/mixed; 
+    boundary="----=_Part_208_10090351.1390224970182"
+X-Mailer: EarthLink Zoo Mail 1.0
+X-ELNK-Trace: 70998fddfae01b5829b888d488e8a071239a348a220c2609fe5fab32466bc91c8d8b4d630d51bf18350badd9bab72f9c350badd9bab72f9c350badd9bab72f9c
+X-Originating-IP: 209.86.224.38
+---END HEADER---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e61fe143-64b3-4089-9cb3-85268e3f65d6">
+        <cybox:Object id="CISCP:Object-c0da3d44-4077-4d51-8e65-c04986de0b07">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">doc-gibson@earthlink.net</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">girl's video</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">4442350.1390224970187.JavaMail.root@elwamui-lapwing.atl.sa.earthlink.net</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">doc-gibson@earthlink.net</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+              <EmailMessageObj:X_Mailer condition="Equals">EarthLink Zoo Mail 1.0</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-4fb23fa5-ae2f-4148-9107-8ca4913288df"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-20T21:36:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-88a49150-a91f-4214-9861-a8d556ce2dd6" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>---- BEGIN EMAIL HEADER ----
+Return-Path: &lt;michelsinc@earthlink.net&gt;
+Subject: pleasantly surprised
+X-SENDER-IP: 209.86.89.64
+X-SENDER-REPUTATION: 3.5
+Received: from elasmtp-curtail.atl.sa.earthlink.net ([209.86.89.64])
+    ; 21 Jan 2014 12:21:03 +0000
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws; s=dk20050327; d=earthlink.net;
+    b=C5sWIhx2jUMFWHWKe+Tkb0M51l6hI9gF73VINY9ZxFsvEPYP8firL7V94+3eFyHh;
+    h=Message-ID:Date:From:Reply-To:To:Subject:Mime-Version:Content-Type:X-Mailer:X-ELNK-Trace:X-Originating-IP;
+Received: from [209.86.224.24] (helo=mswamui-andean.atl.sa.earthlink.net)
+    by elasmtp-curtail.atl.sa.earthlink.net with esmtpa (Exim 4.67)
+    (envelope-from &lt;michelsinc@earthlink.net&gt;)
+    id 1W5aK5-0003KG-2A; Tue, 21 Jan 2014 07:20:53 -0500
+Received: from 1.83.123.152 by webmail.earthlink.net with HTTP;
+    Tue, 21 Jan 2014 07:20:52 -0500
+Message-ID: &lt;5090903.1390306852857.JavaMail.root@mswamui-andean.atl.sa.earthlink.net&gt;
+Date: Tue, 21 Jan 2014 20:20:52 +0800 (GMT+08:00)
+From: A Place For Everything Closets &lt;michelsinc@earthlink.net&gt;
+Reply-To: A Place For Everything Closets &lt;michelsinc@earthlink.net&gt;
+Mime-Version: 1.0
+Content-Type: multipart/mixed; boundary="----=_Part_120_9786929.1390306852854"
+X-Mailer: EarthLink Zoo Mail 1.0
+X-ELNK-Trace: 6d3166b0c80d0aac60b4bfd4ffcaec31239a348a220c26094cbb2b36409f7d8ef6c11e9a68a834a0a2d4e88014a4647c350badd9bab72f9c350badd9bab72f9c
+X-Originating-IP: 209.86.224.24
+---- END EMAIL HEADER ----
+
+---- BEGIN EMAIL BODY ----
+hello,my friends:
+
+  this is my girlfriend's video,very exciting.please download and watch,thank you!
+---- END EMAIL BODY ----
+
+The email appears to be sent from the email address of a legitimate business.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-fab0ea27-92bb-479a-9e30-0f702a18cfec">
+        <cybox:Object id="CISCP:Object-324776f8-c053-4e43-8ef8-4f1372df029b">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">michelsinc@earthlink.net</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">pleasantly surprised</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">5090903.1390306852857.JavaMail.root@mswamui-andean.atl.sa.earthlink.net</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">michelsinc@earthlink.net</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+              <EmailMessageObj:X_Mailer condition="Equals">EarthLink Zoo Mail 1.0</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-f62cf31a-8c11-4f4e-b8f5-c674ae7f3495"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-163497ae-602c-4e60-9b99-c73e2b7d4939" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This attachment contained the executable file "girl's video.exe" (MD5: CF0F6BF9E918DFE15A40617EB01E36B4).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-23eb6498-65de-471e-a42a-4083a6fcd822">
+        <cybox:Object id="CISCP:Object-4fb23fa5-ae2f-4148-9107-8ca4913288df">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">girl's video.rar</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">191296</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">BD390851884B58992DB28B0B7F35DB0D</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1ac1a5b848b23c463a362d20359874bf18133cb9</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ca12c7f5bfe296d50132df2960241e95b41352870bec724f3c928d60eb548c4f</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:DrjyM1KYc13otE1rAnSd4bN4UZKlu6hZFW/8S+IPPDmnRQnuuZN+r6R2RQHCQ0zl:7yf3jBAnS2bNC988SpPPosuuZQr4EQHY</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5de04f04-d743-4f88-bb68-c7d951f4faff" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This attachment contained the executable file "girl's video.exe" (MD5: CF0F6BF9E918DFE15A40617EB01E36B4).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-db72bdf1-8e4e-475a-a10c-0209ca17b8f9">
+        <cybox:Object id="CISCP:Object-f62cf31a-8c11-4f4e-b8f5-c674ae7f3495">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">pleasantly surprised.zip</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">194959</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d3719a5c0b985859868932f776a805c9</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">34d2987bd6d532f91de807084dc030ce221b8152</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9bd7247ad2209981923df8294af2900fbd30d2d81f1318a9be8a9121c27872cc</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:1nGTGZYvG2enkE5hZ7zsS6DJcYEtWmWztgp/Mnz5AGYwU8ybvfi0wwz:1GTmI9E5hZ7zstGnWmWum7YHb1P</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-90674dc0-e5ff-4a14-b6d2-78a138153582" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Compiled: 2014/01/18 Sat 10:54:50 UTC
+
+This file was contained in the attachment "pleasantly surprised.zip" (MD5: d3719a5c0b985859868932f776a805c9).
+
+The malware writes to the file:
+C:\Users\[USER NAME]\AppData\Local\Temp\3257890_dededww.tmp
+
+To enable persistence, C:\Windows\system32\svchost.exe created a scheduled task was assigned to:
+C:\Windows\System32\Tasks\{CE9EF5CB-ADF0-436D-BF01-ED64FCB34138}
+
+These strings of interest were identified in the malware:
+cracked by ximo
+keyxing</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-9dd86f8d-5e76-45a0-9b49-d3ed18c6c148">
+        <cybox:Object id="CISCP:Object-9459aa1a-fcf6-4f3e-9df0-34dd70355f37">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">girl's video.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">229507</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">CF0F6BF9E918DFE15A40617EB01E36B4</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">328142c1aec6e46c81c00f5d4982c8b52d53e20c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9cfb9910b19ae2d613e914dc2c812c2be8f08dccb05ec52f2d0f8491911fdce2</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">6144:ROaxs3/UYrGzEwz2IYD0ediCFhON6oFU4:Ex/BGzFKNxiCSpT</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6e4897b2-c770-459e-8ffb-98b920585305" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file was identified as the Gh0st RAT with the ASDFG flag. It it was dropped to:
+C:\windows\system32
+
+Additional information about this file follows:
+Verified:      Unsigned
+Link date:     4:40 AM 1/20/2014
+Publisher:     n/a
+Description:   n/a
+Product:       n/a
+Prod version:  n/a
+File version:  n/a
+MachineType:   32-bit
+
+This Gh0st RAT calls back to the domain mtjyzx.com on port 10000.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-2ff5aa77-4c42-41a0-bd04-1597d7ecdec8">
+        <cybox:Object id="CISCP:Object-c4f71cdb-0da5-4f7b-a491-020d45d38b90">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">FastUserSwitchingCompatibilityair.dll</FileObj:File_Name>
+            <FileObj:File_Path condition="Equals">C:\windows\system32</FileObj:File_Path>
+            <FileObj:Size_In_Bytes condition="Equals">51618339</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">52bfc692d2d35e068f3f0044cc24090a</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b32a564808b4303cb24e49654ac48cce906c69f3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">6517839e3c9bd1d738ebc80c114ccbb7f975f3df1a3a3c6a5c0d9b7b12ffe5b3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a6aac523-6721-4b31-a20d-437b271ca81d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The Gh0st RAT file FastUserSwitchingCompatibilityair.dll (MD5: 52bfc692d2d35e068f3f0044cc24090a) called back to this domain on port 10000.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e2b958f5-d4e8-4a83-abae-ab7dd218c97e">
+        <cybox:Object id="CISCP:Object-a2e35281-817e-4411-b7f7-c334f80b81b5">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">mtjyzx.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

@@ -1,0 +1,210 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:LinkObj="http://cybox.mitre.org/objects#LinkObject-1" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10077" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Phishing Emails with an Email Storage Limit Theme Leads to a Malicious Site</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Phishing</stix:Package_Intent>
+    <stix:Description>On 31 January 2014, a phishing email was sent from admins@webmins.com and several other spoofed email addresses. The emails used the subject "Your Mail Will Be Closed" and included a link to http://bronyasia.com/files/pages/protect/webmail/user/certifymail/ to steal users' logon credentials.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-02-03T17:57:52Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-4a75eba6-5493-43f5-8c7d-c52cefeb3f07" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-54767525-64be-47ba-9777-0adc85e58502"/>
+        <indicator:Indicator idref="CISCP:indicator-d86fb406-cd14-4de3-96b0-5ed64ab7ad2c"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-54767525-64be-47ba-9777-0adc85e58502" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This phishing email reported by a financial organization targeted sales personnel in the US.
+
+---- BEGIN EMAIL BODY ----
+Dear User
+
+We appreciate you for utilizing our Mail Services, unfortunately your account has exceeded its Storage Limit, kindly verify your record to increase Storage and Protect your Mail.
+
+http://bronyasia.com/files/pages/protect/webmail/user/certifymail/
+
+If you fail to verify your Mail it will be instantly deactivated which will result in lost of your Mails, Contacts, Pictures, files or other important Data's.
+
+Service-Admin  2014
+---- END EMAIL BODY ----
+
+From: admins@webmins.com
+To: sales@[REDACTED].com
+Subject: "Your Mail Will Be Closed"
+Date: Fri, 31 Jan 2014 13:05:18 -0500 
+
+Additional email senders appeared to be spoofed:
+
+From: help@webmin.pc
+To: dbs.sales@[REDACTED].com
+Subject: "Your Mail Will Be Closed"
+Date: Thu, 23 Jan 2014 04:28:49 -0500 
+
+From: admin@webmin.pc
+To: dbs.sales@[REDACTED].com
+Subject: "Your Mail Will Be Closed"
+Date: Thu, 23 Jan 2014 07:36:01 -0500
+ 
+From: admins@webhelp.cc
+To: dbs.sales@[REDACTED].com
+Subject: "Your Mail Will Be Closed"
+Date: Mon, 27 Jan 2014 05:36:02 -0500 
+
+From: admin@web.pc
+To: dbs.sales@[REDACTED].com
+Subject: "Your Mail Will Be Closed"
+Date: Sat, 25 Jan 2014 07:04:50 -0500 
+
+From: admins@webhelp.cc
+To: sales@[REDACTED].com
+Subject: "Your Mail Will Be Closed"
+Date: Mon, 27 Jan 2014 08:27:41 -0500 
+
+From: admin@web.pc
+To: sales@[REDACTED].com
+Subject: "Your Mail Will Be Closed"
+Date: Sat, 25 Jan 2014 10:26:32 -0500</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-6f7b0727-1638-4e9c-b457-69c001ac67a0">
+        <cybox:Object id="CISCP:Object-18ffb80c-5624-4d62-b1fa-65d0e67e66e2">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">Your Mail Will Be Closed</EmailMessageObj:Subject>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">admins@webmins.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-6e97d844-b67c-45c0-89e1-8308d0ddeb84"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d86fb406-cd14-4de3-96b0-5ed64ab7ad2c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>The malicious link leads to a site that asks for an email address, username, and password. No matter what the user clicks on, it will indicate they successfully verified their account, harvesting the user's logon information. According to the report, the credentials were likely intended for re-use elsewhere.
+
+If clicked, the web form will submit the data to login.php then redirect the user to file.html, which states "Account Verified". These pages are additional resources on the malicious webserver.
+
+The following code was taken from the phishing site:
+ 
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;head&gt;
+
+
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"&gt; &lt;title&gt;Verify-Your-Email-Account&lt;/title&gt;
+&lt;script type="text/javascript"&gt;function validate(form){var userName=form.Username.value;var password=form.Password.value;if(userName.length===0){alert("You must enter a username.");return false;} if(password.length===0){alert("You must enter a password.");return false;} return true;} function MM_findObj(n,d){var p,i,x;if(!d)d=document;if((p=n.indexOf("?"))&gt;0&amp;&amp;parent.frames.length){d=parent.frames[n.substring(p+1)].document;n=n.substring(0,p);}
+if(!(x=d[n])&amp;&amp;d.all)x=d.all[n];for(i=0;!x&amp;&amp;i&lt;d.forms.length;i++)x=d.forms[i][n];for(i=0;!x&amp;&amp;d.layers&amp;&amp;i&lt;d.layers.length;i++)x=MM_findObj(n,d.layers[i].document);if(!x&amp;&amp;d.getElementById)x=d.getElementById(n);return x;} function MM_validateForm(){var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;for(i=0;i&lt;(args.length-2);i+=3){test=args[i+2];val=MM_findObj(args[i]);if(val){nm=val.name;if((val=val.value)!=""){if(test.indexOf('isEmail')!=-1){p=val.indexOf('@');if(p&lt;1||p==(val.length-1))errors+='- '+nm+' must contain an e-mail address.\n';}else if(test!='R'){num=parseFloat(val);if(isNaN(val))errors+='- '+nm+' must contain a number.\n';if(test.indexOf('inRange')!=-1){p=test.indexOf(':');min=test.substring(8,p);max=test.substring(p+1);if(num&lt;min||max&lt;num)errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';}}}else if(test.charAt(0)=='R')errors+='- '+nm+' is required.\n';}}if(errors)alert('The following error(s) occurred:\n'+errors);document.MM_returnValue=(errors=='');}&lt;/script&gt;
+&lt;style type="text/css"&gt;body{margin-left:0px;margin-top:0px}.style14{font-size:14px;color:#00f}.style17{color:#00f}.style18{color:#00f;font-size:24px}.style19{font-size:16px}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;
+&lt;div align="center"&gt;
+  &lt;table border="0" height="416" width="1004"&gt;
+    &lt;tbody&gt;&lt;tr&gt;
+      &lt;td valign="top"&gt;&lt;div align="center"&gt;
+        &lt;table align="center" border="0" height="297" width="916"&gt;
+            &lt;tbody&gt;&lt;tr&gt;
+              &lt;td width="144" height="63" align="left" valign="top"&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;td bgcolor="#e8eefa" width="609"&gt;&lt;div align="center" class="style18"&gt;
+                &lt;p&gt;..::Webmaster Email Account Verification::...&lt;/p&gt;
+                &lt;p class="style19"&gt;&amp;nbsp;&lt;/p&gt;
+                &lt;/div&gt;&lt;/td&gt;
+              &lt;td width="149"&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;tr&gt;
+              &lt;td height="122"&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;td bgcolor="#e8eefa" valign="top"&gt;&lt;form action="login.php" method="post" name="form1" id="form1" onsubmit="MM_validateForm('Email','','RisEmail','Username','','R','Password','','R','Confirmpassword','','R');return document.MM_returnValue"&gt;			  
+                &lt;table align="center" border="0" cellpadding="1" width="354"&gt;
+                  &lt;tbody&gt;&lt;tr&gt;
+                    &lt;td colspan="2" class="style14"&gt;&lt;label&gt;&lt;/label&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                      &lt;td class="style14"&gt;Email Address &lt;/td&gt;
+                      &lt;td&gt;&lt;input name="Email" type="text" id="Email" size="25"/&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td class="style14" width="125"&gt;Username&lt;/td&gt;
+                    &lt;td width="219"&gt;&lt;label&gt;
+                      &lt;input name="Username" id="Username" size="25" type="text"/&gt;
+                    &lt;/label&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td class="style14"&gt;Password&lt;/td&gt;
+                    &lt;td&gt;&lt;input name="Password" id="Password" size="25" type="password"/&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td class="style14"&gt;Confirm Password&lt;/td&gt;
+                    &lt;td&gt;&lt;label&gt;
+                      &lt;input name="Confirmpassword" id="Confirmpassword" size="25" type="password"&gt;
+                    &lt;/label&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                    &lt;td&gt;&lt;label&gt;
+                      &lt;input value="Submit" type="submit"&gt;
+                    &lt;/label&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/tbody&gt;&lt;/table&gt;
+                            &lt;/form&gt;
+              &lt;/td&gt;
+              &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td height="104"&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;td bgcolor="#e8eefa"&gt;&lt;div align="center" class="style17"&gt;Note:&amp;nbsp; 
+				Insert your full Email address, Example: email@domain.com&lt;center&gt;
+    &lt;span style="font-weight: bold; font-size: 12px; color: rgb(102, 70, 142); font-family: Arial;"&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;System Administrator&lt;table &lt;/td&gt;
+              &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;&lt;/table&gt;
+      &lt;/div&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4b290d6a-d549-4678-9ccc-9101547c39f9">
+        <cybox:Object id="CISCP:Object-6e97d844-b67c-45c0-89e1-8308d0ddeb84">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://bronyasia.com/files/pages/protect/webmail/user/certifymail/</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals"/>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

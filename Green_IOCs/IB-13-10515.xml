@@ -1,0 +1,449 @@
+<stix:STIX_Package xmlns:MutexObj="http://cybox.mitre.org/objects#MutexObject-2" xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:WinRegistryKeyObj="http://cybox.mitre.org/objects#WinRegistryKeyObject-2" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:marking="http://data-marking.mitre.org/Marking-1" id="CISCP:IB-13-10515" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Java Archive and Second Stage Malicious File Analysis</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 10 AUGUST 2012, 2 suspected malicious files were submitted for analysis. One file is a dropper for an embedded DLL.  The embedded DLL calls out to 3 command and control domains. 
+
+The second file is a malicious Java Archive (.jar) that exploits the vulnerability outlined in CVE&#8208;2012&#8208;0507. The contained class files are capable of downloading and executing files on the victim host.  It is believed that this .jar downloads the first piece of malware mentioned above.
+
+This document incorporates data originally released as US-CERT MIFR-230067.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-09-03T18:48:19Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-3930f4e6-c359-4373-8fd8-d0762f04d21f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-a538c0b4-a65e-418e-9e2e-1ff7752d52d0"/>
+        <indicator:Indicator idref="CISCP:indicator-4280fa3b-d16b-4b46-8392-d9e81891af29"/>
+        <indicator:Indicator idref="CISCP:indicator-eccd06ac-b2be-42ad-993f-e2fd6cab0626"/>
+        <indicator:Indicator idref="CISCP:indicator-c927f19e-8405-4131-80cf-9801e79f8f3b"/>
+        <indicator:Indicator idref="CISCP:indicator-01765c62-2732-4c63-a39f-93b059e1cab9"/>
+        <indicator:Indicator idref="CISCP:indicator-75c6fb03-e604-405e-bb39-7386403951ff"/>
+        <indicator:Indicator idref="CISCP:indicator-42774228-1b0d-41d9-b316-27f0acc8d6ac"/>
+        <indicator:Indicator idref="CISCP:indicator-16ba299f-85ab-4a82-9da4-905ea980f2e5"/>
+        <indicator:Indicator idref="CISCP:indicator-76352418-ee42-4b80-84f7-cc0d6abde638"/>
+        <indicator:Indicator idref="CISCP:indicator-70cd4116-96f2-4216-9e7d-6b4dcb03d861"/>
+        <indicator:Indicator idref="CISCP:indicator-6e5d93e2-1cb8-4be8-91b3-7be3ec7efe1e"/>
+        <indicator:Indicator idref="CISCP:indicator-f4675696-a95e-4c72-8cea-45290f4ecda2"/>
+        <indicator:Indicator idref="CISCP:indicator-1e43a585-f3ed-422e-8e91-34a49ee4331f"/>
+        <indicator:Indicator idref="CISCP:indicator-10884ae2-6e5e-412b-8478-49b8b00f7b92"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a538c0b4-a65e-418e-9e2e-1ff7752d52d0" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is a dropper for an embedded DLL file "kdufroa.dll".
+
+The embedded file is dropped into the following file path:
+c:\Documents and Settings\[user account]\Local Settings\Application Data\kdufroa.dll
+
+The dropper creates the following registry values to entrench the DLL file:
+Key: "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify\kdufroa"
+Value: "DllName"
+Data: "c:\Documents and Settings\[user account]\Local Settings\Application
+Data\kdufroa.dll"
+Value: "Startup"
+Data: "kdufroa"
+Value: "zmakjuui"
+Data: 0xADE4025AB5920B685AAD
+Value: "Impersonate"
+Data: 0x00000001
+Value: "MaxWait"
+Data: 0x00000001
+Value: "Asynchronous"
+Data: 0x00000001
+
+Once dropped and entrenched in the registry, the DLL file is loaded by the dropper and the export function "kdufroa" is called.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-61010a0f-60bf-490a-986e-e5f48353eaf4">
+        <cybox:Object id="CISCP:Object-b0b06045-a001-4d13-9a63-c68f4bc7ce82">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">0.31945702129458287.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">14848</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a1ba56f2a868ba2f7033cc4e9edece82</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">70512ca9e53f2fea32c082e21116477a1154cf9b</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">73821155238dc90c98e88d4d1d25eab7365b13c0f815696da1d35298a630e787</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:zc1EIIxrzpRMEp/sehJ27TtR9zY1Foyl4QC:zqEPxrXME9BJ27T7901FoY4Q</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4280fa3b-d16b-4b46-8392-d9e81891af29" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This registry is created by the dropper file 0.31945702129458287.exe (MD5: a1ba56f2a868ba2f7033cc4e9edece82).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-45fb0228-ec13-4ff5-9212-fa05f0a77829">
+        <cybox:Object id="CISCP:Object-c3ef06b5-98bd-4c04-9f58-39f8a7c1ccac">
+          <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+            <WinRegistryKeyObj:Key condition="Equals">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify\kdufroa</WinRegistryKeyObj:Key>
+            <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+            <WinRegistryKeyObj:Values>
+              <WinRegistryKeyObj:Value>
+                <WinRegistryKeyObj:Name condition="Equals">DllName</WinRegistryKeyObj:Name>
+                <WinRegistryKeyObj:Data condition="Equals">c:\Documents and Settings\[user account]\Local Settings\Application Data\kdufroa.dll</WinRegistryKeyObj:Data>
+              </WinRegistryKeyObj:Value>
+            </WinRegistryKeyObj:Values>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-eccd06ac-b2be-42ad-993f-e2fd6cab0626" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This registry is created by the dropper file 0.31945702129458287.exe (MD5: a1ba56f2a868ba2f7033cc4e9edece82).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-593579d2-29c1-49c9-bc10-183125399b07">
+        <cybox:Object id="CISCP:Object-ca472f0e-aa84-4a59-a2e1-ae7d5fe50abe">
+          <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+            <WinRegistryKeyObj:Key condition="Equals">SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify\kdufroa</WinRegistryKeyObj:Key>
+            <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+            <WinRegistryKeyObj:Values>
+              <WinRegistryKeyObj:Value>
+                <WinRegistryKeyObj:Name condition="Equals">Startup</WinRegistryKeyObj:Name>
+                <WinRegistryKeyObj:Data condition="Equals">kdufroa</WinRegistryKeyObj:Data>
+              </WinRegistryKeyObj:Value>
+            </WinRegistryKeyObj:Values>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c927f19e-8405-4131-80cf-9801e79f8f3b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This registry is created by the dropper file 0.31945702129458287.exe (MD5: a1ba56f2a868ba2f7033cc4e9edece82).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-1171614f-11a5-493f-9d8b-ab9b52cafa43">
+        <cybox:Object id="CISCP:Object-e3fc562f-4f1c-41b4-9393-17aebccb08a5">
+          <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+            <WinRegistryKeyObj:Key condition="Equals">SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify\kdufroa</WinRegistryKeyObj:Key>
+            <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+            <WinRegistryKeyObj:Values>
+              <WinRegistryKeyObj:Value>
+                <WinRegistryKeyObj:Name condition="Equals">zmakjuui</WinRegistryKeyObj:Name>
+                <WinRegistryKeyObj:Data condition="Equals">0xADE4025AB5920B685AAD</WinRegistryKeyObj:Data>
+              </WinRegistryKeyObj:Value>
+            </WinRegistryKeyObj:Values>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-01765c62-2732-4c63-a39f-93b059e1cab9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This registry is created by the dropper file 0.31945702129458287.exe (MD5: a1ba56f2a868ba2f7033cc4e9edece82).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-440d1843-7e3e-4f13-8e94-f1c02816b374">
+        <cybox:Object id="CISCP:Object-0a8b887e-0753-472a-8014-0bfc435c00e9">
+          <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+            <WinRegistryKeyObj:Key condition="Equals">SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify\kdufroa</WinRegistryKeyObj:Key>
+            <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+            <WinRegistryKeyObj:Values>
+              <WinRegistryKeyObj:Value>
+                <WinRegistryKeyObj:Name condition="Equals">Impersonate</WinRegistryKeyObj:Name>
+                <WinRegistryKeyObj:Data condition="Equals">0x00000001</WinRegistryKeyObj:Data>
+              </WinRegistryKeyObj:Value>
+            </WinRegistryKeyObj:Values>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-75c6fb03-e604-405e-bb39-7386403951ff" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This registry is created by the dropper file 0.31945702129458287.exe (MD5: a1ba56f2a868ba2f7033cc4e9edece82).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-30f4d14f-5a5e-4e6d-a099-18950f8a74d7">
+        <cybox:Object id="CISCP:Object-2e6f6a62-0031-4204-be2c-424e635c89dd">
+          <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+            <WinRegistryKeyObj:Key condition="Equals">SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify\kdufroa</WinRegistryKeyObj:Key>
+            <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+            <WinRegistryKeyObj:Values>
+              <WinRegistryKeyObj:Value>
+                <WinRegistryKeyObj:Name condition="Equals">MaxWait</WinRegistryKeyObj:Name>
+                <WinRegistryKeyObj:Data condition="Equals">0x00000001</WinRegistryKeyObj:Data>
+              </WinRegistryKeyObj:Value>
+            </WinRegistryKeyObj:Values>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-42774228-1b0d-41d9-b316-27f0acc8d6ac" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This registry is created by the dropper file 0.31945702129458287.exe (MD5: a1ba56f2a868ba2f7033cc4e9edece82).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-013cdc53-6ce1-4924-9aa2-2f1d798acfa3">
+        <cybox:Object id="CISCP:Object-670ad2a4-fc08-451b-81aa-d37fe946f78d">
+          <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+            <WinRegistryKeyObj:Key condition="Equals">SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify\kdufroa</WinRegistryKeyObj:Key>
+            <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+            <WinRegistryKeyObj:Values>
+              <WinRegistryKeyObj:Value>
+                <WinRegistryKeyObj:Name condition="Equals">Asynchronous</WinRegistryKeyObj:Name>
+                <WinRegistryKeyObj:Data condition="Equals">0x00000001</WinRegistryKeyObj:Data>
+              </WinRegistryKeyObj:Value>
+            </WinRegistryKeyObj:Values>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-16ba299f-85ab-4a82-9da4-905ea980f2e5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This DLL file is a back door that creates a socket with an IP address over port 53. The file is dropped and loaded by the file "0.31945702129458287.exe". Once loaded, the dropper calls the DLL's export function "kdufroa". This function begins execution at offset 0x10003CF8. This export function is responsible for the following actions:
+
+API resolution is performed on the fly by the DLL.
+
+The DLL attempts to open the mutex "F145641&#8208;4421&#8208;115456". If the mutex is not present, it is created on the host.
+The following registry value is set by the DLL to ensure the dropper is an authorized application is the host's firewall policy:
+Key:
+HKLM\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List
+Value: [path to 0.31945702129458287.exe]
+Data: [path to 0.31945702129458287.exe:*:Enabled:0.31945702129458287]
+
+The Atom "145641&#8208;4421&#8208;115456" is added to the host.
+
+The DLL resolves the primary URL "ns5.triohappy.co.uk". The expected IP address is "185.221.17.18". The DLL then attempts to created a connection with the IP address via port 53. If a connection is made, the following 44 bytes are sent:
+100060AC 00 01 01 00 00 01 00 00 00 00 00 00 00 00 00 00 .............
+100060BC 05 00 0A 1A 8E 88 3B 97 3A 22 EE 5C 97 8E 00 00 ..&#381;&#710;;&#8212;:"&#238;\&#8212;&#381;..
+100060CC 00 00 00 00 79 1B 01 00 00 00 00 00 ....y.....
+
+If the URL is not resolved, the DLL attempts to resolve the secondary URL "ns3.triohappy.co.uk" and repeats the same task above using the same IP address. A third URL is present in the string data (ns1.triohappy.co.uk) that the DLL will also attempt to resolve during execution.
+
+EXPORT FUNCTIONS &#8208;&#8208;&#8208;&#8208;&#8208;&gt;
+Name: kdufroa
+Ordinal: 1
+Entry Point: 0x10003CF8</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-47c51a9a-2aa2-45fa-a40d-afb3cff5b4a5">
+        <cybox:Object id="CISCP:Object-b0ec9c32-22c6-4bd7-8c23-0ac1c0e80b91">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">kdufroa.dll</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">15872</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f1bfb75968c79bf8b3f35e6057f440c7</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">268b2a140126f35e9e63eda5dfa849c4d7907364</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-76352418-ee42-4b80-84f7-cc0d6abde638" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>It is possible this JAR file is responsible for downloading the file "0.31945702129458287.exe". The name for the downloaded file is the result of a random number generator with a seed of "800000" along with a ".exe" file extension.
+
+This file is a Java Archive that contains the following 4 class files:
+a.class
+Example.class
+Mac.class
+SecretKey.class
+
+The "a.class" class file contains two functions: "b" and "c". The function "b" is a decoding function used throughout the Java code to decode relevant data. The function "c" contains a data conversion loop that converts the input data into its hexadecimal format.
+
+The "example.class" file contains code that exploits the vulnerability outlined in "CVE&#8208;2012&#8208;0507".
+
+The "SecretKey.class" class file contains the function "init" and is most likely where execution begins. The function "init" creates a new instance of the class "Example" and then creates a new instance of the class "Mac".
+
+The "Mac.class" class file contains the function "getInvisibled". This function is responsible for decoding the additional class file "javaRun" and creating a new instance of "javaRun".
+
+The "JavaRun" class file is decoded at run&#8208;time and executed by the class file "Mac". The java code contained in this class file is displayed below. The contained function "javaRun" accepts a URL parameter. This parameter is unknown. The second function "run" is responsible for downloading a file from the URL parameter, decoding the file using an XOR with 0x33 and executing the file on the local host.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-1e1dfbc3-d095-4b85-930a-735c16f2e002">
+        <cybox:Object id="CISCP:Object-bd0e3a39-0360-48b7-b5c4-ca520ac1b05d">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">sample.jar</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">6372</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">2a0561ec8c8cf3271a988c006ac751be</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">85eb0ca8d81aa1248c4b0faa4e1b8fb5e6db6c96</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">192:8H/fTrz6menAcXAfV9waNInvSHm2/ezU9oLN:8f7PNevSHHo8uN</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-70cd4116-96f2-4216-9e7d-6b4dcb03d861" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>"kdufroa.dll" attempts to open this mutex.  If it is not present, it is created.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c70806a4-350e-4bcc-8e47-bdbc001c8bac">
+        <cybox:Object id="CISCP:Object-434c0176-af5b-4c28-b089-c38d13eff85c">
+          <cybox:Properties xsi:type="MutexObj:MutexObjectType">
+            <MutexObj:Name condition="Equals">F145641-4421-115456</MutexObj:Name>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6e5d93e2-1cb8-4be8-91b3-7be3ec7efe1e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The DLL, "kdufroa.dll", attempts to created a connection via port 53. If a connection is made, the following 44 bytes are sent:
+100060AC 00 01 01 00 00 01 00 00 00 00 00 00 00 00 00 00 .............
+100060BC 05 00 0A 1A 8E 88 3B 97 3A 22 EE 5C 97 8E 00 00 ..&#381;&#710;;&#8212;:"&#238;\&#8212;&#381;..
+100060CC 00 00 00 00 79 1B 01 00 00 00 00 00 ....y.....</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b34a8417-fa28-4023-8278-a5a2e945b9a6">
+        <cybox:Object id="CISCP:Object-cb1c0619-1802-461a-8296-61a3e9239fd7">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">ns1.triohappy.co.uk</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f4675696-a95e-4c72-8cea-45290f4ecda2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The DLL, "kdufroa.dll", attempts to created a connection via port 53. If a connection is made, the following 44 bytes are sent:
+100060AC 00 01 01 00 00 01 00 00 00 00 00 00 00 00 00 00 .............
+100060BC 05 00 0A 1A 8E 88 3B 97 3A 22 EE 5C 97 8E 00 00 ..&#381;&#710;;&#8212;:"&#238;\&#8212;&#381;..
+100060CC 00 00 00 00 79 1B 01 00 00 00 00 00 ....y.....</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-fa9172c9-ec11-457b-bfe5-f483ea539840">
+        <cybox:Object id="CISCP:Object-092a72f8-0308-49aa-b0f7-58be7227416e">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">ns3.triohappy.co.uk</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1e43a585-f3ed-422e-8e91-34a49ee4331f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The DLL, "kdufroa.dll", attempts to created a connection via port 53. If a connection is made, the following 44 bytes are sent:
+100060AC 00 01 01 00 00 01 00 00 00 00 00 00 00 00 00 00 .............
+100060BC 05 00 0A 1A 8E 88 3B 97 3A 22 EE 5C 97 8E 00 00 ..&#381;&#710;;&#8212;:"&#238;\&#8212;&#381;..
+100060CC 00 00 00 00 79 1B 01 00 00 00 00 00 ....y.....</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-66564be9-3789-46e4-aa9e-d58d86d67c7f">
+        <cybox:Object id="CISCP:Object-723ae371-c2af-4e27-816d-adf7479e0b5e">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">ns5.triohappy.co.uk</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-10884ae2-6e5e-412b-8478-49b8b00f7b92" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address is associated with the malware.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b9b68d50-df74-4f67-ab22-37c559c5d809">
+        <cybox:Object id="CISCP:Object-7b8a7338-5d28-418b-932b-22ef56031a41">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">185.221.17.18</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

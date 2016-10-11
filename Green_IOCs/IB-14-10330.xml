@@ -1,0 +1,198 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:LinkObj="http://cybox.mitre.org/objects#LinkObject-1" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10330" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd   http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd   http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd   http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd   http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd   http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd   http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd   http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd   http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd   http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd   http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd   http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd   http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd   http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd   http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd   http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd   http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd   http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd   http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd   http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd   http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd   http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd   http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Phishing Email Spoofs U.S. Government to Send Malicious URL</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 01 July 2014, a spoofed U.S. government phishing email with a malicious embedded URL was observed. The email had the subject "Pending consumer complaint" and had a spoofed sender address "consumer@ftc.gov". The actual sender address from the email header showed "freelang@minidedi2.hostgator.com". The email body contained a spoofed Federal Trade Commission link but the actual URL directed the user to a malicious ZIP file attachment.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-07-03T14:07:52Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-af15570e-0b1c-4c7c-9bbd-de95410c722d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-6c234129-80e6-4e27-894e-a6c02aeba6f3"/>
+        <indicator:Indicator idref="CISCP:indicator-59f0c49d-49ad-445b-9a37-60a713582336"/>
+        <indicator:Indicator idref="CISCP:indicator-98f1d934-f0f3-46ba-a65f-b57384b948ae"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6c234129-80e6-4e27-894e-a6c02aeba6f3" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>-----Begin Email Header-----
+Received: from [REDACTED] by
+ C with Microsoft SMTP Server
+ (TLS) id 14.3.181.6; Tue, 1 Jul 2014 08:23:56 -0700
+Received: from [REDACTED] by
+ [REDACTED] with Microsoft SMTP Server
+ (TLS) id 14.3.181.6; Tue, 1 Jul 2014 08:23:54 -0700
+Received: from localhost (localhost [127.0.0.1])    by [REDACTED]
+ (8.14.4/8.14.4/DOWNSTREAM_SMTPIN) with SMTP id s61FNrS9013099;    Tue, 1 Jul
+ 2014 10:23:53 -0500
+Received: from minidedi2.hostgator.com (minidedi2.hostgator.com
+ [184.173.226.209])    by [REDACTED]
+ with ESMTP id s61FNnCC013009    (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA
+ bits=256 verify=NO)    for [REDACTED]; Tue, 1 Jul 2014
+ 10:23:50 -0500
+Received: from freelang by minidedi2.hostgator.com with local (Exim 4.82)
+    (envelope-from &lt;freelang@minidedi2.hostgator.com&gt;)    id 1X1zuP-00021r-Bi    for
+[REDACTED]; Tue, 01 Jul 2014 10:23:49 -0500
+To: [REDACTED]
+Subject: Pending consumer complaint
+X-PHP-Script: www.chaam-rentabike.com/wp-content/sendme.php for 213.233.93.25
+From: Federal Trade Commission &lt;consumer@ftc.gov&gt;
+Reply-To: &lt;consumer@ftc.gov&gt;
+MIME-Version: 1.0
+Content-Type: text/html
+Content-Transfer-Encoding: 8bit
+Message-ID: &lt;E1X1zuP-00021r-Bi@minidedi2.hostgator.com&gt;
+Date: Tue, 1 Jul 2014 10:23:49 -0500
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - minidedi2.hostgator.coma
+X-AntiAbuse: Original Domain - [REDACTED]
+X-AntiAbuse: Originator/Caller UID/GID - [546 32007] / [47 12]
+X-AntiAbuse: Sender Address Domain - minidedi2.hostgator.com
+X-BWhitelist: no
+X-Source-IP:
+X-Exim-ID: 1X1zuP-00021r-Bi
+X-Source: /opt/php52/bin/php-cgi
+X-Source-Args: /opt/php52/bin/php-cgi /home/freelang/public_html/chaam-rentabike.com/wp-content/sendme.php
+X-Source-Dir: freelang.net:/public_html/chaam-rentabike.com/wp-content
+X-Source-Sender:
+X-Source-Auth: freelang
+X-Email-Count: 226
+X-Source-Cap: ZnJlZWxhbmc7ZnJlZWxhbmc7bWluaWRlZGkyLmhvc3RnYXRvci5jb20=
+X-TM-AS-MML: enable
+X-TM-AS-ERS: 184.173.226.209-127.9.0.1
+X-TM-AS-Product-Ver: IMSS-7.1.0.1597-7.5.0.1017-20792.000
+X-TM-AS-Result: No-0.892-5.0-31-10
+X-imss-scan-details: No-0.892-5.0-31-10;No-0.892-10.0-31-10;No-0.892-5.0-31-10
+X-TM-AS-Result-Xfilter: Match text exemption rules:No;Match text exemption rules:No
+X-TMASE-MatchedRID: sulJUbxlkeO/uE9RA/nmnPRu7RCoymHV4YS6FyG8vyg6O8DC8shohiI9
+    MxSOQ6CSPNtw/6FaNPz5N0o2THGRZLNgxlr0XT/3OIdGskhOfmFlYxFNDO5px87MWnfHypaGpb9
+    WoVA6OYHWSrKtwxqWpQKCOvtvTK0ZEa3U0gEPCy+5PHysgXP4qfa092jHapVv2T2c1cWHafl+e0
+    Tj9UIQkGv34qCfZeB48DhzNboLSw1RCTBccd4rPMr9IOZxEVGWoSl2QLUZBzHYMEqhScrQBYR4m
+    9rj7TBdrCepkWTPee68cbBlXDs0qb5unox8b9U8Xg7VkHk3HQ2OEt6u7lejoX1GcR5AeEs7ox5c
+    BdU3pAeDddlymG7iSzssXelfet1UuPFrkRUFXWri8zVgXoAltlamif5JmiaAP9xmfnR7MerLf5C
+    Uy9fe3PzoAIxuka3Ntj92scdj7JN4v1xL4AgTomH7+fm2VYJRnoAYEs1NlRtxhq+rTjocqjHtxK
+    mT3io7C2lE+jKzuUKG/q+p57FfAD10toaw58T2jvI57BDB9C1eOsC0dG/6ZBfqYd6Hpv0wZ4TGc
+    29VbytagLTzP9hRYpRMZUCEHkRt
+Return-Path: freelang@minidedi2.hostgator.com
+X-MS-Exchange-Organization-AuthSource: [REDACTED]
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 10
+X-MS-Exchange-Organization-AVStamp-Mailbox: SMEXtG}w;1089500;0;This mail has
+ been scanned by Trend Micro ScanMail for Microsoft Exchange;
+X-MS-Exchange-Organization-SCL: 0
+
+-----End Email Header-----
+
+-----Begin Email Body----- 
+
+NOTIFICATION OF A CONSUMER COMPLAINT
+
+You are receiving this document because a third party has filled a complaint about your business and believes you have contravened the Consumer Credit Protection Act (CCPA).
+At this time, the Federal Trade Commission has initiated a formal investigation into this complaint.
+It is FTC policy that consumers who have a complaint write a letter to the business to see if they can resolve the problem.
+A letter from your customer, including the complaint, can be downloaded from :
+https://ftc.gov/ftc/complaints/download.aspx?complaint_id=8449929
+
+Please take a moment to consider the details of the enclosed letter.You may also wish to review your obligations under the Consumer Credit Protection Act(CCPA).
+Your efforts to resolve the matter described may avoid the need for the FTC to become involved.
+Where a FTC investigation finds a violation of the CCPA has occurred, charges may be laid.Successful prosecution under the CCPA may result in fines of up to $50,000 for an individual or imprisonment for a term not more than two years, and, if convicted a corporation may be liable to a fine not more than $250,000.
+
+You are welcome to contact us regarding this matter using the following form :
+http://ftc.gov/ftc/contact.shtm
+
+Under the CCPA, the FTC is required to post information about businesses who fail to respond to consumer complaints.
+
+Federal Trade Commission
+600 Pennsylvania Avenue, NW
+Washington, DC 20580
+(202) 326-2222
+www.ftc.gov
+
+-----Begin Email Body-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5cad4a54-a673-4906-b816-18ed35e12094">
+        <cybox:Object id="CISCP:Object-bf37e4dd-c3e8-4fa6-91ec-60a89b04a895">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">consumer@ftc.gov</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Pending consumer complaint</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">E1X1zuP-00021r-Bi@minidedi2.hostgator.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">freelang@minidedi2.hostgator.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-01T15:23:56"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-59f0c49d-49ad-445b-9a37-60a713582336" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is the first link from the body of the email.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7369f505-f716-421d-9bea-a6d90d90408e">
+        <cybox:Object id="CISCP:Object-0d248289-398c-426b-b1a1-22a2054d7718">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://documents-testing.com/ftc_pdf_complaint.zip</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">https://ftc.gov/ftc/complaints/download.aspx?complaint_id=8449929</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-98f1d934-f0f3-46ba-a65f-b57384b948ae" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is the second link from the body of the email.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-70d4d0ca-b1ce-4762-9643-0fc63c810540">
+        <cybox:Object id="CISCP:Object-d18ddb05-5825-4243-be58-b18af1921317">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://documents-testing.com/ftc_pdf_complaint.zip</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">http://ftc.gov/ftc/contact.shtm</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

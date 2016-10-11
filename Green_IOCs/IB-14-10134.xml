@@ -1,0 +1,611 @@
+<stix:STIX_Package xmlns:MutexObj="http://cybox.mitre.org/objects#MutexObject-2" xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10134" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Phishing Emails with UTF-8 Chinese Characters in Header Use Malicious XLS Files</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 28 February 2014 a U.S company reported observing phishing emails containing malicious RTF or XLS file attachments, and UTF-8 encoded Chinese characters in the header information. The malicious files dropped an additional malware executable, a randomly named file with a .tmp extension and created mutexes beginning with the character string "example". If successfully installed, the malware attempted callback to a C2 server using a non-HTTP protocol with messages consisting of encoded 64 byte long binary data on port 448 or port 999.
+
+Note:  Port 448 is commonly used for distributed data management (DDM) over SSL.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-03-06T19:34:29Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-125fffe2-ed07-42b4-899c-7e42c618cf10" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-6b86cdba-6276-4c78-aac8-a1a070b54a45"/>
+        <indicator:Indicator idref="CISCP:indicator-e94d3d76-b939-4687-89e6-9a3305b04a06"/>
+        <indicator:Indicator idref="CISCP:indicator-fe97765a-e76e-4753-bfda-72c0104e810e"/>
+        <indicator:Indicator idref="CISCP:indicator-84afa147-2cde-4594-acf1-3dbe9c80888e"/>
+        <indicator:Indicator idref="CISCP:indicator-3cfc6c88-f467-4d64-bd39-84f2e503fca1"/>
+        <indicator:Indicator idref="CISCP:indicator-ddfaa8d5-cb1a-4c60-aeb8-88d943751c59"/>
+        <indicator:Indicator idref="CISCP:indicator-b7a322e0-f1d8-4e68-ae8f-d13bcd64c6c2"/>
+        <indicator:Indicator idref="CISCP:indicator-29b2c0f2-be81-4cf3-9a0f-c158374bd8d7"/>
+        <indicator:Indicator idref="CISCP:indicator-fa2e8ece-09f3-42f8-b69a-85041bbf4f29"/>
+        <indicator:Indicator idref="CISCP:indicator-58a1545a-364a-41b3-a89e-dde669e85dbe"/>
+        <indicator:Indicator idref="CISCP:indicator-7a87032f-342a-481a-9af0-afb2ac525072"/>
+        <indicator:Indicator idref="CISCP:indicator-e31a5d38-a9a4-4824-8014-863deacadf0d"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6b86cdba-6276-4c78-aac8-a1a070b54a45" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The phishing email utilized the UTF-8 character set for simplified Chinese (PRC, Singapore), had "alumni newsletter" theme, and contained the attachment " &#26657;&#21451;&#26371;&#36890;&#35338;(2014).xls " (MD5 : b2d84bd297cdef679cfa9a666e66d2ab).  
+ 
+Headers:  
+Return-Path: &lt;wnsun0098@yahoo.com.hk&gt;
+Subject: =?utf-8?b?6L2J5a+E77iwIOagoeWPi+acg+mAmuioiigyMDE0KQ==?=
+X-SENDER-IP: 98.138.229.25
+X-SENDER-REPUTATION: 5.5
+Received: from nm32.bullet.mail.ne1.yahoo.com ([98.138.229.25])
+   ; 05 Mar 2014 08:47:16 +0000
+Received: from [127.0.0.1] by nm32.bullet.mail.ne1.yahoo.com with NNFMP;
+    05 Mar 2014 08:47:15 -0000
+Received: from [98.138.100.103] by nm32.bullet.mail.ne1.yahoo.com with NNFMP;
+    05 Mar 2014 08:44:32 -0000
+Received: from [106.10.166.124] by tm102.bullet.mail.ne1.yahoo.com with NNFMP;
+    05 Mar 2014 08:44:27 -0000
+Received: from [106.10.151.171] by tm13.bullet.mail.sg3.yahoo.com with NNFMP;
+    05 Mar 2014 08:44:27 -0000
+Received: from [127.0.0.1] by omp1011.mail.sg3.yahoo.com with NNFMP;
+    05 Mar 2014 08:44:27 -0000
+X-Yahoo-Newman-Property: ymail-4
+X-Yahoo-Newman-Id: 427895.68913.bm@omp1011.mail.sg3.yahoo.com
+Received: (qmail 76512 invoked by uid 60001); 5 Mar 2014 08:44:27 -0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com.hk; s=s1024;
+    t=1394009067; bh=KAYav+NsalEX9LI/eLDwHNJlPYEbFU2yEUhmbkbbA9Y=;
+    h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:References:Message-ID:Date:From:Reply-To:Subject:To:In-Reply-To:MIME-Version:Content-Type;
+    b=EFxPn0/9EANMuvPQ02+/O2ALEmdA+PBGaSnCTWcNT95PU5j0a3kQgCgjUhw80KYA5koCztId8azJDKaPmgLQF+IYVb5w8wmpD6A6GD0iB8Xj/rymyfhafH9dIICmis1tCY4z5/UdCMh5JeWsNzkhhPyxMQlJW7+W4B9wXNbWkdg=
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws; s=s1024; d=yahoo.com.hk;
+    h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:References:Message-ID:Date:From:Reply-To:Subject:To:In-Reply-To:MIME-Version:Content-Type;
+    b=370yy16PZOhN5ioQDYdYgC3dKU65S1Ok2sWETTFeCQLxRP0kyI1fsFLMO75STcewBf4p1WyFnPmikCqXO9W27m8ucFldbCHegtBYmCqLKFsAOZeDyhdEHh5bxHsejKcYtiW1zORfO64vvEAqoP55qC3x4X7e4sSj6IJW3OoRzzA=;
+X-YMail-OSG: Euh89jQVM1lPobYNSIIwLed8.I8E3EOaZdTibzE36Wb.Yv4
+    dAk7e1NageLpgDPnSlmv_IX3rFcYgo1B1Q_eQ63JBLAdB_dNkzD9PeF.xVnJ
+    cNv2vrMOCMmDOOxSWPsOAoDrAYR0XZIftAxeU.rwoD.hKXxAK82ybxIx9w0w
+    ud68oPYY.0NhKHOHYggTxT1nwvlxkPZTHTQo8sQoN6.GWh1wbcX2AKXSkNsi
+    TdNx6EA33aJMPCfh_4wYVTxU4HRhlAQS_X.8AqBx1piJTmYB816EnuheDiIE
+    30yZj.I_Irx4rdLOGLVtSkqTZr4RmK3apDug.6ggZkYgCrGoOr7GMjXhBuVq
+    nXR6MNpuXINPE4FsI9jgb0IvDZeXqppSSxHAKIgeI0C8V60PHo5Oi.huMEyl
+    wvD6RtjqoKlwaPA0StgAShpjAp2SAviSw.TLmT_MKHROreMHSZ38sZHubo_i
+    Q3GTtP.mmahYXzyZGxMRPQ2xA1vSrK5AZVGQYkqplLBfRpjKCAgCBZEOWx4P
+    0c84G9QeRhhnJrVNTlsyo
+Received: from [103.253.140.82] by web194601.mail.sg3.yahoo.com via HTTP;
+    Wed, 05 Mar 2014 16:44:27 SGT
+X-Rocket-MIMEInfo: 002.001,
+    CgpGb3IgWW91ciBJbmZvcm1hdGlvbgoKCgoK6Zmz5oW254.JIDxxbWNoYW42ODZAeWFob28uY29tLmhrPiDmlrwgMjAxNOW5tDAz5pyINeaXpSAo6YCx5LiJKSAzOjA1IFBNIOWvq.mBk..5lQoK5ZCE5L2N5ZCM5a24OgoK5qCh5Y.L5pyD6YCa6KiK5bey57eo6Lyv5a6M5oiQ77yM6KuL5Luj6YO15a.E57Wm54Sh6Zu76YO155qE5ZCM5a2444CCCgrpmbPmhbbnj4kgwqAgwqAyMDE0LTItMjYBMAEBAQE-
+X-Mailer: YahooMailWebService/0.8.177.636
+References: &lt;1394003101.72345.YahooMailNeo@web192606.mail.sg3.yahoo.com&gt;
+    &lt;1394003242.32378.YahooMailNeo@web192605.mail.sg3.yahoo.com&gt;
+    &lt;1394003383.8471.YahooMailNeo@web192605.mail.sg3.yahoo.com&gt;
+    &lt;1394003504.90627.YahooMailNeo@web192603.mail.sg3.yahoo.com&gt;
+    &lt;1394003613.36457.YahooMailNeo@web192605.mail.sg3.yahoo.com&gt;
+    &lt;1394003842.13361.YahooMailNeo@web192605.mail.sg3.yahoo.com&gt;
+    &lt;1394004088.10326.YahooMailNeo@web192602.mail.sg3.yahoo.com&gt;
+    &lt;1394005504.91287.YahooMailNeo@web193405.mail.sg3.yahoo.com&gt;
+    &lt;1394006726.78609.YahooMailNeo@web192901.mail.sg3.yahoo.com&gt;
+    &lt;1394007658.6423.YahooMailNeo@web193104.mail.sg3.yahoo.com&gt;
+    &lt;1394007767.55514.YahooMailNeo@web193105.mail.sg3.yahoo.com&gt;
+    &lt;1394007861.14995.YahooMailNeo@web193103.mail.sg3.yahoo.com&gt;
+    &lt;1394007954.32512.YahooMailNeo@web193101.mail.sg3.yahoo.com&gt;
+    &lt;1394008426.77189.YahooMailNeo@web193102.mail.sg3.yahoo.com&gt;
+    &lt;1394008833.14750.YahooMailNeo@web190205.mail.sg3.yahoo.com&gt;
+Message-ID: &lt;1394009067.60162.YahooMailNeo@web194601.mail.sg3.yahoo.com&gt;
+Date: Wed, 5 Mar 2014 16:44:27 +0800 (SGT)
+From: =?utf-8?B?5a2r6IGe5a+n?= &lt;wnsun0098@yahoo.com.hk&gt;
+Reply-To: =?utf-8?B?5a2r6IGe5a+n?= &lt;wnsun0098@yahoo.com.hk&gt;
+To: undisclosed recipients: ;
+In-Reply-To: &lt;1394008833.14750.YahooMailNeo@web190205.mail.sg3.yahoo.com&gt;
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="734958990-753362166-1394009067=:60162"
+
+
+Body:  
+
+For Your Information
+
+&#38515;&#24950;&#29641; &lt;qmchan686@yahoo.com.hk&gt; &#26044; 2014&#24180;03&#26376;5&#26085; (&#36913;&#19977;) 3:05 PM &#23531;&#36947;&#65109;
+
+&#21508;&#20301;&#21516;&#23416;:
+
+&#26657;&#21451;&#26371;&#36890;&#35338;&#24050;&#32232;&#36655;&#23436;&#25104;&#65292;&#35531;&#20195;&#37109;&#23492;&#32102;&#28961;&#38651;&#37109;&#30340;&#21516;&#23416;&#12290;
+
+&#38515;&#24950;&#29641;    2014-2-26</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-1333ea79-8545-47cb-a66a-c02576afd641">
+        <cybox:Object id="CISCP:Object-34371de0-fbb5-4dc0-b1f4-ea7df67b05a5">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">wnsun0098@yahoo.com.hk</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals"> &#36681;&#23492;&#65072; &#26657;&#21451;&#26371;&#36890;&#35338;(2014)</EmailMessageObj:Subject>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-4a7aafab-830f-491b-b489-b9dc85d6dfc8"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e94d3d76-b939-4687-89e6-9a3305b04a06" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>On execution, the malicious XLS file drops and a file named with a random four character sequence and a .tmp extension, example "FC0A.tmp" (MD5 9b100b001c4a68488dc8af63f62c2d90) in the victim's temp folder.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-acf6d3de-db86-4147-995a-2bf1b1d1c59b">
+        <cybox:Object id="CISCP:Object-4a7aafab-830f-491b-b489-b9dc85d6dfc8">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals"> &#26657;&#21451;&#26371;&#36890;&#35338;(2014).xls</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b2d84bd297cdef679cfa9a666e66d2ab</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-fe97765a-e76e-4753-bfda-72c0104e810e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The malware, on execution, creates the mutex "exampleex_groupdyC.?PV5k$T6ckd", and attempts to resolve one of two domains: 
+
+fordnsdynamic.no-ip.org (resolution as of 2014-03-05, IP 8.23.224.110)
+
+www.example2.com (resolution as of 2014-03-06, IP 184.73.213.106)
+
+If succesful in resolving to an IP the malware attempts to communicate over port 448 (or if blocked, port 999) using a 64 byte message of encoded binary.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-02c96aae-7c81-44db-ab59-432eda2a2a55">
+        <cybox:Object id="CISCP:Object-4446eb99-afd7-4877-a8d7-c7f909ea9b33">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">FC0A.tmp</FileObj:File_Name>
+            <FileObj:File_Path condition="Equals">%USERPROFILE%\AppData\Local\Temp</FileObj:File_Path>
+            <FileObj:Size_In_Bytes condition="Equals">69632</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9b100b001c4a68488dc8af63f62c2d90</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">18ca39529101575feb67f8a250c6d781576401af</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-43ba595d-713c-4ed4-a3d8-07159717f2c2">
+              <cybox:Properties xsi:type="MutexObj:MutexObjectType">
+                <MutexObj:Name condition="Equals">exampleex_groupdyC.?PV5k$T6ckd</MutexObj:Name>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Created</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-84afa147-2cde-4594-acf1-3dbe9c80888e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware, FC0A.tmp(MD5 9b100b001c4a68488dc8af63f62c2d90), attempts to use DNS to resolve the hard-coded URL.  If successful, it attempts communication with the C2 server using a non-HTTP protocol.  The messages observed were 64 byte long, encoded binary on port#448.
+
+Traffic Sample:
+
+00000000  ee 3c 00 00 01 00 00 00  3a 00 00 00 fc 10 7f 02 .&lt;...... :.......
+00000010  b2 87 b5 62 76 57 00 fb  df ce dc 70 d2 46 69 96 ...bvW.. ...p.Fi.
+00000020  56 e0 30 fd 3c 7c 58 80  ce 25 a6 e8 22 a5 e3 b9 V.0.&lt;|X. .%.."...
+00000030  f3 a5 31 46 0b e6 fc ec  1a d4 5b 80 2e 62 93 3b ..1F.... ..[..b.;
+00000040  25 b3 fc 76 4c f1                                %..vL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-acf5b9c6-db99-4cde-b7e0-b30d533456b1">
+        <cybox:Object id="CISCP:Object-21518130-c4ce-4a23-b7c9-056a5b3a9968">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">fordnsdynamic.no-ip.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3cfc6c88-f467-4d64-bd39-84f2e503fca1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware, FC0A.tmp(MD5 9b100b001c4a68488dc8af63f62c2d90), attempts to use DNS to resolve the hard-coded URL.  If successful, it attempts communication with the C2 server using a non-HTTP protocol.  The messages observed were 64 byte long, encoded binary on port#448.
+
+Traffic Sample:
+
+00000000  ee 3c 00 00 01 00 00 00  3a 00 00 00 fc 10 7f 02 .&lt;...... :.......
+00000010  b2 87 b5 62 76 57 00 fb  df ce dc 70 d2 46 69 96 ...bvW.. ...p.Fi.
+00000020  56 e0 30 fd 3c 7c 58 80  ce 25 a6 e8 22 a5 e3 b9 V.0.&lt;|X. .%.."...
+00000030  f3 a5 31 46 0b e6 fc ec  1a d4 5b 80 2e 62 93 3b ..1F.... ..[..b.;
+00000040  25 b3 fc 76 4c f1                                %..vL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-08f1458a-d628-47d8-95bc-f07a1b67668f">
+        <cybox:Object id="CISCP:Object-de9e35a2-7b6a-47f6-a68a-f778b3eee4ca">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">www.example2.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ddfaa8d5-cb1a-4c60-aeb8-88d943751c59" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>Two differnt versions of a second email were observed; each contained one of the two following malicious files as attachments:
+Budget.xls (MD5 16a4aa88c638f7d98cfa8daa6f8d02fe)  
+Project Work Plan.doc 	(MD5 229b1699b3b2165fd0f23c83fb58cecd)
+
+Both malicious files act as a dropper for the same malicious executable, named with a random four character sequence and the .tmp extension (MD5 e36fd7fc27f38a3a53dfd183614c4186).
+
+note: the display name for the From header was UTF-8 encoded Chinese characters (simplified, PRC, Singapore character set "&#21326;&#19990; &#31119;")
+
+Headers:  
+Return-Path: &lt;fhs19780416@yahoo.com.tw&gt;
+Subject: Project Work Plan
+X-SENDER-IP: 98.138.120.55
+X-SENDER-REPUTATION: 5.5
+Received: from nm48.bullet.mail.ne1.yahoo.com ([98.138.120.55])
+    with SMTP; 01 Mar 2014 03:10:56 +0000
+Received: from [127.0.0.1] by nm48.bullet.mail.ne1.yahoo.com with NNFMP;
+    01 Mar 2014 03:10:55 -0000
+Received: from [98.138.100.116] by nm48.bullet.mail.ne1.yahoo.com with NNFMP;
+    01 Mar 2014 03:08:15 -0000
+Received: from [203.188.200.220] by tm107.bullet.mail.ne1.yahoo.com with NNFMP;
+    01 Mar 2014 03:08:09 -0000
+Received: from [203.188.200.58] by tm7.bullet.mail.tp2.yahoo.com with NNFMP;
+    01 Mar 2014 03:08:08 -0000
+Received: from [127.0.0.1] by omp1009.mail.tp2.yahoo.com with NNFMP;
+    01 Mar 2014 03:08:08 -0000
+X-Yahoo-Newman-Property: ymail-4
+X-Yahoo-Newman-Id: 470475.75903.bm@omp1009.mail.tp2.yahoo.com
+Received: (qmail 84891 invoked by uid 60001); 1 Mar 2014 03:08:07 -0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com.tw; s=s1024;
+    t=1393643287; bh=3p1O+lcSy5Z/t6t6foj+U6gVr/F3VDnWcx8jEBMnzxw=;
+    h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:Message-ID:Date:From:Reply-To:Subject:To:MIME-Version:Content-Type;
+    b=fgsBHW6QasCCDnrF3p6PZy1Wiijg0/wFO+FcU0IvywgMYI/P11sMLAJFGZMzCcH98SYyMI8pUh5r87B/y74WaOftKvkd2KapxYwSVwuwMsW3hmM9BIvJHcd1HTrGntSUfiI48cXiI7d8rYZ9xSgBmZNtMZ98D9VAsucz3jf6EaA=
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws; s=s1024; d=yahoo.com.tw;
+    h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:Message-ID:Date:From:Reply-To:Subject:To:MIME-Version:Content-Type;
+    b=2vEu1hzvdvYEz6FSOgTGHqv5Bxbp5xozQy5xdhq/Ej9lbIwncgJE0HIoluHQRbSofKzai7VAvHGeCkdFIoPPV2z5at6xSaO8uq/Mtw38xNAAuuO6zhwMEfTILdiSNJdRTVdJCnJeLF+hU/eBnvvUWeqHmV2fTv8Gzh4GjKNgF90=;
+X-YMail-OSG: M2KKFSUVM1mnzEzpeozlJb_SA.JyrnfoFf2tb_3n0zD3uCn
+    2lpjrXeiVWQFhNCmo.bktjTTrtLL_ogXZXXUCC5Xo5vIjm7X90uVCQhPds6M
+    Qj_NK4vpUokagh984.uvxWt_sPPF85Z5xNoykE7eDmZ9S2oArDxVNgCcS5Ai
+    ENvzvnjLYCfzhUK5_Eq1qBbiEhTW.Sy3YWN90wV.miE.yhZnc4_3xeXH7ZpZ
+    fnjbv2GIKKjwWuPDAe9MQzWuz1W9JjT4WXPUIeNyfDuin7I28kn.WpVdsLI.
+    KFP741EpkzA01yzI4knTR0x8mT_4Im00v1QGVfTrwsMzzMUJtj_1mAsnjUa_
+    w1DG7unF69S57S8k6WyUVXaNUvgQ_RteH.Bk2mz0n7CLGGwBYEWiyC8ylCIu
+    5AlAbs.Itx1E3sddKe0MGVDkbWOxeR8NGFsqQ2YIe_hkT5gxmtb2aW8wRjXD
+    2F6wPFt7nDPhoRxQ4bV4tSmSSlKGuiO2eCRTS_VJZn6ElQbRivugLw6Psskv
+    opXOOKLGo3Jc-
+Received: from [60.27.227.50] by web75101.mail.tw1.yahoo.com via HTTP;
+    Sat, 01 Mar 2014 11:08:07 CST
+X-Rocket-MIMEInfo: 002.001,
+    RGVhcsKgYWxsLMKgCsKgClBsZWFzZcKgZmluZMKgdGhlwqB1cGRhdGVkwqB3b3JrwqBwbGFuwqBmb3LCoHlvdXLCoGluZm9ybWF0aW9uLMKgdGhhbmtzIQEwAQEBAQ--
+X-Mailer: YahooMailWebService/0.8.177.636
+Message-ID: &lt;1393643287.46701.YahooMailNeo@web75101.mail.tw1.yahoo.com&gt;
+Date: Sat, 1 Mar 2014 11:08:07 +0800 (CST)
+From: =?utf-8?B?5Y2O5LiWIOemjw==?= &lt;fhs19780416@yahoo.com.tw&gt;
+Reply-To: =?utf-8?B?5Y2O5LiWIOemjw==?= &lt;fhs19780416@yahoo.com.tw&gt;
+To: undisclosed recipients: ;
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+    boundary="1584626181-1870734802-1393643287=:46701"
+
+Body:  
+Dear all, 
+ 
+Please find the updated work plan for your information, thanks!</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-00eb15b6-14e8-4910-b65a-22e52f5800b4">
+        <cybox:Object id="CISCP:Object-6a132d9e-42ce-4ba3-84b2-a13c48a7346f">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">fhs19780416@yahoo.com.tw</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Project Work Plan</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">1393643287.46701.YahooMailNeo@web75101.mail.tw1.yahoo.com</EmailMessageObj:Message_ID>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-16ba4548-8a62-4aa4-b4e9-d67534ab9dc8"/>
+              <EmailMessageObj:File object_reference="CISCP:Object-e9b0fe7a-a5c4-4039-a113-0983409824e3"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b7a322e0-f1d8-4e68-ae8f-d13bcd64c6c2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The file "Budget.xls"(MD5 16a4aa88c638f7d98cfa8daa6f8d02fe)is an encrypted malicious Excel file that drops a randomly named (four random characters) ".tmp" file, example "21F2.tmp", which serves as the main executable (MD5 e36fd7fc27f38a3a53dfd183614c4186).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-71d3427d-7bfb-45b5-97a8-1ca2795295b6">
+        <cybox:Object id="CISCP:Object-16ba4548-8a62-4aa4-b4e9-d67534ab9dc8">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Budget.xls</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">129</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">16A4AA88C638F7D98CFA8DAA6F8D02FE</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-29b2c0f2-be81-4cf3-9a0f-c158374bd8d7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The file "Project Work Plan.doc" (MD5 229b1699b3b2165fd0f23c83fb58cecd)is a malicious RTF file that drops a randomly named (four random characters) ".tmp" file, example "21F2.tmp", which serves as the main executable (MD5 e36fd7fc27f38a3a53dfd183614c4186).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-d47fa794-ae47-42a9-b97b-bfa2f098a5c7">
+        <cybox:Object id="CISCP:Object-e9b0fe7a-a5c4-4039-a113-0983409824e3">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Project Work Plan.doc</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">229B1699B3B2165FD0F23C83FB58CECD</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-fa2e8ece-09f3-42f8-b69a-85041bbf4f29" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>If the malware successfully installs it attempts to resolve one of the two following domains:
+
+www.email-yahoo.org (resolution as of 2014-02-28 IP 221.144.80.156)
+www.webkimit.org (resolution as of 2014-02-28 IP 221.144.80.156)
+
+The malware then attempts to communicate with a 64 byte string of encoded binary on port 448.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-edfef58b-5aa1-406f-b868-ed0174524943">
+        <cybox:Object id="CISCP:Object-f53da644-2b7f-4da2-b69f-b0f4911f4db3">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">21F2.tmp</FileObj:File_Name>
+            <FileObj:File_Path condition="Equals">%USERPROFILE%\AppData\Local\Temp</FileObj:File_Path>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">E936CDF86E207173E4BB477F23A8DE2D</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-39ea02fa-9717-4299-a04e-abf4b7af243a">
+              <cybox:Properties xsi:type="MutexObj:MutexObjectType">
+                <MutexObj:Name condition="Equals">exampleg4vT#ynNif(w|,69&lt;</MutexObj:Name>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Created</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-58a1545a-364a-41b3-a89e-dde669e85dbe" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware, 21F2.tmp (MD5 E936CDF86E207173E4BB477F23A8DE2D,attempts to use DNS to resolve the hard-coded URL.  If successful, it attempts communication with the C2 server using a non-HTTP protocol.  The messages observed were 64 byte long, encoded binary on port#448.
+
+Traffic Sample:
+
+00000000  0d 28 00 00 01 00 00 00  2f 00 00 00 fc 10 7f 02 .(...... /.......
+00000010  b2 87 b5 62 76 57 00 84  3f 97 e1 a3 3c 54 14 49 ...bvW.. ?...&lt;T.I
+00000020  e7 79 06 7b f2 92 c9 d0  3a 41 45 d8 35 7b 42 dd .y.{.... :AE.5{B.
+00000030  ec 6f 27 f0 3a e0 47 65  f2 70 f8                .o'.:.Ge .p.
+
+Whois:
+
+Three domains are registered using the same email (2493852060@qq.com) and hosted on the same server (IP 221.144.80.156) as of 28 February 2014:
+
+1. 	email-yahoo.org 		
+2. 	webkimit.org 		
+3. 	zgqipai.net
+
+Domain registration information as of 2014-03-06:
+
+Domain Name:EMAIL-YAHOO.ORG
+Domain ID: D170508985-LROR
+Creation Date: 2013-12-24T08:38:05Z
+Updated Date: 2014-02-23T03:45:34Z
+Registry Expiry Date: 2014-12-24T08:38:05Z
+Sponsoring Registrar:Hichina Zhicheng Technology Limited (R1373-LROR)
+Sponsoring Registrar IANA ID: 420
+WHOIS Server: 
+Referral URL: 
+Domain Status: ok
+Registrant ID:HC-511422276-CN
+Registrant Name:zhixin wang
+Registrant Organization:g m t
+Registrant Street: east bao shan street 21 hao
+Registrant City:xinzhu
+Registrant State/Province:TW
+Registrant Postal Code:000745
+Registrant Country:CN
+Registrant Phone:+86.042366497812
+Registrant Phone Ext: 
+Registrant Fax: +86.02164209578
+Registrant Fax Ext: 
+Registrant Email:</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-83786992-dfe8-4423-9ba4-8fa3dcf3f1b9">
+        <cybox:Object id="CISCP:Object-0ed95abe-5af8-4238-8bdd-833d1e42cf22">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">www.email-yahoo.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7a87032f-342a-481a-9af0-afb2ac525072" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware, 21F2.tmp (MD5 E936CDF86E207173E4BB477F23A8DE2D, attempts to use DNS to resolve the hard-coded URL.  If successful, it attempts communication with the C2 server using a non-HTTP protocol.  The messages observed were 64 byte long, encoded binary on port#448.
+
+Traffic Sample:
+
+00000000  0d 28 00 00 01 00 00 00  2f 00 00 00 fc 10 7f 02 .(...... /.......
+00000010  b2 87 b5 62 76 57 00 84  3f 97 e1 a3 3c 54 14 49 ...bvW.. ?...&lt;T.I
+00000020  e7 79 06 7b f2 92 c9 d0  3a 41 45 d8 35 7b 42 dd .y.{.... :AE.5{B.
+00000030  ec 6f 27 f0 3a e0 47 65  f2 70 f8                .o'.:.Ge .p.
+
+00000000  ee 3c 00 00 01 00 00 00  3a 00 00 00 fc 10 7f 02 .&lt;...... :.......
+00000010  b2 87 b5 62 76 57 00 fb  df ce dc 70 d2 46 69 96 ...bvW.. ...p.Fi.
+00000020  56 e0 30 fd 3c 7c 58 80  ce 25 a6 e8 22 a5 e3 b9 V.0.&lt;|X. .%.."...
+00000030  f3 a5 31 46 0b e6 fc ec  1a d4 5b 80 2e 62 93 3b ..1F.... ..[..b.;
+00000040  25 b3 fc 76 4c f1          
+
+
+
+Whois:
+
+Three domains are registered using the same email (2493852060@qq.com) and hosted on the same server (IP 221.144.80.156) as of 28 February 2014:
+
+1. 	email-yahoo.org 		
+2. 	webkimit.org 		
+3. 	zgqipai.net
+
+Domain Name:WEBKIMIT.ORG
+Domain ID: D170482878-LROR
+Creation Date: 2013-12-20T09:07:27Z
+Updated Date: 2014-02-19T03:45:35Z
+Registry Expiry Date: 2014-12-20T09:07:27Z
+Sponsoring Registrar:Hichina Zhicheng Technology Limited (R1373-LROR)
+Sponsoring Registrar IANA ID: 420
+WHOIS Server: 
+Referral URL: 
+Domain Status: ok
+Registrant ID:HC-690897330-CN
+Registrant Name:xiangru li
+Registrant Organization:bayer ag
+Registrant Street: zhongzheng chongqing SouthRoad 1-83
+Registrant City:taibei
+Registrant State/Province:TW
+Registrant Postal Code:10008
+Registrant Country:CN
+Registrant Phone:+86.02164209578
+Registrant Phone Ext: 
+Registrant Fax: +86.02164209578
+Registrant Fax Ext: 
+Registrant Email:2493852060@qq.com</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ff0e4f56-1306-4130-8943-a3caa9f97c98">
+        <cybox:Object id="CISCP:Object-2e2d6fe2-cc22-40a7-bb37-f2631aecec10">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">www.webkimit.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e31a5d38-a9a4-4824-8014-863deacadf0d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The domain zgqipai.net is a likely additional C2 domain, however it was not reported as an observed callback by the submitting organization.
+
+Whois:
+
+Three domains are registered using the same email (2493852060@qq.com) and hosted on the same server (IP 221.144.80.156) as of 28 February 2014:
+
+1. 	email-yahoo.org 		
+2. 	webkimit.org 		
+3. 	zgqipai.net
+
+Domain Name:WEBKIMIT.ORG
+Domain ID: D170482878-LROR
+Creation Date: 2013-12-20T09:07:27Z
+Updated Date: 2014-02-19T03:45:35Z
+Registry Expiry Date: 2014-12-20T09:07:27Z
+Sponsoring Registrar:Hichina Zhicheng Technology Limited (R1373-LROR)
+Sponsoring Registrar IANA ID: 420
+WHOIS Server: 
+Referral URL: 
+Domain Status: ok
+Registrant ID:HC-690897330-CN
+Registrant Name:xiangru li
+Registrant Organization:bayer ag
+Registrant Street: zhongzheng chongqing SouthRoad 1-83
+Registrant City:taibei
+Registrant State/Province:TW
+Registrant Postal Code:10008
+Registrant Country:CN
+Registrant Phone:+86.02164209578
+Registrant Phone Ext: 
+Registrant Fax: +86.02164209578
+Registrant Fax Ext: 
+Registrant Email:2493852060@qq.com</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-edeaebf7-57b7-4520-9337-08a10393bffd">
+        <cybox:Object id="CISCP:Object-f841677e-bde0-4163-86c8-e239fed92ed3">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">zgqipai.net</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

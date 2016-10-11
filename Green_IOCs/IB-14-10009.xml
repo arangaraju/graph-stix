@@ -1,0 +1,490 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-14-10009" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of Multiple Trojan Files</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 04 October 2012 several files were submitted for analysis. The trojans create copies of themselves into the %TEMP% directory. Connection attemps to five (5) command and control (C2) domains that resolved to a single IP address, 46.105.131.21 were observed. 
+
+This document incorporates data originally released as US-CERT MIFR-240289.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-01-09T17:23:27Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-50546f97-9b3a-4e9f-8bf8-033877d20932" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-58a52dd8-7d20-4cd5-b8a7-f35c3f85c6d8"/>
+        <indicator:Indicator idref="CISCP:indicator-50aa69f5-9cfd-4f9c-9a2b-c8c981f68971"/>
+        <indicator:Indicator idref="CISCP:indicator-8d4e0db2-75ae-4b6d-83fc-f0061a75c83c"/>
+        <indicator:Indicator idref="CISCP:indicator-68ccfb10-182b-4344-af7e-55c8f60dba4f"/>
+        <indicator:Indicator idref="CISCP:indicator-6a51f5a4-c7d3-44bc-9295-12bc7897f26d"/>
+        <indicator:Indicator idref="CISCP:indicator-9363d398-6a58-4743-a1fb-ad937227dff9"/>
+        <indicator:Indicator idref="CISCP:indicator-8ab8f2d0-e1a6-4590-a953-ad16397abd31"/>
+        <indicator:Indicator idref="CISCP:indicator-ab751a8e-5e62-4fd9-9ba7-2cdb944d1f07"/>
+        <indicator:Indicator idref="CISCP:indicator-b6c48655-fb79-4c48-9561-eb145232f8f0"/>
+        <indicator:Indicator idref="CISCP:indicator-7f8122a5-8aeb-4dd2-b220-151e9ed2a347"/>
+        <indicator:Indicator idref="CISCP:indicator-d0a3a0fd-299e-40bd-a214-9db9274ebf6b"/>
+        <indicator:Indicator idref="CISCP:indicator-01fdab81-b5a7-469d-9fec-e3060e8c4c9e"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-58a52dd8-7d20-4cd5-b8a7-f35c3f85c6d8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Upon execution, "16F1A5F95F2C6.exe" sends encoded "HTTP GET" requests via port 80 to a remote server. It removes itself in the directory where it was originally installed. Afterwards, it drops two files inside the user's %TEMP% directory. One of the files is an exact copy of itself.
+
+The remote server uses domain names that have the following syntax,
+"report.[random].com" which resolves to a single IP address, 46.105.131.21.
+&#8208;report.a7i7i11e1e31.com
+&#8208;report.wy93117g3g.com
+
+The following is one example of the "HTTP GET" requests:
+
+GET
+/?q9a73=%96%A6%B4%A0%B6%A8q%98%7D%9Fh%9Fvg%9Bc%AAvhb%93%9F%A0%A4%7B%A7ol%AA%9D%A8%B2
+%B5%9A%A5%D7t%E0%AD%C1%81W%DA%9A%C9paT%CF%DD%D4%AE%9E%CFd%88%C5%8B%DD%D8%D6%B1o%A5h%
+ADk%AChw%9Bb%9Bxgd%95%B4%B0%A8m%91gf%A5%A7%B6%A7%AB%ACf%99z%AC%5D%DB%96%A4%A2a%95ca%
+5E%97%A4%9D%A1i%91hc%A2%95%A0%9F%A2%A4%5E%87%AD%A6g%99aa%95a%95cU HTTP/1.1</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7143519b-83cb-46da-aaaf-8f4ad89fa3d9">
+        <cybox:Object id="CISCP:Object-a20dbd93-8e0b-42bd-88b8-453d34bd2c17">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">16F1A5F95F2C6.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">72704</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">38f36100450d7a803cbc6871edcc5999</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a6b91c4b92b6e72a45cce5b473224d906f14cb7d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a07fb1a40772f1bd552ec43af5537168ecc77420b757cea2bcaa8ce9e78d1fa3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:DIqIkQiSigfkrbGomzRXJEDfUUqf1xMx8hgqLMlRsjc1Yicm:DIE4icomzTEDfKfA8gRzD</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-50aa69f5-9cfd-4f9c-9a2b-c8c981f68971" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is an exact copy and is dropped by "16F1A5F95F2C6.exe" into the users %TEMP% directory. The filename is randomly generated.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-97d25bab-5351-4dd7-864e-8431ac1a589d">
+        <cybox:Object id="CISCP:Object-321df110-e7cd-425b-b9e1-0f87ddc9ea45">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">12650582429.tmp</FileObj:File_Name>
+            <FileObj:File_Path condition="Equals">%TEMP%</FileObj:File_Path>
+            <FileObj:Size_In_Bytes condition="Equals">72704</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">38f36100450d7a803cbc6871edcc5999</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a6b91c4b92b6e72a45cce5b473224d906f14cb7d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a07fb1a40772f1bd552ec43af5537168ecc77420b757cea2bcaa8ce9e78d1fa3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:DIqIkQiSigfkrbGomzRXJEDfUUqf1xMx8hgqLMlRsjc1Yicm:DIE4icomzTEDfKfA8gRzD</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8d4e0db2-75ae-4b6d-83fc-f0061a75c83c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file has been identified as a Trojan and is dropped into the user's %TEMP% directory by "16F1A5F95F2C6.exe"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-1b103a19-801f-4b45-aa44-418a91579a32">
+        <cybox:Object id="CISCP:Object-f3ee4c8a-d3c2-4792-a92c-f77063956df8">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">bd859cf9_0.tmp</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">72704</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a4894aa847119d0d946e2555a05ebd4c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3ec697d1c740e1157f14169cd049cfa523d57da1</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">7f3c784b3a8ab02ffcc76173e68dae23d8f68f0b3bc89801d31c0e8d2603a78c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:DIqIkQiSigfkrbGomzRXJEDfUUqf1xMx8hgqLMlRsjc1Yicm:DIE4icomzTEDfKfA8gRzD</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-68ccfb10-182b-4344-af7e-55c8f60dba4f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is identical to "bd859cf9_0.tmp" (MD5: a4894aa847119d0d946e2555a05ebd4c).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0e0aceac-2152-4df5-a367-5c890b02baff">
+        <cybox:Object id="CISCP:Object-87b733e5-95d8-4bc2-ae79-34b18b976c38">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">d6043163_0.tmp</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">72704</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a4894aa847119d0d946e2555a05ebd4c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3ec697d1c740e1157f14169cd049cfa523d57da1</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">7f3c784b3a8ab02ffcc76173e68dae23d8f68f0b3bc89801d31c0e8d2603a78c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:DIqIkQiSigfkrbGomzRXJEDfUUqf1xMx8hgqLMlRsjc1Yicm:DIE4icomzTEDfKfA8gRzD</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6a51f5a4-c7d3-44bc-9295-12bc7897f26d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file has identical behavior to "16F1A5F95F2C6.exe" (MD5: 38f36100450d7a803cbc6871edcc5999).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4f85965d-7c2d-45c9-b98a-9cd72a285908">
+        <cybox:Object id="CISCP:Object-d54c1ae4-7f77-4150-afee-ca8828ba7594">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">38.tmp</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">700429</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">c4ee1321ba3ef7e2c91e1418d6e12973</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">7f4cff3a5660d62e3541258bda23af9be7fe40b8</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ab7a74313ffe64e8f38d02f224aee5f59e5f645058f426366cb1712098614af1</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:zLOZqx77p77xmtBdVUD36zLqu1MrCKEffS+oPv4sXtQewuCIJpYgyB65pgo8:zLOg77pXEBdVUzi16CDK+oPw6iuzp5Kb</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9363d398-6a58-4743-a1fb-ad937227dff9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is an exact copy and is dropped by "38.tmp" into the users %TEMP% directory. The filename is randomly generated.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-be6c81a9-b460-43a5-9c9e-a5567875bdb4">
+        <cybox:Object id="CISCP:Object-31496464-5a4a-4631-86da-a825a660e57f">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">4.tmp</FileObj:File_Name>
+            <FileObj:File_Path condition="Equals">%TEMP%</FileObj:File_Path>
+            <FileObj:Size_In_Bytes condition="Equals">700429</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">c4ee1321ba3ef7e2c91e1418d6e12973</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">7f4cff3a5660d62e3541258bda23af9be7fe40b8</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ab7a74313ffe64e8f38d02f224aee5f59e5f645058f426366cb1712098614af1</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:zLOZqx77p77xmtBdVUD36zLqu1MrCKEffS+oPv4sXtQewuCIJpYgyB65pgo8:zLOg77pXEBdVUzi16CDK+oPw6iuzp5Kb</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8ab8f2d0-e1a6-4590-a953-ad16397abd31" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file has four .class files, UYDWg.class, jEkWRSyG.class, WphZA.class and EfZwFSPnG.class under a package name EzTVd that are bundled together into a JAR file. This file is susceptible to a Java Runtime Environment (JRE) vulnerability (CVE-2012-1723) that exploits compiler optimizations involving a static field with a Classloader or Object type and instance&#8208;fields using customized data types. The code uses "Reflection" which provides the ability to examine or modify the runtime behavior of applications inside the JRE. If successful, it could lead to remote code execution.
+
+package EzTVd;
+import java.lang.reflect.Field;
+import java.security.*;
+import java.security.cert.Certificate;
+
+// Referenced classes of package EzTVd:
+// jEKwRsyG, UYDWg
+
+The exploit starts by checking for vulnerable versions of Java installed on the target victim's system.
+&lt;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;snippet of code&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&gt;
+super.init();
+int i = Get_JVersion();
+if(i &lt; 705 || i &gt; 706)
+break MISSING_BLOCK_LABEL_134;
+disableSecurity();
+
+&lt;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;Truncated&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&gt;
+int i = Get_JVersion();
+if(i &gt;= 500 &amp;&amp; i &lt; 633 || i &gt;= 700 &amp;&amp; i &lt;= 706)
+return fjfwwrbh("$%\025%&gt;\"/8");
+return fjfwwrbh("8?$\025%&gt;\"/8");
+Exception exception;
+exception;
+return fjfwwrbh("");
+&lt;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;Truncated&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&#8208;&gt;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b3b38b42-1e9e-4947-afc0-82a3edcec4f6">
+        <cybox:Object id="CISCP:Object-7372fed9-9b84-4c0b-9860-4e6a2192df3c">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">jar_cache2904714326760597599.tmp</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">9654</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a4bc9d0d3a83a8d0aacc92b642dbdc5d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">74ee574580210c7aa2b381450671bf90b33d43ff</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ace61916a7edd9d1a45d0dcbbd9a2088b7fc938e94049ecfb8078a976ac16eb4</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">192:D86C0e6iKPFrzhP7KBftQ8trENRIBk76tS+s3zqwod0aMt1Acb:D8B0e4PXP4ftQmENRxa1s3SiDb</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ab751a8e-5e62-4fd9-9ba7-2cdb944d1f07" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file "38.tmp" (MD5: c4ee1321ba3ef7e2c91e1418d6e12973) calls out to this URL. An example of the encrypted GET request is below:
+
+GET /?WS3e20=%96%98%A0%A5%AA%AA%92k%97i%D6%A0hg%9C%9E%9A%AA%9C%AB%96%95%DA%ADk
+%D8a%C8%9F%D0%8D%B7e%8B%A9%A6%AF%DC%E6%C7%C2%9A%A3%A2%C7n%A8%A3li%8D%A5%D7%D8t%D
+C%A1%5E%CE%CAY%E2%97%C7%AC%A3%8A%8Cg%A7uc%B7%98%A1%A4%A3%B7b%7C%99r%B9%A2he%97r%
+AD%B4x%BCev%BA%A8k%9B%A0%C8%E2%AA%88%83c%95bb%A2%95%A0%9F%A2%A5%5Ei%93a%A3%9Bca%
+8D%AF%A6%A1g%A7ca%AA%AEj%99 HTTP/1.1
+Host: report.9c1sk31g9iq7w31yw3u.com
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 8.0; Trident/4.0; .NET CLR 2.0.50727
+; .NET CLR 1.1.4322; .NET CLR 3.0.04506.590; .NET CLR 3.0.04506.648; .NET CLR 3.
+5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+
+At the time of the submission, the domain resolved to the IP address 46.105.131.21.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-2d2e26b7-6a65-4877-989f-9f6328c5b27f">
+        <cybox:Object id="CISCP:Object-edc28398-8fa7-49ac-a676-6492975917b4">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://report.9c1sk31g9iq7w31yw3u.com/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b6c48655-fb79-4c48-9561-eb145232f8f0" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file "16F1A5F95F2C6.exe" (MD5: 38f36100450d7a803cbc6871edcc5999) calls out to this URL. An example of the encrypted GET request is below:
+
+GET
+/?q9a73=%96%A6%B4%A0%B6%A8q%98%7D%9Fh%9Fvg%9Bc%AAvhb%93%9F%A0%A4%7B%A7ol%AA%9D%A8%B2
+%B5%9A%A5%D7t%E0%AD%C1%81W%DA%9A%C9paT%CF%DD%D4%AE%9E%CFd%88%C5%8B%DD%D8%D6%B1o%A5h%
+ADk%AChw%9Bb%9Bxgd%95%B4%B0%A8m%91gf%A5%A7%B6%A7%AB%ACf%99z%AC%5D%DB%96%A4%A2a%95ca%
+5E%97%A4%9D%A1i%91hc%A2%95%A0%9F%A2%A4%5E%87%AD%A6g%99aa%95a%95cU HTTP/1.1
+Host: report.a7i7i11e1e31.com
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 8.0; Trident/4.0; .NET CLR 2.0.50727;
+.NET CLR 1.1.4322; .NET CLR 3.0.04506.590; .NET CLR 3.0.04506.648; .NET CLR
+3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+
+At the time of the submission, the domain resolved to the IP address 46.105.131.21.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e473df1e-faf3-4cf5-a373-1eb2ed6ee9e6">
+        <cybox:Object id="CISCP:Object-e16395f0-164c-4e2f-93b5-8c5f3cb89f92">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://report.a7i7i11e1e31.com/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7f8122a5-8aeb-4dd2-b220-151e9ed2a347" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file "16F1A5F95F2C6.exe" (MD5: 38f36100450d7a803cbc6871edcc5999) calls out to this URL. An example of the encrypted GET request is below:
+
+GET
+/?1km777=%96%A6%B4%A0%B6%A8q%AE%BFodgvm%9De%ACq%9A%A3%9Da%9E%A0y%7Do%AB%9D%A8%A7%B5%
+B7T%EE%EFv%AA%A7%89%87%8D%A8%D0%92%A0%9F%93%9D%D9%D4t%9C%A5%9F%BA%C3%95%DF%DD%92%B4%
+BA%7Dduez%9Ey%9D_%99%B4%A3g%9D%B2znk%A2%95%A3%A2%B4%BAf%B0%B1qktt%5D%D9%98%DAk%93%9F
+%9Da%9B%A1mgg%A2%95%A1%9F%A2%A4%5E%A7%A9icW%A7t%97c%97%5E%93%9F%9Da%8F HTTP/1.1
+Host: report.wy93117g3g.com
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 8.0; Trident/4.0; .NET CLR 2.0.50727;
+.NET CLR 1.1.4322; .NET CLR 3.0.04506.590; .NET CLR 3.0.04506.648; .NET CLR
+3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+
+At the time of the submission, the domain resolved to the IP address 46.105.131.21.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3be0084f-820f-47af-a1fa-4452d4ed6ea2">
+        <cybox:Object id="CISCP:Object-c8b8d860-858f-4a7c-967e-474e8fe5b07d">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://report.wy93117g3g.com/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d0a3a0fd-299e-40bd-a214-9db9274ebf6b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file "16F1A5F95F2C6.exe" (MD5: 38f36100450d7a803cbc6871edcc5999) calls out to this URL. An example of the encrypted GET request is below:
+
+GET
+/?gu15me7=%96%A6%B4%A0%B6%A8q%A6%7B%AFfg%BE%ABkk%BAze%97%9F%9D%9A%A8s%7B%A5%9Eo%AA%9
+D%B3%B2%98%EB%A4%AC%AC%EF%8D%81%9F%EA%9E%9D%B2gT%CF%DD%D4%A4%DA%9Fb%C2%B8%5D%DF%CE%D
+4%AC%B3%B8_%B3i%BClw%AF%A6k~%ABm%60%A8%B2%A4%9B%A5ah%A0%A7%7D%AA%9E%A8%A7%AA%B7q%95%
+A7%DE%A8n%A9%A5ei%A5kc%93%9F%9D%97%A6ae%9D%95g%A2%95%A0%95%E8%B1%5E%9Fe%A9ea%A9%A5Y
+HTTP/1.1
+Host: report.o5y51yu59u7.com
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 8.0; Trident/4.0; .NET CLR 2.0.50727;
+.NET CLR 1.1.4322; .NET CLR 3.0.04506.590; .NET CLR 3.0.04506.648; .NET CLR
+3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+
+At the time of the submission, the domain resolved to the IP address 46.105.131.21.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-91289436-bd2a-4ad2-8c72-9910b7509393">
+        <cybox:Object id="CISCP:Object-f09e639a-959b-405e-9ba0-0af252007038">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://report.o5y51yu59u7.com/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-01fdab81-b5a7-469d-9fec-e3060e8c4c9e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file "16F1A5F95F2C6.exe" (MD5: 38f36100450d7a803cbc6871edcc5999) calls out to this URL. An example of the encrypted GET request is below:
+
+/?w1973m=%96%A6%B4%A0%B6%A8q%AC%AB%A7j%A7%B6gok~q%9A%A3%9D%A7dlyy%A5%AB%9D%A8%A7%B5%
+B7T%EC%DB%AE%B0%E7%C9%81_%AE%A2%92%A0%9F%93%E3%9F%A0t%98%DB%9F%BA%C3%95%DF%DD%92%B2%
+A6%B5j%B5%A5tp%7Fo_%99%B4%A3%ADc~zj%A1%A2%95%A3%A2%B4%BAf%AE%9D%A9q%B4%B4W%AB%9E%ACk
+%93%9F%9D%A7ammc%9D%A2%95%A1%9F%A2%A4%5E%A5%95%A1i%97%E7niii%5E%93%9F%9D%A7U
+HTTP/1.1
+Host: report.ueq9qq1999.com
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 8.0; Trident/4.0; .NET CLR 2.0.50727;
+.NET CLR 1.1.4322; .NET CLR 3.0.04506.590; .NET CLR 3.0.04506.648; .NET CLR
+3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+
+At the time of the submission, the domain resolved to the IP address 46.105.131.21.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-046f349c-063a-4952-a6e2-c99f69e1f0e2">
+        <cybox:Object id="CISCP:Object-46097c00-1997-4ab9-a733-71af82f1cb1b">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://report.ueq9qq1999.com/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-10-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

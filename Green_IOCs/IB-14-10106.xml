@@ -1,0 +1,360 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:LinkObj="http://cybox.mitre.org/objects#LinkObject-1" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-14-10106" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Potential Spear Phish Against Disaster Recovery Conference Attendees</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 19 February 2014 multiple reports were received by an organization of a phishing email containing a link to a phishing site used for credential harvesting. All of the recipients of the email had attended a "Disaster Recovery" conference in 2013.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-02-20T22:42:14Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-94a76704-c53b-4cb9-b76a-1ff46f19b8f7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-d15cfc44-7ad4-461c-8a35-1df3c6e182ca"/>
+        <indicator:Indicator idref="CISCP:indicator-08a944f4-1347-41e8-b250-26e68c192809"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d15cfc44-7ad4-461c-8a35-1df3c6e182ca" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>----- BEGIN EMAIL HEADERS -----
+Received: from [REDACTED] by [REDACTED]
+ [REDACTED] with Microsoft SMTP Server (TLS) id [REDACTED]; Wed, 19 Feb
+ 2014 03:32:38 -0500
+Received: from [REDACTED]	by [REDACTED] with ESMTP with TLS id
+ 9P0H4M1.439838401;	Wed, 19 Feb 2014 03:32:33 -0500
+Reply-To: [REDACTED]
+From: [REDACTED]
+Date: Tue, 18 Feb 2014 23:27:15 -0800
+MIME-Version: 1.0
+Content-Type: text/html; charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Subject:TT COPY
+Message-ID: &lt;2abf20a4-3b65-4783-9535-c468f2451412@[REDACTED]
+To: Undisclosed recipients:;
+Return-Path: [REDACTED]
+X-MS-Exchange-Organization-AuthSource: [REDACTED]
+X-MS-Exchange-Organization-AuthAs: Anonymous
+-----  END EMAIL HEADERS  -----
+
+----- BEGIN EMAIL BODY -----
+From: [REDACTED]
+Sent: Wednesday, February 19, 2014 2:27 AM
+Subject: TT COPY
+
+Hello,
+
+Please find attached swift copy of payment.
+ &lt;http://mindviz.com/gfx/attach_icon.gif&gt; 1 Attached files| 125KB
+
+$131,085.pdf &lt;http://www.samczeruno.pl/administrator/components/download.htm&gt; 
+
+Await soonest reply.
+
+Regards
+ALI MUHAMMED
+Manager
+-----  END EMAIL BODY  -----
+
+----- BEGIN HTML EMAIL BODY -----
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;&lt;html&gt;&lt;head&gt;
+
+&lt;meta name="GENERATOR" content="MSHTML 10.00.9200.16540"&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;div&gt;&lt;span class="Apple-style-span" style="FONT-FAMILY: &amp;#930;&amp;#65533;&amp;#65533;&amp;#65533;&amp;#378;&amp;#65533;; TEXT-ALIGN: left"&gt; &lt;span class="style1" style="FONT-VARIANT: normal; WHITE-SPACE: normal; BORDER-COLLAPSE: separate; TEXT-TRANSFORM: 
+
+none; WORD-SPACING: 0px; FONT-WEIGHT: normal; FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; 
+
+LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; 
+
+-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-
+
+decorations-in-effect: none; -webkit-text-size-adjust: auto"&gt;&lt;font color="#548dd4" size="2" face="Calibri"&gt;Hello,&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="Apple-style-span" style="WHITE-SPACE: normal; BORDER-COLLAPSE: separate; TEXT-TRANSFORM: none; WORD-SPACING: 0px; 
+
+COLOR: rgb(0,0,0); FONT: medium 'Times New Roman'; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: 
+
+normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; -webkit-border-horizontal-spacing: 
+
+0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-
+
+text-size-adjust: auto"&gt;&lt;span class="Apple-style-span" style="FONT-SIZE: 12px; FONT-FAMILY: &amp;#930;&amp;#65533;&amp;#65533;&amp;#65533;&amp;#378;&amp;#65533;; TEXT-ALIGN: 
+
+left"&gt;&lt;span style="FONT-SIZE: 10pt; FONT-FAMILY: Calibri, sans-serif; COLOR: rgb
+
+(84,141,212)"&gt;&lt;br&gt;&lt;br&gt;Please 
+find attached swift copy of payment.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span class="Apple-style-span" style="WHITE-SPACE: normal; BORDER-COLLAPSE: separate; TEXT-TRANSFORM: none; WORD-SPACING: 0px; 
+
+COLOR: rgb(0,0,0); FONT: medium 'Times New Roman'; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: 
+
+normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; -webkit-border-horizontal-spacing: 
+
+0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-
+
+text-size-adjust: auto"&gt;&lt;span class="Apple-style-span" style="FONT-SIZE: 12px; FONT-FAMILY: &amp;#930;&amp;#65533;&amp;#65533;&amp;#65533;&amp;#378;&amp;#65533;; TEXT-ALIGN: 
+
+left"&gt;&lt;span style="FONT-SIZE: 10pt; FONT-FAMILY: Calibri, sans-serif; COLOR: rgb(84,141,212)"&gt;&lt;/span&gt; 
+
+&lt;/div&gt;
+&lt;div style="FONT-SIZE: small; FONT-FAMILY: Calibri, sans-serif; COLOR: rgb(84,141,212); PADDING-
+
+BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;&lt;/div&gt;
+&lt;div style="FONT-SIZE: small; FONT-FAMILY: Calibri, sans-serif; COLOR: rgb(84,141,212); PADDING-
+
+BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;&lt;/div&gt;
+&lt;div style="FONT-SIZE: small; FONT-FAMILY: Calibri, sans-serif; COLOR: rgb(84,141,212); PADDING-
+
+BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;&lt;font size="2"&gt;&lt;span&gt;&lt;img border="0" src="http://mindviz.com/gfx/attach_icon.gif"&gt;1 Attached files&lt;/span&gt;&lt;span id="yui_3_2_0_1_13406926264791015"&gt;| 125KB&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;
+&lt;div style="FONT-SIZE: small; FONT-FAMILY: Calibri, sans-serif; COLOR: rgb(84,141,212); PADDING-
+
+BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;&lt;a style="COLOR: rgb(17,85,204)" href="http://www.samczeruno.pl/administrator/components/download.htm" target="_blank"&gt;&lt;img border="0" src="http://www.viewtech.co.nz/ustore/upload/image/pdf-logo_small.jpg"&gt;&lt;br&gt;&lt;font style="TEXT-DECORATION: none" size="2" face="Arial Unicode MS"&gt;$131,085.pdf&lt;/font&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;div style="FONT-SIZE: small; FONT-FAMILY: Calibri, sans-serif; COLOR: rgb(84,141,212); PADDING-
+
+BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style="FONT-SIZE: small; FONT-FAMILY: Calibri, sans-serif; COLOR: rgb(84,141,212); PADDING-
+
+BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;&lt;font size="2" face="Arial"&gt;Await soonest reply.&lt;br&gt;&lt;br&gt;Regards&lt;br&gt;&lt;font size="2" face="Comic Sans MS"&gt;ALI MUHAMMED&lt;br&gt;Manager&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;/span&gt;&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;
+-----  END HTML EMAIL BODY  -----
+
+The other site referenced, mindviz.com, contains a graphic in the HTML email. mindviz.com is a legitimate, but defunct social networking website. The link to the graphic is:
+http://mindviz.com/gfx/attach_icon.gif</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-01642eb6-4e38-4ed7-abfc-3b4534d69e50">
+        <cybox:Object id="CISCP:Object-2c40b076-3f04-4320-9c82-522e6fbeefb0">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">TT COPY</EmailMessageObj:Subject>
+              <EmailMessageObj:X_Mailer condition="Equals">Microsoft Outlook Express 6.00.2600.0000</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-47a70605-11ef-4a81-a76e-aa4fc26ee5a1"/>
+              <EmailMessageObj:Link object_reference="CISCP:Object-bb4fa56c-b53f-4066-a2d2-544418cbf24d"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-19T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-08a944f4-1347-41e8-b250-26e68c192809" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Page details:
+
+HTTP/1.1 200 OK
+Date: Wed, 19 Feb 2014 13:26:06 GMT
+Server: Apache
+Last-Modified: Mon, 10 Feb 2014 12:50:49 GMT
+ETag: "22c05af-8d4-4f20cc9fd776f"
+Accept-Ranges: bytes
+Content-Length: 2260
+Vary: Accept-Encoding,User-Agent
+Connection: close
+Content-Type: text/html
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.or
+g/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+(LF)
+&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+    &lt;title&gt;UAE Exchange | Download Server | File Manager&lt;/title&gt;
+    &lt;link href="http://www.outitgoes.com/default2.css" rel="stylesheet" type="text/css" /&gt;
+&lt;/head&gt;
+
+&lt;script language="JavaScript"&gt;
+alert("Sorry, to download Transaction advice you must confirm data to access UAE Exchange download manager \" ")
+&lt;/script&gt;
+
+&lt;body class='centre' style='margin-top: 32px; text-align: centre; background: #fff; text-align: center; font-family: Arial, Helvetica, sans-serif; /* font-
+
+size: 12px; */ '&gt;
+&lt;div style="background: #143265 url('http://www.outitgoes.com/images/bg_loginbox.png') no-repeat top; width: 430px;  margin: 0 auto; color: #fff; -moz-border-radius-bottomright: 18px; -moz-border-radius-bottomleft: 18px; -webkit-border-bottom-left-radius: 18px; -webkit-border-
+
+bottom-right-radius: 18px; padding-left:20px; padding-right:20px; padding-top:120px; padding-bottom:30px" id="defcontainer"&gt; 
+
+    &lt;form action="dan-uae.php" method="post"&gt;
+
+&lt;div&gt;
+
+&lt;h1&gt;Login to UAE Exchange file download manager&lt;/h1&gt;
+&lt;p&gt;File download server require valid email address and password&amp;nbsp; and 
+            fill&amp;nbsp; the datasheet with your personal/company profile after logging in.&lt;/p&gt;
+&lt;div class='centre'&gt;
+&lt;table style='margin-left: auto; margin-right: auto; width: 300px'&gt;
+&lt;tbody&gt;
+
+&lt;tr&gt;
+&lt;th style='width: 20%; text-align: right; padding-right: 1em'&gt;Email Address: &lt;/th&gt;
+
+&lt;td style='text-align: left'&gt;&lt;input type='text' name='email' size='30'/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th style='text-align: right; padding-right: 1em'&gt;Password: &lt;/th&gt;
+&lt;td style='text-align: left'&gt;&lt;input type='password' name='pass' size='30'/&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;br&gt;&lt;br&gt;
+&lt;input type='submit' value='Login Now!'/&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;a UAE Companies registered SIF File download&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a 100% Telegraphic Transfer download&lt;/a&gt;
+
+&lt;br&gt;&lt;br&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;&lt;/form&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;&lt;/html&gt;&lt;!-- 0 --&gt;
+--------------------------------------------------------------------
+
+If the user enters a user and password, they get they following page which says it is "Invalid"
+
+--------------------------------------------------------------------
+HTTP/1.1 302 Moved Temporarily
+Date: Wed, 19 Feb 2014 13:44:11 GMT
+Server: Apache
+Location: invalid.htm
+Vary: Accept-Encoding,User-Agent
+Content-Length: 0
+Connection: close
+Content-Type: text/html
+
+HTTP/1.1 302 Moved Temporarily
+Date: Wed, 19 Feb 2014 13:44:11 GMT
+Server: Apache
+Location: invalid.htm
+Vary: Accept-Encoding,User-Agent
+Content-Length: 0
+Connection: close
+Content-Type: text/html
+
+GET /administrator/components/invalid.htm HTTP/1.1
+Host: www.samczeruno.pl
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0
+Connection: close
+
+HTTP/1.1 200 OK
+Date: Wed, 19 Feb 2014 13:44:12 GMT
+Server: Apache
+Last-Modified: Mon, 10 Feb 2014 12:52:01 GMT
+ETag: "22c05b1-85f-4f20cce53d16e"
+Accept-Ranges: bytes
+Content-Length: 2143
+Vary: Accept-Encoding,User-Agent
+Connection: close
+Content-Type: text/html
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.or
+g/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+
+(LF)
+
+
+&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+    &lt;title&gt;UAE Exchange | Download Server | File Manager | Invalid Sign In&lt;/title&gt;
+    &lt;link href="http://www.outitgoes.com/default2.css" rel="stylesheet" type="text/css" /&gt;
+&lt;/head&gt;
+
+&lt;script language="JavaScript"&gt;
+alert("Invalid sign in attempt...Please try again \" ")
+&lt;/script
+
+&lt;body class='centre' style='margin-top: 32px; text-align: centre; background: #fff; text-align: center; font-family: Arial, Helvetica, sans-serif; /* font-
+
+size: 12px; */ '&gt;
+&lt;div style="background: #143265 url('http://www.outitgoes.com/images/bg_loginbox.png') no-repeat top; width: 430px;  margin: 0 auto; color: #fff; -moz-border-radius-bottomright: 18px; -moz-border-radius-bottomleft: 18px; -webkit-border-bottom-left-radius: 18px; -webkit-border-
+
+bottom-right-radius: 18px; padding-left:20px; padding-right:20px; padding-top:120px; padding-bottom:30px" id="defcontainer"&gt; 
+
+
+    &lt;form action="dan-uae2.php" method="post"&gt;
+
+&lt;div&gt;
+
+&lt;h1&gt;Login to UAE Exchange file download manager&lt;/h1&gt;
+&lt;p&gt;Invalid Email or password.&amp;nbsp; Please try again entering your data correctly.&amp;nbsp;&lt;/p&gt;
+&lt;div class='centre'&gt;
+&lt;table style='margin-left: auto; margin-right: auto; width: 300px'&gt;
+&lt;tbody&gt;
+
+&lt;tr&gt;
+&lt;th style='width: 20%; text-align: right; padding-right: 1em'&gt;Email Address: &lt;/th&gt;
+
+&lt;td style='text-align: left'&gt;&lt;input type='text' name='email' size='30'/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th style='text-align: right; padding-right: 1em'&gt;Password: &lt;/th&gt;
+&lt;td style='text-align: left'&gt;&lt;input type='password' name='pass' size='30'/&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;br&gt;&lt;br&gt;
+&lt;input type='submit' value='Login Now!'/&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;a UAE Companies registered SIF File download&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;a 100% Telegraphic Transfer download&lt;/a&gt;
+
+&lt;br&gt;&lt;br&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;&lt;/form&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;&lt;/html&gt;&lt;!-- 0 --&gt;
+--------------------------------------------------------------------
+
+When the user enters the information a second time  it will give a message that the server is busy and to try again later. This is indented for Credential Harvesting.
+
+The phishing site is on a compromised Joomla server.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-043bdba1-24fb-4a51-a724-7fa0337d8417">
+        <cybox:Object id="CISCP:Object-47a70605-11ef-4a81-a76e-aa4fc26ee5a1">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://www.samczeruno.pl/administrator/components/download.htm</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">$131##comma##085.pdf</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-19T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

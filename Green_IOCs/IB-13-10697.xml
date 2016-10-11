@@ -1,0 +1,184 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:LinkObj="http://cybox.mitre.org/objects#LinkObject-1" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10697" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Wealth Management Themed Email Leads to Credential Harvesting Website</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 23 October 2013, a phishing email claiming to have documents concerning wealth management contains an embedded link leading to a credential harvesting website.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-10-28T14:36:22Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-090c7f3b-9165-4045-abc5-c0a70e7b8f15" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-6a411535-9102-4b49-b56b-dd56120f341e"/>
+        <indicator:Indicator idref="CISCP:indicator-db61db65-5400-49bd-ab3d-77ecfd9ed4bd"/>
+        <indicator:Indicator idref="CISCP:indicator-0f6ad2f8-7343-4d76-9b5f-0a3a0dd38aec"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6a411535-9102-4b49-b56b-dd56120f341e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is a phishing email that contains an embedded link. When clicked, the link takes the user to a credential harvesting website.
+
+---BEGIN EMAIL BODY---
+Hi,
+
+I think it's worth your time to review this, click the link below and log in to view Google document:
+
+Click here
+
+Regards
+
+NOTE: This is a general message I'm sending to my contact list, to enlighten friends and family on wealth management, so feel free to login and view document for your financial enlightenment. 
+---END EMAIL BODY---
+
+---BEGIN EMAIL HEADER---
+Received: 
+X-IronPort-AV: E=Sophos;i="4.93,553,1378854000"; 
+   d="scan'208";a="32939677"
+Received: 
+X_BAE_IN_WARNING: True
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: AspSAHydZ1JADI9Om2dsb2JhbAAjNg+CNGkTLSeJJR2iLDImilKDAYQpLoEZDgEBAQEBBgsUFIJEAU8BATgdASoBd4YGgX0BAw8EAQiNKJlRgSADBYMrAQUFhDUBSgOJbwaPZwGCZiaBC45uMIodhQiJfIQ+AlSBTgcLAQUFASI
+X-IPAS-Result: AspSAHydZ1JADI9Om2dsb2JhbAAjNg+CNGkTLSeJJR2iLDImilKDAYQpLoEZDgEBAQEBBgsUFIJEAU8BATgdASoBd4YGgX0BAw8EAQiNKJlRgSADBYMrAQUFhDUBSgOJbwaPZwGCZiaBC45uMIodhQiJfIQ+AlSBTgcLAQUFASI
+X-IronPort-AV: E=Sophos;i="4.93,553,1378854000"; 
+   d="scan'208";a="322654700"
+ with ESMTP/TLS/DHE-RSA-CAMELLIA256-SHA; 23 Oct 2013 10:59:33 +0100
+X-SENDER-IP: 64.12.143.78
+X-SENDER-REPUTATION: 5.5
+Received: from omr-m04.mx.aol.com ([64.12.143.78])  by
+with ESMTP/TLS/ADH-AES256-SHA; 23 Oct 2013
+ 09:59:33 +0000
+Received: from mtaomg-da02.r1000.mx.aol.com (mtaomg-da02.r1000.mx.aol.com
+ [172.29.51.138])	by omr-m04.mx.aol.com (Outbound Mail Relay) with ESMTP id
+ D28A5700000A7;	Wed, 23 Oct 2013 05:59:32 -0400 (EDT)
+Received: from core-doc001a.r1000.mail.aol.com (core-doc001.r1000.mail.aol.com
+ [172.29.160.193])	by mtaomg-da02.r1000.mx.aol.com (OMAG/Core Interface) with
+ ESMTP id CC41BE000082;	Wed, 23 Oct 2013 05:59:31 -0400 (EDT)
+X-MB-Message-Source: WebUI
+Subject: For your review
+X-MB-Message-Type: User
+MIME-Version: 1.0
+From: Sandra Wynne &lt;sandraj44@aol.com&gt;
+Content-Type: multipart/alternative;
+	boundary="--------MB_8D09DEDB44F0748_11F8_2F25_Webmail-d107.sysops.aol.com"
+X-Mailer: AOL Webmail 38121-BASIC
+Received: from 217.35.78.36 by Webmail-d107.sysops.aol.com (205.188.171.201)
+ with HTTP (WebMailUI); Wed, 23 Oct 2013 05:59:31 -0400
+Message-ID: &lt;8D09DEDB44F0748-11F8-EA6@Webmail-d107.sysops.aol.com&gt;
+X-Originating-IP: [217.35.78.36]
+Date: Wed, 23 Oct 2013 05:59:31 -0400
+x-aol-global-disposition: G
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mx.aol.com;
+	s=20121107; t=1382522372;
+	bh=3l7KmN9+5uK4EwTSOu/5E3xyMdg+gK+LiVPTNCm4Pzc=;
+	h=From:Subject:Message-Id:Date:MIME-Version:Content-Type;
+	b=LDMTq3uL9dyqQfl/jTghPfqK6wx6dsbb6afuxoku9uHLGWHispSIHeABdHG6rC+Xd
+	 ghzE6I0GN+kUGtl2frUIrcOs9VouCkx0Q9y47faYD0eccj0kQl/YpnKyfRzt5DdsbW
+	 1mwYH+UW837DZNotXh0BfoCVRNFEQIeYKbFmu3Tc=
+x-aol-sid: 3039ac1d338a52679e0309fd
+To: Undisclosed recipients:;
+Return-Path: sandraj44@aol.com
+X-MS-Exchange-Organization-AuthSource: GLKXH0010V.GREENLNK.net
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 10
+X-MS-Exchange-Organization-AVStamp-Mailbox: MSFTFF;1;0;0 0 0
+---END EMAIL HEADER---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-07097acf-42d1-444b-b77b-4da916ff3a60">
+        <cybox:Object id="CISCP:Object-9aa8c5fa-694c-41bf-9d9b-431da6597213">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">sandraj44@aol.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">For your review</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">8D09DEDB44F0748-11F8-EA6@Webmail-d107.sysops.aol.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">sandraj44@aol.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+              <EmailMessageObj:X_Mailer condition="Equals">AOL Webmail 38121-BASIC</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-65140a8a-33f5-4a8d-a994-fd0401cf5c23"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-23T06:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-db61db65-5400-49bd-ab3d-77ecfd9ed4bd" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>After clicking on this link, it directs the user to a webpage asking to "Choose your Email provider and Login". Then it asks for username and password. After a username and password are entered, it redirects the user to legitimate google docs.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-676fa026-9af2-4b70-af44-a80d9f87e3a8">
+        <cybox:Object id="CISCP:Object-65140a8a-33f5-4a8d-a994-fd0401cf5c23">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://quatangxinhxinh.vn/googledoc</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">Click here</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-23T06:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0f6ad2f8-7343-4d76-9b5f-0a3a0dd38aec" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>This POST request is associated with the credential harvesting website.
+
+---BEGIN POST REQUEST---
+POST /googledoc/thanks.php HTTP/1.1
+Accept: text/html, application/xhtml+xml, */*
+Referer: hxxp://quatangxinhxinh.vn/googledoc/
+Accept-Language: en-US
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: quatangxinhxinh.vn
+Content-Length: 83
+Connection: Keep-Alive
+Cache-Control: no-cache
+---END POST REQUEST---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-14513358-f8b9-4765-b7ec-e0059c29ddaa">
+        <cybox:Object id="CISCP:Object-44e428ae-4019-425b-b3c4-60f13b826fce">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://quatangxinhxinh.vn/googledoc/thanks.php/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-23T06:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

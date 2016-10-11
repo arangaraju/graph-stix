@@ -1,0 +1,323 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10563" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Malicious email attachment leads to remote shell access</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 21 August 2013, a phishing email was observed.  The email contained an attachment that was found to be malicious. The file is a Visual Basic executable that enables remote shell access by opening a listening port on the compromised host. Analysis also revealed two callback domains.
+
+This document incorporates data originally released as MIFR-310166.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-09-12T12:40:07Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-1e02ef24-eea2-4d60-b2b0-f3912f0b5dfd" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-8a627f0f-e6f5-477f-a37a-46ca7955b8c6"/>
+        <indicator:Indicator idref="CISCP:indicator-ef581b0e-63f0-448b-87e5-0d8660bbe261"/>
+        <indicator:Indicator idref="CISCP:indicator-00ac4e7e-d149-43aa-be83-73a17437c34e"/>
+        <indicator:Indicator idref="CISCP:indicator-06ba112b-3d3c-4025-8653-a29263869279"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8a627f0f-e6f5-477f-a37a-46ca7955b8c6" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>----- BEGIN EMAIL HEADER -----
+220 Service ready 
+EHLO blu0-omc1-s28.blu0.hotmail.com 
+250- 
+250-SIZE 31457280 
+250-AUTH LOGIN PLAIN 
+250 STARTTLS 
+MAIL FROM:&lt;johanngavin60jh@hotmail.com&gt; SIZE=100357 
+250 
+RCPT TO:&lt;[REMOVED]&gt; 
+250 
+DATA 
+354 
+Received: from BLU179-DS26 ([65.55.116.7]) by blu0-omc1-s28.blu0.hotmail.com with Microsoft SMTPSVC(6.0.3790.4675); 
+Wed, 21 Aug 2013 06:32:44 -0700 
+X-TMN: [eAXazEHXviEwg/mP1ogyu1aPB5HB3i4w] 
+X-Originating-Email: [johanngavin60jh@hotmail.com] 
+Message-ID: &lt;BLU179-DS269EC631DA837E0BF925B3B04C0@phx.gbl&gt; 
+Return-Path: johanngavin60jh@hotmail.com 
+From: Johann Gavin &lt;johanngavin60jh@hotmail.com&gt; 
+To: [REMOVED] 
+Subject: [REMOVED]  
+Date: Wed, 21 Aug 2013 17:32:38 +0400 
+MIME-Version: 1.0 
+Content-Type: multipart/related; type="multipart/alternative"; 
+boundary="----=_NextPart_000_000A_EE73CEB9.1AE22891" 
+X-Priority: 3 
+X-MSMail-Priority: Normal 
+Importance: Normal 
+X-Mailer: Microsoft Windows Live Mail 14.0.8064.206 
+X-MimeOLE: Produced By Microsoft MimeOLE V14.0.8064.206 
+X-OriginalArrivalTime: 21 Aug 2013 13:32:44.0082 (UTC) FILETIME=[EAAA6920:01CE9E72]
+----- END EMAIL HEADER -----
+
+This email contained the attachment file, bill_9209.scr.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ebeaa14f-ad02-4b6d-af18-d06adfbd1f10">
+        <cybox:Object id="CISCP:Object-c9f88dc0-d667-46e3-b25f-c76df076266d">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">johanngavin60jh@hotmail.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Message_ID condition="Equals">BLU179-DS269EC631DA837E0BF925B3B04C0@phx.gbl</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">johanngavin60jh@hotmail.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ef581b0e-63f0-448b-87e5-0d8660bbe261" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Identifier:
+Kaspersky: Trojan-Spy.Win32.Zbot.osmq
+McAfee: PWS-Zbot.gen.oj
+Microsoft: Worm:Win32/Gamarue.I
+Symantec: Backdoor.Trojan
+TrendMicro: BKDR_ANDROM.KN
+
+Packer: Microsoft Visual Basic v5.0
+Compile Date: 2013-08-20 12:43:47 UTC
+Registry Key: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+Data: SunJavaUpdateSched = c:\documents and settings\all users\svchost.exe
+
+This email attachment file was determined to be a specially crafted .SCR (ScreenSaver) file.  When executed, it was found that the malware provides remote shell access by opening a listening port on TCP/8000. Upon execution, the malware is copied to the location "c:\documents\all users\svchost.exe".
+
+To maintain persistence, an auto-start entry point is also created in the registry.
+
+On a compromised host, a command shell is bound to a listening port on TCP/8000. With this, a remote attacker can simply telnet to the open port to obtain a remote shell on the victim. For example:
+---------------
+&gt;telnet [VICTIM IP] 8000
+Microsoft Windows XP [Version 5.1.2600]
+(C) Copyright 1985-2001 Microsoft Corp.
+C:\Documents and Settings\Administrator&gt;
+---------------
+
+The malware will attempt to resolve two domains, "mcstartflower.com" and "klodmko.com". Once resolved, a POST request will be initiated to the remote host.
+
+----- Relevant String Data -----
+Fokus
+*\\AD:\\0sdgsdg\\GVriweufioeg\\Fokus.vbp
+FontBand
+FontHeader
+Enabled
+DataSource
+DataMember
+F3D5522-3F42-11d1-B2FA-00A0C908FB55
+MSHFLXGD.OCX
+MSHierarchicalFlexGridLib.MSHFlexGrid
+MSHFlexGrid
+\b\r
+Module5
+Module6
+__vbaAryDestruct
+__vbaStrVarMove
+__vbaFreeVar
+__vbaFreeVarList
+__vbaFreeStr
+__vbaVar2Vec
+__vbaAryMove
+__vbaLenBstr
+__vbaOnError
+__vbaStrCopy
+lvList
+MSComctlLib
+Form
+gdi32
+Ellipse
+__vbaHresultCheckObj
+__vbaStrToUnicode
+HC
+USER32
+CallWindowProcW
+C195HC195HC0HC0HC0HC0
+__vbaI4Str
+__vbaAryUnlock
+__vbaAryLock
+__vbaVarCat
+__vbaUI1ErrVar
+__vbaUbound
+__vbaRedim
+__vbaVarDup
+__vbaAryVar
+__vbaAryCopy
+__vbaStrCat
+kernel32
+GetModuleFileNameA
+255
+__vbaLsetFixstr
+__vbaSetSystemError
+__vbaFixstrConstruct
+jgoighy
+ojhvhxpok561kjnp86
+__vbaFreeObj
+__vbaObjSetAddref
+__vbaNew2
+__vbaErase
+__vbaFileClose
+__vbaGet3
+__vbaFileOpen
+cmdClose
+C:\\Windows\\system32\\MSHFLXGD.oca
+MSHierarchicalFlexGridLib
+C:\\Windows\\system32\\MSADODC.oca
+MSAdodcLib
+__vbaExitProc
+__vbaLateIdSt
+__vbaLateMemCall
+__vbaResume
+__vbaLateIdCall
+__vbaLateIdCallLd
+__vbaI4Var
+__vbaLateIdCallSt
+__vbaObjSet
+StillExecuting
+AddItem
+ListCount
+Checked
+insert Array to use: e.g @array
+ShowOpen
+FileName
+FileTitle
+__vbaVarCopy
+__vbaStrVarVal
+__vbaVarAdd
+__vbaVarMove
+__vbaVarLateMemSt
+__vbaVarCmpEq
+__vbaVarCmpGt
+__vbaVarAnd
+__vbaBoolVarNull
+__vbaVarForNext
+__vbaVarForInit
+__vbaNextEachVar
+__vbaObjVar
+__vbaForEachVar
+__vbaVarLateMemCallLd
+__vbaVarTstEq
+USER32.DLL
+wininet.DLL
+MSVBVM60.DLL
+gdi32.DLL
+VS_VERSION_INFO
+VarFileInfo
+Translation
+StringFileInfo
+040904B0
+CompanyName
+_=+nUE
+ProductName
+_=+nUE
+FileVersion
+1.00
+ProductVersion
+1.00
+InternalName
+Fokus
+OriginalFilename
+Fokus.exe</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-35888b11-b301-4c5e-9323-4e9387ba3853">
+        <cybox:Object id="CISCP:Object-8629e7bc-839b-4ffa-b26b-15a1eefd3e93">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">bill_9209.scr</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">72385</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">42cef69dbf00d9c939804f2c1d6342ef</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">275cc488a23acf348759169a63576b10345d627a</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">768:as+35UecTQgi5Ubm991i8qacLgXzFwEag0P4C/ovzXe7Xo34JNE:D+3CS9/i81pwEag0A1K77JNE</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-00ac4e7e-d149-43aa-be83-73a17437c34e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The following network activity was observed during analysis:
+POST / HTTP/1.1
+Cache-Control: no-cache
+Connection: close
+Pragma: no-cache
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/4.0
+Content-Length: 76
+Host: mcstartflower.com
+zvzXX8NHsuFvA8SE1BEMhEE8lOXBXCSaOsJ9wKsXjvZjekClkq4lgU6QcsSsr5HJiAQbscyztnE=</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-67da8859-df29-4fbf-a429-e73129c77966">
+        <cybox:Object id="CISCP:Object-e8d51ff7-df66-4ea8-b5c1-fa923c0bae34">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://mcstartflower.com/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-06ba112b-3d3c-4025-8653-a29263869279" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware calls out to this domain via a POST request over port 80/TCP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ed42b159-710d-44ff-8e91-a9d088076e1c">
+        <cybox:Object id="CISCP:Object-ad22fadb-6ea1-4a97-945d-7c0d6eb2a387">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://klodmko.com/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

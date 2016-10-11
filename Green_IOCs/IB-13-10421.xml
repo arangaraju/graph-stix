@@ -1,0 +1,532 @@
+<stix:STIX_Package xmlns:MutexObj="http://cybox.mitre.org/objects#MutexObject-2" xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" id="CISCP:IB-13-10421" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of Kuluoz trojan sample with 23 hardcoded C2 servers</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 27 March 2013 a US Government employee was targeted with a phishing email that contained an attached Kuluoz trojan/bot. Analysis revealed 23 hard-coded command and control (C2) servers.
+
+This document incorporates data originally released as MIFR-271844.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-07-19T16:32:25Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-9500313d-f4fb-4a03-828e-a4c10b9d52c4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-c9e5dd46-761c-408f-8b92-1a25f4cbfcc1"/>
+        <indicator:Indicator idref="CISCP:indicator-2adff495-85db-4dff-ad8e-9b5194cc6ef0"/>
+        <indicator:Indicator idref="CISCP:indicator-c8b5bc07-65ed-4735-8677-510cdc0700a7"/>
+        <indicator:Indicator idref="CISCP:indicator-f209cf01-d1d5-45c9-a18a-f37fe64fe69a"/>
+        <indicator:Indicator idref="CISCP:indicator-1dbcb31e-3c5f-4346-b75b-9b39b588d5b5"/>
+        <indicator:Indicator idref="CISCP:indicator-bbd3584c-cf24-4b67-849d-b337e4a626ba"/>
+        <indicator:Indicator idref="CISCP:indicator-896aef42-2e6c-4700-ba2e-e0848468ec11"/>
+        <indicator:Indicator idref="CISCP:indicator-aac07475-3a9f-4a14-8071-aab5677e516b"/>
+        <indicator:Indicator idref="CISCP:indicator-7eb5f89e-d3f5-4d1a-be43-514132345133"/>
+        <indicator:Indicator idref="CISCP:indicator-1fbc2e94-2b92-4b44-8a69-b3b82adbf1da"/>
+        <indicator:Indicator idref="CISCP:indicator-5a2219b8-7636-41b4-8963-1465a86b22f4"/>
+        <indicator:Indicator idref="CISCP:indicator-928fa0f8-df1e-401f-a232-a8809d4ff673"/>
+        <indicator:Indicator idref="CISCP:indicator-8294f9e8-8633-4f23-bffd-8d99d3f692e2"/>
+        <indicator:Indicator idref="CISCP:indicator-4397dc82-2738-4c4a-b5db-2e113c7ba2bc"/>
+        <indicator:Indicator idref="CISCP:indicator-ed398e27-a58d-40db-96ba-4a4189b6a322"/>
+        <indicator:Indicator idref="CISCP:indicator-09ffa22e-38f9-438f-82a5-c26059387f09"/>
+        <indicator:Indicator idref="CISCP:indicator-5861e936-8dc1-4b38-ac0a-143b73fadba0"/>
+        <indicator:Indicator idref="CISCP:indicator-9a878a61-c657-4ca5-94bb-547c31aa5ecb"/>
+        <indicator:Indicator idref="CISCP:indicator-b125eaa7-9910-408b-8408-b9867107a1e5"/>
+        <indicator:Indicator idref="CISCP:indicator-8dcfc18f-29a6-4011-ba89-b81deb4de040"/>
+        <indicator:Indicator idref="CISCP:indicator-c2b1c1c5-3edb-46c0-aeba-43ef30696e31"/>
+        <indicator:Indicator idref="CISCP:indicator-caee8265-3e2c-436b-a666-57ccba5f812f"/>
+        <indicator:Indicator idref="CISCP:indicator-6e6da1c2-d3ac-4713-aa7d-bb781e69b690"/>
+        <indicator:Indicator idref="CISCP:indicator-48d3bc11-99ae-4d5b-be3e-15ddf5c2badf"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c9e5dd46-761c-408f-8b92-1a25f4cbfcc1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Identifier:
+Kaspersky: Trojan-Downloader.Win32.Kuluoz.pnx
+McAfee: RDN/Generic.tfr!x
+Microsoft: TrojanDownloader:Win32/Kuluoz.B
+Symantec: Trojan.Fakeavlock
+TrendMicro: TROJ_SPNR.11CR13
+
+Packer: UPX
+
+The malware spawns a new svchost.exe process and injects itself into the newly spawned process blob of data that contains a dynamic link library (DLL) and instructions to load it.
+.data:00408A4F lea edx, [ebp-0CCh]
+.data:00408A55 push edx
+.data:00408A56 lea eax, [ebp-78h]
+.data:00408A59 push eax
+.data:00408A5A push 0
+.data:00408A5C push 0
+.data:00408A5E push 4
+.data:00408A60 push 0
+.data:00408A62 push 0
+.data:00408A64 push 0
+.data:00408A66 push offset loc_4010A4 ; svchost.exe
+.data:00408A6B push 0
+.data:00408A6D call dword ptr ds:loc_401006+2 ; Calls CreateProcess
+
+The DLL exports the function "Work", and the trojan logic is implemented inside this export function.
+
+The mutex, "qFdWzGKZ", is created to ensure only a single instance is running.
+
+The malware creates a benign file with the following content and displays it using "notepad.exe":
+RECIPIENT: Mark Smith
+LOCATION OF YOUR PARCEL: Los Angeles
+STATUS OF YOUR ITEM: not delivered
+SERVICE: Standard Shipping
+ITEM NUMBER:U2342364242354-US
+INSURANCE: Yes
+
+The trojan moves and creates a new file at the location, "%ApplicationData%". This file is an exact copy of the "PostalReceipts.exe". Then it deletes "PostalReceipts.exe".
+
+Before connecting to C2 servers, the trojan calculates an unique identifier for the victim's computer. This unique identifier is the MD5 checksum of user's SID, Operating System's install action date, and username. The trojan selects a C2 from an array of twenty three (23) servers.
+
+To communicate with the C2, the trojan uses a GET request consisting of hexadecimal characters.
+
+A sample of an observed GET is as follows:
+00B1DFC0 68 74 74 70 3A 2F 2F 36 38 2E 32 33 33 2E 33 32 http://68.233.32
+00B1DFD0 2E 31 34 36 3A 38 30 38 30 2F 44 37 41 42 44 30 .146:8080/D7ABD0
+00B1DFE0 31 32 46 32 30 43 35 35 35 31 44 39 35 39 46 45 12F20C5551D959FE
+00B1DFF0 32 30 45 31 31 43 41 44 43 35 31 35 41 36 36 37 20E11CADC515A667
+00B1E000 31 37 38 42 34 36 33 36 41 44 44 46 38 30 32 43 178B4636ADDF802C
+00B1E010 31 34 33 32 36 41 41 46 44 41 39 32 45 45 46 30 14326AAFDA92EEF0
+00B1E020 42 30 44 42 34 36 35 32 36 37 34 45 37 33 36 45 B0DB4652674E736E
+00B1E030 38 43 46 38 42 30 44 46 37 37 39 45 34 39 30 44 8CF8B0DF779E490D
+00B1E040 39 39 35 35 37 37 37 31 34 45 38 38 44 44 34 42 995577714E88DD4B
+00B1E050 38 34 45 45 36 45 41 46 41 33 45 41 30 36 43 33 84EE6EAFA3EA06C3
+00B1E060 39 37 46 32 46 45 35 35 44 41 34 33 38 33 45 41 97F2FE55DA4383EA
+00B1E070 42 42 36 34 33 38 41 33 00 F0 AD BA 0D F0 AD BA BB6438A3.=&#176;&#182;.=&#176;&#182;
+
+The trojan uses the key "D7ABD012" to decrypt the request into:
+00B1EFD8 2F 69 6E 64 65 78 2E 70 68 70 3F 72 3D 67 61 74 /index.php?r=gat
+00B1EFE8 65 26 69 64 3D 44 37 41 42 44 30 31 32 32 46 35 e&amp;id=D7ABD0122F5
+00B1EFF8 36 39 41 31 32 34 35 46 31 33 41 36 44 42 34 32 69A1245F13A6DB42
+00B1F008 31 45 32 36 43 26 67 72 6F 75 70 3D 32 35 30 33 1E26C&amp;group=2503
+00B1F018 72 63 6D 26 64 65 62 75 67 3D 30 00 0D F0 AD BA rcm&amp;debug=0..=&#176;&#182;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0fa5d620-02e5-44f5-a5f2-fa109211fd27">
+        <cybox:Object id="CISCP:Object-47f21b76-afa6-4218-92c5-33c00da5249b">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Postal-Receipt.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">34304</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1f187b625e0384a4b9933204f3a059c5</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">108feece9896df14242397d639c92366bdec771f</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">768:0FoobTHU9zUZVOEXL+OsFqCZMgcZbdrLTMp6:vCoSZI0LPsFqUMgmg</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-b007419d-d13f-4d2b-a00d-e31b68c8bd60">
+              <cybox:Properties xsi:type="MutexObj:MutexObjectType">
+                <MutexObj:Name condition="Equals">qFdWzGKZ</MutexObj:Name>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Contains</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2adff495-85db-4dff-ad8e-9b5194cc6ef0" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-238dccac-1e69-4f63-b4ef-fd0b94431aac">
+        <cybox:Object id="CISCP:Object-09b06037-ec59-4073-a100-3f8a41ed0733">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">180.235.134.199</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c8b5bc07-65ed-4735-8677-510cdc0700a7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a9bf4b90-3754-43b5-945a-0a07e2d5db02">
+        <cybox:Object id="CISCP:Object-ac0975d8-a588-418c-b8cf-91536b7af271">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">180.235.134.228</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f209cf01-d1d5-45c9-a18a-f37fe64fe69a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-63faa2b3-8baf-48b8-b22f-083985e67dc7">
+        <cybox:Object id="CISCP:Object-194da2c5-4c83-4995-b4bd-946366f5d0be">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">180.235.132.29</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1dbcb31e-3c5f-4346-b75b-9b39b588d5b5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c79ce120-3c3a-4ab3-ae18-a319227837e2">
+        <cybox:Object id="CISCP:Object-5d478f99-2797-454e-946e-baec85d1ebb1">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">180.235.133.70</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-bbd3584c-cf24-4b67-849d-b337e4a626ba" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5843cc4b-a534-4351-bb8f-b0dee8ef975b">
+        <cybox:Object id="CISCP:Object-b5050c7e-3c3c-415d-a716-eb23f39ef86e">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">68.233.32.146</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-896aef42-2e6c-4700-ba2e-e0848468ec11" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-2474d3f0-abb3-497e-bf3a-fce684015fe2">
+        <cybox:Object id="CISCP:Object-26291285-cfc6-48b2-b3cf-972c9580cfdc">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">68.233.36.146</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-aac07475-3a9f-4a14-8071-aab5677e516b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-65db2d6a-4de7-4db6-a92c-bb3f228ed2b2">
+        <cybox:Object id="CISCP:Object-e2e20ab8-ae41-48e2-9e75-4dc55af1fdbc">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">68.233.32.145</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7eb5f89e-d3f5-4d1a-be43-514132345133" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ff6276e3-fb02-48ec-8a6e-647f9d5e34a7">
+        <cybox:Object id="CISCP:Object-cbe81d69-5221-4839-8f4c-5c265a1befb4">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">50.56.112.118</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1fbc2e94-2b92-4b44-8a69-b3b82adbf1da" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-d69a993a-cb27-4cc7-958e-a083ff5492f6">
+        <cybox:Object id="CISCP:Object-3a749765-aba7-40f3-9461-acf4783539da">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">50.57.127.143</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5a2219b8-7636-41b4-8963-1465a86b22f4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-49b89960-1be2-4de4-8d4c-2b5de644cb96">
+        <cybox:Object id="CISCP:Object-866f000a-5003-4d54-a10f-d3a69ff82077">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">77.241.199.212</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-928fa0f8-df1e-401f-a232-a8809d4ff673" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3ee84f76-b273-4a69-9513-7adc445db3dd">
+        <cybox:Object id="CISCP:Object-da6d5131-5401-4a63-bc6f-9f6ef56ef5ce">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">91.121.156.162</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8294f9e8-8633-4f23-bffd-8d99d3f692e2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-092e328f-da85-421d-8bb4-7ba0a2db549d">
+        <cybox:Object id="CISCP:Object-5828da12-8dc2-44af-8d8d-b7d27ff0e887">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">202.29.42.136</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4397dc82-2738-4c4a-b5db-2e113c7ba2bc" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e777ec24-f562-41d0-962e-eef0138916d0">
+        <cybox:Object id="CISCP:Object-57255129-92a7-45c2-8aec-44047a84df57">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">94.23.254.90</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ed398e27-a58d-40db-96ba-4a4189b6a322" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-9b964fde-3c30-4168-bf0d-f41395888cb4">
+        <cybox:Object id="CISCP:Object-25d2c671-d13e-46ff-aef9-58854a11d676">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">94.23.254.81</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-09ffa22e-38f9-438f-82a5-c26059387f09" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-41cfbdd2-d5cc-4e09-af8b-71fd9be34184">
+        <cybox:Object id="CISCP:Object-ad9dbeba-25fa-4709-ad51-4efa7529034e">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">202.52.136.27</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5861e936-8dc1-4b38-ac0a-143b73fadba0" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8ece62ec-747e-4f31-a2a5-a04ee4efe734">
+        <cybox:Object id="CISCP:Object-d9962a8e-6736-4896-bfb2-a2e55b737b9c">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">87.239.158.90</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9a878a61-c657-4ca5-94bb-547c31aa5ecb" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7661e610-73ba-4d48-945a-d7c7560136da">
+        <cybox:Object id="CISCP:Object-bb05ac56-aac9-47f2-8d5f-5038f84e9dd0">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">87.106.26.231</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b125eaa7-9910-408b-8408-b9867107a1e5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5a3e17c1-02f5-46ff-8115-559989ebb94e">
+        <cybox:Object id="CISCP:Object-09765501-6108-4c19-aec8-1cc3b0abc554">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">85.214.133.237</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8dcfc18f-29a6-4011-ba89-b81deb4de040" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-edb5dd3a-0c4e-42dd-88f7-3b8692ce649a">
+        <cybox:Object id="CISCP:Object-592e844a-f114-47e3-afd7-530c5a5b4fc2">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">193.23.226.15</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c2b1c1c5-3edb-46c0-aeba-43ef30696e31" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a17325da-bcc8-4a08-8b73-10f087ea959f">
+        <cybox:Object id="CISCP:Object-9ef74036-e399-45f0-ad0f-a5c56f27d14b">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">124.109.2.78</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-caee8265-3e2c-436b-a666-57ccba5f812f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-62b76c20-e236-49eb-85e0-e68b55ab5ca2">
+        <cybox:Object id="CISCP:Object-52266e91-23c5-4138-8e7f-bf6d034c7df1">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">178.32.136.84</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6e6da1c2-d3ac-4713-aa7d-bb781e69b690" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-823f249d-b50a-43fc-8c68-cb707dc50a3b">
+        <cybox:Object id="CISCP:Object-c268b6eb-05dd-43c6-9470-83895be88890">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">78.142.63.165</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-48d3bc11-99ae-4d5b-be3e-15ddf5c2badf" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP is one of 23 IP addresses hard-coded into the malware. A pseudo-random algorithm is used to select one of the servers for its next connection.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e15af618-e8ee-4246-92f4-f9d6f30ffcf7">
+        <cybox:Object id="CISCP:Object-6352b5a0-ed00-4fbc-84bf-cc7c5d0acc72">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">80.67.6.226</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

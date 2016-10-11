@@ -1,0 +1,410 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:WinRegistryKeyObj="http://cybox.mitre.org/objects#WinRegistryKeyObject-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10104" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Zbot Malware Analysis</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>The US-CERT Malware team received a sample of Zbot from a U.S. Government Agency.
+
+The contents of this product were originally released as MIFR-341930.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-02-19T16:29:30Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-1934c9e1-7862-4c34-9e3d-92c48bfc5144" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-9a842177-0f1c-4f53-94c6-5958099b9f8c"/>
+        <indicator:Indicator idref="CISCP:indicator-dab2e950-baad-41f7-a9d4-413826ecd8da"/>
+        <indicator:Indicator idref="CISCP:indicator-30ee0f81-117c-4d67-9d38-97b5d9467b5c"/>
+        <indicator:Indicator idref="CISCP:indicator-434cafbb-e391-444d-aa4f-8c8b75012e3f"/>
+        <indicator:Indicator idref="CISCP:indicator-16775286-3f8a-4e46-bc6d-9a0dea097af4"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9a842177-0f1c-4f53-94c6-5958099b9f8c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Section hashes
+8d318bf71c6a37ab69e20ef79058aeb4 (header) 1024
+7911a72eb8c8fc4c847656973dd827f6 .text 64000
+df4ddb6f57dc122b0022156862b54f37 .rdata 13824
+f1c80de7649f1550605e0b50efa568b0 .data 4096
+1e94c9ef0627b939d1eb6a14e11cde09 .rsrc 372736
+b9f6ec92a37f31f67020b10b68106d41 .reloc 6144
+
+Packer: Microsoft Visual C++ ?.?
+
+Compile Date: 2014-01-19 16:39:30 UTC
+
+The malware contains two encrypted named resources "zWbXja" and "HHupnI". 
+
+The second resource decrypts to an executable image file.
+
+The malware creates a new suspended process with the same name as the parent process. The data from the previously decrypted named resources used to populate the newly created process.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5e356c42-a77a-4bde-aeef-f9350691e7d7">
+        <cybox:Object id="CISCP:Object-539519b4-4282-492a-9ee8-a77bef7eba8b">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">PaymentCopy.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">1503619</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">4d400880beb0130363f8e0da335c0982</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3af2a6554f3694c0ea4ac61a0b44a595bce07dd9</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0996718c57f0dd70a4e7783af3ac021676e8c209cb7aebfd811fb551bfb9cad7</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">24576:l6oMeE17IhHPVeBd5oRRti13iy8xk6vLzdPVgJpF/dY6dYU+0olg:l6o217IhHcBEtEioQ3dPVgpzaU+Q</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-dab2e950-baad-41f7-a9d4-413826ecd8da" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The malware finds two named resources "123" and "23".
+
+The resource "23" contains the following blob of data:
+0042A4A4 43 72 65 61 74 65 50 72 6F 63 65 73 73 57 2C 52 CreateProcessW,R
+0042A4B4 65 61 64 50 72 6F 63 65 73 73 4D 65 6D 6F 72 79 eadProcessMemory
+0042A4C4 2C 56 69 72 74 75 61 6C 41 6C 6C 6F 63 2C 47 65 ,VirtualAlloc,Ge
+0042A4D4 74 54 68 72 65 61 64 43 6F 6E 74 65 78 74 2C 56 tThreadContext,V
+0042A4E4 69 72 74 75 61 6C 41 6C 6C 6F 63 45 78 2C 57 72 irtualAllocEx,Wr
+0042A4F4 69 74 65 50 72 6F 63 65 73 73 4D 65 6D 6F 72 79 iteProcessMemory
+0042A504 2C 53 65 74 54 68 72 65 61 64 43 6F 6E 74 65 78 ,SetThreadContex
+0042A514 74 2C 52 65 73 75 6D 65 54 68 72 65 61 64 2C 4E t,ResumeThread,N
+0042A524 74 55 6E 6D 61 70 56 69 65 77 4F 66 53 65 63 74 tUnmapViewOfSect
+0042A534 69 6F 6E 2C 4B 65 72 6E 65 6C 33 32 2C 6E 74 64 ion,Kernel32,ntd
+0042A544 6C 6C 2C 47 65 74 4D 6F 64 75 6C 65 46 69 6C 65 ll,GetModuleFile
+0042A554 4E 61 6D 65 57 2C 53 4F 46 54 57 41 52 45 5C 5C NameW,SOFTWARE\\
+0042A564 4D 69 63 72 6F 73 6F 66 74 5C 5C 57 69 6E 64 6F Microsoft\\Windo
+0042A574 77 73 5C 5C 43 75 72 72 65 6E 74 56 65 72 73 69 ws\\CurrentVersi
+0042A584 6F 6E 5C 5C 52 75 6E 2C 31 2C 2C 50 50 41 44 44 on\\Run,1
+
+The resource "123" is the valid executable image file.
+
+The malware creates new suspended process with the same name as the parent process. The data from the two named resources used to populate the newly created process.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f1cda1c9-35e7-489b-bfdc-0976e0b485bf">
+        <cybox:Object id="CISCP:Object-e319a2a9-71af-4e36-ad5b-c2f95a349f18">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">1503619</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1fbb7e9cf81299a8a42d89c3bbef814d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ea95d2b448472ca24e6cc6d13445432fad24578a</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">24576:rQkZzYQfmvH6KS9wlTzi2gQO1PMV2DCHAJ2glv9fJVOYfJSzaSArb6wk0/1dEwv1:kkZnx9ijgQO1PMDozYAPzDEwla3du</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-30ee0f81-117c-4d67-9d38-97b5d9467b5c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Packer: Borland Delphi 3.0 (???)
+Compile Date: 2012-02-09 19:19:58 UTC
+
+From this stage on all the important strings are encrypted using the following simple algorithm:
+
+if (key &gt; 0)
+	while (offset &lt; length)
+		result = ((encoded_str[offset] ^ key) ^ offset) &amp; 0xff;
+		decoded_string[offset] = result;
+		offset++;
+
+Reference to each encrypted string is kept by using the following structure:
+
+struct encoded_string
+{
+	unsgined short key;
+	unsigned shoort string_size;
+	unsinged int * str_location;
+}
+
+The malware calculates unique CLSID for each infected system. This CLSID is calculated based on the data stored in the registry and is unique for each infected host.
+
+The malware created two directories in the "%APPDATA%". The names of this directories are generated by pseudo-random generator and will be different for each infected host. The malware creates copy of itself in one of these newly created random named directories.
+
+The malware modifies the registry keys to bypass windows firewall.
+
+The malware runs the instance of itself copied to the location in "%APPDATA%\[Random Directory Name]\[Random file name].exe" and deletes the original "PaymentCopy.exe".</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a27ec796-3127-43b3-a97e-876110db3356">
+        <cybox:Object id="CISCP:Object-38bb6334-cb52-4579-9edd-6f6f923477cb">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">144384</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">4388fdbfa165cda1e629667b47bf3237</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f45b1d5ce61cb5c18644322ccca694a570643893</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:s96gX+XmwoBh7tx2lXQZlC2fpquiQfNCPz0HyH0W3iCbkAUhzHy:s96kBHx2KntiQfqzAyH0WtqhzHy</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-eb9ed69d-8351-4bc1-95a8-5cfc8768a949">
+              <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+                <WinRegistryKeyObj:Key condition="Equals">SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications</WinRegistryKeyObj:Key>
+                <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+                <WinRegistryKeyObj:Values>
+                  <WinRegistryKeyObj:Value>
+                    <WinRegistryKeyObj:Name condition="Equals">List</WinRegistryKeyObj:Name>
+                    <WinRegistryKeyObj:Data condition="Equals">"%windir%\\explorer.exe"="%windir%\\explorer.exe"</WinRegistryKeyObj:Data>
+                  </WinRegistryKeyObj:Value>
+                </WinRegistryKeyObj:Values>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Created</cybox:Relationship>
+            </cybox:Related_Object>
+            <cybox:Related_Object id="CISCP:Object-43e0d6a5-115e-4dbf-861b-133ec2c943e8">
+              <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+                <WinRegistryKeyObj:Key condition="Equals">SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\AuthorizedApplications\</WinRegistryKeyObj:Key>
+                <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+                <WinRegistryKeyObj:Values>
+                  <WinRegistryKeyObj:Value>
+                    <WinRegistryKeyObj:Name condition="Equals">List</WinRegistryKeyObj:Name>
+                    <WinRegistryKeyObj:Data condition="Equals">"%windir%\\explorer.exe"="%windir%\\explorer.exe"</WinRegistryKeyObj:Data>
+                  </WinRegistryKeyObj:Value>
+                </WinRegistryKeyObj:Values>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Contains</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-434cafbb-e391-444d-aa4f-8c8b75012e3f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The malware performs injection into the "explorer.exe" process.
+
+Following registry keys are modified:
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\PhishingFilter]"Enabled"=dword:00000000
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\PhishingFilter]"EnabledV8"=dword:00000000
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Privacy]"CleanCookies"=dword:00000000
+
+The values of the following registry keys are set to zero:
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0\1406"
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1\1406"
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2\1406"
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3\1406"
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4\1406"
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0\1609"
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1\1609"
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2\1609"
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3\1609"
+"Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4\1609"
+
+The malware install user land hooks for the following APIs:
+
+NtCreateThread
+LdrLoadDll
+WriteFile
+HttpSendRequestW
+HttpSendRequestA
+HttpSendRequestExW
+HttpSendRequestExA
+InternetCloseHandle
+InternetReadFile
+InternetReadFileExA
+InternetQueryDataAvailable
+HttpQueryInfoA
+closesocket
+send
+WSASend
+OpenInputDesktop
+SwitchDesktop
+DefWindowProcW
+DefWindowProcA
+DefDlgProcW
+DefDlgProcA
+DefFrameProcW
+DefFrameProcA
+DefMDIChildProcW
+DefMDIChildProcA
+CallWindowProcW
+CallWindowProcA
+RegisterClassW
+RegisterClassA
+RegisterClassExW
+RegisterClassExA
+BeginPaint
+EndPaint
+GetDCEx
+GetDC
+GetWindowDC
+ReleaseDC
+GetUpdateRect
+GetUpdateRgn
+GetMessagePos
+GetCursorPos
+SetCursorPos
+SetCapture
+ReleaseCapture
+GetCapture
+GetMessageW
+GetMessageA
+PeekMessageW
+PeekMessageA
+GetClipboardData
+TranslateMessage
+PFXImportCertStore
+
+Some of the more interesting functionality associated with the hooked APIs:
+TranslateMessage - used to perform key-logging.
+PFXImportCertStore - used to capture private certificates added on the infected system.
+GetClipboardData - used to capture Clipboard data.
+LdrLoadDll - used to install user mode hooks for the Mozilla related functions from "PR_*" family.
+
+The malware enumerates all the data found in the files in the "%DEFAULTUSERPROFILE%\Cookies" and "%DEFAULTUSERPROFILE%\Cookies\Low" directories and matching "*@*.txt" pattern.
+
+The malware enumerates all the private certificates found on the infected system.
+
+The malware collects all the cookies from the Adobe (Macromedia) Flash Player.
+
+The malware steals passwords from the following FTP client programs:
+
+Total Commander
+WsFtp
+FlashFXP
+Filezilla
+FAR Manager
+WinSCP
+FTP Commander
+CoreFTP
+SmartFTP
+
+The malware enumerates email accounts found in the Microsoft Outlook Address Book and on Window Live Mail.
+
+The malware creates multiple threads to perform different tasks in parallel. The synchronization achieved through the registry key "HKEY_CURRENT_USER\Software\Microsoft\[Random name]" and through the data structure that keeps count of the currently running threads and maintains the list of the thread handles.
+
+The malware creates a new thread that creates a backdoor on the system. This is achieved by creating server listening on the random port. For example, on the test machine the following following listening server was created:
+
+TCP 0.0.0.0:28619 0.0.0.0:0 LISTENING
+
+Another thread is created in order to connect to C&amp;C (Command and Control) and download data.
+
+Additional thread is created in order to send stolen data to the C&amp;C.
+
+The malware spans new thread that creates auto-run registry associated with it. The following auto-run registry is created on the infected system:
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run]"[random guid]" = "%APPDATA%\[Random Directory Name]\[Random File Name].exe"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-9196993a-51c8-4678-8aa6-7bf20ce95fd0">
+        <cybox:Object id="CISCP:Object-387962d8-f7d9-4c7d-aa7b-da8f443eb868">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">144384</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1d7443e41e1e279340ab89f8a54974e3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">317aa0f0c062da85ef66ac812aedda15ec7fdb0b</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:s96gX+XmwoBh7tx2lXQZlC2fpquiQfNCPz0HyH0W3iCbkAUhzHl:s96kBHx2KntiQfqzAyH0WtqhzHl</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-16775286-3f8a-4e46-bc6d-9a0dea097af4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>Below is the example of communication from the infected host to the C&amp;C:
+
+POST /99/web/config/index.php HTTP/1.1
+Accept: */*
+Content-Type: application/x-www-form-urlencoded
+Connection: Close
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET4.0C; .NET4.0E; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+Host: www.platinum-shakers.net
+Content-Length: 75
+Cache-Control: no-cache
+
+Data:
+
+011DF490 6F 6E 99 A6 E5 B7 19 A2 14 D5 0B 49 70 14 E8 C0
+011DF4A0 81 AF B2 D7 BE DF 5F 15 55 DB A6 20 D4 31 94 2F
+011DF4B0 82 DB 0A C8 4B CF F6 88 99 7B 3C 6A DF 0A C8 D8
+011DF4C0 0A 09 65 7F E0 0E 31 A6 C4 F4 7A E0 C9 6C C7 D9
+011DF4D0 B3 1F 6B 88 34 7A 62 C5 A4 FE 8E 00 00 00 00 00</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-2a24503e-e675-4630-9ecb-7e05e9b7a715">
+        <cybox:Object id="CISCP:Object-07ec2fb9-d5c9-4d99-8489-1899979a8568">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.platinum-shakers.net/99/web/config/index.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

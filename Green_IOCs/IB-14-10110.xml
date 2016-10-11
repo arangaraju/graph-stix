@@ -1,0 +1,234 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:WinRegistryKeyObj="http://cybox.mitre.org/objects#WinRegistryKeyObject-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:marking="http://data-marking.mitre.org/Marking-1" id="CISCP:IB-14-10110" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>NASA-themed Phishing Email Contains Poison Ivy Attachment</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 21 February 2014, a U.S. company's employees received phishing emails with a malicious attachment. The attachment contains a Poison Ivy RAT. The email had a spoofed U.S. government email address and had the subject "[CLASSIFIED]NASA Curiosity Rover Spotted UFO".</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-02-24T19:18:37Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-16dff14d-4b1e-47a6-9d35-debdbc30ca67" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-df33b729-a0d5-434e-8839-4b0c1c35f8f1"/>
+        <indicator:Indicator idref="CISCP:indicator-deeb96a3-163c-4e7b-8456-ced2069ad523"/>
+        <indicator:Indicator idref="CISCP:indicator-b8504a11-ed1b-435b-b708-60c28271753f"/>
+        <indicator:Indicator idref="CISCP:indicator-239f9c53-bb18-442a-a71e-8a93bc8652cd"/>
+        <indicator:Indicator idref="CISCP:indicator-67c189f2-d86b-47af-8807-521e9cc24324"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-df33b729-a0d5-434e-8839-4b0c1c35f8f1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>----- BEGIN EMAIL BODY -----
+Dear all,
+ 
+Attached NASA Documents,STOP COPYING!!!
+ 
+NASA ROVER
+
+[REDACTED]
+
+----- END EMAIL BODY ----
+
+----- BEGIN EMAIL HEADERS ----
+Return-Path: &lt;robert.f.lasalvia@nasa.gov&gt;
+Subject: [CLASSIFIED]NASA Curiosity Rover Spotted UFO
+X-SENDER-IP: 216.191.104.36
+X-SENDER-REPUTATION: None
+Received: from unknown (HELO [[REDACTED]]) ([216.191.104.36])
+    by [REDACTED] with ESMTP; 21 Feb 2014 07:44:41 +0000
+Date: Fri, 21 Feb 2014 02:44:39 -0500
+MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Unsent: 1
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
+From: "NASA ROVER" &lt;robert.f.lasalvia@nasa.gov&gt;
+Message-ID: &lt;1.b318e6a4ef342bad1a1a@bryardju-e752&gt;
+Content-Type: multipart/mixed;
+    boundary="----=_NextPart_000_0014_01CF2F10.6CC425D0"
+-----  END EMAIL HEADERS  ----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ee32cabb-2a10-40d3-97b4-1f6177e5c3fd">
+        <cybox:Object id="CISCP:Object-6fd2c995-1245-4183-81d1-425ec8f2b416">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">robert.f.lasalvia@nasa.gov</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">[CLASSIFIED]NASA Curiosity Rover Spotted UFO</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">1.b318e6a4ef342bad1a1a@bryardju-e752</EmailMessageObj:Message_ID>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-e7a2986a-7c99-422c-af17-8e1307fb52c2"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-deeb96a3-163c-4e7b-8456-ced2069ad523" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>The attachment 297529MAIN_ROVER_RFI.zip contained 297529MAIN_ROVER_RFI.exe.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-87063d1a-137a-44b6-8234-d22c460bc411">
+        <cybox:Object id="CISCP:Object-e7a2986a-7c99-422c-af17-8e1307fb52c2">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">297529MAIN_ROVER_RFI.zip</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">52AD10A91E1F6C885FA74EDA2B54AA8E</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b8504a11-ed1b-435b-b708-60c28271753f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>297529MAIN_ROVER_RFI.exe contained in the attachment ZIP file.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-9cfb5c7a-0160-401e-a4a1-efd30113ddf8">
+        <cybox:Object id="CISCP:Object-5cc35cc3-57a2-4ab2-9651-a34ab90394f1">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">297529MAIN_ROVER_RFI.exe</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">252BAB6DC5BFC096B2DE4697DE24452B</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-239f9c53-bb18-442a-a71e-8a93bc8652cd" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Compiled Date: Sat, Jun 9 2012, 13:19:49  - 32 Bit EXE
+  Verified:       Unsigned
+  Link date:      8:19 AM 6/9/2012
+  MachineType:    32-bit
+File Size                       : 380 kB
+File Type                       : Win32 EXE
+MIME Type                       : application/octet-stream
+Machine Type                    : Intel 386 or later, and compatibles
+Time Stamp                      : 2012:06:09 09:19:49-04:00
+PE Type                         : PE32
+Linker Version                  : 9.0
+Code Size                       : 74752
+Initialized Data Size           : 23040
+Uninitialized Data Size         : 0
+Entry Point                     : 0xac87
+OS Version                      : 5.0
+Image Version                   : 0.0
+Subsystem Version               : 5.0
+Subsystem                       : Windows GUI
+
+Dropped / Created:
+On Windows 7 a file named newdev.dll and vnetlib.exe in the user's temp directory. A process is also created named vnetlib.exe.
+
+On Windows XP a file named newdev.dll and vnetlib.exe in the user's temp directory.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a1dba8f3-d0c6-4bfc-a4ce-989af8037400">
+        <cybox:Object id="CISCP:Object-228904df-e011-4f0c-b2c5-2bfd1835eda4">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">navarover.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">389596</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">252BAB6DC5BFC096B2DE4697DE24452B</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-c52a21d0-55bc-48e1-a2a6-35652da8495e">
+              <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+                <WinRegistryKeyObj:Key condition="Equals">Software\Microsoft\Windows\CurrentVersion\Run\MultipleInstances</WinRegistryKeyObj:Key>
+                <WinRegistryKeyObj:Hive condition="Equals">HKEY_CURRENT_USER</WinRegistryKeyObj:Hive>
+                <WinRegistryKeyObj:Values>
+                  <WinRegistryKeyObj:Value>
+                    <WinRegistryKeyObj:Name condition="Equals">MultipleInstances</WinRegistryKeyObj:Name>
+                    <WinRegistryKeyObj:Data condition="Equals">C:\Users\MrClean\AppData\Local\Temp\vnetlib\vnetlib.exe
+</WinRegistryKeyObj:Data>
+                  </WinRegistryKeyObj:Value>
+                </WinRegistryKeyObj:Values>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Created_By</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-67c189f2-d86b-47af-8807-521e9cc24324" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This domain was used for command and control. Traffic was observed over port 443.
+
+As of 21 February 2014 this domain resolves to IP 142.4.121.181
+
+Other domains that resolve to this IP address:
+
+fbi.sexxxy.biz
+malware.dsmtp.com
+iphone.vizvaz.com
+cia.toh.info</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ff584222-ca0f-49db-8068-83fa29bddd32">
+        <cybox:Object id="CISCP:Object-5a07862d-39f2-4a73-a4d6-88ed1253d551">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">jimin.mymom.info</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-21T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

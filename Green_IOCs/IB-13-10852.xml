@@ -1,0 +1,358 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10852" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>More Christmas Themed Phishing Emails with Links to Archive File</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 20 December 2013, three (3) spear phishing emails were observed. The installation, and command and control (C2) phases were identical to IB-13-10841 and IB-13-10849. This IB includes three (3) new email indicators, and documents the installation and C2 phases repeated from previous IBs.
+
+The reporting source is tracking this activity under the name Doppleganger.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-12-23T18:19:02Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-90085480-0a5f-4af1-8dba-a4a20d67750d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-e91f7d14-3f4c-495e-9391-f5fe9aae48b4"/>
+        <indicator:Indicator idref="CISCP:indicator-1be1a602-9746-473a-980f-706c7abf2baa"/>
+        <indicator:Indicator idref="CISCP:indicator-6871c4c8-9701-4ff6-9314-0a129f206685"/>
+        <indicator:Indicator idref="CISCP:indicator-a57938d3-23b2-46fe-837e-f1d4b263f874"/>
+        <indicator:Indicator idref="CISCP:indicator-d7459cf5-c3ef-4961-a461-089afbbe49a7"/>
+        <indicator:Indicator idref="CISCP:indicator-c4e78369-5a23-49c6-9a07-01d5e230202c"/>
+        <indicator:Indicator idref="CISCP:indicator-fd1d9c5c-7350-450a-a7d5-570069b82593"/>
+        <indicator:Indicator idref="CISCP:indicator-f7aaf652-9c8b-4585-9625-f2a4dda21982"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e91f7d14-3f4c-495e-9391-f5fe9aae48b4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This email is spoofed to appear like it came from a public relations representative at a Taiwanese semi-conductor corporation. It contains an embedded link that leads to a zip file.
+
+---BEGIN BODY---
+&#36229;&#36106;&#30340;&#32854;&#35477;&#31680;&#36032;&#21345;&#65292;&#21487;&#20197;&#36681;&#30332;&#32102;&#23567;&#22821;&#20276;&#20497;&#21734;
+https://www.bonwish.com/Cards/Christmas/Christmas_Card.zip
+
+&#20801;&#23433;
+Translation:
+Awesome Christmas cards, you can forward it to small partners oh
+
+[REDACTED]
+---END BODY---
+
+---BEGIN HEADER--- 
+Return-Path: &lt;annieyu@homemail.com&gt;
+Subject:=?utf-8?b?6LaF6LSK55qE6IGW6KqV56+A6LOA5Y2h77yM5Y+v5Lul6L2J55m857Wm5bCP?=
+ =?utf-8?b?5aSl5Ly05YCR5ZOm?=
+X-SENDER-IP: 74.208.4.201
+X-SENDER-REPUTATION: 5.5
+Received: from mout.gmx.net ([74.208.4.201])
+ with ESMTP/TLS/DHE-RSA-AES128-SHA;
+ 20 Dec 2013 07:44:14 +0000
+Received: from mailout-us.gmx.com ([172.19.198.46]) by mrigmx.server.lan
+ (mrigmxus002) with ESMTP (Nemesis) id 0LvkTY-1VSAAj3mcW-017VoV for
+Fri, 20 Dec 2013 08:44:13 +0100
+Received: (qmail 32603 invoked by uid 0); 20 Dec 2013 07:44:13 -0000
+Received: from 71.197.89.109 by rms-us024 with HTTP
+Content-Type: multipart/alternative;
+ boundary="========GMXBoundary261681387525452234454"
+Date: Fri, 20 Dec 2013 02:44:11 -0500
+From: [REDACTED] &lt;annieyu@homemail.com&gt;
+Message-ID: &lt;20131220074412.261680@gmx.com&gt;
+MIME-Version: 1.0
+X-Flags: 0001
+X-Mailer: GMX.com Web Mailer
+x-registered: 0
+X-GMX-UID: G5DBclwH3zOlOAy95n8hwvN+IGRvb4Cg
+---END HEADER---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8ffb1fee-ad59-4baf-b737-2387ddde0e52">
+        <cybox:Object id="CISCP:Object-f5bc61b9-ce83-4fad-8d83-e82e66116e1b">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">annieyu@homemail.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">&#36229;&#36106;&#30340;&#32854;&#35477;&#31680;&#36032;&#21345;&#65292;&#21487;&#20197;&#36681;&#30332;&#32102;&#23567;&#22821;&#20276;&#20497;&#21734;</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">20131220074412.261680@gmx.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">annieyu@homemail.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+              <EmailMessageObj:X_Mailer condition="Equals">GMX.com Web Mailer</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-91878c14-dc8e-4915-a01f-b5f3844d6a0d"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-12-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1be1a602-9746-473a-980f-706c7abf2baa" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is a phishing email with an embedded link leading to a .zip file. The body of the email varies based on the recipient and sender.
+
+---BEGIN BODY EXAMPLE---
+
+Ian,
+ 
+Here's wishing you a Merry Christmas and a Happy New Year!
+ 
+https://www.bonwish.com/Card/Christmas/Christmas_Card.zip
+ 
+ 
+Craig
+---END BODY EXAMPLE---
+
+---BEGIN HEADER--- 
+Return-Path: [REDACTED]
+Subject: Merry Christmas
+X-SENDER-IP: 74.208.4.200
+X-SENDER-REPUTATION: 4.8
+Received: from mout.gmx.net ([74.208.4.200])
+   with ESMTP/TLS/DHE-RSA-AES128-SHA;
+    20 Dec 2013 08:31:49 +0000
+Received: from mailout-us.gmx.com ([172.19.198.47]) by mrigmx.server.lan
+    (mrigmxus002) with ESMTP (Nemesis) id 0Lh6Gp-1V7S323pGZ-00oTBc for
+   Fri, 20 Dec 2013 09:31:47 +0100
+Received: (qmail 3018 invoked by uid 0); 20 Dec 2013 08:31:47 -0000
+Received: from 192.200.112.35 by rms-us018 with HTTP
+Content-Type: multipart/alternative;
+    boundary="========GMXBoundary19781387528305420957"
+Date: Fri, 20 Dec 2013 03:31:42 -0500
+From: [REDACTED]
+Message-ID: &lt;20131220083145.19780@gmx.com&gt;
+MIME-Version: 1.0
+X-Flags: 0001
+X-Mailer: GMX.com Web Mailer
+x-registered: 0
+X-GMX-UID: JmXGct5m3zOlOnhF+H8hZwx+IGRvb8Dz
+---END HEADER---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3b5050dd-b8da-4fc2-b65b-e0a938726d45">
+        <cybox:Object id="CISCP:Object-061b9e58-269a-4173-bcfb-dca4e5f05f1b">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">Merry Christmas</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">20131220083145.19780@gmx.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:X_Mailer condition="Equals">GMX.com Web Mailer</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-91878c14-dc8e-4915-a01f-b5f3844d6a0d"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-12-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6871c4c8-9701-4ff6-9314-0a129f206685" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is a phishing email with an embedded link leading to a .zip file. The body of the email varies based on the recipient and sender.
+
+---BEGIN BODY EXAMPLE---
+
+Ian,
+ 
+Here's wishing you a Merry Christmas and a Happy New Year!
+ 
+https://www.bonwish.com/Card/Christmas/Christmas_Card.zip
+ 
+ 
+Craig
+---END BODY EXAMPLE---
+
+---BEGIN HEADER---
+Return-Path: [REDACTED]
+Subject: Merry Christmas
+X-SENDER-IP: 46.167.245.72
+X-SENDER-REPUTATION: 5.6
+Received: from emkei.cz ([46.167.245.72])
+   with ESMTP; 20 Dec 2013 09:03:42 +0000
+Received: by emkei.cz (Postfix, from userid 33)
+    id 0E097D5C30; Fri, 20 Dec 2013 10:03:39 +0100 (CET)
+From: spoofed
+X-Priority: 3 (Normal)
+Importance: Normal
+X-Mailer: Microsoft Office Outlook
+Errors-To: [REDACTED]
+Reply-To: [REDACTED]
+Content-Type: text/plain; charset=utf-8
+Message-Id: &lt;20131220090340.0E097D5C30@emkei.cz&gt;
+Date: Fri, 20 Dec 2013 10:03:39 +0100 (CET)
+---END HEADER---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c8fda717-ebe0-48ae-864e-9367b7ca6b9c">
+        <cybox:Object id="CISCP:Object-a104072b-e14e-435f-9588-fc845034d51c">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">Merry Christmas</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">20131220090340.0E097D5C30@emkei.cz</EmailMessageObj:Message_ID>
+              <EmailMessageObj:X_Mailer condition="Equals">Microsoft Office Outlook</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-12-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a57938d3-23b2-46fe-837e-f1d4b263f874" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>When clicked, this URL takes the user to download a zip file containing malware.
+
+This same URL was used in IB-13-10841 and IB-13-10849.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-61ee4659-aefc-4baa-87b4-71a265e68b62">
+        <cybox:Object id="CISCP:Object-91878c14-dc8e-4915-a01f-b5f3844d6a0d">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">https://www.bonwish.com/Cards/Christmas/Christmas_Card.zip</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-12-19T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d7459cf5-c3ef-4961-a461-089afbbe49a7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This zip file was downloaded from the link contained in the phishing email.
+
+The same file was downloaded in IB-13-10841 and IB-13-10849.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c704169e-4a4a-421e-92d4-cbded385b6b6">
+        <cybox:Object id="CISCP:Object-7e8c88ac-beb9-49d7-ba8c-f77ca01bf990">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Merry Christmas.zip</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0df91f4edaf51ac0f8620b2534b33522</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">24576:sevmyPxZYuQirPMxDcE00hsbKJmC3A3soVOGs96LNv6Zt2lHf38V7/0:sU5YiMxIMyb4mCSpI9i6r2F3u0</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-12-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c4e78369-5a23-49c6-9a07-01d5e230202c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is a trojan malware with a screensaver (.scr) extension, delivered inside of the zip file. 
+
+Two files are dropped:
+C:\DOCUME~1\user\LOCALS~1\Temp\MERRYC~1.tmp
+C:\DOCUME~1\user\LOCALS~1\Temp\tmp2.exe
+
+The malware calls out to the C2 domain, "comeon.sexidude.com"
+
+This same file was used in IB-13-10841 and IB-13-10849.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4fdb6523-f45c-4f1b-9ab5-c4c9985fb63c">
+        <cybox:Object id="CISCP:Object-3644bb4f-7ff4-4d5a-9f91-3b4fc2f4ebcb">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Merry Christmas.scr</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">1950398</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">00dd7f678879d629afcdde294122645e</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">8a202bd031a3a3f24a1f8ba9f873f63c63140583</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">678a29c7732bda86a88c69001d03cf710f9905d7b55b82fbb307c7dc2c86618b</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">24576:G8YhGwN/IegSxkZ+OzTt6Sz2nRh3Ct0Oj2ndzt7kp+Au1hHzU6R4WMSLpTQ79Ox:BQGM0Dz2nfJo2ndzBSotznCW3Lu8</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-12-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-fd1d9c5c-7350-450a-a7d5-570069b82593" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This GET request is initated by the malware.
+
+This request is identical to one listed in IB-13-10849.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a8246f63-612f-4f1d-86d2-d0fef920e7b8">
+        <cybox:Object id="CISCP:Object-f74cbc9c-a2a4-43bf-9ff6-b5a7c834db78">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://comeon.sexidude.com/css.ashx?nly=%54%0E%1D%12%18%13%11%0C%1F%55%54%09%0F%19%0E%55%54%4C%44%51%4C%4C%51%4E%4B%51%1E%4F%51%4B%1E%51%1A%19%55%54%4E%52%4C%52%3F%13%11%19%13%12%52%4D%55%7C&amp;fd=%4D%45%4E%52%4D%4A%44%52%4C%52%4D%51%42%1F%13%11%19%13%12%52%0F%19%04%15%18%09%18%19%52%1F%13%11%7C&amp;fi=%4C%5F%50%5A%51%53%4E%5D%3E&amp;svc=%66%6E%10%6D%6E%0D%1D%6B%6D%3E&amp;ggx=%5F%31%1F%3D%1A%19%19%7C&amp;wk=%3E&amp;n=%5C&amp;du=%6F%6E%6B%6A%5C</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-12-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f7aaf652-9c8b-4585-9625-f2a4dda21982" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This GET request is initated by the malware.
+
+This request is identical to one listed in IB-13-10849.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5dca49fd-2195-4834-9ec2-f1e8de5f2061">
+        <cybox:Object id="CISCP:Object-a0028e64-2c30-4d61-a624-178f81dbf281">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://162.211.231.217/css.ashx?nly=%54%0E%1D%12%18%13%11%0C%1F%55%54%09%0F%19%0E%55%54%4C%44%51%4C%4C%51%4E%4B%51%1E%4F%51%4B%1E%51%1A%19%55%54%4E%52%4C%52%3F%13%11%19%13%12%52%4D%55%7C&amp;fd=%4D%45%4E%52%4D%4A%44%52%4C%52%4D%51%42%1F%13%11%19%13%12%52%0F%19%04%15%18%09%18%19%52%1F%13%11%7C&amp;fi=%4C%5F%50%5A%51%53%4E%5D%3E&amp;svc=%66%6E%10%6D%6E%0D%1D%6B%6D%3E&amp;ggx=%5F%31%1F%3D%1A%19%19%7C&amp;wk=%3E&amp;n=%5C&amp;du=%6F%6E%6B%6A%5C</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-12-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

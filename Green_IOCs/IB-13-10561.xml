@@ -1,0 +1,390 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" id="CISCP:IB-13-10561" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of a Loader and two embedded packed executables</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 20 March 2013, a loader and two embedded packed executables were submitted for analysis.
+
+This document incorporates data originally released as MIFR-270279.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-09-10T18:38:32Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-03e47528-e6d4-41e6-8ebd-c79533b6c3ae" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-f76530bf-300c-4981-9f92-a823678ff27a"/>
+        <indicator:Indicator idref="CISCP:indicator-85c70052-5d15-4811-8330-8611642ff26d"/>
+        <indicator:Indicator idref="CISCP:indicator-0b88aa5a-f2c2-4304-aa56-00d07536e60f"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f76530bf-300c-4981-9f92-a823678ff27a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Identifer:
+Kaspersky: Trojan-Ransom.Win32.Blocker.axal
+McAfee: RDN/Ransom!bj
+Microsoft: VirTool:Win32/Injector.EA
+Symantec: Backdoor.Trojan
+TrendMicro: TROJ_RANSOM.EHC
+
+The submitted file acts as a loader for an embedded file that is decoded and executed at run-time.
+
+The file opens itself in memory, sets the file pointer to the beginning and reads one byte located at file offset 0x4045E0. The byte at this location is 0x00. This byte is read into a buffer twice. The file then reads its entire contents into memory. A section of the file beginning at offset 0x2C00 is copied to another buffer in memory. The block of data is 0x4600 bytes in size. This value is located at the end of the section of data. This section of data is decoded. The decoded data is an embedded PE file. 
+
+A suspended process is created by the loader file, the decoded PE file is written to the memory space of the suspended process and the process is resumed.
+
+Some of the relevant APIs used by the file are obfuscated by adding the "#" character between characters in the function name (ex. "#C##r##e#a#t##e###P#r##o#c#e#s##s#A#"). The extraneous characters are removed at run-time and called.
+
+RELEVANT RESOURCE DATA
+Name: Version
+Label: 1
+Content:
+Length Of Struc: 0240h
+Length Of Value: 0034h
+Type Of Struc: 0000h
+Info: VS_VERSION_INFO
+Signature: FEEF04BDh
+Struc Version: 1.0
+File Version: 45.55.2.1
+Product Version: 45.55.2.1
+File Flags Mask: 0.0
+File Flags:
+File OS: UNKNOWN
+File Type: UNKNOWN
+File SubType: UNKNOWN
+File Date: 00:00:00 00/00/0000
+Struc has Child(ren). Size: 484 bytes.
+Child Type: StringFileInfo
+Language/Code Page: 0/1200
+CompanyName: Gotico Ltd.
+ProductName: forkinbass
+ProductVersion: 45,55,2,1
+FileVersion: 45,55,2,1
+InternalName: forkinbass.exe
+OriginalFilename: forkinbass.exe
+Child Type: VarFileInfo
+Translation: 0/1200
+Name: Manifest
+Label: 1
+Content:
+&lt;?xml version="1.0" encoding="UTF&#8208;8" standalone="yes"?&gt;
+&lt;assembly xmlns="urn:schemas&#8208;microsoft&#8208;com:asm.v1" manifestVersion="1.0"&gt;
+&lt;assemblyIdentity
+version="1.0.0.0"
+processorArchitecture="X86"
+name="CompanyName.ProductName.YourApp"
+type="win32" /&gt;
+&lt;description&gt;&lt;/description&gt;
+&lt;dependency&gt;
+&lt;dependentAssembly&gt;
+&lt;assemblyIdentity
+type="win32"
+name="Microsoft.Windows.Common&#8208;Controls"
+version="6.0.0.0"
+processorArchitecture="X86"
+publicKeyToken="6595b64144ccf1df"
+language="*" /&gt;
+&lt;/dependentAssembly&gt;
+&lt;/dependency&gt;
+&lt;/assembly&gt;
+
+RELEVANT STRING DATA
+#C##r##e#a#t##e###P#r##o#c#es###s#A#
+#R##e##s##u###m#e##T##h###r##e#a##d##
+W90iVaV88
+fynxfnx6xu7jdjdb
+#R##t#l#M#o####veM#e#m#o##r#y
+##K#E##RN###EL####3#2
+#S#e#t#T##h#r##e#a##d##C####o#n#t#ex#t#
+#W####r###i###te###Pr####oc###es##sM##e#m###or#y###
+#S###u##s##p###en#dT#h#r##e##a##d#
+##N#T#D#L###L#
+N##tU##nm#ap##Vi##ew##Of##S##e##ct##i#on#
+#G#e#tT##h#re#ad#C###on#t#e#x#t##
+#V#i##r#t####u#a#l##A##l##lo##c##E#x#</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b7c293be-c7b3-4e98-bb42-54fca2e8c13f">
+        <cybox:Object id="CISCP:Object-78958d73-71e9-4e2d-b755-cdce271cf31e">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">2711-payslip.pdf.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">29188</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">666fc15087b9b569e898ca282edd4031</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">e3baf011ffc413dd517ae036d3285bf67d7905a6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">768:m7VQyxATlm2OfW4Lwh3Np+2OA5UaN0fYu:wf2OfZLwlqNYu</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-85c70052-5d15-4811-8330-8611642ff26d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Filename: Embedded.exe
+
+Antivirus Identifier:
+Symantec: Backdoor.Trojan
+
+
+This file is loaded and executed by the file "2711-payslip.pdf.exe". However, the file is not written to disk during runtime. The file exists in memory only and therefore has no file name. The file will be referred to as "Embedded.exe" in this report.
+
+The residual file is a reverse shell. When executed, the file opens and listens on port 8000 for incoming connections. If one is made, reverse shell access is provided to the remote host. 
+
+The following events occur when this file is executed, after the unpacking routine:
+
+The file performs VM detection by querying the values of the following registry key. The contents of the registry values are then compared to the subsequent values below.
+Key: "system\currentcontrolset\services\disk\enum"
+Value: "0"
+Value 1: (VMWare)
+0012FF70 76 6D 77 61 00 00 00 00 vmwa....
+Value 2: (Virtual Box)
+0012FF70 76 62 6F 78 00 00 00 00 vbox....
+Value 3: (Qemu)
+0012FF70 71 65 6D 75 00 00 00 00 qemu....
+
+A copy of the file is dropped into the "C:\Documents and Settings\All Users\svchost.exe" file path. The file sets the following registry value to entrench the copied file in the registry.
+Key: \\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+Value: SunJavaUpdateSched
+Data: "C:\Documents and Settings\All Users\svchost.exe"
+
+The file creates a socket, opens local port 8000 and listens on the port. If a connection is made over the socket, the file binds a command shell to TCP/8000 to facilitate remote access.
+
+RELEVANT STRING DATA
+%ALLUSERSPROFILE%\svchost.exe
+\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+\Software\Microsoft\Windows\CurrentVersion\Run
+SunJavaUpdateSched
+cmd.exe</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f57ff63f-7420-4d74-b56f-dd301e61c099">
+        <cybox:Object id="CISCP:Object-4a6fc331-8ab6-45bf-97bc-f433c345a446">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">17920</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">945b9f4797dc0fa3ef10908132237bf8</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ccdd9aae7da6106ca553361f82467936388c509d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:dwHDcJjAEqu9wfS/IpqQD/4+DbNjIhXqRy5+6:kejAEvyfSEqW4+PpeXiF</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0b88aa5a-f2c2-4304-aa56-00d07536e60f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Identifier:
+Kaspersky: Backdoor.Win32.Androm.ppp
+McAfee: Generic BackDoor.u
+Microsoft: Worm:Win32/Gamarue.I
+Symantec: Backdoor.Trojan
+TrendMicro: BKDR_ANDROM.DB
+
+Packer: UPX -&gt; www[.]upx.sourceforge.net
+Compile Date: 2009-01-27 16:29:20 UTC
+
+The submitted file is a packed executable similar to the file "Embedded.exe". When executed, this file opens and listens on port 8000. If a connection is made by a remote host, reverse shell access is provided to the remote host. This file also drops of copy of itself into the "%ALLUSERSPROFILE%" directory with the file name "svchost.exe" and entrenches in the same registry value.
+
+File Path: "C:\Documents and Settings\All Users\svchost.exe"
+
+Registry Data:
+Key: \\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+Value: SunJavaUpdateSched
+Data: "C:\Documents and Settings\All Users\svchost.exe"
+
+Mutex objects created during run-time:
+CTF.Layouts.MutexDefaultS-1-5-21-1390067357-1644491937-839522115-500
+CTF.LBES.MutexDefaultS-1-5-21-1390067357-1644491937-839522115-500
+CTF.Compart.MutexDefaultS-1-5-21-1390067357-1644491937-839522115-500
+CTF.Asm.MutexDefaultS-1-5-21-1390067357-1644491937-839522115-500
+CTF.TMD.MutexDefaultS-1-5-21-1390067357-1644491937-839522115-500
+
+RELEVANT RESOURCE DATA
+Name: Version
+Label: 1
+Content:
+Length Of Struc: 02C0h
+Length Of Value: 0034h
+Type Of Struc: 0000h
+Info: VS_VERSION_INFO
+Signature: FEEF04BDh
+Struc Version: 1.0
+File Version: 3.6.0.0
+Product Version: 3.6.0.0
+File Flags Mask: 0.63
+File Flags:
+File OS: NT (WINDOWS32)
+File Type: APP
+File SubType: UNKNOWN
+File Date: 00:00:00 00/00/0000
+Struc has Child(ren). Size: 612 bytes.
+Child Type: StringFileInfo
+Language/Code Page: 1033/1200
+InternalName: Lei Irony Band
+ProductName: Gourd Hand Hour Fully Sixty Serb
+ProductVersion: 3 6 5019
+aeLFEfrFXtKQ6: VxgnVBWxDABh5INg
+pdigaY1o6t: CWcfumhIMnHW3W2
+tc7oftl12mfp: eDXFMXxjL3Pyd3vSMu
+cN5lGRgNhOMBh: Gt4bYILnvm
+Child Type: VarFileInfo
+Translation: 1033/1200
+Name: Icon Entry
+Label: 1
+Content: This resource contains an icon used by PDF documents.
+
+RELEVANT STRING DATA
+Nojoc
+Imuda
+kyvef
+Jacabyt
+Dinuq
+VybPYwo
+bupeg
+UzaFjecu~
+PuhywefXupogeIdobepm
+kev
+Tuz
+yreb8gu
+Efeh,i
+Aforo&lt;u+h
+Yfy
+Ytag
+tuwjlyqi
+AwVJXam
+Qeleku
+waso
+apjRlPaj
+^rho
+Redlm"Kaq
+6My
+Yko
+ExitProcess
+HeapCr
+SetFileAttribul
+"sA&amp;GTh&gt;dCon"xt
+Envi
+nme$SVngsW.mf
+alFlag
+W(X
+ivw
+xumD.
+Form
+&amp;QueryInf%o
+JobObjec
+Hand
+Sys
+mL@gu
+oAdd
+Jr&amp;ckedD
+Is-8
+F"uHPNs
+fbMGNa|dPipeu
+O u
+Mul
+By6ToWideChar
+n(Req
+dWa
+RLpncy+U`
+Mod
+W5*
+sJG/
+Eudc8adLi
+PV{
+Svab$
+@F4~j
+`6V
+nXthSH"chBrus
+t2l6Cl@
+Rgn
+=acJB
+:DC
+osix"
+a~W
+zmi8RifyWTC
+vldT
+5Dp
+IBD
+Ab\
+J&amp;t
+sWxdow
+6sSUnic7
+bed
+;O*A1NIMEM0
+xDDElPzm
+Key</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-bd926bad-bf8f-4c62-aa8c-cbe723fe5e20">
+        <cybox:Object id="CISCP:Object-026fb1a4-252c-4598-927d-fc004b7972f3">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">61952</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">bee63cf709695038282699af98ef7853</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">15f9a871422385304e499055f521f36afa3e204c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:nKNUSI1H80iwAXKl8mi4BFGProcEvXSt:IUSA89wbUSQI</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-03-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

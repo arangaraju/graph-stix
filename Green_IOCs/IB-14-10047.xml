@@ -1,0 +1,230 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:WinRegistryKeyObj="http://cybox.mitre.org/objects#WinRegistryKeyObject-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:marking="http://data-marking.mitre.org/Marking-1" id="CISCP:IB-14-10047" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Pleasantly Surprised Themed Phishing Email Contains Gh0st RAT Attachment</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 24 January 2014, a malicious email was observed with the subject line "pleasantly surprised". The email had an archive (.zip) attachment with an embedded executable (.exe). The executable is a Gh0st RAT dropper that establishes persistence and then calls out to one (1) command and control (C2) domain.
+
+The data source is tracking this activity under the name "Lonely Warrior".</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-01-28T18:45:50Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-27711e2c-59b8-4f23-ad9a-f63fd861661f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-ecf57d4d-61bb-4fe1-aa2f-88e5b2d287a6"/>
+        <indicator:Indicator idref="CISCP:indicator-46960222-3d13-437d-b8df-5942bc9ce245"/>
+        <indicator:Indicator idref="CISCP:indicator-1db467b2-52b6-426f-b9ff-bff00e070c2a"/>
+        <indicator:Indicator idref="CISCP:indicator-ef888354-c605-4847-8461-07dad78b37de"/>
+        <indicator:Indicator idref="CISCP:indicator-3578b65e-a30a-47ec-9d0c-35be5c98c93d"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ecf57d4d-61bb-4fe1-aa2f-88e5b2d287a6" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This email was sent from a compromised personal account. The subject line "pleasantly surprised" was also used in other incidences discussed in IB-14-10036 and IB-13-10762.
+
+---BEGIN HEADER---
+Return-Path: &lt;ee_matthews@att.net&gt;
+Subject: pleasantly surprised
+X-SENDER-IP: 98.138.229.31
+X-SENDER-REPUTATION: 5.5
+Received: from nm38.bullet.mail.ne1.yahoo.com ([98.138.229.31])
+    ; 24 Jan 2014 13:00:00 +0000
+Received: from [127.0.0.1] by nm38.bullet.mail.ne1.yahoo.com with NNFMP;
+    24 Jan 2014 12:59:58 -0000
+Received: from [98.138.101.131] by nm38.bullet.mail.ne1.yahoo.com with NNFMP;
+    24 Jan 2014 12:56:59 -0000
+Received: from [216.39.60.167] by tm19.bullet.mail.ne1.yahoo.com with NNFMP;
+    24 Jan 2014 12:56:57 -0000
+Received: from [216.39.60.161] by tm3.access.bullet.mail.gq1.yahoo.com with
+    NNFMP; 24 Jan 2014 12:56:57 -0000
+Received: from [127.0.0.1] by omp1027.access.mail.gq1.yahoo.com with NNFMP;
+    24 Jan 2014 12:56:57 -0000
+X-Yahoo-Newman-Property: ymail-4
+X-Yahoo-Newman-Id: 514703.3058.bm@omp1027.access.mail.gq1.yahoo.com
+Received: (qmail 22205 invoked by uid 60001); 24 Jan 2014 12:56:55 -0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=att.net; s=s1024;
+    t=1390568215; bh=ygdfC2P4UxlsF+IpOD8j5fpWI+3AsJVeYD6DLhy4dD4=;
+    h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:Message-ID:Date:From:Reply-To:Subject:To:MIME-Version:Content-Type;
+    b=n7E8FArPwUOxWxmtuXvs9JRex0tuRm9NHXOok35Q27kMobn215KHF+p2kPkSnOi0GVOXCnDl6ZK0sSKyETVfI3AD9caJR2f6wut7XmsHwzSuj3sT5TNcah04cFajpy83kN+xhDOpi44gNLpFiDB2lNHOKHt5yg7tMvq/xicnWNk=
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws; s=s1024; d=att.net;
+    h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:Message-ID:Date:From:Reply-To:Subject:To:MIME-Version:Content-Type;
+    b=ndJ4BHThQcpWpA6k4KOUfFsl3SjcYNTnTshHRoVxjhb6rmE+8rgtl+Ebrs3PbaFOvvJuf3qFXa3S9rlpUTVKoLHczm1ZeZg3SJ/XEmsGZ3eC4tI5vzfb6rqVmqrfn5So/efDu/VNmPuLAi2MjFT5lNCT3NlKYHqDpOaIf7av5D0=;
+X-YMail-OSG: 1BR3k.UVM1k83OwmCiTDD73cLm9dgadOiaU_yp.mMpFSGIw
+    cezL4B6iCRA.4ZnbXa4BuYoD4s3cpmaP.wQMKELeQxrUhqEbHnem8XjEWfYt
+    tj1XuwTFCZmereREHCxd7VMnrIYIjW.MwX7Bu85XS3G45fa3cVPb8SoHoWAi
+    C9dWUbZthawbQ_LFc9w8RXryXXoMV.Rw3aE1Md51XEghCljkwCJ85hQC6YRB
+    KdqUwJDO4EnYW_HN9o6GeLfI.yS.acf2bZAmqut6r_f6W.uWw9UJwPJKW2pu
+    MC40UOG8ke4cr0MdtjVeYE9AMcyUTQ9FmVjzIIt8tBht_6b6V4F7de36yDy2
+    UNgxejkEwQhrz5NYeensJvlbdPAuRDDznCwKyziS9B5bCEu2tMKhOV6a32_M
+    9AjEsycvLlE2yDmkJhW_lQVYSp5xowQ2LmYxsIIH9zo0nqkBgMCX0zhX3ec8
+    JsdWqpQ5VzAajpdExcgO8hW1FxCSZNWEL7juqgcXKkRaDH1y9Od5cSpZYWCH
+    Q1YLPnYFYvG0klNnXhRAroilWZuYwPDDNqlZVQahpiCwByT7bkATvnOFdOAk -
+Received: from [61.150.27.157] by web184302.mail.ne1.yahoo.com via HTTP;
+    Fri, 24 Jan 2014 04:56:55 PST
+X-Rocket-MIMEInfo: 002.001,CgEwAQEBAQ--
+X-Mailer: YahooMailWebService/0.8.173.622
+Message-ID: &lt;1390568215.35070.YahooMailNeo@web184302.mail.ne1.yahoo.com&gt;
+Date: Fri, 24 Jan 2014 04:56:55 -0800 (PST)
+From: [REDACTED]
+Reply-To: [REDACTED]
+
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+    boundary="1059988013-195436630-1390568215=:35070"
+---END HEADER---</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5fd4bda0-1dff-4af7-8d3b-52ec0496188d">
+        <cybox:Object id="CISCP:Object-b53a8f39-50d3-469f-83c3-2f5bb62b23a2">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">ee_matthews@att.net</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">pleasantly surprised</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">1390568215.35070.YahooMailNeo@web184302.mail.ne1.yahoo.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:X_Mailer condition="Equals">YahooMailWebService/0.8.173.622</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-a5c851b1-c557-4c9a-bfde-ad7074e8a527"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-14T08:01:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-46960222-3d13-437d-b8df-5942bc9ce245" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is a zip file with an embedded executable, "Pleasantly surprised.exe"(MD5: 401dd3999271448d76ad302eedc3c9c2).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-bd88acfe-789e-45db-a7ad-371d8b37b5dc">
+        <cybox:Object id="CISCP:Object-a5c851b1-c557-4c9a-bfde-ad7074e8a527">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">pleasantly surprised.zip</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f75a1fd6fa6cb4ce18ba10cf8a15491d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-14T08:01:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1db467b2-52b6-426f-b9ff-bff00e070c2a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is a Gh0stRAT variant. Depending on the version, it will drop the following files:
+
+Win7: C:\Windows\SysWOW64\FastUserSwitchingCompatibilityair.dll
+XP: 6to4air.dll
+
+It also establishes persistence by creating a registry entry at: "HKLM\SYSTEM\ControlSet001\services\FastUserSwitchingCompatibility\Parameters\ServiceDll"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-6274a42c-84a9-40b7-a152-e73e2f4194f1">
+        <cybox:Object id="CISCP:Object-e2791152-cae7-4b06-ad45-13c96675b59f">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Pleasantly surprised.exe</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">401dd3999271448d76ad302eedc3c9c2</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-3d77d0e6-9504-4678-a0ff-628fa82b0694">
+              <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+                <WinRegistryKeyObj:Key condition="Equals">SYSTEM\ControlSet001\services\FastUserSwitchingCompatibility\Parameters\</WinRegistryKeyObj:Key>
+                <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+                <WinRegistryKeyObj:Values>
+                  <WinRegistryKeyObj:Value>
+                    <WinRegistryKeyObj:Name condition="Equals">ServiceDll</WinRegistryKeyObj:Name>
+                    <WinRegistryKeyObj:Data condition="Equals">C:\Windows\system32\FastUserSwitchingCompatibilityair.dll</WinRegistryKeyObj:Data>
+                  </WinRegistryKeyObj:Value>
+                </WinRegistryKeyObj:Values>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Created</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-14T08:01:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ef888354-c605-4847-8461-07dad78b37de" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is dropped by the malware, "pleasantly surprised.exe" (MD5: 401dd3999271448d76ad302eedc3c9c2).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a5ce7fdf-a62d-4baf-83d7-8f59072c570b">
+        <cybox:Object id="CISCP:Object-24a576af-d2c1-4f73-9c9f-c558ba851853">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">6to4air.dll</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ec004f06b228f47982636c4e154fad36</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-14T08:01:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3578b65e-a30a-47ec-9d0c-35be5c98c93d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware calls back to this domain with the the ASDFG flag set. This domain currently resolves to: 98.126.121.202.
+
+This domain has been used for Gh0st RAT communication in IB-14-10036.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e577a1bd-e813-43a1-9cb7-c55f0336c800">
+        <cybox:Object id="CISCP:Object-04a661a1-b570-4e06-9db8-05a4b4408af1">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">www.mtjyzx.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-01-14T08:01:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

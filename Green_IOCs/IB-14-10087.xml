@@ -1,0 +1,189 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-14-10087" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analyzed Malicious File Attempts HTTP GET Request</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 6 February 2014 a data source analyzed a suspicious executable. The file was identified as malware. If successfully executed, the malware initiates an HTTP session with the domain safecrome.in.net over TCP port 81.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-04-09T16:08:02Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-9a29d1f8-c54e-495a-b364-ecba679f2df4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-f00b9c91-bbfb-42c6-867c-338470fed3b8"/>
+        <indicator:Indicator idref="CISCP:indicator-3da61857-9d1d-429a-a17c-18b2156a9e50"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f00b9c91-bbfb-42c6-867c-338470fed3b8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Based on automated analysis, this file imports the following:
+
+Imported File: kErNel32.Dll
+Function:   UnregisterWait
+Function:   GetACP
+Function:   GetSystemDefaultLCID
+Function:   GetComputerNameExW
+Function:   GetProfileIntA
+Function:   GetProcAddress
+Function:   GetWriteWatch
+Function:   BackupWrite
+Function:   GetStartupInfoA
+Function:   OpenMutexW
+Function:   HeapCompact
+Function:   GetFileAttributesExA
+Function:   GetTimeFormatA
+Function:   SetCommState
+Function:   MultiByteToWideChar
+Function:   GetModuleHandleA
+Function:   CreateWaitableTimerA
+Function:   WideCharToMultiByte
+Function:   GetExitCodeProcess
+Function:   SetLastError
+Function:   GetCommandLineA
+Function:   GetUserDefaultLangID
+Function:   DeleteCriticalSection
+Function:   GetThreadPriority
+Function:   lstrcmpA
+Function:   GetDateFormatA
+
+Imported File: coMCtL32.dlL
+Function:   CreateStatusWindowA
+
+Imported File: WInsPoOl.dRV
+Function:   AdvancedDocumentPropertiesW
+
+Imported File: cOMDLG32.DLL
+Function:   ChooseColorW
+
+Imported File: usEr32.DlL
+Function:   MessageBoxA
+Function:   EnumThreadWindows
+Function:   DeregisterShellHookWindow
+Function:   CreatePopupMenu
+Function:   AppendMenuA
+Function:   CreateDesktopW
+Function:   SetClipboardViewer
+Function:   DefFrameProcW
+Function:   SendMessageTimeoutA
+Function:   ExitWindowsEx
+Function:   EditWndProc
+
+Imported File: sHlWApI.Dll
+Function:   SHRegSetPathA
+Function:   StrRStrIA
+Function:   PathRenameExtensionW
+Function:   SHRegGetPathW
+Function:   SHRegSetUSValueW
+Function:   IntlStrEqWorkerW
+Function:   PathRemoveBlanksW
+Function:   PathAppendW
+Function:   SHDeleteEmptyKeyA
+Function:   StrRChrIW
+Function:   PathCombineW
+Function:   UrlCanonicalizeW
+Function:   PathQuoteSpacesW
+Function:   SHIsLowMemoryMachine
+Function:   PathGetCharTypeA
+Function:   PathSetDlgItemPathW
+Function:   PathRelativePathToW
+Function:   UrlGetLocationA
+Function:   PathIsUNCServerW
+Function:   PathStripPathA
+Function:   StrChrIA
+Function:   PathRemoveBackslashW
+Function:   PathIsDirectoryA
+Function:   StrCatBuffA
+Function:   PathStripPathW
+Function:   SHRegEnumUSKeyA
+Function:   StrCSpnIA
+Function:   StrDupA
+Function:   wvnsprintfA
+Function:   StrCmpNA
+
+Resource information reported within the executable as:
+CompanyName:  Formosa Soft Inc. www.formosasoft.com
+FileDescription:  Enigma Quit
+FileVersion:  69.99.55
+InternalName:  Alley Skill Renown
+LegalCopyright:  Copyright Bagel
+OriginalFilename:  Moves.exe
+ProductName:  Jets Keen Idea Quail Deputy
+
+An empty file was observed in connection with activity related to the file s.exe (MD5: dedcff9eefd7ac617b8deba78ba6f99f). The file was named autoexec.bat.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a3de40fa-39d3-4e76-a5de-7ab3b8d39fc6">
+        <cybox:Object id="CISCP:Object-12c79a64-7848-4165-af44-c461abd68222">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">s.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">189952</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">dedcff9eefd7ac617b8deba78ba6f99f</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">04114d5bab9a69b1f4904768346ffe235d7a39e5</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">931bc492edb18ede700a038fa3c577bc6318dbd3dcadbf8fb1e70b4161a94d02</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:aLm1m3h3uNmrq/uQBgOF8bWAmGdMPthpERl3Y5Sq6YN0iK:cluNrufpWAmGdMPthiRdYMq6YnK</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-06T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3da61857-9d1d-429a-a17c-18b2156a9e50" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The following elements of an HTTP GET request were initiated:
+
+GET /bvbmvpf/gate.php HTTP/1.0
+User-Agent: Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US) 
+Host: safecrome.in.net:81</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-691d985d-2bbb-4fdf-be71-7b92d37c94e5">
+        <cybox:Object id="CISCP:Object-e5cddcd9-03c3-4127-acdb-82a76faadad6">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://safecrome.in.net:81/bvbmvpf/gate.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-02-06T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

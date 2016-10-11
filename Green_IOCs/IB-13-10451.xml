@@ -1,0 +1,231 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-13-10451" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Malicious advertising campaign associated with the Neutrino exploit kit</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Watchlist</stix:Package_Intent>
+    <stix:Description>On July 25, 2013, several domains were identified in a malicious advertising campaign that used the Neutrino Exploit Kit. Malicious files associated with the exploit kit were hosted on the following sites:
+
+ad.yieldmanager.com
+xce4h.info
+fifxqgymlgshju.is-a-geek.org
+kdkynmcytliluwdyot.is-a-geek.org
+kmoixdwtguuuitoisb.is-a-geek.org
+kpqeqregusestrpmwm.is-a-geek.org
+http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+
+In March 2013, the Neutrino Exploit Kit was known to exploit vulnerabilities listed in CVE-2013-0431 and CVE-2012-1723. 
+
+References regarding Neutrino Exploit Kit:
+http://malforsec.blogspot.com/2013/07/yet-another-encounter-with-neutrino-ek.html
+http://blog.trendmicro.com/trendlabs-security-intelligence/a-new-exploit-kit-in-neutrino/</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-08-08T19:33:56Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-d1964972-6aa1-4eab-a216-ce71adc82178" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-cde72e3a-a455-45e9-ace7-ea14186e0c20"/>
+        <indicator:Indicator idref="CISCP:indicator-1058453a-8daa-4613-8027-b9d58d8e2355"/>
+        <indicator:Indicator idref="CISCP:indicator-86cf4c96-1def-4243-8d09-165f2ce93471"/>
+        <indicator:Indicator idref="CISCP:indicator-e61c8cf2-7f96-48de-a7ef-7b0e9c9d7df5"/>
+        <indicator:Indicator idref="CISCP:indicator-93f9f291-fc93-42b4-8b16-19550871e4f8"/>
+        <indicator:Indicator idref="CISCP:indicator-94c194ea-8009-4a7f-a6d8-355e258b897a"/>
+        <indicator:Indicator idref="CISCP:indicator-86311487-b73d-4e73-bcc5-90e12e21b15f"/>
+        <indicator:Indicator idref="CISCP:indicator-42cd96f6-7e50-46a9-8e70-407a635ad555"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-cde72e3a-a455-45e9-ace7-ea14186e0c20" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>The attacker inserted malicious advertisements in the ad.yieldmanager.com network to redirect some advertisements to this URL: http://xce4h.info/search.php?username=index&amp;query=Men's Clothing
+
+The URL http://xce4h.info/search.php?username=index&amp;query=Men's Clothing refers to http://fifxqgymlgshju.is-a-geek.org:8000/sjuke?dtmcdmwl=2591216 and other multiple subdomains of is-a-geek.org:
+
+Yield Manager is a legitimate advertising technology system owned by Yahoo. It uses tracking cookies saved on the user's system. It is known to submit the user's browser data such as names, contact information, and online forms. Yield Manager had been previously compromised in other malicious advertisement campaigns associated with spyware or other malicious activity.
+
+References for ad.yieldmanager:
+http://www.theguardian.com/technology/2012/apr/24/yieldmanager-tracking-trackers-cookies-web-monitoring
+http://www.ehow.com/how_5104180_remove-adyieldmanager.html
+http://botcrawl.com/how-to-remove-the-ad-yieldmanager-virus/</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-2c884c5e-4464-44ab-ab68-fc7c869d811b">
+        <cybox:Object id="CISCP:Object-9b2accd9-5330-4216-bf60-718ec10fb535">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://xce4h.info/search.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1058453a-8daa-4613-8027-b9d58d8e2355" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>The rest of the Neutrino exploit kit was hosted at the following sites:
+
+http://fifxqgymlgshju.is-a-geek.org:8000/sjuke?dtmcdmwl=2591216
+http://fifxqgymlgshju.is-a-geek.org:8000/bcjtznejx.js
+http://fifxqgymlgshju.is-a-geek.org:8000/wcugy.css
+http://fifxqgymlgshju.is-a-geek.org:8000/chsamblmk.css
+http://fifxqgymlgshju.is-a-geek.org:8000/wopk.js
+http://fifxqgymlgshju.is-a-geek.org:8000/fjkfmyjjslvkl.js
+http://fifxqgymlgshju.is-a-geek.org:8000/gxnighhtlr.js
+http://fifxqgymlgshju.is-a-geek.org:8000/lrar.css
+http://fifxqgymlgshju.is-a-geek.org:8000/ofbyygiimv.js
+http://fifxqgymlgshju.is-a-geek.org:8000/onepzracndxu.css
+http://fifxqgymlgshju.is-a-geek.org:8000/ygeljgxswdlkjwn.css
+http://fifxqgymlgshju.is-a-geek.org:8000/weyhajs.js
+http://fifxqgymlgshju.is-a-geek.org:8000/pqayxhfrtx.js
+http://fifxqgymlgshju.is-a-geek.org:8000/index.js
+http://fifxqgymlgshju.is-a-geek.org:8000/lnhklo.js
+http://fifxqgymlgshju.is-a-geek.org:8000/ubobxtaftjygy.js
+http://fifxqgymlgshju.is-a-geek.org:8000/cfdssagter.gif
+http://fifxqgymlgshju.is-a-geek.org:8000/goqpmxobelnsnqb.jpg
+http://fifxqgymlgshju.is-a-geek.org:8000/lyvwkkpfleg.jpg
+http://fifxqgymlgshju.is-a-geek.org:8000/wlocdiz.jpg
+http://fifxqgymlgshju.is-a-geek.org:8000/zzkvkvkphpv.jpg
+
+The malware also references the folowing Google API file: 
+http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ad4d2543-058b-425c-a138-2f5db2b1ad3b">
+        <cybox:Object id="CISCP:Object-bad5b902-d607-4eb3-97ed-bbbd30ea2a81">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://fifxqgymlgshju.is-a-geek.org:8000/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-86cf4c96-1def-4243-8d09-165f2ce93471" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>A POST request was observed to this URL.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5a15431b-5cfa-42e1-9be4-519d1f5b2ca0">
+        <cybox:Object id="CISCP:Object-556ca7be-a8fd-40c3-8720-d60314798fbc">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://fifxqgymlgshju.is-a-geek.org:8000/uxzrobixfi</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e61c8cf2-7f96-48de-a7ef-7b0e9c9d7df5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Browser-Invoked Java User Agent String: (Mozilla/4.0 (Windows XP 5.1) Java/1.6.0_27)
+
+The URL http://fifxqgymlgshju.is-a-geek.org:8000/mvcspuocecux?laetavaakva=spisquehbuh refers to an application Java archive.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-14959c9d-743b-42de-a752-1e9add272448">
+        <cybox:Object id="CISCP:Object-5f99114b-fa91-4f07-be76-72ca65c9ce3f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://fifxqgymlgshju.is-a-geek.org:8000/mvcspuocecux</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-93f9f291-fc93-42b4-8b16-19550871e4f8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>The URL http://fifxqgymlgshju.is-a-geek.org:8000/jzgqqhf?labusqpgtt=spisquehbuh refers to an application octet stream.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-61e2781e-7844-4bbd-b897-17e615a27eba">
+        <cybox:Object id="CISCP:Object-097d898c-ba29-4d66-8ce3-37625ad41cf6">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://fifxqgymlgshju.is-a-geek.org:8000/jzgqqhf</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-94c194ea-8009-4a7f-a6d8-355e258b897a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain was also used to serve malware in this campaign.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-fe6b1b63-341b-41c2-a691-d059e1cdbee6">
+        <cybox:Object id="CISCP:Object-fd6a5b4e-5463-4f82-b62b-3d3e3979f8eb">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">kdkynmcytliluwdyot.is-a-geek.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-86311487-b73d-4e73-bcc5-90e12e21b15f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain was also used to serve malware in this campaign.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-47b211d3-f9c1-4691-8dca-083d915e0fad">
+        <cybox:Object id="CISCP:Object-2bdf7826-add9-4bb7-bbde-71b376280256">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">kmoixdwtguuuitoisb.is-a-geek.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-42cd96f6-7e50-46a9-8e70-407a635ad555" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain was also used to serve malware in this campaign.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-bd1cafa6-69ac-4468-b9e9-677664888670">
+        <cybox:Object id="CISCP:Object-e37c50ab-78f6-471e-8d32-ba2c35bdcd4e">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">kpqeqregusestrpmwm.is-a-geek.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

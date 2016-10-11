@@ -1,0 +1,181 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-13-10814" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of a Keystroke-Logger From a Spoofed IRS Website Address</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>A keystroke-logger malware is downloaded in a RAR file from a spoofed IRS website address. The captured content is exported using hard-coded email credentials (duncan.ritchie2@gmail.com) and SMTP settings. No information is available on the initial attack vector or delivery mechanism.  
+
+This Indicator Bulletin incorporates data originally released in US-CERT MAR-328952.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-12-04T20:59:08Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-9b524c1e-a9fd-48c9-8d89-08f6b55e1481" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-1299542e-0711-4341-98e9-d634674b494e"/>
+        <indicator:Indicator idref="CISCP:indicator-cd2b4eab-6ffa-45b6-b015-f5a41d3fef13"/>
+        <indicator:Indicator idref="CISCP:indicator-dd754d27-774d-4a4f-bc8b-6b999f5cce73"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1299542e-0711-4341-98e9-d634674b494e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>www.irs.gov.uac1.forms.publications.tax.products.actlap.org
+
+A RAR file containing a keystroke-logger executable is downloaded from this domain, which resolves to IP 67.55.49.64. This IP address currently hosts over 60 domains.  
+
+There is no information available on the attack vector/delivery or how the domain is accessed by the victim.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c619207a-5840-4e64-858b-96120492891f">
+        <cybox:Object id="CISCP:Object-a6560448-364d-450a-8ff7-1b2c2feee9b5">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">www.irs.gov.uac1.forms.publications.tax.products.actlap.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-cd2b4eab-6ffa-45b6-b015-f5a41d3fef13" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>IRS.DOWNLOAD.IRS_NO34.89JN76D30O.REFHYAJ7UJAJ.rar
+
+The RAR file is downloaded from the spoofed IRS website address and contains the executable file. It was reported that it was downloaded over HTTP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-09262f41-e88e-49eb-b2b2-30c0e2ef19fd">
+        <cybox:Object id="CISCP:Object-b5b174f0-193e-4bd3-8c48-7e910e8ccb3b">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">IRS.DOWNLOAD.IRS_NO34.89JN76D30O.REFHYAJ7UJAJ.rar</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">7719</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">07624e6cb9376919cf15db5aea1ca68a</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">eb3919761ff570d9442d3927a88a54dc4d8ecaf9</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">192:YtUNrzvRFcemmQ0ovKC25/nXjxbqlF9zgDm:YtsvXctJvK9ZnXA9am</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-dd754d27-774d-4a4f-bc8b-6b999f5cce73" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>IRS.DOWNLOAD.IRS_NO34.89JN76D30O.REFHYAJ7UJAJ.exe
+
+This executable is the keystroke-logger malware.
+
+Packer:
+Microsoft Visual C# v7.0 / Basic .NET
+
+The malware copies itself to one of the two locations:
+
+"%APPDATA%\Microsoft\WinUpdater.exe" or "%APPDATA%\Microsoft\tempManager.exe"
+ 
+Additionally, one of the following, corresponding registry keys is created to gain persistence: 
+
+Registry: HKCU\Software\Microsoft\Windows\CurrentVersion\Run\tempManager
+HKCU\software\Microsoft\Windows\CurrentVersion\Run\WinUpdater
+
+Section:
+c7268643b4a720ed11f50ab877592681 (header) 1024
+39fdae2f04eccd4ddbe3263fa8a6a0bf .text 15360
+aa2ea3f419a64b8edfe239e27cd7280b .rsrc 1024
+b939ba8855bd6315d080eab71a1bfc41 .reloc 1024
+
+This keylogger is implemented in .NET framework. The application consists of one main class "RapzoK" with two nested classes "PCD" and "ThyHook". Class "RapzoK" contains the following attributes.
+
+public static string ThyEmail = "duncan.ritchie2@gmail.com";
+public static string ThyPass = "GftBIcv&amp;IT30";
+public static bool ThyStart = true;
+public static bool ThyRun = true;
+public static bool ThyMelt = true;
+public static bool ThyTM = false;
+public static bool ThyClip = true;
+public static string ThyLog = "";
+public static int ThyInterval = 10000;
+public static int ThyPort = 587;
+public static string thySmtp = "smtp.gmail.com";
+public static RapzoK.ThyHook ThyKey;
+
+These attributes are simple mail transfer protocol (smtp) settings which will be used to connect to Gmail to export captured data. 
+
+The class "PCD" is a simple string obfuscator, it exposes two methods, DD2() and DecryptData(). The DD2() methods takes two arguments, a Base64 encoded string and a key. The purpose of this method is to invoke the DecryptData() method with the Base64 decoded form of the input and the key. The DecryptData() method performs simple mathematical operations to transform the data into plaintext. The key is a hardcoded string "False". Below is the implementation of the code in python to assist with the analysis.
+
+def decode (input):
+    bdata = bytearray(base64.b64decode (input))
+    key = bytearray ("False")
+    adjustor = bdata[-1]
+    decode = ""
+    for index in xrange (0, len(bdata) -1):
+        decode += chr (bdata[index] - ((len(bdata) -1) % len(key)) - key[index%len(key)] + adjustor)
+    print (decode)
+
+The "ThyHook" class is responsible for capturing keystrokes and populating the "ThyLog" property listed above. The "RapzoK" main class is responsible for making secured SMTP connection with "smtp.gmail.com" via port TCP/587 with the credentials from "ThyEmail" and "ThyPass" properties. The keylog's data is exported via email messages with the "To" and "From" addresses set to "duncan.ritchie2@gmail.com". To maintain persistence, the malware copies itself to one of the two locations, "%APPDATA%\Microsoft\WinUpdater.exe" or "%APPDATA%\Microsoft\tempManager.exe".
+
+The keylog's data is exfiltrated via email messages with the "To" and "From" addresses set to "duncan.ritchie2@gmail.com".</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-857b4c56-65a3-4c66-b43c-e44f6e4241f9">
+        <cybox:Object id="CISCP:Object-20b0be34-3c72-48d0-903f-a43752ddf276">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">IRS.DOWNLOAD.IRS_NO34.89JN76D30O.REFHYAJ7UJAJ.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">18432</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5200925b8c753e22ed1b3bf4e4049b2c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3dfcb43c749e9d575de1b5f3fdda0b0b7bb3e757</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:5LUgIpwYU1UjPVQRV3pMXWbxLTVeV7W8UUddmh8:JRy3U1kPmVZ4WU/UUqh8</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-11-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

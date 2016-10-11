@@ -1,0 +1,563 @@
+<stix:STIX_Package xmlns:MutexObj="http://cybox.mitre.org/objects#MutexObject-2" xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-13-10672" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Po 456723 Themed Phishing Email Leads to DarkComet RAT Infection</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 5 October 2013, a "Po 456723" theme phishing email was observed.  the email contained a malicious attachment file that leads to the targeted host being infected with the DarkComet Remote Access Trojan (RAT). Analysis also identified one call back domain.
+
+This document incorporates data originally released as MIFR-318757.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-10-17T12:47:19Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-804bb80f-0f97-4a72-99f9-ed610b8f2a55" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-17b70f11-79fb-4bbc-9559-f70bab2ffc59"/>
+        <indicator:Indicator idref="CISCP:indicator-eb6632fa-f77e-4711-8501-483fe25f2cc3"/>
+        <indicator:Indicator idref="CISCP:indicator-35b38bd6-4b08-4545-9ec4-c760509d3f61"/>
+        <indicator:Indicator idref="CISCP:indicator-040d2cf2-a232-4875-abea-9e47da348510"/>
+        <indicator:Indicator idref="CISCP:indicator-2cc3be64-d06d-4117-b441-463e3972f532"/>
+        <indicator:Indicator idref="CISCP:indicator-af7e50b3-794b-4e9c-8c89-5db7319d8e4b"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-17b70f11-79fb-4bbc-9559-f70bab2ffc59" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>----- BEGIN EMAIL HEADER -----
+220 [REDACTED] ESMTP Smtpd; Sat, 5 Oct 2013 11:22:55 -0400 
+HELO nm32.bullet.mail.ne1.yahoo.com 
+250 [REDACTED] Hello nm32.bullet.mail.ne1.yahoo.com [98.138.229.25], pleased to meet you 
+MAIL FROM:&lt;timlawson789@yahoo.co.uk&gt; 
+250 2.1.0 &lt;timlawson789@yahoo.co.uk&gt;... Sender ok 
+RCPT TO:&lt; &gt; 
+250 2.1.5 &lt; &gt;... Recipient ok 
+DATA 
+354 Enter mail, end with "." on a line by itself 
+Received: from [127.0.0.1] by nm32.bullet.mail.ne1.yahoo.com with NNFMP; 05 Oct 2013 15:03:31 -0000 Received: from [98.138.90.55] by nm32.bullet.mail.ne1.yahoo.com with NNFMP; 05 Oct 2013 15:00:32 -0000 
+Received: from [77.238.189.57] by tm8.bullet.mail.ne1.yahoo.com with NNFMP; 05 Oct 2013 15:00:24 -0000 
+Received: from [212.82.98.93] by tm10.bullet.mail.ird.yahoo.com with NNFMP; 05 Oct 2013 15:00:24 -0000
+Received: from [127.0.0.1] by omp1030.mail.ir2.yahoo.com with NNFMP; 05 Oct 2013 15:00:23 -0000 
+X-Yahoo-Newman-Property: ymail-4 
+X-Yahoo-Newman-Id: 966159.82598.bm@omp1030.mail.ir2.yahoo.com 
+Received: (qmail 11754 invoked by uid 60001); 5 Oct 2013 15:00:23 -0000 
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.co.uk; s=s1024; t=1380985223; bh=wLVj0WJEDLdtzJEhv8qB3JYxm5LnQ933yX0RsiUPn48=; h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:Message-ID:Date:From:Reply-To:Subject:To:MIME-Version:Content-Type; b=Z8KEPZN9b5SPx+6O2FBbT2LUT7h/RAOtC/WQeBbMPf9q3O1NGhxBC/kUUbMf0qtifY6kWf7TjRUzrA8C1jNRPq+p3U1SiYl5rzXVj+ynJXSiGDHC5aGzQ0Sqv/oDis4+Ahqm0W5Clf4cqXUWNHYapJUrXjNKnh/g2ow9jRXAkUA= 
+DomainKey-Signature:a=rsa-sha1; q=dns; c=nofws; s=s1024; d=yahoo.co.uk; h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:Message-ID:Date:From:Reply-To:Subject:To:MIME-Version:Content-Type; b=4+1mykehUsBgjVOntEfIUG8j50fmbSdRqfMD9bsHpAIPs8zX8h6lYgRPa0GJzbM9Whn6h4fW7ONQE7TvMRls6AxmCyouvIXD1wGDK3l69u71iOPWIfcB7wmeIev4Sdz26dTAFdRdICRnVaJgyQH+uiSKyf2frZHrl+TYXSqMx5E=; X-YMail-OSG: 0une4dYVM1mBWzvQ6j_t5fnQdmAKDbDEhbpJvKz6fXQY0yP I1Hn5v336ML5ZVFovyvmGheSDzn0YjOU.oEu9.S9XSOnUl8vwTyR9Ev3AaFi vU1dXU1SIma8T1W8MMekGlXAnbQQzMGOieIVHmCcP9IAEBij9PeKzOm67R4I c_EvdUysW76QVyp02b7kti13q_scO4.NfJhZRV1w9aYQgDjAaAJ16ysgZely o4hXeOyj73.7pKARvk5GKSFqU4oNkp4YDhqWN9qQMGFO403YJmLRwBLVU2f. XYoUV7s7biBSvr0y0v0o8N8gluHlHR0jBzn3EuC8WvI4YLa7GPq0R1kZCcDl OBcrNoSXX8NFAJWaV3aDJyhoVXrBYQ7JyJPahKftTy14AFN_OvKWM7ue32pe XTLkjF864xYZzt4fQcSid3CEpHgdJtYJ8WUoziPMhddrGZ8r4N361pM5axZM ymTDzhDtT9YEkXR0ozSwc.4whYPXfaJgs3YMBPesgnSiNoxdDdsdWw.XIyP_ RI5WKvfA9RL4BORxGy3irXI29VzsX4v9c7boqt_bLCIsAcS.U.JqKfqFBRtH BGdcA3Ko- 
+Received: from [79.172.242.28] by web171503.mail.ir2.yahoo.com via HTTP; Sat, 05 Oct 2013 16:00:23 BST 
+X-Rocket-MIMEInfo: 002.001,U2lyLAoKR29vZCBkYXkgZnJvbSBBbGlwaGVuICYgWnViZWUgR2xvYmFsIEx0ZCwgV2UgZ290IHlvdXIgcmVjb21tZW5kYXRpb24gZnJvbSBvdXIgY3VzdG9tZXIsIHdobyBoYXBwZW5zIHRvIGJlIHlvdXIgY3VzdG9tZXIgYXMgd2VsbC4gV2Ugd2lsbCBsaWtlIHRvIHBsYWNlIHNvbWUgb3JkZXIuIGtpbmRseSBzZWUgdGhlIGF0dGFjaG1lbnQgYW5kIGdldCBiYWNrIHRvIHVzIGZvciB1cyB0byBzdGFydCBhIGJ1c2luZXNzIHdpdGggeW91IGFuZCBhbHNvIHF1b3RlIHlvdXIgcHJpY2VzLCBGT0IgYW5kIHBheW0BMAEBAQE- 
+X-Mailer: YahooMailWebService/0.8.160.587 
+Message-ID: &lt;1380985223.10162.YahooMailNeo@web171503.mail.ir2.yahoo.com&gt; 
+Date: Sat, 5 Oct 2013 16:00:23 +0100 (BST) 
+From: Timlawson Lawson &lt;timlawson789@yahoo.co.uk&gt; 
+Reply-To: Timlawson Lawson &lt;timlawson789@yahoo.co.uk&gt; 
+Subject: FW:Re: Po 456723 
+To: [REDACTED] MIME-Version: 1.0 
+Content-Type: multipart/mixed; boundary="-1627698416-602448584-1380985223=:10162"
+----- END EMAIL HEADER -----
+
+----- BEGIN EMAIL BODY -----
+From: Timlawson Lawson &lt;timlawson789@yahoo.co.uk&gt; 
+Subject: FW:Re: Po 456723 
+Date: Sat, 5 Oct 2013 
+Attachment: profoma invoice.rar
+----- END EMAIL BODY -----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-97aa868e-ae60-4c29-8959-e953a81c640c">
+        <cybox:Object id="CISCP:Object-22155d26-bca0-4c6d-b42a-c5fdfeced388">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">timlawson789@yahoo.co.uk</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">FW:Re: Po 456723</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">1380985223.10162.YahooMailNeo@web171503.mail.ir2.yahoo.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">timlawson789@yahoo.co.uk</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+              <EmailMessageObj:X_Mailer condition="Equals">YahooMailWebService/0.8.160.587</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-391b9488-7561-4425-af2f-e1893f682a0f"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-eb6632fa-f77e-4711-8501-483fe25f2cc3" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is the attachment file. It contains the malicious file "profoma invoice.exe".</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5deb1e70-4e2b-46d3-9248-8e1980c57110">
+        <cybox:Object id="CISCP:Object-391b9488-7561-4425-af2f-e1893f682a0f">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">profoma invoice.rar</FileObj:File_Name>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-35b38bd6-4b08-4545-9ec4-c760509d3f61" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file may also utilize the filename "IMJDC.exe".
+
+This file is the DarkComet Remote Access Trojan (RAT). 
+
+Upon execution, an autostart entry point will be created in the registry. The malware will be copied to the location, "%USERPROFILE%\Application Data\IMJDC.exe."
+
+To prevent multiple instances of the file from running a mutex "DC_MUTEX-CA2HUG0" will be created.
+
+Upon successful execution, the malware will perform a name lookup for domain "iworiver.no-ip.biz". Once resolved, the malware will attempt to connect to the DarkComet client. Traffic between the client and server is encrypted using RC4, with "#KCMDDC51#-890" as the key. The initial encrypted RC4 traffic sent from an infected host contains system information, such as host name, OS and service pack level, IP address and user name of the compromised account. 
+
+Decrypting the traffic using RC4 and the key, "#KCMDDC51#-890"," the following host information is revealed:
+infoesGuest16|10.1.1.1 / [10.1.1.1] : 1604|VICTIM / Administrator|163895078|0s|Windows XP Service Pack 3 [2600] 32 bit ( C:\)|x||US|Program Manager|{2feca9c0-bd86-11de-b525-806d6172696f-673902075}|33%|English (United States) US / -- |10/9/2013 at &#192;jXP&#184;&#230;:&#215;)&#376;7 &#206;&#161;&#8226;&#179;
+
+The Dark Comet RAT provides numerous administrative options, such as process manipulation, remote shell access, remote chat, file management, keylogging and more. Key log data is stored in a dated file within %USERPROFILE%\Application Data\dclogs. For example, the contents of log file "2013-10-08-3.dc":
+:: Program Manager (1:31:32 PM)
+:: Save To File (1:31:37 PM)
+[DEL][DEL]
+:: Run (1:31:38 PM)
+:: C:\WINDOWS\system32\cmd.exe (1:39:00 PM)
+ipconfig
+
+Keylogging can be enabled or disabled through the DarkComet management interface. The malware contains the following version information, embedded as a resource:
+Name: Version
+Label: 1
+Content:
+Length Of Struc: 024Ch
+Length Of Value: 0034h
+Type Of Struc: 0000h
+Info: VS_VERSION_INFO
+Signature: FEEF04BDh
+Struc Version: 1.0
+File Version: 31.30.50.36
+Product Version: 31.30.50.36
+File Flags Mask: 0.23
+File Flags:
+File OS: WINDOWS32
+File Type: APP
+File SubType: UNKNOWN
+File Date: 00:00:00 00/00/0000
+Struc has Child(ren). Size: 496 bytes.
+Child Type: StringFileInfo
+Language/Code Page: 1033/1200
+CompanyName: nJSDHiush23 ghSIUDHci
+FileDescription: nJSDHiush23 ghSIUDHci
+FileVersion: 31, 30, 50, 36
+LegalCopyright: Copyright (C) 2013
+ProductVersion: 31, 30, 50, 36
+Child Type: VarFileInfo
+Translation: 1033/1200</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-89420e4b-ff01-4e1d-9817-d0e094979dee">
+        <cybox:Object id="CISCP:Object-e9cd3954-7e84-4b6d-a855-e5cffd1a75c0">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">profoma invoice.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">630784</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0d2f52e463aa6bda9c993e4e28699647</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">778498f0cb893d82b420addea720cc54154d59f1</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:s57FkY3aT6jAwotAVcF6Yfy7oO1bKEJfpOKQjHZ:s57Ft3aTmAwonVfjOTJxOx</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-b0bd052c-ec6c-4ba7-8359-61bd509a9408">
+              <cybox:Properties xsi:type="MutexObj:MutexObjectType">
+                <MutexObj:Name condition="Equals">DC_MUTEX-CA2HUG0</MutexObj:Name>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Contains</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-040d2cf2-a232-4875-abea-9e47da348510" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This mutex is created by the file "profoma invoice.exe".</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-14a10e38-8492-480c-893f-b203e03d4b36">
+        <cybox:Object id="CISCP:Object-0f8f9339-2fbc-4190-9cd1-41ee363bbab1">
+          <cybox:Properties xsi:type="MutexObj:MutexObjectType">
+            <MutexObj:Name condition="Equals">DC_MUTEX-CA2HUG0</MutexObj:Name>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2cc3be64-d06d-4117-b441-463e3972f532" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The following initial request is sent from an infected host to the domain "iworiver.no-ip.biz":
+9f5699707bcdc8c751a55f2ce98f3201c7f4248ba8fc340c2f20d84a73f2f5f3411a4143a2fabff857e601082774dec870a071d5879af61ed2c3ffe90cfd3ba259634c74aaf0c1d6562181c1f2a7c8fa2f1eb105875ee4f8446fdeaf64164f07922657b58f77c41ba1ee6d4b9fc83f9c8ff4ea3c7503a469e0372ddce2e45a424a4b3f059a6bd5bf4466391bb7f4abdd1c66062910040d723d22fa09bd6b99f3c616fc59c71b8dbf31dac41ef22ea8679a429e3ba9b9b4d1e201ca3ec22ebc2886f508173ad3317a97c59e55b1ccdd1d9096e47cb3df6e3998f171bb9a68bcc011b383077b5a558db658782d27d1e5c001405cb4f961a04e35b6c090381fa26b30edd529daf4494448071d96c253914d</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7ed2b5e4-a4c5-4afc-9f53-28a8fa8ab1f2">
+        <cybox:Object id="CISCP:Object-895322d6-f2fd-4815-aace-ef08d08d335b">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">iworiver.no-ip.biz</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-af7e50b3-794b-4e9c-8c89-5db7319d8e4b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Filename: dum[RANDOM].tmp
+
+Antivirus Idenitifier:
+Kaspersky: UDS:DangerousObject.Multi.Generic
+McAfee: Generic.qa
+Symantec: Backdoor.Trojan
+TrendMicro: TROJ_GEN.R0CBC0EHL13
+
+Packer: Microsoft Visual C++ DLL *sign by CodeRipper
+Compile Date: 2013-06-26 20:20:25 UTC
+
+This file is dropped by "profoma invoice.exe," and injected into the process "explorer.exe". It contains imports for process creation, file actions, and registry functions for staging the malware.
+
+STRING DATA ------&gt;
+string too long
+invalid string position
+Unknown exception
+EncodePointer
+DecodePointer
+FlsFree
+FlsSetValue
+FlsGetValue
+FlsAlloc
+CorExitProcess
+bad exception
+runtime error
+TLOSS error
+SING error
+DOMAIN error
+R6034
+An application has made an attempt to load the C runtime library incorrectly
+Please contact the application's support team for more information.
+R6033
+- Attempt to use MSIL code from this assembly during native code initialization. 
+This indicates a bug in your application. It is most likely the result of calling 
+an MSIL-compiled (/clr) function from a native constructor or from DllMain.
+R6032
+- not enough space for locale information
+R6031
+- Attempt to initialize the CRT more than once.
+This indicates a bug in your application.
+R6030
+- CRT not initialized
+R6028
+- unable to initialize heap
+R6027
+- not enough space for lowio initialization
+R6026
+- not enough space for stdio initialization
+R6025
+- pure virtual function call
+R6024
+- not enough space for _onexit/atexit table
+R6019
+- unable to open console device
+R6018
+- unexpected heap error
+R6017
+- unexpected multithread lock error
+R6016
+- not enough space for thread data
+This application has requested the Runtime to terminate it in an unusual way.
+Please contact the application's support team for more information.
+R6009
+- not enough space for environment
+R6008
+- not enough space for arguments
+R6002
+- floating point support not loaded
+Microsoft Visual C++ Runtime Library
+&lt;program name unknown&gt;
+Runtime Error!
+Program:
+!"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrst
+uvwxyz{|}~
+Complete Object Locator'
+Class Hierarchy Descriptor'
+Base Class Array'
+Base Class Descriptor at (
+Type Descriptor'
+`local static thread guard'
+`managed vector copy constructor iterator'
+`vector vbase copy constructor iterator'
+`vector copy constructor iterator'
+`dynamic atexit destructor for '
+`dynamic initializer for '
+`eh vector vbase copy constructor iterator'
+`eh vector copy constructor iterator'
+`managed vector destructor iterator'
+`managed vector constructor iterator'
+`placement delete[] closure'
+`placement delete closure'
+`omni callsig'
+delete[]
+new[]
+`local vftable constructor closure'
+`local vftable'
+`RTTI
+`udt returning'
+`copy constructor closure'
+`eh vector vbase constructor iterator'
+`eh vector destructor iterator'
+`eh vector constructor iterator'
+`virtual displacement map'
+`vector vbase constructor iterator'
+`vector destructor iterator'
+`vector constructor iterator'
+`scalar deleting destructor'
+`default constructor closure'
+`vector deleting destructor'
+`vbase destructor'
+`string'
+`local static guard'
+`typeof'
+`vcall'
+`vbtable'
+`vftable'
+operator
+delete
+new
+__unaligned
+__restrict
+__ptr64
+__clrcall
+__fastcall
+__thiscall
+__stdcall
+__pascal
+__cdecl
+__based(
+GetProcessWindowStation
+GetUserObjectInformationA
+GetLastActivePopup
+GetActiveWindow
+MessageBoxA
+USER32.DLL
+!"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@abcdefghijklmnopqrstuvwxyz[\]^_`abcdefghijklmnopqrs
+tuvwxyz{|}~
+!"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`ABCDEFGHIJKLMNOPQR
+STUVWXYZ{|}~
+HH:mm:ss
+dddd, MMMM dd, yyyy
+MM/dd/yy
+December
+November
+October
+September
+August
+July
+June
+April
+March
+February
+January
+Saturday
+Friday
+Thursday
+Wednesday
+Tuesday
+Monday
+Sunday
+SunMonTueWedThuFriSat
+JanFebMarAprMayJunJulAugSepOctNovDec
+bad allocation
+Task Manager
+Seconds
+Minutes
+Hours
+open
+Software\Microsoft\Windows\CurrentVersion\RunOnce
+Software\Microsoft
+IMJDC0
+IMJDC1
+Melt
+TRUE
+Task
+Persist
+Time
+Format
+RSDS
+C:\Users\iJuan\Desktop\myDLL\Release\myDLL.pdb
+lstrlenA
+Process32First
+OpenProcess
+Sleep
+CreateProcessA
+TerminateProcess
+MultiByteToWideChar
+Process32Next
+CreateToolhelp32Snapshot
+CloseHandle
+GetVersion
+CreateThread
+KERNEL32.dll
+GetWindowTextA
+EnumWindows
+GetClassNameA
+USER32.dll
+RegQueryValueExA
+RegOpenKeyExA
+RegDeleteValueA
+RegCloseKey
+ADVAPI32.dll
+ShellExecuteA
+SHFileOperationA
+SHELL32.dll
+GetCurrentThreadId
+GetCommandLineA
+RaiseException
+RtlUnwind
+GetLastError
+HeapFree
+GetCurrentProcess
+UnhandledExceptionFilter
+SetUnhandledExceptionFilter
+IsDebuggerPresent
+HeapAlloc
+GetModuleHandleW
+GetProcAddress
+TlsGetValue
+TlsAlloc
+TlsSetValue
+TlsFree
+InterlockedIncrement
+SetLastError
+InterlockedDecrement
+ExitProcess
+SetHandleCount
+GetStdHandle
+GetFileType
+GetStartupInfoA
+DeleteCriticalSection
+GetModuleFileNameA
+FreeEnvironmentStringsA
+GetEnvironmentStrings
+FreeEnvironmentStringsW
+WideCharToMultiByte
+GetEnvironmentStringsW
+HeapCreate
+HeapDestroy
+VirtualFree
+QueryPerformanceCounter
+GetTickCount
+GetCurrentProcessId
+GetSystemTimeAsFileTime
+LeaveCriticalSection
+EnterCriticalSection
+VirtualAlloc
+HeapReAlloc
+WriteFile
+GetCPInfo
+GetACP
+GetOEMCP
+IsValidCodePage
+HeapSize
+LoadLibraryA
+InitializeCriticalSectionAndSpinCount
+LCMapStringA
+LCMapStringW
+GetStringTypeA
+GetStringTypeW
+GetLocaleInfoA
+.?AVlogic_error@std@@
+.?AVlength_error@std@@
+.?AVout_of_range@std@@
+.?AVtype_info@@
+.?AVbad_exception@std@@
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+.?AVexception@std@@
+.?AVbad_alloc@std@@
+&lt;assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt;
+&lt;trustInfo xmlns="urn:schemas-microsoft-com:asm.v3"&gt;
+&lt;security&gt;
+&lt;requestedPrivileges&gt;
+&lt;requestedExecutionLevel level="asInvoker"
+uiAccess="false"&gt;&lt;/requestedExecutionLevel&gt;
+&lt;/requestedPrivileges&gt;
+&lt;/security&gt;
+&lt;/trustInfo&gt;
+&lt;/assembly&gt;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-76f32061-4080-48f3-928d-d383121ec635">
+        <cybox:Object id="CISCP:Object-497f03d2-9350-45e7-8837-cf163d055fa0">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">58368</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f2636ea3ca7cc470999252646a7438c4</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">02603a53c97f65a857cf88b3d26138909ec3ca49</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">768:XEH5JnpIZgzBEbCVqe9wNAU3kr4+DAj0iiwwrAAkDM0qLmFIi5iOMuH:XEZ5pJfJw93cY3Ak2mT5iOMC</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-05T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

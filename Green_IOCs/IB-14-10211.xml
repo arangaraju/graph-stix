@@ -1,0 +1,148 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:LinkObj="http://cybox.mitre.org/objects#LinkObject-1" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10211" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Phishing Email with New Webmail Address Theme Leads to Credential Harvesting Website</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Phishing</stix:Package_Intent>
+    <stix:Description>On 16 April 2014, a phishing email was sent from a blank sender with a return path to recor@spork.be and the subject "New Webmail address". The malicious link leads to a credential harvesting site at:
+http://61.19.248.24/owa</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-04-22T20:09:52Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-25b46e09-f15e-4a1d-9551-cd21a7b2162a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-58bbb998-245d-42f6-b2ea-7d131f8e7641"/>
+        <indicator:Indicator idref="CISCP:indicator-0929b1c4-a80f-4f2e-809e-e0299ac24f26"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-58bbb998-245d-42f6-b2ea-7d131f8e7641" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>The email sender is blank with a return path to recor@spork.be.
+
+---- BEGIN EMAIL HEADER ---- 
+Return-Path: &lt;recor@spork.be&gt;
+X-Original-To: [REDACTED]
+Delivered-To: [REDACTED]
+Received: from [REDACTED] ([REDACTED]
+[REDACTED]) by ubuntu (Postfix) with ESMTPS id 7A867E617B6
+for &lt;[REDACTED]&gt;; Wed, 16 Apr 2014 07:00:43 +0100 (GMT-1)
+Subject: New Webmail address
+X-SENDER-IP: 85.255.195.85
+X-SENDER-REPUTATION: -1.0
+Received: from hosted.by.hostbasket.com (HELO mailserver2.digitoursbenelux.be)
+([85.255.195.85])
+by [REDACTED] with ESMTP/TLS/DHE-RSA-AES256-SHA;
+16 Apr 2014 11:07:13 +0000
+Received: from dell.com
+by mailserver2.digitoursbenelux.be (IceWarp 9.1.1) with ASMTP id CPW64848
+[REDACTED]; Wed, 16 Apr 2014 13:06:48 +0200
+Message-ID: &lt;20140416190636335058@dell.com&gt;
+---- END EMAIL HEADER ----
+
+---- BEGIN EMAIL BODY ----
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;
+&lt;HTML&gt;&lt;HEAD&gt;
+&lt;META content="text/html; charset=gb2312" http-equiv=Content-Type&gt;
+&lt;META name=GENERATOR content="MSHTML 8.00.6001.19393"&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;P&gt;&lt;FONT color=black&gt;&lt;SPAN style="FONT-SIZE: 10pt"&gt;&lt;FONT 
+face=Tahoma&gt;&amp;nbsp;Dear,&lt;BR&gt;&amp;nbsp;&amp;nbsp; This message is to notice you that we 
+have built a new Webmail system for all stuff.&amp;nbsp; The certificate for the 
+current mail client will soon expire and prevent users from logging on. 
+&lt;BR&gt;&amp;nbsp; Now, We have completed the migration of existing webmail system, and 
+we need to know whether your account is available. You can test your account 
+from &lt;A href="http://61.19.248.24/owa"&gt;https://61.19.248.24/owa/&lt;/A&gt;, Then send 
+us the test result.&lt;BR&gt;&amp;nbsp; Please contact your desktop support staff if you 
+need assistance.Please contact your desktop support staff&amp;nbsp; if you have any 
+questions about this message.&lt;/FONT&gt;&lt;/SPAN&gt;&lt;/FONT&gt;&lt;/P&gt;
+&lt;P&gt;&lt;FONT color=black&gt;&lt;SPAN style="FONT-SIZE: 10pt"&gt;&lt;FONT 
+face=Tahoma&gt;&lt;/FONT&gt;&lt;/SPAN&gt;&lt;/FONT&gt;&amp;nbsp;&lt;/P&gt;
+&lt;P&gt;&lt;FONT color=black&gt;&lt;SPAN style="FONT-SIZE: 10pt"&gt;&lt;FONT face=Tahoma&gt;Information 
+Technology Services&lt;BR&gt;&lt;/FONT&gt;&lt;/SPAN&gt;&lt;/FONT&gt;&lt;/P&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+---- END EMAIL BODY ----
+
+Date: Wed, 16 Apr 2014 19:06:36 +0800
+From: "" &lt;&gt;
+To:[REDACTED]
+X-mailer: ugdurai 10.40.1836
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+boundary="_ljDu0y5tKEHhUnGeOZzkbtgiH"
+Time Received:   Wed, 16 Apr 2014 07:06:36 -0400 EDT
+Sender actual:   recor@spork.be
+Subject:   New Webmail address
+Attachment:   None
+MD5:   N/A
+Exploit Description:   Link to Credential Harvesting Web Site
+CVE:   N/A
+Targeted Home Markets:   US
+# of Recipients:   1
+Delivery IP: 61.19.248.24
+URL:
+http://61.19.248.24/owa
+&lt;A href="http://61.19.248.24/owa"&gt;https://61.19.248.24/owa/&lt;/A&gt;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f2552434-691d-4d7f-9aa3-7e3e5031e3f8">
+        <cybox:Object id="CISCP:Object-217b9263-c09c-4565-a0fb-5832fd56a244">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:Subject condition="Equals">New Webmail address</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">20140416190636335058@dell.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">recor@spork.be</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+              <EmailMessageObj:X_Mailer condition="Equals">ugdurai 10.40.1836</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-14825115-07de-4c15-9f2a-b0768d19534c"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-04-16T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0929b1c4-a80f-4f2e-809e-e0299ac24f26" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This credential harvesting site was previously identified in similar campaigns described in IB-13-10422 and IB-13-10425. The activity was tracked under the name Cobra Comm.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a1038b27-08eb-46d5-bf3a-fda3c610f0d2">
+        <cybox:Object id="CISCP:Object-14825115-07de-4c15-9f2a-b0768d19534c">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://61.19.248.24/owa</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals">https://61.19.248.24/owa/</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-04-16T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

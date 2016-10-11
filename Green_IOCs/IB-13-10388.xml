@@ -1,0 +1,1546 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" id="CISCP:IB-13-10388" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>RTF document containing a Zeus/ZBot binary</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On June 26, 2013, a malicious RTF document was submitted for analysis. The document contained shellcode that decrypts, drops, and executes a Zeus/ZBot binary.  The malware was found to exploit the vulnerability described in CVE-012-0158.  Also, twenty (20) C2 IP addresses were identified during analysis.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-07-02T18:50:29Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-887aa045-6100-4bb2-b66d-9e2e07067959" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-499e25d7-5ddc-4e27-80b7-d119db68e0ad"/>
+        <indicator:Indicator idref="CISCP:indicator-02d37929-b89f-42ae-8d2f-e1b652f39c86"/>
+        <indicator:Indicator idref="CISCP:indicator-644a635b-b0aa-445a-bfe4-99558b36efad"/>
+        <indicator:Indicator idref="CISCP:indicator-8263f65b-3baa-4179-8ad1-ca50e4c874de"/>
+        <indicator:Indicator idref="CISCP:indicator-f709168c-265e-4c3f-bbe0-9e9379cdefc4"/>
+        <indicator:Indicator idref="CISCP:indicator-98019f0a-331a-44a2-828b-9cb8106f0977"/>
+        <indicator:Indicator idref="CISCP:indicator-93552979-e347-412d-8081-7c3a163457d4"/>
+        <indicator:Indicator idref="CISCP:indicator-0bb4931c-274b-490f-b15a-6b8c2ffda7a7"/>
+        <indicator:Indicator idref="CISCP:indicator-32cccf4b-f384-46ed-ab68-5d1204f5bcc1"/>
+        <indicator:Indicator idref="CISCP:indicator-788cac13-a71f-46d5-82b3-d2106bd79c0a"/>
+        <indicator:Indicator idref="CISCP:indicator-db202cf9-7189-49d8-8ccc-e593522b2a72"/>
+        <indicator:Indicator idref="CISCP:indicator-0bec9160-7a3f-479d-a048-21d6e5d160fe"/>
+        <indicator:Indicator idref="CISCP:indicator-30989239-052d-4106-8376-d7dec1675388"/>
+        <indicator:Indicator idref="CISCP:indicator-5235f3de-c3d6-48f7-8d99-c498cfe5f65d"/>
+        <indicator:Indicator idref="CISCP:indicator-168f59c2-1257-4943-a75f-b79d0ab1f8cc"/>
+        <indicator:Indicator idref="CISCP:indicator-374c8d59-1d6a-40e5-aebe-93233b877ca0"/>
+        <indicator:Indicator idref="CISCP:indicator-23db25b1-a897-43dc-8dab-7dedce071741"/>
+        <indicator:Indicator idref="CISCP:indicator-dfbc7d93-8475-4eaa-9f51-3df297ac227a"/>
+        <indicator:Indicator idref="CISCP:indicator-69420d1c-b5ee-4b57-8f28-c6324257f09f"/>
+        <indicator:Indicator idref="CISCP:indicator-40b175da-aba2-4018-8b6a-b0cc2ca0adbe"/>
+        <indicator:Indicator idref="CISCP:indicator-f6afd6fa-5129-4de0-8279-eec4694282fb"/>
+        <indicator:Indicator idref="CISCP:indicator-58772a3c-4a3f-4221-98ef-a8da7fbe7ab4"/>
+        <indicator:Indicator idref="CISCP:indicator-4ac63021-bef3-4faa-bc72-9febc903ba93"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-499e25d7-5ddc-4e27-80b7-d119db68e0ad" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Identifier:
+Kaspersky: Exploit.Win32.CVE-2012-0158.j
+McAfee: Exploit-CVE2012-0158!rtf
+Microsoft: Exploit:Win32/CVE-2012-0158.CJ
+Symantec: Trojan.Mdropper
+TrendMicro TROJ_ARTIEF.HAL
+
+This document is a RTF file with its extension changed to ".doc" to ensure Microsoft Word will be the application opening it. It contains shellcode that decrypts, drops, and executes a Zeus/ZBot binary. When launched by the user, the shellcode first decodes the encrypted binary. The decoding routine consists of a single XOR key, which can be found at offset 17A0Bh in the document.
+xor byte ptr [ebx], 3Fh ; '?' ; decryption key
+inc ebx
+dec eax
+cmp eax, 0
+jnz short loc_23F ; decryption loop
+
+Once decoded, the shellcode saves the file to the location, "%TEMP%\paw.exe". The dropped file will then be executed with WinExec, and the original shellcode will terminate by calling ExitProcess
+
+APIs of interested resolved by the shellcode:
+mov dword ptr [edi], 0BBAFDF85h ; GetProcAddress
+mov dword ptr [edi+4], 0AC0A138Eh ; GetFileSize
+mov dword ptr [edi+8], 9424D45Ah ; GlobalAlloc
+mov dword ptr [edi+0Ch], 0DBACBE43h ; SetFilePointer
+mov dword ptr [edi+10h], 130F36B2h ; ReadFile
+mov dword ptr [edi+14h], 94E43293h ; CreateFileA
+mov dword ptr [edi+18h], 837DE239h ; GetTempPathA
+mov dword ptr [edi+1Ch], 741F8DC4h ; WriteFile
+mov dword ptr [edi+20h], 0FF0D6657h ; CloseHandle
+mov dword ptr [edi+24h], 1A22F51h ; WinExec
+mov dword ptr [edi+28h], 0B4FFAFEDh ; GetModuleFileNameA
+mov dword ptr [edi+2Ch], 4FD18963h ; ExitProcess</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3db0ab1f-87ef-4876-84c4-c6af4a15a4f5">
+        <cybox:Object id="CISCP:Object-a4255611-3c32-473e-a435-57eb6d322fe6">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">321636</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">84f7ff421517a558e2cdbb8c5294f7e5</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f46cc88a920f4e8a22d9abd2c8ec88a266d85a77</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">6144:fWmkXhmWqqodJZpVOm1p/28rnlXF+pvejFVTNFUB+n:fWtoVZ1FbrndFnL08n</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-02d37929-b89f-42ae-8d2f-e1b652f39c86" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Identifier:
+Kaspersky: Trojan-Spy.Win32.Zbot.lnas
+McAfee: Artemis!102AC9221CA0
+Microsoft: PWS:Win32/Zbot.gen!AM
+
+This dropped executable is a P2P Zeus bot. It has been packed with an unidentified packer to hinder static analysis.
+
+On execution, the malware generates an infection_id by using the computer name, windows version, volume ID. The infection_id and the drop location is written to the executable file which is then copied to the location,  "%APPDATA%\[random_folder]\[random_name.exe]". The executable will then create a new process with the dropped file. Finally, the malware deletes itself with the embedded batch command:
+:d
+del "%s"
+if exist "%s" goto d</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-95bfaff6-fce5-4762-9c5b-6155ede029f3">
+        <cybox:Object id="CISCP:Object-c2d40517-c023-490d-b619-20c2614c4bd3">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">paw.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">220673</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">102ac9221ca096ce2c960bc3e2efc2c2</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d9d21134eef5d9260faaecd6dfaf3c2c104e7f41</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">6144:2Cqzuniv1NBZFQ+1A4GCdQrWafhlWhiw8Kkl:FivhEzCmrhQ8K4</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-644a635b-b0aa-445a-bfe4-99558b36efad" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is the P2P Zeus copy dropped by "paw.exe" (MD5: 102ac9221ca096ce2c960bc3e2efc2c2).  This file creates the following registry value for persistence:
+\\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\[Generated_SID]
+
+When executed, this binary first compares the 'infection_id' string to the values on the running system. If the values match, the bot will then check that this binary was executed from its expected location (%APPDAT%\[random_folder]\[random_name.exe]). If everything passes, this bot injects into winlogon.exe. Next, it attempts to connect and update the P2P Zeus trackers by sending encrypted data via a UDP transmission to 20 different IP addresses and over high numbered ports.
+
+It then tests for internet connectivity by connecting to www.google.com and www.bing.com, followed by using a domain generation algorithm to request a valid C2 server. The generated domain list is:
+adwkpytpndmvorfayhpvnzqsws.ru
+aeivkceqrggmdadporkbtpndekb.com
+aeqwdylfapjgiaqihaxdztfybq.net
+aettvgqeaxgjtgqgroruktl.biz
+aeyhojxtombciljcmnonbqpus.org
+aidmtgirbmnpfscozxsnibqjqs.com
+aifulrhyxguknwonxxwkrhabed.info
+aikbdifulfaepgiydaijyzljfkv.net
+aiqwijqklnjnqckzsskhortcgmaylf.ru
+airotwqsheofpltmrxbiy.com
+aitwgyxhxjnzxpnpbguxorgmeqsc.ru
+aiuspbwgpblrjvbeuwcmxgdecatdyrk.biz
+amdqxhavsdakvrijwoylwxmv.org
+amfmzbirwaqmfprghucpeapjov.info
+amljxzlfisghjnqcxtyx.ru
+amnbyhqhedaamshavvoxkrgy.com
+amxgloflblfqgamfdcmhmtkl.net
+aoyaidqtsbahmtkdieqpjvx.com
+aqfubajvlbaqeuwguqovwhyxtzhlb.biz
+aqpnhwonjeiciuaiqwhfizprgbyvo.net
+aqrwxgxxwbknsgukeauknbqnb.biz
+atypcaydzlzlgecutocqibtkfvk.biz
+auddulzrwhyxokjdtgwvorsnrjxs.biz
+auifiveqxdqxoxotklrpfmivvk.com
+aumvxojrptcqsgztmfivcaijus.net
+aunjcixjblfcqlndmttjnvnbd.org
+autsofnzuknfuwswozjnzcypzwgibq.org
+auxhuofuhiordqgdtzhkhyh.org
+auzugozdpfufqwcbinvtaqxkmr.ru
+axvjtbqtknbxlpnknpbnv.com
+aygqeypjvwtscbedonivobdt.org
+babavwwhwsdxxqcpzfijmjy.com
+babicqrkrgtzhtwggipfsgt.ru
+bagupndwcvowkcqkbafvkjrnrpws.org
+baivhextwkfpfmjhbavnvy.com
+balfzhpnpnzgywonrtckvxwvgbawsh.biz
+bamzhfiddyjrxzlpnsjbpyhpbi.org
+bapjaixqqwscvwhirwdmmrqpha.org
+batldfivkyamtovotstjby.com
+bavcvcmvxwdexsdeijugbqtkrdpn.org
+bazdvgnzytemeakjwcdmjfayeaxknf.net
+bdappgexmugcipeahpfhmn.info
+beaykmbxsojfqlbwkzlhbetcxx.ru
+bedejforaidjpbxglvmrtsjbe.com
+belfdnhwoxsvokzmnhobylrwx.biz
+beozhikrcozfmqopytucdyrkkxo.com
+betqvopfdkrobxjzwcmfscpjm.com
+bexrgthupigyonxjfxtlvde.com
+beztvwhifuoznfnrtwomfeic.biz
+bikxdejbamrggixgusuccip.org
+bilfqgfetseimjskzlwkifqovkirf.org
+bilfucwsxwnjpvmzmfwddbyaqxs.biz
+bilfydmwskjxaqjvtsorvgpvkj.biz
+binylijnjypaqzxaiaumrkjqkp.org
+biobcahqdqbmukbedfemjf.info
+biydofltmpvvwnfsgdcelzvgh.net
+bleigaztwcdvkztofydnzfehamt.com
+bmfqnfylqoheaegqcaqvohmts.org
+bmscozfulnppfdecalftkozrcirnfai.biz
+bqfuprgqnbpvhmhykvmbmvtivxgtzd.com
+bqheayceozqgmkfsqvcxusxnbrk.net
+bqhpvgebukvvwcilxoofhhqceiv.org
+bqvgyhgithecqfmoqytjvrgzx.com
+bugecyvbudlfozkrjrqsnfljfuw.org
+bukvprvovcpvbyxgmeinzteux.com
+buldjfljusuwljdqcnzobkjdhu.org
+buovxtfurkxbagqeymrouwpv.com
+butwvfixovkkzxccaobthedtofcu.com
+buuoucusgzxwduwchhmyxttkzl.net
+buyhsctlvduljzmrwiirtkbukb.info
+bwceaknfisoozlvlncuswrhmkns.info
+bxyxyxwswgedqnvqumjyxrdy.com
+bydawsgipvjheypsoxrwypizir.com
+byojbawhifusjnmbwctzxmvfalv.ru
+byxifizpblvwoxyhqcltpvgwc.net
+cadewcoobqkinjtsbaxemuolfdq.com
+caibdqrytirlbmdswopivtob.ru
+caibhqfmbehppfhhuhtwbqbi.com
+calizkbhuyfiypqgzprdamzh.com
+calpjvhinrcmtibqgiizh.biz
+capfxghmapuodjzgemnyxibso.org
+caxxccmhztdxxfubumvvsk.biz
+cayhmnvswndexkmrytpdilx.com
+cbehcilplzizgqkbwvgi.biz
+cebuhidmgyqcyovmjtgbqdqxcqs.net
+cedmfaecauyxytcytsmjaqugeudy.net
+ceijjrsrchuceywkwkgeqgydfu.net
+ceqgvofmfunfdgfyyhxgivmndoncu.org
+cetbmjkzqkhaepbdqivqsrskfai.com
+ceukyhtwkqxomzhuzlxhd.net
+ceuwlcewzpfahezldtvcdqhad.biz
+cexamlrlzfygqduzhmgmrlfmqc.com
+cezpeihumfqlbwsfytnrugp.com
+chpbmtmfamfeluhykzuonizy.biz
+ciwginlzeutqscxchfqydfuireud.biz
+cizmzmwohikzuwppscqsoae.biz
+clcqxkbvgpdkizmvhrotkhay.info
+cmdqdtogdllwofqpuctsmntcde.net
+cmgydxrwuoqkivvculjsclnr.info
+cmpzdyamjrbqsgrojfhyhqklkv.info
+cmqsxonhqqcrydatotswmjswdpj.org
+cqjmjgehhixpcuhilznbhilbsg.info
+cqkjbqmrxkbeknbexpbxuxgyfq.com
+cqktkkfxhhynvylprydlfys.com
+cqnjojibjffyvsremeilllnhh.biz
+cqpeyullbvsmnljvormrqowmf.com
+cutkaixifcmameaxypamrcxpsozp.net
+cuutswwqwjbdiahwkwoonhpvw.com
+cuvonprlflcuembylfeudmmbbqeu.com
+cuwkorprmvhauypfetopvdi.org
+cyderwxlwsdfeaiizrkkdmhimr.com
+cydmypvugnjttcuomjcuxsarg.info
+cyqxkqlbayemyllbeqxjnixpc.com
+cyswirlhmrydlzdleacynbqqsyp.biz
+czdmvnjeyuoxvsyxruztlvpjd.com
+dacbmromjkbteivgfahjnqw.biz
+daiflrhiwojftcigbekzdyhem.org
+daikjpjypjzwgbuwoztrttbux.biz
+daofytowkvclnlbpzdafmbeaqvowkgi.info
+daxsgmzxjauaelguzpmvrghif.org
+dayprknzucgaqcpvcalllgmey.com
+dazxhqotkdigeydroqwdbmuwto.biz
+dcqrshqinsoaqipzbyqcfavwbyqs.com
+ddihyhskqkdaeaknizbamrbuxziv.org
+decqaiyhhugbenfudifujnkndp.ru
+decqdmjlgekrzlfedapydlhbizh.net
+deeujfeypnprwkraypijlvkrucmrrc.com
+deopjukwstzxxhwkztbtknm.ru
+deuoljinmjtwaefezcquonlnjlzd.com
+dfeucxrceijzzlqwwcxpthyif.biz
+dfmtlnuhtsukjzirwgvozdjvfexc.com
+diafmvkciuxsqsdmsxokfl.net
+digyllbldaeknhuamdyfnrha.info
+dimbdercojhuwhizxzdeqwcdpbe.ru
+dimbgqofailnwcqdttbycmvxs.biz
+diplphampamupjqsocd.net
+dirwuwojrsljzfihlthmguifvkxo.org
+djfrgamduknltdvcivduk.net
+djgawrwugpzroswmrmrxgkvba.net
+dkrovftibfykrylllrhmdgut.info
+dmdlcieunbpnbyonvcjhedcigm.info
+dmhqqcjfrojmnaqfuwuwokrlzaisk.biz
+dmrglpzbmkvhyygebmijcmv.ru
+dmvtcgyvkxpplkbhizlkvxwln.com
+dmztsgunrgmovnbtouktlvrvfa.org
+dojtodkbrpozvphhaxjfifxk.ru
+dpjpzbejrdaphucajnbmxlj.net
+dpmrhamvdyfivwsqclfivdupjpt.com
+dpvbeqlfumfqrtfaaepvrk.com
+dqgaglvdphrogimzttganzlrpv.info
+dqgtxxhurcztzhifempbhvorg.org
+dqtbqtorhumftojzvwzifug.com
+dsgugihdaywkfcafqzjbdlj.com
+dufqxsorvwuxpmvifuwjfqsgyvw.com
+dufugejytdieyhonzpvktsivx.com
+dukrrshetkwcinxgtkft.biz
+dumvgyvkflwgdavcircrohkjov.net
+duxogakfizvukbqcgqmrlxkgifu.biz
+dvkhtcmzscrobikxptmvl.net
+dvsjbinijnveuzljnkflfdvojfdvc.net
+dyaevweamnkvazlhjmvvhipfmfh.com
+dycyivmnyljztqsxcyldacecuprrolv.ru
+dygqaiufivgtzttmzlvyd.biz
+dyhazzhamzrlsghyzmztwaq.info
+dyhwslnwgqdagqxozxzpircmlmvlr.com
+dykrhozvcvtibptwvkvsngy.net
+dypnbyhxolfbywctnbwshydqll.biz
+dzdfuhxuswxocmnjifmjhekvh.biz
+eatkobyhmvaihoftgyxhdxk.biz
+eaxuwdmgqbmnfuonjgitklguvkmbv.org
+ecaqgusbmpmjbbishmlbkfdazx.com
+eidqknvgalvhscaipqwusvkhyif.org
+eigmxtkdilfrwknroweqcehamzaqin.com
+eilbnharkhkbidusklrwamor.biz
+eimvcudzvwkbtlbepiveuyh.ru
+eivcqspaimzmkrvwbmqchmyprwh.com
+eivlnbevgnvlrncwottlvb.info
+eiyhnjzpvosoghknfapraxb.com
+emvodscqwljmvxgyheyfehlxcde.net
+eoxssoxsprldahhewmboftggy.ru
+eqjfeyhgiaewsrwfqjrvcivtx.biz
+eqlnqstsxcgymzvkljxtskkffe.org
+eqofcmonughizciduoifrwpflvzlyp.ru
+eqsorckbnftvgjrntuyttcpjv.ru
+eufuwjruifpsoyxucvofpylh.com
+eufwowgtsaeijwottknscvkhiq.info
+eupzrgkvqfuzdqcmmbztgmaurgrc.ru
+excelbkfbetdtifxbiylxkblr.biz
+excudmjkjuokrbicmhasxcca.net
+eyaemzyhlfdlqgmrdevknzibpbqk.org
+eyivvovsaivkvdmaieuttwkrkto.ru
+eyjvcqmbtcwsqgmdcqhmcmlfqcmf.com
+eyorbuljpjkrlvgxlvrsizpvmn.org
+eytorvwdkfbyibtktwskfmzga.net
+eyvcdzpovrocaemyxxwyhnfcmytdi.org
+eyzpnonhutobykngubayxbaswusgvk.net
+facmpbuqdacqirdqgawdt.org
+fadekjnbohqxgbmhinzzkngqukpnvc.com
+faempdiqomzugdmxctorlbovpmbjz.com
+fahdmhygtodqqxwsxuxkfpvwk.net
+fahmjkcehxojjrksggqojucu.org
+faojxaykbeaonvifhqfuhmpnj.info
+fathuxylrtjbjryllbmvtgygi.biz
+faxklfuwnvpgmnwsqghbi.net
+fegetlwvwjftijenrauuost.com
+fidgyfmwougaeukzypyhxovond.info
+fidqotcdapivtsdmcmpvamxa.ru
+fmgaxonfibnrkrhesgjbfbmbubqbih.info
+fmhyskvobfayxlvonzcqtgrsxwu.ru
+fmirucjrkgpnhuwcdhmivgaz.com
+fqeqpnuwswnbfmvprirvukvwyd.ru
+fqpbhubesgkjemtntnbvsqoea.ru
+fqpnkfrggixpfjfxbulijmrbyh.ru
+fqvwtivotwnffykbrcqijdegi.net
+fqxwqstntkqwovnjrgizzhhedp.ru
+fueaqkwonzgelpnugugivsh.net
+fujzzdbiaihlblxcskaycauc.org
+fulwsknobpnknhlztxljwc.ru
+fvamjneqfikbehilbublnkv.biz
+fyiryptuciraitsvgutypdy.com
+fykbonlgmugztcmsgmfmfamdils.biz
+fymwcrojpqwduushkncmpryt.com
+fynzxphdmlqkrhuwcqzp.com
+fyuwxfylryxjbwintghetingy.com
+gaizlbalkknjrzhvwamrswcdmn.info
+ganfljcupvgdjneyhfqscxwnjh.com
+gavcwsmzpbaditvmrvwqcprs.com
+gecyonwonzbhxsfaqzphalnlinh.com
+gedenjlgirwjrbaovwkqohgivln.com
+geduphqttsgmxceygumftnbbitbm.info
+gelzirqsjijtoxxtucbigjzhyci.info
+gewgbmoxauydtwcmiraifqguwzp.com
+giadanrkfmfphmrszlmzmzijhuw.org
+gibejflugozizgaofcqovydwgts.com
+giqckvuckvjvizljtgbiovrwpvhufa.net
+giscxkvsqklmftkzpberwszhivp.ru
+glugxpskdepzcaxsjffayxqcde.org
+gmpjnzmvwkbqmjzdmnxfkvyttkmr.com
+gmzfehizhceytbmxskeauoeagudmrw.ru
+gqeqaywfeknpvdkvinbozscfq.biz
+gtgpaqcytgxijketukfabipjp.ru
+guciwcycyxmzpfxwlwypytzhvw.info
+gufmxchhuoeufufaibpnxsucxkdaso.com
+guscucfajntsjnipzivamhakn.net
+guyllshatswpukwmbtxxqk.com
+gwdutcprbisolvfeuoqyddxwwc.biz
+gygmizceejflrydtorldinxzd.biz
+gyhrkfqlbqcidikzxgqhqcqs.net
+gyjculjnrgaekvpdikblzovfq.biz
+gymzydxpemeuukljfytswpjae.com
+gyzbnvdqcylwylamdqmhozl.biz
+gyzpuwuwsweaplflyxxcaulguxok.net
+hamjdlbjzusceamlifcaqsbeqkyhdq.org
+hanftgxgbmkkbzhnbdupzfydihqt.ru
+haupbozdxopizhyknxrgcamn.ru
+hcakvugcmavchyobtwzxqknrdezlvw.org
+hctdeaypzmryxszhmtwivx.com
+hdedaenfoblsgddmykzmveunr.ru
+hdmzldqtmnbuzteqcqsozpuw.biz
+hdvjbyxbsofzxttskfvchup.com
+hdygyrgdwgjrbmlhgydprnvba.com
+heiivnrdteufywcpbjblfrcrcdrs.com
+henbsbmpdqnbiryplfyzlhdt.biz
+hetwtowswhutghaofdmaivccada.net
+heufqylozeunzepbwsxxprpuzl.net
+heuocistuwbahyhywcayrw.biz
+hexombyjnfemyroydpfwkmcubqx.org
+hgebylzdzxgfaeqqobuleadmjij.ru
+hgnjhmjfzlaynfqttofehmsww.biz
+hgqnrlxcireyzxwtwrgnflbpiv.info
+hgucunrzphdrkqgdypeiozso.ru
+hgykjrtlnxkwsmvwvcnbhydcmd.info
+hhelzpqkdyphmnypaixuktskfeu.com
+himzuolrpyxdthlnvkpeqeq.ru
+hinfqousdvsbadihalrmfirkbat.com
+hiribtpnderpnzlpzhaudehu.net
+hisojnmbpivxwksccivgouoxkjnp.com
+hivckzxggyrwkfzldexghqhudei.com
+hivsmfzhwobiiydeqembqhmfsgqkpn.ru
+hiyuoxemvwfqdqskbtheeautkkv.com
+hjnhazlmbvhwgrsifydjfxpcy.com
+hkzbeewizewkamrstwdedrk.com
+hlcmgeofaqkzxsizlwktjzwoea.com
+hlftousohgaeucylozp.ru
+hlvwcpypuksgljtlxoprfabyt.ru
+hlzlbaxmjorruzponpgarl.com
+hmkjprmbfahtlvonpfnrrwwshicq.com
+hmphylifdtoaizhqytsdqdu.com
+hmrorouzdhehmfpfmjnfaeibifiv.info
+hmvseyjrpfdtceapciyhkr.biz
+hnvrrnrxgdibiuoofhuugqwmbt.biz
+hobxobpcyscbuqgnfqght.biz
+hpwkvwxtceuwcohhxgqgm.ru
+hqcxgbahgirkemhmjfubipn.com
+hqgqdcaroeuzhlrroxwakr.org
+hqhanzroamdyuweydcqdtkbmwr.org
+hqlwusrshqeumvhtwxempnzp.ru
+hqojfypswopjzuktvolrweilvl.com
+hqpjnibdtoljhaaurizypxsvkdh.ru
+hqtkjaulvmcydddqdehecuuw.ru
+hqtotydfulvjlfqbytwgxdpn.org
+hqtrgguwxibkvgabazpxfmyhkxo.com
+hqwsypwgfqduhyyddkvfqovaqgup.biz
+hqxuyswjbaqhyjzvldzlpjjz.biz
+hudbaqxwtpjpgedljpgyrwcuvg.info
+hulntcpzinfmlvmrieddwuc.biz
+hupbdqoevotktgfeifidilxw.ru
+hupbmgaheqofvwtodztwsjrwktkha.com
+huvkaqroplnjgiaiypqoyhfekje.com
+huvuwtjzxsjraitjffudqauydtxo.biz
+hvclzemvmbpxwsfmnjtovlfy.info
+hxdqsfebsrscqlfcegayjvnzpn.net
+hxobxkeybyqmwgbafexglpau.net
+hxswcvgqxcqukrtklrnbeqxvsv.ru
+hydbqcpmfpfnzxxceamvwau.net
+hygeofrchonppndmdxxorcqdyto.biz
+hyjrxspzkbjnvororylwstwglwk.com
+hyojivcmmfcapfmneivwmmrgyx.org
+hywkuclzzhbqjvpkrqcbuqrocq.com
+hyxlruogehpbytealbqlvsus.com
+ibbuhhovdzhydkrmydsggmyxrsx.biz
+ibdqzozkjzplvgherauhpnkzaepr.net
+ibijaueuhpaqmhxcfeibkjrbq.org
+ibuodeucuuslpnzkbddprkv.ru
+ibuwzlngmrkgzcylrmztxztamgi.biz
+ibxojvkbyhnfugdcgmnrorwlnvg.biz
+ifciugkqsdacuofwovkcexchof.org
+ifgylucxlrzhyllscebyknxlnf.biz
+ifhivrphanbdyfyyhwgbi.com
+ifkorrglvojxolleunvzhxeamb.info
+ifnvtljzjnaulfmzjnaedkzxt.com
+ifrsucdofskxwdjbdfezhd.net
+ifvsgiyhqgaypgmhapjnteiftw.com
+ifxobpborzpzamzx.net
+ijcamjtcnjijtgvctgxugtkdcm.net
+ijeawgdpzhaxeqkblsukel.ru
+ijlvbelzifxksgfuythnsoxkvjn.ru
+incaltagyaitylwklfgutofxg.ru
+inkrkmraezlhcewfmtkztaers.com
+inlzojntxpnfacypkfizpbbe.ru
+inpneqpflrxspnpzdyphmzrwwkl.info
+inqotbmljirdimrhlnwsxbigycy.net
+insctpvtxcuscficetofpb.info
+insoypvdulpptoaegqheuo.com
+intzsgxkzdmnequpormrkj.com
+invuotjvdiqonfzdmzcdqwugor.com
+irhexheuyhuaiunlzpbxcaed.net
+irmvrksosusbiscxrkyvwhady.org
+irymfmntoxwytxlxwhahmnfofkn.info
+ivdaknduzhugugubaxpmjbytwskxg.com
+ivguvhiscqmjbieqknoneuo.biz
+ivhcetwgrwpbafmlbheton.biz
+ivjbtdyrkqobylmfeypdtxsl.net
+ivjzvcmxaizxztjzfqlnqnjrg.ru
+ivtcawodthcedfmmjeqljlvsoyl.info
+ivtoduxkhxizwshlnzhmzhtpr.net
+izmfnvztovljtojswxxhigiz.ru
+izrdqsoprvghqrklkvschursx.ru
+jbhdenbbisgwkyddqyprhvkiv.biz
+jbhixwukhvomnnrxgswbemrh.biz
+jbkraefaceydpborvsekrqcwcbgmga.ru
+jbnbinqothamsgehugqqoztv.net
+jbtheirwodageijoffatgus.net
+jfaicuhzqgzmjzljnxprruwcq.org
+jffeivpbqclvwnzirgelnbmj.info
+jfnrojrpemeyzdxcatprfmhvk.com
+jftlbhlqwtzltkrwcanvlaetkor.ru
+jftnpnpzdqzxvcinztkndlrlbfy.ru
+jftvdikusydhayauxcexucr.org
+jfvdqwvcmvugvwtcwspibvwzpyt.org
+jfztuospvljztnrfmxkgeauifaunj.info
+jmfjnfqknlpjcqbqylqwwsqkfeto.net
+jnbigmxmzdtbqqwlfaqfyxkug.com
+jnfgdqgauucbqbyvgpfkjblbrgau.info
+jnjskhmxpjrgasgcqyyldmei.net
+jnknpbdmpbirozqbiyptgemnpcy.ru
+jnzhofhceigqmhahwcwxlrxjv.net
+jnzxtroobqaymfpvtmtkrdygm.com
+jrbqpfevcaayduovdybqir.ru
+jrcitbavbuhjvpqgddqc.com
+jreaxskimrbasggqhpeyvhuqo.biz
+jrhiqhtcrmfhqnjvcmlkfau.biz
+jrjbyxyxtdedekjmmjdau.com
+jrzlgyjbduaxthtsdqlrqcqnvqk.net
+jtqkrypzlugzdxifzdqkyztga.ru
+jvcirkvvcfmofhcuhvsdunfwgmbh.net
+jvexgydyxxorybegqsghca.org
+jvgqhijzumnrypeajfbyjaqsmr.net
+jvmboztszrwkxcydvzxxxqkh.org
+jvnvwkfumllxpozortayeqvkz.net
+jvovhmlpjnfqsdpvfexoivukhazt.biz
+jvyhkvmjmjtcmkzpfvwlblzivpnsw.org
+jzmbusqkhrkhipnusucrotpnrkr.biz
+jznblxtolrmrtghqficasbepzor.org
+jzpnfiyxnrjnpfbimrltyxpnz.org
+jzqwjbdahcmifulkzmbrstkdydl.biz
+jzrhroljrshaxknvxtktoon.biz
+jzyxmbmfgydhynjkbxmbtfqdyhlv.com
+kbhmrditgevwxogkhqztmfgylv.info
+kbnqcayvoxgttmngiyzxgdwkkf.net
+kbztchhknjbydzgiyttau.com
+kfmpjgeizrromfuoljnmzpxwhenb.ru
+kfxsctsvcjvovovwhypvkers.com
+kfxtxwdlfeytlzyhgevgugih.biz
+kjaqxykrhkrqcpdibdqhliz.ru
+kjetwxgnhqaybqcmnjovgaxdqo.com
+kjlfvltrwgmtgyibnfpjrsgvo.biz
+kjlrinamzhcirkvlvpndkzsgp.com
+kjozqcndgudiuwtovtovgyhxbalf.ru
+kjuwgxxgjvhbpfcaojs.info
+knskttkbtoemtmvpvgihib.org
+kntkgyxcevwqovocmxxlfpbljieq.ru
+knwbxeyaidvdadilgmwkzlgqpj.com
+kojlfuofgaljnbdicayusdi.com
+krciylfefaovkvhecidezhdemvizqofy.com
+krofgwgyeyhatgmkzcypyhyheiai.net
+krtypswbqldxojlvnzeueac.org
+krvaepjeixpzijhawcsgvtuckvoj.net
+krzlyljblntgeizqkbiealsknzu.com
+kveavsgwkjdlndpqcbpjau.ru
+kvjfbeyltsrovugcippdypr.ru
+kvldhqmlruaieyljtknvot.ru
+kvqswkugyxlnzcmtslbvgxpifnfq.biz
+kvscyxtmbmxsdiuvxggiovhi.org
+kvuclbinzwsqkxbeflnxcvwl.biz
+kzbdtgeqkvsxozjrugromfl.org
+kzcylvmrysglqkbtkdmvjnmfuk.biz
+kzjnceeqxogmswfelfzphdiceeqytlf.ru
+kzugxscqzlypdelypftskvzd.org
+kzvhejnytpnambppvxbawsdwk.com
+laylztintknzdixztvkpzztfqx.ru
+lbhmhinrsojddygadavwrowobyus.com
+lbjzpgrkbaciuaegiknxlvnbq.ru
+lbkvzhbmfmrscibytkmzgmbayhyxl.ru
+lblrpzxpjxgjrlvdzpdqgtbmhi.com
+lbmkzzxwgcerkyhccuskuodkn.com
+lbmnfqwhemxqkhbqrdmydlrin.org
+lbzhivhvgfmzpxslnskpwczxbu.org
+lceuskzqkcaqshlpdytwqtsvcvs.com
+lcytklrbprlpvwsjnxgmnvdqorem.com
+ldbidmroepbnrmjdvspbjnttgce.com
+ldylfizmvtcqonveqgltxfrs.net
+ldzdztdudkrkvxdrwuc.com
+lfmfrwyxkonzircmtmnkztkkiv.info
+lfsoceayswvwsxprwydwomwo.info
+lfswvwvcwktsylkvcykzpzlpljor.com
+lfunfqgoknucfmtunrdaybydfa.info
+lhmnfibficydmhgehdqrsnmnhx.com
+livyppnijpvheskusspcisckmv.ru
+ljbfmobdpwequovohqhbahaozh.biz
+ljmbzpdmqwulrgtkhlbifyaq.com
+ljnaqmnbmjvohivphraqto.info
+ljojsoozqgtstsovdaqxkxcheqwfq.info
+ljozuenvypprmwsgylonhpdq.info
+lkfyaicucucmrkrckrdi.biz
+lkjusfivkmfdeeiwskdirsluwln.ru
+llnayttgyskfynjofydtnfge.com
+llzscfeneaofriamyptovon.net
+lmfmjsgxfyqsqogiindkrfqwkci.net
+lnbqcaswcudzqgsgonemxtxcr.ru
+lneeikeazijsizpfgundsch.info
+lnkzbtltrsytxkcyylpbcqpb.ru
+lnqssocmstrtxlfruwcebyk.ru
+lnqweqduirobgmgykzgipjxksgd.ru
+lnrggikrpnvcehaeifknkfazxfq.biz
+lnurcxcuszhcqmbyprgkzsylyldeu.info
+lobphvcmkvwgvvppjzfqltk.net
+lqkbylpgyrhljdmbthed.com
+lqkpbypgmpnvjnguhmlzyxcpfnrto.com
+lqxsvuciobjnvtkfeqok.org
+lrbeugmbleapvwnzlrweutrcdm.org
+lrdyslrgayhwqklvlqwgp.biz
+lrgaxsugdtvsccitdacycyiv.com
+lrjfxkxhbuvoytfyttyhmrpv.info
+lrmzxdinjduzlceysklfivpfxrqk.org
+lrxzlzxqwohvcjrlfykvnvljhus.org
+lswwsxgsofzxmjeypptsvkv.com
+ltguscytkdqpvtcqmztbydskeymz.org
+ltkfuhltgzxpdqeqcmpzprkfp.ru
+luszlwohiscuemdyhalnjxk.net
+lvgayukovtoqogaxszddlftkwgtw.ru
+lvktozlzrdmwscyhymjxeqlbdiz.net
+lvskrhyydaebwssouwxibizormz.biz
+lvtslzjvuwdonxifbuhyxgaipx.com
+lyhytdztnbknsclcqfbupznrai.info
+mbgmwgcmgaqgijxwgmrgnzsbmgga.info
+mbhqwzltcdqlhwoyxgixombtwem.ru
+mbkrnzhihzqtckjztjfcupeqir.org
+mbmrmrkbnbsgrgoyhykbsrwauem.net
+mbrllbsbesgvgbatyluhojyd.ru
+mfdiydinfvglbifnzdeskdedih.ru
+mfljeaxgtgijrjbjzxwnfivqbaibvk.net
+mftkaeprdfmqcmbtcojiadybq.info
+mfwoyxtkbexjvtkwcpcqwg.net
+mjfyirtskgabadulbtsybyxtskz.org
+mjgizxwktkzxyhamrguskw.org
+mjhyhyhueqzlvkizwcaymbxqgizfyor.net
+mlnnfizpnxolxwgovhelhyljz.info
+mnbipdrsijnfdiaukffipnusskfm.info
+mndcykvylnbhmyxrgivktghh.ru
+mnljerpxreqjfhumrgfytggy.com
+mnobhqclkbuhzdjvmbvoobhmzr.com
+mnwkrwnvwsscrwnrtkuhyvswcin.com
+mnxrcxkvxdqfyypthajnpzknl.com
+mobaipdebdijnamzxhmbrsovtocq.com
+movwkaiwclzcqpffafizlpnnbvqgln.com
+mpbqpnwgfircdmtsfqpbehqrgfunj.com
+mrdagmbqaynvyteuofaeiniztkhybi.org
+mrdwgqozztqkkbxgvoojfqpjxha.ru
+mrlvlztohynrivwkvfmmvzlrs.biz
+mrnbojpjrytvghlzlnfnpxi.ru
+mrpvuwoxepfmrhqvoibmrkfby.com
+mvayusgbyxzdausaegatsgmlrhbq.info
+mvxgmjnfprpprylpzxxonlzlaq.info
+mzaxocdmbeeilatvodumv.info
+mzdnfkflnjwcaywcptkrsprcpjgq.com
+mzfeztzhfegqqsthypjbgxh.biz
+mzgmcqfilvnbtwsliheaygx.com
+mzjfltushhnbfqonqrstwtylvc.com
+mzxpvokzoypxowctcdmfeiwsl.ru
+nbeuayoznzqdrkqwtwlguhibm.com
+nbtcpfvrkhazlrwzorqotovkmh.biz
+nbxqcskytjyxwgzroxgzhqf.net
+nfincqxkzldmoflnzhwhhiuw.org
+nfonnvrsqgcmvogillnfeiqcscxwei.ru
+nfrwddeuwjxwyhvxoaifmcqei.info
+nfxeutdcmppvifmlvvoxxam.net
+ngezxbmbakbnzeuxxpvswol.biz
+njhpbvsiozobhqonxpfqcvkkjw.org
+njifrgppzdtrktpzcimnbqdbiln.info
+njlvivucdqpbqkgypnrgfmaq.info
+njojlzxoypizfmsohwwmrapfzt.ru
+njqsgxkorcatveulizhepbozlrha.com
+njtodrsvkdcmhxgieuau.com
+njxamgirgkrwhyemprbqsotrgrw.biz
+njzdybegyeytnbeahivqokzuoj.com
+nlsggacamypbduqwivcujvp.biz
+nqcxomfzqwyhusbugynrmnwcgyci.com
+nrdeyhskushmydwozmjqksrsob.net
+nrdhaiftovvcppfpvhyjrib.net
+nrdqcdimnpskxozfugivsbedyh.net
+nrmjkbpjgagiztxccmibvgfifal.net
+nrpeirslqdinjhqfmfad.info
+nvcycdtcqwgeyucwkbuwdqayugt.org
+nveqlqwyhmrwlfxgeytdenrzhm.com
+nvfobnjgyeapvpfbufdyssgdipv.biz
+nvkrherkmzwcofeyfiqskveusgfahts.info
+nvplbzplfcuztydeqkrfutc.ru
+nvtrkijtjnlfmnmrdjwnzxwob.com
+nvvgptbqgyrwlpnkfhvspzdi.com
+nzamgevgobrkxsroduyhnjinbamv.net
+nzbypznzpntivusvcltgxdgqr.net
+nzbytqpjdqjzkjsklpnztteu.ru
+nzskrwivguemzdguizkhzhqctch.biz
+nztszlwcujrxydjbhpbrcguso.com
+nztuswpflriijqckjhdyfeskqglj.net
+obhecytdygwcbmfqhonkeqjvauus.biz
+oblypeqdydukrgdyytdmroqm.biz
+obztinddihenjtkmzzauajrgmciib.org
+odmpbkztwysczdamtxfmtkjnhy.net
+ofarwfquoztojtwaiizamaixw.info
+ofcxoaiypbqwmrxghtoljvstdu.biz
+ofemcqivdihatnbcahmzptspnon.biz
+ofhobtwlbcmgqtplgefqzlv.biz
+ofibxmdqkdqpmbwppkrh.info
+ofpveutgtsnzgmlzjfeaempjts.ru
+ofspbljpnythmzuopjdavkp.biz
+ojdeufmddusbqjnzhnztozlxgdqh.com
+ojqcmjpfmzwkpqslnfynjibfm.ru
+ojrsdmaydqinbegewsxgqjrzhpjaer.ru
+ojuofqeiygavgvdbqzpnrg.biz
+okvlrqokbonzlgeojgqlfyhojmf.biz
+onaqllzxjfnfbuozrgpwsfilv.biz
+onorleqljgmdybuxcwlwseunrnjf.info
+orglcmugciuizzphigamjtczpoj.biz
+orjtopjaqemkzuonjinhakzfudd.com
+orrcrlkrnvgappgypbmvlnvhxg.com
+orsizknvsktcushqrcbidmtcmvyx.ru
+ortgxcahlfiupvgnjjfonh.com
+ortmforkvlrmbmzdhnrei.com
+oskxwkrgehyztsdurghpnyhwohm.net
+ovbajzwcylslrizpsckvfywotouk.org
+ovpvpydyheeulvmjsklij.info
+ozdbqxgypydjzwcdlfukemrsinp.biz
+ozpdmibailrayxopfryppf.org
+pairotcyhfumbpnfyprhibefiivvclj.info
+pbbemeqlaprohesglrpjmozlto.biz
+pbcqinmjpjdaekjlvrprwlnv.com
+pbeuxplbyrcamqsuckfxsdhai.ru
+pbwswcucwgluwhpvhilgr.ru
+pbxotcxgxjrozgecyygybmxwpzp.ru
+pbytdepnxqslamaipzsotqpjvc.com
+pcurkpvptoqocmbewclpvjbueq.biz
+pdgixrkduxwrclxgkzvydeqmf.com
+pdkydlbebiztzxgsyhmzobplj.com
+pdqbavgdgieidewyduhgmon.com
+pdqgqyxtomvayxxkftgnfvglzmny.net
+peqpfgaxklnrcarcxkqshzxuw.org
+pfaydpdaibjbuteyeuhxm.biz
+pfgyzlofxcrwdptvsypxkiv.biz
+pfhmbaxdagqfqroguxcmwkguhupuc.com
+pfivpzaygesodgakzpvsprrozvotk.biz
+pflrfuvrsfinrxwlbixoulvdi.ru
+pfnvslyxvwxsxkjpnljfepfzxrkif.info
+pfsswqwzbqgehlvxgzlvgifxg.info
+pfvfumndyxcdbytmjojheqbqob.info
+pgiceojxkaqjbbenzobtohdyivlv.biz
+phehedqcihqusgijbmaxssozxmz.biz
+phipnswtvhydmblfrkroorxlei.com
+pizbynzdzdeylizllxxcewcda.biz
+pjeuxhizphwnvfiizgqzhbeaytonj.org
+pjgqknypyprpljortlfqpxxc.org
+pjkffmifalxkdifyrkxhawcgaeuhe.net
+pjypyhxzpdqkcebycuztnrnriv.net
+pkfuodiauamhjvuzdyjntzlz.ru
+plrwhyxxgtovuoorprohwwc.biz
+pmffqfyzpjnsfiaipjtssnv.com
+pmrnzbuhiydjflnrnrzdbitst.com
+pnfmfofdldtohfmhrkseubup.ru
+pnjgeqknwkukzkvpbmzfijfga.ru
+pnjrupjauhqofqhxwucsklbthyib.com
+pnnpjtaecyknfmzztstfe.biz
+pnnxkblmbldaugrctsbqhvkxk.info
+pnppbqzxpugdaxlmnizhmeucmof.biz
+pnrdcidqcukrwaypfayttcpinl.ru
+pnxnvhqhqobraqjrdeaynzdipug.com
+pnzpbonobxveqwohhxorkb.com
+pofmrtstmbucwsroivwovirece.net
+ponpzwceuqoltxtfmozgy.org
+posowcwcwowodmcahelvrkbyvhegy.info
+ppozrwpzonzleqztdpjcarghmr.info
+ppqoyhskrkkbteizxlnqgvklovx.net
+pqhiqkkrmjyhqugqkbukcaet.ru
+pqkorthbqjrfuhxtpvcych.org
+pramlvwdakbculvyrwswzhtkaqfy.ru
+prfyutxsbilhmbhlnozaqtc.ru
+pribgabumfqcdkjpzayfqjvpzvcy.info
+prkcqhytyeiambuzltkyxrcbuzp.org
+prqsypaufizlwcmnbqyhfmztaeyl.info
+prrcslljfyaqucqcgmvkmzln.biz
+prsylbyrodtomndyuowohatucqs.com
+ptkvjbinlxwgiuottwslbrwpxs.info
+pvdswpbijncadfpyxtx.info
+pvemtdeqcydhcaaetxkxwxmb.com
+pvhideqwsjozzthivmrmfgqzxei.info
+pvnbbejfugaxmjxjbcyxhygu.info
+pvrcjzknhmbnfcymbnjeyeafujz.net
+pvvwrcsuclbjrlnxswtaurxukh.com
+pvwtggmtoirusxovrkivxei.org
+pxbmwcbeonzhaescxkyxprugsco.org
+pxljhyydxsomztgrwgyzqkcd.com
+pxspzkbjvcskdjnbqlgmonamcade.org
+pzdeyddofucprhyzxtsvgby.com
+pzgfaphugvcaepraqxtuc.info
+pztbyzprsqwweiijcmorsimjdu.com
+qccygqwhhtgjfeeimjlmf.biz
+qcdpzxguhtizpvhlozuwtkmjdy.info
+qcldxwqsbyiblvrvktkxxokvso.ru
+qcxvwceumjtwwoeqwgdqxztjb.biz
+qfytkupdxcumrhewpzpbmgyae.net
+qgahquijmfmrhwovocunbeyqs.info
+qgqgtsgfyhadetbxkrd.com
+qguoorlnbdugjrylxshepij.info
+qgxozupqshahnvxjfaurrcm.biz
+qkojhpusyhdnfxfmtsjnfetuo.com
+qktoxkprlfvoptpfugexknvkv.com
+qlftetptljnbkphypfjzt.net
+qoayptohugfukftoyhnrwcamgi.biz
+qoozldlgrlrugaemjztlhqgq.com
+qoteycuvbzlzhdwspjfypxs.ru
+qppzdrolbrspijbmvveavo.com
+qrgpmntdepnxktdtc.info
+qslqgeuojskojhjfizpfmjozudtg.biz
+qswomzhushafybempwckjrcdlh.biz
+qswslnpxolvcdljkrxghgmjrby.org
+qsylivzmzpvcqgrtpbdiztc.net
+qvkmvwsutdaiayfudmtxjzxjf.ru
+qwfumzeuptgciainvtxkpjf.info
+qwytxjbxtofxsxvqeupfpylxc.net
+qybugqgidicsocurgfqfallj.net
+qzlucxbqvbyvwdwsvxwzphya.info
+rbyuoljhlunpqkpbytkrvwpjv.biz
+rceipdtspgqkztsemyhuorc.biz
+rcibljacypvxkxanjojmrhkfpf.biz
+rcpzlcekzrkjzpgihaduwkbixiz.com
+rcuwmjaqbzptxomfhmjbbaypnrmzdi.com
+rgatvctwdzdxgavwlvfeeaiz.com
+rghayltsqwmrovcqjpzaqlvltzxz.ru
+rgybyijuwjzykntbecfadqdxgm.info
+rgzxaizhtklguivugtdmpjovpb.biz
+rhmrocyulvhibadirttmniz.org
+rkmfmsgqskvbuiggpirnzaq.info
+rkodihykkbeixshahaescltuyp.ru
+rkpjgakvqgfaeqwshlfieivwsojz.ru
+rkpuvhwcxnbmnnrzhhaijdov.org
+rkyhrsjrmbtypdaqkyhhpduuclj.org
+rkzpkjfylzcubmytgqdicarofeugdn.net
+ropbkzfiqwxpfxswqshdmhjbzllz.com
+rouovamtsizgyusuujvheqipib.org
+rpruwtcrgaisofiifblhiaul.biz
+rqwojeizlgahkvxczhrctgdypws.com
+rrgivchqozeutfmprbqbqrglbqdy.com
+rscmlreqmnnfrwdzhjznjrgihsk.com
+rsjbkzjfzppfgytdeeuphaleydmeu.biz
+rsqgceibxozcqwmvaiscdtda.info
+scbibjtgibynrjvycvcusl.ru
+scivinjzzdqyirkplnptclzdxc.biz
+scnffibmjhasfmljwspvpnhdyhpn.net
+scvwxvkluwzhumffipcyjbr.ru
+scxifmbztkjnvrcjztceukrkj.ru
+seavssdemlfflddagagynfeu.org
+sgeuhdattgvhatxfarsaqlbgm.com
+sghgaxzhcuhidyyldskqsvpb.biz
+sgjrzlvzhirlncqgmmrcebp.ru
+sgyhmztxkmjlnbsxorinxdu.com
+sgypxxpxvwlyjbasotkhyrcrs.biz
+skjrbekncamrllljcmlotgtwmz.com
+sktgddltowsiamehqwyl.biz
+skvkwklmfxslfztrwhkbnbord.com
+skvzronssksopireivytswh.org
+slfanfeqhdvwhlfsclzpcmhao.info
+slibhjzcskkfrpztpduibdtw.ru
+slnnbdrcbyeqlqcpphqlrwkifi.info
+sodlnbtuowczleymvnfjzvsmjzt.org
+sojcijozhidayldudlmjrslij.com
+sojrlbzxzlcavslzqorcrsyx.org
+solqoovizusxdqjvbmlrtgaeguov.com
+sopjjrguucnvwkxcizuccyhqkfkzlz.biz
+spfmkjojtgunrnbyhthatfqgqlj.com
+sqkqcguvonfadyjmjlwghxl.net
+svstzdtsllinkvhatmbypqo.ru
+swfunrmrhqnzhudqeyvbahlr.net
+swkbrdihemnfdmjzuwtkhmhnb.ru
+swmhhxsbisclzdpjvwmbaeguvsvs.com
+swondvhmzlnjaudqpddmbeid.biz
+swqwlduhqrqsbbeaipbozutwoz.info
+swrcqdukgidmbieyskhqonrcpfunr.net
+swuktpaupnyfuudaqd.com
+sypxpbivrokztxtfmmzifkbouo.org
+tamauvcjrojpbcxgxyxrsvkiz.biz
+tcdeamfunbbjzlmyhxpzddug.org
+tcdeydymjkbfalfovydgqdeybiv.net
+tcguqweagmhamfgqufedtkxbqda.com
+tcjzzhpzkhcejzxckjbuovlpb.ru
+tcskwfieqtvgxgrkrsaypb.biz
+tcwovsvcayfyuwibllbycqonkbzdkv.com
+tczdxpxgrkprmljawomzpx.ru
+tdehfamvtgjneulxpvdmpz.ru
+tdhqspqqroyxzxwgjzuglt.info
+tdltbdqdqxskqemrtcvodkn.com
+tdsccapxwswdyeqvlrwtwshe.org
+tfastzlydwsqkphavgvmzucpfh.com
+tgdguytqoylwkpdutxvktchjfxk.ru
+tgppbsosgpqcxozkrmzpvmr.org
+tgyztsgnbceguqoeqztvwdieukri.info
+thkzkndyeapzxhqwsaijngubi.biz
+thojlxjfdukzydpnvuoovz.org
+thprgiceiakbtxbdeqyge.com
+thuucxolbumtfelqkhvgqotod.com
+tjrxsghujmjhqaieihuhelfjnfqmn.ru
+tkeyeirdmzxeycmnjcufascdqo.net
+tkofukjzojapnbativkntjnh.info
+tkzfnivfyrwwkdgehubytnzbe.com
+tlqkeynbaecybajrfiuvskmvu.info
+tmbghqqdxtceujvoblzhif.com
+tmnnjqsbmlzwkkjwkcjztcpnbmnfa.org
+tmnpkrmbrwdxsuksgefqpdigm.com
+todufisinuwtzibtcuopvdhy.com
+todwkzylxhaqcbigucqkxcpmf.ru
+toguxckijzttjvaixnzmnscpfpnrg.net
+torklprjnaigqzroyhtglteavg.info
+tryphroemfiudul.com
+tsauxpfzlhcqxxkzmzhqsgp.ru
+tsfykriayjrxmnhjnvodftxg.com
+tshegyfurkhfuyypjcmztx.biz
+twambizivkbhzbirdevgmftgy.ru
+twdtcztoofpcufyucxkbut.com
+twwczpxydjrbmgivopfibgmlfz.info
+txcivnjgmylwstocmpvfywfup.info
+txkgujxtwxsylaefuqkgymfca.ru
+tyxsohqaqxushfadqrkptukeu.com
+tzatxphgiheuinlfpbxw.ru
+ucfqnivifgqbmmvpbsktoprusddq.net
+uclfeupgehyrchzpsgyhhyaiciei.info
+uctkvsdjztkincibqwowsiirzlt.ru
+ucxmftptohlthgmcyciljh.info
+ucyscdtsxpzugpbcupvvwnzbaciea.org
+ucywsdyddqdihelzdhapjmffu.ru
+ufehfmijcydtkxsypkrsconmrgyor.ru
+ufqwgeyudmxsfmgqyxcprggu.org
+ugdwobhucyhuovozljijlmhukqk.net
+ugkvwcxskvroibbauohuwlbup.net
+ugmzldpgevstylkfmwm.ru
+ugoneiqgzdrgehxsuwhyzhtkh.com
+ugyizibvchxlmvcucuivduem.info
+ujnmrcawzxcuwociytkvslzd.ru
+uklbdpjitpbkbbasolbdeytwgy.info
+unbxcnzdlqspzswsbqembtsx.org
+uofwscefutxlnjvgkjztsfyzt.org
+uohtlzpkfmovcmgamnpzojeqt.net
+uokvsgwsxcecqcqwuwxuajbydfe.ru
+uomzthxcugehroovzxpxtch.org
+uonfgibiusdmppeiypaiypfycy.com
+uotwtotoxkxlpdrwuwsclp.org
+urwxcexktwcytwfyxsmvuwxbu.info
+usgqwsgepxoamhqcimnkzofvsso.org
+ushfuvgemuczjbwharwgyeywkong.info
+uskfusqwtcetotkxlvkaqqt.ru
+usmnxkvovypaumbizuccqgiwsctkh.net
+usqxxziztcyxnzwkvknwstspxg.info
+ussklbogepbuhanfvocebiobyp.biz
+uswbilnhdmjxclfexogidcy.biz
+usxglrytpflnpvppxolbaknwolh.net
+uwcevstghupfnzeigextvgyt.biz
+uwpmrlrdcdmhmrxwhqcqwovsnv.info
+uwtfqfudtpvpzgidhdkvvg.org
+uxlvguusnrdkjfqxpvrody.com
+vceavseqhxvusjzswpifyp.org
+vcxsovcqugwcpnjeirokbxkxokbd.biz
+vfayhgqdsozpytgyylltpj.biz
+vgdbtsytautrgvokvovlge.info
+vgjjfrslrfahxotlbtrdzlxk.org
+vgpnyleibqdchmbnrjgynbuz.info
+vgthyclfqtskrbmeajbmrfufi.info
+vkbuwxchenrtlqszhpbnfqgpnbapj.com
+vlfusxcfihaivklkppr.info
+vlkftxtcaelvpbgubapvmfqodufq.ru
+vlrswaibixeuxrgswxcaieupyl.ru
+voamtvgpjozprpuemtgbqjrqjv.biz
+voasoovfezojfevwtwkbpljir.ru
+voguecywhqqkwzmnlcefkvv.info
+vohsgheiffuamhyjmvbahydl.biz
+volbmfozxtfadcajrux.biz
+vomvqnfeycupwkugizgujbbayhvw.com
+voprcymvwchihvoqocqtkbavsoxp.org
+voxsmrpblxrotxwhyirylormn.net
+vrpzbqgydyfuonlntpvcutrklr.net
+vspirlvpfagtkrdvsqcpptlz.com
+vswpbizqctpbonkreyzptgevczx.com
+vsxgerkxwvgukzxzhqghvgaqxpcq.com
+vworbmswgmhudeucpkbgeozroiz.net
+vwrskjurztuglvkvnfxhl.ru
+vwxglruoojnyhuoojofbehbeishi.biz
+vwztwohatclhdxtseaqoytvcded.info
+vzpeurrkdqzhqfupnmdgil.biz
+wchbmrcrkzpvkqcqkxhzpfmxnb.info
+wcheyirpzztbylvdikfylmbbemzlzp.com
+wcswpzguvclfuxbatshufurdh.biz
+wcxytbixgjzljibhiegucaxssgxfi.org
+wdydharytrsonzdnzqchihuhq.biz
+wdytaynnribmivtgpftktgihq.info
+wgiyporlvxpbpjlqrcpbblrbiwk.com
+wgqglblydrplzgojxydtc.ru
+wgqwkovskwsjfvoamjzprjxknjde.ru
+wguljjfzyuwcgelxwiflha.info
+whcinjpduwpxwmvpbpjvjucwk.org
+wkcmbimzskvxqcexlpjaqxnv.ru
+wkjbukvqslinjfmvrctgdyh.com
+wkqdmikjwwdydqjhsyfifenj.ru
+woiucmnzlnbuoijjzonrsgdyxbeem.ru
+wojjzpjmpqwcecihqpbdqyxayfu.com
+wovvkfypvwmvbaorydmcirgob.org
+woxodmylguhikmbeaxwpvin.com
+wrsxindwspgqbiqosdqtwgpqs.net
+wsamjnjkfpbdgmonlkzito.com
+wsbidlhukttwdilovdahha.info
+wscamfibubyuoqwuwknrscmgi.com
+wscfaobbmsrlfvcsbuzpaley.net
+wsowogmozmjpjbuqwfmnpvdakzrkn.biz
+wstwaygmhigznfortgynrrs.biz
+wsxkbupnfpnakvmfldhmaydu.info
+wxtojbhuvsqwgaqsnzxmveixh.org
+wypqspbuwhuxkvwxzpwcjfvkxwpb.info
+wzlrhqctowcrinytircqbupdq.biz
+xaeyzddajnfinvlfduytwpnnfx.biz
+xayeqdiaufqokfaezpvdiqsizyp.biz
+xbmzdtbetolzhonpiihaaipg.net
+xcqozhycuduzxxxknheymn.net
+xcsknbfjivzonlrpvzxdynz.org
+xcxkumbdasgdldcmytztqemlbhu.biz
+xcytmrgicuorlcyvcfeleada.com
+xeafyohefqgqqxxsypmvoffmuk.net
+xgmizhkrxwfaqfmzxfqinbiehmw.com
+xgvkihobhwgrcswdhyivlvx.net
+xgvsayuwmfovpyxqkptkhmxrcrk.biz
+xgxkbivlrkntosogezgexijknjbx.net
+xgyuoqwbabadirgfuxhyfyojifukca.com
+xhfmkjlovvkydcmpbutaiof.info
+xibxeqwcmjrvgozdaprorgyprt.com
+xikvxcnfwsbiirmnxuija.ru
+xilhyizlbuhrkjrzppcaylp.info
+xjvcalkjjrdsvsojxobmpdq.com
+xkauxdwgpvirijzbexxib.info
+xkguuogiwgciojbuxfmlvgcyx.com
+xkhdykblizbiqpjhmljbqdt.net
+xkhulbatxifuclfypawgxgbm.ru
+xkjvayqgnjmnpfdnjknhbubqgt.biz
+xkkrinpmvlvfeplbhykrpvp.info
+xknrscovhqsodqhqonzrlhmm.net
+xkpjhlgizdipvharwhujnskad.biz
+xkplhpalncqaegeqmzvoa.ru
+xkzrwpjsnzgeptbyfqizqobaswcy.biz
+xlkvrgpdjbtylhykbmfhnvkbyd.info
+xlnpfpfbqwtwyhjvlsghljblviz.info
+xlwgcukztonmvlvjrtdlnqto.ru
+xlzxivdshpzgmlbkbttcaqeymf.ru
+xmbfuweihphmxgkrzxlrzxovxkp.net
+xmjlfgskjblfafuprjrwkuoqrshq.ru
+xmmfwkbqhnzlzdyluglrrwg.org
+xnjrwxyteuxivhhytarshqxkh.com
+xodafuvpfixbadkyhwsttce.biz
+xoforpbmfevouocqfypsxwnjgm.biz
+xoukdrgxlnnbxokrzhrwyhgetpb.com
+xpkvbithoribxshzdsohpx.ru
+xppndfmgivowsqjzemtpveaon.com
+xpvbuzkjhoxaqrkpxxgaeshe.com
+xpznzwmrpxdeypkgattaog.net
+xsceqvsmjvnraeypdujbnjbaga.com
+xscykjhwcxkbnvhqdhnbwcd.org
+xsovkcyhirofihaaifmllbqs.com
+xswlbxkirgenvgmdyxkojljcy.ru
+xtgqljzpqghfylvdypndiyge.ru
+xucnbtkcltonfjlzknlxogyzdnb.net
+xuohlnjtkpdudakmfkbxroai.biz
+xuwxwuglfzbukfhdqotexgkr.com
+xvcayxqsqslztmztylepbi.biz
+xwbuguvgdimfeyxcpndkbnjfipoz.ru
+xwctljhupoffmgnvaetypby.com
+xwhakfqsnfdnjxdailfuouwmfga.ru
+xwrljzlvltxgmkzugrcwstghmz.com
+xxpvqsvspvoljdamjtwhlwow.org
+xxqglnyladqeqtskgqdiqqkfa.net
+xxukzpaqxbixjnpgqtkdk.com
+xydmvucyxlrxcovinmsfeovrg.biz
+xzdlluaizpamwsuschaypbawdm.com
+yabebmtkwckswhmvrocuvkmnbi.org
+ydjnnjbqxklffadibqxcybizt.org
+ydpnbmwcpsoyhljhqhedmrlbmf.info
+ydqwqgqoucxwxxodxdmnfmr.com
+ydxozpjfmnppxnfpduropf.ru
+yfiytzdjnfesozfqsgylf.com
+yhdzxukpduwoztssobmwkyxtske.biz
+yheylzxlzztwlaiojlneyovl.net
+yhhuovgrswcobhaorfmpvggqsoyl.info
+yhjnfacecqovcyxdqwplsouvg.com
+yhofprcvwlfjbzlponwshbu.com
+yhvwcmjbkrwkxpzpgedtd.com
+yiblnnwkqcxoyllbztkzysxg.ru
+yleaojrssdgqdajftjoges.ru
+ylhhxtwxylordrgrkytfa.com
+ymnmgigbqgqrskfydiaqyp.org
+ypdmyhvgxztswsztnfuvtczpd.org
+yplwuguequoxxdiucivhaxrc.biz
+yplyxnbeibqlnnzbqgyxkzhh.com
+ypxtknglvwirpjbyfitjn.ru
+ysknborjngmhyvwaywtshea.org
+ytaquwvkdozyxswhzdpvlrusainf.ru
+ytcaylrcrprghtiuwdtoay.org
+ytpmftglbiskpztwgxxlvxsg.com
+ytztptwgqlvstsqmvgafecyx.net
+yxdxsqsvwkfyenrxzdnf.net
+yxsxopwmfbqivdzukeqpqo.info
+zaexkjnwpkbxgfyuhufkn.com
+zaqibxdaduozzeqyxpltvgp.org
+zayxljhypveagyvgxhvobaepr.net
+zdcuxodiaeqojzjvcmrkjorxrsci.ru
+zdjbmfcionivtkaiqcemtbaqkonwc.ru
+zdnbddipjcenjvwbemfkzydtmfamdi.biz
+zdvocapfprdqjndelrhxaejfjrqjv.biz
+zdzplbqdnfaqrkuskbkfhxpjmb.org
+zfbqjvujzswpnzhqoppypjd.com
+zgdcuonsotkwshembayxtbagq.ru
+zhemvcucitnbcqrwvovwtcyhvg.net
+zhizwyluccqaqjztjznzfacegee.org
+zhkfydobtofcyqlizvkhcuuctl.org
+zhpqksocqdqbmaifatfizuopf.org
+zhyfeifhiztivdytsgqokfqsba.ru
+zhzvcusdeqhibdutcpfeuhhmd.ru
+zldgarsskpcadwglryhmbuob.com
+zlgmdxeyzthtcgqlxcatobvw.com
+zlizuccudibwcizyhypjvdijibtdu.net
+zltlzobcatgsnrfqnzydztzrop.info
+zlzppjjngagbetuspzgmnrxkeuhy.info
+znrdxsemqkhworzofdyduk.biz
+zpdstpbwwsopylyxpkjkjuw.ru
+zpifjzorifugnjlyhehqtsgif.net
+zpvkbtgewsydpvovfagyxkuohy.com
+zpxgeqpnaynflbiftdeksotkf.info
+ztcmbeuwgcigacirxctwjfgmpfdayl.com
+ztfexgyibthyytwauhqpbvkswif.info
+ztkjjnndhilemovkfytx.com
+ztqojfijdamrhwucskcirdxwpr.com
+ztrvspcrshmpjpzgqyxzpnin.org
+ztxvohxklrucvcjbwgtgyh.com
+zukxkpqwsoaiypcqdebbmnga.ru
+zvklkbjnlkbtifauxojmnfamf.biz
+zxdthytibqpbfeljovdaaq.org
+zxgcplfdukbemzpagenbukpf.com
+zxhukzxmwobepzitreaud.net
+zxsgroqofcykborivpnmztoq.com</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-764e76d8-9512-4fb0-ac8e-fb771259d47b">
+        <cybox:Object id="CISCP:Object-4a007341-77c2-42ca-8faf-a332030f617d">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">otqo.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">220673</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">2e068878a7911949cf613233c84662ba</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">14fd65d6db51db16c968018ab8fd194aed7ae6be</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">6144:2Cqzuniv1NBZFQ+1A4GCdQrWafhlWhiw8KkS:FivhEzCmrhQ8KL</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8263f65b-3baa-4179-8ad1-ca50e4c874de" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 17159/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b5c23769-a3dd-4842-b912-bb5b7ae7ae2a">
+        <cybox:Object id="CISCP:Object-b6a6a448-6f07-4b93-8974-87dc6c9f9ce6">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">176.67.74.129</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f709168c-265e-4c3f-bbe0-9e9379cdefc4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 28928/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0bd405dc-f2c7-403b-bdc3-f75cf686098f">
+        <cybox:Object id="CISCP:Object-d10f61b2-c970-4c6d-a4b3-5a065234dc31">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">189.223.141.58</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-98019f0a-331a-44a2-828b-9cb8106f0977" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 23153/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b657bafd-18d8-433a-b98b-9a45cf664e27">
+        <cybox:Object id="CISCP:Object-9a5bacb8-d582-4493-a88c-a687d25cdbfe">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">190.42.161.35</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-93552979-e347-412d-8081-7c3a163457d4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 29902/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4136ee8b-0024-42b9-94b3-6e5c1c262666">
+        <cybox:Object id="CISCP:Object-6dbac38f-4ec3-4bbd-ac0e-129596786397">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">195.169.125.228</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0bb4931c-274b-490f-b15a-6b8c2ffda7a7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 11145/UDP.
+
+This IP address was previously reported in IB-13-10311 for it association with Zeus C2 activity over port 11145/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3f4db917-792e-46f4-987d-d8c9bdb9f67c">
+        <cybox:Object id="CISCP:Object-a3e48f50-03ca-43f1-b90b-ff30b2b73cc3">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">199.59.157.124</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-32cccf4b-f384-46ed-ab68-5d1204f5bcc1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 13886/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-68805ffc-c936-49b3-ab21-3f31492588e5">
+        <cybox:Object id="CISCP:Object-1d2721f9-9c9e-4afe-9d38-eb547130fb68">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">24.43.100.84</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-788cac13-a71f-46d5-82b3-d2106bd79c0a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 27667/UDP.
+
+This IP address was previously reported in IB-13-10311 for it association with Zeus C2 activity over port 27667/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-31a80100-b963-478b-abb1-507946f45a68">
+        <cybox:Object id="CISCP:Object-094acf77-aedb-40f4-bb1f-0a3694e5f7de">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">64.231.249.250</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-db202cf9-7189-49d8-8ccc-e593522b2a72" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 14774/UDP.
+
+This IP address was previously reported in IB-13-10311 for it association with Zeus C2 activity over port 14774/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-11a1fdb3-6cf5-429f-8c02-7403a41bf713">
+        <cybox:Object id="CISCP:Object-454af80e-8a28-4387-92a9-5bbe7ebc4ec4">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">69.183.226.70</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0bec9160-7a3f-479d-a048-21d6e5d160fe" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 11000/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-138a74a4-dac6-47d7-89e4-eecbf3e5c72d">
+        <cybox:Object id="CISCP:Object-6e06e4f7-8a07-4a77-8d38-5c0ef246809f">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">72.242.102.130</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-30989239-052d-4106-8376-d7dec1675388" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 13416/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f395034f-94b5-4b04-9926-70612541fac3">
+        <cybox:Object id="CISCP:Object-d90d2208-7a3b-4370-bab9-22092f116ee1">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">75.109.208.48</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5235f3de-c3d6-48f7-8d99-c498cfe5f65d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 13467/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-20176142-ad1a-4426-b8de-7cf2d614099f">
+        <cybox:Object id="CISCP:Object-f139f5d9-3d87-4d37-aa22-5e9429238366">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">76.245.44.216</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-168f59c2-1257-4943-a75f-b79d0ab1f8cc" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 19914/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8dd4e329-a7a7-41dc-a28c-5b2ef7beb96c">
+        <cybox:Object id="CISCP:Object-4a73f4c6-bca5-470e-8019-7994283b2557">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">78.100.36.98</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-374c8d59-1d6a-40e5-aebe-93233b877ca0" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 28768/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b5b0617e-acb7-4766-8273-5e09039ba5fb">
+        <cybox:Object id="CISCP:Object-2f315431-5fb3-45f3-9b6a-bc9364f432fb">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">81.149.242.235</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-23db25b1-a897-43dc-8dab-7dedce071741" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 10378/UDP.
+
+This IP address was previously reported in IB-13-10364 and IB-13-10332 for it association with Zeus C2 activity over port 10378/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-966d60f0-447f-484a-9cca-ae6d5a729b21">
+        <cybox:Object id="CISCP:Object-a8e68468-0559-452f-ad6d-ca0634d48dd5">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">84.59.222.81</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-dfbc7d93-8475-4eaa-9f51-3df297ac227a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 12518/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3f88b895-e74c-4fdf-8a21-472fbf46dc44">
+        <cybox:Object id="CISCP:Object-38a47e65-da81-4e7b-b688-788fa9883c4f">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">85.73.201.231</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-69420d1c-b5ee-4b57-8f28-c6324257f09f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 12360/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-608ca5df-a90c-46ff-8928-f308ef487f04">
+        <cybox:Object id="CISCP:Object-f0fb6888-8a4d-433f-80ce-327144aa48b7">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">85.87.68.163</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-40b175da-aba2-4018-8b6a-b0cc2ca0adbe" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 15308/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-bdfb2e2e-b660-4d8b-bc76-996e371fa3bf">
+        <cybox:Object id="CISCP:Object-95c68790-67cf-4769-8504-b04647f13a74">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">94.66.71.218</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f6afd6fa-5129-4de0-8279-eec4694282fb" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 19729/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-7d980455-b6ae-4b80-8300-d967fd3c67b5">
+        <cybox:Object id="CISCP:Object-f2f3d7fe-4a3a-43e5-9565-c8343ee7f27d">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">94.70.60.113</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-58772a3c-4a3f-4221-98ef-a8da7fbe7ab4" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 11922/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-bb2daca5-7ec9-4de9-8206-6a2453a7cbca">
+        <cybox:Object id="CISCP:Object-ec74fbc2-7e29-49b6-98c9-9ebf5d90c1c4">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">95.239.225.8</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4ac63021-bef3-4faa-bc72-9febc903ba93" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file, "otqo.exe" (MD5: 2e068878a7911949cf613233c84662ba), calls back to this IP address over port 19595/UDP.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-6ac36f11-851f-4f64-9e00-8e8d9661b6b2">
+        <cybox:Object id="CISCP:Object-f85e05ae-8489-43e9-99cf-1a4be7cb069a">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">98.201.143.22</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-26T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

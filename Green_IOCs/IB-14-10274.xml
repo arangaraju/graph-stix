@@ -1,0 +1,543 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:WinRegistryKeyObj="http://cybox.mitre.org/objects#WinRegistryKeyObject-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" id="CISCP:IB-14-10274" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Kimsuky Coinstager Malware Analysis</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 13 May 2014 US-CERT provided analysis of two malicious files, "malware.dll" (MD5 80c438f54ef8117b86caebb4e46e0387) and "moth_2016.exe"  (MD5 f8b8a2a10dcfa0f933537109c7800ec8). The files are likely examples of the Kimsuky, a.k.a. CoinChanger malware variant.
+
+The file moth_0216.exe drops three malicious files: shsvcs.exe (MD5 6999c647dc298de77f1ce7b18558edd7), signdrv.exe (MD5  9b8c3429bbbbb070b30863a382973fef), and iexplore_ko.dll (MD5 f68c526dc48003b5c36b922715211c84).
+
+No further information based on analysis by US-CERT is available at this time.  For additional information regarding Kimsuky malware one open source resource is:
+
+http://www.securelist.com/en/analysis/204792305/The_Kimsuky_Operation_A_North_Korean_APT
+
+This product was originally published as US-CERT MIFR-365638.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-06-02T13:51:22Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-20f4a31b-14f6-4564-aa50-762a62176b50" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-e7f4f8fd-0480-4c74-a3f3-04439db975b2"/>
+        <indicator:Indicator idref="CISCP:indicator-89385de9-bf7b-4e7d-89f2-a11d3808a8db"/>
+        <indicator:Indicator idref="CISCP:indicator-cb7430f9-3fef-4816-9796-ea142294334e"/>
+        <indicator:Indicator idref="CISCP:indicator-aa4954b1-dd8f-4025-b070-9ae7fac0ee8f"/>
+        <indicator:Indicator idref="CISCP:indicator-87521bc6-0837-4604-8371-98432dc28596"/>
+        <indicator:Indicator idref="CISCP:indicator-e3aef2b9-965e-4448-8b0a-f6ba76709d1f"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e7f4f8fd-0480-4c74-a3f3-04439db975b2" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The file is a Dynamic-link library (DLL) file with two exported functions:
+
+Name Address Ordinal
+
+ESEntry 10004BFB 1
+EliSHandle 10004D1C 2
+
+PE section information:
+
+Section e50b7ac16bf393d6f4a6fa3a881c9582 (header) 4096
+4b4f478fe47657365430e2a5b5800508 .text 20480
+de2db082bfade3802fc462a5f7b62709 .rdata 4096
+76c85a39c806160d27daca8fdf22b94c .data 4096
+6bc54b27327115411e51b86d9ee5c725 .reloc 4096
+Packer Microsoft Visual C++ 6.0 DLL
+Compile Date 2014-03-06 01:42:35 UTC
+
+---- ------- -------
+
+Static analysis shows that malware has following capabilities:
+The method "ESEntry" registers a new function to handle service requests.  The name of the service could not be obtained. The new service handler then starts the service. All other functionality is common to both DLL exports
+
+The dll creates event object that has hard-coded name "Global\1A0E621SV".
+It then creates two hard-coded files on the system. One is located in the "%TEMP%"
+directory, named "000elisa310.tmp". This is the log file. The second file is
+located in the same directory as the original malware executable and is named
+"1A0E621SV.CAB".
+The malware has an ability to establish communication to and download
+additional content from the remote command and control center (C&amp;C) and run
+downloaded content on the infected system.
+
+The static analysis failed to reveal C2 domain(s).
+Relevant strings:
+US
+"1A0E621SV"
+"Global\\"
+".CAB"
+"http[:]//"
+"/%x/page_%d%d%d%d.HTML"
+"Accept: */*\r\n"
+"Host: %s\r\n"
+"Content-Length: 0\r\n\r\n"
+"0x02, send data failed: 0x%x."
+"first"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8cea7aff-0934-4b4d-80a4-43a6076ce7c0">
+        <cybox:Object id="CISCP:Object-a3be3bc9-4620-423f-8b77-71c2410fe515">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">malware.dll</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">36939</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">80c438f54ef8117b86caebb4e46e0387</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">7fcb0bc8f2fdb2edcd9bbbb5e2d006469d82335b</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-89385de9-bf7b-4e7d-89f2-a11d3808a8db" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The malware has no plain text relevant strings. All the relevant strings are obfuscated.
+
+For example, encrypted string:
+00407C6C FF 92 F3 81 F5 D5 96 F7 85 E1 C1 8C ED 83 E2 85 &#198;=&#252;)+&#251;&#732;&#224;&#223;-&#238;f&#226;G&#224;
+00407C7C E0 92 
+
+Becomes the following string when decrypted:
+00407C6C 53 6D 61 72 74 20 43 61 72 64 20 4D 61 6E 61 67 Smart Card Manag
+00407C7C 65 72 00 00 00 00 00 00 00 00 00 00 00 00 00 00 er
+
+Strings are decrypted one character at a time. The algorithm "walks" the string from the end to the beginning (except for the first character that is decrypted separately). Each character is xor'ed with the one after it. The very last character (the first character to be decrypted) is xor'ed with 0x92.
+US-
+.text:00401043 8A 4C 10 FF mov cl, [eax+edx-1]
+.text:00401047 8A 1C 10 mov bl, [eax+edx]
+.text:0040104A 32 D9 xor bl, cl
+.text:0040104C 88 1C 10 mov [eax+edx], bl
+.text:0040104F 48 dec eax
+.text:00401050 85 C0 test eax, eax
+.text:00401052 7F EF jg short loc_401043
+The very first character is decrypted in the following manner:
+.text:00401054 8A 02 mov al, [edx]
+.text:00401056 5F pop edi
+.text:00401057 34 AC xor al, 0ACh
+.text:00401059 5E pop esi
+.text:0040105A 88 02 mov [edx], al
+.text:0040105C C6 04 2A 00 mov byte ptr [edx+ebp], 0
+
+Next, the malware resolves the addresses of the following API's:
+GetEnvironmentVariableA
+FindResourceA
+SizeofResource
+LoadResource
+LockResource
+GetSystemDirectoryA
+GetModuleFileNameA
+CreateFileA
+WriteFile
+CloseHandle
+GetFileTime
+ShellExecuteEx
+ShellExecuteA
+OpenSCManagerA
+OpenServiceA
+CreateServiceA
+
+After that, the malware looks for three (3) resources in its ".rsrc" section.
+The first resource name is "COM" and the size is 0x28B600.
+
+The first 0x100 bytes of this resource are encrypted. Note, the same simple xor algorithm is used for all the three (3) resources, but xor keys are different in each case. Below is the algorithm used to decipher the "COM" resource:
+
+.text:004014F1 8A 14 01 mov dl, [ecx+eax]
+.text:004014F4 80 F2 FA xor dl, 0FAh ;resource xor key.
+.text:004014F7 88 14 01 mov [ecx+eax], dl
+.text:004014FA 40 inc eax
+.text:004014FB 3D 00 01 00 00 cmp eax, 100h
+.text:00401500 7C EF jl short loc_4014F1
+
+This resource when deciphered becomes "signdrv.exe" and is placed in the "%SYSTEM%" directory.
+
+The second resource's name is "KHK" (size 0x00050000). The first 0x100 bytes of this resource are deciphered using xor key 0x40.
+
+This resource becomes "iexplore_ko.dll" and is placed in the "Internet Explorer" directory.US
+
+The third resource's name is "WAVE" (size 0x0000B000). The xor key used to decipher the first 0x100 bytes is 0x54. This resources becomes "shsvcs.exe" and is placed in the "%SYSTEM%" directory.
+
+The malware uses ShellExecute API to run the "shsvcs.exe" file.
+The last thing this malware executable does is create a Windows service named "Smart Card Manager":
+
+.text:00401169 50 push eax
+.text:0040116A 50 push eax
+.text:0040116B 50 push eax
+.text:0040116C 50 push eax
+.text:0040116D 50 push eax
+.text:0040116E 8B 44 24 20 mov eax, [esp+18h+arg_4]
+.text:00401172 50 push eax
+.text:00401173 6A 01 push SERVICE_SYSTEM_START
+.text:00401175 6A 02 push 2
+.text:00401177 68 10 01 00 00 push 110h
+; SERVICE_INTERACTIVE_PROCESS|SERVICE_WIN32_OWN_PROCESS
+.text:0040117C 68 FF 01 0F 00 push 0F01FFh
+.text:00401181 57 push edi
+; "Smart Card Manager"
+.text:00401182 57 push edi
+; "Smart Card Manager"
+.text:00401183 56 push esi
+.text:00401184 FF 15 08 7A 40 00 call CreateServiceA
+
+Relevant decoded strings:
+"Smart Card Manager"
+"kernel32.dll"
+"Shell32.dll"
+"Advapi32.dll"
+"COMSPEC.dll"
+"Open"
+"%s\kernel32.dll%c"
+"COM"
+"%s\signdrv.exe%c"
+"KHK"
+"C:\Program Files\Internet Explorer\iexplore_ko.dll%c"
+"WAVE"
+"%s\shsvcs.exe%c"
+"/c del %s"
+
+The file moth_0216.exe drops three additional files: shsvcs.exe (MD5 6999c647dc298de77f1ce7b18558edd7), signdrv.exe (MD5  9b8c3429bbbbb070b30863a382973fef), and iexplore_ko.dll (MD5 f68c526dc48003b5c36b922715211c84).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-d8b4307b-9b84-4594-a862-999f3ef95c2c">
+        <cybox:Object id="CISCP:Object-12b1367a-10a1-4601-9144-d6348b21ca7c">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">moth_0216.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">3084288</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f8b8a2a10dcfa0f933537109c7800ec8</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">2e6d724bbe1211d76514094269dd53b1ef806fb9</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-cb7430f9-3fef-4816-9796-ea142294334e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>PE section information:
+
+3b4f40af46cc8f33fcf2dcf01196522c (header) 1024
+0ee112bf10f1a2b5be9b2eb0fe4d19ab .text 30208
+449a8a2cd597eafbef6c9edfd0539ecd .rdata 9216
+0756e531f88a1346042835450fd7fa68 .data 4096
+7475142898eff4c64c9c7ace29d4959f .rsrc 512
+
+The file then starts "signdrv.exe".
+
+List of dynamically resolved APIs:
+CreateToolhelp32Snapshot
+Process32First
+Process32Next
+OpenProcess
+ProcessIdToSessionId
+CloseHandle
+DeleteCriticalSection
+Relevant decrypted strings:
+"Smart Card Manager"
+"kernel32.
+
+Relevant decrypted strings:
+"Smart Card Manager"
+"kernel32.dll"
+"Advapi32.dll"
+"userenv.dll"
+"ntdll.dll"
+"Shell32.dll"
+"SOFTWARE\Coinstager\Version5"
+"MinimizeToTray"
+"Writeconnectionlog"
+US-
+"Logging"
+"Buddy_NotifyOnMessage"
+"Buddy_NotifyOnPartnerSignIn"
+"Buddy_ShowPartnerListOnStartup"
+"SecurityPasswordAES"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-d2ad77c4-9ba2-42cc-ad7f-627bc6b8a007">
+        <cybox:Object id="CISCP:Object-dfa5ff61-07ec-4b10-b5b2-c9a33a3fa4bb">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">shsvcs.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">45056</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">6999c647dc298de77f1ce7b18558edd7</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b33db3082f3ee9c540f62feb3001e5efd2b57b56</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-aa4954b1-dd8f-4025-b070-9ae7fac0ee8f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>PE section information:
+
+4483173597523cd5862264bebbf0b044 (header) 1024
+0e2b00d03282d000a32316c2a883d831 .text 101376
+9d8c684c630c76f9dff0daafc0f48cd8 .rdata 20992
+5c62f1aebd1203c15f035fa3a185f72a .data 3584
+e01c37546fe13ff8802dfaf461ce47e6 .rsrc 2541056
+
+Microsoft Visual C++ ?.?
+Compile Date 2014-02-08 15:26:55 UTC
+
+The malware looks for the resource "COM" (size 0x02600F8) in its ".rsrc" section. This resource is deciphered into the executable image file. The malware creates a suspended "iexplore.exe" process. The hollow process is then populated with the data from the previously decrypted executable image file and the process execution is resumed.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0afb2494-ad87-4b43-aa5b-66f9466b63fc">
+        <cybox:Object id="CISCP:Object-6aeb30a8-d048-448f-9ead-058b3cbad367">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">signdrv.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">2668032</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9b8c3429bbbbb070b30863a382973fef</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-87521bc6-0837-4604-8371-98432dc28596" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>PE section information:
+c25250670c16d338f36ac6a994d24c2e (header) 512
+c420a5722a1a6cb7bcea709508c00d83 .rsrc 315542
+40b213a5883cf68d155fca337c7c0a54 .reloc 9
+
+Compile Date 2010-09-03 13:11:22 UTC
+
+This is an executable containing resources used by the "TeamViever".</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-d09febef-8113-4ec8-841b-51d7dd1a073f">
+        <cybox:Object id="CISCP:Object-a15e6155-ff92-4ebb-8f02-94b76ab1fd47">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">iexplore_ko.dll</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">327680</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">f68c526dc48003b5c36b922715211c84</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">65b7087b0a067cfa1e725296c86bc5a3a4d404d2</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e3aef2b9-965e-4448-8b0a-f6ba76709d1f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>PE Section Information:
+ea997e1465e7cfcb739e028f7ac62529 (header) 1024
+56ab632661e70646b043c444af431961 .text 3915776
+b30c39f1275956c411658cb98c261e9d .rdata 1115136
+dfac01fef4b7e39c1e66b6c05878b32e .data 190976
+bf619eac0cdf3f68d496ea9344137e8b .tls 512
+3de1b28d70f3186ff33f2abeb2894231 .rsrc 25088
+
+Packer VC8 -&gt; Microsoft Corporation
+Compile Date 2010-09-03 13:11:03 UTC
+
+This file is a modified version of the "TeamViewer" client program. The malware utilizes "TeamViewer" as a backdoor communication channel. Following registry keys associated with this executable are detected on the infected system:
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Coinstager]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Coinstager\Version5]
+"MinimizeToTray"=dword:00000000
+"Writeconnectionlog"=dword:00000001
+"Logging"=dword:00000000
+"Buddy_NotifyOnMessage"=dword:00000000
+"Buddy_NotifyOnPartnerSignIn"=dword:00000000
+"Buddy_"SecurityPasswordAES"=hex:c1,46,11,2d,ed,4a,e9,97,25,6f,6f,bb,91,da,9e,46
+"ManualStop"=dword:00000000
+"Version"="5.0.9104"
+"ClientID"=dword:00000000
+"ClientIC"=dword:19cbd656
+
+"LicenseType"=dword:00000000
+"GatewayAllowed"=dword:00000001
+"ListenHttp"=dword:00000001
+"useUDP"=dword:00000001
+"Gatewayname"=""
+"CustomRouter"=""
+"LastRouterPerformance"=""
+"LastKeepalivePerformance"=""
+"VpnIP"="0.0.0.0"
+"IPCListenPort"=dword:0000270d
+"TotalSessions"=dword:00000000
+"TotalTrafficKilobytes"=dword:00000000
+
+"PK"=hex:dc,56,41,dc,d0,4e,9c,d4,04,98,2e,91,77,00,27,43,a5,c2,7b,8b,39,63,6d,\
+56,e6,54,4f,76,06,17,60,da,7e,ec,78,fa,f3,ef,c4,a4,33,20,aa,f0,d0,0f,f2,82,\
+ce,aa,63,58,5f,5c,e1,35,8a,32,fc,46,1f,b5,f4,c1,d1,32,bb,dc,7c,8f,0b,7e,01,\
+2e,11,d3,69,b8,e7,84,11,73,2d,fe,71,1c,f2,30,a1,1e,44,f3,6f,7a,71,af,4a,9d,\
+e7,68,2f,91,f1,f1,dd,fe,f9,e7,05,3d,b6,34,b4,a8,88,0e,f9,99,a2,a2,ce,99,47,\
+5c,43,a4,98,4e,57,6f,a6,a0,d0,72,ad,9c,a3,2d,c5,5c,51,0d,b4,0c,ac,fa,91,44,\
+8a,05,d4,21,12,8a,fe,42,a1,24,4b,ee,96,93,17,29,e3,8d,f0,ee,f3,e3,55,82,b8,\
+91,63,3f,c0,57,d6,cf,d7,5f,d6,2f,97,18,d2,3c,cc,ac,ea,e5,a5,cd,ca,62,0a,e7,\
+c2,ca,c8,e0,3c,4d,7f,cb,59,86,2c,18,2f,16,05,31,f5,2e,00,97,06,10,dd,e7,e5,\
+48,9d,43,91,ed,d3,43,9b,73,31,37,cf,04,94,33,ec,b2,20,08,da,21,cc,5a,48,94,\
+6b,b6,dc,9f,6d,3e,ba,2a,d9,4a,4a,7f,0b,16,3f,fb,bf,46,7c,a1,b0,04,3f,b4,b6,\
+a3,68,77,cc,ea,9c,f4,fe,cd,4d,8b,7e,e3,c1,7a,52,d0,88,75,54,fc,38,18,56,4d,\
+84,9c,b6,ae,52,1c,e6,98,89,f4,31,72,ae,f4,fc,71,ef,c7,57,10,7a,43,b3,7f,8e,\
+89,e2,08,26,7d,86,47,3f,f9,ea,3b,ce,df,ad,79,01,b6,98,04,07,80,f8,a7,e4,d5,\
+f1,66,24,43,6b,5c,85,9d,48,73,a0,6c,52,ac,8e,7f,ac,df,32,eb,80,19,78,f9,4b,\
+74,0c,89,c3,f7,16,bf,55,10,f6,ec,1d,4c,90,5d,a4,b2,6d,b6,15,fa,e4,d5,14,d9,\
+e8,23,35,85,55,b9,88,ab,bb,d8,be,d7,33,90,c8,32,dd,1b,91,06,51,48,72,b2,fb,\
+9f,af,b3,50,6c,db,79,6a,55,5f,7d,ef,96,a6,3a,e4,db,98,ba,b2,ca,93,94,2c,32,\
+1b,c4,43,e8,f0,09,09,c9,cb,6d,11,2f,1a,d0,7b,0a,88,3c,08,f5,e3,3e,a6,16,cc,\
+b5,2d,4e,3a,58,62,32,5f,8f,e1,4b,56,cf,2f,2f,56,a2,b7,77,b2,1d,56,d9,1e,07,\
+14,79,32,a9,5d,ac,dc,c3,cf,da,ed,bc,a4,7e,24,36,09,a4,b1,4d,12,8d,6b,53,00,\
+8a,14,e2,58,6c,22,ed,e3,f5,83,e1,f2,98,cd,f2,ae,fd,17,a5,35,87,88,47,a4,6a,\
+86,ea,0b,c6,81,95,f7,52,d8,24,ff,18,43,9d,08,b6,c9,79,dd,d9,fe,94,2f,4b,ea,\
+fa,76,8a,51,b1,a5,6a,0b,bb,34,bf,01,08,ab,29,37,71,de,3b,f2,34,33,ac,2d,23,\
+02,3e,7f,e2,d9,b4,5c,c5,21,d8,aa,f9,4f,4e,5a,3c,a2,52,e6,9e,b6,bb,e8,02,63,\
+08,81,a0,94,0c,3e,c1,4d,94,ce,6a,42,1e,4f,e6,e0,80
+"SK"=hex:ad,26,ac,2c,bf,bd,68,3c,ce,cb,30,48,b8,ac,94,29,dd,60,df,41,c8,0e,43,\
+a7,6a,08,4e,c1,27,23,65,f4,e4,c0,40,3e,2d,96,53,d2,21,1e,36,9c,86,26,cd,33,\
+6f,a0,dc,c5,24,39,6a,22,cb,00,c6,68,1b,10,2a,a8,1f,8c,d8,1e,b5,10,0e,a6,38,\
+fc,34,77,58,68,f1,a0,ad,a4,4b,4d,0b,0d,88,5f,3d,46,6c,8c,35,d5,e2,e7,68,68,\
+5e,aa,5f,17,9b,73,40,d8,48,80,3d,71,13,ba,dd,51,1b,9f,ed,d9,7e,84,18,61,35,\
+11,e8,f6,bc,73,9f,d7,90,ef,f8,6c,95,6a,2c,b5,54,eb,e5,b0,0d,c1,43,d5,e0,3d,\
+35,92,ae,56,a1,8c,71,99,b3,1f,8a,01,1a,06,d2,f5,41,3a,7b,a4,19,55,0e,f7,74,\
+7a,a3,fa,4c,d2,59,ac,24,72,a4,33,db,44,19,10,b5,10,ca,c0,66,33,8b,a8,cb,22,\
+15,13,09,a1,58,8e,6e,b9,4d,1b,0d,21,ba,60,0c,bd,15,d4,09,b2,2e,12,fc,21,19,\
+30,3f,9d,82,44,ae,08,b9,0b,8a,f2,be,c0,d1,0a,84,b0,a6,6f,02,d0,fa,53,52,e7,\
+07,f0,8a,7f,d2,1b,41,f0,4c,3a,98,9d,c8,47,d4,4b,51,4e,98,ce,9d,87,b9,a2,02,\
+7e,38,2f,88,ef,e9,2f,85,07,ac,92,28,4a,84,2a,f1,6f,e2,8b,79,25,47,0e,3c,71,\
+53,2e,16,99,9d,e1,8f,0f,26,9b,3d,da,6b,36,bb,ac,3b,9c,0a,0e,f0,2e,90,9a,c1,\
+f0,76,50,74,0f,6c,60,b1,39,1d,fa,5a,47,7d,91,06,b2,67,93,3a,bc,95,99,7f,ef,\
+04,37,e0,48,ba,fe,80,ae,b2,80,61,5c,ae,6d,28,12,a8,b8,1d,1b,c4,cb,89,ba,9a,\
+63,2a,74,1f,76,9c,73,37,24,bc,f4,0f,a7,d7,ff,ad,2e,a2,4f,1e,a3,ff,2c,7c,ce,\
+8f,0d,2a,1f,dc,93,eb,ab,91,a7,44,c6,62,b8,4e,46,4a,c2,fc,1c,98,f2,0e,c3,44,\
+b2,e6,0b,4a,d4,52,b3,d1,85,1d,90,bb,ec,7a,be,c8,aa,c2,a2,43,cd,a1,d2,32,dd,\
+a2,09,48,5f,2a,1d,94,ff,7c,66,d3,4e,67,3c,ff,20,ba,e3,8a,8c,fc,c9,41,ad,ec,\
+08,f5,55,18,27,10,78,ef,8e,7b,0d,ef,5b,ca,74,58,6d,44,47,8c,39,16,4f,d9,43,\
+cf,49,ce,e2,95,d8,33,01,da,d3,66,e5,75,78,10,f4,cf,4f,bb,2d,15,59,57,75,fb,\
+be,cf,cf,49,e0,f0,e6,7b,98,68,7d,12,7c,87,e8,8f,f8,73,dd,52,b2,b7,59,ee,a8,\
+cd,8f,33,53,9d,69,1e,77,56,29,e5,34,5b,19,8e,27,5e,e2,94,35,a7,c1,99,9b,dc,\
+c8,e2,32,d1,13,d6,d9,4e,a3,db,6d,79,c3,6c,40,8e,f6,70,55,13,45,d4,61,ad,fc,\
+bf,65,c0,54,00,8d,4d,8b,3c,8c,3a,a2,c5,af,4a,ec,d0,31,b6,bb,92,d2,c2,16,51,\
+5f,10,fe,b1,b8,28,b5,cd,f4,91,d0,50,1a,fe,3a,ae,79
+
+"CUse"=dword:00000000
+"Security_WinLogin"=dword:00000000
+"UPNP"=dword:00000000
+"ServerPasswordAES"=hex:88,44,d7,0a,b2,96,2a,3d,63,16,3c,ff,e4,15,04,fb
+"ProxyUsername"=""
+"Proxy_Type"=dword:00000001
+"Proxy_IP"="[NONE]"
+"Proxy_Exceptions"=""
+"Proxy_IPIE"=""
+"ProxyPasswordAES"=hex:88,44,d7,0a,b2,96,2a,3d,63,16,3c,ff,e4,15,04,fb
+"Security_Application_Path"="full_path_to_executable"
+"Buddy_QuickPresExclusions"=hex(7):63,00,68,00,72,00,6f,00,6d,00,65,00,2e,00,\
+65,00,78,00,65,00,00,00,6d,00,73,00,6e,00,6d,00,73,00,67,00,72,00,2e,00,65,\
+00,78,00,65,00,00,00,70,00,73,00,72,00,2e,00,65,00,78,00,65,00,00,00,73,00,\
+75,00,70,00,65,00,72,00,2e,00,65,00,78,00,65,00,00,00,77,00,6c,00,6d,00,61,\
+00,69,00,6c,00,2e,00,65,00,78,00,65,00,00,00,77,00,6c,00,78,00,70,00,68,00,\
+6f,00,74,00,6f,00,67,00,61,00,6c,00,6c,00,65,00,72,00,79,00,2e,00,65,00,78,\
+00,65,00,00,00,00,00
+"Buddy_QuickPresExclusions_Version"=dword:00000002
+[HKEY_LOCAL_MACHINE\SOFTWARE\Coinstager\Version5\AccessControl]
+"AC_AllowOutgoingConnections"=dword:00000001</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5b15fa62-cd74-4c39-8ef9-9ef3a3aaf42c">
+        <cybox:Object id="CISCP:Object-d9c3c20f-fa74-41ce-996c-0482d716141b">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">iexplore.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">5251040</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">27daddcee203801e1013e1be225776b0</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">e2e36739fa3c28b8e2bbead726b4f991b68995ae</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-d67e4e75-2bcd-44f4-8f09-1e4344f08170">
+              <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+                <WinRegistryKeyObj:Key condition="Equals">SOFTWARE\Coinstager\Version5</WinRegistryKeyObj:Key>
+                <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+                <WinRegistryKeyObj:Values>
+                  <WinRegistryKeyObj:Value>
+                    <WinRegistryKeyObj:Name condition="Equals">SecurityPasswordAES</WinRegistryKeyObj:Name>
+                    <WinRegistryKeyObj:Data condition="Equals">hex:c1,46,11,2d,ed,4a,e9,97,25,6f,6f,bb,91,da,9e,46</WinRegistryKeyObj:Data>
+                  </WinRegistryKeyObj:Value>
+                </WinRegistryKeyObj:Values>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Created</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-13T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

@@ -1,0 +1,334 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10356" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd   http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd   http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd   http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd   http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd   http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd   http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd   http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd   http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd   http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd   http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd   http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd   http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd   http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd   http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd   http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd   http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd   http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd   http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd   http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd   http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd   http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd   http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Spoofed Email with a Chinese Hero Theme Contains Malicious Attachment</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 18 July 2014, an email was observed with a subject line of "FW:FW:China Need A Hero . The True Videos. (No Virus) !". The email contained a zip file attachment named "Corrupt China.zip" (MD5: 4831dc077376560147920d753e29eb87). If the malware in the zip file executes successfully, it attempts to communicate with four command and control (C2) domains.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-08-01T17:03:06Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-10a7f682-acb3-478e-bd1c-09bcf0754856" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-27562113-a7fa-47f7-91cc-8eb751ecfb2b"/>
+        <indicator:Indicator idref="CISCP:indicator-50f42177-ac32-4d8b-b55b-97deb00fcac8"/>
+        <indicator:Indicator idref="CISCP:indicator-dc337188-5d8c-4d1b-aa1f-d1bc2f4c7f5c"/>
+        <indicator:Indicator idref="CISCP:indicator-c7be1e25-6247-4960-a05f-20cf96c7ec1e"/>
+        <indicator:Indicator idref="CISCP:indicator-e023afad-4181-4104-913d-c9bc4ca8862b"/>
+        <indicator:Indicator idref="CISCP:indicator-2140e13f-09d6-4b4a-9694-b149a216fac6"/>
+        <indicator:Indicator idref="CISCP:indicator-50368d9e-1e9a-4e42-8e82-c7fb6129f740"/>
+        <indicator:Indicator idref="CISCP:indicator-15a5b676-a250-4b5e-b1a1-098491896813"/>
+        <indicator:Indicator idref="CISCP:indicator-8bf5382e-3e40-4912-91b7-0cb9409fb88a"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-27562113-a7fa-47f7-91cc-8eb751ecfb2b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>----- BEGIN EMAIL HEADERS -----
+Return-Path: &lt;peterjones@lmco-us.com&gt;
+Received: from [REDACTED] ([unix socket])
+     by [REDACTED] ;
+     Fri, 18 Jul 2014 04:25:16 -0700
+X-Sieve: CMU Sieve 2.3
+Received: from [REDACTED] ([REDACTED])
+    by [REDACTED] 
+    (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=FAIL);
+    Fri, 18 Jul 2014 04:25:16 -0700
+Received: from localhost (localhost [127.0.0.1])
+    by [REDACTED] 
+    Fri, 18 Jul 2014 04:25:16 -0700
+Received: from lmco-us.com ([112.167.143.179])
+    by [REDACTED] 
+    for [REDACTED]; Fri, 18 Jul 2014 04:24:50 -0700
+Message-Id: &lt;201407181124.s6IBOnlh006604@[REDACTED]&gt;
+X-Spam-SMTP: (SM14071800001734) - Spam/NOT
+Received: from XX?XX (user-sw9svvcejm [127.0.0.1])
+    by 127.0.0.1 with DBMail 0500;
+    Fri, 18 Jul 2014 20:24:37 +0900
+X-Sender: 127.0.0.1 (peterjones@lmco-us.com)Message-ID: &lt;97EC5E8632E84D80FAC24A0AE9FE5058@XX?XX&gt;
+From: [REDACTED] &lt;peterjones@lmco-us.com&gt;
+To: [REDACTED]
+Subject: FW:FW:China Need A Hero . The True Videos. (No Virus) !
+Date: Fri, 18 Jul 2014 20:24:26 +0900
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+    boundary="----=_NextPart_000_037D_01978FCD.152BAE80"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2900.5512
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.5512
+X-TM-AS-MML: disable
+X-TM-AS-ERS: 112.167.143.179-127.1.0.2
+X-TM-AS-Product-Ver: IMSS-7.1.0.1597-7.5.0.1017-20824.006
+X-TM-AS-Result: No--4.372-5.0-31-10
+X-imss-scan-details: No--4.372-5.0-31-10
+X-TM-AS-Result-Xfilter: Match text exemption rules:No
+X-TMASE-MatchedRID: hrlG8f4/Cc1lnLQU/+aaKRJmPIoQFzZ7niiR61iaT2d3IB0xy0IWF6cQ
+    he47PX56nfyB8+94d+CqyHK5NrZnlw5GIjo5mgB2i82UiskMqcz8eRImsQS5PgeLCIX046iBSrJ
+    TO1VGhMGX699vNalF3d0VvsTkzom631upjFk7WXTkGAR1SqoA1B+wAtrkywqy+3sG4Co3IMCtya
+    YPv+ErX+BPbNdhr3+dPZex/kxUIHVo1gw6iqUEUGFn9rSVQKdOLBfykp0OmxlTSqSfHO8oq6Alh
+    yXj30cS2bNx1HEv7HDC3mjfc0j3Zq0UHS0Qe88SiI49gseNUvnbWQoYzn01m5O61AxJ/tYRKHKz
+    DIXDVrWulU4rGCNxY0EWvPzhm0Lrlf6DOs8HxhbWWCZmAOWGsmynB3gbKxTrnmx8/E0y71VDXMY
+    pHZrrL/k0es2lwaTQ2aWy8/t/BZm66uu0bfkF6hGKbVnIAXUzqIXSP5e0M6YxNrwyc6espNBc/E
+    +iYsZAD5cvjV1gYVGm/+dgz3XzwuC7DykR2Pz63YZ2/WCD7OZDDKa3G4nrLQ==
+-----  END EMAIL HEADERS  -----
+
+----- BEGIN EMAIL BODY -----
+From: [REDACTED] [mailto:peterjones@lmco-us.com]
+Sent: Friday, July 18, 2014 4:24 AM
+Subject: FW:FW:China Need A Hero . The True Videos. (No Virus) !
+
+In The China , The Chinaese Party Very Corrupt. EveryBody very Poor !
+Plz Download The Flash Video (The True Video,No Virus!!) , U Can Know The True China And Chinaese !!
+So , We Wish A hero Save The China .
+-----  END EMAIL BODY  -----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-50393fae-cfe2-4f78-bec5-c03d29034f5f">
+        <cybox:Object id="CISCP:Object-536343a4-bc91-4b13-a0ef-d531f23333f2">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">peterjones@lmco-us.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">FW:FW:China Need A Hero . The True Videos. (No Virus) !</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">97EC5E8632E84D80FAC24A0AE9FE5058@XX?XX</EmailMessageObj:Message_ID>
+              <EmailMessageObj:X_Mailer condition="Equals">Microsoft Outlook Express 6.00.2900.5512</EmailMessageObj:X_Mailer>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-39a82f04-b50d-45c6-9408-5243429ace11"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-18T11:25:16"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-50f42177-ac32-4d8b-b55b-97deb00fcac8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This zip archive file was attached to the email.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-eac1ff14-5514-488c-aa3d-38b9bdf0a89a">
+        <cybox:Object id="CISCP:Object-39a82f04-b50d-45c6-9408-5243429ace11">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Corrupt China.zip</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">624718</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">4831dc077376560147920d753e29eb87</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">8976925a63b1716acc3fced9787e9bd358d548b0</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">29fa1a6a210a8f63419080694e70c585ed72838311446c120d78c3bcdd549428</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:quZOUpE/18ZSMgUwUJId8E4tFZgwTnKCsk+9IuK+Tu3T0D4dN:7OB18ZZDJ454tk8nKCkKiuj4WN</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-18T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-dc337188-5d8c-4d1b-aa1f-d1bc2f4c7f5c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This executable file was contained in the malicious zip attachment. When this file executes some of its actions include enabling process privileges, obtaining user name information, obtaining the computer's name, checking for debuggers, disabling the windows "Recycle Bin", and setting persistence for the file SxS.exe (MD5: 5963b1e0bb91f4c067a18037274a742c) that is also created as a Windows service.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-4426d577-58b6-419c-8391-a022475c5f2d">
+        <cybox:Object id="CISCP:Object-631ab939-7618-44d2-9b7a-55dce2ed539a">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Corrupt China.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">674977</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3940393f9bffb7bb17c7fbfd12a09753</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0da4731ce9f9f88878a32b178b7b74cd930c1b64</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">382b19af6246e24dc79c675ceeb47d98cbe7cb2abd1486b3533e0f018789e337</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">12288:n1IIZypwpE/1UZyMYUkUJIh8E2tFNgw/nK6iUDbD/W6T23P0DGdN:nuIIpN1UZp/Ja52tEKnK6pfK+2/4sN</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-18T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c7be1e25-6247-4960-a05f-20cf96c7ec1e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file is created when the executable file (MD5: 3940393f9bffb7bb17c7fbfd12a09753) within the zip archive is executed.
+
+Multiple copies of this file were created with different file names, including:
+maze-gmae.exe
+SxS.exe</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-b01b1e37-fb4c-4bba-ab95-f8dfa507903a">
+        <cybox:Object id="CISCP:Object-b8815015-f6e5-4fcd-a861-798af274aabc">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">maze-gmae.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">149504</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5963b1e0bb91f4c067a18037274a742c</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d2e5d62e5a1beb03601b3c52181c0bf649b60918</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">36cfefe10f628ff826ca74527d474a22bd13cf09d978d7dba523f91a93f5ff55</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:Zq3baagC+OrPPtBUeqc/44KBqEspsExs62pNUYO:Zq3bakrrPXt1OseExz2pH</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-18T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e023afad-4181-4104-913d-c9bc4ca8862b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file was created during execution of the file Corrupt Chine.exe (MD5: 3940393f9bffb7bb17c7fbfd12a09753).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-89ce547f-084a-4643-85c7-b37ed092d9a6">
+        <cybox:Object id="CISCP:Object-2ee86128-6961-45aa-80ea-2a16d5612695">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">maze-game.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">469178</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">469d266169ab4c2604c712c472b75bd7</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-18T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2140e13f-09d6-4b4a-9694-b149a216fac6" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>A DNS request was made for this domain. Malicious traffic to this domain was observed on port 80.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-df2f3f3f-9f12-4e18-a1ba-b93a200c9365">
+        <cybox:Object id="CISCP:Object-3986c724-0f66-4159-8713-6ce6ccd15506">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">imail.gotdns.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-18T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-50368d9e-1e9a-4e42-8e82-c7fb6129f740" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>It was reported that malicious traffic to this domain was observed on port 8080.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-002f85e6-1b9a-4102-ae3b-7d8adaa3bfb7">
+        <cybox:Object id="CISCP:Object-4bca9e32-4485-45a1-bc6f-cd50bc955131">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">kcase.gotdns.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-18T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-15a5b676-a250-4b5e-b1a1-098491896813" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>Malicious traffic to this domain was observed on port 21.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-85a4b33d-d8aa-4e9f-906d-c9cebd69ffcc">
+        <cybox:Object id="CISCP:Object-9e0b61b1-0afa-4e8e-9635-cc98d9d9597a">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">wmail.gotdns.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-18T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8bf5382e-3e40-4912-91b7-0cb9409fb88a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>It was reported that malicious traffic to this domain was observed on port 443.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-9734eca9-1a5a-4c68-acdd-fa0550ee5bd2">
+        <cybox:Object id="CISCP:Object-704a29e6-2155-4062-adec-c5ecf8dbc817">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">xcase.gotdns.com</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-07-18T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

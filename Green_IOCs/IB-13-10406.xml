@@ -1,0 +1,177 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CISCP="http://www.us-cert.gov/ciscp" id="CISCP:IB-13-10406" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of NSIS installer</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On June 4, 2013 an agency reported a website distributing malware. The sample acquired is a NSIS (Nullsoft Scriptable Install System) installer that installs a browser helper object (for Internet Explorer) and extension (for Chrome and Firefox) that is capable of recording a user's browsing habits and serving up advertising.
+
+This document incorporates data originally released as MIFR-287238.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-07-11T18:57:00Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-1f9600c5-9b47-41d9-b2ce-914a00235111" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-4c0693fb-20fc-4c1a-9f34-c4241706da32"/>
+        <indicator:Indicator idref="CISCP:indicator-63ff3051-2be1-447b-9798-8a41a436caef"/>
+        <indicator:Indicator idref="CISCP:indicator-2427a01d-a198-4b23-bee6-b81da8d04862"/>
+        <indicator:Indicator idref="CISCP:indicator-b348b45a-1367-4713-a266-ff9ebc31ef68"/>
+        <indicator:Indicator idref="CISCP:indicator-b40e31d2-d2a8-404e-8dad-860034bcf150"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4c0693fb-20fc-4c1a-9f34-c4241706da32" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Packer: NSIS
+Registry: Writes to HKEY_CURRENT_USER\\Software\\DynConIE\\ with cid, id, and version
+Writes to
+HKEY_LOCAL_MACHINE\\Software\\Google\\Chrome\\Extensions\\igjjkeeamkpihpncmmbgdkhdnjpcfmfb\\ with version and path
+
+This file is the NSIS installer file for SafeMonitorApp, which is an application that is primarily used to serve advertising and record a user's browsing history. 
+
+The file has a valid Digital Signature from COMODO (1E C5 B1 2C 7D 87 DA 02 68 7C 25 BC 0C 07 84 3F B6 CF DE F1).
+
+Execution steps:
+1. GETs s.safemonitorapp.com/InsertInstallNotice3.ashx&amp;v=SFMN_P0_2.6.17&amp;p=478&amp;c=211&amp;m=start&#8208;myOnGuiInitStart&amp;g=&amp;i=p
+2. Copies extensions to "C:\Program Files\SafeMonitor"
+3. Writes install_id to HKEY_CURRENT_USER\\Software\\DynConIE\\ with cid, id, and version
+4. Writes uninstaller to "C:\Program Files\SafeMonitor\Uninstall.exe"
+5. Writes the Firefox plugin into "%APPDATA%\Mozilla\Firefox|Profiles\[default_profile]\extensions"
+6. Adds IE BHO (Browser Helper Object) to IE
+7. Writes the Chrome extension to HKEY_LOCAL_MACHINE\\Software\\Google\\Chrome\\Extensions\\igjjkeeamkpihpncmmbgdkhdnjpcfmfb\\version and path
+8. GETs s.safemonitorapp.com/InsertInstallNotice3.ashx?v=SFMN_P0_2.6.17&amp;p=478&amp;c=211&amp;m=CopyFilesEnd&amp;g=7f3cc49f05fe4f5cabe44a818b1e7f3d&amp;i=p
+
+After installation:
+1. GETs s.safemonitorapp.com/InsertInstallNotice3.ashx?=SFMN_P0_2.6.17&amp;p=478&amp;c=211&amp;m=onInstSuccessEnd&amp;g=7f3cc49f05fe4f5cabe44a818b1e7f3d&amp;i=p
+2. Opens the default browser and goes
+to m.safemonitorapp.com/r/?ts=TS_IN_SFMN&amp;v=SFMN_P0_2.6.17&amp;pid=478&amp;gi=7f3cc49f05fef45cabe44a818b1e7f3d&amp;i=p</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8cdcda37-adce-4511-8ae9-c48ae4c4c730">
+        <cybox:Object id="CISCP:Object-3840bc5d-0c26-4884-82ef-3102da647bb2">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Setup.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">1423176</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">746f02ad95f112247d9fcfe50e4f52de</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">11c5e9338d72d186c5de310e621c5f754860859a</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">24576:4+3JuSBl24Tj12DNWnXSJTxUmiW4I5PRC/Rodslrvci0+GlKm:3uSB44312DNtJJ4OwpnlrEiFpm</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-02T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-63ff3051-2be1-447b-9798-8a41a436caef" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The domain, s.safemonitorapp.com, is reportedly utilized for configuration, updating, and logging purposes from the adware author. It also gets sent private data such as URLs the user browses to.
+
+The following URLs were connected to over port 80/TCP:
+http://s.safemonitorapp.com/InsertInstallNotice3.ashx?v=SFMN_P0_2.6.17&amp;p=478&amp;c=211&amp;m=start&#8208;myOnGuiInitStart&amp;g=&amp;i=p
+http://s.safemonitorapp.com/InsertInstallNotice3.ashx?v=SFMN_P0_2.6.17&amp;p=478&amp;c=211&amp;m=CopyFilesEnd&amp;g=7f3cc49f05fe4f5cabe44a818b1e7f3d&amp;i=p
+http://s.safemonitorapp.com/InsertInstallNotice3.ashx?v=SFMN_P0_2.6.17&amp;p=478&amp;c=211&amp;m=onInstSuccessEnd&amp;g=7f3cc49f05fe4f5cabe44a818b1e7f3d&amp;i=p</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-430bb03f-cc0a-4e55-becc-237ce32acc51">
+        <cybox:Object id="CISCP:Object-56797254-00a5-4623-8568-97e6564f75a3">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://s.safemonitorapp.com/InsertInstallNotice3.ashx</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-04T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2427a01d-a198-4b23-bee6-b81da8d04862" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>The domain, s.safemonitorapp.com, is reportedly utilized for configuration, updating, and logging purposes from the adware author. It also gets sent private data such as URLs the user browses to.
+
+The following URL was connected to over port 80/TCP:
+http[:]//s.safemonitorapp.com/wl.xml?v=2.6.17478&amp;n=SFMN&amp;e=7f3cc49f05fe4f5c55C14E0C84755471</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e04c5bd1-185f-4e60-9f3c-37b7bd12c1bb">
+        <cybox:Object id="CISCP:Object-84f06c16-cd83-4b4d-a459-8006fd390b8f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://s.safemonitorapp.com/wl.xml</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-02T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b348b45a-1367-4713-a266-ff9ebc31ef68" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Exfiltration</indicator:Type>
+      <indicator:Description>After being loaded into the browser, a Browser Helper Object (BHO) will record the user's browsing destination and send it to the URL over port 80/TCP:
+http://s.safemonitorapp.com/GetPackage.ashx?v=2.6.17478&amp;n=SFMN&amp;e=7f3cc49f05fe4f5c55C14E0C84755471&amp;h=200&amp;u=[destination_URL]
+
+NOTE: The [e=7f3cc49f05fe4f5c55C14E0C84755471] part is the installation id of the adware, and can uniquely identify a victim.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-17861b85-0d70-4a21-8834-6cb2e1211cca">
+        <cybox:Object id="CISCP:Object-0f478536-4fed-4211-8558-0c51ba527103">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://s.safemonitorapp.com/GetPackage.ashx</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-02T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b40e31d2-d2a8-404e-8dad-860034bcf150" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>When the application finishes installing, it opens a browser to the following URL over port 80/TCP:
+http://m.safemonitorapp.com/r/?ts=TS_IN_SFMN&amp;v=SFMN_P0_2.6.17&amp;pid=478&amp;gi=7f3cc49f05fef45cabe44a818b1e7f3d&amp;i=p
+
+This site will redirect the user to a "successful installation" page and basic user guide.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-25643a2c-3c60-47e5-85af-af12063798a8">
+        <cybox:Object id="CISCP:Object-08208714-663f-41c9-801d-6d42973d7e5f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://m.safemonitorapp.com/r/</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-06-02T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

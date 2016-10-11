@@ -1,0 +1,950 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:NetworkConnectionObj="http://cybox.mitre.org/objects#NetworkConnectionObject-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SocketAddressObj="http://cybox.mitre.org/objects#SocketAddressObject-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:PortObj="http://cybox.mitre.org/objects#PortObject-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" id="CISCP:IB-13-10836" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of Zeus Malware Artifact</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 01 April 2013, a file was submitted for analysis. The file was a Zeus trojan that after being executed on a victim's machine, steals user data and communicates with twenty (20) hard-coded IP addresses.
+
+This document incorporates data originally released as US-CERT MAR-272580.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2013-12-16T18:51:02Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-f0349a95-834b-4b59-beed-5c38848bd0d9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-6f302afd-d1d6-44c8-89a7-1fb1d6384485"/>
+        <indicator:Indicator idref="CISCP:indicator-0cb79ca1-87e9-42f7-9cb9-6d85f9b257bd"/>
+        <indicator:Indicator idref="CISCP:indicator-b58c7f46-7a07-4e46-b1ec-efe664c1cfae"/>
+        <indicator:Indicator idref="CISCP:indicator-4e09f23d-cd50-4b14-87a5-3975a21cd3bb"/>
+        <indicator:Indicator idref="CISCP:indicator-5c407285-92c8-4de8-b71c-4b7fa54b3b9b"/>
+        <indicator:Indicator idref="CISCP:indicator-52a14a3d-b702-4762-b7f1-5cfe71c9c4fd"/>
+        <indicator:Indicator idref="CISCP:indicator-40fa4fb0-f948-4d06-8cd5-bd645be7ef09"/>
+        <indicator:Indicator idref="CISCP:indicator-6e55baee-f8d6-44ee-b2a2-4d9a3addf118"/>
+        <indicator:Indicator idref="CISCP:indicator-ae0978d6-529b-4430-bdf5-b83abe9913e1"/>
+        <indicator:Indicator idref="CISCP:indicator-b1d5aedc-288f-4471-bfad-0b9c4ddf7043"/>
+        <indicator:Indicator idref="CISCP:indicator-a450ab96-c228-44d6-b3a3-235f3e5278d9"/>
+        <indicator:Indicator idref="CISCP:indicator-0c9aae59-7dde-432e-8b93-30d8d0dcf8f7"/>
+        <indicator:Indicator idref="CISCP:indicator-8b4be713-04d3-45fa-be1b-ffd29a71e234"/>
+        <indicator:Indicator idref="CISCP:indicator-864d248a-22e7-4af0-8d33-29ed93cf8171"/>
+        <indicator:Indicator idref="CISCP:indicator-b7181564-f7d9-4960-bdb5-b0a3533948e5"/>
+        <indicator:Indicator idref="CISCP:indicator-46b7e6c8-169e-4d37-b2e7-dd9a17643608"/>
+        <indicator:Indicator idref="CISCP:indicator-6cd520ba-ac85-4a7b-a7ff-7f11a4ab1fa9"/>
+        <indicator:Indicator idref="CISCP:indicator-8b5947da-a231-47d6-bd36-c5a89988ae02"/>
+        <indicator:Indicator idref="CISCP:indicator-3c60723c-af04-41e4-bb9c-d3d53a2e7527"/>
+        <indicator:Indicator idref="CISCP:indicator-c3303e36-cd0d-468e-9908-fe1964b2d049"/>
+        <indicator:Indicator idref="CISCP:indicator-65a93429-e25f-413f-8960-43117d89f565"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6f302afd-d1d6-44c8-89a7-1fb1d6384485" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Stage 1.
+The malware allocates space on the heap, copies the malicious code there and jumps to that code.
+
+Stage 2.
+The malware modifies itself by overwriting ".text" section, and performs injections into the multiple processes including "explorer.exe" process.
+
+The malware resolves addresses of the following APIs:
+GetProcAddress
+LoadLibraryExA
+LoadLibraryExW
+GetModuleHandleA
+CreateFileA
+lstrcatA
+GetWindowsDirectoryA
+GetModuleHandleW
+memcpy
+memset
+VirtualAlloc
+UnmapViewOfFile
+VirtualProtect
+HeapAlloc
+GetProcessHeap
+
+Next, the malware allocates space on the heap, copies data there and decodes it by xor'ing it with 0x3E9. After that, the malware resolves addresses of many APIs from the following libraries:
+ntdll.dll
+kernel32.dll
+user32.dll
+advapi32.dll
+shlwapi.dll
+shell32.dll
+secure32.dll
+ole32.dll
+gdi32.dll
+ws2_32.dll
+crypt32.dll
+wininet.dll
+oleauth32.dll
+netapi32.dll
+iphlpapi.dll
+version.dll
+msvcrt.dll
+
+The malware has capability to encrypt/decrypt data by using RC4 algorithm. Additionally, the malware uses CRC32, SHA1, and MD5 algorithms. To calculate the SHA1 and MD5 the malware uses "advapi32" APIs: "CryptAcquireContext", "CryptCreateHash", "CryptHashData", "CryptDestroyHash", and "CryptReleaseContext".
+
+The malware allocates more space on the heap, copies, and decodes data there. Within this data the malware searches for string "DAVE" comparing four (4) bytes of the data to "DAVE" at the time.
+
+The malware creates named Mutex object (this is non&#8208;persistent name, based on the unique system's volume GUID):
+0012EF14 18 40 00 00 4C 00 6F 00 63 00 61 00 6C 00 5C 00 L.o.c.a.l.\.
+0012EF24 7B 00 31 00 36 00 45 00 41 00 37 00 42 00 30 00 {.1.6.E.A.7.B.0.
+0012EF34 30 00 2D 00 41 00 45 00 44 00 42 00 2D 00 36 00 0.&#8208;.A.E.D.B.&#8208;.6.
+0012EF44 41 00 46 00 32 00 2D 00 34 00 46 00 37 00 38 00 A.F.2.&#8208;.4.F.7.8.
+0012EF54 2D 00 37 00 32 00 39 00 33 00 35 00 46 00 30 00 &#8208;.7.2.9.3.5.F.0.
+0012EF64 42 00 35 00 31 00 38 00 31 00 7D 00 00 00 12 00 B.5.1.8.1.}
+
+Next, the malware opens or creates (if it does not exist) "HKCU\Software\Microsoft\Xelar" registry key, and adds the following sub key:
+[HKEY_CURRENT_USER\Software\Microsoft\Xelar]
+"1924dgh5"="8uDKhJGD9QTldEGRSxk="
+After that the malware performs code injection into the "explorer.exe" process.
+
+Interesting strings from the Stage 2:
+"1cj2hbd3"
+"1924dgh5"
+"CHSI&#8208;R96NBNT_704B724673CB7785536289B4571E660F"
+"gnomm25"
+"Software\Microsoft"
+"Xelar"
+"h51924dgh5"
+"8uDKhJGD9QTldEGRSxk="
+"Global\{D5042C0E&#8208;F9D5&#8208;A91C&#8208;2065&#8208;B06D3016937F}"
+
+Stage 3
+The malware runs multi&#8208;threaded in this stage. The main thread in the victim's process. The malware installs user&#8208;land hooks for the following APIs:
+closesocket
+send
+WSASend
+recv
+WSARecv
+WSAGetOverlappedResult
+DeleteSecurityContext
+EncryptMessage
+DecryptMessage
+TranslateMessage
+GetClipboardData
+PFXImportCertStore
+GetAddrInfoW
+getaddrinfo
+FreeAddrInfoW &#8208; this function is actually hooked twice.
+gethostbyname
+NtCreateThread
+LdrLoadDll
+
+Additionally, the malware has capability to hook the following APIs from "nspr4.dll" (associated with Mozilla Firefox):
+PR_OpenTCPSocket
+PR_Close
+PR_Poll
+PR_Read
+PR_Write
+PR_GetNameForIdentity
+PR_SetError
+PR_GetError
+PR_GetSocketOption
+The malware also has capability to hook up APIs from "chrome.dll".
+
+Thread 1 in the victim's process.
+Creates named Mutex object "Global\{3C924B09&#8208;9ED2&#8208;408A&#8208;4F78&#8208;72935F0B5181}". The malware opens "HKCU\Software\Microsoft\Xelar" registry key, and tries to enumerate data in the "1cj2hbd3" sub key if it exists. If it does not exist the malware adds new sub key: [HKEY_CURRENT_USER\Software\Microsoft\Xelar] "1cj2hbd3"=dword:84a4e085
+
+Decodes/decrypts/calculates following interesting strings in the Thread 1:
+"Global\"
+"Software\Microsoft"
+"Xelar"
+"1cj2hbd3"
+
+Thread 2 in the victim's process.
+In this Thread the malware creates firewall exception for itself and opens up one TCP and one UDP ports for the incoming and outgoing connections. The malware also makes multiple C2 callbacks.
+The malware creates named Mutex object "Global\{8C404922&#8208;9CF9&#8208;F058&#8208;4F78&#8208;72935F0B5181}".
+The malware opens "HKCU\Software\Microsoft\Xelar" registry key, and tries to enumerate following sub keys: "2hi8hegg", "2e175j8e", "17f8dbg", and "2cijh32b".
+
+Then the malware notifies OS that it is interested in receiving notifications about the FD_READ and FD_WRITE events. The malware checks to see if the firewall allows exceptions and changes local policy to create an exception for itself.
+
+Payload creation.
+Following data is hashed (SHA1) in 3 (three) chunks:
+The first chunk (size 0x14), is the same for all the callbacks:
+003A1CB8 33 4A 10 41 40 44 12 BE 7D 41 55 5C 26 8C 1B 19 3J.A@D.+}AU\&amp;&#238;..
+003A1CC8 EA 9A FD 5E 00 00 00 00 00 00 00 00 96 30 07 77 O&#220;&#178;^
+
+The second chunk (size 0x8), is different from callback to callback:
+For example:
+0117F748 FE C2 42 33 2F BA 06 00
+The third chunk (size 0x4), is different from callback to callback:
+
+For example:
+0117F754 6E 7B 34 06
+
+The resulting SHA1 is:
+4F DA EE A5 7E 1E BB 11 E1 1E 2D 9C 15 16 A3 BC 6A DA F9 1B
+
+The malware has several hard coded IP addresses and port numbers which it calls out to with a specially crafted payload.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-01c95ce1-3da7-4ee9-ae20-6a6bb4237ce9">
+        <cybox:Object id="CISCP:Object-21475fd6-642b-4f97-8e74-b2c568097220">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">guos.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">328192</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">7b3d8a67f5be9e1e61488af02dbd1406</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">579ff2773a8a3c1dd9ca0e148f39fe57a4c6e47e</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">428c77d7a58660e4effc4d670045cc1add0bcc2fb2961de8632131da75391b73</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">6144:iKXhJwfyr9sr+fWVP2AD+ourtwxHC+4TV+tT:tXGi9safSxD+ouJw9BO</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0cb79ca1-87e9-42f7-9cb9-6d85f9b257bd" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+0CB2B38 4E FF A3 A1 EE 34 DA 7F 01 1F A4 B5 54 4A 67 FB N &#250;&#237;e4..&#241;&#166;TJgv
+0CB2B48 EE F8 5B E7 8D 57 AE B5 86 CC DC 9D DD 99 8B 35 e&#176;[t&#236;W&#171;&#166;&#229;&#166;_&#165;&#166;&#214;&#239;5
+0CB2B58 48 09 5C 00 26 AA B1 A8 42 D8 25 7B B8 B4 1C D6 H.\.&amp;&#172;&#166;&#191;B+%{+&#166;.+
+0CB2B68 F8 97 13 98 F7 A2 00 71 2F D3 45 39 02 B0 2B 3B &#176;&#249;.&#255;&#732;&#243;.q/+E9.&#166;+;
+0CB2B78 D6 2C 34 F2 11 8C 84 8F FE 3E DF 01 A4 A7 40 39 +,4=.&#238;&#228;&#197;&#166;&gt;&#713;.&#241;&#186;@9
+0CB2B88 1F 55 E7 92 E5 47 5B 58 1A 00 A0 48 E1 B3 14 F2 .Ut&#198;sG[X..&#225;H&#223;&#166;.=
+0CB2B98 2F 94 02 3A E7 EC 4D 6D 7A 0E BF 73 EA 40 36 DC /&#246;.:t8Mmz.+sO@6_
+0CB2BA8 C6 47 C8 5D 49 F3 AC 92 EA A7 EA 03 AE 4D 51 48 &#166;G+]I=&#188;&#198;O&#186;O.&#171;MQH
+0CB2BB8 C2 70 3D 42 58 F6 2D 24 B0 AD 12 71 6A 6D 49 5A &#8208;p=BX&#247;&#8208;$&#166;&#161;.qjmIZ
+0CB2BC8 47 0C E2 A1 0C 0F 63 53 7A EF 26 C6 81 62 E6 38 G.G&#237;..cSzn&amp;&#166;&#252;b&#956;8
+0CB2BD8 06 19 31 A5 00 00 00 00 84 FA 16 00 00 10 00 00 ..1&#209;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-968607a6-3b27-4208-b492-47129aceaefb">
+        <cybox:Object id="CISCP:Object-b086878a-394c-43af-9921-10cf31885799">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">159.146.3.237</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">28182</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b58c7f46-7a07-4e46-b1ec-efe664c1cfae" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB29C0 2E 7B F0 F0 51 06 45 C9 78 BC 2E A9 C8 16 E8 27 .{==Q.E+x+.&#172;+.F'
+00CB29D0 94 8B 60 BE E9 C7 A1 6D 5E 14 04 45 05 41 53 ED &#246;&#239;`+T&#166;&#237;m^..E.ASf
+00CB29E0 90 D1 84 D8 FE 72 69 70 9A 00 FD A3 A2 A2 A2 A2 &#201;&#8208;&#228;+&#166;rip&#220;.&#178;&#250;&#243;&#243;&#243;&#243;
+00CB29F0 A6 15 7A F8 DD 25 C3 A8 47 54 B6 68 AC 79 3F FF &#170;.z&#176;&#166;%+&#191;GT&#166;h&#188;y?
+00CB2A00 06 72 61 9B 95 0D 4A 12 AB 82 9F F2 CB 54 2A DA .ra&#162;&#242;.J.&#189;&#233;&#402;=&#8208;T*+
+00CB2A10 FB 06 8B EA C6 9B 01 8B 7F EC 59 D1 06 A9 36 70 v.&#239;O&#166;&#162;.8Y&#8208;.&#172;6p
+00CB2A20 76 69 2E 4A 02 4E 0F DE 1E C1 DA F7 52 BD 1F C6 vi.J.N.&#166;.&#8208;+&#732;R+.&#166;
+00CB2A30 0F 46 1B FE 8F 9D 86 DE F6 B0 97 0E 24 5D 17 99 .F.&#166;&#197;&#165;&#229;&#166;&#247;&#166;&#249;.$].&#214;
+00CB2A40 41 3E 03 F4 B3 65 CB A4 60 4A D1 A0 4C 62 C4 C8 A&gt;.(&#166;e&#8208;&#241;`J&#8208;&#225;Lb&#8208;+
+00CB2A50 16 CA 6A D0 17 31 5A 84 94 B9 F2 1E 2A ED 7D 18 .&#8208;j&#8208;.1Z&#228;&#246;&#166;=.*f}.
+00CB2A60 6B EC 16 6B 66 D8 82 04 D2 EC 49 7D 3F AB 37 3C k8.kf+&#233;.&#8208;8I}?&#189;7&lt;
+00CB2A70 1D 0F 45 CD 26 62 69 CC 48 33 6E D4 C0 24 1E 00 ..E&#8208;&amp;bi&#166;H3n++$..</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-729b0b32-fe23-4480-bc1f-91bc24764494">
+        <cybox:Object id="CISCP:Object-cc7111d9-7944-4e8f-9497-aaa0c11c8bb2">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">94.65.195.82</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">20695</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-4e09f23d-cd50-4b14-87a5-3975a21cd3bb" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2C30 EB E0 D3 D1 2A 9F BC 57 C9 19 88 AE B5 A6 AA 8B da+&#8208;*&#402;+W+.&#234;&#171;&#166;&#170;&#172;&#239;
+00CB2C40 DC 66 1D B2 B5 B1 5C D4 E7 AD BD FC BC F8 EA 54 _f.&#166;&#166;&#166;\+t&#161;+n+&#176;OT
+00CB2C50 29 68 3D 61 47 CB D0 C9 23 B9 44 1A D9 5D ED DF )h=aG&#8208;&#8208;+#&#166;D.+]f&#713;
+00CB2C60 9B E6 2C 2B 1F 25 BD 3B F1 D8 A1 72 07 3A 38 A1 &#162;&#956;,+.%+;&#177;+&#237;r.:8&#237;
+00CB2C70 E9 57 9F F0 E7 2D 97 BC 17 4E 2C 33 1A 67 0B 97 TW&#402;=t&#8208;&#249;+.N,3.g.&#249;
+00CB2C80 D0 3C A1 BA 93 BB 92 64 39 F0 29 DB DD EE 01 2A &#8208;&lt;&#237;&#166;&#244;+&#198;d9=)&#166;&#166;e.*
+00CB2C90 AF A4 55 C1 31 7D 91 95 44 0C 2F CC FF 88 05 31 &#187;&#241;U&#8208;1}&#230;&#242;D./&#166; &#234;.1
+00CB2CA0 0F AB C7 B7 FE D3 74 92 B5 2C CD 00 .&#189;&#166;+&#166;+t&#198;&#166;,&#8208;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-907931db-04b2-491c-881d-8dc2e1e114a4">
+        <cybox:Object id="CISCP:Object-4ae4bca9-b3dd-4398-97d5-5bb750bbf113">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">180.253.31.36</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">13989</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-5c407285-92c8-4de8-b71c-4b7fa54b3b9b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2D10 FF 72 4B 49 60 FD 58 0B 01 BC 00 78 A6 2D 33 4E rKI`&#178;X..+.x&#170;&#8208;3N
+00CB2D20 BB CD 9F 77 33 2B 94 FA C9 83 93 D2 92 D6 C4 7A +&#8208;&#402;w3+&#246;&#8729;+&#226;&#244;&#8208;&#198;+&#8208;z
+00CB2D30 07 46 13 4F 69 E5 FE E7 0D 97 6A 34 F7 67 3C 4C .F.Ois&#166;t.&#249;j4&#732;g&lt;L
+00CB2D40 62 D5 65 89 D8 EB C1 8E 72 0E 0E D7 D5 E3 BB 05 b+e&#235;+d&#8208;&#196;r..++p+.
+00CB2D50 6D 87 31 84 26 CB 19 49 C5 40 B8 BE 09 F7 F2 20 m&#231;1&#228;&amp;&#8208;.I+@++.&#732;=
+00CB2D60 49 6A 72 35 0C 1D 78 2F 2E 87 59 5D 89 BA 6E D9 Ijr5..x/.&#231;Y]&#235;&#166;n+
+00CB2D70 DF 66 50 45 7A A4 79 E0 A7 AC 1D FB FD BE CB AE &#713;fPEz&#241;ya&#186;&#188;.v&#178;+&#8208;&#171;
+00CB2D80 01 F0 36 ED AD 35 11 AC 70 AC BD A3 C5 02 7B FC .=6f&#161;5.&#188;p&#188;+&#250;+.{n
+00CB2D90 E5</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c6567002-eef8-4753-9ca7-29bb3d2d111a">
+        <cybox:Object id="CISCP:Object-75f91d60-5bc9-4cf9-bbeb-f0774e91f30a">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">110.137.26.168</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">24347</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-52a14a3d-b702-4762-b7f1-5cfe71c9c4fd" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2E10 6C 88 F5 F7 04 99 6B 51 AF A4 14 54 A2 76 F4 E0 l&#234;)&#732;.&#214;kQ&#187;&#241;.T&#243;v(a
+00CB2E20 22 F9 68 E9 63 7A 24 9B A8 E2 F2 B3 F3 B7 A5 1B "&#8729;hTcz$&#162;&#191;G=&#166;=+&#209;.
+00CB2E30 66 27 72 2E 08 84 9F 86 6C F6 0B 55 96 BF 86 88 f'r..&#228;&#402;&#229;l&#247;.U&#251;+&#229;&#234;
+00CB2E40 31 C4 13 96 A4 8B 6E 0D 2F 8C FA 45 44 AD 24 CB 1&#8208;.&#251;&#241;&#239;n./&#238;&#8729;ED&#161;$&#8208;
+00CB2E50 38 87 03 39 5B ED 71 CA 8A E6 C1 2A 80 3B 3D 8C 8&#231;.9[fq&#8208;&#232;&#956;&#8208;*&#199;;=&#238;
+00CB2E60 3B 8B 5E AC 5D E1 E4 67 53 20 67 B0 CC C3 99 5A ;&#239;^&#188;]&#223;SgS g&#166;&#166;+&#214;Z
+00CB2E70 D3 2F C8 16 76 E1 76 EE 39 5F D6 59 39 9F 89 41 +/+.v&#223;ve9_+Y9&#402;&#235;A
+00CB2E80 3C 28 E5 DE 6F 20 ED 24 E7 7E 99 24 2B 03 1F C7 &lt;(s&#166;o f$t~&#214;$+..&#166;
+00CB2E90 5C 7F 7B 5E 55 51 4E CD A2 F5 9F BD CB C7 94 39 {^UQN&#8208;&#243;)&#402;+&#8208;&#166;&#246;9
+00CB2EA0 4A 2C F2 F3 CD 4F 36 31 4A 58 27 04 6E 2D 5A 06 J,==&#8208;O61JX'.n&#8208;Z.
+00CB2EB0 AE EF 14 B7 29 E8 A4 F3 7D 6A F7 07 E6 91 07 F9 &#171;n.+)F&#241;=}j&#732;.&#956;&#230;.&#8729;
+00CB2EC0 FF 96 99 AB 64 1C D9 A6 30 DD F1 DE 38 2F C4 5B &#251;&#214;&#189;d.+&#170;0&#166;&#177;&#166;8/&#8208;[
+00CB2ED0 F1 C8 34 11 85 &#177;+4.&#224;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-780a6211-dcc9-4e9e-9030-f1a718d79933">
+        <cybox:Object id="CISCP:Object-dd9efb38-6a84-4730-bf36-705f2615686c">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">180.251.150.138</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">28194</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-40fa4fb0-f948-4d06-8cd5-bd645be7ef09" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2EE0 FB 47 6E 6C EF 6D B3 D8 78 CC 07 7D 8C 15 D9 3A vGnlnm&#166;+x&#166;.}&#238;.+:
+00CB2EF0 B3 07 B8 5E A2 7D 80 22 11 5B 4B 0A 4A 0E 1C A2 &#166;.+^&#243;}&#199;".[K.J..&#243;
+00CB2F00 DF 9E CB 97 B1 3D 26 3F D5 4F B2 EC 2F 67 8C 46 &#713;P&#8208;&#249;&#166;=&amp;?+O&#166;8/g&#238;F
+00CB2F10 83 FB 15 C2 76 DE C6 0E AD FE 05 DD 2D 5B 0C F0 &#226;v.&#8208;v&#166;&#166;.&#161;&#166;.&#166;&#8208;[.=
+00CB2F20 36 1F 1B 36 06 B0 76 B9 8B 70 EC 43 B2 53 13 97 6..6.&#166;v&#166;&#239;p8C&#166;S.&#249;
+00CB2F30 75 2C 5E 03 57 D4 38 DB 79 DE 98 32 CA 5F B1 22 u,^.W+8&#166;y&#166;&#255;2&#8208;_&#166;"
+00CB2F40 C1 06 AC C1 68 40 66 8C 11 9E E0 15 BF 32 1A 43 &#8208;.&#188;&#8208;h@f&#238;.Pa.+2.C
+00CB2F50 73 s</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8341f65e-9f16-4cd0-aa89-f2649c5c86e3">
+        <cybox:Object id="CISCP:Object-7d25171c-f8e5-4790-9a76-c323e27a88df">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">95.104.51.216</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">24154</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6e55baee-f8d6-44ee-b2a2-4d9a3addf118" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2C30 25 1C 2F 2D 43 9E 79 4E 6D 59 6C 83 81 C2 CD 5E %./&#8208;CPyNmYl&#226;&#252;&#8208;&#8208;^
+00CB2C40 4B F2 8C AF 2E DE 97 9D AE E4 F4 B5 F5 B1 A3 1D K=&#238;&#187;.&#166;&#249;&#165;&#171;S(&#166;)&#166;&#250;.
+00CB2C50 60 21 74 28 0E 82 99 80 6A F0 0D 53 90 2B A5 7F `!t(.&#233;&#214;&#199;j=.S&#201;+
+00CB2C60 58 83 BD D3 08 44 35 2C 17 2F FB F4 1E CD 4E 77 X&#226;++.D5,./v(.&#8208;Nw
+00CB2C70 5D 92 B1 DF 41 C8 50 E6 4F F5 2B 81 D2 D9 8D 32 ]&#198;&#166;&#713;A+P&#956;O)+&#252;&#8208;+&#236;2
+00CB2C80 13 C8 AA 21 A4 32 23 BB B7 C8 D3 7E 40 0A 2E 15 .+&#172;!&#241;2#++++~@...
+00CB2C90 0F AD AA 8A C5 A4 51 75 81 69 9A 4B 80 EB 2F 49 .&#161;&#172;&#232;+&#241;Qu&#252;i&#220;K&#199;d/I
+00CB2CA0 03 BE 1D B8 5B 39 6D 5C 54 58 80 00 .+.+[9m\TX&#199;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f0d32f31-1c85-4723-ba60-2ee9441383a5">
+        <cybox:Object id="CISCP:Object-3de2ce98-f339-4132-895d-c5242bdbdf4b">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">88.232.87.197</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">14557</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ae0978d6-529b-4430-bdf5-b83abe9913e1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB3088 6C 19 3E 3C 83 0A 6F 4C 7C 29 5C C2 22 AA A3 51 l.&gt;&lt;&#226;.oL|)\&#8208;"&#172;&#250;Q
+00CB3098 D8 D4 88 CF A5 15 F4 B2 81 CB DB 9A DA 9E 8C 32 ++&#234;&#8208;&#209;.(&#166;&#252;&#8208;&#166;&#220;+P&#238;2
+00CB30A8 4F 0E 5B 07 21 AD B6 AF 45 DF 22 7C BF 3D C6 33 O.[.!&#161;&#166;&#187;E&#713;"|+=&#166;3
+00CB30B8 CD 38 0B B9 37 08 71 ED 4D 32 D3 9A 3E 38 3E 58 &#8208;8.&#166;7.qfM2+&#220;&gt;8&gt;X
+00CB30C8 D2 ED DC 59 28 BE D2 5B 84 18 9E 61 14 02 74 43 &#8208;f_Y(+&#8208;[&#228;.Pa..tC
+00CB30D8 4B 1B 1D 66 5E 3C 3A D5 19 93 92 93 E6 8C E3 08 K..f^&lt;:+.&#244;&#198;&#244;&#956;&#238;p.
+00CB30E8 DB D2 0A 59 E7 DF 93 30 6A CA FF 12 B2 C9 AE 00 &#166;&#8208;.Yt&#713;&#244;0j&#8208; .&#166;+&#171;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0b07d161-d63b-474a-8be0-ccfd05872c5c">
+        <cybox:Object id="CISCP:Object-be5522e7-21b6-46ca-8234-477448b99763">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">88.235.200.179</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">10783</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b1d5aedc-288f-4471-bfad-0b9c4ddf7043" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2888 5B 23 46 44 A7 0E 24 67 23 D3 E9 5F 03 18 04 BB [#FD&#186;.$g#+T_...+
+00CB2898 39 4F 29 2A 20 99 F2 B8 8B C1 D1 90 D0 94 86 38 9O)* &#214;=+&#239;&#8208;&#8208;&#201;&#8208;&#246;&#229;8
+00CB28A8 45 04 51 0D 2B A7 BC A5 4F D5 28 76 B5 3A 70 29 E.Q.+&#186;+&#209;O+(v&#166;:p)
+00CB28B8 A5 50 25 43 FB DD 0A 60 EF 2F AC 81 CB 4F A9 EB &#209;P%Cv&#166;.`n/&#188;&#252;&#8208;O&#172;d
+00CB28C8 A6 15 12 AF 29 4F 3D DD F7 00 35 F9 BF B0 A7 FC &#170;..&#187;)O=&#166;&#732;.5&#8729;+&#166;&#186;n
+00CB28D8 6B E7 19 E2 B3 8A 41 CC BC 2D 32 13 F0 A7 73 4E kt.G&#166;&#232;A&#166;+&#8208;2.=&#186;sN
+00CB28E8 54 A3 0A A1 30 9E 8A BC 8A 75 81 7B 49 54 02 24 T&#250;.&#237;0P&#232;+&#232;u&#252;{IT.$
+00CB28F8 14 60 00 8C 0B 3C 5A 2A 1E 74 C4 DC AA 0B AB 3E .`.&#238;.&lt;Z*.t&#8208;_&#172;.&#189;&gt;
+00CB2908 DF DC DE 53 1B 32 BB 51 78 C6 41 9A B3 1A 21 A9 &#713;_&#166;S.2+Qx&#166;A&#220;&#166;.!&#172;
+00CB2918 65 DC 50 28 94 97 7E 21 4F 4A C7 C1 A3 10 40 1D e_P(&#246;&#249;~!OJ&#166;&#8208;&#250;.@.
+00CB2928 54 29 C2 76 19 63 10 C3 96 B2 A1 9C 0A T)&#8208;v.c.+&#251;&#166;&#237;&#163;.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-59be1c61-e722-4e01-9725-8811165aa638">
+        <cybox:Object id="CISCP:Object-5a8a9655-2283-49a1-a2e5-bd890819754b">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">117.218.103.46</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">10153</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a450ab96-c228-44d6-b3a3-235f3e5278d9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB31D0 4F 37 FF FD 15 03 94 AA 1F E6 F2 A8 6A 7A A5 EC O7 &#178;..&#246;&#172;.&#956;=&#191;jz&#209;8
+00CB31E0 63 91 9E 30 96 30 12 12 21 6B 7B 3A 7A 3E 2C 92 c&#230;P0&#251;0..!k{:z&gt;,&#198;
+00CB31F0 EF AE FB A7 81 0D 16 0F E5 7F 82 DC 1F 98 9F 5D n&#171;v&#186;&#252;...&#233;_.&#255;&#402;]
+00CB3200 34 74 4E 58 5E 72 D3 D7 FF 4D 19 45 C5 E5 63 50 4tNX^r++ M.E+scP
+00CB3210 45 68 CC 73 60 ED 04 98 1F 57 79 E5 E8 21 83 BE Eh&#166;s`f.&#255;.WysF!&#226;+
+00CB3220 DD 53 97 F4 22 62 A9 F4 92 F1 DA EE 7A F1 91 66 &#166;S&#249;("b&#172;(&#198;&#177;+ez&#177;&#230;f
+00CB3230 88 50 48 F1 96 DA B3 C5 6F 6A 7A AA C2 69 7C 57 &#234;PH&#177;&#251;+&#166;+ojz&#172;&#8208;i|W
+00CB3240 D6 12 AD 52 CD 56 B5 D0 BD 81 C6 B6 E9 71 3F FB +.&#161;R&#8208;V&#166;&#8208;+&#252;&#166;&#166;Tq?v
+00CB3250 98 F7 31 16 C8 62 BC 52 DA 3D D8 0B C2 55 9E A2 &#255;&#732;1.+b+R+=+.&#8208;UP&#243;
+00CB3260 D8 46 8E B5 E5 73 6F FA 1C 7E C8 5A 6A 3C 78 44 +F&#196;&#166;sso&#8729;.~+Zj&lt;xD
+00CB3270 5A 73 8D 97 64 96 F8 29 C3 95 94 73 F8 96 EE BA Zs&#236;&#249;d&#251;&#176;)+&#242;&#246;s&#176;&#251;e&#166;
+00CB3280 76 C9 5D 81 5B 8F 9C 44 35 CA F8 4C FA 17 89 77 v+]&#252;[&#197;&#163;D5&#8208;&#176;L&#8729;.&#235;w
+00CB3290 49 95 3F 6D 0B 07 36 3B 56 08 B9 61 88 E2 A7 62 I&#242;?m..6;V.&#166;a&#234;G&#186;b
+00CB32A0 17 E0 99 2D E0 67 37 2E 70 D6 9F 20 D8 79 65 0A .a&#214;&#8208;ag7.p+&#402; +ye.
+00CB32B0 1E 4C A6 14 25 A3 4C A6 62 89 C0 EA 01 C9 65 2B .L&#170;.%&#250;L&#170;b&#235;+O.+e+
+00CB32C0 D7 A5 3F 11 CD 9F 05 3A C8 E5 18 1A 72 1B 32 AB +&#209;?.&#8208;&#402;.:+s..r.2&#189;
+00CB32D0 AC DF C3 C6 D9 E8 66 E4 C6 7F B5 1B 3E 9A C8 DC &#188;&#713;+&#166;+FfS&#166;.&gt;&#220;+_</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-31458086-982c-468b-a380-ff6ffe50f73d">
+        <cybox:Object id="CISCP:Object-b7ce5406-9b1a-4f1e-bb6d-fb080ef33d00">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">15.115.171.66</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">20192</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0c9aae59-7dde-432e-8b93-30d8d0dcf8f7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2940 D7 75 58 5A CF 74 14 CC DA DB 75 7B E4 C8 A5 62 +uXZ&#8208;t.&#166;+&#166;u{S+&#209;b
+00CB2950 97 00 CB AF A8 67 62 58 6B 21 31 70 30 74 66 D8 &#249;.&#8208;&#187;&#191;gbXk!1p0tf+
+00CB2960 A5 E4 B1 ED CB 47 5C 45 AF 35 C8 96 55 8A A1 2B &#209;S&#166;f&#8208;G\E&#187;5+&#251;U&#232;&#237;+
+00CB2970 46 7B 82 8D 24 B2 75 AF BD BD 0C 67 F8 6F 90 B2 F{&#233;&#236;$&#166;u&#187;++.g&#176;o&#201;&#166;
+00CB2980 FA C7 82 36 44 13 25 19 72 7C 30 70 82 4C 7A 94 &#8729;&#166;&#233;6D.%.r|0p&#233;Lz&#246;
+00CB2990 C3 17 B8 AD 01 4D 33 8F D3 C1 23 F9 33 FE D6 F9 +.+&#161;.M3&#197;+&#8208;#&#8729;3&#166;+&#8729;
+00CB29A0 AF F4 FD FF 48 EC 21 B1 90 1A 24 5E 7B 26 6E FC &#187;(&#178; H8!&#166;&#201;.$^{&amp;nn
+00CB29B0 2D 81 17 19 FB &#8208;&#252;..v</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3e39cfd6-8d8b-406a-88ae-abccf221a8b4">
+        <cybox:Object id="CISCP:Object-c5ff336f-d7f1-4d77-9d51-33a2e7cdc8eb">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">78.168.222.184</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">25930</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8b4be713-04d3-45fa-be1b-ffd29a71e234" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB33E0 D2 A7 AA A8 44 17 23 14 6F FF 12 0E 1C 46 D1 78 &#8208;&#186;&#172;&#191;D.#.o ...F&#8208;x
+00CB33F0 3D 75 F4 FD 36 A3 A0 84 B7 FD ED AC EC A8 BA 04 =u(&#178;6&#250;&#225;&#228;+&#178;f&#188;8&#191;&#166;.
+00CB3400 79 38 6D 31 17 9B 80 99 73 E9 14 4A 89 18 EB A5 y8m1.&#162;&#199;&#214;sT.J&#235;.d&#209;
+00CB3410 75 32 43 D2 31 80 6D B4 FB 9C 45 C6 64 BD 09 06 u2C&#8208;1&#199;m&#166;v&#163;E&#166;d+..
+00CB3420 41 FF DC AF C6 2B FD 44 E6 5A F1 03 4A C5 C8 C9 A _&#187;&#166;+&#178;D&#956;Z&#177;.J+++
+00CB3430 71 5A 75 26 C4 qZu&amp;&#8208;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0a73f303-cf84-46a5-b3da-0802e29bb80c">
+        <cybox:Object id="CISCP:Object-1960e893-5e9c-426c-bc03-7fd58c4c40df">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">88.241.10.56</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">21158</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-864d248a-22e7-4af0-8d33-29ed93cf8171" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2940 69 DA F3 F1 E6 62 60 A1 DB 2B 50 89 48 09 97 CC i+=&#177;&#956;b`&#237;&#166;+P&#235;H.&#249;&#166;
+00CB2950 7F 64 26 CE B4 A6 D9 8F BC F6 E6 A7 E7 A3 B1 0F d&amp;+&#166;&#170;+&#197;+&#247;&#956;&#186;t&#250;&#166;.
+00CB2960 72 33 66 3A 1C 90 8B 92 78 E2 1F 41 82 EE 7E 55 r3f:.&#201;&#239;&#198;xG.A&#233;e~U
+00CB2970 53 1F BE 05 87 6E 41 C4 07 7B C0 A3 4B 05 02 02 S.+.&#231;nA&#8208;.{+&#250;K...
+00CB2980 46 B6 83 46 BA F9 FD BD A1 43 D3 53 56 DC 2D 4C F&#166;&#226;F&#166;&#8729;&#178;+&#237;C+SV_&#8208;L
+00CB2990 78 C6 18 65 D8 FF 68 6A EA 3A B0 9B 64 B2 20 3E x&#166;.e+ hjO:&#166;&#162;d&#166; &gt;
+00CB29A0 6F D5 B5 76 73 D4 3F 7C 8E 1B 5C AB E4 4E FA E3 o+&#166;vs+?|&#196;.\&#189;SN&#8729;p
+00CB29B0 B3 &#166;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-d6989bfa-821d-4456-89e2-b89cd71b49cf">
+        <cybox:Object id="CISCP:Object-93d1ddf2-4e45-4a7a-b731-2015469d80d1">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">75.6.222.103</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">11577</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b7181564-f7d9-4960-bdb5-b0a3533948e5" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB3560 8C 23 92 90 71 EE D7 A9 D1 FA 70 2A B3 06 89 04 &#238;#&#198;&#201;qe+&#172;&#8208;&#8729;p*&#166;.&#235;.
+00CB3570 D9 5C C2 BD 5D 0A 5A 63 50 1A 0A 4B 0B 4F 5D E3 +\&#8208;+].ZcP..K.O]p
+00CB3580 9E DF 8A D6 F0 7C 67 7E 94 0E F3 AD 6E F9 37 8B P&#713;&#232;+=|g~&#246;.=&#161;n&#8729;7&#239;
+00CB3590 8B 66 AA 8C 50 51 D5 A6 D5 9E 42 9C 5F 7D 12 74 &#239;f&#172;&#238;PQ+&#170;+PB&#163;_}.t
+00CB35A0 6E FE D5 85 FA FB CB 20 D3 2A 5D 97 62 CC 1E 1F n&#166;+&#224;&#8729;v&#8208; +*]&#249;b&#166;..
+00CB35B0 2C 59 E1 D4 42 52 82 64 B6 CE D8 4D C4 C3 E7 50 ,Y&#223;+BR&#233;d&#166;++M&#8208;+tP
+00CB35C0 8F 0D C7 6E 05 CF F8 14 1A FA 28 EA 7E 52 A0 3F &#197;.&#166;n.&#8208;&#176;..&#8729;(O~R&#225;?
+00CB35D0 7B 5D 42 31 2F C9 B8 BF 9D A2 35 DB 51 0F 32 92 {]B1/+++&#165;&#243;5&#166;Q.2&#198;
+00CB35E0 DB 1A EA 0B C6 32 2F 90 C5 7D 52 63 DE F7 77 DF &#166;.O.&#166;2/&#201;+}Rc&#166;&#732;w&#713;
+00CB35F0 CA 9D 90 23 BB 50 B8 A8 B4 10 3E 25 0F FE 17 12 &#8208;&#165;&#201;#+P+&#191;&#166;.&gt;%.&#166;..
+00CB3600 2C 95 69 81 F6 9F BF B6 51 36 E6 73 17 68 15 58 ,&#242;i&#252;&#247;&#402;+&#166;Q6&#956;s.h.X
+00CB3610 A4 C3 13 A1 81 12 B1 59 95 A4 7C 74 9F 5E A9 C1 &#241;+.&#237;&#252;.&#166;Y&#242;&#241;|t&#402;^&#172;&#8208;
+00CB3620 66 EA 12 8D 19 AF 44 36 E7 4A 66 E3 1F 12 6E B8 fO.&#236;.&#187;D6tJfp..n+
+00CB3630 30 2D A9 44 6B 9E 7C 15 9C 1E 30 23 42 C2 27 60 0&#8208;&#172;DkP|.&#163;.0#B&#8208;'`
+00CB3640 3A 3C 2F F1 E1 3C 51 7F 72 50 32 5D 34 D7 19 85 :&lt;/&#177;&#223;&lt;rP2]4+.&#224;
+00CB3650 B9 72 0B 7B 32 66 B6 1D 68 &#166;r.{2f&#166;.h</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-bd2e6423-e81c-41c5-b643-8619e4408c9a">
+        <cybox:Object id="CISCP:Object-7922f876-7469-4de7-8e24-df1969ededbd">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">190.21.66.227</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">16507</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-46b7e6c8-169e-4d37-b2e7-dd9a17643608" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB33E0 BF 93 9D 9F AD 43 54 42 41 EC 30 AA 43 DB B5 B3 +&#244;&#165;&#402;&#161;CTBA80&#172;C&#166;&#166;&#166;
+00CB33F0 AC E2 DB F0 0B 78 DB D7 E4 AE BE FF BF FB E9 57 &#188;G&#166;=.x&#166;+S&#171;+ +vTW
+00CB3400 2A 6B 3E 62 44 C8 D3 CA 20 BA 47 19 DA D6 21 FE *k&gt;bD++&#8208; &#166;G.++!&#166;
+00CB3410 7A 8B 20 39 4D 8A FD 61 C9 58 00 22 97 94 04 3D z&#239; 9M&#232;&#178;a+X."&#249;&#246;.=
+00CB3420 A7 F4 6D B5 FD C9 34 B9 DE FB B3 9C 68 F0 CC ED &#186;(m&#166;&#178;+4&#166;&#166;v&#166;&#163;h=&#166;f
+00CB3430 77 7E AC BB 34 81 w~&#188;+4&#252;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-be616bf1-c476-460d-a600-a1ad6885cc6a">
+        <cybox:Object id="CISCP:Object-8415f6be-52e8-4eb5-8257-2267a499f2c1">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">78.13.192.115</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">22611</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6cd520ba-ac85-4a7b-a7ff-7f11a4ab1fa9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2D10 FE CC F1 F3 E0 45 14 2D 2A 0D 56 30 30 F4 E2 66 &#166;&#166;&#177;=aE.&#8208;*.V00(Gf
+00CB2D20 35 7E 58 1F BE A4 49 B3 80 CA DA 9B DB 9F 8D 33 5~X.+&#241;I&#166;&#199;&#8208;+&#162;&#166;&#402;&#236;3
+00CB2D30 4E 0F 5A 06 20 AC B7 AE 44 DE 23 7D BE 41 C5 45 N.Z. &#188;+&#171;D&#166;#}+A+E
+00CB2D40 AB 33 66 88 CD B4 03 C1 32 01 C0 F5 06 62 84 92 &#189;3f&#234;&#8208;&#166;.&#8208;2.+).b&#228;&#198;
+00CB2D50 D8 AD D0 BE 9A E2 F9 10 A3 89 21 30 00 8C 16 71 +&#161;&#8208;+&#220;G&#8729;.&#250;&#235;!0.&#238;.q
+00CB2D60 DC 3F C4 54 88 59 5C 77 DD 1B DA 1D 88 4E BD 8C _?&#8208;T&#234;Y\w&#166;.+.&#234;N+&#238;
+00CB2D70 0A D1 95 7A 96 8D 4B 1E 85 95 18 68 25 5E CF 0E .&#8208;&#242;z&#251;&#236;K.&#224;&#242;.h%^&#8208;.
+00CB2D80 00 93 32 13 5F 49 AB 4D E3 32 7D 2B 66 71 20 6E .&#244;2._I&#189;Mp2}+fq n
+00CB2D90 F5 A5 67 31 29 )&#209;g1)</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-e34cbbd2-89a0-4b75-8f78-ae641aa7ae46">
+        <cybox:Object id="CISCP:Object-f80d5f65-b4b6-4e48-9381-dafa5780b463">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">122.163.2.61</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">22421</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8b5947da-a231-47d6-bd36-c5a89988ae02" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB3088 2D AF 8D 8F 73 B7 E4 67 DC 48 D3 AD E5 61 7B AD &#8208;&#187;&#236;&#197;s+Sg_H+&#161;sa{&#161;
+00CB3098 72 98 5E 64 FA F8 4E 40 73 39 29 68 28 6C 7E C0 r&#255;^d&#8729;&#176;N@s9)h(l~+
+00CB30A8 BD FC A9 F5 D3 5F 44 5D B7 2D D0 8E 4C C0 D8 75 +n&#172;)+_D]+&#8208;&#8208;&#196;L++u
+00CB30B8 E9 16 0A 50 A3 5D A8 D5 80 E2 0A 76 A6 A6 5A D9 T..P&#250;]&#191;+&#199;G.v&#170;&#170;Z+
+00CB30C8 52 61 CB 2D 66 C8 FD CE D1 E3 BC 42 EB F4 0C B5 Ra&#8208;&#8208;f+&#178;+&#8208;p+Bd(.&#166;
+00CB30D8 C2 A7 4B E7 49 48 F8 A3 50 FE 1D 93 C9 D2 C7 11 &#8208;&#186;KtIH&#176;&#250;P&#166;.&#244;+&#8208;&#166;.
+00CB30E8 84 03 EE 23 CF C9 4F B8 A6 93 FF &#228;.e#&#8208;+O+&#170;&#244;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-121f5598-8a27-44da-b83a-fcfcf4c5d459">
+        <cybox:Object id="CISCP:Object-584474ec-46a6-41d6-97c3-bf09194522b5">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">108.94.154.77</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">10640</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3c60723c-af04-41e4-bb9c-d3d53a2e7527" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+0CB2C30 B2 FF CB C9 58 82 D3 C6 3D 1E B1 6E 09 4D 92 F9 &#166; &#8208;+X&#233;+&#166;=.&#166;n.M&#198;&#8729;
+0CB2C40 18 95 E7 8A AC A8 D5 8A B9 F3 E3 A2 E2 A6 B4 0A .&#242;t&#232;&#188;&#191;+&#232;&#166;=p&#243;G&#170;&#166;.
+0CB2C50 77 36 63 3F 19 95 8E 97 7D E7 1A 44 86 74 D6 20 w6c?.&#242;&#196;&#249;}t.D&#229;t+
+0CB2C60 38 5A EC FA AA 98 8B C2 39 E4 0E A5 46 AD 81 89 8Z8&#8729;&#172;&#255;&#239;&#8208;9S.&#209;F&#161;&#252;&#235;
+0CB2C70 4C F7 C3 18 F0 2B F0 DF 8E C5 B6 06 2C 6C 3B 4C L&#732;+.=+=&#713;&#196;+&#166;.,l;L
+0CB2C80 2F 90 F0 DB CA 49 2B 09 3F C6 03 2F AA BD 09 81 /&#201;=&#166;&#8208;I+.?&#166;./&#172;+.&#252;
+0CB2C90 8A 7E 2C 1F DD 6A 9A 76 12 52 F4 FF 8D 35 8C DB &#232;~,.&#166;j&#220;v.R( &#236;5&#238;&#166;
+0CB2CA0 D4 EE FC 20 75 25 5D 58 1D E7 1A B4 00 +en u%]X.t.&#166;</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-0e1c6b2c-912e-4419-a2cf-2a3083cb5a34">
+        <cybox:Object id="CISCP:Object-9ccac5f7-822a-4da8-ac5e-a1d3f410c941">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">95.111.21.73</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">14685</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c3303e36-cd0d-468e-9908-fe1964b2d049" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB32E8 50 C1 64 66 54 26 F1 05 3D D1 AC C0 FB 5C 9C 14 P&#8208;dfT&amp;&#177;.=&#8208;&#188;+v\&#163;.
+00CB32F8 30 FB D1 78 35 9A 35 10 23 69 79 38 78 3C 2E 90 0v&#8208;x5&#220;5.#iy8x&lt;.&#201;
+00CB3308 ED AC F9 A5 83 0F 14 0D E7 7D 80 DE 1D AA 60 3F f&#188;&#8729;&#209;&#226;...t}&#199;&#166;.&#172;`?
+00CB3318 60 74 2F 93 B2 9A A1 B4 98 65 80 D2 42 4D 31 BB `t/&#244;&#166;&#220;&#237;&#166;&#255;e&#199;&#8208;BM1+
+00CB3328 B7 50 9C CD FA 54 79 3D 38 19 22 B5 F7 07 7E 4C +P&#163;&#8208;&#8729;Ty=8."&#166;&#732;.~L
+00CB3338 31 8C 4D DE 27 57 25 D3 77 CF 05 68 43 7C 5B 8A 1&#238;M&#166;'W%+w&#8208;.hC|[&#232;
+00CB3348 56 F2 E2 AE 7D 05 38 E4 7B 4F 89 20 4D E1 A5 85 V=G&#171;}.8S{O&#235; M&#223;&#209;&#224;
+00CB3358 DF 0C 74 77 07 1E B7 A0 1D DA 9B E6 85 0B 86 EF &#713;.tw..+&#225;.+&#162;&#956;&#224;.&#229;n
+00CB3368 C9 51 B8 81 89 67 EE 65 A1 A5 3D 64 C4 27 F0 9E +Q+&#252;&#235;gee&#237;&#209;=d&#8208;'=P
+00CB3378 CE 54 06 0E E1 2A 67 EC 2D 9E 59 A8 F4 8B 7B B1 +T..&#223;*g8&#8208;PY&#191;(&#239;{&#166;
+00CB3388 40 DC 8D 99 CC 20 2B D0 47 3D B8 F4 66 E1 B8 3B @_&#236;&#214;&#166; +&#8208;G=+(f&#223;+;
+00CB3398 DF EA 4A 6E 61 0F BB 3F 33 5F 8B 00 3D D1 07 3B &#713;OJna.+?3_&#239;.=&#8208;.;
+00CB33A8 66 1A CB 6E DE F3 D5 CE 5F 9D E7 7E F4 86 81 5C f.&#8208;n&#166;=++_&#165;t~(&#229;&#252;\
+00CB33B8 A8 4E 59 B3 90 A2 72 39 9C 38 48 31 D5 A4 B8 F5 &#191;NY&#166;&#201;&#243;r9&#163;8H1+&#241;+)
+00CB33C8 F3 EC 0E 69 A6 9A AD 52 0B 7D 69 78 88 D9 =8.i&#170;&#220;&#161;R.}ix&#234;+</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-9757f37d-4afa-4345-a229-7fd8082d48ba">
+        <cybox:Object id="CISCP:Object-7b2e256f-d8b3-4619-a6b2-fd65d1cf1e79">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">80.6.67.158</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">11016</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-65a93429-e25f-413f-8960-43117d89f565" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>This IP address and port are hard coded in the malware "guos.exe" (MD5:7b3d8a67f5be9e1e61488af02dbd1406). Data sent:
+
+00CB2B38 40 CC AC AE F0 D0 DB A1 EA 9F F3 94 05 0F 96 15 @&#166;&#188;&#171;=&#8208;&#166;&#237;O&#402;=&#246;..&#251;.
+00CB2B48 53 D0 0D 0C AC C8 92 18 2B 61 71 30 70 34 26 98 S&#8208;..&#188;+&#198;.+aq0p4&amp;&#255;
+00CB2B58 E5 A4 F1 AD 8B 07 1C 05 EF 75 88 D6 15 54 E2 E5 s&#241;&#177;&#161;&#239;...nu&#234;+.TGs
+00CB2B68 51 E9 23 2D 19 EB C5 C8 35 FA ED A4 1D 8B 23 F3 QT#&#8208;.d++5&#8729;f&#241;.&#239;#=
+00CB2B78 27 1A 62 C1 4A BA 78 1B 88 BD F3 98 7E E4 1D 26 '.b&#8208;J&#166;x.&#234;+=&#255;~S.&amp;
+00CB2B88 5C F3 BE 7A A4 E3 C1 05 21 1F C7 B3 4D FE B1 31 \=+z&#241;p&#8208;.!.&#166;&#166;M&#166;&#166;1
+00CB2B98 15 93 2D E2 B2 A5 43 94 ED 21 F8 95 21 03 6C AE .&#244;&#8208;G&#166;&#209;C&#246;f!&#176;&#242;!.l&#171;
+00CB2BA8 2E 47 AB E9 B4 32 82 FE 78 FE 3C 20 36 B5 D3 00 .G&#189;T&#166;2&#233;&#166;x&#166;&lt; 6&#166;+.
+00CB2BB8 0E BD 5B 05 E1 72 BB 47 D0 9A 91 E1 77 BE 4B BC .+[.&#223;r+G&#8208;&#220;&#230;&#223;w+K+
+00CB2BC8 39 2C EA 5A DF 20 7C 99 B5 A5 98 A7 5B EF 5B 98 9,OZ&#713; |&#214;&#166;&#209;&#255;&#186;[n[&#255;
+00CB2BD8 54 F6 4A 42 D2 18 76 C0 T&#247;JB&#8208;.v+</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-ee557558-c313-4668-83cd-d38580051bd9">
+        <cybox:Object id="CISCP:Object-08eb0c16-a0f5-4c46-bab5-974cd1412d4d">
+          <cybox:Properties xsi:type="NetworkConnectionObj:NetworkConnectionObjectType">
+            <NetworkConnectionObj:Destination_Socket_Address>
+              <SocketAddressObj:IP_Address category="ipv4-addr">
+                <AddrObj:Address_Value condition="Equals">184.74.169.226</AddrObj:Address_Value>
+              </SocketAddressObj:IP_Address>
+              <SocketAddressObj:Port>
+                <PortObj:Port_Value condition="Equals">19172</PortObj:Port_Value>
+                <PortObj:Layer4_Protocol condition="Equals">UDP</PortObj:Layer4_Protocol>
+              </SocketAddressObj:Port>
+            </NetworkConnectionObj:Destination_Socket_Address>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-04-01T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

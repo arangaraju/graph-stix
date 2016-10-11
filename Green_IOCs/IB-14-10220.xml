@@ -1,0 +1,590 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:LinkObj="http://cybox.mitre.org/objects#LinkObject-1" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10220" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>C-Level Employee Receives Whaling Email Credential Harvesting Attempt</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 25 April 2014, a financial sector organization reported a whaling email attempt against an executive suite (C-level) employee.  The victim received an email purporting to be from their IT department directing them to a click a link provided in the email. If the victim clicked the link, their browser was directed to a malicious URL containing HTML and PHP for credential harvesting.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-04-29T18:53:55Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-b1537b83-195c-4d4f-8aaa-cdc95c0b6e8e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-7bc7a70b-317e-4a14-86ca-7123bbad3083"/>
+        <indicator:Indicator idref="CISCP:indicator-817b30c6-39e1-45de-9414-2a273da49933"/>
+        <indicator:Indicator idref="CISCP:indicator-30de78ab-a5e3-4bdd-b8ba-77729a295bde"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-7bc7a70b-317e-4a14-86ca-7123bbad3083" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>The victim received an email purporting to be from their IT department directing them to click on a link.  The link contained a malicious URL that after redirects led to a credential harvesting site.
+
+---- BEGIN EMAIL HEADERS ----
+EHLO exchange.acibadem.com.tr
+MAIL FROM:&lt;elena.sakharova@acibadem.com.tr&gt; SIZE=16476
+RCPT TO:&lt;[REDACTED]&gt;
+DATA
+Received: from EXCMBX02.acibadem.com.tr ([fe80::ac28:9652:e318:bc31]) by
+ EXCCAS06.acibadem.com.tr ([fe80::1904:c48b:2371:7610%14]) with mapi id
+ 14.02.0318.004; Wed, 23 Apr 2014 13:04:30 +0300
+From: Elena Sakharova &lt;elena.sakharova@acibadem.com.tr&gt;
+Subject: IT Helpdesk: Mailbox Warning!
+Thread-Topic: IT Helpdesk: Mailbox Warning!
+Thread-Index: Ac9e22qxaUBkp0bsSFq/34U1ii1fPg==
+Date: Wed, 23 Apr 2014 10:04:29 +0000
+Message-ID: &lt;90AC3316216D4547AB9A544364749265335843@EXCMBX02.acibadem.com.tr&gt;
+Accept-Language: ru-RU, en-US
+Content-Language: ru-RU
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [80.65.63.227]
+Content-Type: multipart/alternative;
+	boundary="_000_90AC3316216D4547AB9A544364749265335843EXCMBX02acibademc_"
+MIME-Version: 1.0
+
+--_000_90AC3316216D4547AB9A544364749265335843EXCMBX02acibademc_
+Content-Type: text/plain; charset="koi8-r"
+Content-Transfer-Encoding: quoted-printable
+
+---- END EMAIL HEADERS ----
+---- BEGIN EMAIL BODY ----
+Dear user,
+
+Your mailbox is almost full. Please click on the link below to verify your =
+location and enable us increase your Webmail storage space to 2GB.
+
+85%                              100%
+
+
+   Increase Storage   &lt;hxxp[:]//www[.]studiomixx[.]com[.]br/ilwa/&gt;
+
+Your Webmail Account will be suspended within 48 hours, if verification is =
+not done. At 95% you won't be able to send any mail.
+
+Thank you for your cooperation.
+
+IT Helpdesk
+---- END EMAIL BODY ----
+---- BEGIN HTML EMAIL BODY ----
+--_000_90AC3316216D4547AB9A544364749265335843EXCMBX02acibademc_
+Content-Type: text/html; charset="koi8-r"
+Content-Transfer-Encoding: quoted-printable
+
+&lt;html dir=3D"ltr"&gt;
+&lt;head&gt;
+&lt;meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dkoi8-r"&gt;
+&lt;style type=3D"text/css" id=3D"owaParaStyle"&gt;&lt;/style&gt;
+&lt;/head&gt;
+&lt;body fpstyle=3D"1" ocsi=3D"0"&gt;
+&lt;div style=3D"direction: ltr;font-family: Tahoma;color: #000000;font-size: =
+10pt;"&gt;
+&lt;div style=3D"font-size:13px; font-family:Tahoma"&gt;
+&lt;div id=3D"yui_3_13_0_1_1397749169226_13934"&gt;
+&lt;div id=3D"yui_3_13_0_1_1397749169226_13933" style=3D"font-size:10pt; font-=
+family:Tahoma; color:#000000; direction:ltr"&gt;
+&lt;p style=3D"color: rgb(34, 34, 34); font-family: arial; font-size: small;"&gt;=
+&lt;font color=3D"#003366" face=3D"tahoma, sans-serif"&gt;Dear user,&lt;/font&gt;&lt;/p&gt;
+&lt;p style=3D"color: rgb(34, 34, 34); font-family: arial; font-size: small;"&gt;=
+&lt;font color=3D"#003366" face=3D"tahoma, sans-serif"&gt;Your mailbox is almost =
+full. Please click on the link below to verify your location and enable us =
+increase your Webmail storage space to
+ 2GB.&lt;/font&gt;&lt;/p&gt;
+&lt;p style=3D"color: rgb(34, 34, 34); font-family: arial; font-size: small;"&gt;=
+&lt;font color=3D"#003366" face=3D"tahoma, sans-serif"&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;table cellspacing=3D"0" style=3D"color: rgb(34, 34, 34); font-family: aria=
+l; font-size: small;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=3D"font-family: arial, sans-serif; margin: 0px; border-bottom-sty=
+le: solid; border-color: black; border-top-style: solid; border-left-style:=
+ solid;"&gt;
+&lt;font face=3D"tahoma, sans-serif" style=3D"background-color: rgb(204, 0, 0)=
+;"&gt;&lt;b&gt;&lt;font color=3D"#ffffff"&gt;85%&lt;/font&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/b&gt;&amp;nbsp; &amp;nbsp;=
+ &amp;nbsp;&lt;/font&gt;&lt;font face=3D"tahoma, sans-serif" style=3D"background-color: =
+rgb(204, 0, 0);"&gt;&amp;nbsp;&lt;/font&gt;&lt;font face=3D"tahoma, sans-serif" style=3D"ba=
+ckground-color: rgb(204, 0, 0);"&gt;&amp;nbsp;
+ &amp;nbsp;&lt;/font&gt;&lt;font face=3D"tahoma, sans-serif"&gt;&lt;span style=3D"background-c=
+olor: rgb(204, 0, 0);"&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&amp;nbsp;&amp;nbsp;&lt;/font&gt;&lt;/td&gt;
+&lt;td style=3D"font-family: arial, sans-serif; margin: 0px; border-bottom-sty=
+le: solid; border-color: black; border-right-style: solid; border-top-style=
+: solid;"&gt;
+&lt;font face=3D"tahoma, sans-serif"&gt;&amp;nbsp;&lt;/font&gt;&lt;/td&gt;
+&lt;td style=3D"font-family: arial, sans-serif; margin: 0px;"&gt;&lt;font face=3D"ta=
+homa, sans-serif"&gt;&amp;nbsp;&lt;b&gt;100%&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=3D"font-family: arial, sans-serif; margin: 0px;"&gt;&lt;/td&gt;
+&lt;td style=3D"font-family: arial, sans-serif; margin: 0px;"&gt;&lt;font face=3D"ta=
+homa, sans-serif"&gt;&amp;nbsp;&lt;/font&gt;&lt;/td&gt;
+&lt;td style=3D"font-family: arial, sans-serif; margin: 0px;"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p style=3D"color: rgb(34, 34, 34); font-family: arial; font-size: small;"&gt;=
+&lt;b s
+---- TRUNCATED HTML BODY ----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3c62bf89-24bd-4a16-83be-3c600aac24f1">
+        <cybox:Object id="CISCP:Object-6b055381-0f3e-4d6d-922a-134168cbf78b">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">elena.sakharova@acibadem.com.tr</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals"> IT Helpdesk: Mailbox Warning!</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">90AC3316216D4547AB9A544364749265335843@EXCMBX02.acibadem.com.tr</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">elena.sakharova@acibadem.com.tr</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Links>
+              <EmailMessageObj:Link object_reference="CISCP:Object-9c2991db-5e1f-4c02-9f85-6449ab261ceb"/>
+            </EmailMessageObj:Links>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-04-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-817b30c6-39e1-45de-9414-2a273da49933" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>If the victim clicks on the link provided in the email, they are directed to the url www.studiomixx.com.br/ilwa/ for credential harvesting.
+
+GET /ilwa/ HTTP/1.1
+Host: www.studiomixx.com.br
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36
+Referer: http://www.rexswain.com/httpview.html
+Connection: close
+&#8226; Finding host IP address...
+&#8226; Host IP address = 200.219.235.110
+&#8226; Finding TCP protocol...
+&#8226; Binding to local socket...
+&#8226; Connecting to host...
+&#8226; Sending request...
+&#8226; Waiting for response...
+Receiving Header:
+
+HTTP/1.1&#183;200&#183;OK(CR)(LF)
+Date:&#183;Wed,&#183;23&#183;Apr&#183;2014&#183;12:00:22&#183;GMT(CR)(LF)
+Server:&#183;Apache(CR)(LF)
+Last-Modified:&#183;Mon,&#183;14&#183;Apr&#183;2014&#183;21:17:21&#183;GMT(CR)(LF)
+Accept-Ranges:&#183;bytes(CR)(LF)
+Content-Length:&#183;6750(CR)(LF)
+Connection:&#183;close(CR)(LF)
+Content-Type:&#183;text/html(CR)(LF)
+(CR)(LF)
+End of Header (Length = 206)
+
+&#8226; Elapsed time so far: 1 seconds
+&#8226; Waiting for additional response until connection closes...
+Total bytes received = 6956
+
+Elapsed time so far: 2 seconds
+Content (Length = 6750):
+
+(EF,BB,BF)&lt;!DOCTYPE&#183;HTML&#183;PUBLIC&#183;"-//W3C//DTD&#183;HTML&#183;4.0&#183;Transitional//EN"&gt;(CR)(LF)
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;Microsoft&#183;Exchange&#183;-&#183;Verify&#183;Your&#183;Webmail&#183;Account&lt;/TITLE&gt;(CR)(LF)
+&lt;META&#183;content="text/html;&#183;CHARSET=utf-8"&#183;http-equiv=Content-Type&gt;(CR)(LF)
+&lt;META&#183;name=Robots&#183;content="NOINDEX,&#183;NOFOLLOW"&gt;&lt;LINK&#183;rel=stylesheet&#183;type=text/css&#183;(CR)(LF)
+href="images_logon/CookieAuth.css"&gt;(CR)(LF)
+&lt;META&#183;name=GENERATOR&#183;content="MSHTML&#183;8.00.7600.16385"&gt;&lt;/HEAD&gt;(CR)(LF)
+&lt;BODY&#183;class=ltr&#183;onLoad="return&#183;window_onload();"&gt;&lt;NOSCRIPT&gt;(CR)(LF)
+&lt;DIV&#183;id=dvErr&gt;(CR)(LF)
+&lt;TABLE&#183;cellSpacing=0&#183;cellPadding=0&gt;(CR)(LF)
+&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&gt;&lt;IMG&#183;alt=""&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;src="images_logon/CookieAuth.gif"&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;style="WIDTH:&#183;100%"&gt;To&#183;use&#183;Microsoft&#183;Outlook&#183;Web&#183;Access,&#183;script&#183;must&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;be&#183;enabled&#183;on&#183;your&#183;browser.&#183;For&#183;information&#183;about&#183;how&#183;to&#183;enable&#183;script,&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;consult&#183;the&#183;Help&#183;for&#183;your&#183;browser.&#183;If&#183;your&#183;browser&#183;does&#183;not&#183;support&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;script,&#183;you&#183;can&#183;download&#183;&lt;A&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;href="http://www.microsoft.com/windows/ie/downloads/default.mspx"&gt;Microsoft&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;Internet&#183;Explorer&lt;/A&gt;.&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/DIV&gt;&lt;/NOSCRIPT&gt;(CR)(LF)
+&lt;FORM&#183;method="get"&#183;action="GetLogs.php"&#183;autocomplete="off"&gt;(CR)(LF)
+&lt;TABLE&#183;id=tblMain&#183;cellSpacing=0&#183;cellPadding=0&#183;align=center&gt;(CR)(LF)
+&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;colSpan=3&gt;&lt;IMG&#183;alt=""&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;src="images_logon/CookieAuth(1).gif"&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;id=mdLft&gt;&amp;nbsp;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;id=mdMid&gt;&lt;!--&#183;Mid&#183;table&#183;--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;id=tblMid&#183;class=mid&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;id=expltxt&#183;class=expl&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=align&gt;&lt;!--&#183;Table&#183;1--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;cellSpacing=0&#183;cellPadding=0&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=wrng&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Table&#183;1--&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;HR&gt;(CR)(LF)
+&lt;!--&#183;HR--&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=align&gt;&lt;!--&#183;Table&#183;2--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;cellSpacing=0&#183;cellPadding=0&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COLGROUP&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COL&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COL&#183;class=w100&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&#183;id=trSec&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=nowrap&gt;Security:&#183;(Please&#183;complete&#183;steps&#183;to&#183;update&#183;storage)&amp;nbsp;&#183;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;style="DISPLAY:&#183;none"&#183;id=expl1&gt;&amp;nbsp;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Table&#183;2--&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;&lt;!--Table&#183;3--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;!--&#183;End&#183;Table&#183;3--&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;HR&gt;(CR)(LF)
+&lt;!--&#183;HR--&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;&lt;!--&#183;Table&#183;4--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;cellSpacing=0&#183;cellPadding=0&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COLGROUP&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COL&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COL&#183;class=w100&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;vAlign=top&gt;&lt;INPUT&#183;id=chkBsc&#183;class=rdo&#183;onclick=clkBsc()&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;type=checkbox&#183;name=chkBsc&gt;&#183;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;&lt;LABEL&#183;for=chkBsc&gt;First&#183;Time&#183;Verification?&#183;&lt;/LABEL&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&#183;style="DISPLAY:&#183;none"&#183;id=trBscExp&#183;class=disBsc&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;&amp;nbsp;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Table&#183;4--&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;HR&gt;(CR)(LF)
+&lt;!--&#183;HR--&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;&lt;!--&#183;Table&#183;5--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;!--&#183;End&#183;Table&#183;5--&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&#183;style="DISPLAY:&#183;none"&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;HR&gt;(CR)(LF)
+&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;align="center"&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;width="294"&#183;cellPadding=0&#183;cellSpacing=0&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COLGROUP&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COL&#183;class=nowrap&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COL&#183;class=w100&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COL&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=nowrap&gt;&lt;LABEL&#183;for=label&gt;Email&#183;Address:&lt;/LABEL&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=txtpad&gt;&lt;INPUT&#183;id=idsoft&#183;class=txt&#183;name=idsoft&gt;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=nowrap&gt;&lt;LABEL&#183;for=label&gt;Domain/Username:&lt;/LABEL&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=txtpad&gt;&lt;INPUT&#183;id=user&#183;class=txt&#183;name=user&gt;&#183;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=nowrap&gt;&lt;LABEL&#183;for=label&gt;Password:&lt;/LABEL&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=txtpad&#183;colSpan=2&gt;&lt;INPUT&#183;name=pwd&#183;type="password"&#183;class=txt&#183;id=pwd&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=nowrap&gt;&lt;LABEL&#183;for=label&gt;Confirm&#183;Password&#183;:&lt;/LABEL&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=txtpad&#183;colSpan=2&gt;&lt;INPUT&#183;name=cpwd&#183;type="password"&#183;class=txt&#183;id=cpwd&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=nowrap&gt;&amp;nbsp;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=txtpad&#183;colSpan=2&gt;&lt;INPUT&#183;id=SubmitCreds&#183;class=btn&#183;onMouseOver="this.className='btnOnMseOvr'"&#183;onMouseOut="this.className='btn'"&#183;onMouseDown="this.className='btnOnMseDwn'"&#183;onclick=clkLgn()&#183;value="Verify"&#183;type=submit&#183;name=SubmitCreds&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TBODY&gt;&lt;/TABLE&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;!--&#183;End&#183;Table&#183;6--&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;HR&gt;(CR)(LF)
+&lt;!--&#183;HR--&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Mid&#183;Table--&gt;&lt;!--&#183;Mid2&#183;Table--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;style="DISPLAY:&#183;none"&#183;id=tblMid2&#183;class=mid&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;HR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;&lt;BR&gt;Cookies&#183;are&#183;currently&#183;disabled&#183;by&#183;your&#183;browser&#183;settings.&#183;To&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;access&#183;this&#183;Web&#183;site,&#183;cookies&#183;must&#183;be&#183;enabled.&lt;BR&gt;&lt;BR&gt;Follow&#183;these&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;directions&#183;to&#183;enable&#183;cookies&#183;(Microsoft&#183;Internet&#183;Explorer&#183;6&#183;or&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;later):&#183;In&#183;Internet&#183;Explorer,&#183;on&#183;the&#183;Tools&#183;menu,&#183;click&#183;Internet&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;Options.&#183;Click&#183;the&#183;Privacy&#183;tab,&#183;then&#183;click&#183;Sites.&#183;In&#183;Address&#183;of&#183;Web&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;site,&#183;type&#183;the&#183;complete&#183;address&#183;of&#183;this&#183;Web&#183;site.&#183;For&#183;example,&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;http://www.microsoft.com.&#183;Then&#183;click&#183;Allow.&lt;BR&gt;&lt;BR&gt;&lt;BR&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;HR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=txtpad&gt;&lt;INPUT&#183;style="FLOAT:&#183;right"&#183;class=btn&#183;onMouseOver="this.className='btnOnMseOvr'"&#183;onMouseOut="this.className='btn'"&#183;onMouseDown="this.className='btnOnMseDwn'"&#183;onclick=clkRtry()&#183;value=Retry&#183;type=button&gt;&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Mid2&#183;Table--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;class="mid&#183;tblConn"&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;style="VERTICAL-ALIGN:&#183;top"&#183;class=tdConnImg&#183;rowSpan=3&gt;&lt;IMG&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;alt=""&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;src="images_logon/CookieAuth(2).gif"&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;style="PADDING-TOP:&#183;6px"&#183;class=tdConn&gt;Connected&#183;to&#183;Microsoft&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;Exchange&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;style="PADDING-TOP:&#183;0px"&#183;class=tdConn&gt;Secured&#183;by&#183;Microsoft&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;Internet&#183;Security&#183;and&#183;Acceleration&#183;Server&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=tdCopy&gt;(C2,A9)&#183;2006&#183;Microsoft&#183;Corporation.&#183;All&#183;rights&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;reserved.&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;id=mdRt&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;colSpan=3&gt;&lt;IMG&#183;alt=""&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;src="images_logon/CookieAuth(3).gif"&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Main&#183;Table--&gt;&lt;/FORM&gt;&lt;/BODY&gt;&lt;/HTML&gt;(CR)(LF)
+Done
+
+Total elapsed time: 2 seconds</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-348f5359-3128-40c1-bccd-704874490fde">
+        <cybox:Object id="CISCP:Object-9c2991db-5e1f-4c02-9f85-6449ab261ceb">
+          <cybox:Properties type="URL" xsi:type="LinkObj:LinkObjectType">
+            <URIObj:Value condition="Equals">http://www.studiomixx.com.br/ilwa/</URIObj:Value>
+            <LinkObj:URL_Label condition="Equals"> Increase Storage</LinkObj:URL_Label>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-04-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-30de78ab-a5e3-4bdd-b8ba-77729a295bde" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+      <indicator:Description>Any user data supplied is harvested using the server-side PHP script "GetLogs.php"
+
+---- BEGIN CODE SNIPPET ----
+&lt;FORM&#183;method="get"&#183;action="GetLogs.php"&#183;autocomplete="off"&gt;(CR)(LF)
+---- END CODE SNIPPET ----
+
+The user is then redirected to the url http://www.studiomixx.com.br/ilwa/GetLogonConfirmed.html
+
+GET /ilwa/GetLogonConfirmed.html HTTP/1.1
+Host: www.studiomixx.com.br
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36
+Referer: http://www.rexswain.com/httpview.html
+Connection: close
+&#8226; Finding host IP address...
+&#8226; Host IP address = 200.219.235.110
+&#8226; Finding TCP protocol...
+&#8226; Binding to local socket...
+&#8226; Connecting to host...
+&#8226; Sending request...
+&#8226; Waiting for response...
+Receiving Header:
+
+HTTP/1.1&#183;200&#183;OK(CR)(LF)
+Date:&#183;Wed,&#183;23&#183;Apr&#183;2014&#183;12:07:38&#183;GMT(CR)(LF)
+Server:&#183;Apache(CR)(LF)
+Last-Modified:&#183;Mon,&#183;14&#183;Apr&#183;2014&#183;21:17:21&#183;GMT(CR)(LF)
+Accept-Ranges:&#183;bytes(CR)(LF)
+Content-Length:&#183;5059(CR)(LF)
+Connection:&#183;close(CR)(LF)
+Content-Type:&#183;text/html(CR)(LF)
+(CR)(LF)
+End of Header (Length = 206)
+
+&#8226; Elapsed time so far: 2 seconds
+&#8226; Waiting for additional response until connection closes...
+Total bytes received = 5265
+
+Elapsed time so far: 2 seconds
+Content (Length = 5059):
+
+(EF,BB,BF)&lt;!DOCTYPE&#183;HTML&#183;PUBLIC&#183;"-//W3C//DTD&#183;HTML&#183;4.0&#183;Transitional//EN"&gt;(CR)(LF)
+&lt;!--&#183;saved&#183;from&#183;url=(0072)https://webmail.mountsinai.ca/CookieAuth.dll&#183;--&gt;(CR)(LF)
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;Microsoft&#183;Exchange&#183;-&#183;Storage&#183;Increase&#183;Confirmed&lt;/TITLE&gt;(CR)(LF)
+&lt;META&#183;content="text/html;&#183;CHARSET=utf-8"&#183;http-equiv=Content-Type&gt;(CR)(LF)
+&lt;META&#183;name=Robots&#183;content="NOINDEX,&#183;NOFOLLOW"&gt;&lt;LINK&#183;rel=stylesheet&#183;type=text/css&#183;(CR)(LF)
+href="images_confirm/CookieAuth.css"&gt;(CR)(LF)
+&lt;SCRIPT&#183;type=text/javascript&#183;(CR)(LF)
+src="images_confirm/CookieAuth"&gt;&lt;/SCRIPT&gt;(CR)(LF)
+(CR)(LF)
+&lt;SCRIPT&#183;type=text/javascript&gt;(CR)(LF)
+(HT)&lt;!--(CR)(LF)
+(HT)(CR)(LF)
+(HT)function&#183;IsMimeCtlInst(progid)(CR)(LF)
+(HT){(CR)(LF)
+(HT)&#183;(HT)var&#183;oMimeVersion;(CR)(LF)
+(CR)(LF)
+(HT,HT)oMimeVersion&#183;=&#183;null;(CR)(LF)
+(HT,HT)try&#183;{&#183;(CR)(LF)
+(HT,HT,HT)oMimeVersion&#183;=&#183;new&#183;ActiveXObject(progid);&#183;(CR)(LF)
+(HT,HT)}&#183;catch&#183;(e)&#183;{&#183;}(CR)(LF)
+(HT,HT)(CR)(LF)
+(HT,HT)if&#183;(oMimeVersion&#183;!=&#183;null)(CR)(LF)
+(HT,HT,HT)return&#183;true;(CR)(LF)
+(HT,HT)else(CR)(LF)
+(HT,HT,HT)return&#183;false;(CR)(LF)
+(HT)}(CR)(LF)
+(CR)(LF)
+(HT)function&#183;RndMimeCtlHlpr1(objid,&#183;classid,&#183;ns,&#183;id)(CR)(LF)
+(HT){(CR)(LF)
+(HT,HT)document.write("&lt;OBJECT&#183;id='"&#183;+&#183;objid&#183;+&#183;"'&#183;classid='CLSID:"&#183;+&#183;classid&#183;+&#183;"'&gt;&lt;/OBJECT&gt;");(CR)(LF)
+(HT,HT)document.write("&lt;?IMPORT&#183;namespace='"&#183;+&#183;ns&#183;+&#183;"'&#183;implementation=#"&#183;+&#183;objid&#183;+&#183;"&gt;");(CR)(LF)
+(HT)}(CR)(LF)
+(CR)(LF)
+(HT)function&#183;RndMimeCtlHlpr2(objid,&#183;classid,&#183;ns,&#183;id)(CR)(LF)
+(HT){(CR)(LF)
+(HT,HT)document.write("&lt;"&#183;+&#183;ns&#183;+&#183;":Logoff&#183;id='"&#183;+&#183;id&#183;+&#183;"'&#183;style='display:none'/&gt;");(CR)(LF)
+(HT)}(CR)(LF)
+(CR)(LF)
+&#183;&#183;&#183;&#183;function&#183;window_onload()(CR)(LF)
+&#183;&#183;&#183;&#183;{(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;try(CR)(LF)
+(HT)&#183;&#183;&#183;&#183;{(CR)(LF)
+(HT,HT,HT)if&#183;((typeof(mimeLogoffE2k3)&#183;!=&#183;"undefined"&#183;&amp;&amp;&#183;null&#183;!=&#183;mimeLogoffE2k3)&#183;&amp;&amp;&#183;IsMimeCtlInst("MimeBhvr.MimeCtlVer"))(CR)(LF)
+(HT,HT,HT,HT)mimeLogoffE2k3.Logoff();(CR)(LF)
+(HT,HT,HT)if&#183;((typeof(mimeLogoffE2k7SP1)&#183;!=&#183;"undefined"&#183;&amp;&amp;&#183;null&#183;!=&#183;mimeLogoffE2k7SP1)&#183;&amp;&amp;&#183;IsMimeCtlInst("OwaSMime.MimeCtlVer"))(CR)(LF)
+(HT,HT,HT,HT)mimeLogoffE2k7SP1.Logoff();(CR)(LF)
+(HT)&#183;&#183;&#183;&#183;}(CR)(LF)
+(HT)&#183;&#183;&#183;&#183;catch&#183;(e)(CR)(LF)
+(HT)&#183;&#183;&#183;&#183;{(CR)(LF)
+(HT)&#183;&#183;&#183;&#183;}&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;}(CR)(LF)
+&#183;&#183;&#183;&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;--&gt;(CR)(LF)
+&lt;/SCRIPT&gt;(CR)(LF)
+(CR)(LF)
+&lt;STYLE&gt;(CR)(LF)
+@media&#183;All&#183;&#183;&#183;&#183;(CR)(LF)
+{(CR)(LF)
+MSIE\:clientCaps&#183;{(CR)(LF)
+(HT)BEHAVIOR:&#183;url(#default#clientcaps)(CR)(LF)
+}(CR)(LF)
+(CR)(LF)
+}(CR)(LF)
+&lt;/STYLE&gt;(CR)(LF)
+&lt;MSIE:CLIENTCAPS&#183;id=oClientCaps&#183;/&gt;(CR)(LF)
+&lt;SCRIPT&#183;type=text/javascript&gt;(CR)(LF)
+(HT)&lt;!--(CR)(LF)
+(HT)if&#183;(IsMimeCtlInst("MimeBhvr.MimeCtlVer"))(CR)(LF)
+(HT,HT)RndMimeCtlHlpr1("MimeNSe2k3",&#183;"D801B381-B81D-47a7-8EC4-EFC111666AC0",&#183;"MIMEe2k3",&#183;"mimeLogoffE2k3");(CR)(LF)
+(HT)if&#183;(IsMimeCtlInst("OwaSMime.MimeCtlVer"))(CR)(LF)
+(HT,HT)RndMimeCtlHlpr1("MimeNSe2k7sp1",&#183;"833aa5fb-7aca-4708-9d7b-c982bf57469a",&#183;"MIMEe2k7sp1",&#183;"mimeLogoffE2k7SP1");(CR)(LF)
+&#183;&#183;&#183;&#183;//&#183;--&gt;(CR)(LF)
+&lt;/SCRIPT&gt;(CR)(LF)
+(CR)(LF)
+&lt;META&#183;name=GENERATOR&#183;content="MSHTML&#183;8.00.7600.16385"&gt;&lt;/HEAD&gt;(CR)(LF)
+&lt;BODY&#183;class=ltr&#183;onLoad="return&#183;window_onload();"&gt;&lt;!--&#183;Main&#183;Table--&gt;(CR)(LF)
+&lt;TABLE&#183;id=tblMain&#183;cellSpacing=0&#183;cellPadding=0&#183;align=center&gt;(CR)(LF)
+&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;colSpan=3&gt;&lt;IMG&#183;alt=""&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;src="images_confirm/CookieAuth.gif"&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;id=mdLft&gt;&amp;nbsp;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;id=mdMid&gt;&lt;!--&#183;Mid&#183;table&#183;--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;id=tblMid&#183;class=mid&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;id=expltxt&#183;class=expl&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;HR&gt;(CR)(LF)
+&lt;!--&#183;HR--&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=align&gt;&lt;!--&#183;Table&#183;1--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;cellSpacing=0&#183;cellPadding=0&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;colSpan=2&gt;&lt;p&gt;Thank&#183;you&#183;for&#183;performing&#183;this&#183;upgrade.&#183;&lt;/p&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;p&gt;Your&#183;webmail&#183;account&#183;storage&#183;will&#183;be&#183;increased&#183;shortly.&#183;&lt;/p&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;p&gt;We&#183;recommend&#183;that&#183;you&#183;close&#183;all&#183;browser&#183;windows&#183;at&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;this&#183;time.&lt;/p&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Table&#183;1--&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;&lt;!--&#183;Table&#183;2--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;cellSpacing=0&#183;cellPadding=0&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COLGROUP&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COL&#183;class=nowrap&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;COL&#183;class=w100&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=nowrap&gt;&amp;nbsp;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=txtpad&#183;colSpan=2&gt;&lt;INPUT&#183;id=btnCls&#183;class=btn&#183;onMouseOver="this.className='btnOnMseOvr'"&#183;title="Click&#183;here&#183;to&#183;close&#183;this&#183;window."&#183;onMouseOut="this.className='btn'"&#183;onMouseDown="this.className='btnOnMseDwn'"&#183;onclick=window.close()&#183;value="Close&#183;Window"&#183;type=button&#183;name=btnCls&gt;&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Table&#183;2--&gt;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;HR&gt;(CR)(LF)
+&lt;!--&#183;HR--&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Mid&#183;Table--&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&lt;TABLE&#183;class="mid&#183;tblConn"&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TBODY&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;style="VERTICAL-ALIGN:&#183;top"&#183;class=tdConnImg&#183;rowSpan=3&gt;&lt;IMG&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;alt=""&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;src="images_confirm/CookieAuth(1).gif"&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;style="PADDING-TOP:&#183;6px"&#183;class=tdConn&gt;Connected&#183;to&#183;Microsoft&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;Exchange&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;style="PADDING-TOP:&#183;0px"&#183;class=tdConn&gt;Secured&#183;by&#183;Microsoft&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;Internet&#183;Security&#183;and&#183;Acceleration&#183;Server&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&lt;TD&#183;class=tdCopy&gt;(C2,A9)&#183;2006&#183;Microsoft&#183;Corporation.&#183;All&#183;rights&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;reserved.&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;id=mdRt&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;(CR)(LF)
+&#183;&#183;&lt;TR&gt;(CR)(LF)
+&#183;&#183;&#183;&#183;&lt;TD&#183;colSpan=3&gt;&lt;IMG&#183;alt=""&#183;(CR)(LF)
+&#183;&#183;&#183;&#183;&#183;&#183;src="images_confirm/CookieAuth(2).gif"&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;!--&#183;End&#183;Main&#183;Table--&gt;(CR)(LF)
+&lt;SCRIPT&#183;type=text/javascript&gt;(CR)(LF)
+(HT)&lt;!--(CR)(LF)
+(HT)if&#183;(IsMimeCtlInst("MimeBhvr.MimeCtlVer"))(CR)(LF)
+(HT,HT)RndMimeCtlHlpr2("MimeNSe2k3",&#183;"D801B381-B81D-47a7-8EC4-EFC111666AC0",&#183;"MIMEe2k3",&#183;"mimeLogoffE2k3");(CR)(LF)
+(HT)if&#183;(IsMimeCtlInst("OwaSMime.MimeCtlVer"))(CR)(LF)
+(HT,HT)RndMimeCtlHlpr2("MimeNSe2k7sp1",&#183;"833aa5fb-7aca-4708-9d7b-c982bf57469a",&#183;"MIMEe2k7sp1",&#183;"mimeLogoffE2k7SP1");(CR)(LF)
+(HT)//&#183;--&gt;(CR)(LF)
+&lt;/SCRIPT&gt;(CR)(LF)
+&lt;/BODY&gt;&lt;/HTML&gt;(CR)(LF)
+Done
+
+Total elapsed time: 2 seconds</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8ec039f4-a1fd-4471-8fd8-3021a4570afd">
+        <cybox:Object id="CISCP:Object-15f2c5c5-0293-4222-9519-0c4cc143a330">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.studiomixx.com.br/ilwa/GetLogonConfirmed.html</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-04-25T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

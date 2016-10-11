@@ -1,0 +1,322 @@
+<stix:STIX_Package xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2" xmlns:indicator="http://stix.mitre.org/Indicator-2" xmlns:cyboxCommon="http://cybox.mitre.org/common-2" xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2" xmlns:stixCommon="http://stix.mitre.org/common-1" xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2" xmlns:marking="http://data-marking.mitre.org/Marking-1" xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1" xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1" xmlns:EmailMessageObj="http://cybox.mitre.org/objects#EmailMessageObject-2" xmlns:cybox="http://cybox.mitre.org/cybox-2" xmlns:stix="http://stix.mitre.org/stix-1" xmlns:AddrObj="http://cybox.mitre.org/objects#AddressObject-2" xmlns:CISCP="http://www.us-cert.gov/ciscp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="CISCP:IB-14-10144" version="1.1.1" xsi:schemaLocation="http://cybox.mitre.org/objects#DomainNameObject-1 http://cybox.mitre.org/XMLSchema/objects/Domain_Name/1.0/Domain_Name_Object.xsd http://cybox.mitre.org/objects#PortObject-2 http://cybox.mitre.org/XMLSchema/objects/Port/2.1/Port_Object.xsd http://cybox.mitre.org/common-2 http://cybox.mitre.org/XMLSchema/common/2.1/cybox_common.xsd http://cybox.mitre.org/objects#WinRegistryKeyObject-2 http://cybox.mitre.org/XMLSchema/objects/Win_Registry_Key/2.1/Win_Registry_Key_Object.xsd http://stix.mitre.org/default_vocabularies-1 http://stix.mitre.org/XMLSchema/default_vocabularies/1.1.1/stix_default_vocabularies.xsd http://cybox.mitre.org/objects#FileObject-2 http://cybox.mitre.org/XMLSchema/objects/File/2.1/File_Object.xsd http://data-marking.mitre.org/Marking-1 http://stix.mitre.org/XMLSchema/data_marking/1.1.1/data_marking.xsd http://cybox.mitre.org/objects#SocketAddressObject-1 http://cybox.mitre.org/XMLSchema/objects/Socket_Address/1.1/Socket_Address_Object.xsd http://stix.mitre.org/common-1 http://stix.mitre.org/XMLSchema/common/1.1.1/stix_common.xsd http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1 http://stix.mitre.org/XMLSchema/extensions/marking/tlp/1.1.1/tlp_marking.xsd http://stix.mitre.org/stix-1 http://stix.mitre.org/XMLSchema/core/1.1.1/stix_core.xsd http://cybox.mitre.org/objects#LinkObject-1 http://cybox.mitre.org/XMLSchema/objects/Link/1.1/Link_Object.xsd http://cybox.mitre.org/objects#AddressObject-2 http://cybox.mitre.org/XMLSchema/objects/Address/2.1/Address_Object.xsd http://cybox.mitre.org/default_vocabularies-2 http://cybox.mitre.org/XMLSchema/default_vocabularies/2.1/cybox_default_vocabularies.xsd http://cybox.mitre.org/objects#URIObject-2 http://cybox.mitre.org/XMLSchema/objects/URI/2.1/URI_Object.xsd http://stix.mitre.org/Indicator-2 http://stix.mitre.org/XMLSchema/indicator/2.1.1/indicator.xsd http://cybox.mitre.org/objects#EmailMessageObject-2 http://cybox.mitre.org/XMLSchema/objects/Email_Message/2.1/Email_Message_Object.xsd http://data-marking.mitre.org/extensions/MarkingStructure#Simple-1 http://stix.mitre.org/XMLSchema/extensions/marking/simple/1.1.1/simple_marking.xsd http://cybox.mitre.org/objects#MutexObject-2 http://cybox.mitre.org/XMLSchema/objects/Mutex/2.1/Mutex_Object.xsd http://cybox.mitre.org/objects#NetworkConnectionObject-2 http://cybox.mitre.org/XMLSchema/objects/Network_Connection/2.1/Network_Connection_Object.xsd http://us-cert.gov/ciscp http://www.us-cert.gov/sites/default/files/STIX_Namespace/ciscp_vocab_v1.1.1.xsd http://cybox.mitre.org/objects#HTTPSessionObject-2 http://cybox.mitre.org/XMLSchema/objects/HTTP_Session/2.1/HTTP_Session_Object.xsd http://cybox.mitre.org/cybox-2 http://cybox.mitre.org/XMLSchema/core/2.1/cybox_core.xsd">
+  <stix:STIX_Header>
+    <stix:Title>Phishing Email with Address of Officials Theme Includes a Malicious Attachment</stix:Title>
+    <stix:Package_Intent xsi:type="stixVocabs:PackageIntentVocab-1.0">Indicators - Phishing</stix:Package_Intent>
+    <stix:Description>On 10 March 2014, a phishing email was sent to users in the United States, United Kingdom, and Australia from muhamodambule@yahoo.com. The email used the subject "address of officials" and included the malicious attachment address.xls (MD5: 96e9e72de920f0466a40051eb090601a). If successfully installed, the malware communicates with the compromised domain www.knightmemory.com (174.36.159.173).</stix:Description>
+    <stix:Handling>
+      <marking:Marking>
+        <marking:Controlled_Structure>//node()</marking:Controlled_Structure>
+        <marking:Marking_Structure color="GREEN" xsi:type="tlpMarking:TLPMarkingStructureType"/>
+      </marking:Marking>
+    </stix:Handling>
+    <stix:Information_Source>
+      <stixCommon:Time>
+        <cyboxCommon:Produced_Time>2014-03-12T15:57:52Z</cyboxCommon:Produced_Time>
+      </stixCommon:Time>
+    </stix:Information_Source>
+  </stix:STIX_Header>
+  <stix:Indicators>
+    <stix:Indicator id="CISCP:indicator-778c8d27-b36f-4bbd-b584-49e6a826f6d7" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Composite_Indicator_Expression operator="OR">
+        <indicator:Indicator idref="CISCP:indicator-fbb373b1-95fa-4685-937c-494190001f3e"/>
+        <indicator:Indicator idref="CISCP:indicator-a0cbb7bf-9e43-443b-a60e-32ae9f2ae787"/>
+        <indicator:Indicator idref="CISCP:indicator-8a1c837f-9f8d-4bd0-834e-46ab4ccd5fee"/>
+        <indicator:Indicator idref="CISCP:indicator-1b339335-2782-4f06-b09c-2739e7171353"/>
+        <indicator:Indicator idref="CISCP:indicator-6588a237-8740-426f-b781-0343f7627b8c"/>
+        <indicator:Indicator idref="CISCP:indicator-2feabe0e-e083-4795-8ce1-9e24656e0e6a"/>
+        <indicator:Indicator idref="CISCP:indicator-39d4a0a7-bb18-4387-a6ae-9023be575999"/>
+      </indicator:Composite_Indicator_Expression>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-fbb373b1-95fa-4685-937c-494190001f3e" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>---- BEGIN EMAIL HEADER ----
+Return-Path: &lt;muhamodambule@yahoo.com&gt;
+Subject: address of officials
+X-SENDER-IP: 98.138.90.152
+X-SENDER-REPUTATION: 4.8
+Received: from nm4-vm2.bullet.mail.ne1.yahoo.com ([98.138.90.152])
+   ; 10 Mar 2014 09:37:53 +0000
+Received: from [98.138.100.112] by nm4.bullet.mail.ne1.yahoo.com with NNFMP;
+    10 Mar 2014 09:37:51 -0000
+Received: from [98.138.88.235] by tm103.bullet.mail.ne1.yahoo.com with NNFMP;
+    10 Mar 2014 09:37:51 -0000
+Received: from [127.0.0.1] by omp1035.mail.ne1.yahoo.com with NNFMP;
+    10 Mar 2014 09:37:51 -0000
+X-Yahoo-Newman-Property: ymail-3
+X-Yahoo-Newman-Id: 497026.16046.bm@omp1035.mail.ne1.yahoo.com
+Received: (qmail 79397 invoked by uid 60001); 10 Mar 2014 09:37:51 -0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s1024;
+    t=1394444271; bh=ccNH361MUAJAFf9Vyunmtb0LvCAv2+jrbTAj3/CUAyg=;
+    h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:Message-ID:Date:From:Reply-To:Subject:To:Cc:MIME-Version:Content-Type;
+    b=Dt6f2e86+hekFlusE6MXK8OsXakbQ2zCwZH0u2rz+jjtMK537uzWKlXOpH4BelYMg0GOeDVJ9gz0GXWDKMNEb2B2TZmyyGKOmB+8rG+nwvePhgAS2N9jI0Xhu3mcw6yqM49Kous9INwtB5NJKs0kjFCjcYq+56BeoCb2Q0qJ6Ag=
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws; s=s1024; d=yahoo.com;
+    h=X-YMail-OSG:Received:X-Rocket-MIMEInfo:X-Mailer:Message-ID:Date:From:Reply-To:Subject:To:Cc:MIME-Version:Content-Type;
+    b=VqUx4v3rs4lRMf0anCSU+54T9Z6tVDTJbIE/QgVxgG0bUh7yu0j41D1FIKFBsPKJXoCCnW+MkXyKF7OrNEuE7RnzjjNvD/PZP/ZSh8FKJspGluOJD+kyFAL8ypfpwIE7/DLeQ8xZS9lUZzUg63y4fgvo/SFUeLHj5f0MebGQvcU=;
+X-YMail-OSG: i0Nqsh0VM1nPV0g.nUjyHQKbR8FuLvc_WYxhNPL6YrOKFt7
+    IuZGHFp85..ez2wWVg38YpOxwipborZSmGVZy4UBMQnhEGwvYALMFpCldzYT
+    KGZqWHFLudWOCNZ4hcAbnmXzOt.dvzb.A01_P2kIeVwoDjiRgKP0e6Tjhqe_
+    IFY74GDUlS4qP.vyusT1mEnkzSun6j7Xk1Nu.QY8x.yVoJzgjnw1lNEhBiT3
+    676N37G0gfC9VR6Olnd9VmFd2.BwjaMOHb9SmN3NAzFQIbR.HdC2Rt_73g3G
+    H05YdNAzqgFYRyZ9DIHSBPmpLpZ11yx9xRXlFlkLdws6UnIT_dmIb1MX5Jdj
+    bF0nVzIhBKhfXRVeV43vSXOE49IUQlqGcxfx582MH_hpSOG0Pl_2JgFDWsMJ
+    NY0LiCFZ6i5Jd7JKcN9wdYR1lg63UKYutUE8ETaqQA7zfCePBnATWODfxa6d
+    wJqws_s5liajLlp2fogE5Vt0j_jBgl20VtohJ6w7n10V4ab5k_qpKICb7BTV
+    0aSXYccUtBT.s4237j0sKHqNSPaWo4U0GCTUPzM24
+Received: from [118.129.166.86] by web121704.mail.ne1.yahoo.com via HTTP;
+    Mon, 10 Mar 2014 02:37:51 PDT
+X-Rocket-MIMEInfo: 002.001,
+    RGVhciBTaXIsCsKgClBsZWFzZSBmaW5kIGJlbG93IFNpdHVhdGlvbiBvbiBhZGRyZXNzIG9mIG9mZmljaWFscywgUGxlYXNlIHNlZSBhdHRhY2htZW50IGZvciBkZXRhaWxzLgrCoApSZWdhcmRzLAoKRHIuIFNoaWxwYWsgQW1idWxlCgEwAQEBAQ--
+X-Mailer: YahooMailWebService/0.8.177.636
+Message-ID: &lt;1394444271.69740.YahooMailNeo@web121704.mail.ne1.yahoo.com&gt;
+Date: Mon, 10 Mar 2014 02:37:51 -0700 (PDT)
+From: Muhamod Ambule &lt;muhamodambule@yahoo.com&gt;
+Reply-To: Muhamod Ambule &lt;muhamodambule@yahoo.com&gt;
+
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+    boundary="1083465291-296038073-1394444271=:69740"
+---- END EMAIL HEADER ----
+
+---- BEGIN EMAIL BODY ----
+Dear Sir,
+ 
+Please find below Situation on address of officials, Please see attachment for details.
+ 
+Regards,
+
+Dr. Shilpak Ambule
+---- END EMAIL BODY ----</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-57586901-96f8-4f2a-996d-d2c3dc24d648">
+        <cybox:Object id="CISCP:Object-db1b0de3-f7af-4f4d-ae1b-950ba3cfc39c">
+          <cybox:Properties xsi:type="EmailMessageObj:EmailMessageObjectType">
+            <EmailMessageObj:Header>
+              <EmailMessageObj:From category="e-mail">
+                <AddrObj:Address_Value condition="Equals">muhamodambule@yahoo.com</AddrObj:Address_Value>
+              </EmailMessageObj:From>
+              <EmailMessageObj:Subject condition="Equals">address of officials</EmailMessageObj:Subject>
+              <EmailMessageObj:Message_ID condition="Equals">1394444271.69740.YahooMailNeo@web121704.mail.ne1.yahoo.com</EmailMessageObj:Message_ID>
+              <EmailMessageObj:Sender category="e-mail">
+                <AddrObj:Address_Value condition="Equals">muhamodambule@yahoo.com</AddrObj:Address_Value>
+              </EmailMessageObj:Sender>
+            </EmailMessageObj:Header>
+            <EmailMessageObj:Attachments>
+              <EmailMessageObj:File object_reference="CISCP:Object-72731e65-3232-465f-98cd-639b67cb7640"/>
+            </EmailMessageObj:Attachments>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-a0cbb7bf-9e43-443b-a60e-32ae9f2ae787" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+      <indicator:Description>This is a malicious attachment. It drops the files ccSvcHst.exe (MD5: 02987d6cfbf163c74caedfbc1804fcc5), readme.lz (MD5: 2a368ea343a21cbab8aeed78f99cc2d8), and (MD5: 597805832d45d522c4882f21db800ecf).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-8535f4cf-0c2a-4004-b089-287269db66ad">
+        <cybox:Object id="CISCP:Object-72731e65-3232-465f-98cd-639b67cb7640">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">address.xls</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">96e9e72de920f0466a40051eb090601a</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-8a1c837f-9f8d-4bd0-834e-46ab4ccd5fee" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file was dropped by the attachment address.xls (MD5: 96e9e72de920f0466a40051eb090601a).
+
+LegalCopyright: ? 2006 Microsoft Corporation.  All rights reserved.
+InternalName: msofscan
+FileVersion: 11.0.4518.1014
+CompanyName: Microsoft Corporation
+LegalTrademarks: Microsoft? is a registered trademark of Microsoft Corporation.
+Comments: Microsoft Office Word Plugin Scan
+ProductName: 2003 Microsoft Office system
+ProductVersion: 11.0.4518.1014
+FileDescription: Microsoft Office Word Plugin Scan
+OriginalFilename: msofscan.exe
+Translation: 0x0409 0x04b0
+
+Verified: Unsigned
+Link date: 10:19 PM 11/5/2013
+Publisher: Microsoft Corporation
+Description: Microsoft Office Word Plugin Scan
+Product: 2003 Microsoft Office system
+Prod version: 11.0.4518.1014
+File version: 11.0.4518.1014
+MachineType: 32-bit</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-878317cf-3b5d-4b13-940e-88e59b53542f">
+        <cybox:Object id="CISCP:Object-2911d187-870a-4c30-8c89-e131e6953186">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">ccSvcHst.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">51285494</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">02987d6cfbf163c74caedfbc1804fcc5</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">af330565df5fc0da64125ad2f101328d4c19af12</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-1b339335-2782-4f06-b09c-2739e7171353" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file was dropped by the attachment address.xls (MD5: 96e9e72de920f0466a40051eb090601a).</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-67ca4ebd-5d18-4527-8310-3b297113a194">
+        <cybox:Object id="CISCP:Object-22def3d2-61e1-4e63-85ce-72bc57d15564">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">readme.lz</FileObj:File_Name>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">2a368ea343a21cbab8aeed78f99cc2d8</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">29a0a0ed968bda52d1a98fcf7f256089ee96db82</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">5674a279f82b157c32238147a65f20625f71060faa7887214aa42ee1fac32c7e</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-6588a237-8740-426f-b781-0343f7627b8c" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malware Artifacts</indicator:Type>
+      <indicator:Description>This file was dropped by the attachment address.xls (MD5: 96e9e72de920f0466a40051eb090601a). 
+
+To establish persistence, a shortcut was installed at:
+C:\Users\user\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Symantec LiveUpdate.lnk</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f4b81c6d-19e9-4e96-bb52-e15b2bddc445">
+        <cybox:Object id="CISCP:Object-d570f794-0212-4329-9e8d-617cb52ac777">
+          <cybox:Properties xsi:type="FileObj:FileObjectType">
+            <FileObj:File_Name condition="Equals">wssfmgr.exe</FileObj:File_Name>
+            <FileObj:Size_In_Bytes condition="Equals">20480</FileObj:Size_In_Bytes>
+            <FileObj:Hashes>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">597805832d45d522c4882f21db800ecf</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">54af4608bb9d928d48f0f82b5ae461de916adb66</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                <cyboxCommon:Simple_Hash_Value condition="Equals">fc06d59bb851931847ed60f30842487f0831daa0e3050ec2ba71a6270c583e89</cyboxCommon:Simple_Hash_Value>
+              </cyboxCommon:Hash>
+              <cyboxCommon:Hash>
+                <cyboxCommon:Type condition="Equals" xsi:type="cyboxVocabs:HashNameVocab-1.0">SSDEEP</cyboxCommon:Type>
+                <cyboxCommon:Fuzzy_Hash_Value condition="Equals">96:c1UTKsFlOpZrqTqMDu2Vp/SipS8jQK3h95Mdk2MdxPtboynDmJEVz5hJ+3qVfkW:NOpBktps8cKx8CTP1oynDEy9hfKWi</cyboxCommon:Fuzzy_Hash_Value>
+              </cyboxCommon:Hash>
+            </FileObj:Hashes>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-2feabe0e-e083-4795-8ce1-9e24656e0e6a" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The file wssfmgr.exe (MD5: 597805832d45d522c4882f21db800ecf) sent a GET request for this site:
+
+GET /stactivex/update7.htm HTTP/1.1
+User-Agent: Microsoft Internet Explorer
+Host: www.knightmemory.com
+Cache-Control: no-cache
+
+This domain resolved to IP 174.36.159.173.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-f51f92a6-2253-4f10-8626-42b08d226fe3">
+        <cybox:Object id="CISCP:Object-3f209f02-1f05-401a-9368-e11d63a9c201">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://www.knightmemory.com/stactivex/update7.htm</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+    <stix:Indicator id="CISCP:indicator-39d4a0a7-bb18-4387-a6ae-9023be575999" version="2.1.1" xsi:type="indicator:IndicatorType">
+      <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">C2</indicator:Type>
+      <indicator:Description>The second stage command and control (C2) site was identified as a compromised US university site.
+
+
+POST /index.htm HTTP/1.1
+User-Agent: Mozilla/4.0 (compatible; MSIE 5.0; Win32)
+Host: 134.88.186.189
+Content-Length: 363
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+The IP 134.88.186.189 was hardcoded in the second stage malware.</indicator:Description>
+      <indicator:Observable id="CISCP:Observable-89bfc552-cfd1-4f6f-82f2-d734b6ef3876">
+        <cybox:Object id="CISCP:Object-9a9e1073-65da-45a9-a6cf-369d28b2c0a7">
+          <cybox:Properties type="URL" xsi:type="URIObj:URIObjectType">
+            <URIObj:Value condition="Equals">http://134.88.186.189/index.htm</URIObj:Value>
+          </cybox:Properties>
+        </cybox:Object>
+      </indicator:Observable>
+      <indicator:Kill_Chain_Phases>
+        <stixCommon:Kill_Chain_Phase kill_chain_id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" kill_chain_name="LM Cyber Kill Chain" name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+      </indicator:Kill_Chain_Phases>
+      <indicator:Sightings sightings_count="1">
+        <indicator:Sighting timestamp="2014-03-10T00:00:00"/>
+      </indicator:Sightings>
+    </stix:Indicator>
+  </stix:Indicators>
+  <stix:TTPs>
+    <stix:Kill_Chains>
+      <stixCommon:Kill_Chain definer="LMCO" id="stix:KillChain-af3e707f-2fb9-49e5-8c37-14026ca0a5ff" name="LM Cyber Kill Chain" number_of_phases="7" reference="http://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">
+        <stixCommon:Kill_Chain_Phase name="Reconnaissance" ordinality="1" phase_id="stix:KillChainPhase-af1016d6-a744-4ed7-ac91-00fe2272185a"/>
+        <stixCommon:Kill_Chain_Phase name="Weaponization" ordinality="2" phase_id="stix:KillChainPhase-445b4827-3cca-42bd-8421-f2e947133c16"/>
+        <stixCommon:Kill_Chain_Phase name="Delivery" ordinality="3" phase_id="stix:KillChainPhase-79a0e041-9d5f-49bb-ada4-8322622b162d"/>
+        <stixCommon:Kill_Chain_Phase name="Exploitation" ordinality="4" phase_id="stix:KillChainPhase-f706e4e7-53d8-44ef-967f-81535c9db7d0"/>
+        <stixCommon:Kill_Chain_Phase name="Installation" ordinality="5" phase_id="stix:KillChainPhase-e1e4e3f7-be3b-4b39-b80a-a593cfd99a4f"/>
+        <stixCommon:Kill_Chain_Phase name="Command and Control" ordinality="6" phase_id="stix:KillChainPhase-d6dc32b9-2538-4951-8733-3cb9ef1daae2"/>
+        <stixCommon:Kill_Chain_Phase name="Actions on Objectives" ordinality="7" phase_id="stix:KillChainPhase-786ca8f9-2d9a-4213-b38e-399af4a2e5d6"/>
+      </stixCommon:Kill_Chain>
+    </stix:Kill_Chains>
+  </stix:TTPs>
+</stix:STIX_Package>
