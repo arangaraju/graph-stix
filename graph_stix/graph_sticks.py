@@ -76,7 +76,7 @@ def test_GreenIOC():
     logging.info('Closing all files in Green_IOCs')
 
 
-def test_10files():
+def test_files():
     # PATH vars
     #here = lambda *x: join(abspath(dirname(__file__)), *x)
     #PROJECT_ROOT = here("..")
@@ -85,7 +85,7 @@ def test_10files():
     test_path = '../TEST/'
     test_data = os.listdir(test_path)
 
-    logging.info('Opening 5 files in TEST')
+    logging.info('Opening files in TEST')
 
     for fle in test_data:
         if not fle.endswith("xml"):
@@ -102,15 +102,30 @@ def test_10files():
         except Exception, err:
                     print "-> Unexpected error parsing %s: %s; skipping." % (myfile, err)
     '''
-    logging.info('Closing 5 files in TEST')
+    logging.info('Closing files in TEST')
 
 
 def parse_observables(observables, StixFileID):
+    objRelated = {}
     for obs in observables:
-        parse_observable(obs, StixFileID)
+        parse_observable(obs, StixFileID, objRelated)
+
+    if objRelated:
+        for key, val in objRelated:
+            objNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=key)
+            relObjNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value= val)
+            if relObjNode and ObservableNode:
+                relPhase = Relationship(relObjNode, "RelatedObjectLink", ObservableNode,
+                    ObjectID =key, RelatedObjectID = val)
+                try:
+                    stixGraph.merge(relPhase)
+                except ConstraintError:
+                    pass
+                except AttributeError:
+                    pass
 
 
-def parse_observable(obs, StixFileID):
+def parse_observable(obs, StixFileID, objRelated):
     obj = obs.to_obj()
     if not obj or not hasattr(obj, "Object") or not hasattr(obj.Object, "Properties"): return
     prop = obj.Object.Properties
@@ -516,26 +531,13 @@ def parse_observable(obs, StixFileID):
         reltd = obj.Object.Related_Objects.Related_Object
         for reltdObj in reltd:
             ObservableNode["RelatedObjectID"] = reltdObj.id
-
+            objRelated[obj.Object.id] = reltdObj.id
             if (type(reltdObj.Properties) == MutexObjectType):
                 print "Handle Mutex Type Object"
                 print " Properties : \n\t"+reltdObj.Properties.Name.apply_condition+"\n\t"
                 print reltdObj.Properties.Name.condition+"\n\t"
                 print reltdObj.Properties.Name.delimiter+"\n\t"
                 print reltdObj.Properties.Name.valueOf_
-
-                #Use relObj.id to connect to other object ?
-                relObjNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=reltdObj.id)
-                if relObjNode and ObservableNode:
-                    relPhase = Relationship(relObjNode, "RelatedObjectLink", ObservableNode, ObservableID=obs.id_,
-                        ObjectID =obj.Object.id, RelatedObjectID = reltdObj.id)
-                    try:
-                        stixGraph.merge(relPhase)
-                    except ConstraintError:
-                        pass
-                    except AttributeError:
-                        pass
-
             else:
                 print "Related Object to be handled"
 
@@ -915,8 +917,8 @@ def test_file(myfile):
 
 def main():
     #test_file('../TEST/1.xml')
-    #test_file('../TEST/1.xml')
-    test_10files()
+    #test_file('../TEST/8.xml')
+    test_files()
     #test_GreenIOC()
 
 
