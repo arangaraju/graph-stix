@@ -16,6 +16,10 @@ try:
     from cybox.bindings.domain_name_object import DomainNameObjectType
     from cybox.bindings.uri_object import URIObjectType
     from cybox.bindings.address_object import AddressObjectType
+    from cybox.bindings.network_connection_object import NetworkConnectionObjectType
+    from cybox.bindings.mutex_object import MutexObjectType
+    from cybox.bindings.link_object import LinkObjectType
+    from cybox.bindings.win_registry_key_object import WindowsRegistryKeyObjectType
     from cybox.common.datetimewithprecision import DateTimeWithPrecision
 
     from stix.utils.parser import UnsupportedVersionError
@@ -54,7 +58,7 @@ stixGraph.create(init_node)
 
 
 def test_GreenIOC():
-    test_path = 'Green_IOCs/'
+    test_path = '../Green_IOCs/'
     test_data = os.listdir(test_path)
 
     logging.info('Opening all files in Green_IOCs')
@@ -72,13 +76,13 @@ def test_GreenIOC():
     logging.info('Closing all files in Green_IOCs')
 
 
-def test_5files():
+def test_10files():
     # PATH vars
     #here = lambda *x: join(abspath(dirname(__file__)), *x)
     #PROJECT_ROOT = here("..")
     #root = lambda *x: join(abspath(PROJECT_ROOT), *x)
     #sys.path.insert(0, root('TEST'))
-    test_path = 'TEST/'
+    test_path = '../TEST/'
     test_data = os.listdir(test_path)
 
     logging.info('Opening 5 files in TEST')
@@ -111,7 +115,7 @@ def parse_observable(obs, StixFileID):
     if not obj or not hasattr(obj, "Object") or not hasattr(obj.Object, "Properties"): return
     prop = obj.Object.Properties
 
-    ObservableNode = Node("ObservableNode", ObservableID=obs.id_, RelatedObservableID=obj.id,
+    ObservableNode = Node("ObservableNode", ObservableID=obs.id_, ObjectID=obj.Object.id,
                           xsiType=prop.xsi_type, STIXFileID=StixFileID)
 
     print "Observable: " + obs.id_  #Observable ID
@@ -211,7 +215,8 @@ def parse_observable(obs, StixFileID):
                 ObservableNode[ht] = hash.Type.valueOf_
                 ObservableNode[hv] = hashVal
 
-    if (type(prop) == AddressObjectType):
+
+    elif (type(prop) == AddressObjectType):
         print "-------------------------------------------------"
         #prop.Custom_Properties
         #prop.VLAN_Name
@@ -255,7 +260,7 @@ def parse_observable(obs, StixFileID):
         ObservableNode["ApplyCondition"] = prop.Address_Value.apply_condition
         ObservableNode["Condition"] = prop.Address_Value.condition
 
-    if (type(prop) == URIObjectType):
+    elif (type(prop) == URIObjectType):
         # prop.Custom_Properties
         # prop.object_reference
         # prop.type_
@@ -297,7 +302,8 @@ def parse_observable(obs, StixFileID):
         ObservableNode["Delimiter"] = prop.Value.delimiter
         ObservableNode["Value"] = prop.Value.valueOf_
 
-    if type(prop) == EmailMessageObjectType:
+
+    elif type(prop) == EmailMessageObjectType:
 
         # prop.Custom_Properties
         # prop.Email_Server
@@ -416,48 +422,136 @@ def parse_observable(obs, StixFileID):
         print "\tMessage id: " + emailHeader.Message_ID.valueOf_
         ObservableNode["MessageID"] = emailHeader.Message_ID.valueOf_
 
-        print "\t" + emailHeader.From.category + " (ObjType " + emailHeader.From.xsi_type + ") from " + emailHeader.From.Address_Value.valueOf_
+        if emailHeader.From:
+            print "\t" + emailHeader.From.category + " (ObjType " + emailHeader.From.xsi_type + ") from " + emailHeader.From.Address_Value.valueOf_
 
-        ObservableNode["From_Category"] = emailHeader.From.category
-        ObservableNode["From_xsiType"] = emailHeader.From.xsi_type
-        ObservableNode["From_AddressValue"] = emailHeader.From.Address_Value.valueOf_
+            ObservableNode["From_Category"] = emailHeader.From.category
+            ObservableNode["From_xsiType"] = emailHeader.From.xsi_type
+            ObservableNode["From_AddressValue"] = emailHeader.From.Address_Value.valueOf_
+        if emailHeader.Sender:
+            print "\t" + emailHeader.Sender.category + " (ObjType: " + emailHeader.Sender.xsi_type + ") sent to " + emailHeader.Sender.Address_Value.valueOf_
 
-        print "\t" + emailHeader.Sender.category + " (ObjType: " + emailHeader.Sender.xsi_type + ") sent to " + emailHeader.Sender.Address_Value.valueOf_
+            ObservableNode["Sender_Category"] = emailHeader.Sender.category
+            ObservableNode["Sender_xsiType"] = emailHeader.Sender.xsi_type
+            ObservableNode["Sender_AddressValue"] = emailHeader.Sender.Address_Value.valueOf_
+        if emailHeader.Subject:
+            print  "\tSubject (Apply condition: condition::delimiter: Value) " + emailHeader.Subject.apply_condition + ":" + \
+                   emailHeader.Subject.condition + ":" + emailHeader.Subject.delimiter + ":" + ":" + emailHeader.Subject.valueOf_
 
-        ObservableNode["Sender_Category"] = emailHeader.Sender.category
-        ObservableNode["Sender_xsiType"] = emailHeader.Sender.xsi_type
-        ObservableNode["Sender_AddressValue"] = emailHeader.Sender.Address_Value.valueOf_
-
-        print  "\tSubject (Apply condition: condition::delimiter: Value) " + emailHeader.Subject.apply_condition + ":" + \
-               emailHeader.Subject.condition + ":" + emailHeader.Subject.delimiter + ":" + ":" + emailHeader.Subject.valueOf_
-
-        ObservableNode["Subject_ApplyCondition"] = emailHeader.Subject.apply_condition
-        ObservableNode["Subject_Condition"] = emailHeader.Subject.condition
-        ObservableNode["Subject_Delimiter"] = emailHeader.Subject.delimiter
-        ObservableNode["Subject_Value"] = emailHeader.Subject.valueOf_
+            ObservableNode["Subject_ApplyCondition"] = emailHeader.Subject.apply_condition
+            ObservableNode["Subject_Condition"] = emailHeader.Subject.condition
+            ObservableNode["Subject_Delimiter"] = emailHeader.Subject.delimiter
+            ObservableNode["Subject_Value"] = emailHeader.Subject.valueOf_
 
         #Email Attachments
-        emailAttachments = prop.Attachments.File
-        print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        print "Email Attachments: "
-        for i, attach in enumerate(emailAttachments):
-            print "\t" + attach.object_reference
-            em = "EmailAttachment#" + str(i)
-            ObservableNode[em] = attach.object_reference
+        if prop.Attachments:
+            emailAttachments = prop.Attachments.File
+            print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+            print "Email Attachments: "
+            for i, attach in enumerate(emailAttachments):
+                print "\t" + attach.object_reference
+                em = "EmailAttachment#" + str(i)
+                ObservableNode[em] = attach.object_reference
+
+    elif( type(prop) == LinkObjectType):
+        if prop.type_ : ObservableNode["Type"] = prop.type_
+        if prop.xsi_type: ObservableNode["xsiType"] = prop.xsi_type
+
+        if prop.URL_Label.apply_condition: ObservableNode["Link_ApplyCondition"] = prop.URL_Label.apply_condition
+        if prop.URL_Label.pattern_type : ObservableNode["Link_PatternType"] = prop.URL_Label.pattern_type
+        if prop.URL_Label.condition : ObservableNode["Link_Condition"] = prop.URL_Label.condition
+        if prop.URL_Label.delimiter: ObservableNode["Link_Delimiter"] = prop.URL_Label.delimiter
+        if prop.URL_Label.valueOf_ : ObservableNode["Link_Value"] = prop.URL_Label.valueOf_
+
+        if prop.Value.apply_condition: ObservableNode["Link_ApplyCondition"] = prop.Value.apply_condition
+        if prop.Value.condition : ObservableNode["Link_Condition"] = prop.Value.condition
+        if prop.Value.delimiter: ObservableNode["Link_Delimiter"] = prop.Value.delimiter
+        if prop.Value.valueOf_ : ObservableNode["Link_Value"] = prop.Value.valueOf_
+
+    elif ( type(prop) == NetworkConnectionObjectType):
+        if prop.Creation_Time:
+            ObservableNode["CreationTime"]= str(prop.Creation_Time)
+        if prop.Destination_TCP_State:
+            ObservableNode["DestinationTCPState"]= str(prop.Destination_TCP_State)
+        if prop.Source_TCP_State:
+            ObservableNode["SourceTCPState"]= str(prop.Source_TCP_State)
+        if prop.Layer3_Protocol:
+            ObservableNode["Layer3Protocol"] = str(prop.Layer3_Protocol)
+        if prop.Layer4_Protocol:
+            ObservableNode["Layer4Protocol"] = str(prop.Layer4_Protocol)
+        if prop.Layer7_Protocol:
+            ObservableNode["Layer7Protocol"] = str(prop.Layer7_Protocol)
+        if prop.Layer7_Connections:
+            ObservableNode["Layer7Connections"] = str(prop.Layer7_Connections)
+        if prop.Source_Socket_Address:
+            ObservableNode["SourceSocketAddress"] = str(prop.Source_Socket_Address)
+        # Should be expanded
+        if prop.Destination_Socket_Address:
+            ObservableNode["DestinationSocketAddress"] = str(prop.Destination_Socket_Address)
+        if prop.xsi_type:
+            ObservableNode["xsiType"] = prop.xsi_type
+
+    elif ( type(prop)== WindowsRegistryKeyObjectType):
+        print "WindowsRegistryKeyObjectType"+prop.xsi_type
+        if prop.Byte_Runs: ObservableNode["ByteRuns"] = prop.Byte_Runs
+        if prop.Creator_Username: ObservableNode["CreatorUsername"]= prop.Creator_Username
+        if prop.Hive: ObservableNode["HiveValue"] = prop.Hive.valueOf_
+        if prop.Key: ObservableNode["KeyValue"] = prop.Key.valueOf_
+
+        for i,val in enumerate(prop.Values.Value):
+            vn = "ValueName"+str(i)
+            vd = "ValueData"+str(i)
+            if val.Data: ObservableNode[vd] = val.Data.valueOf_
+            if val.Name:ObservableNode[vn]=val.Name.valueOf_
+
+        if prop.xsi_type: ObservableNode["xsiType"] = prop.xsi_type
+
+        print "HandleWindowsRegistryKeyObjectType Win Registry Key Object"
+
+    else:
+        ObservableNode["xsiType"] = prop.xsi_type
+        print "Handle "+ prop.xsi_type
+
+    if obj.Object.Related_Objects:
+        reltd = obj.Object.Related_Objects.Related_Object
+        for reltdObj in reltd:
+            ObservableNode["RelatedObjectID"] = reltdObj.id
+
+            if (type(reltdObj.Properties) == MutexObjectType):
+                print "Handle Mutex Type Object"
+                print " Properties : \n\t"+reltdObj.Properties.Name.apply_condition+"\n\t"
+                print reltdObj.Properties.Name.condition+"\n\t"
+                print reltdObj.Properties.Name.delimiter+"\n\t"
+                print reltdObj.Properties.Name.valueOf_
+
+                #Use relObj.id to connect to other object ?
+                relObjNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=reltdObj.id)
+                if relObjNode and ObservableNode:
+                    relPhase = Relationship(relObjNode, "RelatedObjectLink", ObservableNode, ObservableID=obs.id_,
+                        ObjectID =obj.Object.id, RelatedObjectID = reltdObj.id)
+                    try:
+                        stixGraph.merge(relPhase)
+                    except ConstraintError:
+                        pass
+                    except AttributeError:
+                        pass
+
+            else:
+                print "Related Object to be handled"
 
     headNode = stixGraph.find_one("HeaderNode", property_key="STIXFileID", property_value=StixFileID)
-    rel = Relationship(headNode, "ObservableNode", ObservableNode, STIXFileID=StixFileID,
+    rel = Relationship(headNode, "HeaderObservableLink", ObservableNode, STIXFileID=StixFileID,
                        connect="To make sure graph isn't disconnected")
     stixGraph.merge(rel)
-
-    obsNode = stixGraph.find_one("ObservableNode", property_key="ObservableID", property_value=obj.id)
+    '''
+    obsNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=obj.id)
     if obsNode:
-        relObs = Relationship(ObservableNode, "ObservableNode", obsNode, RelatedObservableID=obs.id_)
+        relObs = Relationship(ObservableNode, "ObservableLink", obsNode, RelatedObservableID=obs.id_)
         stixGraph.merge(relObs)
 
-        #relInd = Relationship(indNode,"Indicator-Observable", ObservableNode,  STIXFileID= StixFileID,connect="To make sure graph isn't disconnected")
+        #relInd = Relationship(indNode,"IndicatorObservableLink", ObservableNode,  STIXFileID= StixFileID,connect="To make sure graph isn't disconnected")
         #stixGraph.merge(relInd)
-
+    '''
 
 def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
     print "***********************************************TTPS*********************************************"
@@ -474,7 +568,7 @@ def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
         stixGraph.run("CREATE CONSTRAINT ON (n:TTPNode) ASSERT n.Name IS UNIQUE")
         TTPNode = Node("TTPNode", Description=desc, Name=chain.name, Definer=chain.definer, Reference=chain.reference,
                        NoOfPhases=chain.number_of_phases, ID=chain.id_, STIXFileID=StixFileID)
-        rel = Relationship(init_node, "TTPNode", TTPNode, connect="To make sure graph isn't disconnected")
+        rel = Relationship(init_node, "TTPGraphLink", TTPNode, connect="To make sure graph isn't disconnected")
         try:
             stixGraph.merge(rel)
         except ConstraintError:
@@ -488,7 +582,7 @@ def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
             KillChainPhaseNode = Node("KillChainPhaseNode", Description=desc, Ordinality=phase.ordinality,
                                       PhaseName=phase.name, ID=phase.phase_id, Chain_ID=chain.id_,
                                       STIXFileID=StixFileID)
-            reln = Relationship(TTPNode, "KillChainPhaseNode", KillChainPhaseNode, connect="Phases Of KillChain")
+            reln = Relationship(TTPNode, "TTPKillChainPhaseLink", KillChainPhaseNode, connect="Phases Of KillChain")
 
             try:
                 stixGraph.merge(reln)
@@ -591,7 +685,7 @@ def parse_header(header, StixFileID):
     headNode = Node("HeaderNode", Title=head.Title, Description=desc, ProducedDate=dt, ProducedTime=tm,
                     PkgIntent_xsiType=pkInt.xsi_type, MarkingColor=color, xmlType=struc.xml_type,
                     xmlns=struc.xmlns, xmlnsPrefix=struc.xmlns_prefix, STIXFileID=StixFileID)
-    rel = Relationship(init_node, "HeaderNode", headNode, connect="To make sure graph isn't disconnected",
+    rel = Relationship(init_node, "HeaderGraphLink", headNode, connect="To make sure graph isn't disconnected",
                        STIXFileID=StixFileID)
     stixGraph.merge(rel)
 
@@ -604,7 +698,7 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
     desc = "Indicators contains threat information and how to handle them within its observables, kill_chain phases etc.Connected to initNode"
     stixGraph.run("CREATE CONSTRAINT ON (n:IndicatorNode) ASSERT n.ID IS UNIQUE")
     IndicatorNode = Node("IndicatorNode", Description=desc, STIXFileID=StixFileID)
-    rel = Relationship(init_node, "IndicatorNode", IndicatorNode, connect="To make sure graph isn't disconnected",
+    rel = Relationship(init_node, "IndicatorGraphLink", IndicatorNode, connect="To make sure graph isn't disconnected",
                        STIXFileID=StixFileID)
 
     stixGraph.run("CREATE CONSTRAINT ON (n:AllowedIndicatorTypesNode) ASSERT n.ID IS UNIQUE")
@@ -631,8 +725,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
 
     if indicator.indicator_types:
         for key in indicator.indicator_types:
-            print "Value:" + key.value
-            print "XSI Type:" + key.xsi_type
             if key.value: IndicatorNode["IndicatorTypeValue"] = key.value
             if key.xsi_type: IndicatorNode["xsiType"] = key.xsi_type
 
@@ -656,7 +748,7 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
             if key.TERM_URL_WATCHLIST: AllowedIndicatorTypesNode["TERM_URL_WATCHLIST"] = key.TERM_URL_WATCHLIST
 
     AllowedIndicatorTypesNode["ID"] = "OneCopy"
-    relAllowInit = Relationship(init_node, "AllowedIndicatorTypesNode", AllowedIndicatorTypesNode,
+    relAllowInit = Relationship(init_node, "AllowedIndicatorTypesGraphLink", AllowedIndicatorTypesNode,
                                 connect="Easy to find indicators of a particular type")
     try:
         stixGraph.merge(relAllowInit)
@@ -672,6 +764,24 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
             print "\tPhase Name- " + phase.name
             print "Kill Chain Name: " + kill_chains[phase.kill_chain_id]
             print "Phase[" + str(phase.ordinality) + "] = " + kill_chain_phases[phase.phase_id]
+        ##########################################################################################################
+            ######################CONNECT kill chain phase TO TTPNode's kill chain phsase ?
+
+        phaseNode = stixGraph.find_one("KillChainPhaseNode", property_key="Ordinality", property_value=phase.ordinality)
+        #stixGraph.run("CREATE CONSTRAINT ON (n:IndicatorNode) ASSERT n.ID IS UNIQUE")
+        if phaseNode and IndicatorNode:
+            relPhase = Relationship(phaseNode, "IndicatorKillChainPhaseLink", IndicatorNode, ID=indicator.id_, KillChainID=phase.kill_chain_id,
+                                       PhaseID = phase.phase_id)
+            try:
+                stixGraph.merge(relPhase)
+            except ConstraintError:
+                pass
+            except AttributeError:
+                pass
+
+
+
+
 
     if indicator.sightings:
         IndicatorNode["SightingsCount"] = indicator.sightings.sightings_count
@@ -690,7 +800,7 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
         headNode = stixGraph.find_one("HeaderNode", property_key="STIXFileID", property_value=StixFileID)
         stixGraph.run("CREATE CONSTRAINT ON (n:IndicatorNode) ASSERT n.ID IS UNIQUE")
         if headNode and IndicatorNode:
-            relHead = Relationship(headNode, "STIXFile", IndicatorNode, ID=indicator.id_, STIXFileID=StixFileID,
+            relHead = Relationship(headNode, "HeaderIndicatorLink", IndicatorNode, ID=indicator.id_, STIXFileID=StixFileID,
                                        CompositeIndicatorOperator=indicator.observable_composition_operator)
             try:
                 stixGraph.merge(relHead)
@@ -703,7 +813,7 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
         compIndNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value=compInd)
         indNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value= ind)
         if compIndNode and indNode:
-            relInd = Relationship(compInd, "CompositionIndicator", indNode, CompositionOperator=indicator.observable_composition_operator)
+            relInd = Relationship(compInd, "CompositionIndicatorLink", indNode, CompositionOperator=indicator.observable_composition_operator)
             try:
                 stixGraph.merge(relInd)
             except ConstraintError:
@@ -739,9 +849,6 @@ def parse_indicators(indicators, kill_chains, kill_chain_phases, StixFileID):
 
     for indicator in indicators:
         parse_indicator(indicator, indicator.id_, kill_chains, kill_chain_phases, indList, compInd, StixFileID)
-
-    print "##################################################################################################"
-
 
 def print_parsed_data(pkg):
     kill_chains = {}
@@ -786,17 +893,17 @@ def print_parsed_data(pkg):
 def parse_file(myfile):
     f = open(myfile)
     #parse the input file
-    #logging.info('Parsing input file '+str(f))
-    #try:
-    stix_package = STIXPackage.from_xml(f)
+    logging.info('Parsing input file '+str(f))
+    try:
+        stix_package = STIXPackage.from_xml(f)
     #graphMain(stix_package)
-    print_parsed_data(stix_package)
-    '''
+        print_parsed_data(stix_package)
+
     except ValueError:
         logging.info('Input file %s cannot be parsed', str(f))
         f.close()
         return
-    '''
+
     #Close file
     f.close()
 
@@ -807,9 +914,9 @@ def test_file(myfile):
 
 
 def main():
-    #test_file('TEST/1.xml')
-    #test_file('TEST/5.xml')
-    test_5files()
+    #test_file('../TEST/1.xml')
+    #test_file('../TEST/1.xml')
+    test_10files()
     #test_GreenIOC()
 
 
