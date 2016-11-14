@@ -105,17 +105,17 @@ def test_files():
     logging.info('Closing files in TEST')
 
 
-def parse_observables(observables, StixFileID):
+def parse_observables(observables, StixFileID, indicatorID):
     objRelated = {}
     for obs in observables:
-        parse_observable(obs, StixFileID, objRelated)
+        parse_observable(obs, StixFileID, objRelated, indicatorID)
 
     if objRelated:
         for key, val in objRelated:
             objNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=key)
-            relObjNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value= val)
-            if relObjNode and ObservableNode:
-                relPhase = Relationship(relObjNode, "RelatedObjectLink", ObservableNode,
+            relObjNode = stixGraph.find_one("ObservableNode", property_key="RelatedObjectID", property_value= val)
+            if relObjNode and objNode:
+                relPhase = Relationship(relObjNode, "RelatedObjectLink", objNode,
                     ObjectID =key, RelatedObjectID = val)
                 try:
                     stixGraph.merge(relPhase)
@@ -124,14 +124,15 @@ def parse_observables(observables, StixFileID):
                 except AttributeError:
                     pass
 
-
-def parse_observable(obs, StixFileID, objRelated):
+def parse_observable(obs, StixFileID, objRelated, indicatorID):
     obj = obs.to_obj()
     if not obj or not hasattr(obj, "Object") or not hasattr(obj.Object, "Properties"): return
     prop = obj.Object.Properties
 
     ObservableNode = Node("ObservableNode", ObservableID=obs.id_, ObjectID=obj.Object.id,
                           xsiType=prop.xsi_type, STIXFileID=StixFileID)
+
+    if indicatorID != None: ObservableNode["IndicatorID"] = indicatorID
 
     print "Observable: " + obs.id_  #Observable ID
     #obj = obs.get('object')
@@ -225,12 +226,8 @@ def parse_observable(obs, StixFileID, objRelated):
                     hashVal = 0  #hash.Fuzzy_Hash_Structure
                     hashType = "Fuzzy Structure"
                 print "Hash(Type : Value) " + str(h) + ":" + str(hashVal)
-                ht = "HashType" + str(i)
-                hv = "HashValue" + str(i)
-                ObservableNode[ht] = hash.Type.valueOf_
-                ObservableNode[hv] = hashVal
-
-
+                if h!= None:
+                    ObservableNode[h]=hashVal
     elif (type(prop) == AddressObjectType):
         print "-------------------------------------------------"
         #prop.Custom_Properties
@@ -543,7 +540,7 @@ def parse_observable(obs, StixFileID, objRelated):
 
     headNode = stixGraph.find_one("HeaderNode", property_key="STIXFileID", property_value=StixFileID)
     rel = Relationship(headNode, "HeaderObservableLink", ObservableNode, STIXFileID=StixFileID,
-                       connect="To make sure graph isn't disconnected")
+                      connect="To make sure graph isn't disconnected")
     stixGraph.merge(rel)
     '''
     obsNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=obj.id)
@@ -551,8 +548,6 @@ def parse_observable(obs, StixFileID, objRelated):
         relObs = Relationship(ObservableNode, "ObservableLink", obsNode, RelatedObservableID=obs.id_)
         stixGraph.merge(relObs)
 
-        #relInd = Relationship(indNode,"IndicatorObservableLink", ObservableNode,  STIXFileID= StixFileID,connect="To make sure graph isn't disconnected")
-        #stixGraph.merge(relInd)
     '''
 
 def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
@@ -694,17 +689,13 @@ def parse_header(header, StixFileID):
 
 def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, compInd, StixFileID):
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    if indicator.observables:
-        parse_observables(indicator.observables, StixFileID)
+    keyIndValueList = []
 
     desc = "Indicators contains threat information and how to handle them within its observables, kill_chain phases etc.Connected to initNode"
     stixGraph.run("CREATE CONSTRAINT ON (n:IndicatorNode) ASSERT n.ID IS UNIQUE")
     IndicatorNode = Node("IndicatorNode", Description=desc, STIXFileID=StixFileID)
-    rel = Relationship(init_node, "IndicatorGraphLink", IndicatorNode, connect="To make sure graph isn't disconnected",
-                       STIXFileID=StixFileID)
+    #rel = Relationship(init_node, "IndicatorGraphLink", IndicatorNode, connect="To make sure graph isn't disconnected",STIXFileID=StixFileID)
 
-    stixGraph.run("CREATE CONSTRAINT ON (n:AllowedIndicatorTypesNode) ASSERT n.ID IS UNIQUE")
-    AllowedIndicatorTypesNode = Node("AllowedIndicatorTypesNode", Description="All allowed Indicator Types")
 
     if indicator.confidence: IndicatorNode["Confidence"] = indicator.confidence
     if indicator.handling: IndicatorNode["Handling"] = pprint(indicator.handling)
@@ -726,36 +717,178 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
         if indicator.description.value: IndicatorNode["IndicatorDescription"] = indicator.description.value
 
     if indicator.indicator_types:
-        for key in indicator.indicator_types:
-            if key.value: IndicatorNode["IndicatorTypeValue"] = key.value
-            if key.xsi_type: IndicatorNode["xsiType"] = key.xsi_type
+        stixGraph.run("CREATE CONSTRAINT ON (n:AllowedIndicatorTypesNode) ASSERT n.Description is UNIQUE")
+        AllowedIndicatorTypesNode = Node("AllowedIndicatorTypesNode", Description="All allowed Indicator Types")
 
-            if key.TERM_ANONYMIZATION: AllowedIndicatorTypesNode["TERM_ANONYMIZATION"] = key.TERM_ANONYMIZATION
-            if key.TERM_C2: AllowedIndicatorTypesNode["TERM_C2"] = key.TERM_C2
-            if key.TERM_COMPROMISED_PKI_CERTIFICATE: AllowedIndicatorTypesNode[
-                "TERM_COMPROMISED_PKI_CERTIFICATE"] = key.TERM_COMPROMISED_PKI_CERTIFICATE
-            if key.TERM_DOMAIN_WATCHLIST: AllowedIndicatorTypesNode["TERM_DOMAIN_WATCHLIST"] = key.TERM_DOMAIN_WATCHLIST
-            if key.TERM_EXFILTRATION: AllowedIndicatorTypesNode["TERM_EXFILTRATION"] = key.TERM_EXFILTRATION
-            if key.TERM_FILE_HASH_WATCHLIST: AllowedIndicatorTypesNode[
-                "TERM_FILE_HASH_WATCHLIST"] = key.TERM_FILE_HASH_WATCHLIST
-            if key.TERM_HOST_CHARACTERISTICS: AllowedIndicatorTypesNode[
-                "TERM_HOST_CHARACTERISTICS"] = key.TERM_HOST_CHARACTERISTICS
-            if key.TERM_IMEI_WATCHLIST: AllowedIndicatorTypesNode["TERM_IMEI_WATCHLIST"] = key.TERM_IMEI_WATCHLIST
-            if key.TERM_IMSI_WATCHLIST: AllowedIndicatorTypesNode["TERM_IMSI_WATCHLIST"] = key.TERM_IMSI_WATCHLIST
-            if key.TERM_IP_WATCHLIST: AllowedIndicatorTypesNode["TERM_IP_WATCHLIST"] = key.TERM_IP_WATCHLIST
-            if key.TERM_LOGIN_NAME: AllowedIndicatorTypesNode["TERM_LOGIN_NAME"] = key.TERM_ANONYMIZATION
-            if key.TERM_MALICIOUS_EMAIL: AllowedIndicatorTypesNode["TERM_MALICIOUS_EMAIL"] = key.TERM_MALICIOUS_EMAIL
-            if key.TERM_MALWARE_ARTIFACTS: AllowedIndicatorTypesNode[
-                "TERM_MALWARE_ARTIFACTS"] = key.TERM_MALWARE_ARTIFACTS
-            if key.TERM_URL_WATCHLIST: AllowedIndicatorTypesNode["TERM_URL_WATCHLIST"] = key.TERM_URL_WATCHLIST
+        stixGraph.run("CREATE CONSTRAINT ON (n:IndicatorTypeNode) ASSERT n.IndicatorType is UNIQUE")
 
-    AllowedIndicatorTypesNode["ID"] = "OneCopy"
-    relAllowInit = Relationship(init_node, "AllowedIndicatorTypesGraphLink", AllowedIndicatorTypesNode,
+        for keyInd in indicator.indicator_types:
+            if keyInd.value: IndicatorNode["IndicatorTypeValue"] = keyInd.value
+            keyIndValueList.append(keyInd.value)
+            if keyInd.xsi_type: IndicatorNode["xsiType"] = keyInd.xsi_type
+
+            if keyInd.TERM_ANONYMIZATION != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                                IndicatorTypeValue = keyInd.TERM_ANONYMIZATION)
+                AllowedIndicatorTypesNode[keyInd.TERM_ANONYMIZATION] = "TERM_ANONYMIZATION"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_ANONYMIZATION")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_C2 != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                                IndicatorTypeValue = keyInd.TERM_C2)
+                AllowedIndicatorTypesNode[keyInd.TERM_C2] =  "TERM_C2"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_C2")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_COMPROMISED_PKI_CERTIFICATE != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                                IndicatorTypeValue = keyInd.TERM_COMPROMISED_PKI_CERTIFICATE)
+                AllowedIndicatorTypesNode[keyInd.TERM_COMPROMISED_PKI_CERTIFICATE] =  "TERM_COMPROMISED_PKI_CERTIFICATE"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_COMPROMISED_PKI_CERTIFICATE")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_DOMAIN_WATCHLIST != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                                IndicatorTypeValue = keyInd.TERM_DOMAIN_WATCHLIST)
+                AllowedIndicatorTypesNode[keyInd.TERM_DOMAIN_WATCHLIST] =  "TERM_DOMAIN_WATCHLIST"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_DOMAIN_WATCHLIST")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+
+            if keyInd.TERM_EXFILTRATION != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                                IndicatorTypeValue = keyInd.TERM_EXFILTRATION)
+                AllowedIndicatorTypesNode[keyInd.TERM_EXFILTRATION] =  "TERM_EXFILTRATION"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_EXFILTRATION")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_FILE_HASH_WATCHLIST != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                                IndicatorTypeValue = keyInd.TERM_FILE_HASH_WATCHLIST)
+                AllowedIndicatorTypesNode[keyInd.TERM_FILE_HASH_WATCHLIST] =  "TERM_FILE_HASH_WATCHLIST"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_FILE_HASH_WATCHLIST")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_HOST_CHARACTERISTICS != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                                IndicatorTypeValue = keyInd.TERM_HOST_CHARACTERISTICS)
+                AllowedIndicatorTypesNode[keyInd.TERM_HOST_CHARACTERISTICS] =  "TERM_HOST_CHARACTERISTICS"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_HOST_CHARACTERISTICS")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_IMEI_WATCHLIST != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                        IndicatorTypeValue = keyInd.TERM_IMEI_WATCHLIST)
+                AllowedIndicatorTypesNode[keyInd.TERM_IMEI_WATCHLIST] =  "TERM_IMEI_WATCHLIST"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_IMEI_WATCHLIST")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_IMSI_WATCHLIST != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                        IndicatorTypeValue = keyInd.TERM_IMSI_WATCHLIST)
+                AllowedIndicatorTypesNode[keyInd.TERM_IMSI_WATCHLIST] =  "TERM_IMSI_WATCHLIST"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_IMSI_WATCHLIST")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_IP_WATCHLIST != None :
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                        IndicatorTypeValue = keyInd.TERM_IP_WATCHLIST)
+                AllowedIndicatorTypesNode[keyInd.TERM_IP_WATCHLIST] =  "TERM_IP_WATCHLIST"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_IP_WATCHLIST")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_LOGIN_NAME:
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                        IndicatorTypeValue = keyInd.TERM_LOGIN_NAME)
+                AllowedIndicatorTypesNode[keyInd.TERM_LOGIN_NAME] =  "TERM_LOGIN_NAME"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_LOGIN_NAME")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_MALICIOUS_EMAIL:
+                nodeType = Node("IndicatorTypeNode", Description="To Group Indicators based on their Type",
+                                IndicatorTypeValue= keyInd.TERM_MALICIOUS_EMAIL)
+
+                AllowedIndicatorTypesNode[keyInd.TERM_MALICIOUS_EMAIL] = "TERM_MALICIOUS_EMAIL"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_MALICIOUS_EMAIL")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_MALWARE_ARTIFACTS != None:
+                nodeType = Node("IndicatorTypeNode", Description="To Group Indicators based on their Type",
+                                IndicatorTypeValue=keyInd.TERM_MALWARE_ARTIFACTS)
+                AllowedIndicatorTypesNode[keyInd.TERM_MALWARE_ARTIFACTS] = "TERM_MALWARE_ARTIFACTS"
+                try:
+                    relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                                IndicatorType = "TERM_MALWARE_ARTIFACTS")
+                    stixGraph.merge(relIndType)
+                except ConstraintError:
+                    pass
+
+            if keyInd.TERM_URL_WATCHLIST != None:
+                nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
+                        IndicatorTypeValue = keyInd.TERM_URL_WATCHLIST)
+                AllowedIndicatorTypesNode[keyInd.TERM_URL_WATCHLIST] = "TERM_URL_WATCHLIST"
+            try:
+                relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
+                                         IndicatorType = "TERM_URL_WATCHLIST")
+                stixGraph.merge(relIndType)
+            except ConstraintError:
+                pass
+
+        try:
+            relAllowInit = Relationship(init_node, "AllowedIndicatorTypesGraphLink", AllowedIndicatorTypesNode,
                                 connect="Easy to find indicators of a particular type")
-    try:
-        stixGraph.merge(relAllowInit)
-    except ConstraintError:
-        pass
+            stixGraph.merge(relAllowInit)
+        except ConstraintError:
+            pass
 
     if indicator.kill_chain_phases:
         for phase in indicator.kill_chain_phases:
@@ -776,14 +909,8 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
                                        PhaseID = phase.phase_id)
             try:
                 stixGraph.merge(relPhase)
-            except ConstraintError:
-                pass
             except AttributeError:
                 pass
-
-
-
-
 
     if indicator.sightings:
         IndicatorNode["SightingsCount"] = indicator.sightings.sightings_count
@@ -823,7 +950,33 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
             except AttributeError:
                 pass
 
-    stixGraph.merge(rel)
+    #stixGraph.merge(rel)
+    if indicator.observables:
+        parse_observables(indicator.observables, StixFileID, id)
+        for obs in indicator.observables:
+            obsNode = stixGraph.find_one("ObservableNode", property_key="ObservableID", property_value= obs.id_)
+            indiNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value=id)
+            relInd = Relationship(indiNode,"IndicatorObservableLink",
+                                  obsNode,  STIXFileID= StixFileID,
+                                  IndicatorID = id,
+                                  ObservableID = obs.id_ ,
+                                  connect="Indicator-Observable Link, if it exists. \
+                                          http://stixproject.github.io/data-model/1.2/cybox/ObservableType/")
+            try:
+                stixGraph.merge(relInd)
+            except AttributeError:
+                pass
+
+    for indValKey in keyIndValueList:
+        indTypeNode = stixGraph.find_one("IndicatorTypeNode", property_key="IndicatorTypeValue", property_value=indValKey)
+        try:
+            relIndType = Relationship(indTypeNode, "IndicatorTypeLink",IndicatorNode,IndicatorTypeValue = indValKey)
+            stixGraph.merge(relIndType)
+        except ConstraintError:
+            pass
+        except AttributeError:
+            pass
+
 
     '''
     # FUTURE WORK TO MAKE IT STIX COMPLIANT
@@ -884,7 +1037,7 @@ def print_parsed_data(pkg):
         parse_ttps(pkg.ttps, kill_chains, kill_chain_phases, pkg._id)
 
     if pkg.observables:
-        parse_observables(pkg.observables.observables, pkg._id)
+        parse_observables(pkg.observables.observables, pkg._id, None)
 
     if pkg.indicators:
         parse_indicators(pkg.indicators, kill_chains, kill_chain_phases, pkg._id)
@@ -916,9 +1069,9 @@ def test_file(myfile):
 
 
 def main():
-    #test_file('../TEST/1.xml')
+    test_file('../TEST/1.xml')
     #test_file('../TEST/8.xml')
-    test_files()
+    #test_files()
     #test_GreenIOC()
 
 
