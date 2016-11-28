@@ -1,6 +1,4 @@
 # Add your requirements here like:
-# numpy
-# scipy>=0.9
 lxml==3.3.3
 stix==1.2.0.0
 cybox==2.1.0.12
