@@ -10,6 +10,7 @@ from datetime import datetime
 try:
     # python-stix : Used in initial parsing, only to get stix file as a dictionary
     from stix.core import STIXPackage
+    from stix.coa import CourseOfAction
     from cybox.bindings.file_object import FileObjectType
     from cybox.bindings.account_object import AccountObjectType
     from cybox.bindings.email_message_object import EmailHeaderType, EmailMessageObjectType, EmailRecipientsType
@@ -110,7 +111,7 @@ def parse_observables(observables, StixFileID, indicatorID):
     for obs in observables:
         parse_observable(obs, StixFileID, objRelated, indicatorID)
 
-    if objRelated:
+    if bool(objRelated):
         for key, val in objRelated:
             objNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=key)
             relObjNode = stixGraph.find_one("ObservableNode", property_key="RelatedObjectID", property_value= val)
@@ -129,17 +130,18 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
     if not obj or not hasattr(obj, "Object") or not hasattr(obj.Object, "Properties"): return
     prop = obj.Object.Properties
 
+    stixGraph.run("CREATE CONSTRAINT ON (n:ObservableNode) ASSERT n.ObservableID IS UNIQUE")
     ObservableNode = Node("ObservableNode", ObservableID=obs.id_, ObjectID=obj.Object.id,
                           xsiType=prop.xsi_type, STIXFileID=StixFileID)
 
     if indicatorID != None: ObservableNode["IndicatorID"] = indicatorID
 
-    print "Observable: " + obs.id_  #Observable ID
+    #print "Observable: " + obs.id_  #Observable ID
     #obj = obs.get('object')
-    print "Related Observable: " + obj.id
+    #print "Related Observable: " + obj.id
     #prop = obs.get('object').get('properties')
 
-    print "XSI Type: " + prop.xsi_type
+    #print "XSI Type: " + prop.xsi_type
 
     if (type(prop) == FileObjectType):
         #prop.Accessed_Time
@@ -229,7 +231,7 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
                 if h!= None:
                     ObservableNode[h]=hashVal
     elif (type(prop) == AddressObjectType):
-        print "-------------------------------------------------"
+        #print "-------------------------------------------------"
         #prop.Custom_Properties
         #prop.VLAN_Name
         #prop.VLAN_Num
@@ -264,9 +266,8 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
         # prop.Address_Value.trend
         # prop.Address_Value.valueOf_
 
-        print "Address Value:\n\t(Apply Condition:Condition)-" + \
-              prop.Address_Value.apply_condition + ":" + prop.Address_Value.condition
-        print "\t(Category: Value) - " + prop.category + ":" + prop.Address_Value.valueOf_
+        #print "Address Value:\n\t(Apply Condition:Condition)-" + prop.Address_Value.apply_condition + ":" + prop.Address_Value.condition
+        #print "\t(Category: Value) - " + prop.category + ":" + prop.Address_Value.valueOf_
         ObservableNode["Category"] = prop.category
         ObservableNode["AddressValue"] = prop.Address_Value.valueOf_
         ObservableNode["ApplyCondition"] = prop.Address_Value.apply_condition
@@ -301,12 +302,12 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
         # prop.Value.trend
         # prop.Value.valueOf_
 
-        print "Type:" + prop.type_
-        print "Apply_Condition:" + prop.Value.apply_condition
-        print "condition:" + prop.Value.condition
+        #print "Type:" + prop.type_
+        #print "Apply_Condition:" + prop.Value.apply_condition
+        #print "condition:" + prop.Value.condition
 
-        print "Value :" + prop.Value.valueOf_
-        print "delimiter: " + prop.Value.delimiter
+        #print "Value :" + prop.Value.valueOf_
+        #print "delimiter: " + prop.Value.delimiter
 
         ObservableNode["Type"] = prop.type_
         ObservableNode["ApplyCondition"] = prop.Value.apply_condition
@@ -430,40 +431,38 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
 
         #Email Header has the following attributes: message_id, from, sender, subject
         emailHeader = prop.Header
+        if emailHeader:
+            if emailHeader.Message_ID: ObservableNode["MessageID"] = emailHeader.Message_ID.valueOf_
 
-        print "\tMessage id: " + emailHeader.Message_ID.valueOf_
-        ObservableNode["MessageID"] = emailHeader.Message_ID.valueOf_
+            if emailHeader.From:
+                print "\t" + emailHeader.From.category + " (ObjType " + emailHeader.From.xsi_type + ") from " + emailHeader.From.Address_Value.valueOf_
 
-        if emailHeader.From:
-            print "\t" + emailHeader.From.category + " (ObjType " + emailHeader.From.xsi_type + ") from " + emailHeader.From.Address_Value.valueOf_
+                ObservableNode["From_Category"] = emailHeader.From.category
+                ObservableNode["From_xsiType"] = emailHeader.From.xsi_type
+                ObservableNode["From_AddressValue"] = emailHeader.From.Address_Value.valueOf_
+            if emailHeader.Sender:
+                print "\t" + emailHeader.Sender.category + " (ObjType: " + emailHeader.Sender.xsi_type + ") sent to " + emailHeader.Sender.Address_Value.valueOf_
 
-            ObservableNode["From_Category"] = emailHeader.From.category
-            ObservableNode["From_xsiType"] = emailHeader.From.xsi_type
-            ObservableNode["From_AddressValue"] = emailHeader.From.Address_Value.valueOf_
-        if emailHeader.Sender:
-            print "\t" + emailHeader.Sender.category + " (ObjType: " + emailHeader.Sender.xsi_type + ") sent to " + emailHeader.Sender.Address_Value.valueOf_
+                ObservableNode["Sender_Category"] = emailHeader.Sender.category
+                ObservableNode["Sender_xsiType"] = emailHeader.Sender.xsi_type
+                ObservableNode["Sender_AddressValue"] = emailHeader.Sender.Address_Value.valueOf_
+            if emailHeader.Subject:
+                #print  "\tSubject (Apply condition: condition::delimiter: Value) " + emailHeader.Subject.apply_condition + ":" + emailHeader.Subject.condition + ":" + emailHeader.Subject.delimiter + ":" + ":" + emailHeader.Subject.valueOf_
 
-            ObservableNode["Sender_Category"] = emailHeader.Sender.category
-            ObservableNode["Sender_xsiType"] = emailHeader.Sender.xsi_type
-            ObservableNode["Sender_AddressValue"] = emailHeader.Sender.Address_Value.valueOf_
-        if emailHeader.Subject:
-            print  "\tSubject (Apply condition: condition::delimiter: Value) " + emailHeader.Subject.apply_condition + ":" + \
-                   emailHeader.Subject.condition + ":" + emailHeader.Subject.delimiter + ":" + ":" + emailHeader.Subject.valueOf_
+                ObservableNode["Subject_ApplyCondition"] = emailHeader.Subject.apply_condition
+                ObservableNode["Subject_Condition"] = emailHeader.Subject.condition
+                ObservableNode["Subject_Delimiter"] = emailHeader.Subject.delimiter
+                ObservableNode["Subject_Value"] = emailHeader.Subject.valueOf_
 
-            ObservableNode["Subject_ApplyCondition"] = emailHeader.Subject.apply_condition
-            ObservableNode["Subject_Condition"] = emailHeader.Subject.condition
-            ObservableNode["Subject_Delimiter"] = emailHeader.Subject.delimiter
-            ObservableNode["Subject_Value"] = emailHeader.Subject.valueOf_
-
-        #Email Attachments
-        if prop.Attachments:
-            emailAttachments = prop.Attachments.File
-            print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-            print "Email Attachments: "
-            for i, attach in enumerate(emailAttachments):
-                print "\t" + attach.object_reference
-                em = "EmailAttachment#" + str(i)
-                ObservableNode[em] = attach.object_reference
+            #Email Attachments
+            if prop.Attachments:
+                emailAttachments = prop.Attachments.File
+                #print "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                #print "Email Attachments: "
+                for i, attach in enumerate(emailAttachments):
+                    #print "\t" + attach.object_reference
+                    em = "EmailAttachment#" + str(i)
+                    ObservableNode[em] = attach.object_reference
 
     elif( type(prop) == LinkObjectType):
         if prop.type_ : ObservableNode["Type"] = prop.type_
@@ -528,20 +527,27 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
         reltd = obj.Object.Related_Objects.Related_Object
         for reltdObj in reltd:
             ObservableNode["RelatedObjectID"] = reltdObj.id
-            objRelated[obj.Object.id] = reltdObj.id
+            objRelated[str(obj.Object.id)] = str(reltdObj.id)
             if (type(reltdObj.Properties) == MutexObjectType):
                 print "Handle Mutex Type Object"
                 print " Properties : \n\t"+reltdObj.Properties.Name.apply_condition+"\n\t"
                 print reltdObj.Properties.Name.condition+"\n\t"
                 print reltdObj.Properties.Name.delimiter+"\n\t"
                 print reltdObj.Properties.Name.valueOf_
+            elif (type(reltdObj.Properties) == FileObjectType):
+                print "Handle File Object"
+                print "Properties :\n\t"+reltdObj.Properties.File_Name.valueOf_
+                print "\t"+reltdObj.Properties.File_Extension.valueOf_
             else:
                 print "Related Object to be handled"
 
-    headNode = stixGraph.find_one("HeaderNode", property_key="STIXFileID", property_value=StixFileID)
-    rel = Relationship(headNode, "HeaderObservableLink", ObservableNode, STIXFileID=StixFileID,
-                      connect="To make sure graph isn't disconnected")
-    stixGraph.merge(rel)
+    try:
+        headNode = stixGraph.find_one("HeaderNode", property_key="STIXFileID", property_value=StixFileID)
+        rel = Relationship(headNode, "HeaderObservableLink", ObservableNode, STIXFileID=StixFileID,
+                          connect="To make sure graph isn't disconnected")
+        stixGraph.merge(rel)
+    except AttributeError:
+        pass
     '''
     obsNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=obj.id)
     if obsNode:
@@ -549,42 +555,6 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
         stixGraph.merge(relObs)
 
     '''
-
-def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
-    print "***********************************************TTPS*********************************************"
-    for chain in ttp.kill_chains:
-        kill_chains[chain.id_] = chain.name
-        print "--"
-        print "Name: " + chain.name
-        print "Definer: " + chain.definer
-        print "Kill Chain ID: " + chain.id_
-        print "Number of Phases: " + chain.number_of_phases
-        print "Reference: " + chain.reference
-
-        desc = "Tactics,Techniques, Procedures. Contains kill chains that can be adopted when we encounter a threat.Connected to initNode"
-        stixGraph.run("CREATE CONSTRAINT ON (n:TTPNode) ASSERT n.Name IS UNIQUE")
-        TTPNode = Node("TTPNode", Description=desc, Name=chain.name, Definer=chain.definer, Reference=chain.reference,
-                       NoOfPhases=chain.number_of_phases, ID=chain.id_, STIXFileID=StixFileID)
-        rel = Relationship(init_node, "TTPGraphLink", TTPNode, connect="To make sure graph isn't disconnected")
-        try:
-            stixGraph.merge(rel)
-        except ConstraintError:
-            pass
-        for phase in chain.kill_chain_phases:
-            kill_chain_phases[phase.phase_id] = str(phase.name)
-            print "Phases: [" + str(phase.phase_id) + "][" + str(phase.ordinality) + "] = " + str(phase.name)
-
-            desc = "Each Kill Chain is defined in terms of phases in which we caught a particular threat."
-            stixGraph.run("CREATE CONSTRAINT ON (n:KillChainPhaseNode) ASSERT n.Ordinality IS UNIQUE")
-            KillChainPhaseNode = Node("KillChainPhaseNode", Description=desc, Ordinality=phase.ordinality,
-                                      PhaseName=phase.name, ID=phase.phase_id, Chain_ID=chain.id_,
-                                      STIXFileID=StixFileID)
-            reln = Relationship(TTPNode, "TTPKillChainPhaseLink", KillChainPhaseNode, connect="Phases Of KillChain")
-
-            try:
-                stixGraph.merge(reln)
-            except ConstraintError:
-                pass
 
 
 def parse_header(header, StixFileID):
@@ -650,17 +620,19 @@ def parse_header(header, StixFileID):
         print "Description:\n" + desc + "\n"
     try:
         head_date = head.Information_Source.Time.Produced_Time.valueOf_
-        dt, tm = head_date.split("T", 1)
-        year, month, day = dt.split("-", 2)
-        tm2, ms = tm.split("+", 1)
-        HH, MM, SS = tm2.split(":", 2)
-
-        months = {"01": 'Jan', "02": 'Feb', "03": 'Mar', "04": 'Apr', "05": 'May', "06": 'Jun', "07": 'Jul',
-                  "08": 'Aug', "09": 'Sep', "10": 'Oct', "11": 'Nov', "12": 'Dec'}
-        print "Produced Date:" + day + " " + str(months.get(month)) + ", " + year
-        print "Produced Time(24 HR):" + HH + ":" + MM + ":" + SS
     except AttributeError:
-        head_date = DateTimeWithPrecision()  #Current Date ? Or just leave it Null ?
+        now = datetime.today()
+        head_date = str(now.strftime("%Y-%m-%dT%H:%M:%S+00:00"))     #If there is no timestamp, adding today's timestamp..!!
+
+    dt, tm = head_date.split("T", 1)
+    year, month, day = dt.split("-", 2)
+    tm2, ms = tm.split("+", 1)
+    HH, MM, SS = tm2.split(":", 2)
+
+    months = {"01": 'Jan', "02": 'Feb', "03": 'Mar', "04": 'Apr', "05": 'May', "06": 'Jun', "07": 'Jul',
+              "08": 'Aug', "09": 'Sep', "10": 'Oct', "11": 'Nov', "12": 'Dec'}
+    print "Produced Date:" + day + " " + str(months.get(month)) + ", " + year
+    print "Produced Time(24 HR):" + HH + ":" + MM + ":" + SS
 
     #+"Produced Time Precision: "+ head.Information_Source.Time.Produced_Time.precision
 
@@ -687,27 +659,25 @@ def parse_header(header, StixFileID):
     stixGraph.merge(rel)
 
 
-def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, compInd, StixFileID):
-    print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
+    #print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     keyIndValueList = []
 
     desc = "Indicators contains threat information and how to handle them within its observables, kill_chain phases etc.Connected to initNode"
     stixGraph.run("CREATE CONSTRAINT ON (n:IndicatorNode) ASSERT n.ID IS UNIQUE")
-    IndicatorNode = Node("IndicatorNode", Description=desc, STIXFileID=StixFileID)
+    IndicatorNode = Node("IndicatorNode", Description=desc, STIXFileID=StixFileID, ID=indicator.id_)
     #rel = Relationship(init_node, "IndicatorGraphLink", IndicatorNode, connect="To make sure graph isn't disconnected",STIXFileID=StixFileID)
 
 
-    if indicator.confidence: IndicatorNode["Confidence"] = indicator.confidence
+    if indicator.confidence: IndicatorNode["Confidence"] = str(indicator.confidence)
     if indicator.handling: IndicatorNode["Handling"] = pprint(indicator.handling)
-    if indicator.id_: IndicatorNode["ID"] = indicator.id_
-    if indicator.idref: IndicatorNode["ID"] = indicator.idref
     if indicator.information_source: IndicatorNode["InformationSource"] = pprint(indicator.information_source)
     if indicator.likely_impact: IndicatorNode["LikelyImpact"] = pprint(indicator.likely_impact)
     if indicator.negate: IndicatorNode["IndicatorNegate"] = indicator.negate
     if indicator.producer: IndicatorNode["Producer"] = pprint(indicator.producer)
     if indicator.short_description: IndicatorNode["ShortDescription"] = pprint(indicator.short_descriptions)
     if indicator.suggested_coas: IndicatorNode["SuggestedCOA"] = pprint(indicator.suggested_coas)
-    if indicator.timestamp: IndicatorNode["Timestamp"] = pprint(indicator.timestamp)
+    if indicator.timestamp: IndicatorNode["Timestamp"] = str(indicator.timestamp)
     if indicator.title: IndicatorNode["Title"] = indicator.title
     if indicator.version: IndicatorNode["Version"] = indicator.version
     if indicator.observable_composition_operator:
@@ -902,7 +872,7 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
         ##########################################################################################################
             ######################CONNECT kill chain phase TO TTPNode's kill chain phsase ?
 
-        phaseNode = stixGraph.find_one("KillChainPhaseNode", property_key="Ordinality", property_value=phase.ordinality)
+        phaseNode = stixGraph.find_one("KillChainPhaseNode", property_key="PhaseName", property_value=phase.name)
         #stixGraph.run("CREATE CONSTRAINT ON (n:IndicatorNode) ASSERT n.ID IS UNIQUE")
         if phaseNode and IndicatorNode:
             relPhase = Relationship(phaseNode, "IndicatorKillChainPhaseLink", IndicatorNode, ID=indicator.id_, KillChainID=phase.kill_chain_id,
@@ -938,18 +908,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
             except AttributeError:
                 pass
 
-    for ind in indList:
-        compIndNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value=compInd)
-        indNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value= ind)
-        if compIndNode and indNode:
-            relInd = Relationship(compInd, "CompositionIndicatorLink", indNode, CompositionOperator=indicator.observable_composition_operator)
-            try:
-                stixGraph.merge(relInd)
-            except ConstraintError:
-                pass
-            except AttributeError:
-                pass
-
     #stixGraph.merge(rel)
     if indicator.observables:
         parse_observables(indicator.observables, StixFileID, id)
@@ -977,7 +935,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
         except AttributeError:
             pass
 
-
     '''
     # FUTURE WORK TO MAKE IT STIX COMPLIANT
     if indicator.indicated_ttps:
@@ -992,43 +949,358 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, indList, comp
         parse_indicator_short_descriptions(indicator.short_descriptions)
     '''
 
-
 def parse_indicators(indicators, kill_chains, kill_chain_phases, StixFileID):
     print "*****************************Indicators*******************************************************"
     indList = []
     for indicator in indicators:
         if (indicator.composite_indicator_expression):
-            compInd = str(indicator.id_)
+            compInd = indicator.id_
         else:
-            indList.append(str(indicator.id_))
+            indList.append(indicator.id_)
 
     for indicator in indicators:
-        parse_indicator(indicator, indicator.id_, kill_chains, kill_chain_phases, indList, compInd, StixFileID)
+        parse_indicator(indicator, indicator.id_, kill_chains, kill_chain_phases, StixFileID)
+
+    for ind in indList:
+        compIndNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value=compInd)
+        indNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value= ind)
+        if compIndNode and indNode:
+            relInd = Relationship(compIndNode, "CompositionIndicatorLink", indNode,
+                                  CompositionOperator=indicator.observable_composition_operator)
+            try:
+                stixGraph.merge(relInd)
+            except ConstraintError:
+                pass
+
+
+def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
+    print "***********************************************TTPS*********************************************"
+    for tactic in ttp:
+        print("---")
+        print("Title : " + tactic.title)
+        print("TTP ID: "+ tactic.id_)
+        if tactic.behavior:
+            if tactic.behavior.attack_patterns:
+                for behave in tactic.behavior.attack_patterns:
+                    print("CAPEC: " + str(behave.capec_id))
+                    print("Description: " + str(behave.description))
+            if tactic.behavior.malware_instances:
+                for sample in tactic.behavior.malware_instances:
+                    print("Sample: " + str(sample.names[0]))
+                    print("Type: " + str(sample.types[0]))
+
+    #print "-------------------TTP Kill Chains----------------------------"
+    for chain in ttp.kill_chains:
+        kill_chains[chain.id_] = chain.name
+
+        desc = "Tactics,Techniques, Procedures. Contains kill chains that can be adopted when we encounter a threat.Connected to initNode"
+        stixGraph.run("CREATE CONSTRAINT ON (n:TTPNode) ASSERT n.Name IS UNIQUE")
+        TTPNode = Node("TTPNode", Description=desc, Name=chain.name, Definer=chain.definer, Reference=chain.reference,
+                       NoOfPhases=chain.number_of_phases, ID=chain.id_, STIXFileID=StixFileID)
+
+        rel = Relationship(init_node, "TTPGraphLink", TTPNode, connect="To make sure graph isn't disconnected")
+        try:
+            stixGraph.merge(rel)
+        except ConstraintError:
+            pass
+        for phase in chain.kill_chain_phases:
+            kill_chain_phases[phase.phase_id] = str(phase.name)
+            #print "Phases: [" + str(phase.phase_id) + "][" + str(phase.ordinality) + "] = " + str(phase.name)
+
+            desc = "Each Kill Chain is defined in terms of phases in which we caught a particular threat."
+            stixGraph.run("CREATE CONSTRAINT ON (n:KillChainPhaseNode) ASSERT n.PhaseName IS UNIQUE")
+            KillChainPhaseNode = Node("KillChainPhaseNode", Description=desc, Ordinality=phase.ordinality,
+                                      PhaseName=phase.name, ID=phase.phase_id, Chain_ID=chain.id_,
+                                      STIXFileID=StixFileID)
+            reln = Relationship(TTPNode, "TTPKillChainPhaseLink", KillChainPhaseNode, connect="Phases Of KillChain")
+
+            try:
+                stixGraph.merge(reln)
+            except ConstraintError:
+                pass
+
+
+def parse_reports(reports):
+    print "*****************************Reports*******************************************************"
+    for report in reports:
+        ReportNode = Node("ReportNode", ReportID = report.id_ )
+
+
+        if report.timestamp: ReportNode["Timestamp"] = str(report.timestamp)
+        if report.observables: ReportNode["ReportObservables"]= str(report.observables)
+
+        if report.header:
+            ReportNode["ReportTitle"]= str(report.header.title)
+            ReportNode["ReportDesc"]= str(report.header.description)
+            ReportNode["ReportSource"]= str(report.header.information_source.time.produced_time.value)
+            ReportNode["ReportIntent"]= str(report.header.intents[0].value)
+
+            if report.campaigns:
+                for i,camp in enumerate(report.campaigns):
+                    print "ReportCampaignID"+str(i) + camp.idref
+
+            if report.courses_of_action:
+                for i,coa in enumerate(report.courses_of_action):
+                    print str(coa)
+
+            if report.exploit_targets:
+                for i,targ in enumerate(report.exploit_targets):
+                    print str(targ)
+
+            if report.incidents:
+                for i,inc in enumerate(report.incidents):
+                    ReportNode["ReportIncident"+str(i)]= inc.idref
+
+            if report.indicators:
+                for i,indi in enumerate(report.indicators):
+                    ReportNode["ReportIndicator"+str(i)]= indi.idref
+
+            if report.related_reports:
+                for i,rep in enumerate(report.related_reports):
+                    ReportNode["ReportRelatedReports"+str(i)]= rep.idref
+
+            if report.threat_actors:
+                for i,actor in enumerate(report.threat_actors):
+                    ReportNode["ReportActor"+str(i)]= actor.idref
+
+            if report.ttps:
+                for i,ttp in enumerate(report.ttps):
+                    ReportNode["ReportTTP"+str(i)]= ttp.idref
+
+def parse_COA(course_of_action):
+    print "*****************************COA*******************************************************"
+    for coa in course_of_action:
+        print("---")
+        print("COA: " + coa.title)
+        print("Stage: "+ str(coa.stage))
+        print("Type: "+ str(coa.type_))
+        for obs in coa.parameter_observables.observables:
+            print("Observable: " + str(obs.object_.properties.address_value))
+
+        print("---")
+        print("Objective: "+ str(coa.objective.description))
+        print("Confidence: "+ str(coa.objective.applicability_confidence.value))
+        print("---")
+        print("Impact: "+ str(coa.impact.value))
+        print("Description: "+ str(coa.impact.description))
+        print("---")
+        print("Cost: "+ str(coa.cost.value))
+        print("Efficacy: "+ str(coa.efficacy.value))
+
+
+def parse_exploit_target(exploit_target):
+    print "*****************************Exploit Target*******************************************************"
+    for target in exploit_target:
+        print("---")
+        print("Title : " + target.title)
+        for vuln in target.vulnerabilities:
+            print("CVE: " + vuln.cve_id)
+
+
+def parse_campaigns(campaigns):
+    print "*****************************Campaigns*******************************************************"
+    for camp in campaigns:
+        '''
+        print("-------------------------------\n")
+        print"CampaignTitle" + str(camp.title)
+        print "CampaignID" +str(camp.id_)
+        print "Timestamp"+ str(camp.timestamp)
+
+        #Indicator to campaign relationship is broken currently: Available in versions before 1.1 (idref is support issue? )
+        for indicator in campaign.related_indicators:
+            print("  - Related To: " + indicators[indicator.item.idref].title)
+        '''
+        CampaignNode = Node("CampaignNode",CampaignTitle = camp.title ,CampaignID=camp.id_, Timestamp = str(camp.timestamp))
+        relatedTTPs = []
+        relatedActors=[]
+        relatedIncidents =[]
+        if camp.attribution:
+            print "---"
+            for i,attrib in enumerate(camp.attribution):
+                if attrib[0].item.title: CampaignNode["AttributedActor"+str(i)] = attrib[0].item.title
+                if attrib[0].item.description: CampaignNode["AttributedActorDesc"+str(i)] = attrib[0].item.description
+                if attrib[0].item.id_:
+                    CampaignNode["AttributedActorID"+str(i)]= attrib[0].item.id_
+                    relatedActors.append(attrib[0].item.id_)
+                if attrib[0].item.timestamp: CampaignNode["AttributedActorTimestamp"+ str(i)]= str(attrib[0].item.timestamp)
+                if attrib[0].item.confidence:
+                    CampaignNode["AttributedActorConfidence"+str(i)] = str(attrib[0].item.confidence.value.value)
+
+                '''
+                actorNode = stixGraph.find_one("ThreatActorNode", property_key="ThreatActorID", property_value=attrib[0].item.id_)
+                try:
+                    relActorCampaign= Relationship(campNode, "ThreatActorCampaignLink", actorNode,
+                                            Description="Campaign Actor Attribution", ActorID = attrib[0].item.id_,
+                                            ActorTitle = attrib[0].item.title , Timestamp= str(attrib[0].item.timestamp))
+                    stixGraph.merge(relActorCampaign)
+                except ConstraintError:
+                    pass
+                '''
+        if camp.related_incidents:
+            for i,rel in enumerate(camp.related_incidents):
+                CampaignNode["RelatedIncidentID"+str(i)] = str(rel.item.idref)
+                relatedIncidents.append(rel.item.idref)
+                if rel.item.description: CampaignNode["RelatedTTPDesc"+str(i)] = rel.item.description
+                if rel.relationship: CampaignNode["RelatedIncidentRelationship"+str(i)] = rel.relationship
+                if rel.information_source: CampaignNode["RelatedIncidentSource"+str(i)] = rel.information_source
+                if rel.confidence: CampaignNode["RelatedIncidentConfidence"+str(i)] = rel.confidence
+                #affected_assets, attributed_threat_actors, categories, coa_requested ,coa_taken,
+                # coordinators, discovery_methods,history,reporter, security_compromise
+                #intended_effects, leveraged_ttps, related_incodents, related_indicators,
+                # relatedobservables, related_packages, responders, victims
+
+        if camp.related_ttps:
+            for i,tactic in enumerate(camp.related_ttps):
+                if tactic.relationship: CampaignNode["CampaignTTPRelationship"+str(i)] = str(tactic.relationship)
+                if tactic.item:
+                    CampaignNode["RelatedTTPsID"+str(i)] = str(tactic.item.idref)
+                    relatedTTPs.append(tactic.item.idref)
+                '''
+                #find TTPNode with idref = tactic.item.idref
+                if ttp:
+                    print("RelatedTTP: " + str(ttp.title))
+                    if ttp.victim_targeting.targeted_information:
+                        for target in ttp.victim_targeting.targeted_information:
+                            print("\tTarget: " + str(target))
+                '''
+
+def parse_incidents(incidents):
+    print "*****************************Incidents*******************************************************"
+
+    for inc in incidents:
+        # attributed_threat_actors, handling, history, impact_assessment, reporter, security_compromise, status, version,
+        # categories, coa_requested, coa_taken,coordinators, discovery_methods, external_ids, intended_effects, leveraged_ttps ,
+        # related_incidents, related_indicators, related_observables, related_packages, responders, victims
+        #print("------------------------------------------------------------")
+        #print "IncidentID"+inc.id_
+        IncidentNode = Node("IncidentNode",IncidentID=inc.id_, Timestamp = str(inc.timestamp))
+        stixGraph.run("CREATE CONSTRAINT ON (n:IncidentNode) ASSERT n.IncidentID IS UNIQUE")
+
+        if inc.title: IncidentNode["IncidentTitle"] = inc.title
+        if inc.reporter: IncidentNode["IncidentReporter" ]= inc.reporter.identity.name
+        if inc.description: IncidentNode["IncidentDesc"]= str(inc.description)
+        if inc.confidence: IncidentNode["IncidentConfidence"]= str(inc.confidence.value)
+        if inc.time:
+            IncidentNode["IncidentInitialCompromise"]= str(inc.time.initial_compromise.value)
+            IncidentNode["IncidentDiscovery"]=str(inc.time.incident_discovery.value)
+            IncidentNode["IncidentRestoration"]= str(inc.time.restoration_achieved.value)
+            IncidentNode["IncidentReported"] = str(inc.time.incident_reported.value)
+
+        if inc.impact_assessment:
+            for i, impact in enumerate(inc.impact_assessment.effects):
+                IncidentNode["IncidentImpact"+ str(i)] = str(impact)
+
+        if inc.victims:
+            for i,victim in enumerate(inc.victims):
+                IncidentNode["IncidentVictim"+str(i)]= str(victim.name)
+
+        if inc.leveraged_ttps:
+            for i,relation in enumerate(inc.leveraged_ttps):
+                IncidentNode["IncidentRelatedTTP"+str(i)]= str(relation.relationship)
+                IncidentNode["IncidentRelatedTTPID"+str(i)]= str(relation.item.idref)
+
+        if inc.related_observables:
+            for i,obs in enumerate(inc.related_observables):
+                IncidentNode["IncidentObservableRelation"+str(i)]= str(obs.relationship)
+                IncidentNode["IncidentObservableFileName"+str(i)]= str(obs.item.object_.properties.file_name)
+                IncidentNode["IncidentObservableFilesize"+str(i)]= str(obs.item.object_.properties.size_in_bytes)
+                IncidentNode["IncidentObservableSHA256Digest"+str(i)]= str(obs.item.object_.properties.hashes[0].simple_hash_value)
+
+        if inc.affected_assets:
+            for i,asset in enumerate(inc.affected_assets):
+                if asset.description: IncidentNode["IncidentAffectedAssetsDesc"+str(i)]=  str(asset.description)
+                if asset.type_: IncidentNode["IncidentAffectedAssetsType"+str(i)]= str(asset.type_)
+                if asset.type_.count_affected: IncidentNode["IncidentAffectedAssetsCount"+str(i)]= str(asset.type_.count_affected)
+                if asset.business_function_or_role: IncidentNode["IncidentAffectedAssetsRole"+str(i)]= str(asset.business_function_or_role)
+                if asset.ownership_class: IncidentNode["IncidentAffectedAssetsOwner"+str(i)]= str(asset.ownership_class)
+                if asset.management_class:IncidentNode["IncidentAffectedAssetsManager"+str(i)]= str(asset.management_class)
+                if asset.location_class: IncidentNode["IncidentAffectedAssetsLocation"+str(i)]=  str(asset.location_class)
+
+            if asset.nature_of_security_effect:
+                for i,effect in enumerate(asset.nature_of_security_effect):
+                    if effect.property_: IncidentNode["IncidentSecurityEffectProperty"+str(i)]= str(effect.property_)
+                    if effect.description_of_effect: IncidentNode["IncidentSecurityEffectDesc"+str(i)]= str(effect.description_of_effect)
+                    if effect.non_public_data_compromised:
+                        IncidentNode["IncidentSecurityEffectCompromised"+str(i)]= str(effect.non_public_data_compromised)
+                    if effect.non_public_data_compromised.data_encrypted:
+                        IncidentNode["IncidentSecurityEffectCompromisedEncrypted"+str(i)]= str(effect.non_public_data_compromised.data_encrypted)
+
+
+def parse_threat_actors(threat_actors):
+    print "*****************************Threat Actors*******************************************************"
+    for actor in threat_actors:
+        ThreatActorNode = Node("ThreatActorNode",ThreatActorID=actor.id_, Timestamp = str(actor.timestamp))
+        stixGraph.run("CREATE CONSTRAINT ON (n:ThreatActorNode) ASSERT n.ThreatActorID IS UNIQUE")
+
+        if actor.title: ThreatActorNode["ActorTitle"] = actor.title
+        if actor.description: ThreatActorNode["ActorDescription"]= str(actor.description)
+        if actor.confidence: ThreatActorNode["ActorConfidence"]= str(actor.confidence.value.value)
+
+        # associate_campaigns, associated_actors, planning_and_operational_supports, types...
+        if actor.motivations:
+            for i,motivate in enumerate(actor.motivations):
+                if motivate.value: ThreatActorNode["Motivation"+ str(i)]= motivate.value.value
+                if motivate.confidence: ThreatActorNode["MotivationConfidence"+str(i)]= motivate.confidence
+                if motivate.description: ThreatActorNode["MotivationDescription"+str(i)]= motivate.description
+                if motivate.source: ThreatActorNode["MotivationSource"+str(i)] = motivate.source
+                if motivate.timestamp: ThreatActorNode["MotivationTimestamp"+str(i)] =  str(motivate.timestamp)
+
+        if actor.intended_effects:
+            for i,intend in enumerate(actor.intended_effects):
+                if intend.value: ThreatActorNode["IntendedEffect"+str(i)]= intend.value.value
+                if intend.confidence: ThreatActorNode["IntendedEffectConfidence"+str(i)]= intend.confidence
+                if intend.description: ThreatActorNode["IntendedEffectDescription"+str(i)]= intend.description
+                if intend.source: ThreatActorNode["IntendedEffectSource"+str(i)]= intend.source
+                if intend.timestamp: ThreatActorNode["IntendedEffectTimestamp"+str(i)]= str(intend.timestamp)
+
+        if actor.sophistications:
+            for i,sophisticate in enumerate(actor.sophistications):
+                if sophisticate.value: ThreatActorNode["Sophistication"+str(i)]= sophisticate.value.value
+                if sophisticate.confidence: ThreatActorNode["SophisticationConfidence"+str(i)]= sophisticate.confidence
+                if sophisticate.description: ThreatActorNode["SophisticationDescription"+str(i)]= sophisticate.description
+                if sophisticate.source: ThreatActorNode["SophisticationSource"+str(i)]= sophisticate.source
+                if sophisticate.timestamp: ThreatActorNode["SophisticationTimestamp"+str(i)]= str(sophisticate.timestamp)
+
+        if actor.observed_ttps:
+            for i,ttp in enumerate(actor.observed_ttps):
+                #observedTTPs.append(ttp.item.idref)
+                ThreatActorNode["ObservedTTP_ID"+str(i)]= ttp.item.idref
+                if ttp.relationship: ThreatActorNode["ObservedTTPRelationship"+str(i)]=  str(ttp.relationship)
+                if ttp.information_source: ThreatActorNode["ObservedTTPSource"+str(i)]=  ttp.information_source
+                if ttp.confidence: ThreatActorNode["ObservedTTPConfidence"+str(i)]= ttp.confidence
+'''
+    if actor.observed_ttps:
+        for obs in actor.observed_ttps:
+            print("RelatedTTP: " + str(pkg.find(obs.item.idref).title))
+            print("Relationship: " + str(obs.relationship))
+        print("Title: " + str(actor.title))
+        if actor.identity: print("Name: " + str(actor.identity.name))
+'''
 
 def print_parsed_data(pkg):
     kill_chains = {}
     kill_chain_phases = {}
 
     if pkg.campaigns:
-        logging.info('Should I create Null Values to make it STIX complaint?')
+        parse_campaigns(pkg.campaigns)
 
     if pkg.courses_of_action:
-        logging.info('Should I create Null Values to make it STIX complaint?')
+        parse_COA(pkg.courses_of_action)
 
     if pkg.exploit_targets:
-        logging.info('Should I create Null Values to make it STIX complaint?')
+        parse_exploit_target(pkg.exploit_targets)
 
     if pkg.incidents:
-        logging.info('Should I create Null Values to make it STIX complaint?')
+        parse_incidents(pkg.incidents)
 
     if pkg.related_packages:
-        logging.info('Should I create Null Values to make it STIX complaint?')
+        logging.info('Related Packages to be handled separately..? ')
 
     if pkg.reports:
-        logging.info('Should I create Null Values to make it STIX complaint?')
+        parse_reports(pkg.reports)
 
     if pkg.threat_actors:
-        logging.info('Should I create Null Values to make it STIX complaint?')
+        parse_threat_actors(pkg.threat_actors)
 
     if pkg.stix_header:
         parse_header(pkg.stix_header, pkg._id)
@@ -1042,13 +1314,11 @@ def print_parsed_data(pkg):
     if pkg.indicators:
         parse_indicators(pkg.indicators, kill_chains, kill_chain_phases, pkg._id)
 
-        #ts = time.mktime, (pkg.timestamp.timetuple()) if pkg.timestamp else int(time.mktime(time.gmtime()))
-
-
 def parse_file(myfile):
     f = open(myfile)
     #parse the input file
     logging.info('Parsing input file '+str(f))
+
     try:
         stix_package = STIXPackage.from_xml(f)
     #graphMain(stix_package)
@@ -1062,15 +1332,14 @@ def parse_file(myfile):
     #Close file
     f.close()
 
-
 def test_file(myfile):
     logging.info('Opening test file to parse')
     parse_file(myfile)
 
 
 def main():
-    test_file('../TEST/1.xml')
-    #test_file('../TEST/8.xml')
+    test_file('../TEST/Tryout.xml')
+    #test_file('../TEST/11.xml')
     #test_files()
     #test_GreenIOC()
 
