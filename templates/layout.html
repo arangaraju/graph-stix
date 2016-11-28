@@ -1,0 +1,56 @@
+$def with (content)
+
+<!DOCTYPE html>
+<html>
+    <head>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" ></script>
+		<script>
+			function showTable() {
+
+			}
+    	</script>
+
+		<style>
+
+			.container {
+			background : -webkit-linear-gradient(top, #ACBDC8 0.0%, #6C7885 100.0%) no-repeat;
+			border : 3px solid #333;
+			}
+
+			header, footer {
+				padding: 1em;
+				color: white;
+				background-color: black;
+				clear: left;
+				text-align: center;
+			}
+
+			h2 {
+			font-family : "Times New Roman", Times, serif;
+			text-align : center;
+			}
+
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			td, th {
+				border: 1px solid #dddddd;
+				text-align: left;
+				padding: 8px;
+			}
+
+			tr:nth-child(even) {
+				background-color: #dddddd;
+			}
+		</style>
+    </head>
+    <body>
+
+        $:content
+
+    </body>
+</html>

@@ -1,0 +1,37 @@
+$def with (greeting,title)
+
+<div class = "container" style="width:100% ; height:768px;">
+	<div style="margin-left:auto; margin-right:auto;">
+		$if greeting:
+			I just wanted to say <em style="color: green; font-size: 2em;">$greeting</em>.
+		$else:
+			<em>Hello</em>, world!
+	</div>
+
+	<div>
+		<table>
+
+			<tr>
+				<th> Col 1 </th>
+			</tr>
+			$for t in title:
+				<tr>
+					<td>$t</td>
+				</tr>
+		</table>
+	</div>
+	<div>
+		<form action="/threat" method="POST">
+			<select name="threatIDRealWorld">
+			  <option value="IP">IP-Address</option>
+			  <option value="Email">Email(From Address)</option>
+			  <option value="File">FileHashValue</option>
+			  <option value="URL">URI</option>
+			</select>
+			<br/>
+			Enter the value of selected type: <input type="text" name="threatVal">
+			<br/>
+			<input type="submit">
+		</form>
+	</div>
+</div>
