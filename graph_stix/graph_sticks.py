@@ -47,7 +47,6 @@ logging.basicConfig(format=u'[%(asctime)s]  %(message)s', level=logging.INFO)
 stixGraph = Graph("http://neo4j:neo4jtest@127.0.0.1:7474/db/data")
 stixGraph.delete_all()
 #stixGraph.run("DROP CONSTRAINT ON (k:KillChainPhaseNode)ASSERT k.ID IS UNIQUE")
-#stixGraph.run("DROP CONSTRAINT ON (t:TTPNode)ASSERT t.ID IS UNIQUE")
 
 #stixGraph.run("MATCH (n) DETACH DELETE n")
 #Init Node
@@ -111,7 +110,7 @@ def parse_observables(observables, StixFileID, indicatorID):
     for obs in observables:
         parse_observable(obs, StixFileID, objRelated, indicatorID)
 
-    if bool(objRelated):
+    if len(objRelated) != 0 :
         for key, val in objRelated:
             objNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=key)
             relObjNode = stixGraph.find_one("ObservableNode", property_key="RelatedObjectID", property_value= val)
@@ -517,7 +516,7 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
 
         if prop.xsi_type: ObservableNode["xsiType"] = prop.xsi_type
 
-        print "HandleWindowsRegistryKeyObjectType Win Registry Key Object"
+        #print "HandleWindowsRegistryKeyObjectType Win Registry Key Object"
 
     else:
         ObservableNode["xsiType"] = prop.xsi_type
@@ -525,19 +524,23 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
 
     if obj.Object.Related_Objects:
         reltd = obj.Object.Related_Objects.Related_Object
-        for reltdObj in reltd:
-            ObservableNode["RelatedObjectID"] = reltdObj.id
-            objRelated[str(obj.Object.id)] = str(reltdObj.id)
+        for i,reltdObj in enumerate(reltd):
+            ObservableNode["RelatedObjectID"+str(i)] = reltdObj.id
+            if obj.Object.id and reltdObj.id:
+                objRelated[str(obj.Object.id)] = str(reltdObj.id)
             if (type(reltdObj.Properties) == MutexObjectType):
+                '''
                 print "Handle Mutex Type Object"
                 print " Properties : \n\t"+reltdObj.Properties.Name.apply_condition+"\n\t"
                 print reltdObj.Properties.Name.condition+"\n\t"
                 print reltdObj.Properties.Name.delimiter+"\n\t"
                 print reltdObj.Properties.Name.valueOf_
+                '''
+                ObservableNode["RelatedObjMutexValue"+str(i)]= str(reltdObj.Properties.Name.valueOf_)
             elif (type(reltdObj.Properties) == FileObjectType):
-                print "Handle File Object"
-                print "Properties :\n\t"+reltdObj.Properties.File_Name.valueOf_
-                print "\t"+reltdObj.Properties.File_Extension.valueOf_
+                #print "Handle File Object"
+                ObservableNode["RelatedObjFileName"+str(i)]= reltdObj.Properties.File_Name.valueOf_
+                ObservableNode["RelatedObjFileExtension"+str(i)]= reltdObj.Properties.File_Extension.valueOf_
             else:
                 print "Related Object to be handled"
 
@@ -560,6 +563,8 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
 def parse_header(header, StixFileID):
     print "***********************************************HEADER*********************************************"
     head = header.to_obj()
+    HeaderNode = Node("HeaderNode",Title=header.title, Description= str(header.description), STIXFileID=StixFileID)
+
     #head.Profiles
     #head.Title
 
@@ -614,7 +619,6 @@ def parse_header(header, StixFileID):
 
     dt = ""
     tm = ""
-    print "Title:\n\t" + head.Title
     for h in head.Description:
         desc = h.valueOf_
         print "Description:\n" + desc + "\n"
@@ -629,6 +633,9 @@ def parse_header(header, StixFileID):
     tm2, ms = tm.split("+", 1)
     HH, MM, SS = tm2.split(":", 2)
 
+    HeaderNode["ProducedDate"]= dt
+    HeaderNode["ProducedTime"] = tm
+
     months = {"01": 'Jan', "02": 'Feb', "03": 'Mar', "04": 'Apr', "05": 'May', "06": 'Jun', "07": 'Jul',
               "08": 'Aug', "09": 'Sep', "10": 'Oct', "11": 'Nov', "12": 'Dec'}
     print "Produced Date:" + day + " " + str(months.get(month)) + ", " + year
@@ -638,11 +645,13 @@ def parse_header(header, StixFileID):
 
     for pkInt in head.Package_Intent:
         print "XSI-TYPE: " + pkInt.xsi_type
+        HeaderNode["PackageIntent"]=pkInt.valueOf_
 
     for mark in head.Handling.Marking:
         print "Marking:\n\t Controlled Structure: " + mark.Controlled_Structure
         for struc in mark.Marking_Structure:
             color = struc.color
+            HeaderNode["MarkingColor"]= color
             print "\t\tMarking Color: " + color
             #struc.id
             #struc.idref
@@ -651,10 +660,8 @@ def parse_header(header, StixFileID):
             print "\t\t XML-TYPE: " + struc.xml_type
             print "\t\tXML-Namespace: " + struc.xmlns
             print "\t\tXMLNS Prefix: " + struc.xmlns_prefix
-    headNode = Node("HeaderNode", Title=head.Title, Description=desc, ProducedDate=dt, ProducedTime=tm,
-                    PkgIntent_xsiType=pkInt.xsi_type, MarkingColor=color, xmlType=struc.xml_type,
-                    xmlns=struc.xmlns, xmlnsPrefix=struc.xmlns_prefix, STIXFileID=StixFileID)
-    rel = Relationship(init_node, "HeaderGraphLink", headNode, connect="To make sure graph isn't disconnected",
+
+    rel = Relationship(init_node, "HeaderGraphLink", HeaderNode, connect="To make sure graph isn't disconnected",
                        STIXFileID=StixFileID)
     stixGraph.merge(rel)
 
@@ -870,7 +877,7 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             print "Kill Chain Name: " + kill_chains[phase.kill_chain_id]
             print "Phase[" + str(phase.ordinality) + "] = " + kill_chain_phases[phase.phase_id]
         ##########################################################################################################
-            ######################CONNECT kill chain phase TO TTPNode's kill chain phsase ?
+            ######################CONNECT kill chain phase TO TTPKillChainNode's kill chain phsase ?
 
         phaseNode = stixGraph.find_one("KillChainPhaseNode", property_key="PhaseName", property_value=phase.name)
         #stixGraph.run("CREATE CONSTRAINT ON (n:IndicatorNode) ASSERT n.ID IS UNIQUE")
@@ -914,16 +921,16 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
         for obs in indicator.observables:
             obsNode = stixGraph.find_one("ObservableNode", property_key="ObservableID", property_value= obs.id_)
             indiNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value=id)
-            relInd = Relationship(indiNode,"IndicatorObservableLink",
-                                  obsNode,  STIXFileID= StixFileID,
-                                  IndicatorID = id,
-                                  ObservableID = obs.id_ ,
-                                  connect="Indicator-Observable Link, if it exists. \
-                                          http://stixproject.github.io/data-model/1.2/cybox/ObservableType/")
-            try:
+            if obsNode and indiNode:
+                relInd = Relationship(indiNode,"IndicatorObservableLink",
+                                      obsNode,  STIXFileID= StixFileID,
+                                      IndicatorID = id,
+                                      ObservableID = obs.id_ ,
+                                      connect="Indicator-Observable Link, if it exists. \
+                                              http://stixproject.github.io/data-model/1.2/cybox/ObservableType/")
+
                 stixGraph.merge(relInd)
-            except AttributeError:
-                pass
+
 
     for indValKey in keyIndValueList:
         indTypeNode = stixGraph.find_one("IndicatorTypeNode", property_key="IndicatorTypeValue", property_value=indValKey)
@@ -976,29 +983,39 @@ def parse_indicators(indicators, kill_chains, kill_chain_phases, StixFileID):
 def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
     print "***********************************************TTPS*********************************************"
     for tactic in ttp:
-        print("---")
-        print("Title : " + tactic.title)
-        print("TTP ID: "+ tactic.id_)
+        #print("TTPID: "+ tactic.id_)
+        stixGraph.run("CREATE CONSTRAINT ON (n:TTPKillChainNode) ASSERT n.Name IS UNIQUE")
+        desc= " Tactics, Techniques, and Procedures (TTP) contains leverage that help salve a threat." \
+              "It contains information about vulnerabilities, misconfigurations, weaknesses likely to be targeted and " \
+              "actions taken in the past to overcome them."
+        TTPNode = Node("TTPNode", TTPDesc = desc, TTPID = tactic.id_ , Timestamp = str() )
+
+        if tactic.title: TTPNode["TTPTitle"]= tactic.title
         if tactic.behavior:
             if tactic.behavior.attack_patterns:
-                for behave in tactic.behavior.attack_patterns:
-                    print("CAPEC: " + str(behave.capec_id))
-                    print("Description: " + str(behave.description))
+                for i,behave in enumerate(tactic.behavior.attack_patterns):
+                    TTPNode["TTP_CAPEC_ID"+str(i)]= str(behave.capec_id)
+                    TTPNode["TTPAttackPatternDescription"+str(i)]= str(behave.description)
+            if tactic.behavior.exploits:
+                for i, exp in enumerate(tactic.behavior.exploits):
+                    if exp.id_ : TTPNode["TTPExploitsID"]= str(exp.id_)
+                    if exp.description: TTPNode["TTPExploitsDescription"+str(i)]= str(exp.description)
+                    if exp.title: TTPNode["TTPExploitsTitle"+str(i)]= str(exp.title)
             if tactic.behavior.malware_instances:
-                for sample in tactic.behavior.malware_instances:
-                    print("Sample: " + str(sample.names[0]))
-                    print("Type: " + str(sample.types[0]))
-
-    #print "-------------------TTP Kill Chains----------------------------"
+                for i,sample in enumerate(tactic.behavior.malware_instances):
+                    TTPNode["TTPMalwareSample"+str(i)]= str(sample.names[0])
+                    TTPNode["TTPMalwareType"+str(i)]= str(sample.types[0])
+                    TTPNode["TTPMalwareID"+str(i)]= sample.id_
+        #intended_effects, kill_chain_phases, related_packages, related_ttps, victim_targeting
     for chain in ttp.kill_chains:
         kill_chains[chain.id_] = chain.name
 
-        desc = "Tactics,Techniques, Procedures. Contains kill chains that can be adopted when we encounter a threat.Connected to initNode"
-        stixGraph.run("CREATE CONSTRAINT ON (n:TTPNode) ASSERT n.Name IS UNIQUE")
-        TTPNode = Node("TTPNode", Description=desc, Name=chain.name, Definer=chain.definer, Reference=chain.reference,
+        desc = "Contains kill chains that can be adopted when we encounter a threat.Connected to initNode"
+        stixGraph.run("CREATE CONSTRAINT ON (n:TTPKillChainNode) ASSERT n.Name IS UNIQUE")
+        TTPKillChainNode = Node("TTPKillChainNode", Description=desc, Name=chain.name, Definer=chain.definer, Reference=chain.reference,
                        NoOfPhases=chain.number_of_phases, ID=chain.id_, STIXFileID=StixFileID)
 
-        rel = Relationship(init_node, "TTPGraphLink", TTPNode, connect="To make sure graph isn't disconnected")
+        rel = Relationship(init_node, "TTPGraphLink", TTPKillChainNode, connect="To make sure graph isn't disconnected")
         try:
             stixGraph.merge(rel)
         except ConstraintError:
@@ -1012,7 +1029,7 @@ def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
             KillChainPhaseNode = Node("KillChainPhaseNode", Description=desc, Ordinality=phase.ordinality,
                                       PhaseName=phase.name, ID=phase.phase_id, Chain_ID=chain.id_,
                                       STIXFileID=StixFileID)
-            reln = Relationship(TTPNode, "TTPKillChainPhaseLink", KillChainPhaseNode, connect="Phases Of KillChain")
+            reln = Relationship(TTPKillChainNode, "TTPKillChainPhaseLink", KillChainPhaseNode, connect="Phases Of KillChain")
 
             try:
                 stixGraph.merge(reln)
@@ -1070,31 +1087,37 @@ def parse_reports(reports):
 def parse_COA(course_of_action):
     print "*****************************COA*******************************************************"
     for coa in course_of_action:
-        print("---")
-        print("COA: " + coa.title)
-        print("Stage: "+ str(coa.stage))
-        print("Type: "+ str(coa.type_))
+        COANode = Node("COANode", Desc= "CoursesOfAction", COAID=coa.id_)
+        COANode["COACost"]= str(coa.cost.value)
+        COANode["COAEfficacy"]= str(coa.efficacy.value)
+        COANode["COAImpact"]= str(coa.impact.value)
+        COANode["COAImpactDescription"]= str(coa.impact.description)
+        COANode["COAObjectiveDescription"]= str(coa.objective.description)
+        COANode["COAObjectiveApplicabilityConfidence"]= str(coa.objective.applicability_confidence.value)
         for obs in coa.parameter_observables.observables:
-            print("Observable: " + str(obs.object_.properties.address_value))
+            COANode["COAObservableProperty"]= str(obs.object_.properties.address_value)
+        COANode["COAStage"]= str(coa.stage)
+        COANode["COAType"]= str(coa.type_)
+        COANode["COATitle"]= coa.title
 
-        print("---")
-        print("Objective: "+ str(coa.objective.description))
-        print("Confidence: "+ str(coa.objective.applicability_confidence.value))
-        print("---")
-        print("Impact: "+ str(coa.impact.value))
-        print("Description: "+ str(coa.impact.description))
-        print("---")
-        print("Cost: "+ str(coa.cost.value))
-        print("Efficacy: "+ str(coa.efficacy.value))
-
-
-def parse_exploit_target(exploit_target):
+def parse_exploit_target(exploit_targets):
     print "*****************************Exploit Target*******************************************************"
-    for target in exploit_target:
-        print("---")
-        print("Title : " + target.title)
-        for vuln in target.vulnerabilities:
-            print("CVE: " + vuln.cve_id)
+    for target in exploit_targets:
+        ExploitTargetNode = Node("ExploitTargetNode", Description="Exploit Targets", ExploitTargetID=target.id_)
+        if target.description: ExploitTargetNode["ExploitTargetDescription"]= str(target.description)
+        if target.handling: ExploitTargetNode["ExploitTargetHandling"]= str(target.handling)
+        if target.information_source: ExploitTargetNode["ExploitTargetSource"]= str(target.information_source)
+        if target.potential_coas: ExploitTargetNode["ExploitTargetPotentialCOA"]= str(target.potential_coas)
+        if target.related_exploit_targets: ExploitTargetNode["RelatedExploitTargets"]= str(target.related_exploit_targets)
+        if target.related_packages: ExploitTargetNode["ExploitTargetRelatedPackages"]= str(target.related_packages)
+        if target.timestamp: ExploitTargetNode["ExploitTargetTimestamp"]= str(target.timestamp)
+        if target.title: ExploitTargetNode["ExploitTargetTitle"]= target.title
+        if target.vulnerabilities:
+            for i, vulnerable in enumerate(target.vulnerabilities):
+                ExploitTargetNode["ExploitTargetVulnerabilityCVE"+str(i)]= vulnerable.cve_id
+        if target.weaknesses:
+            for i,weak in enumerate(target.weaknesses):
+                ExploitTargetNode["ExploitTargetWeaknesses"+str(i)]= str(target.weaknesses)
 
 
 def parse_campaigns(campaigns):
@@ -1294,7 +1317,7 @@ def print_parsed_data(pkg):
         parse_incidents(pkg.incidents)
 
     if pkg.related_packages:
-        logging.info('Related Packages to be handled separately..? ')
+        logging.info('Related Packages to be handled separately..')
 
     if pkg.reports:
         parse_reports(pkg.reports)
@@ -1319,6 +1342,10 @@ def parse_file(myfile):
     #parse the input file
     logging.info('Parsing input file '+str(f))
 
+    stix_package = STIXPackage.from_xml(f)
+    print_parsed_data(stix_package)
+
+    '''
     try:
         stix_package = STIXPackage.from_xml(f)
     #graphMain(stix_package)
@@ -1328,7 +1355,7 @@ def parse_file(myfile):
         logging.info('Input file %s cannot be parsed', str(f))
         f.close()
         return
-
+    '''
     #Close file
     f.close()
 
@@ -1342,7 +1369,6 @@ def main():
     #test_file('../TEST/11.xml')
     #test_files()
     #test_GreenIOC()
-
 
 if __name__ == '__main__':
     main()
