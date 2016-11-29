@@ -184,6 +184,15 @@ def parse_observable(obs, StixFileID, indicatorID, incidentID):
 
     elif (type(prop) == URIObjectType):
 
+        ObservableNode["Type"] = prop.type_
+        ObservableNode["ApplyCondition"] = prop.Value.apply_condition
+        #ObservableNode["Condition"] = prop.Value.condition
+        #ObservableNode["Delimiter"] = prop.Value.delimiter
+        ObservableNode["Value"] = prop.Value.valueOf_
+
+
+    elif type(prop) == EmailMessageObjectType:
+
         #Email Header has the following attributes: message_id, from, sender, subject
         emailHeader = prop.Header
         if emailHeader:
