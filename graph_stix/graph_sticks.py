@@ -51,9 +51,8 @@ stixGraph.delete_all()
 #stixGraph.run("MATCH (n) DETACH DELETE n")
 #Init Node
 desc = "This Node will connect to LM Kill Chain, all STIX Header,Observable nodes to make sure the graph is not disconnected"
-NodeID = "InitNode"
-stixGraph.run("CREATE CONSTRAINT ON (n:InitNode) ASSERT n.ID IS UNIQUE")
-init_node = Node("StixGraph", Description=desc, ID=NodeID)
+stixGraph.run("CREATE CONSTRAINT ON (n:InitNode) ASSERT n.NodeID IS UNIQUE")
+init_node = Node("StixGraph", Description=desc, NodeID="InitNode")
 stixGraph.create(init_node)
 
 
@@ -105,11 +104,12 @@ def test_files():
     logging.info('Closing files in TEST')
 
 
-def parse_observables(observables, StixFileID, indicatorID):
-    objRelated = {}
+def parse_observables(observables, StixFileID, indicatorID, incidentID):
+    #objRelated = {}
     for obs in observables:
-        parse_observable(obs, StixFileID, objRelated, indicatorID)
-
+        #parse_observable(obs, StixFileID, objRelated, indicatorID, incidentID)
+        parse_observable(obs, StixFileID, indicatorID,incidentID)
+    '''
     if len(objRelated) != 0 :
         for key, val in objRelated:
             objNode = stixGraph.find_one("ObservableNode", property_key="ObjectID", property_value=key)
@@ -123,17 +123,19 @@ def parse_observables(observables, StixFileID, indicatorID):
                     pass
                 except AttributeError:
                     pass
-
-def parse_observable(obs, StixFileID, objRelated, indicatorID):
+    '''
+#def parse_observable(obs, StixFileID, objRelated, indicatorID, incidentID):
+def parse_observable(obs, StixFileID, indicatorID, incidentID):
     obj = obs.to_obj()
     if not obj or not hasattr(obj, "Object") or not hasattr(obj.Object, "Properties"): return
     prop = obj.Object.Properties
 
     stixGraph.run("CREATE CONSTRAINT ON (n:ObservableNode) ASSERT n.ObservableID IS UNIQUE")
     ObservableNode = Node("ObservableNode", ObservableID=obs.id_, ObjectID=obj.Object.id,
-                          xsiType=prop.xsi_type, STIXFileID=StixFileID)
-
-    if indicatorID != None: ObservableNode["IndicatorID"] = indicatorID
+                          xsiType=prop.xsi_type,STIXFileID=StixFileID)
+    if indicatorID: ObservableNode["IndicatorID"]= indicatorID
+    if incidentID:
+        ObservableNode["IncidentID"]= incidentID
 
     #print "Observable: " + obs.id_  #Observable ID
     #obj = obs.get('object')
@@ -199,7 +201,7 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
         # prop.File_Name.valueOf_
 
         try:
-            print "Size(in Bytes) : " + str(prop.Size_In_Bytes.valueOf_)
+            #print "Size(in Bytes) : " + str(prop.Size_In_Bytes.valueOf_)
             ObservableNode["SizeInBytes"] = prop.Size_In_Bytes.valueOf_
         except AttributeError:
             size = 0
@@ -226,7 +228,7 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
                 else:
                     hashVal = 0  #hash.Fuzzy_Hash_Structure
                     hashType = "Fuzzy Structure"
-                print "Hash(Type : Value) " + str(h) + ":" + str(hashVal)
+                #print "Hash(Type : Value) " + str(h) + ":" + str(hashVal)
                 if h!= None:
                     ObservableNode[h]=hashVal
     elif (type(prop) == AddressObjectType):
@@ -310,8 +312,8 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
 
         ObservableNode["Type"] = prop.type_
         ObservableNode["ApplyCondition"] = prop.Value.apply_condition
-        ObservableNode["Condition"] = prop.Value.condition
-        ObservableNode["Delimiter"] = prop.Value.delimiter
+        #ObservableNode["Condition"] = prop.Value.condition
+        #ObservableNode["Delimiter"] = prop.Value.delimiter
         ObservableNode["Value"] = prop.Value.valueOf_
 
 
@@ -431,16 +433,17 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
         #Email Header has the following attributes: message_id, from, sender, subject
         emailHeader = prop.Header
         if emailHeader:
-            if emailHeader.Message_ID: ObservableNode["MessageID"] = emailHeader.Message_ID.valueOf_
+            if emailHeader.Message_ID:
+                ObservableNode["MessageID"] = emailHeader.Message_ID.valueOf_
 
             if emailHeader.From:
-                print "\t" + emailHeader.From.category + " (ObjType " + emailHeader.From.xsi_type + ") from " + emailHeader.From.Address_Value.valueOf_
+                #print "\t" + emailHeader.From.category + " (ObjType " + emailHeader.From.xsi_type + ") from " + emailHeader.From.Address_Value.valueOf_
 
                 ObservableNode["From_Category"] = emailHeader.From.category
                 ObservableNode["From_xsiType"] = emailHeader.From.xsi_type
                 ObservableNode["From_AddressValue"] = emailHeader.From.Address_Value.valueOf_
             if emailHeader.Sender:
-                print "\t" + emailHeader.Sender.category + " (ObjType: " + emailHeader.Sender.xsi_type + ") sent to " + emailHeader.Sender.Address_Value.valueOf_
+                #print "\t" + emailHeader.Sender.category + " (ObjType: " + emailHeader.Sender.xsi_type + ") sent to " + emailHeader.Sender.Address_Value.valueOf_
 
                 ObservableNode["Sender_Category"] = emailHeader.Sender.category
                 ObservableNode["Sender_xsiType"] = emailHeader.Sender.xsi_type
@@ -502,7 +505,6 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
             ObservableNode["xsiType"] = prop.xsi_type
 
     elif ( type(prop)== WindowsRegistryKeyObjectType):
-        print "WindowsRegistryKeyObjectType"+prop.xsi_type
         if prop.Byte_Runs: ObservableNode["ByteRuns"] = prop.Byte_Runs
         if prop.Creator_Username: ObservableNode["CreatorUsername"]= prop.Creator_Username
         if prop.Hive: ObservableNode["HiveValue"] = prop.Hive.valueOf_
@@ -518,6 +520,9 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
 
         #print "HandleWindowsRegistryKeyObjectType Win Registry Key Object"
 
+    elif (type(prop)== MutexObjectType):
+        ObservableNode["xsiType"] = prop.xsi_type
+        ObservableNode["MutexValue"]=prop.Name.valueOf_
     else:
         ObservableNode["xsiType"] = prop.xsi_type
         print "Handle "+ prop.xsi_type
@@ -526,8 +531,8 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
         reltd = obj.Object.Related_Objects.Related_Object
         for i,reltdObj in enumerate(reltd):
             ObservableNode["RelatedObjectID"+str(i)] = reltdObj.id
-            if obj.Object.id and reltdObj.id:
-                objRelated[str(obj.Object.id)] = str(reltdObj.id)
+            #if obj.Object.id and reltdObj.id:
+                #objRelated[str(obj.Object.id)] = str(reltdObj.id)
             if (type(reltdObj.Properties) == MutexObjectType):
                 '''
                 print "Handle Mutex Type Object"
@@ -541,6 +546,8 @@ def parse_observable(obs, StixFileID, objRelated, indicatorID):
                 #print "Handle File Object"
                 ObservableNode["RelatedObjFileName"+str(i)]= reltdObj.Properties.File_Name.valueOf_
                 ObservableNode["RelatedObjFileExtension"+str(i)]= reltdObj.Properties.File_Extension.valueOf_
+            elif (type(reltdObj.Properties) == AddressObjectType):
+                ObservableNode["RelatedObjAddressValue"+str(i)]= str(reltdObj.Properties.Address_Value.valueOf_)
             else:
                 print "Related Object to be handled"
 
@@ -675,15 +682,14 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
     IndicatorNode = Node("IndicatorNode", Description=desc, STIXFileID=StixFileID, ID=indicator.id_)
     #rel = Relationship(init_node, "IndicatorGraphLink", IndicatorNode, connect="To make sure graph isn't disconnected",STIXFileID=StixFileID)
 
-
     if indicator.confidence: IndicatorNode["Confidence"] = str(indicator.confidence)
-    if indicator.handling: IndicatorNode["Handling"] = pprint(indicator.handling)
-    if indicator.information_source: IndicatorNode["InformationSource"] = pprint(indicator.information_source)
-    if indicator.likely_impact: IndicatorNode["LikelyImpact"] = pprint(indicator.likely_impact)
+    if indicator.handling: IndicatorNode["Handling"] = str(indicator.handling)
+    if indicator.information_source: IndicatorNode["InformationSource"] = str(indicator.information_source)
+    if indicator.likely_impact: IndicatorNode["LikelyImpact"] = str(indicator.likely_impact)
     if indicator.negate: IndicatorNode["IndicatorNegate"] = indicator.negate
-    if indicator.producer: IndicatorNode["Producer"] = pprint(indicator.producer)
-    if indicator.short_description: IndicatorNode["ShortDescription"] = pprint(indicator.short_descriptions)
-    if indicator.suggested_coas: IndicatorNode["SuggestedCOA"] = pprint(indicator.suggested_coas)
+    if indicator.producer: IndicatorNode["Producer"] = str(indicator.producer)
+    if indicator.short_description: IndicatorNode["ShortDescription"] = str(indicator.short_descriptions)
+    if indicator.suggested_coas: IndicatorNode["SuggestedCOA"] = str(indicator.suggested_coas)
     if indicator.timestamp: IndicatorNode["Timestamp"] = str(indicator.timestamp)
     if indicator.title: IndicatorNode["Title"] = indicator.title
     if indicator.version: IndicatorNode["Version"] = indicator.version
@@ -692,6 +698,18 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
 
     if indicator.description:
         if indicator.description.value: IndicatorNode["IndicatorDescription"] = indicator.description.value
+    if indicator.sightings:
+        IndicatorNode["SightingsCount"] = indicator.sightings.sightings_count
+        for s in indicator.sightings:
+            if s.timestamp and s.timestamp_precision:
+                IndicatorNode["SightingsTimestamp"] = str(s.timestamp)
+                IndicatorNode["SightingsTimestampPrecision"] = str(s.timestamp_precision)
+                #print "Timestamp " + str(s.timestamp) + " with precision upto " + s.timestamp_precision
+            if s.confidence: IndicatorNode["SightingsConfidence"] = s.confidence
+            if s.description: IndicatorNode["SightingsDescription"] = s.description
+            if s.reference: IndicatorNode["SightingsReference"] = s.reference
+            if s.related_observables: IndicatorNode["SightingsRelatedObservables"] = pprint(s.related_observables)
+            if s.source: IndicatorNode["SightingsSource"] = pprint(s.source)
 
     if indicator.indicator_types:
         stixGraph.run("CREATE CONSTRAINT ON (n:AllowedIndicatorTypesNode) ASSERT n.Description is UNIQUE")
@@ -703,11 +721,24 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.value: IndicatorNode["IndicatorTypeValue"] = keyInd.value
             keyIndValueList.append(keyInd.value)
             if keyInd.xsi_type: IndicatorNode["xsiType"] = keyInd.xsi_type
+            AllowedIndicatorTypesNode[keyInd.TERM_ANONYMIZATION] = "TERM_ANONYMIZATION"
+            AllowedIndicatorTypesNode[keyInd.TERM_C2] =  "TERM_C2"
+            AllowedIndicatorTypesNode[keyInd.TERM_COMPROMISED_PKI_CERTIFICATE] = "TERM_COMPROMISED_PKI_CERTIFICATE"
+            AllowedIndicatorTypesNode[keyInd.TERM_DOMAIN_WATCHLIST] = "TERM_DOMAIN_WATCHLIST"
+            AllowedIndicatorTypesNode[keyInd.TERM_EXFILTRATION] =  "TERM_EXFILTRATION"
+            AllowedIndicatorTypesNode[keyInd.TERM_FILE_HASH_WATCHLIST] =  "TERM_FILE_HASH_WATCHLIST"
+            AllowedIndicatorTypesNode[keyInd.TERM_HOST_CHARACTERISTICS] =  "TERM_HOST_CHARACTERISTICS"
+            AllowedIndicatorTypesNode[keyInd.TERM_IMSI_WATCHLIST] =  "TERM_IMSI_WATCHLIST"
+            AllowedIndicatorTypesNode[keyInd.TERM_MALWARE_ARTIFACTS] = "TERM_MALWARE_ARTIFACTS"
+            AllowedIndicatorTypesNode[keyInd.TERM_LOGIN_NAME] =  "TERM_LOGIN_NAME"
+            AllowedIndicatorTypesNode[keyInd.TERM_IMEI_WATCHLIST] =  "TERM_IMEI_WATCHLIST"
+            AllowedIndicatorTypesNode[keyInd.TERM_IP_WATCHLIST] =  "TERM_IP_WATCHLIST"
+            AllowedIndicatorTypesNode[keyInd.TERM_URL_WATCHLIST] = "TERM_URL_WATCHLIST"
+            AllowedIndicatorTypesNode[keyInd.TERM_MALICIOUS_EMAIL] = "TERM_MALICIOUS_EMAIL"
 
             if keyInd.TERM_ANONYMIZATION != None :
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                                 IndicatorTypeValue = keyInd.TERM_ANONYMIZATION)
-                AllowedIndicatorTypesNode[keyInd.TERM_ANONYMIZATION] = "TERM_ANONYMIZATION"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_ANONYMIZATION")
@@ -718,7 +749,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_C2 != None :
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                                 IndicatorTypeValue = keyInd.TERM_C2)
-                AllowedIndicatorTypesNode[keyInd.TERM_C2] =  "TERM_C2"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_C2")
@@ -726,10 +756,9 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
                 except ConstraintError:
                     pass
 
-            if keyInd.TERM_COMPROMISED_PKI_CERTIFICATE != None :
+            if keyInd.TERM_COMPROMISED_PKI_CERTIFICATE:
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                                 IndicatorTypeValue = keyInd.TERM_COMPROMISED_PKI_CERTIFICATE)
-                AllowedIndicatorTypesNode[keyInd.TERM_COMPROMISED_PKI_CERTIFICATE] =  "TERM_COMPROMISED_PKI_CERTIFICATE"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_COMPROMISED_PKI_CERTIFICATE")
@@ -740,7 +769,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_DOMAIN_WATCHLIST != None :
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                                 IndicatorTypeValue = keyInd.TERM_DOMAIN_WATCHLIST)
-                AllowedIndicatorTypesNode[keyInd.TERM_DOMAIN_WATCHLIST] =  "TERM_DOMAIN_WATCHLIST"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_DOMAIN_WATCHLIST")
@@ -752,7 +780,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_EXFILTRATION != None :
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                                 IndicatorTypeValue = keyInd.TERM_EXFILTRATION)
-                AllowedIndicatorTypesNode[keyInd.TERM_EXFILTRATION] =  "TERM_EXFILTRATION"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_EXFILTRATION")
@@ -763,7 +790,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_FILE_HASH_WATCHLIST != None :
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                                 IndicatorTypeValue = keyInd.TERM_FILE_HASH_WATCHLIST)
-                AllowedIndicatorTypesNode[keyInd.TERM_FILE_HASH_WATCHLIST] =  "TERM_FILE_HASH_WATCHLIST"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_FILE_HASH_WATCHLIST")
@@ -774,7 +800,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_HOST_CHARACTERISTICS != None :
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                                 IndicatorTypeValue = keyInd.TERM_HOST_CHARACTERISTICS)
-                AllowedIndicatorTypesNode[keyInd.TERM_HOST_CHARACTERISTICS] =  "TERM_HOST_CHARACTERISTICS"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_HOST_CHARACTERISTICS")
@@ -785,7 +810,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_IMEI_WATCHLIST != None :
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                         IndicatorTypeValue = keyInd.TERM_IMEI_WATCHLIST)
-                AllowedIndicatorTypesNode[keyInd.TERM_IMEI_WATCHLIST] =  "TERM_IMEI_WATCHLIST"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_IMEI_WATCHLIST")
@@ -796,7 +820,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_IMSI_WATCHLIST != None :
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                         IndicatorTypeValue = keyInd.TERM_IMSI_WATCHLIST)
-                AllowedIndicatorTypesNode[keyInd.TERM_IMSI_WATCHLIST] =  "TERM_IMSI_WATCHLIST"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_IMSI_WATCHLIST")
@@ -807,7 +830,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_IP_WATCHLIST != None :
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                         IndicatorTypeValue = keyInd.TERM_IP_WATCHLIST)
-                AllowedIndicatorTypesNode[keyInd.TERM_IP_WATCHLIST] =  "TERM_IP_WATCHLIST"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_IP_WATCHLIST")
@@ -818,7 +840,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_LOGIN_NAME:
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                         IndicatorTypeValue = keyInd.TERM_LOGIN_NAME)
-                AllowedIndicatorTypesNode[keyInd.TERM_LOGIN_NAME] =  "TERM_LOGIN_NAME"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_LOGIN_NAME")
@@ -830,7 +851,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
                 nodeType = Node("IndicatorTypeNode", Description="To Group Indicators based on their Type",
                                 IndicatorTypeValue= keyInd.TERM_MALICIOUS_EMAIL)
 
-                AllowedIndicatorTypesNode[keyInd.TERM_MALICIOUS_EMAIL] = "TERM_MALICIOUS_EMAIL"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_MALICIOUS_EMAIL")
@@ -841,7 +861,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_MALWARE_ARTIFACTS != None:
                 nodeType = Node("IndicatorTypeNode", Description="To Group Indicators based on their Type",
                                 IndicatorTypeValue=keyInd.TERM_MALWARE_ARTIFACTS)
-                AllowedIndicatorTypesNode[keyInd.TERM_MALWARE_ARTIFACTS] = "TERM_MALWARE_ARTIFACTS"
                 try:
                     relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                                 IndicatorType = "TERM_MALWARE_ARTIFACTS")
@@ -852,7 +871,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if keyInd.TERM_URL_WATCHLIST != None:
                 nodeType = Node("IndicatorTypeNode",Description="To Group Indicators based on their Type",
                         IndicatorTypeValue = keyInd.TERM_URL_WATCHLIST)
-                AllowedIndicatorTypesNode[keyInd.TERM_URL_WATCHLIST] = "TERM_URL_WATCHLIST"
             try:
                 relIndType= Relationship(nodeType, "IndicatorTypesLink", AllowedIndicatorTypesNode,
                                          IndicatorType = "TERM_URL_WATCHLIST")
@@ -869,15 +887,16 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
 
     if indicator.kill_chain_phases:
         for phase in indicator.kill_chain_phases:
-            print "Kill Chain ID- " + phase.kill_chain_id
-            print "\tKill Chain Name- " + phase.kill_chain_name
-            print "Phase ID- " + phase.phase_id
-            print "\tOrdinality- " + str(phase.ordinality)
-            print "\tPhase Name- " + phase.name
-            print "Kill Chain Name: " + kill_chains[phase.kill_chain_id]
-            print "Phase[" + str(phase.ordinality) + "] = " + kill_chain_phases[phase.phase_id]
-        ##########################################################################################################
-            ######################CONNECT kill chain phase TO TTPKillChainNode's kill chain phsase ?
+            '''
+            if phase.kill_chain_id:
+                print "Kill Chain ID- " + str(phase.kill_chain_id)
+                print "Kill Chain Name: " + str(kill_chains[phase.kill_chain_id])
+            if phase.kill_chain_name: print "\tKill Chain Name- " + str(phase.kill_chain_name)
+            if phase.phase_id: print "Phase ID- " + str(phase.phase_id)
+            if phase.name: print "\tPhase Name- " + str(phase.name)
+            if phase.ordinality: print "\tOrdinality- " + str(phase.ordinality)
+            '''
+            ######################CONNECT kill chain phase TO TTPKillChainNode's kill chain phase ?
 
         phaseNode = stixGraph.find_one("KillChainPhaseNode", property_key="PhaseName", property_value=phase.name)
         #stixGraph.run("CREATE CONSTRAINT ON (n:IndicatorNode) ASSERT n.ID IS UNIQUE")
@@ -888,19 +907,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
                 stixGraph.merge(relPhase)
             except AttributeError:
                 pass
-
-    if indicator.sightings:
-        IndicatorNode["SightingsCount"] = indicator.sightings.sightings_count
-        for s in indicator.sightings:
-            if s.timestamp and s.timestamp_precision:
-                IndicatorNode["SightingsTimestamp"] = pprint(s.timestamp)
-                IndicatorNode["SightingsTimestampPrecision"] = str(s.timestamp_precision)
-                print "Timestamp " + str(s.timestamp) + " with precision upto " + s.timestamp_precision
-            if s.confidence: IndicatorNode["SightingsConfidence"] = s.confidence
-            if s.description: IndicatorNode["SightingsDescription"] = s.description
-            if s.reference: IndicatorNode["SightingsReference"] = s.reference
-            if s.related_observables: IndicatorNode["SightingsRelatedObservables"] = pprint(s.related_observables)
-            if s.source: IndicatorNode["SightingsSource"] = pprint(s.source)
 
     if indicator.composite_indicator_expression:
         headNode = stixGraph.find_one("HeaderNode", property_key="STIXFileID", property_value=StixFileID)
@@ -917,18 +923,17 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
 
     #stixGraph.merge(rel)
     if indicator.observables:
-        parse_observables(indicator.observables, StixFileID, id)
         for obs in indicator.observables:
+            #obs, StixFileID, objRelated, indicatorID, incidentID
+            parse_observable(obs, StixFileID, indicator.id_, None)
             obsNode = stixGraph.find_one("ObservableNode", property_key="ObservableID", property_value= obs.id_)
-            indiNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value=id)
-            if obsNode and indiNode:
-                relInd = Relationship(indiNode,"IndicatorObservableLink",
+            if obsNode:
+                relInd = Relationship(IndicatorNode,"IndicatorObservableLink",
                                       obsNode,  STIXFileID= StixFileID,
-                                      IndicatorID = id,
+                                      IndicatorID = indicator.id_,
                                       ObservableID = obs.id_ ,
                                       connect="Indicator-Observable Link, if it exists. \
                                               http://stixproject.github.io/data-model/1.2/cybox/ObservableType/")
-
                 stixGraph.merge(relInd)
 
 
@@ -958,6 +963,7 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
 
 def parse_indicators(indicators, kill_chains, kill_chain_phases, StixFileID):
     print "*****************************Indicators*******************************************************"
+    compInd = None
     indList = []
     for indicator in indicators:
         if (indicator.composite_indicator_expression):
@@ -969,15 +975,16 @@ def parse_indicators(indicators, kill_chains, kill_chain_phases, StixFileID):
         parse_indicator(indicator, indicator.id_, kill_chains, kill_chain_phases, StixFileID)
 
     for ind in indList:
-        compIndNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value=compInd)
-        indNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value= ind)
-        if compIndNode and indNode:
-            relInd = Relationship(compIndNode, "CompositionIndicatorLink", indNode,
-                                  CompositionOperator=indicator.observable_composition_operator)
-            try:
-                stixGraph.merge(relInd)
-            except ConstraintError:
-                pass
+        if compInd:
+            compIndNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value=compInd)
+            indNode = stixGraph.find_one("IndicatorNode", property_key="ID", property_value= ind)
+            if compIndNode and indNode:
+                relInd = Relationship(compIndNode, "CompositionIndicatorLink", indNode,
+                                      CompositionOperator=indicator.observable_composition_operator)
+                try:
+                    stixGraph.merge(relInd)
+                except ConstraintError:
+                    pass
 
 
 def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
@@ -1007,6 +1014,7 @@ def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
                     TTPNode["TTPMalwareType"+str(i)]= str(sample.types[0])
                     TTPNode["TTPMalwareID"+str(i)]= sample.id_
         #intended_effects, kill_chain_phases, related_packages, related_ttps, victim_targeting
+        stixGraph.merge(TTPNode)
     for chain in ttp.kill_chains:
         kill_chains[chain.id_] = chain.name
 
@@ -1054,35 +1062,108 @@ def parse_reports(reports):
 
             if report.campaigns:
                 for i,camp in enumerate(report.campaigns):
-                    print "ReportCampaignID"+str(i) + camp.idref
+                    ReportNode["ReportCampaignID"+str(i)]= camp.idref
+                    campNode = stixGraph.find_one("CampaignNode",property_key="CampaignID", property_value=camp.idref )
+                    if campNode:
+                        relCampaignReport= Relationship(campNode, "CampaignReportLink", ReportNode,
+                            Description="Campaigns in a Report", CampaignID = camp.idref,
+                             ReportID = report.id_)
+                        try:
+                            stixGraph.merge(relCampaignReport)
+                        except:
+                            pass
 
             if report.courses_of_action:
                 for i,coa in enumerate(report.courses_of_action):
-                    print str(coa)
+                    ReportNode["ReportCOAID"+str(i)]= coa.idref
+                    coaNode = stixGraph.find_one("COANode",property_key="COAID", property_value=coa.idref )
+                    if coaNode:
+                        relCOAReport= Relationship(coaNode, "COAReportLink", ReportNode,
+                            Description="COA in a Report", COAID = coa.idref,
+                             ReportID = report.id_)
+                        try:
+                            stixGraph.merge(relCOAReport)
+                        except:
+                            pass
 
             if report.exploit_targets:
                 for i,targ in enumerate(report.exploit_targets):
-                    print str(targ)
+                    ReportNode["ReportExploitTargetID"+str(i)]= targ.idref
+                    targNode = stixGraph.find_one("ExploitTargetNode",property_key="ExploitTargetID", property_value=targ.idref)
+                    if targNode:
+                        relTargetReport= Relationship(targNode, "ExploitargetReportLink", ReportNode,
+                            Description="Exploit Targets in a Report", ExploitTargetID = targ.idref,
+                             ReportID = report.id_)
+                        try:
+                            stixGraph.merge(relTargetReport)
+                        except:
+                            pass
 
             if report.incidents:
                 for i,inc in enumerate(report.incidents):
                     ReportNode["ReportIncident"+str(i)]= inc.idref
+                    incNode = stixGraph.find_one("IncidentNode",property_key="IncidentID", property_value=inc.idref )
+                    if incNode:
+                        relIncidentReport= Relationship(incNode, "IncidentReportLink", ReportNode,
+                            Description="Incidents in a Report", IncidentID = inc.idref,
+                             ReportID = report.id_)
+                        try:
+                            stixGraph.merge(relIncidentReport)
+                        except:
+                            pass
 
             if report.indicators:
                 for i,indi in enumerate(report.indicators):
                     ReportNode["ReportIndicator"+str(i)]= indi.idref
+                    indiNode = stixGraph.find_one("IndicatorNode",property_key="ID", property_value=indi.idref )
+                    if indiNode:
+                        relIndicatorReport= Relationship(indiNode, "IndicatorReportLink", ReportNode,
+                            Description="Indicators in a Report", IncidentID = indi.idref,
+                             ReportID = report.id_)
+                        try:
+                            stixGraph.merge(relIndicatorReport)
+                        except:
+                            pass
 
             if report.related_reports:
                 for i,rep in enumerate(report.related_reports):
                     ReportNode["ReportRelatedReports"+str(i)]= rep.idref
+                    repNode = stixGraph.find_one("ReportNode",property_key="ReportID", property_value=rep.idref )
+                    if repNode:
+                        relReports= Relationship(repNode, "RelatedReportLink", ReportNode,
+                            Description="Related Reports", RelatedReportID = rep.idref,
+                             ReportID = report.id_)
+                        try:
+                            stixGraph.merge(relReports)
+                        except:
+                            pass
 
             if report.threat_actors:
                 for i,actor in enumerate(report.threat_actors):
                     ReportNode["ReportActor"+str(i)]= actor.idref
+                    actorNode = stixGraph.find_one("ThreatActorNode",property_key="ThreatActorID", property_value=actor.idref)
+                    if actorNode:
+                        relActorReport= Relationship(actorNode, "ThreatActorReportLink", ReportNode,
+                            Description="Threat Actors in a Report", ThreatActorID = actor.idref,
+                             ReportID = report.id_)
+                        try:
+                            stixGraph.merge(relActorReport)
+                        except:
+                            pass
 
             if report.ttps:
                 for i,ttp in enumerate(report.ttps):
                     ReportNode["ReportTTP"+str(i)]= ttp.idref
+                    indiNode = stixGraph.find_one("TTPNode",property_key="TTPID", property_value=ttp.idref )
+                    if indiNode:
+                        relIndicatorReport= Relationship(indiNode, "TTPReportLink", ReportNode,
+                            Description="Indicators in a Report", TTPID = ttp.idref,
+                             ReportID = report.id_)
+                        try:
+                            stixGraph.merge(relIndicatorReport)
+                        except:
+                            pass
+
 
 def parse_COA(course_of_action):
     print "*****************************COA*******************************************************"
@@ -1099,11 +1180,12 @@ def parse_COA(course_of_action):
         COANode["COAStage"]= str(coa.stage)
         COANode["COAType"]= str(coa.type_)
         COANode["COATitle"]= coa.title
+        stixGraph.merge(COANode)
 
 def parse_exploit_target(exploit_targets):
     print "*****************************Exploit Target*******************************************************"
     for target in exploit_targets:
-        ExploitTargetNode = Node("ExploitTargetNode", Description="Exploit Targets", ExploitTargetID=target.id_)
+        ExploitTargetNode = Node("ExploitTargetNode", Title="Exploit Targets", ExploitTargetID=target.id_)
         if target.description: ExploitTargetNode["ExploitTargetDescription"]= str(target.description)
         if target.handling: ExploitTargetNode["ExploitTargetHandling"]= str(target.handling)
         if target.information_source: ExploitTargetNode["ExploitTargetSource"]= str(target.information_source)
@@ -1118,11 +1200,11 @@ def parse_exploit_target(exploit_targets):
         if target.weaknesses:
             for i,weak in enumerate(target.weaknesses):
                 ExploitTargetNode["ExploitTargetWeaknesses"+str(i)]= str(target.weaknesses)
+        stixGraph.merge(ExploitTargetNode)
 
-
-def parse_campaigns(campaigns):
+def parse_campaigns(pkg):
     print "*****************************Campaigns*******************************************************"
-    for camp in campaigns:
+    for camp in pkg.campaigns:
         '''
         print("-------------------------------\n")
         print"CampaignTitle" + str(camp.title)
@@ -1134,7 +1216,7 @@ def parse_campaigns(campaigns):
             print("  - Related To: " + indicators[indicator.item.idref].title)
         '''
         CampaignNode = Node("CampaignNode",CampaignTitle = camp.title ,CampaignID=camp.id_, Timestamp = str(camp.timestamp))
-        relatedTTPs = []
+        relatedTTP = []
         relatedActors=[]
         relatedIncidents =[]
         if camp.attribution:
@@ -1174,28 +1256,33 @@ def parse_campaigns(campaigns):
 
         if camp.related_ttps:
             for i,tactic in enumerate(camp.related_ttps):
-                if tactic.relationship: CampaignNode["CampaignTTPRelationship"+str(i)] = str(tactic.relationship)
+                if tactic.relationship:
+                    CampaignNode["CampaignTTPRelationship"+str(i)] = str(tactic.relationship)
+                    #print "CampaignTTPRelationship : "+ str(tactic.relationship)
                 if tactic.item:
-                    CampaignNode["RelatedTTPsID"+str(i)] = str(tactic.item.idref)
-                    relatedTTPs.append(tactic.item.idref)
-                '''
-                #find TTPNode with idref = tactic.item.idref
-                if ttp:
-                    print("RelatedTTP: " + str(ttp.title))
-                    if ttp.victim_targeting.targeted_information:
-                        for target in ttp.victim_targeting.targeted_information:
-                            print("\tTarget: " + str(target))
-                '''
+                    if tactic.item.idref: CampaignNode["RelatedTTPsID_"+str(i)] = str(tactic.item.idref)
+                    relatedTTP.append(tactic.item.idref)
 
-def parse_incidents(incidents):
+                #find TTPNode with idref = tactic.item.idref
+                # = stixGraph.find_one("TTPNode",property_key="TTPID", property_value=tactic.item.idref)
+                ttp = pkg.find(tactic.item.idref)
+                if ttp:
+                    CampaignNode["RelatedTTPTitle_"+str(i)] = str(ttp.title)
+                    #print("RelatedTTP: " + str(ttp.title))
+                    if ttp.victim_targeting.targeted_information:
+                        for j,target in enumerate(ttp.victim_targeting.targeted_information):
+                            #print("\tTarget: " + str(target))
+                            CampaignNode["RelatedTTPVictim_"+str(i)+"_"+str(j)] = str(target)
+
+def parse_incidents(incidents, STIXFileID):
     print "*****************************Incidents*******************************************************"
 
     for inc in incidents:
+        leveragedTTPs=[]
+        relatedObs=[]
         # attributed_threat_actors, handling, history, impact_assessment, reporter, security_compromise, status, version,
         # categories, coa_requested, coa_taken,coordinators, discovery_methods, external_ids, intended_effects, leveraged_ttps ,
         # related_incidents, related_indicators, related_observables, related_packages, responders, victims
-        #print("------------------------------------------------------------")
-        #print "IncidentID"+inc.id_
         IncidentNode = Node("IncidentNode",IncidentID=inc.id_, Timestamp = str(inc.timestamp))
         stixGraph.run("CREATE CONSTRAINT ON (n:IncidentNode) ASSERT n.IncidentID IS UNIQUE")
 
@@ -1221,14 +1308,15 @@ def parse_incidents(incidents):
             for i,relation in enumerate(inc.leveraged_ttps):
                 IncidentNode["IncidentRelatedTTP"+str(i)]= str(relation.relationship)
                 IncidentNode["IncidentRelatedTTPID"+str(i)]= str(relation.item.idref)
-
+                leveragedTTPs.append(relation.item.idref)
+        #Similar code for related_packages, related_indicators, related_incidents
         if inc.related_observables:
             for i,obs in enumerate(inc.related_observables):
+                IncidentNode["IncidentObservableID"+str(i)]=obs.item.id_
                 IncidentNode["IncidentObservableRelation"+str(i)]= str(obs.relationship)
                 IncidentNode["IncidentObservableFileName"+str(i)]= str(obs.item.object_.properties.file_name)
                 IncidentNode["IncidentObservableFilesize"+str(i)]= str(obs.item.object_.properties.size_in_bytes)
                 IncidentNode["IncidentObservableSHA256Digest"+str(i)]= str(obs.item.object_.properties.hashes[0].simple_hash_value)
-
         if inc.affected_assets:
             for i,asset in enumerate(inc.affected_assets):
                 if asset.description: IncidentNode["IncidentAffectedAssetsDesc"+str(i)]=  str(asset.description)
@@ -1247,17 +1335,28 @@ def parse_incidents(incidents):
                         IncidentNode["IncidentSecurityEffectCompromised"+str(i)]= str(effect.non_public_data_compromised)
                     if effect.non_public_data_compromised.data_encrypted:
                         IncidentNode["IncidentSecurityEffectCompromisedEncrypted"+str(i)]= str(effect.non_public_data_compromised.data_encrypted)
+        stixGraph.merge(IncidentNode)
+
+        for lev in leveragedTTPs:
+            ttpNode = stixGraph.find_one("TTPNode", property_key="TTPID", property_value=lev)
+            if ttpNode:
+                relTTPInc = Relationship(ttpNode, "TTPIncidentLink", IncidentNode,
+                                           IncidentID = inc.id_, TTPID = lev)
+                stixGraph.merge(relTTPInc)
 
 
-def parse_threat_actors(threat_actors):
+
+def parse_threat_actors(pkg):
     print "*****************************Threat Actors*******************************************************"
-    for actor in threat_actors:
-        ThreatActorNode = Node("ThreatActorNode",ThreatActorID=actor.id_, Timestamp = str(actor.timestamp))
+    for actor in pkg.threat_actors:
+        observedTTPs=[]
+        ThreatActorNode = Node("ThreatActorNode",Title = "Contains Threat Actors related to TTP", ThreatActorID=actor.id_, Timestamp = str(actor.timestamp))
         stixGraph.run("CREATE CONSTRAINT ON (n:ThreatActorNode) ASSERT n.ThreatActorID IS UNIQUE")
 
         if actor.title: ThreatActorNode["ActorTitle"] = actor.title
         if actor.description: ThreatActorNode["ActorDescription"]= str(actor.description)
         if actor.confidence: ThreatActorNode["ActorConfidence"]= str(actor.confidence.value.value)
+        if actor.identity: ThreatActorNode["ThreatActorName"]= str(actor.identity.name)
 
         # associate_campaigns, associated_actors, planning_and_operational_supports, types...
         if actor.motivations:
@@ -1286,62 +1385,64 @@ def parse_threat_actors(threat_actors):
 
         if actor.observed_ttps:
             for i,ttp in enumerate(actor.observed_ttps):
-                #observedTTPs.append(ttp.item.idref)
+                observedTTPs.append(ttp.item.idref)
                 ThreatActorNode["ObservedTTP_ID"+str(i)]= ttp.item.idref
                 if ttp.relationship: ThreatActorNode["ObservedTTPRelationship"+str(i)]=  str(ttp.relationship)
                 if ttp.information_source: ThreatActorNode["ObservedTTPSource"+str(i)]=  ttp.information_source
                 if ttp.confidence: ThreatActorNode["ObservedTTPConfidence"+str(i)]= ttp.confidence
-'''
-    if actor.observed_ttps:
-        for obs in actor.observed_ttps:
-            print("RelatedTTP: " + str(pkg.find(obs.item.idref).title))
-            print("Relationship: " + str(obs.relationship))
-        print("Title: " + str(actor.title))
-        if actor.identity: print("Name: " + str(actor.identity.name))
-'''
+                #Link Observable TTP
+                #print "RelatedTTP: " + str(pkg.find(ttp.item.idref).title)
+
+        stixGraph.merge(ThreatActorNode)
+
+        for ob in observedTTPs:
+            ttpNode = stixGraph.find_one("TTPNode", property_key="TTPID", property_value=ob)
+            if ttpNode:
+                relTTPActor = Relationship(ttpNode, "TTPActorLink", ThreatActorNode,
+                                           ThreatActorID = actor.id_, TTPID = ttp.item.idref)
+                stixGraph.merge(relTTPActor)
 
 def print_parsed_data(pkg):
     kill_chains = {}
     kill_chain_phases = {}
 
-    if pkg.campaigns:
-        parse_campaigns(pkg.campaigns)
+    if pkg.stix_header:
+        parse_header(pkg.stix_header, pkg._id)
+
+    if pkg.exploit_targets:
+        parse_exploit_target(pkg.exploit_targets)
+    if pkg.related_packages:
+        logging.info('Related Packages to be handled separately..')
+
+    if pkg.observables:
+        parse_observables(pkg.observables.observables, pkg._id, None, None)
+
+    if pkg.indicators:
+        parse_indicators(pkg.indicators, kill_chains, kill_chain_phases, pkg._id)
+
+    if pkg.incidents:
+        parse_incidents(pkg.incidents, pkg._id)
 
     if pkg.courses_of_action:
         parse_COA(pkg.courses_of_action)
 
-    if pkg.exploit_targets:
-        parse_exploit_target(pkg.exploit_targets)
-
-    if pkg.incidents:
-        parse_incidents(pkg.incidents)
-
-    if pkg.related_packages:
-        logging.info('Related Packages to be handled separately..')
-
-    if pkg.reports:
-        parse_reports(pkg.reports)
-
-    if pkg.threat_actors:
-        parse_threat_actors(pkg.threat_actors)
-
-    if pkg.stix_header:
-        parse_header(pkg.stix_header, pkg._id)
-
     if pkg.ttps:
         parse_ttps(pkg.ttps, kill_chains, kill_chain_phases, pkg._id)
 
-    if pkg.observables:
-        parse_observables(pkg.observables.observables, pkg._id, None)
+    if pkg.threat_actors:
+        parse_threat_actors(pkg)
 
-    if pkg.indicators:
-        parse_indicators(pkg.indicators, kill_chains, kill_chain_phases, pkg._id)
+    if pkg.campaigns:
+        parse_campaigns(pkg)
+
+    if pkg.reports:
+        parse_reports(pkg.reports)
 
 def parse_file(myfile):
     f = open(myfile)
     #parse the input file
     logging.info('Parsing input file '+str(f))
-
+    '''
     stix_package = STIXPackage.from_xml(f)
     print_parsed_data(stix_package)
 
@@ -1355,7 +1456,7 @@ def parse_file(myfile):
         logging.info('Input file %s cannot be parsed', str(f))
         f.close()
         return
-    '''
+
     #Close file
     f.close()
 
