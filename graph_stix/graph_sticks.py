@@ -994,28 +994,19 @@ def parse_campaigns(pkg):
                 if attrib[0].item.confidence:
                     CampaignNode["AttributedActorConfidence"+str(i)] = str(attrib[0].item.confidence.value.value)
 
-                '''
-                actorNode = stixGraph.find_one("ThreatActorNode", property_key="ThreatActorID", property_value=attrib[0].item.id_)
-                try:
-                    relActorCampaign= Relationship(campNode, "ThreatActorCampaignLink", actorNode,
-                                            Description="Campaign Actor Attribution", ActorID = attrib[0].item.id_,
-                                            ActorTitle = attrib[0].item.title , Timestamp= str(attrib[0].item.timestamp))
-                    stixGraph.merge(relActorCampaign)
-                except ConstraintError:
-                    pass
-                '''
         if camp.related_incidents:
             for i,rel in enumerate(camp.related_incidents):
-                CampaignNode["RelatedIncidentID"+str(i)] = str(rel.item.idref)
-                relatedIncidents.append(rel.item.idref)
-                if rel.item.description: CampaignNode["RelatedTTPDesc"+str(i)] = rel.item.description
-                if rel.relationship: CampaignNode["RelatedIncidentRelationship"+str(i)] = rel.relationship
-                if rel.information_source: CampaignNode["RelatedIncidentSource"+str(i)] = rel.information_source
-                if rel.confidence: CampaignNode["RelatedIncidentConfidence"+str(i)] = rel.confidence
                 #affected_assets, attributed_threat_actors, categories, coa_requested ,coa_taken,
                 # coordinators, discovery_methods,history,reporter, security_compromise
                 #intended_effects, leveraged_ttps, related_incodents, related_indicators,
                 # relatedobservables, related_packages, responders, victims
+                if rel.item:
+                    CampaignNode["RelatedIncidentID"+str(i)] = str(rel.item.idref)
+                    relatedIncidents.append(rel.item.idref)
+                if rel.item.description: CampaignNode["RelatedTTPDesc"+str(i)] = rel.item.description
+                if rel.relationship: CampaignNode["RelatedIncidentRelationship"+str(i)] = rel.relationship
+                if rel.information_source: CampaignNode["RelatedIncidentSource"+str(i)] = rel.information_source
+                if rel.confidence: CampaignNode["RelatedIncidentConfidence"+str(i)] = rel.confidence
 
         if camp.related_ttps:
             for i,tactic in enumerate(camp.related_ttps):
@@ -1036,6 +1027,44 @@ def parse_campaigns(pkg):
                         for j,target in enumerate(ttp.victim_targeting.targeted_information):
                             #print("\tTarget: " + str(target))
                             CampaignNode["RelatedTTPVictim_"+str(i)+"_"+str(j)] = str(target)
+
+        stixGraph.merge(CampaignNode)
+
+        if relatedActors:
+            for ac in relatedActors:
+                actorNode = stixGraph.find_one("ThreatActorNode", property_key="ThreatActorID",
+                                               property_value=ac)
+                try:
+                    relActorCampaign= Relationship(CampaignNode, "ThreatActorCampaignLink", actorNode,
+                                            Description="Campaign Actor Attribution", ActorID = ac,
+                                            CampaignID= camp.id_)
+                    stixGraph.merge(relActorCampaign)
+                except AttributeError, ValueError:
+                    pass
+
+        if relatedTTP:
+            for ttp in relatedTTP:
+                ttpNode = stixGraph.find_one("TTPNode", property_key="TTPID",
+                                               property_value=ttp)
+                try:
+                    relTTPCampaign= Relationship(CampaignNode, "TTPCampaignLink", ttpNode,
+                                            Description="Campaign TTP Attribution", TTPID = ttp,
+                                            CampaignID= camp.id_)
+                    stixGraph.merge(relTTPCampaign)
+                except AttributeError, ValueError:
+                    pass
+
+        if relatedIncidents:
+            for inc in relatedIncidents:
+                incNode = stixGraph.find_one("IncidentNode", property_key="IncidentID",
+                                               property_value= inc)
+                try:
+                    relIncCampaign= Relationship(CampaignNode, "IncidentCampaignLink", incNode,
+                                            Description="Campaign Incident Attribution", IncidentID = inc,
+                                            CampaignID= camp.id_)
+                    stixGraph.merge(relIncCampaign)
+                except AttributeError, ValueError:
+                    pass
 
 def parse_incidents(incidents, STIXFileID):
     print "*****************************Incidents*******************************************************"
@@ -1230,7 +1259,7 @@ def test_file(myfile):
 
 def main():
     test_file('../TEST/Tryout.xml')
-    #test_file('../TEST/11.xml')
+    test_file('../TEST/11.xml')
     #test_files()
     #test_GreenIOC()
 
