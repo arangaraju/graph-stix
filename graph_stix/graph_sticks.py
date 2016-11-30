@@ -6,6 +6,7 @@ import time
 # from os.path import join, abspath, dirname
 from pprint import pprint
 from datetime import datetime
+from lxml import etree
 
 try:
     # python-stix : Used in initial parsing, only to get stix file as a dictionary
@@ -335,60 +336,6 @@ def parse_header(header, StixFileID):
     head = header.to_obj()
     HeaderNode = Node("HeaderNode",Title=header.title, Description= str(header.description), STIXFileID=StixFileID)
 
-    #head.Profiles
-    #head.Title
-
-    #for desc in head.Description: #(LIST)
-    #desc.id
-    #desc.idref
-    #desc.ordinality
-    #desc.structuring_format
-    #desc.valueOf_
-
-    #for mark in head.Handling.Marking: #(LIST)
-    #mark.Controlled_Structure
-    #mark.Information_Source
-    #mark.id
-    #mark.idref
-    #mark.version
-
-    #for struc in mark.Marking_Structure: #(LIST)
-    #struc.color
-    #struc.id
-    #struc.idref
-    #struc.marking_model_name
-    #struc.marking_model_ref
-    #struc.xml_type
-    #struc.xmlns
-    #struc.xmlns_prefix
-
-
-    #head.Information_Source.Contributing_Sources
-    #head.Information_Source.Identity
-    #head.Information_Source.References
-    #head.Information_Source.Tools
-
-    #for des in head.Information_Source.Description: #(LIST) ???
-    #for role in head.Information_Source.Role: #(LIST) ???
-
-    #head.Information_Source.Time.EndTime
-    #head.Information_Source.Time.ReceivedTime
-    #head.Information_Source.Time.Start_Time
-
-    #head.Information_Source.Time.Produced_Time #(DatetimeWithPrecisionType)
-    #head.Information_Source.Time.Produced_Time.precision
-    #head.Information_Source.Time.Produced_Time.valueOf_
-
-    #for pkInt in head.Package_Intent: #(LIST)
-    #pkInt.valueOf_
-    #pkInt.vocab_name
-    #pkInt.vocab_reference
-    #pkInt.xsi_type
-
-    #for des in head.Short_Description: #(LIST) ???
-
-    dt = ""
-    tm = ""
     for h in head.Description:
         desc = h.valueOf_
         print "Description:\n" + desc + "\n"
@@ -474,6 +421,26 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
             if s.related_observables: IndicatorNode["SightingsRelatedObservables"] = pprint(s.related_observables)
             if s.source: IndicatorNode["SightingsSource"] = pprint(s.source)
 
+    if indicator.test_mechanisms:
+        for tm in indicator.test_mechanisms:
+            if tm.id_: IndicatorNode["IndicatorTestMechanismID"]= tm.id_
+            if tm.producer:
+                if tm.producer.identity:
+                    IndicatorNode["IndicatorTestMechanismProducerName"]= tm.producer.identity.name
+                    IndicatorNode["IndicatorTestMechanismProducerID"]= tm.producer.identity.id_
+            if tm.efficacy:
+                IndicatorNode["IndicatorTestMechanismEfficacy"]= tm.efficacy.value.value
+                IndicatorNode["IndicatorTestMechanismEfficacyTimestamp"]= str(tm.efficacy.timestamp)
+            if tm._XSI_TYPE == "stix-openioc:OpenIOC2010TestMechanismType":
+                IndicatorNode["IOC"] = etree.tostring(tm.ioc)
+            elif  tm._XSI_TYPE == "snortTM:SnortTestMechanismType":
+                for i,rule in enumerate(tm.rules):
+                   IndicatorNode["SnortRule"+str(i)]= rule.value
+
+            elif tm._XSI_TYPE =="yaraTM:YaraTestMechanismType":
+                IndicatorNode["YaraRule"]= str(tm.rule)
+            else:
+                print "New test mechanism to be handled: "+tm._XSI_TYPE
     if indicator.indicator_types:
         stixGraph.run("CREATE CONSTRAINT ON (n:AllowedIndicatorTypesNode) ASSERT n.Description is UNIQUE")
         AllowedIndicatorTypesNode = Node("AllowedIndicatorTypesNode", Description="All allowed Indicator Types")
@@ -648,6 +615,7 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
         except ConstraintError:
             pass
 
+
     if indicator.kill_chain_phases:
         for phase in indicator.kill_chain_phases:
             '''
@@ -712,8 +680,6 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
 
     '''
     # FUTURE WORK TO MAKE IT STIX COMPLIANT
-    if indicator.indicated_ttps:
-        parse_indicated_ttps(indicator.indicated_ttps)
     if indicator.related_campaigns:
         parse_indicator_related_campaigns(indicator.related_campaigns)
     if indicator.related_indicators:
@@ -1203,6 +1169,7 @@ def print_parsed_data(pkg):
 
     if pkg.exploit_targets:
         parse_exploit_target(pkg.exploit_targets)
+
     if pkg.related_packages:
         logging.info('Related Packages to be handled separately..')
 
