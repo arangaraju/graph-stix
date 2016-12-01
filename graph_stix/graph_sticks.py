@@ -1,9 +1,6 @@
 __author__ = 'apoorva'
 
-import os
 import sys
-import time
-# from os.path import join, abspath, dirname
 from pprint import pprint
 from datetime import datetime
 from lxml import etree
@@ -24,7 +21,6 @@ try:
     from cybox.bindings.win_registry_key_object import WindowsRegistryKeyObjectType
     from cybox.common.datetimewithprecision import DateTimeWithPrecision
 
-    from stix.utils.parser import UnsupportedVersionError
 except ImportError:
     print "Error: Could not import required libraries. Requires python-stix and python-cybox libraries. " \
           "See https://stix.mitre.org/ " \
@@ -39,12 +35,6 @@ except ImportError:
     print "Error: Could not import required libraries. Requires py2neo library. See http://py2neo.org/v3/"
     sys.exit(-1)
 
-# logging
-import logging
-
-reload(logging)
-logging.basicConfig(format=u'[%(asctime)s]  %(message)s', level=logging.INFO)
-
 stixGraph = Graph("http://neo4j:neo4jtest@127.0.0.1:7474/db/data")
 stixGraph.delete_all()
 #stixGraph.run("DROP CONSTRAINT ON (k:KillChainPhaseNode)ASSERT k.ID IS UNIQUE")
@@ -55,54 +45,6 @@ desc = "This Node will connect to LM Kill Chain, all STIX Header,Observable node
 stixGraph.run("CREATE CONSTRAINT ON (n:InitNode) ASSERT n.NodeID IS UNIQUE")
 init_node = Node("StixGraph", Description=desc, NodeID="InitNode")
 stixGraph.create(init_node)
-
-
-def test_GreenIOC():
-    test_path = '../Green_IOCs/'
-    test_data = os.listdir(test_path)
-
-    logging.info('Opening all files in Green_IOCs')
-
-    for fle in test_data:
-        try:
-            myfile = str(test_path) + str(fle)
-            if myfile:
-                parse_file(myfile)
-        except UnsupportedVersionError, err:
-            print "-> Skipping %s\n    UnsupportedVersionError: %s" % (myfile, err)
-            print "See https://github.com/STIXProject/python-stix/issues/124"
-        except Exception, err:
-            print "-> Unexpected error parsing %s: %s; skipping." % (myfile, err)
-    logging.info('Closing all files in Green_IOCs')
-
-
-def test_files():
-    # PATH vars
-    #here = lambda *x: join(abspath(dirname(__file__)), *x)
-    #PROJECT_ROOT = here("..")
-    #root = lambda *x: join(abspath(PROJECT_ROOT), *x)
-    #sys.path.insert(0, root('TEST'))
-    test_path = '../TEST/'
-    test_data = os.listdir(test_path)
-
-    logging.info('Opening files in TEST')
-
-    for fle in test_data:
-        if not fle.endswith("xml"):
-            continue
-        myfile = str(test_path) + str(fle)
-        if myfile:
-            parse_file(myfile)
-
-    '''
-        try:
-            myfile = str(test_path)+str(fle)
-            if myfile:
-                parse_file(myfile)
-        except Exception, err:
-                    print "-> Unexpected error parsing %s: %s; skipping." % (myfile, err)
-    '''
-    logging.info('Closing files in TEST')
 
 
 def parse_observables(observables, StixFileID, indicatorID, incidentID):
@@ -332,13 +274,13 @@ def parse_observable(obs, StixFileID, indicatorID, incidentID):
 
 
 def parse_header(header, StixFileID):
-    print "***********************************************HEADER*********************************************"
+    #print "***********************************************HEADER*********************************************"
     head = header.to_obj()
     HeaderNode = Node("HeaderNode",Title=header.title, Description= str(header.description), STIXFileID=StixFileID)
 
     for h in head.Description:
         desc = h.valueOf_
-        print "Description:\n" + desc + "\n"
+        #print "Description:\n" + desc + "\n"
     try:
         head_date = head.Information_Source.Time.Produced_Time.valueOf_
     except AttributeError:
@@ -355,28 +297,25 @@ def parse_header(header, StixFileID):
 
     months = {"01": 'Jan', "02": 'Feb', "03": 'Mar', "04": 'Apr', "05": 'May', "06": 'Jun', "07": 'Jul',
               "08": 'Aug', "09": 'Sep', "10": 'Oct', "11": 'Nov', "12": 'Dec'}
-    print "Produced Date:" + day + " " + str(months.get(month)) + ", " + year
-    print "Produced Time(24 HR):" + HH + ":" + MM + ":" + SS
+    #print "Produced Date:" + day + " " + str(months.get(month)) + ", " + year
+    #print "Produced Time(24 HR):" + HH + ":" + MM + ":" + SS
 
     #+"Produced Time Precision: "+ head.Information_Source.Time.Produced_Time.precision
 
     for pkInt in head.Package_Intent:
-        print "XSI-TYPE: " + pkInt.xsi_type
+        #print "XSI-TYPE: " + pkInt.xsi_type
         HeaderNode["PackageIntent"]=pkInt.valueOf_
 
     for mark in head.Handling.Marking:
-        print "Marking:\n\t Controlled Structure: " + mark.Controlled_Structure
         for struc in mark.Marking_Structure:
             color = struc.color
             HeaderNode["MarkingColor"]= color
-            print "\t\tMarking Color: " + color
             #struc.id
             #struc.idref
             #struc.marking_model_name
             #struc.marking_model_ref
-            print "\t\t XML-TYPE: " + struc.xml_type
-            print "\t\tXML-Namespace: " + struc.xmlns
-            print "\t\tXMLNS Prefix: " + struc.xmlns_prefix
+            #print "\t\t XML-TYPE: " + struc.xml_type
+            HeaderNode["Marking_XMLNS_Prefix"]= struc.xmlns_prefix
 
     rel = Relationship(init_node, "HeaderGraphLink", HeaderNode, connect="To make sure graph isn't disconnected",
                        STIXFileID=StixFileID)
@@ -691,7 +630,7 @@ def parse_indicator(indicator, id, kill_chains, kill_chain_phases, StixFileID):
     '''
 
 def parse_indicators(indicators, kill_chains, kill_chain_phases, StixFileID):
-    print "*****************************Indicators*******************************************************"
+    ##print "*****************************Indicators*******************************************************"
     compInd = None
     indList = []
     for indicator in indicators:
@@ -717,7 +656,7 @@ def parse_indicators(indicators, kill_chains, kill_chain_phases, StixFileID):
 
 
 def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
-    print "***********************************************TTPS*********************************************"
+    #print "***********************************************TTPS*********************************************"
     for tactic in ttp:
         #print("TTPID: "+ tactic.id_)
         stixGraph.run("CREATE CONSTRAINT ON (n:TTPKillChainNode) ASSERT n.Name IS UNIQUE")
@@ -775,7 +714,7 @@ def parse_ttps(ttp, kill_chains, kill_chain_phases, StixFileID):
 
 
 def parse_reports(reports):
-    print "*****************************Reports*******************************************************"
+    #print "*****************************Reports*******************************************************"
     for report in reports:
         ReportNode = Node("ReportNode", ReportID = report.id_ )
 
@@ -895,7 +834,7 @@ def parse_reports(reports):
 
 
 def parse_COA(course_of_action):
-    print "*****************************COA*******************************************************"
+    #print "*****************************COA*******************************************************"
     for coa in course_of_action:
         COANode = Node("COANode", Desc= "CoursesOfAction", COAID=coa.id_)
         COANode["COACost"]= str(coa.cost.value)
@@ -912,7 +851,7 @@ def parse_COA(course_of_action):
         stixGraph.merge(COANode)
 
 def parse_exploit_target(exploit_targets):
-    print "*****************************Exploit Target*******************************************************"
+    #print "*****************************Exploit Target*******************************************************"
     for target in exploit_targets:
         ExploitTargetNode = Node("ExploitTargetNode", Title="Exploit Targets", ExploitTargetID=target.id_)
         if target.description: ExploitTargetNode["ExploitTargetDescription"]= str(target.description)
@@ -932,7 +871,7 @@ def parse_exploit_target(exploit_targets):
         stixGraph.merge(ExploitTargetNode)
 
 def parse_campaigns(pkg):
-    print "*****************************Campaigns*******************************************************"
+    #print "*****************************Campaigns*******************************************************"
     for camp in pkg.campaigns:
         '''
         print("-------------------------------\n")
@@ -1033,7 +972,7 @@ def parse_campaigns(pkg):
                     pass
 
 def parse_incidents(incidents, STIXFileID):
-    print "*****************************Incidents*******************************************************"
+    #print "*****************************Incidents*******************************************************"
 
     for inc in incidents:
         leveragedTTPs=[]
@@ -1105,7 +1044,7 @@ def parse_incidents(incidents, STIXFileID):
 
 
 def parse_threat_actors(pkg):
-    print "*****************************Threat Actors*******************************************************"
+    #print "*****************************Threat Actors*******************************************************"
     for actor in pkg.threat_actors:
         observedTTPs=[]
         ThreatActorNode = Node("ThreatActorNode",Title = "Contains Threat Actors related to TTP", ThreatActorID=actor.id_, Timestamp = str(actor.timestamp))
@@ -1160,7 +1099,7 @@ def parse_threat_actors(pkg):
                                            ThreatActorID = actor.id_, TTPID = ttp.item.idref)
                 stixGraph.merge(relTTPActor)
 
-def print_parsed_data(pkg):
+def parse_data(pkg):
     kill_chains = {}
     kill_chain_phases = {}
 
@@ -1170,8 +1109,8 @@ def print_parsed_data(pkg):
     if pkg.exploit_targets:
         parse_exploit_target(pkg.exploit_targets)
 
-    if pkg.related_packages:
-        logging.info('Related Packages to be handled separately..')
+    #if pkg.related_packages:
+    #    logging.info('Related Packages to be handled separately..')
 
     if pkg.observables:
         parse_observables(pkg.observables.observables, pkg._id, None, None)
@@ -1197,38 +1136,4 @@ def print_parsed_data(pkg):
     if pkg.reports:
         parse_reports(pkg.reports)
 
-def parse_file(myfile):
-    f = open(myfile)
-    #parse the input file
-    logging.info('Parsing input file '+str(f))
-    '''
-    stix_package = STIXPackage.from_xml(f)
-    print_parsed_data(stix_package)
 
-    '''
-    try:
-        stix_package = STIXPackage.from_xml(f)
-    #graphMain(stix_package)
-        print_parsed_data(stix_package)
-
-    except ValueError:
-        logging.info('Input file %s cannot be parsed', str(f))
-        f.close()
-        return
-
-    #Close file
-    f.close()
-
-def test_file(myfile):
-    logging.info('Opening test file to parse')
-    parse_file(myfile)
-
-
-def main():
-    test_file('../TEST/Tryout.xml')
-    test_file('../TEST/11.xml')
-    #test_files()
-    #test_GreenIOC()
-
-if __name__ == '__main__':
-    main()
